@@ -16,10 +16,9 @@ extern "C" {
 
 #include <QDebug>
 
-FlatpakReference::FlatpakReference(QString name, QString version, QString id, QString icon)
+FlatpakReference::FlatpakReference(QString name, QString version, QString icon)
     : m_name(name),
       m_version(version),
-      m_id(id),
       m_icon(icon)
 {
 }
@@ -27,11 +26,6 @@ FlatpakReference::FlatpakReference(QString name, QString version, QString id, QS
 QString FlatpakReference::name() const
 {
     return m_name;
-}
-
-QString FlatpakReference::id() const
-{
-    return m_id;
 }
 
 QString FlatpakReference::version() const
@@ -57,10 +51,7 @@ FlatpakReferencesModel::FlatpakReferencesModel()
         g_autoptr(FlatpakRef) ref = FLATPAK_REF(g_ptr_array_index(installedApps, i));
         QString id = QString::fromUtf8(flatpak_ref_get_name(ref));
 
-//        g_autoptr(FlatpakRemote) remote = FLATPAK_REMOTE(flatpak_remote_new(id.toLocal8Bit().data()));
-//        QString icon = QString::fromUtf8(flatpak_remote_get_icon(remote));
-
-        m_references.push_back(FlatpakReference(name, version, id/*, icon*/));
+        m_references.push_back(FlatpakReference(name, version));
     }
 }
 
@@ -83,8 +74,6 @@ QVariant FlatpakReferencesModel::data(const QModelIndex &index, int role) const
         return m_references.at(index.row()).name();
     case Roles::Version:
         return m_references.at(index.row()).version();
-    case Roles::Id:
-        return m_references.at(index.row()).id();
     case Roles::Icon:
         return m_references.at(index.row()).icon();
     }
@@ -95,7 +84,6 @@ QHash<int, QByteArray> FlatpakReferencesModel::roleNames() const
 {
     QHash<int, QByteArray> roles;
     roles[Roles::Name] = "name";
-    roles[Roles::Id] = "id";
     roles[Roles::Version] = "version";
     roles[Roles::Icon] = "icon";
     return roles;

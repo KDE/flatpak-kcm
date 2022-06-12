@@ -26,15 +26,10 @@ KCM.ScrollViewKCM {
     view: ListView {
         id: appsListView
 
-        header: Kirigami.Heading {
-            text: i18n("Applications")
-            level: 1
-        }
         model: kcm.refsModel
         currentIndex: -1
         delegate: Kirigami.BasicListItem {
             text: model.name
-            subtitle: model.id
             onClicked: {
                 kcm.pop()
                 kcm.push("permissions.qml")

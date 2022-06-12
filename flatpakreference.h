@@ -12,16 +12,14 @@
 class FlatpakReference
 {
 public:
-    FlatpakReference(QString name, QString id, QString version, QString icon = QString());
+    FlatpakReference(QString name, QString version, QString icon = QString());
     QString name() const;
     QString version() const;
-    QString id() const;
     QString icon() const;
 
 private:
     QString m_name;
     QString m_version;
-    QString m_id;
     QString m_icon;
 };
 
@@ -33,7 +31,6 @@ public:
 
     enum Roles {
         Name = Qt::UserRole + 1,
-        Id,
         Version,
         Icon
     };
