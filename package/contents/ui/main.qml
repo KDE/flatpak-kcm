@@ -30,6 +30,7 @@ KCM.ScrollViewKCM {
         currentIndex: -1
         delegate: Kirigami.BasicListItem {
             text: model.name
+            icon: model.icon
             onClicked: {
                 kcm.pop()
                 kcm.push("permissions.qml")

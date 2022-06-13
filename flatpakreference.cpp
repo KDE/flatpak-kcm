@@ -51,7 +51,9 @@ FlatpakReferencesModel::FlatpakReferencesModel()
         g_autoptr(FlatpakRef) ref = FLATPAK_REF(g_ptr_array_index(installedApps, i));
         QString id = QString::fromUtf8(flatpak_ref_get_name(ref));
 
-        m_references.push_back(FlatpakReference(name, version));
+        QString icon = id + QLatin1String(".png");
+
+        m_references.push_back(FlatpakReference(name, version, icon));
     }
 }
 
