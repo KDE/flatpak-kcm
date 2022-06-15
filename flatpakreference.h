@@ -27,7 +27,7 @@ class FlatpakReferencesModel : public QAbstractListModel
 {
     Q_OBJECT
 public:
-    FlatpakReferencesModel();
+    FlatpakReferencesModel(QObject *parent = nullptr);
 
     enum Roles {
         Name = Qt::UserRole + 1,

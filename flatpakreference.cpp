@@ -38,7 +38,7 @@ QString FlatpakReference::icon() const
     return m_icon;
 }
 
-FlatpakReferencesModel::FlatpakReferencesModel()
+FlatpakReferencesModel::FlatpakReferencesModel(QObject *parent) : QAbstractListModel(parent)
 {
     g_autoptr(FlatpakInstallation) installation = flatpak_installation_new_system(NULL, NULL);
     g_autoptr(GPtrArray) installedApps = flatpak_installation_list_installed_refs_by_kind(installation, FLATPAK_REF_KIND_APP, NULL, NULL);

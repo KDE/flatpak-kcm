@@ -11,7 +11,7 @@ K_PLUGIN_CLASS_WITH_JSON(KCMFlatpak, "kcm_flatpak.json")
 
 KCMFlatpak::KCMFlatpak(QObject *parent, const KPluginMetaData &data, const QVariantList &args)
     : KQuickAddons::ManagedConfigModule(parent, data, args),
-      m_refsModel(new FlatpakReferencesModel())
+      m_refsModel(new FlatpakReferencesModel(this))
 {
     qmlRegisterUncreatableType<KCMFlatpak>("org.kde.plasma.kcm.flatpakpermissions", 1, 0, "KCMFlatpak", QString());
 }
