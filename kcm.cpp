@@ -6,6 +6,7 @@
 #include "kcm.h"
 
 #include <KPluginFactory>
+#include <KLocalizedString>
 
 K_PLUGIN_CLASS_WITH_JSON(KCMFlatpak, "kcm_flatpak.json")
 
@@ -15,5 +16,6 @@ KCMFlatpak::KCMFlatpak(QObject *parent, const KPluginMetaData &data, const QVari
 {
     qmlRegisterUncreatableType<KCMFlatpak>("org.kde.plasma.kcm.flatpakpermissions", 1, 0, "KCMFlatpak", QString());
 }
+
 
 #include "kcm.moc"

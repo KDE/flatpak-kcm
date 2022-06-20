@@ -5,6 +5,8 @@
 
 #pragma once
 
+#include "flatpakpermission.h"
+
 #include <QString>
 #include <QVector>
 #include <QAbstractListModel>
@@ -16,11 +18,13 @@ public:
     QString name() const;
     QString version() const;
     QString icon() const;
+    FlatpakPermissionModel* permsModel() const;
 
 private:
     QString m_name;
     QString m_version;
     QString m_icon;
+    FlatpakPermissionModel* m_permsModel;
 };
 
 class FlatpakReferencesModel : public QAbstractListModel
@@ -32,7 +36,8 @@ public:
     enum Roles {
         Name = Qt::UserRole + 1,
         Version,
-        Icon
+        Icon,
+        PermsModel
     };
 
     int rowCount(const QModelIndex &parent = QModelIndex()) const override;

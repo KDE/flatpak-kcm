@@ -12,8 +12,14 @@ import org.kde.kirigami 2.7 as Kirigami
 KCM.SimpleKCM {
     id: permissionPage
     title: i18n("Permissions")
-    Label {
-        text: i18n("Permissions will be displayed here")
-    }
     implicitWidth: Kirigami.Units.gridUnit * 15
+    property QtObject refModel
+    ListView {
+        model: refModel
+        currentIndex: -1
+        delegate: Kirigami.BasicListItem {
+            text: model.description
+            subtitle: model.name
+        }
+    }
 }

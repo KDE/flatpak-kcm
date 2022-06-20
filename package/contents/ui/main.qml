@@ -29,11 +29,13 @@ KCM.ScrollViewKCM {
         model: kcm.refsModel
         currentIndex: -1
         delegate: Kirigami.BasicListItem {
+
             text: model.name
             icon: model.icon
+
             onClicked: {
-                kcm.pop()
-                kcm.push("permissions.qml")
+                kcm.pop(0)
+                kcm.push("permissions.qml", {refModel: model.permsModel})
             }
         }
     }

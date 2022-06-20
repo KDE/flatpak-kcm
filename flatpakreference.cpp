@@ -15,11 +15,15 @@ extern "C" {
 #include <glib.h>
 
 #include <QDebug>
+#include <QtDBus/QDBusMessage>
+#include <QtDBus/QDBusConnection>
+#include <iostream>
 
 FlatpakReference::FlatpakReference(QString name, QString version, QString icon)
     : m_name(name),
       m_version(version),
-      m_icon(icon)
+      m_icon(icon),
+      m_permsModel(new FlatpakPermissionModel())
 {
 }
 
@@ -38,6 +42,11 @@ QString FlatpakReference::icon() const
     return m_icon;
 }
 
+FlatpakPermissionModel* FlatpakReference::permsModel() const
+{
+    return m_permsModel;
+}
+
 FlatpakReferencesModel::FlatpakReferencesModel(QObject *parent) : QAbstractListModel(parent)
 {
     g_autoptr(FlatpakInstallation) installation = flatpak_installation_new_system(NULL, NULL);
@@ -54,7 +63,25 @@ FlatpakReferencesModel::FlatpakReferencesModel(QObject *parent) : QAbstractListM
         QString icon = id + QLatin1String(".png");
 
         m_references.push_back(FlatpakReference(name, version, icon));
+
     }
+//    QDBusMessage m = QDBusMessage::createMethodCall(QStringLiteral("org.freedesktop.impl.portal.PermissionStore"),
+//                                                    QStringLiteral("/org/freedesktop/impl/portal/PermissionStore"),
+//                                                    QStringLiteral("org.freedesktop.impl.portal.PermissionStore"),
+//                                                    QStringLiteral("Lookup"));
+//    QStringList ast;
+//    QList<QVariant> args;
+//    args.append(QStringLiteral("documents"));
+//    args.append(QStringLiteral("56ca0861"));
+//    m.setArguments(args);
+//    QDBusMessage response = QDBusConnection::sessionBus().call(m);
+//    QVariant v = response.arguments().at(0);
+//    qInfo() << v;
+//    QStringList vl = response.arguments().at(0).toStringList();
+//    //QList<QVariant> vl = response.arguments();
+//    if(vl.empty()) qInfo() << "empty"; else qInfo() << vl.length();
+//    for(int i = 0; i < vl.length(); ++i)
+//        qInfo() << vl.at(i).toLatin1();
 }
 
 int FlatpakReferencesModel::rowCount(const QModelIndex &parent) const
@@ -78,6 +105,8 @@ QVariant FlatpakReferencesModel::data(const QModelIndex &index, int role) const
         return m_references.at(index.row()).version();
     case Roles::Icon:
         return m_references.at(index.row()).icon();
+    case Roles::PermsModel:
+        return QVariant::fromValue(m_references.at(index.row()).permsModel());
     }
     return QVariant();
 }
@@ -88,5 +117,6 @@ QHash<int, QByteArray> FlatpakReferencesModel::roleNames() const
     roles[Roles::Name] = "name";
     roles[Roles::Version] = "version";
     roles[Roles::Icon] = "icon";
+    roles[Roles::PermsModel] = "permsModel";
     return roles;
 }

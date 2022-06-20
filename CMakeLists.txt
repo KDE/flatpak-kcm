@@ -35,6 +35,7 @@ find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
 set(flatpakkcm_SRCS
     kcm.cpp
     flatpakreference.cpp
+    flatpakpermission.cpp
 )
 
 add_library(kcm_flatpak MODULE ${flatpakkcm_SRCS})
@@ -45,6 +46,7 @@ target_link_libraries(kcm_flatpak
     KF5::I18n
     KF5::QuickAddons
     PkgConfig::Flatpak
+    Qt5::DBus
 )
 
 install(TARGETS kcm_flatpak DESTINATION ${KDE_INSTALL_PLUGINDIR}/plasma/kcms/systemsettings)
