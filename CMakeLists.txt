@@ -43,6 +43,7 @@ add_library(kcm_flatpak MODULE ${flatpakkcm_SRCS})
 target_link_libraries(kcm_flatpak
     Qt5::Core
     KF5::CoreAddons
+    KF5::ConfigCore
     KF5::I18n
     KF5::QuickAddons
     PkgConfig::Flatpak

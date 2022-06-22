@@ -19,11 +19,11 @@ extern "C" {
 #include <QtDBus/QDBusConnection>
 #include <iostream>
 
-FlatpakReference::FlatpakReference(QString name, QString version, QString icon)
+FlatpakReference::FlatpakReference(QString name, QString version, QString icon, QByteArray metadata)
     : m_name(name),
       m_version(version),
       m_icon(icon),
-      m_permsModel(new FlatpakPermissionModel())
+      m_permsModel(new FlatpakPermissionModel(nullptr, metadata))
 {
 }
 
@@ -62,7 +62,12 @@ FlatpakReferencesModel::FlatpakReferencesModel(QObject *parent) : QAbstractListM
 
         QString icon = id + QLatin1String(".png");
 
-        m_references.push_back(FlatpakReference(name, version, icon));
+        g_autoptr(GBytes) data = flatpak_installed_ref_load_metadata(installedRef, NULL, NULL);
+        gsize len = 0;
+        auto buff = g_bytes_get_data(data, &len);
+        const QByteArray metadata((const char *)buff, len);
+
+        m_references.push_back(FlatpakReference(name, version, icon, metadata));
 
     }
 //    QDBusMessage m = QDBusMessage::createMethodCall(QStringLiteral("org.freedesktop.impl.portal.PermissionStore"),
@@ -82,6 +87,14 @@ FlatpakReferencesModel::FlatpakReferencesModel(QObject *parent) : QAbstractListM
 //    if(vl.empty()) qInfo() << "empty"; else qInfo() << vl.length();
 //    for(int i = 0; i < vl.length(); ++i)
 //        qInfo() << vl.at(i).toLatin1();
+
+    //g_autoptr(FlatpakInstalledRef) installedRef = FLATPAK_INSTALLED_REF(g_ptr_array_index(installedApps, i));
+//    g_autoptr(FlatpakRemoteRef) ref = FLATPAK_REMOTE_REF(g_ptr_array_index(installedApps, i));
+//    g_autoptr(GBytes) data = flatpak_remote_ref_get_metadata(ref);
+//    gsize len = 0;
+//    auto buff = g_bytes_get_data(data, &len);
+//    const QByteArray metadataContent((const char *)buff, len);
+//    qInfo() << (metadataContent);
 }
 
 int FlatpakReferencesModel::rowCount(const QModelIndex &parent) const

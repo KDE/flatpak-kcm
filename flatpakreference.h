@@ -14,7 +14,7 @@
 class FlatpakReference
 {
 public:
-    FlatpakReference(QString name, QString version, QString icon = QString());
+    FlatpakReference(QString name, QString version, QString icon = QString(), QByteArray metadata = QByteArray());
     QString name() const;
     QString version() const;
     QString icon() const;

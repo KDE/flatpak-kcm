@@ -16,20 +16,22 @@ public:
         Complex /* other values, eg: talk/own permissions to session buses */
     };
 
-    FlatpakPermission(QString name = QString(), QString category = QString(), QString description = QString(), QString value = QString(), ValueType type = ValueType::Simple);
+    FlatpakPermission(QString name = QString(), QString category = QString(), QString description = QString(), QString defaultValue = QStringLiteral("OFF"), QStringList possibleValues = QStringList(), QString currentValue = QString(), ValueType type = ValueType::Simple);
     QString name() const;
     QString category() const;
     QString description() const;
-    QString value() const;
+    QString defaultValue() const;
+    QStringList possibleValues() const;
+    QString currentValue() const;
     ValueType type() const;
-
-//    void setValue(QString value);
 
 private:
     QString m_name;
     QString m_category;
     QString m_description;
-    QString m_value;
+    QString m_defaultValue;
+    QStringList m_possibleValues;
+    QString m_currentValue;
     ValueType m_type;
 };
 
@@ -37,13 +39,15 @@ class FlatpakPermissionModel : public QAbstractListModel
 {
     Q_OBJECT
 public:
-    FlatpakPermissionModel(QObject *parent = nullptr);
+    FlatpakPermissionModel(QObject *parent = nullptr, QByteArray metadata = QByteArray());
 
     enum Roles {
         Name = Qt::UserRole + 1,
         Category,
         Description,
-        Value,
+        ValueList,
+        CurrentValue,
+        IsGranted,
         Type
     };
 
