@@ -181,7 +181,6 @@ FlatpakPermissionModel::FlatpakPermissionModel(QObject *parent, QByteArray metad
     defaultValue = featuresPerms.contains(name) ? QStringLiteral("ON") : QStringLiteral("OFF");
     m_permissions.append(FlatpakPermission(name, category, description, defaultValue, possibleValues));
 
-
     name = i18n("canbus");
     description = i18n("Canbus Socket Access");
     defaultValue = featuresPerms.contains(name) ? QStringLiteral("ON") : QStringLiteral("OFF");
@@ -194,28 +193,95 @@ FlatpakPermissionModel::FlatpakPermissionModel(QObject *parent, QByteArray metad
     /* FEATURES category */
 
     /* FILESYSTEM category */
-//    category = i18n("filesystem");
-//    defaultValue = QStringLiteral("OFF");
+    category = i18n("filesystem");
+    const QString fileSystemPerms = contextGroup.readEntry("filesystems", QString());
+    const auto dirs = QStringView(fileSystemPerms).split(QLatin1Char(';'), Qt::SkipEmptyParts);
 
-//    name = i18n("home");
-//    description = i18n("Entire Home Directory");
-//    m_permissions.append(FlatpakPermission(name, category, description, defaultValue, possibleValues));
+    QString homeVal, hostVal, hostOsVal, hostEtcVal;
+    homeVal = hostVal = hostOsVal = hostEtcVal = i18n("OFF");
+    possibleValues.clear();
+    possibleValues << QStringLiteral("read-only") << QStringLiteral("read/write") << QStringLiteral("create");
 
-//    name = i18n("host");
-//    description = i18n("All System Files");
-//    m_permissions.append(FlatpakPermission(name, category, description, defaultValue, possibleValues));
+    for(const QStringView &dir : dirs) {
+        if (dir == QLatin1String("xdg-config/kdeglobals:ro")) {
+            continue;
+        }
+        int sep = dir.lastIndexOf(QLatin1Char(':'));
+        const QStringView postfix = sep > 0 ? dir.mid(sep) : QStringView();
+        const QStringView symbolicName = dir.left(sep);
 
-//    name = i18n("host-os");
-//    description = i18n("Libraries, Executables and Static Data");
-//    m_permissions.append(FlatpakPermission(name, category, description, defaultValue, possibleValues));
+        if(symbolicName == QStringLiteral("home")) {
+            if(postfix == QStringLiteral("ro")) {
+                homeVal = i18n("read-only");
+            } else if (postfix == QStringLiteral("create")) {
+                homeVal = i18n("create");
+            } else {
+                homeVal = i18n("read/write");
+            }
+        } else if(symbolicName == QStringLiteral("host")) {
+            if(postfix == QStringLiteral("ro")) {
+                hostVal = i18n("read-only");
+            } else if (postfix == QStringLiteral("create")) {
+                hostVal = i18n("create");
+            } else {
+                hostVal = i18n("read/write");
+            }
+        } else if(symbolicName == QStringLiteral("host-os")) {
+            if(postfix == QStringLiteral("ro")) {
+                hostOsVal = i18n("read-only");
+            } else if (postfix == QStringLiteral("create")) {
+                hostOsVal = i18n("create");
+            } else {
+                hostOsVal = i18n("read/write");
+            }
+        } else if(symbolicName == QStringLiteral("host-etc")) {
+            if(postfix == QStringLiteral("ro")) {
+                hostEtcVal = i18n("read-only");
+            } else if (postfix == QStringLiteral("create")) {
+                hostEtcVal = i18n("create");
+            } else {
+                hostEtcVal = i18n("read/write");
+            }
+        } else {
+            continue;
+        }
+    }
 
-//    name = i18n("host-etc");
-//    description = i18n("Operating System's Configuration");
-//    m_permissions.append(FlatpakPermission(name, category, description, defaultValue, possibleValues));
+    name = i18n("home");
+    description = i18n("Home Folder");
+    possibleValues.removeAll(homeVal);
+    if(homeVal != QStringLiteral("OFF")) {
+        possibleValues.prepend(homeVal);
+    }
+    m_permissions.append(FlatpakPermission(name, category, description, homeVal, possibleValues, defaultValue, FlatpakPermission::ValueType::Complex));
+
+    name = i18n("host");
+    description = i18n("All System Files");
+    possibleValues.removeAll(hostVal);
+    if(hostVal != QStringLiteral("OFF")) {
+        possibleValues.prepend(hostVal);
+    }
+    m_permissions.append(FlatpakPermission(name, category, description, hostVal, possibleValues, defaultValue, FlatpakPermission::ValueType::Complex));
+
+    name = i18n("host-os");
+    description = i18n("System Libraries, Executables and Binaries");
+    possibleValues.removeAll(hostOsVal);
+    if(hostOsVal != QStringLiteral("OFF")) {
+        possibleValues.prepend(hostOsVal);
+    }
+    m_permissions.append(FlatpakPermission(name, category, description, hostOsVal, possibleValues, defaultValue, FlatpakPermission::ValueType::Complex));
+
+    name = i18n("host-etc");
+    description = i18n("System Configurations");
+    possibleValues.removeAll(hostEtcVal);
+    if(hostEtcVal != QStringLiteral("OFF")) {
+        possibleValues.prepend(hostEtcVal);
+    }
+    m_permissions.append(FlatpakPermission(name, category, description, hostEtcVal, possibleValues, defaultValue, FlatpakPermission::ValueType::Complex));
 
     /* FILESYSTEM category */
+}
 
- }
 int FlatpakPermissionModel::rowCount(const QModelIndex &parent) const
 {
     if(parent.isValid()) {
@@ -243,9 +309,11 @@ QVariant FlatpakPermissionModel::data(const QModelIndex &index, int role) const
         return m_permissions.at(index.row()).currentValue();
     case Roles::IsGranted:
         //this should be currentValue(), not defaultValue(), but I haven't implemented it yet
-        return m_permissions.at(index.row()).defaultValue() == QStringLiteral("ON");
+        return m_permissions.at(index.row()).defaultValue() != QStringLiteral("OFF");
     case Roles::Type:
         return m_permissions.at(index.row()).type();
+    case Roles::IsComplex:
+        return m_permissions.at(index.row()).type() == FlatpakPermission::ValueType::Complex;
     }
 
     return QVariant();
@@ -261,5 +329,6 @@ QHash<int, QByteArray> FlatpakPermissionModel::roleNames() const
     roles[Roles::CurrentValue] = "currentValue";
     roles[Roles::IsGranted] = "isGranted";
     roles[Roles::Type] = "valueType";
+    roles[Roles::IsComplex] = "isComplex";
     return roles;
 }
