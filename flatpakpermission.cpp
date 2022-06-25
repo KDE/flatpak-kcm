@@ -72,7 +72,7 @@ FlatpakPermissionModel::FlatpakPermissionModel(QObject *parent, QByteArray metad
     const KConfigGroup contextGroup = parser.group("Context");;
 
     /* SHARED category */
-    category = i18n("shared");
+    category = i18n("Subsystems Shared");
     const QString sharedPerms = contextGroup.readEntry("shared", QString());
     possibleValues << QStringLiteral("ON") << QStringLiteral("OFF");
 
@@ -88,7 +88,7 @@ FlatpakPermissionModel::FlatpakPermissionModel(QObject *parent, QByteArray metad
     /* SHARED category */
 
     /* SOCKETS category */
-    category = i18n("sockets");
+    category = i18n("Sockets");
     const QString socketPerms = contextGroup.readEntry("sockets", QString());
 
     name = i18n("x11");
@@ -138,7 +138,7 @@ FlatpakPermissionModel::FlatpakPermissionModel(QObject *parent, QByteArray metad
     /* SOCKETS category */
 
     /* DEVICES category */
-    category = i18n("devices");
+    category = i18n("Device Access");
     const QString devicesPerms = contextGroup.readEntry("devices", QString());
 
     name = i18n("kvm");
@@ -163,7 +163,7 @@ FlatpakPermissionModel::FlatpakPermissionModel(QObject *parent, QByteArray metad
     /* DEVICES category */
 
     /* FEATURES category */
-    category = i18n("features");
+    category = i18n("Features Allowed");
     const QString featuresPerms = contextGroup.readEntry("features", QString());
 
     name = i18n("devel");
@@ -193,7 +193,7 @@ FlatpakPermissionModel::FlatpakPermissionModel(QObject *parent, QByteArray metad
     /* FEATURES category */
 
     /* FILESYSTEM category */
-    category = i18n("filesystem");
+    category = i18n("Filesystem Access");
     const QString fileSystemPerms = contextGroup.readEntry("filesystems", QString());
     const auto dirs = QStringView(fileSystemPerms).split(QLatin1Char(';'), Qt::SkipEmptyParts);
 

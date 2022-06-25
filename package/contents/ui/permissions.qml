@@ -20,15 +20,14 @@ KCM.ScrollViewKCM {
 
         section.property: "category"
         section.criteria: ViewSection.FullString
-        section.delegate: Kirigami.BasicListItem {
-            text: section
+        section.delegate: Kirigami.ListSectionHeader {
+            label: section
             font.bold: true
         }
 
         delegate: Kirigami.CheckableListItem {
             id: permItem
             text: model.description
-            subtitle: model.name
             checked: model.isGranted
 
             property bool isComplex: model.isComplex
@@ -38,7 +37,7 @@ KCM.ScrollViewKCM {
                 enabled: permItem.checked
                 model: permItem.comboVals
                 visible: permItem.isComplex
-                width: parent.width / 5
+                width: Kirigami.Units.gridUnit * 5
             }
         }
     }
