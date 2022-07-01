@@ -14,16 +14,19 @@
 class FlatpakReference
 {
 public:
-    FlatpakReference(QString name, QString version, QString icon = QString(), QByteArray metadata = QByteArray());
+    FlatpakReference(QString name, QString m_id, QString version, QString icon = QString(), QByteArray metadata = QByteArray());
     QString name() const;
     QString version() const;
     QString icon() const;
+    QString path() const;
     FlatpakPermissionModel* permsModel() const;
 
 private:
     QString m_name;
+    QString m_id;
     QString m_version;
     QString m_icon;
+    QString m_path;
     FlatpakPermissionModel* m_permsModel;
 };
 

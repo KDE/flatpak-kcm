@@ -4,6 +4,7 @@
  */
 
 #include "flatpakreference.h"
+#include "flatpakhelper.h"
 
 #ifdef FLATPAK_EXTERNC_REQUIRED
 extern "C" {
@@ -14,16 +15,13 @@ extern "C" {
 #endif
 #include <glib.h>
 
-#include <QDebug>
-#include <QtDBus/QDBusMessage>
-#include <QtDBus/QDBusConnection>
-#include <iostream>
-
-FlatpakReference::FlatpakReference(QString name, QString version, QString icon, QByteArray metadata)
+FlatpakReference::FlatpakReference(QString name, QString id, QString version, QString icon, QByteArray metadata)
     : m_name(name),
+      m_id(id),
       m_version(version),
       m_icon(icon),
-      m_permsModel(new FlatpakPermissionModel(nullptr, metadata))
+      m_path(FlatpakHelper::permDataFilePath().append(m_id)),
+      m_permsModel(new FlatpakPermissionModel(nullptr, metadata, m_path))
 {
 }
 
@@ -67,34 +65,8 @@ FlatpakReferencesModel::FlatpakReferencesModel(QObject *parent) : QAbstractListM
         auto buff = g_bytes_get_data(data, &len);
         const QByteArray metadata((const char *)buff, len);
 
-        m_references.push_back(FlatpakReference(name, version, icon, metadata));
-
+        m_references.push_back(FlatpakReference(name, id, version, icon, metadata));
     }
-//    QDBusMessage m = QDBusMessage::createMethodCall(QStringLiteral("org.freedesktop.impl.portal.PermissionStore"),
-//                                                    QStringLiteral("/org/freedesktop/impl/portal/PermissionStore"),
-//                                                    QStringLiteral("org.freedesktop.impl.portal.PermissionStore"),
-//                                                    QStringLiteral("Lookup"));
-//    QStringList ast;
-//    QList<QVariant> args;
-//    args.append(QStringLiteral("documents"));
-//    args.append(QStringLiteral("56ca0861"));
-//    m.setArguments(args);
-//    QDBusMessage response = QDBusConnection::sessionBus().call(m);
-//    QVariant v = response.arguments().at(0);
-//    qInfo() << v;
-//    QStringList vl = response.arguments().at(0).toStringList();
-//    //QList<QVariant> vl = response.arguments();
-//    if(vl.empty()) qInfo() << "empty"; else qInfo() << vl.length();
-//    for(int i = 0; i < vl.length(); ++i)
-//        qInfo() << vl.at(i).toLatin1();
-
-    //g_autoptr(FlatpakInstalledRef) installedRef = FLATPAK_INSTALLED_REF(g_ptr_array_index(installedApps, i));
-//    g_autoptr(FlatpakRemoteRef) ref = FLATPAK_REMOTE_REF(g_ptr_array_index(installedApps, i));
-//    g_autoptr(GBytes) data = flatpak_remote_ref_get_metadata(ref);
-//    gsize len = 0;
-//    auto buff = g_bytes_get_data(data, &len);
-//    const QByteArray metadataContent((const char *)buff, len);
-//    qInfo() << (metadataContent);
 }
 
 int FlatpakReferencesModel::rowCount(const QModelIndex &parent) const

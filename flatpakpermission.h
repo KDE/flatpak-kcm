@@ -25,6 +25,8 @@ public:
     QString currentValue() const;
     ValueType type() const;
 
+    void setCurrentValue(QString val);
+
 private:
     QString m_name;
     QString m_category;
@@ -39,7 +41,7 @@ class FlatpakPermissionModel : public QAbstractListModel
 {
     Q_OBJECT
 public:
-    FlatpakPermissionModel(QObject *parent = nullptr, QByteArray metadata = QByteArray());
+    FlatpakPermissionModel(QObject *parent = nullptr, QByteArray metadata = QByteArray(), QString path = QString());
 
     enum Roles {
         Name = Qt::UserRole + 1,
@@ -56,6 +58,9 @@ public:
     QVariant data(const QModelIndex &parent, int role) const override;
     virtual QHash<int, QByteArray> roleNames() const override;
 
+    void loadCurrentValues();
+
 private:
     QVector<FlatpakPermission> m_permissions;
+    QString m_path;
 };

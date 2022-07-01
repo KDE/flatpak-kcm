@@ -7,6 +7,7 @@
 
 #include <KLocalizedString>
 #include <QTemporaryFile>
+#include <QFileInfo>
 #include <KDesktopFile>
 #include <KConfigGroup>
 
@@ -16,7 +17,7 @@ FlatpakPermission::FlatpakPermission(QString name, QString category, QString des
       m_description(description),
       m_defaultValue(defaultValue),
       m_possibleValues(possibleValues),
-      m_currentValue(currentValue),
+      m_currentValue(defaultValue),
       m_type(type)
 {
 }
@@ -56,7 +57,14 @@ FlatpakPermission::ValueType FlatpakPermission::type() const
     return m_type;
 }
 
-FlatpakPermissionModel::FlatpakPermissionModel(QObject *parent, QByteArray metadata) : QAbstractListModel(parent)
+void FlatpakPermission::setCurrentValue(QString val)
+{
+    m_currentValue = val;
+}
+
+FlatpakPermissionModel::FlatpakPermissionModel(QObject *parent, QByteArray metadata, QString path)
+    : QAbstractListModel(parent),
+      m_path(path)
 {
     QString name, category, description, defaultValue;
     QStringList possibleValues;
@@ -69,10 +77,10 @@ FlatpakPermissionModel::FlatpakPermissionModel(QObject *parent, QByteArray metad
     f.close();
 
     KDesktopFile parser(f.fileName());
-    const KConfigGroup contextGroup = parser.group("Context");;
+    const KConfigGroup contextGroup = parser.group("Context");
 
     /* SHARED category */
-    category = i18n("Subsystems Shared");
+    category = i18n("shared");
     const QString sharedPerms = contextGroup.readEntry("shared", QString());
     possibleValues << QStringLiteral("ON") << QStringLiteral("OFF");
 
@@ -88,7 +96,7 @@ FlatpakPermissionModel::FlatpakPermissionModel(QObject *parent, QByteArray metad
     /* SHARED category */
 
     /* SOCKETS category */
-    category = i18n("Sockets");
+    category = i18n("sockets");
     const QString socketPerms = contextGroup.readEntry("sockets", QString());
 
     name = i18n("x11");
@@ -138,7 +146,7 @@ FlatpakPermissionModel::FlatpakPermissionModel(QObject *parent, QByteArray metad
     /* SOCKETS category */
 
     /* DEVICES category */
-    category = i18n("Device Access");
+    category = i18n("devices");
     const QString devicesPerms = contextGroup.readEntry("devices", QString());
 
     name = i18n("kvm");
@@ -163,7 +171,7 @@ FlatpakPermissionModel::FlatpakPermissionModel(QObject *parent, QByteArray metad
     /* DEVICES category */
 
     /* FEATURES category */
-    category = i18n("Features Allowed");
+    category = i18n("features");
     const QString featuresPerms = contextGroup.readEntry("features", QString());
 
     name = i18n("devel");
@@ -193,7 +201,7 @@ FlatpakPermissionModel::FlatpakPermissionModel(QObject *parent, QByteArray metad
     /* FEATURES category */
 
     /* FILESYSTEM category */
-    category = i18n("Filesystem Access");
+    category = i18n("filesystems");
     const QString fileSystemPerms = contextGroup.readEntry("filesystems", QString());
     const auto dirs = QStringView(fileSystemPerms).split(QLatin1Char(';'), Qt::SkipEmptyParts);
 
@@ -280,6 +288,8 @@ FlatpakPermissionModel::FlatpakPermissionModel(QObject *parent, QByteArray metad
     m_permissions.append(FlatpakPermission(name, category, description, hostEtcVal, possibleValues, defaultValue, FlatpakPermission::ValueType::Complex));
 
     /* FILESYSTEM category */
+
+    loadCurrentValues();
 }
 
 int FlatpakPermissionModel::rowCount(const QModelIndex &parent) const
@@ -309,7 +319,7 @@ QVariant FlatpakPermissionModel::data(const QModelIndex &index, int role) const
         return m_permissions.at(index.row()).currentValue();
     case Roles::IsGranted:
         //this should be currentValue(), not defaultValue(), but I haven't implemented it yet
-        return m_permissions.at(index.row()).defaultValue() != QStringLiteral("OFF");
+        return m_permissions.at(index.row()).currentValue() != QStringLiteral("OFF");
     case Roles::Type:
         return m_permissions.at(index.row()).type();
     case Roles::IsComplex:
@@ -331,4 +341,28 @@ QHash<int, QByteArray> FlatpakPermissionModel::roleNames() const
     roles[Roles::Type] = "valueType";
     roles[Roles::IsComplex] = "isComplex";
     return roles;
+}
+
+void FlatpakPermissionModel::loadCurrentValues()
+{
+    /* all permissions are at default, so nothing to load */
+    if(!QFileInfo(m_path).exists()) {
+        return;
+    }
+
+    KDesktopFile parser(m_path);
+    const KConfigGroup contextGroup = parser.group("Context");
+
+    for(int i = 0; i < m_permissions.length(); ++i) {
+        FlatpakPermission perm = m_permissions.at(i);
+
+        const QString cat = contextGroup.readEntry(perm.category(), QString());
+        if(cat.contains(perm.name())) {
+            if(perm.defaultValue() == QStringLiteral("ON")) {
+                m_permissions[i].setCurrentValue(QStringLiteral("OFF"));
+            } else {
+                m_permissions[i].setCurrentValue(QStringLiteral("ON"));
+            }
+        }
+    }
 }

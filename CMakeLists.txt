@@ -36,6 +36,7 @@ set(flatpakkcm_SRCS
     kcm.cpp
     flatpakreference.cpp
     flatpakpermission.cpp
+    flatpakhelper.cpp
 )
 
 add_library(kcm_flatpak MODULE ${flatpakkcm_SRCS})
