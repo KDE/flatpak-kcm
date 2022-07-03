@@ -30,6 +30,9 @@ KCM.ScrollViewKCM {
             text: model.description
             checked: model.isGranted
 
+            //onCheckableChanged: kcm.print(model.name)
+            onClicked: kcm.editPerm(model.path, model.name, model.isGranted, model.category, model.defaultValue)
+
             property bool isComplex: model.isComplex
             property var comboVals: model.valueList
 

@@ -317,6 +317,8 @@ QVariant FlatpakPermissionModel::data(const QModelIndex &index, int role) const
         return m_permissions.at(index.row()).possibleValues();
     case Roles::CurrentValue:
         return m_permissions.at(index.row()).currentValue();
+    case Roles::DefaultValue:
+        return m_permissions.at(index.row()).defaultValue();
     case Roles::IsGranted:
         //this should be currentValue(), not defaultValue(), but I haven't implemented it yet
         return m_permissions.at(index.row()).currentValue() != QStringLiteral("OFF");
@@ -324,6 +326,8 @@ QVariant FlatpakPermissionModel::data(const QModelIndex &index, int role) const
         return m_permissions.at(index.row()).type();
     case Roles::IsComplex:
         return m_permissions.at(index.row()).type() == FlatpakPermission::ValueType::Complex;
+    case Roles::Path:
+        return m_path;
     }
 
     return QVariant();
@@ -337,9 +341,11 @@ QHash<int, QByteArray> FlatpakPermissionModel::roleNames() const
     roles[Roles::Description] = "description";
     roles[Roles::ValueList] = "valueList";
     roles[Roles::CurrentValue] = "currentValue";
+    roles[Roles::DefaultValue] = "defaultValue";
     roles[Roles::IsGranted] = "isGranted";
     roles[Roles::Type] = "valueType";
     roles[Roles::IsComplex] = "isComplex";
+    roles[Roles::Path] = "path";
     return roles;
 }
 

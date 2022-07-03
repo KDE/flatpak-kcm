@@ -49,9 +49,11 @@ public:
         Description,
         ValueList,
         CurrentValue,
+        DefaultValue,
         IsGranted,
         Type,
-        IsComplex
+        IsComplex,
+        Path
     };
 
     int rowCount(const QModelIndex &parent = QModelIndex()) const override;
