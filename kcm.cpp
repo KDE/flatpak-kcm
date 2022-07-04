@@ -22,7 +22,12 @@ void KCMFlatpak::editPerm(QString path, QString name, bool isGranted, QString ca
 {
     QFile inF(path);
 
-    if(inF.exists() && !inF.open(QIODevice::ReadOnly)) {
+    bool settingToNonDefault = (!isGranted && defaultValue == QStringLiteral("OFF")) || (isGranted && defaultValue == QStringLiteral("ON"));
+    if(!settingToNonDefault && !inF.exists()) {
+        return;
+    }
+
+    if(!inF.open(QIODevice::ReadOnly)) {
         qInfo() << "Not opening";
     }
 
@@ -30,7 +35,7 @@ void KCMFlatpak::editPerm(QString path, QString name, bool isGranted, QString ca
     QString data = instream.readAll();
     inF.close();
 
-    if(inF.exists() && isGranted && defaultValue == QStringLiteral("OFF")) {
+    if(isGranted && defaultValue == QStringLiteral("OFF")) {
         /* we must un-grant */
         int indexPerm = data.indexOf(name);
         int indexCat = data.indexOf(category);
@@ -58,20 +63,24 @@ void KCMFlatpak::editPerm(QString path, QString name, bool isGranted, QString ca
             }
         }
     } else if(!isGranted && defaultValue == QStringLiteral("OFF")) {
+        if(!data.contains(QStringLiteral("[Context]"))) {
+            data.insert(0, QStringLiteral("[Context]"));
+        }
         if(data.contains(category)) {
-            int index = data.indexOf(QLatin1Char('\n'), data.indexOf(category));
-            data.insert(index, name.prepend(QLatin1Char(';')));
+            int index = data.indexOf(QLatin1Char('='), data.indexOf(category));
+            data.insert(index + 1, name.append(QLatin1Char(';')));
         } else {
-            int index = data.length() - 1;
-            data.insert(index, name.prepend(QLatin1Char('\n') + category + QLatin1Char('=')));
+            data.push_back(name.prepend(QLatin1Char('\n') + category + QLatin1Char('=')));
         }
     } else if(isGranted && defaultValue == QStringLiteral("ON")) {
+        if(!data.contains(QStringLiteral("[Context]"))) {
+            data.insert(0, QStringLiteral("[Context]"));
+        }
         if(data.contains(category)) {
-            int index = data.indexOf(QLatin1Char('\n'), data.indexOf(category));
-            data.insert(index, name.prepend(QStringLiteral(";!")));
+            int index = data.indexOf(QLatin1Char('='), data.indexOf(category));
+            data.insert(index + 1, name.prepend(QLatin1Char('!')).append(QLatin1Char(';')));
         } else {
-            int index = data.length() - 1;
-            data.insert(index, name.prepend(QLatin1Char('\n') + category + QStringLiteral("=!")));
+            data.push_back(name.prepend(QLatin1Char('\n') + category + QStringLiteral("=!")));
         }
     } else if(inF.exists() && !isGranted && defaultValue == QStringLiteral("ON")) {
         /* we must un-grant */
