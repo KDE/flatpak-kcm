@@ -62,12 +62,71 @@ void FlatpakPermission::setCurrentValue(QString val)
     m_currentValue = val;
 }
 
-FlatpakPermissionModel::FlatpakPermissionModel(QObject *parent, QByteArray metadata, QString path)
-    : QAbstractListModel(parent),
-      m_path(path)
+FlatpakPermissionModel::FlatpakPermissionModel(QObject *parent)
+    : QAbstractListModel(parent)
+{
+}
+
+int FlatpakPermissionModel::rowCount(const QModelIndex &parent) const
+{
+    if(parent.isValid()) {
+        return 0;
+    }
+    return m_permissions.count();
+}
+
+QVariant FlatpakPermissionModel::data(const QModelIndex &index, int role) const
+{
+    if(!index.isValid()) {
+        return QVariant();
+    }
+
+    switch(role) {
+    case Roles::Name:
+        return m_permissions.at(index.row()).name();
+    case Roles::Category:
+        return m_permissions.at(index.row()).category();
+    case Roles::Description:
+        return m_permissions.at(index.row()).description();
+    case Roles::ValueList:
+        return m_permissions.at(index.row()).possibleValues();
+    case Roles::CurrentValue:
+        return m_permissions.at(index.row()).currentValue();
+    case Roles::DefaultValue:
+        return m_permissions.at(index.row()).defaultValue();
+    case Roles::IsGranted:
+        return m_permissions.at(index.row()).currentValue() != QStringLiteral("OFF");
+    case Roles::Type:
+        return m_permissions.at(index.row()).type();
+    case Roles::IsComplex:
+        return m_permissions.at(index.row()).type() == FlatpakPermission::ValueType::Complex;
+    }
+
+    return QVariant();
+}
+
+QHash<int, QByteArray> FlatpakPermissionModel::roleNames() const
+{
+    QHash<int, QByteArray> roles;
+    roles[Roles::Name] = "name";
+    roles[Roles::Category] = "category";
+    roles[Roles::Description] = "description";
+    roles[Roles::ValueList] = "valueList";
+    roles[Roles::CurrentValue] = "currentValue";
+    roles[Roles::DefaultValue] = "defaultValue";
+    roles[Roles::IsGranted] = "isGranted";
+    roles[Roles::Type] = "valueType";
+    roles[Roles::IsComplex] = "isComplex";
+    return roles;
+}
+
+void FlatpakPermissionModel::loadDefaultValues()
 {
     QString name, category, description, defaultValue;
     QStringList possibleValues;
+
+    const QByteArray metadata = m_reference->metadata();
+    const QString path = m_reference->path();
 
     QTemporaryFile f;
     if(!f.open()) {
@@ -290,73 +349,18 @@ FlatpakPermissionModel::FlatpakPermissionModel(QObject *parent, QByteArray metad
     /* FILESYSTEM category */
 
     loadCurrentValues();
-}
 
-int FlatpakPermissionModel::rowCount(const QModelIndex &parent) const
-{
-    if(parent.isValid()) {
-        return 0;
-    }
-    return m_permissions.count();
-}
-
-QVariant FlatpakPermissionModel::data(const QModelIndex &index, int role) const
-{
-    if(!index.isValid()) {
-        return QVariant();
-    }
-
-    switch(role) {
-    case Roles::Name:
-        return m_permissions.at(index.row()).name();
-    case Roles::Category:
-        return m_permissions.at(index.row()).category();
-    case Roles::Description:
-        return m_permissions.at(index.row()).description();
-    case Roles::ValueList:
-        return m_permissions.at(index.row()).possibleValues();
-    case Roles::CurrentValue:
-        return m_permissions.at(index.row()).currentValue();
-    case Roles::DefaultValue:
-        return m_permissions.at(index.row()).defaultValue();
-    case Roles::IsGranted:
-        //this should be currentValue(), not defaultValue(), but I haven't implemented it yet
-        return m_permissions.at(index.row()).currentValue() != QStringLiteral("OFF");
-    case Roles::Type:
-        return m_permissions.at(index.row()).type();
-    case Roles::IsComplex:
-        return m_permissions.at(index.row()).type() == FlatpakPermission::ValueType::Complex;
-    case Roles::Path:
-        return m_path;
-    }
-
-    return QVariant();
-}
-
-QHash<int, QByteArray> FlatpakPermissionModel::roleNames() const
-{
-    QHash<int, QByteArray> roles;
-    roles[Roles::Name] = "name";
-    roles[Roles::Category] = "category";
-    roles[Roles::Description] = "description";
-    roles[Roles::ValueList] = "valueList";
-    roles[Roles::CurrentValue] = "currentValue";
-    roles[Roles::DefaultValue] = "defaultValue";
-    roles[Roles::IsGranted] = "isGranted";
-    roles[Roles::Type] = "valueType";
-    roles[Roles::IsComplex] = "isComplex";
-    roles[Roles::Path] = "path";
-    return roles;
 }
 
 void FlatpakPermissionModel::loadCurrentValues()
 {
+    const QString path = m_reference->path();
     /* all permissions are at default, so nothing to load */
-    if(!QFileInfo(m_path).exists()) {
+    if(!QFileInfo(path).exists()) {
         return;
     }
 
-    KDesktopFile parser(m_path);
+    KDesktopFile parser(path);
     const KConfigGroup contextGroup = parser.group("Context");
 
     for(int i = 0; i < m_permissions.length(); ++i) {
@@ -370,5 +374,22 @@ void FlatpakPermissionModel::loadCurrentValues()
                 m_permissions[i].setCurrentValue(QStringLiteral("ON"));
             }
         }
+    }
+}
+
+FlatpakReference *FlatpakPermissionModel::reference()
+{
+    return m_reference;
+}
+
+void FlatpakPermissionModel::setReference(FlatpakReference *ref)
+{
+    if(m_reference != ref) {
+        beginResetModel();
+        m_reference = ref;
+        m_permissions.clear();
+        loadDefaultValues();
+        endResetModel();
+        Q_EMIT referenceChanged();
     }
 }

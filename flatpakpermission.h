@@ -5,8 +5,12 @@
 
 #pragma once
 
+#include "flatpakreference.h"
+
 #include <QString>
 #include <QAbstractListModel>
+
+class FlatpakReference;
 
 class FlatpakPermission
 {
@@ -40,8 +44,9 @@ private:
 class FlatpakPermissionModel : public QAbstractListModel
 {
     Q_OBJECT
+    Q_PROPERTY(FlatpakReference *reference READ reference WRITE setReference NOTIFY referenceChanged)
 public:
-    FlatpakPermissionModel(QObject *parent = nullptr, QByteArray metadata = QByteArray(), QString path = QString());
+    FlatpakPermissionModel(QObject *parent = nullptr);
 
     enum Roles {
         Name = Qt::UserRole + 1,
@@ -60,9 +65,18 @@ public:
     QVariant data(const QModelIndex &parent, int role) const override;
     virtual QHash<int, QByteArray> roleNames() const override;
 
+    void loadDefaultValues();
     void loadCurrentValues();
+
+    FlatpakReference *reference();
+
+public Q_SLOTS:
+    void setReference(FlatpakReference *ref);
+
+Q_SIGNALS:
+    void referenceChanged();
 
 private:
     QVector<FlatpakPermission> m_permissions;
-    QString m_path;
+    FlatpakReference *m_reference;
 };

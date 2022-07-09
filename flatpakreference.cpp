@@ -15,13 +15,16 @@ extern "C" {
 #endif
 #include <glib.h>
 
-FlatpakReference::FlatpakReference(QString name, QString id, QString version, QString icon, QByteArray metadata)
-    : m_name(name),
+FlatpakReference::~FlatpakReference() = default;
+
+FlatpakReference::FlatpakReference(FlatpakReferencesModel *parent, QString name, QString id, QString version, QString icon, QByteArray metadata)
+    : QObject(parent),
+      m_name(name),
       m_id(id),
       m_version(version),
       m_icon(icon),
       m_path(FlatpakHelper::permDataFilePath().append(m_id)),
-      m_permsModel(new FlatpakPermissionModel(nullptr, metadata, m_path))
+      m_metadata(metadata)
 {
 }
 
@@ -40,9 +43,14 @@ QString FlatpakReference::icon() const
     return m_icon;
 }
 
-FlatpakPermissionModel* FlatpakReference::permsModel() const
+QString FlatpakReference::path() const
 {
-    return m_permsModel;
+    return m_path;
+}
+
+QByteArray FlatpakReference::metadata() const
+{
+    return m_metadata;
 }
 
 FlatpakReferencesModel::FlatpakReferencesModel(QObject *parent) : QAbstractListModel(parent)
@@ -65,7 +73,7 @@ FlatpakReferencesModel::FlatpakReferencesModel(QObject *parent) : QAbstractListM
         auto buff = g_bytes_get_data(data, &len);
         const QByteArray metadata((const char *)buff, len);
 
-        m_references.push_back(FlatpakReference(name, id, version, icon, metadata));
+        m_references.push_back(new FlatpakReference(this, name, id, version, icon, metadata));
     }
 }
 
@@ -85,13 +93,13 @@ QVariant FlatpakReferencesModel::data(const QModelIndex &index, int role) const
 
     switch(role) {
     case Roles::Name:
-        return m_references.at(index.row()).name();
+        return m_references.at(index.row())->name();
     case Roles::Version:
-        return m_references.at(index.row()).version();
+        return m_references.at(index.row())->version();
     case Roles::Icon:
-        return m_references.at(index.row()).icon();
-    case Roles::PermsModel:
-        return QVariant::fromValue(m_references.at(index.row()).permsModel());
+        return m_references.at(index.row())->icon();
+    case Roles::Ref:
+        return QVariant::fromValue<FlatpakReference*>(m_references.at(index.row()));
     }
     return QVariant();
 }
@@ -102,6 +110,8 @@ QHash<int, QByteArray> FlatpakReferencesModel::roleNames() const
     roles[Roles::Name] = "name";
     roles[Roles::Version] = "version";
     roles[Roles::Icon] = "icon";
-    roles[Roles::PermsModel] = "permsModel";
+    roles[Roles::Ref] = "reference";
     return roles;
 }
+
+#include "flatpakreference.moc"

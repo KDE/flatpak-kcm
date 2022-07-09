@@ -35,7 +35,7 @@ KCM.ScrollViewKCM {
 
             onClicked: {
                 kcm.pop(0)
-                kcm.push("permissions.qml", {refModel: model.permsModel})
+                kcm.push("permissions.qml", {ref: model.reference})
             }
         }
     }
