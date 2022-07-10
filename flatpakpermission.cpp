@@ -10,6 +10,7 @@
 #include <QFileInfo>
 #include <KDesktopFile>
 #include <KConfigGroup>
+#include <QDebug>
 
 FlatpakPermission::FlatpakPermission(QString name, QString category, QString description, QString defaultValue, QStringList possibleValues, QString currentValue, ValueType type)
     : m_name(name),
@@ -392,4 +393,101 @@ void FlatpakPermissionModel::setReference(FlatpakReference *ref)
         endResetModel();
         Q_EMIT referenceChanged();
     }
+}
+
+void FlatpakPermissionModel::setPerm(int index, bool isGranted)
+{
+    FlatpakPermission *perm = &m_permissions[index];
+    QFile inFile(m_reference->path());
+
+    if(!inFile.open(QIODevice::ReadOnly)) {
+        qInfo() << "File does not open for reading";
+    }
+
+    QTextStream inStream(&inFile);
+    QString data = inStream.readAll();
+    inFile.close();
+
+    if(perm->type() == FlatpakPermission::ValueType::Simple) {
+
+        /* For simple permissions:
+         * if default is ON, and user turns it OFF, write "category=!perm" in file.
+         * if default is ON, and user turns it ON from OFF, remove "category=!perm" from file.
+         * if default is OFF, and user turns it ON, write "category=perm" in file.
+         * if default is OFF, and user turns it OFF from ON, remove "category=perm" from file.
+         */
+
+        bool setToNonDefault = (perm->defaultValue() == QStringLiteral("ON") && isGranted) || (perm->defaultValue() == QStringLiteral("OFF") && !isGranted);
+
+        /* set the permission from default to a non-default value */
+        if(setToNonDefault) {
+            if(!data.contains(QStringLiteral("[Context]"))) {
+                data.insert(data.length(), QStringLiteral("[Context]\n"));
+            }
+            int catIndex = data.indexOf(perm->category());
+
+            /* if no permission from this category has been changed from default, we need to add the category */
+            if(catIndex == -1) {
+                catIndex = data.indexOf(QLatin1Char('\n'), data.indexOf(QStringLiteral("[Context]"))) + 1;
+                if(catIndex == data.length()) {
+                    data.append(perm->category() + QStringLiteral("=\n"));
+                } else {
+                    data.insert(catIndex, perm->category() + QStringLiteral("=\n"));
+                }
+            }
+            QString name = perm->name(); /* the name of the permission we are about to set/unset */
+            int permIndex = catIndex + perm->category().length() + 1;
+
+            /* if there are other permissions in this category, we must add a ';' to seperate this from the other */
+            if(data[permIndex] != QLatin1Char('\n')) {
+                name.append(QLatin1Char(';'));
+            }
+            /* if permission was granted before user clicked to change it, we must un-grant it. And vice-versa */
+            if(isGranted) {
+                name.prepend(QLatin1Char('!'));
+            }
+
+            if(permIndex >= data.length()) {
+                data.append(name);
+            } else {
+                data.insert(permIndex, name);
+            }
+        /* reset the permission to default from non-default value */
+        } else {
+            int permStartIndex = data.indexOf(perm->name());
+            int permEndIndex = permStartIndex + perm->name().length();
+
+            /* if we are going OFF to ON, we need to include '!' before the permission name as well */
+            if(!isGranted) {
+                permStartIndex--;
+            }
+            /* if last permission in the list, we want to include the ';' of the 2nd last as well */
+            if(data[permEndIndex] != QLatin1Char(';')) {
+                permEndIndex--;
+                if(data[permStartIndex - 1] == QLatin1Char(';')) {
+                    permStartIndex--;
+                }
+            }
+            data.remove(permStartIndex, permEndIndex - permStartIndex + 1);
+
+            /* remove category entry if there are no more permission entries */
+            int catIndex = data.indexOf(perm->category());
+            if(data[data.indexOf(QLatin1Char('='), catIndex) + 1] == QLatin1Char('\n')) {
+                data.remove(catIndex, perm->category().length() + 2); // 2 because we need to remove '\n' as well
+            }
+        }
+
+        /* set the current value in the permission object */
+        QString newValue = isGranted ? QStringLiteral("OFF") : QStringLiteral("ON");
+        perm->setCurrentValue(newValue);
+    }
+
+    QFile outFile(m_reference->path());
+    if(!outFile.open(QIODevice::WriteOnly)) {
+        qInfo() << "File does not open for write only";
+    }
+
+    QTextStream outStream(&outFile);
+    outStream << data;
+    outFile.close();
 }

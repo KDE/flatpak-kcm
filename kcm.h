@@ -15,7 +15,6 @@ class KCMFlatpak : public KQuickAddons::ManagedConfigModule
     Q_PROPERTY(FlatpakReferencesModel *refsModel MEMBER m_refsModel CONSTANT)
 public:
     explicit KCMFlatpak(QObject *parent, const KPluginMetaData &data, const QVariantList &args);
-    Q_INVOKABLE void editPerm(QString path, QString name, bool isGranted, QString category, QString defaultValue);
 
 private:
     FlatpakReferencesModel *m_refsModel;

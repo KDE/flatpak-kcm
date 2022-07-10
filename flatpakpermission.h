@@ -72,6 +72,7 @@ public:
 
 public Q_SLOTS:
     void setReference(FlatpakReference *ref);
+    void setPerm(int index, bool isGranted);
 
 Q_SIGNALS:
     void referenceChanged();

@@ -16,6 +16,7 @@ KCM.ScrollViewKCM {
     implicitWidth: Kirigami.Units.gridUnit * 15
     property var ref
     view: ListView {
+        id: permsView
         model: FlatpakPermissionModel {
             id: permsModel
             reference: permissionPage.ref
@@ -35,7 +36,7 @@ KCM.ScrollViewKCM {
             text: model.description
             checked: model.isGranted
 
-            onClicked: kcm.editPerm(model.path, model.name, model.isGranted, model.category, model.defaultValue)
+            onClicked: permsModel.setPerm(permsView.currentIndex, model.isGranted)
 
             property bool isComplex: model.isComplex
             property var comboVals: model.valueList
