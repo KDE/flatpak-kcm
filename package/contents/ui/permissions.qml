@@ -14,7 +14,7 @@ KCM.ScrollViewKCM {
     id: permissionPage
     title: i18n("Permissions")
     implicitWidth: Kirigami.Units.gridUnit * 15
-    property QtObject ref
+    property var ref
     view: ListView {
         model: FlatpakPermissionModel {
             id: permsModel
@@ -35,7 +35,6 @@ KCM.ScrollViewKCM {
             text: model.description
             checked: model.isGranted
 
-            //onCheckableChanged: kcm.print(model.name)
             onClicked: kcm.editPerm(model.path, model.name, model.isGranted, model.category, model.defaultValue)
 
             property bool isComplex: model.isComplex

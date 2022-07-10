@@ -113,5 +113,3 @@ QHash<int, QByteArray> FlatpakReferencesModel::roleNames() const
     roles[Roles::Ref] = "reference";
     return roles;
 }
-
-#include "flatpakreference.moc"
