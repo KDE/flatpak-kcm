@@ -73,11 +73,14 @@ public:
 public Q_SLOTS:
     void setReference(FlatpakReference *ref);
     void setPerm(int index, bool isGranted);
+    void editPerm(int index, QString newValue);
 
 Q_SIGNALS:
     void referenceChanged();
 
 private:
+    void editFilesystemsPermissions(FlatpakPermission *perm, QString &data, const QString &newValue);
+//    void editBusPermissions(FlatpakPermission *perm, QString &data, const QString &newValue);
     QVector<FlatpakPermission> m_permissions;
     FlatpakReference *m_reference;
 };

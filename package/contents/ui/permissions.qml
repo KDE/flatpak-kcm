@@ -40,12 +40,14 @@ KCM.ScrollViewKCM {
 
             property bool isComplex: model.isComplex
             property var comboVals: model.valueList
+            property int index: model.index
 
             trailing: Controls.ComboBox {
                 enabled: permItem.checked
                 model: permItem.comboVals
                 visible: permItem.isComplex
                 width: Kirigami.Units.gridUnit * 5
+                onActivated: (index) => permsModel.editPerm(permItem.index, textAt(index))
             }
         }
     }
