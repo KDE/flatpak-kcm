@@ -81,7 +81,7 @@ Q_SIGNALS:
 private:
     void addPermission(FlatpakPermission *perm, QString &data, const bool isGranted);
     void editFilesystemsPermissions(FlatpakPermission *perm, QString &data, const QString &newValue);
-//    void editBusPermissions(FlatpakPermission *perm, QString &data, const QString &newValue);
+    void editBusPermissions(FlatpakPermission *perm, QString &data, const QString &newValue);
     QVector<FlatpakPermission> m_permissions;
     FlatpakReference *m_reference;
 };

@@ -414,10 +414,11 @@ void FlatpakPermissionModel::loadCurrentValues()
     KDesktopFile parser(path);
     const KConfigGroup contextGroup = parser.group("Context");
 
-    for(int i = 0; i < m_permissions.length(); ++i) {
+    int i;
+    for(i = 0; i < m_permissions.length(); ++i) {
         FlatpakPermission *perm = &m_permissions[i];
         if(perm->category() == QStringLiteral("Session Bus Policy")) {
-            return;
+            break;
         }
         const QString cat = contextGroup.readEntry(perm->category(), QString());
         if(perm->type() == FlatpakPermission::ValueType::Simple) {
@@ -436,20 +437,60 @@ void FlatpakPermissionModel::loadCurrentValues()
                     perm->setCurrentValue(QStringLiteral("OFF"));
                     continue;
                 }
+
                 int valueIndex = cat.indexOf(QLatin1Char(':'), cat.indexOf(perm->name()));
+
                 if(valueIndex == -1) {
                     perm->setCurrentValue(QStringLiteral("read/write"));
                     continue;
                 }
-                if(cat[valueIndex + 1] == QLatin1Char('r')) {
-                    if(cat[valueIndex + 2] == QLatin1Char('w')) {
-                        perm->setCurrentValue(QStringLiteral("read/write"));
-                    } else {
-                        perm->setCurrentValue(QStringLiteral("read-only"));
+                if(perm->category() == QStringLiteral("filesystems")) {
+                    if(cat[valueIndex + 1] == QLatin1Char('r')) {
+                        if(cat[valueIndex + 2] == QLatin1Char('w')) {
+                            perm->setCurrentValue(QStringLiteral("read/write"));
+                        } else {
+                            perm->setCurrentValue(QStringLiteral("read-only"));
+                        }
+                    } else if(cat[valueIndex + 1] == QLatin1Char('c')) {
+                        perm->setCurrentValue(QStringLiteral("create"));
                     }
-                } else if(cat[valueIndex + 1] == QLatin1Char('c')) {
-                    perm->setCurrentValue(QStringLiteral("create"));
                 }
+            }
+        }
+    }
+
+    const KConfigGroup sessionBusGroup = parser.group("Session Bus Policy");
+    if(sessionBusGroup.exists()) {
+        QMap<QString, QString> busMap = sessionBusGroup.entryMap();
+        QList<QString> busList = busMap.keys();
+        QStringList addedBusList;
+        while(i < m_permissions.length()) {
+            FlatpakPermission *perm = &m_permissions[i];
+            if(perm->category() != QStringLiteral("Session Bus Policy")) {
+                break;
+            }
+            addedBusList.append(perm->name());
+            int index = busList.indexOf(perm->name());
+            if(index != -1) {
+                QString value = busMap.value(busList.at(index));
+                perm->setCurrentValue(value);
+            }
+            i++;
+        }
+        for(int j = 0; j < busList.length(); ++j) {
+            if(!addedBusList.contains(busList.at(j))) {
+                QString name = busList.at(j);
+                QString description = name;
+                QString value = busMap.value(busList.at(j));
+                QString category = QStringLiteral("Session Bus Policy");
+                QStringList possibleValues;
+                possibleValues << QStringLiteral("talk") << QStringLiteral("see") << QStringLiteral("own");
+                if(i != m_permissions.length())
+                m_permissions.insert(i, FlatpakPermission(name, category, description, QStringLiteral("OFF"), possibleValues, QStringLiteral("OFF"), FlatpakPermission::ValueType::Complex));
+                else
+                    m_permissions.append(FlatpakPermission(name, category, description, QStringLiteral("OFF"), possibleValues, QStringLiteral("OFF"), FlatpakPermission::ValueType::Complex));
+                m_permissions[i].setCurrentValue(value);
+                i++;
             }
         }
     }
@@ -543,7 +584,6 @@ void FlatpakPermissionModel::setPerm(int index, bool isGranted)
 void FlatpakPermissionModel::editPerm(int index, QString newValue)
 {
     /* reading from file */
-    qInfo() << index;
     FlatpakPermission *perm = &m_permissions[index];
     QFile inFile(m_reference->path());
 
@@ -558,6 +598,8 @@ void FlatpakPermissionModel::editPerm(int index, QString newValue)
     /* editing the permission */
     if(perm->category() == QStringLiteral("filesystems")) {
         editFilesystemsPermissions(perm, data, newValue);
+    } else if(perm->category() == QStringLiteral("Session Bus Policy") || perm->category() == QStringLiteral("System Bus Policy")) {
+        editBusPermissions(perm, data, newValue);
     }
 
     /* writing to file */
@@ -636,27 +678,16 @@ void FlatpakPermissionModel::editFilesystemsPermissions(FlatpakPermission *perm,
     perm->setCurrentValue(newValue);
 }
 
-//void FlatpakPermissionModel::editBusPermissions(FlatpakPermission *perm, QString &data, const QString &value)
-//{
-//    int permIndex = data.indexOf(perm->name());
-//    int valueBeginIndex = permIndex + perm->name().length();
-//    data.insert(valueBeginIndex, QLatin1Char('=') + value);
-//    if(data[valueBeginIndex + value.length() + 1] ==  QLatin1Char('t')) {
-//        data.remove(valueBeginIndex + value.length(), 5);
-//    } else {
-//        data.remove(valueBeginIndex + value.length(), 4);
-//    }
+void FlatpakPermissionModel::editBusPermissions(FlatpakPermission *perm, QString &data, const QString &value)
+{
+    int permIndex = data.indexOf(perm->name());
+    int valueBeginIndex = permIndex + perm->name().length();
+    data.insert(valueBeginIndex, QLatin1Char('=') + value);
+    if(data[valueBeginIndex + value.length() + 2] ==  QLatin1Char('t')) {
+        data.remove(valueBeginIndex + value.length() + 1, 5);
+    } else {
+        data.remove(valueBeginIndex + value.length() + 1, 4);
+    }
 
-
-////    if(data[valueBeginIndex] != QLatin1Char('=')) {
-////        data.insert(permIndex + perm->name().length(), value);
-////    } else {
-////        data.insert(valueBeginIndex, value);
-////        if(data[valueBeginIndex + value.length() + 1] ==  QLatin1Char('r')) {
-////            data.remove(valueBeginIndex + value.length(), 3);
-////        } else {
-////            data.remove(valueBeginIndex + value.length(), 7);
-////        }
-////    }
-//    perm->setCurrentValue(value);
-//}
+    perm->setCurrentValue(value);
+}
