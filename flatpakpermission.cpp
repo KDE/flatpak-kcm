@@ -417,7 +417,7 @@ void FlatpakPermissionModel::loadCurrentValues()
     int i;
     for(i = 0; i < m_permissions.length(); ++i) {
         FlatpakPermission *perm = &m_permissions[i];
-        if(perm->category() == QStringLiteral("Session Bus Policy")) {
+        if(perm->category() == QStringLiteral("Session Bus Policy") || perm->category() == QStringLiteral("System Bus Policy")) {
             break;
         }
         const QString cat = contextGroup.readEntry(perm->category(), QString());
@@ -489,6 +489,43 @@ void FlatpakPermissionModel::loadCurrentValues()
                 m_permissions.insert(i, FlatpakPermission(name, category, description, QStringLiteral("OFF"), possibleValues, QStringLiteral("OFF"), FlatpakPermission::ValueType::Complex));
                 else
                     m_permissions.append(FlatpakPermission(name, category, description, QStringLiteral("OFF"), possibleValues, QStringLiteral("OFF"), FlatpakPermission::ValueType::Complex));
+                m_permissions[i].setCurrentValue(value);
+                i++;
+            }
+        }
+    }
+
+    const KConfigGroup systemBusGroup = parser.group("System Bus Policy");
+    if(systemBusGroup.exists()) {
+        QMap<QString, QString> busMap = systemBusGroup.entryMap();
+        QList<QString> busList = busMap.keys();
+        QStringList addedBusList;
+        while(i < m_permissions.length()) {
+            FlatpakPermission *perm = &m_permissions[i];
+            if(perm->category() != QStringLiteral("System Bus Policy")) {
+                break;
+            }
+            addedBusList.append(perm->name());
+            int index = busList.indexOf(perm->name());
+            if(index != -1) {
+                QString value = busMap.value(busList.at(index));
+                perm->setCurrentValue(value);
+            }
+            i++;
+        }
+        for(int j = 0; j < busList.length(); ++j) {
+            if(!addedBusList.contains(busList.at(j))) {
+                QString name = busList.at(j);
+                QString description = name;
+                QString value = busMap.value(busList.at(j));
+                QString category = QStringLiteral("System Bus Policy");
+                QStringList possibleValues;
+                possibleValues << QStringLiteral("talk") << QStringLiteral("see") << QStringLiteral("own");
+                if(i != m_permissions.length()) {
+                    m_permissions.insert(i, FlatpakPermission(name, category, description, QStringLiteral("OFF"), possibleValues, QStringLiteral("OFF"), FlatpakPermission::ValueType::Complex));
+                } else {
+                    m_permissions.append(FlatpakPermission(name, category, description, QStringLiteral("OFF"), possibleValues, QStringLiteral("OFF"), FlatpakPermission::ValueType::Complex));
+                }
                 m_permissions[i].setCurrentValue(value);
                 i++;
             }
@@ -648,6 +685,16 @@ void FlatpakPermissionModel::addPermission(FlatpakPermission *perm, QString &dat
     }
 }
 
+void FlatpakPermissionModel::addBusPermissions(FlatpakPermission *perm, QString &data)
+{
+    QString groupHeader = QLatin1Char('[') + perm->category() + QLatin1Char(']');
+    if(!data.contains(groupHeader)) {
+        data.insert(data.length(), groupHeader + QLatin1Char('\n'));
+    }
+    int permIndex = data.indexOf(QLatin1Char('\n'), data.indexOf(groupHeader)) + 1;
+    data.insert(permIndex, perm->name() + QLatin1Char('=') + perm->currentValue() + QLatin1Char('\n'));
+}
+
 void FlatpakPermissionModel::editFilesystemsPermissions(FlatpakPermission *perm, QString &data, const QString &newValue)
 {
     QString value;
@@ -681,6 +728,10 @@ void FlatpakPermissionModel::editFilesystemsPermissions(FlatpakPermission *perm,
 void FlatpakPermissionModel::editBusPermissions(FlatpakPermission *perm, QString &data, const QString &value)
 {
     int permIndex = data.indexOf(perm->name());
+    if(permIndex == -1) {
+        addBusPermissions(perm, data);
+        permIndex = data.indexOf(perm->name());
+    }
     int valueBeginIndex = permIndex + perm->name().length();
     data.insert(valueBeginIndex, QLatin1Char('=') + value);
     if(data[valueBeginIndex + value.length() + 2] ==  QLatin1Char('t')) {
