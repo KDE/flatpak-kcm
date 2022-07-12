@@ -498,37 +498,8 @@ void FlatpakPermissionModel::setPerm(int index, bool isGranted)
 
         /* set the permission from default to a non-default value */
         if(setToNonDefault) {
-            if(!data.contains(QStringLiteral("[Context]"))) {
-                data.insert(data.length(), QStringLiteral("[Context]\n"));
-            }
-            int catIndex = data.indexOf(perm->category());
+            addPermission(perm, data, !isGranted);
 
-            /* if no permission from this category has been changed from default, we need to add the category */
-            if(catIndex == -1) {
-                catIndex = data.indexOf(QLatin1Char('\n'), data.indexOf(QStringLiteral("[Context]"))) + 1;
-                if(catIndex == data.length()) {
-                    data.append(perm->category() + QStringLiteral("=\n"));
-                } else {
-                    data.insert(catIndex, perm->category() + QStringLiteral("=\n"));
-                }
-            }
-            QString name = perm->name(); /* the name of the permission we are about to set/unset */
-            int permIndex = catIndex + perm->category().length() + 1;
-
-            /* if there are other permissions in this category, we must add a ';' to seperate this from the other */
-            if(data[permIndex] != QLatin1Char('\n')) {
-                name.append(QLatin1Char(';'));
-            }
-            /* if permission was granted before user clicked to change it, we must un-grant it. And vice-versa */
-            if(isGranted) {
-                name.prepend(QLatin1Char('!'));
-            }
-
-            if(permIndex >= data.length()) {
-                data.append(name);
-            } else {
-                data.insert(permIndex, name);
-            }
         /* reset the permission to default from non-default value */
         } else {
             int permStartIndex = data.indexOf(perm->name());
@@ -600,6 +571,41 @@ void FlatpakPermissionModel::editPerm(int index, QString newValue)
     outFile.close();
 }
 
+void FlatpakPermissionModel::addPermission(FlatpakPermission *perm, QString &data, const bool shouldBeOn)
+{
+    if(!data.contains(QStringLiteral("[Context]"))) {
+        data.insert(data.length(), QStringLiteral("[Context]\n"));
+    }
+    int catIndex = data.indexOf(perm->category());
+
+    /* if no permission from this category has been changed from default, we need to add the category */
+    if(catIndex == -1) {
+        catIndex = data.indexOf(QLatin1Char('\n'), data.indexOf(QStringLiteral("[Context]"))) + 1;
+        if(catIndex == data.length()) {
+            data.append(perm->category() + QStringLiteral("=\n"));
+        } else {
+            data.insert(catIndex, perm->category() + QStringLiteral("=\n"));
+        }
+    }
+    QString name = perm->name(); /* the name of the permission we are about to set/unset */
+    int permIndex = catIndex + perm->category().length() + 1;
+
+    /* if there are other permissions in this category, we must add a ';' to seperate this from the other */
+    if(data[permIndex] != QLatin1Char('\n')) {
+        name.append(QLatin1Char(';'));
+    }
+    /* if permission was granted before user clicked to change it, we must un-grant it. And vice-versa */
+    if(!shouldBeOn) {
+        name.prepend(QLatin1Char('!'));
+    }
+
+    if(permIndex >= data.length()) {
+        data.append(name);
+    } else {
+        data.insert(permIndex, name);
+    }
+}
+
 void FlatpakPermissionModel::editFilesystemsPermissions(FlatpakPermission *perm, QString &data, const QString &newValue)
 {
     QString value;
@@ -612,6 +618,10 @@ void FlatpakPermissionModel::editFilesystemsPermissions(FlatpakPermission *perm,
     }
 
     int permIndex = data.indexOf(perm->name());
+    if(permIndex == -1) {
+        addPermission(perm, data, true);
+        permIndex = data.indexOf(perm->name());
+    }
     int valueBeginIndex = permIndex + perm->name().length();
     if(data[valueBeginIndex] != QLatin1Char(':')) {
         data.insert(permIndex + perm->name().length(), value);
