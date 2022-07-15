@@ -33,6 +33,38 @@ QString FlatpakPermission::currentValue() const
     return m_currentValue;
 }
 
+QString FlatpakPermission::fsCurrentValue() const
+{
+    if (m_currentValue == QStringLiteral("OFF")) {
+        return QString();
+    }
+
+    QString val;
+    if (m_currentValue == QStringLiteral("read-only")) {
+        val = QStringLiteral("ro");
+    } else if (m_currentValue == QStringLiteral("create")) {
+        val = QStringLiteral("create");
+    } else {
+        val = QStringLiteral("rw");
+    }
+    return val;
+}
+
+//QString FlatpakPermission::fsDefaultValue() const
+//{
+//    QString val;
+//    if (m_defaultValue == QStringLiteral("read-only")) {
+//        val = QStringLiteral("ro");
+//    } else if (m_defaultValue == QStringLiteral("create")) {
+//        val = QStringLiteral("create");
+//    } else if (m_defaultValue == QStringLiteral("OFF")) {
+//        val = m_defaultValue;
+//    } else {
+//        val = QStringLiteral("rw");
+//    }
+//    return val;
+//}
+
 QString FlatpakPermission::category() const
 {
     return m_category;
@@ -60,6 +92,13 @@ FlatpakPermission::ValueType FlatpakPermission::type() const
 
 void FlatpakPermission::setCurrentValue(QString val)
 {
+//    if (m_type == Filesystems) {
+//        if (val == QStringLiteral("ro")) {
+//            val = QStringLiteral("read-only");
+//        } else if (val == QStringLiteral("rw")) {
+//            val = QStringLiteral("read/write");
+//        }
+//    }
     m_currentValue = val;
 }
 
@@ -97,13 +136,15 @@ QVariant FlatpakPermissionModel::data(const QModelIndex &index, int role) const
         return m_permissions.at(index.row()).currentValue() != QStringLiteral("OFF");
     case Roles::Type:
         return m_permissions.at(index.row()).type();
-    case Roles::IsComplex:
-        return m_permissions.at(index.row()).type() == FlatpakPermission::ValueType::Complex;
+    case Roles::IsSimple:
+        return m_permissions.at(index.row()).type() == FlatpakPermission::ValueType::Simple;
     case Roles::ValueList:
         QStringList valuesTmp = m_permissions.at(index.row()).possibleValues();
         QString currentVal = m_permissions.at(index.row()).currentValue();
         valuesTmp.removeAll(currentVal);
-        valuesTmp.prepend(currentVal);
+        if (currentVal != QStringLiteral("OFF")) {
+            valuesTmp.prepend(currentVal);
+        }
         return valuesTmp;
     }
 
@@ -121,7 +162,7 @@ QHash<int, QByteArray> FlatpakPermissionModel::roleNames() const
     roles[Roles::DefaultValue] = "defaultValue";
     roles[Roles::IsGranted] = "isGranted";
     roles[Roles::Type] = "valueType";
-    roles[Roles::IsComplex] = "isComplex";
+    roles[Roles::IsSimple] = "isSimple";
     return roles;
 }
 
@@ -272,7 +313,7 @@ void FlatpakPermissionModel::loadDefaultValues()
     QString homeVal, hostVal, hostOsVal, hostEtcVal;
     homeVal = hostVal = hostOsVal = hostEtcVal = i18n("OFF");
     possibleValues.clear();
-    possibleValues << QStringLiteral("read-only") << QStringLiteral("read/write") << QStringLiteral("create");
+    possibleValues << QStringLiteral("read/write") << QStringLiteral("read-only") << QStringLiteral("create");
 
     QVector<FlatpakPermission> filesysTemp;
 
@@ -327,29 +368,29 @@ void FlatpakPermissionModel::loadDefaultValues()
             } else {
                 fsval = i18n("read/write");
             }
-            filesysTemp.append(FlatpakPermission(name, category, description, fsval, possibleValues, fsval, FlatpakPermission::ValueType::Complex));
+            filesysTemp.append(FlatpakPermission(name, category, description, fsval, possibleValues, fsval, FlatpakPermission::ValueType::Filesystems));
         }
     }
 
     name = i18n("home");
     description = i18n("Home Folder");
     possibleValues.removeAll(homeVal);
-    m_permissions.append(FlatpakPermission(name, category, description, homeVal, possibleValues, defaultValue, FlatpakPermission::ValueType::Complex));
+    m_permissions.append(FlatpakPermission(name, category, description, homeVal, possibleValues, homeVal, FlatpakPermission::ValueType::Filesystems));
 
     name = i18n("host");
     description = i18n("All System Files");
     possibleValues.removeAll(hostVal);
-    m_permissions.append(FlatpakPermission(name, category, description, hostVal, possibleValues, defaultValue, FlatpakPermission::ValueType::Complex));
+    m_permissions.append(FlatpakPermission(name, category, description, hostVal, possibleValues, hostVal, FlatpakPermission::ValueType::Filesystems));
 
     name = i18n("host-os");
     description = i18n("System Libraries, Executables and Binaries");
     possibleValues.removeAll(hostOsVal);
-    m_permissions.append(FlatpakPermission(name, category, description, hostOsVal, possibleValues, defaultValue, FlatpakPermission::ValueType::Complex));
+    m_permissions.append(FlatpakPermission(name, category, description, hostOsVal, possibleValues, hostOsVal, FlatpakPermission::ValueType::Filesystems));
 
     name = i18n("host-etc");
     description = i18n("System Configurations");
     possibleValues.removeAll(hostEtcVal);
-    m_permissions.append(FlatpakPermission(name, category, description, hostEtcVal, possibleValues, defaultValue, FlatpakPermission::ValueType::Complex));
+    m_permissions.append(FlatpakPermission(name, category, description, hostEtcVal, possibleValues, hostEtcVal, FlatpakPermission::ValueType::Filesystems));
 
     m_permissions.append(filesysTemp);
     /* FILESYSTEM category */
@@ -580,32 +621,28 @@ void FlatpakPermissionModel::setPerm(int index, bool isGranted)
 
         /* reset the permission to default from non-default value */
         } else {
-            int permStartIndex = data.indexOf(perm->name());
-            int permEndIndex = permStartIndex + perm->name().length();
-
-            /* if we are going OFF to ON, we need to include '!' before the permission name as well */
-            if(!isGranted) {
-                permStartIndex--;
-            }
-            /* if last permission in the list, we want to include the ';' of the 2nd last as well */
-            if(data[permEndIndex] != QLatin1Char(';')) {
-                permEndIndex--;
-                if(data[permStartIndex - 1] == QLatin1Char(';')) {
-                    permStartIndex--;
-                }
-            }
-            data.remove(permStartIndex, permEndIndex - permStartIndex + 1);
-
-            /* remove category entry if there are no more permission entries */
-            int catIndex = data.indexOf(perm->category());
-            if(data[data.indexOf(QLatin1Char('='), catIndex) + 1] == QLatin1Char('\n')) {
-                data.remove(catIndex, perm->category().length() + 2); // 2 because we need to remove '\n' as well
-            }
+            removePermission(perm, data, !isGranted);
         }
 
         /* set the current value in the permission object */
         QString newValue = isGranted ? QStringLiteral("OFF") : QStringLiteral("ON");
         perm->setCurrentValue(newValue);
+    } else if (perm->type() == FlatpakPermission::ValueType::Filesystems) {
+        if (perm->defaultValue() != QStringLiteral("OFF") && isGranted) {
+            qInfo() << perm->currentValue();
+            removePermission(perm, data, isGranted);
+            qInfo() << perm->currentValue();
+            addPermission(perm, data, !isGranted);
+        } else if (perm->defaultValue() == QStringLiteral("OFF") && !isGranted) {
+            addPermission(perm, data, !isGranted);
+            perm->setCurrentValue(perm->defaultValue());
+        } else if (perm->defaultValue() != QStringLiteral("OFF") && !isGranted) {
+            qInfo() << perm->currentValue();
+            removePermission(perm, data, isGranted);
+            qInfo() << perm->currentValue();
+        } else if (perm->defaultValue() == QStringLiteral("OFF") && isGranted) {
+            removePermission(perm, data, isGranted);
+        }
     }
 
     QFile outFile(m_reference->path());
@@ -667,6 +704,9 @@ void FlatpakPermissionModel::addPermission(FlatpakPermission *perm, QString &dat
         }
     }
     QString name = perm->name(); /* the name of the permission we are about to set/unset */
+    if (perm->type() == FlatpakPermission::ValueType::Filesystems) {
+        name.append(QLatin1Char(':') + perm->fsCurrentValue());
+    }
     int permIndex = catIndex + perm->category().length() + 1;
 
     /* if there are other permissions in this category, we must add a ';' to seperate this from the other */
@@ -682,6 +722,47 @@ void FlatpakPermissionModel::addPermission(FlatpakPermission *perm, QString &dat
         data.append(name);
     } else {
         data.insert(permIndex, name);
+    }
+}
+
+void FlatpakPermissionModel::removePermission(FlatpakPermission *perm, QString &data, const bool isGranted)
+{
+    int permStartIndex = data.indexOf(perm->name());
+    int permEndIndex = permStartIndex + perm->name().length();
+
+    if (permStartIndex == -1) {
+        return;
+    }
+
+    /* if it is not granted, there exists a ! one index before the name that should also be deleted */
+    if(!isGranted) {
+        permStartIndex--;
+    }
+
+    if (perm->type() == FlatpakPermission::ValueType::Filesystems) {
+        if (data[permEndIndex] == QLatin1Char(':')) {
+            permEndIndex += perm->fsCurrentValue().length() + 1;
+            if (isGranted) {
+                perm->setCurrentValue(QStringLiteral("OFF"));
+            } else {
+                perm->setCurrentValue(perm->defaultValue());
+            }
+        }
+    }
+
+    /* if last permission in the list, include ';' of 2nd last too */
+    if(data[permEndIndex] != QLatin1Char(';')) {
+        permEndIndex--;
+        if(data[permStartIndex - 1] == QLatin1Char(';')) {
+            permStartIndex--;
+        }
+    }
+    data.remove(permStartIndex, permEndIndex - permStartIndex + 1);
+
+    /* remove category entry if there are no more permission entries */
+    int catIndex = data.indexOf(perm->category());
+    if(data[data.indexOf(QLatin1Char('='), catIndex) + 1] == QLatin1Char('\n')) {
+        data.remove(catIndex, perm->category().length() + 2); // 2 because we need to remove '\n' as well
     }
 }
 

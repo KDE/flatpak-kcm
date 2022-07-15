@@ -38,7 +38,7 @@ KCM.ScrollViewKCM {
 
             onClicked: permsModel.setPerm(permsView.currentIndex, model.isGranted)
 
-            property bool isComplex: model.isComplex
+            property bool isComplex: !(model.isSimple)
             property var comboVals: model.valueList
             property int index: model.index
 

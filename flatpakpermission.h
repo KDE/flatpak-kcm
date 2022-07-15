@@ -17,6 +17,7 @@ class FlatpakPermission
 public:
     enum ValueType {
         Simple, /* on/off values, eg: internet connection */
+        Filesystems, /* OFF, read-only, read/write, create */
         Complex /* other values, eg: talk/own permissions to session buses */
     };
 
@@ -27,6 +28,8 @@ public:
     QString defaultValue() const;
     QStringList possibleValues() const;
     QString currentValue() const;
+    QString fsCurrentValue() const;
+//    QString fsDefaultValue() const;
     ValueType type() const;
 
     void setCurrentValue(QString val);
@@ -57,7 +60,7 @@ public:
         DefaultValue,
         IsGranted,
         Type,
-        IsComplex,
+        IsSimple,
         Path
     };
 
@@ -79,7 +82,8 @@ Q_SIGNALS:
     void referenceChanged();
 
 private:
-    void addPermission(FlatpakPermission *perm, QString &data, const bool isGranted);
+    void addPermission(FlatpakPermission *perm, QString &data, const bool shouldBeOn);
+    void removePermission(FlatpakPermission *perm, QString &data, const bool isGranted);
     void addBusPermissions(FlatpakPermission *perm, QString &data);
     void editFilesystemsPermissions(FlatpakPermission *perm, QString &data, const QString &newValue);
     void editBusPermissions(FlatpakPermission *perm, QString &data, const QString &newValue);
