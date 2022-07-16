@@ -18,30 +18,44 @@ public:
     enum ValueType {
         Simple, /* on/off values, eg: internet connection */
         Filesystems, /* OFF, read-only, read/write, create */
+        Bus,
         Complex /* other values, eg: talk/own permissions to session buses */
     };
 
     FlatpakPermission(QString name = QString(), QString category = QString(), QString description = QString(), QString defaultValue = QStringLiteral("OFF"), QStringList possibleValues = QStringList(), QString currentValue = QString(), ValueType type = ValueType::Simple);
+    FlatpakPermission(QString name, QString category, QString description, ValueType type, bool isEnabledByDefault, QString defaultValue = QString(), QStringList possibleValues = QStringList());
     QString name() const;
     QString category() const;
     QString description() const;
+    ValueType type() const;
+
+    bool enabled() const;
+    bool enabledByDefault() const;
+
     QString defaultValue() const;
     QStringList possibleValues() const;
     QString currentValue() const;
+
+
     QString fsCurrentValue() const;
-//    QString fsDefaultValue() const;
-    ValueType type() const;
 
     void setCurrentValue(QString val);
+    void setEnabled(bool isEnabled);
 
 private:
     QString m_name;
     QString m_category;
     QString m_description;
+    ValueType m_type;
+
+    /* applicable for all permission types */
+    bool m_isEnabled;
+    bool m_isEnabledByDefault;
+
+    /* for non-simple types only */
     QString m_defaultValue;
     QStringList m_possibleValues;
     QString m_currentValue;
-    ValueType m_type;
 };
 
 class FlatpakPermissionModel : public QAbstractListModel
