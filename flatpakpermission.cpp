@@ -540,7 +540,13 @@ void FlatpakPermissionModel::loadCurrentValues()
             int index = busList.indexOf(perm->name());
             if(index != -1) {
                 QString value = busMap.value(busList.at(index));
+                bool enabled = true;
+                if (value == QStringLiteral("None")) {
+                    value = perm->defaultValue();
+                    enabled = false;
+                }
                 perm->setCurrentValue(value);
+                perm->setEnabled(enabled);
             }
             i++;
         }
@@ -552,11 +558,13 @@ void FlatpakPermissionModel::loadCurrentValues()
                 QString category = QStringLiteral("Session Bus Policy");
                 QStringList possibleValues;
                 possibleValues << QStringLiteral("talk") << QStringLiteral("see") << QStringLiteral("own");
-                if(i != m_permissions.length())
-                m_permissions.insert(i, FlatpakPermission(name, category, description, QStringLiteral("OFF"), possibleValues, QStringLiteral("OFF"), FlatpakPermission::ValueType::Complex));
-                else
-                    m_permissions.append(FlatpakPermission(name, category, description, QStringLiteral("OFF"), possibleValues, QStringLiteral("OFF"), FlatpakPermission::ValueType::Complex));
+                if(i != m_permissions.length()) {
+                    m_permissions.insert(i, FlatpakPermission(name, category, description, FlatpakPermission::Bus, false, value, possibleValues));
+                } else {
+                    m_permissions.append(FlatpakPermission(name, category, description, FlatpakPermission::Bus, false, value, possibleValues));
+                }
                 m_permissions[i].setCurrentValue(value);
+                m_permissions[i].setEnabled(true);
                 i++;
             }
         }
@@ -576,7 +584,13 @@ void FlatpakPermissionModel::loadCurrentValues()
             int index = busList.indexOf(perm->name());
             if(index != -1) {
                 QString value = busMap.value(busList.at(index));
+                bool enabled = true;
+                if (value == QStringLiteral("None")) {
+                    value = perm->defaultValue();
+                    enabled = false;
+                }
                 perm->setCurrentValue(value);
+                perm->setEnabled(enabled);
             }
             i++;
         }
@@ -589,11 +603,12 @@ void FlatpakPermissionModel::loadCurrentValues()
                 QStringList possibleValues;
                 possibleValues << QStringLiteral("talk") << QStringLiteral("see") << QStringLiteral("own");
                 if(i != m_permissions.length()) {
-                    m_permissions.insert(i, FlatpakPermission(name, category, description, QStringLiteral("OFF"), possibleValues, QStringLiteral("OFF"), FlatpakPermission::ValueType::Complex));
+                    m_permissions.insert(i, FlatpakPermission(name, category, description, FlatpakPermission::Bus, false, value, possibleValues));
                 } else {
-                    m_permissions.append(FlatpakPermission(name, category, description, QStringLiteral("OFF"), possibleValues, QStringLiteral("OFF"), FlatpakPermission::ValueType::Complex));
+                    m_permissions.append(FlatpakPermission(name, category, description, FlatpakPermission::Bus, false, value, possibleValues));
                 }
                 m_permissions[i].setCurrentValue(value);
+                m_permissions[i].setEnabled(true);
                 i++;
             }
         }
@@ -671,6 +686,25 @@ void FlatpakPermissionModel::setPerm(int index, bool isGranted)
             }
         }
         perm->setEnabled(!perm->enabled());
+    } else if (perm->type() == FlatpakPermission::Bus) {
+        if (perm->enabledByDefault() && isGranted) {
+            perm->setEnabled(false);
+            if (perm->defaultValue() != perm->currentValue()) {
+                editBusPermissions(perm, data, QStringLiteral("None"));
+            } else {
+                addBusPermissions(perm, data);
+            }
+        } else if (perm->enabledByDefault() && !isGranted) {
+            if (perm->defaultValue() != perm->currentValue()) {
+                editBusPermissions(perm, data, perm->currentValue());
+            } else {
+                removeBusPermission(perm, data);
+            }
+            perm->setEnabled(true);
+        } else if (!perm->enabledByDefault() && isGranted) {
+            removeBusPermission(perm, data);
+            perm->setEnabled(false);
+        }
     }
 
     QFile outFile(m_reference->path());
@@ -700,7 +734,7 @@ void FlatpakPermissionModel::editPerm(int index, QString newValue)
     /* editing the permission */
     if(perm->category() == QStringLiteral("filesystems")) {
         editFilesystemsPermissions(perm, data, newValue);
-    } else if(perm->category() == QStringLiteral("Session Bus Policy") || perm->category() == QStringLiteral("System Bus Policy")) {
+    } else if (perm->type() == FlatpakPermission::Bus) {
         editBusPermissions(perm, data, newValue);
     }
 
@@ -796,7 +830,22 @@ void FlatpakPermissionModel::addBusPermissions(FlatpakPermission *perm, QString 
         data.insert(data.length(), groupHeader + QLatin1Char('\n'));
     }
     int permIndex = data.indexOf(QLatin1Char('\n'), data.indexOf(groupHeader)) + 1;
-    data.insert(permIndex, perm->name() + QLatin1Char('=') + perm->currentValue() + QLatin1Char('\n'));
+    QString val = perm->enabled() ? perm->currentValue() : QStringLiteral("None");
+    data.insert(permIndex, perm->name() + QLatin1Char('=') + val + QLatin1Char('\n'));
+}
+
+void FlatpakPermissionModel::removeBusPermission(FlatpakPermission *perm, QString &data)
+{
+    int permBeginIndex = data.indexOf(perm->name());
+    if (permBeginIndex == -1) {
+        return;
+    }
+
+    /* if it is enabled, the current value is not None. So get the length. Otherwise, it is 4 for None */
+    int valueLen = perm->enabled() ? perm->currentValue().length() : 4;
+
+    int permLen = perm->name().length() + 1 + valueLen + 1;
+    data.remove(permBeginIndex, permLen);
 }
 
 void FlatpakPermissionModel::editFilesystemsPermissions(FlatpakPermission *perm, QString &data, const QString &newValue)
@@ -838,6 +887,11 @@ void FlatpakPermissionModel::editFilesystemsPermissions(FlatpakPermission *perm,
 
 void FlatpakPermissionModel::editBusPermissions(FlatpakPermission *perm, QString &data, const QString &value)
 {
+    if (perm->enabledByDefault() && value == perm->defaultValue()) {
+        removeBusPermission(perm, data);
+        return;
+    }
+
     int permIndex = data.indexOf(perm->name());
     if(permIndex == -1) {
         addBusPermissions(perm, data);
@@ -845,11 +899,12 @@ void FlatpakPermissionModel::editBusPermissions(FlatpakPermission *perm, QString
     }
     int valueBeginIndex = permIndex + perm->name().length();
     data.insert(valueBeginIndex, QLatin1Char('=') + value);
-    if(data[valueBeginIndex + value.length() + 2] ==  QLatin1Char('t')) {
+    if(data[valueBeginIndex + value.length() + 2] ==  QLatin1Char('t') || data[valueBeginIndex + value.length() + 2] ==  QLatin1Char('N')) {
         data.remove(valueBeginIndex + value.length() + 1, 5);
     } else {
         data.remove(valueBeginIndex + value.length() + 1, 4);
     }
-
-    perm->setCurrentValue(value);
+    if (value != QStringLiteral("None")) {
+        perm->setCurrentValue(value);
+    }
 }

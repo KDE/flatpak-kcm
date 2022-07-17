@@ -99,6 +99,7 @@ private:
     void addPermission(FlatpakPermission *perm, QString &data, const bool shouldBeOn);
     void removePermission(FlatpakPermission *perm, QString &data, const bool isGranted);
     void addBusPermissions(FlatpakPermission *perm, QString &data);
+    void removeBusPermission(FlatpakPermission *perm, QString &data);
     void editFilesystemsPermissions(FlatpakPermission *perm, QString &data, const QString &newValue);
     void editBusPermissions(FlatpakPermission *perm, QString &data, const QString &newValue);
     QVector<FlatpakPermission> m_permissions;
