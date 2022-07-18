@@ -59,16 +59,12 @@ FlatpakReferencesModel::FlatpakReferencesModel(QObject *parent) : QAbstractListM
     g_autoptr(GPtrArray) installedApps = flatpak_installation_list_installed_refs_by_kind(installation, FLATPAK_REF_KIND_APP, NULL, NULL);
 
     for(uint i = 0; i < installedApps->len; ++i) {
-        g_autoptr(FlatpakInstalledRef) installedRef = FLATPAK_INSTALLED_REF(g_ptr_array_index(installedApps, i));
-        QString name = QString::fromUtf8(flatpak_installed_ref_get_appdata_name(installedRef));
-        QString version = QString::fromUtf8(flatpak_installed_ref_get_appdata_version(installedRef));
-
-        g_autoptr(FlatpakRef) ref = FLATPAK_REF(g_ptr_array_index(installedApps, i));
-        QString id = QString::fromUtf8(flatpak_ref_get_name(ref));
-
+        QString name = QString::fromUtf8(flatpak_installed_ref_get_appdata_name(FLATPAK_INSTALLED_REF(g_ptr_array_index(installedApps, i))));
+        QString version = QString::fromUtf8(flatpak_installed_ref_get_appdata_version(FLATPAK_INSTALLED_REF(g_ptr_array_index(installedApps, i))));
+        QString id = QString::fromUtf8(flatpak_ref_get_name(FLATPAK_REF(g_ptr_array_index(installedApps, i))));
         QString icon = id + QLatin1String(".png");
 
-        g_autoptr(GBytes) data = flatpak_installed_ref_load_metadata(installedRef, NULL, NULL);
+        g_autoptr(GBytes) data = flatpak_installed_ref_load_metadata(FLATPAK_INSTALLED_REF(g_ptr_array_index(installedApps, i)), NULL, NULL);
         gsize len = 0;
         auto buff = g_bytes_get_data(data, &len);
         const QByteArray metadata((const char *)buff, len);
