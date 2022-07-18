@@ -71,6 +71,7 @@ FlatpakReferencesModel::FlatpakReferencesModel(QObject *parent) : QAbstractListM
 
         m_references.push_back(new FlatpakReference(this, name, id, version, icon, metadata));
     }
+    std::sort(m_references.begin(), m_references.end(), [] (FlatpakReference *r1, FlatpakReference *r2) {return r1->name() < r2->name(); });
 }
 
 int FlatpakReferencesModel::rowCount(const QModelIndex &parent) const
