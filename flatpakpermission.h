@@ -19,6 +19,7 @@ public:
         Simple, /* on/off values, eg: internet connection */
         Filesystems, /* OFF, read-only, read/write, create */
         Bus,
+        Environment,
         Complex /* other values, eg: talk/own permissions to session buses */
     };
 
@@ -75,6 +76,7 @@ public:
         IsGranted,
         Type,
         IsSimple,
+        IsEnvironment,
         Path
     };
 
@@ -102,6 +104,9 @@ private:
     void removeBusPermission(FlatpakPermission *perm, QString &data);
     void editFilesystemsPermissions(FlatpakPermission *perm, QString &data, const QString &newValue);
     void editBusPermissions(FlatpakPermission *perm, QString &data, const QString &newValue);
+    void addEnvPermission(FlatpakPermission *perm, QString &data);
+    void removeEnvPermission(FlatpakPermission *perm, QString &data);
+    void editEnvPermission(FlatpakPermission *perm, QString &data, const QString &newValue);
     QVector<FlatpakPermission> m_permissions;
     FlatpakReference *m_reference;
 };
