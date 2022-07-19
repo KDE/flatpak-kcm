@@ -27,6 +27,7 @@ public:
     FlatpakPermission(QString name, QString category, QString description, ValueType type, bool isEnabledByDefault, QString defaultValue = QString(), QStringList possibleValues = QStringList());
     QString name() const;
     QString category() const;
+    QString categoryHeading() const;
     QString description() const;
     ValueType type() const;
 

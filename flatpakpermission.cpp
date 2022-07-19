@@ -69,6 +69,23 @@ QString FlatpakPermission::category() const
     return m_category;
 }
 
+QString FlatpakPermission::categoryHeading() const
+{
+    if (m_category == QStringLiteral("shared")) {
+        return QStringLiteral("Subsystems Shared");
+    } else if (m_category == QStringLiteral ("sockets")) {
+        return QStringLiteral("Sockets");
+    } else if (m_category == QStringLiteral("devices")) {
+        return QStringLiteral("Device Access");
+    } else if (m_category == QStringLiteral("features")) {
+        return QStringLiteral("Features Allowed");
+    } else if (m_category == QStringLiteral("filesystems")) {
+        return QStringLiteral("Filesystem Access");
+    } else {
+        return m_category;
+    }
+}
+
 QString FlatpakPermission::description() const
 {
     return m_description;
@@ -132,7 +149,7 @@ QVariant FlatpakPermissionModel::data(const QModelIndex &index, int role) const
     case Roles::Name:
         return m_permissions.at(index.row()).name();
     case Roles::Category:
-        return m_permissions.at(index.row()).category();
+        return m_permissions.at(index.row()).categoryHeading();
     case Roles::Description:
         return m_permissions.at(index.row()).description();
     case Roles::CurrentValue:
