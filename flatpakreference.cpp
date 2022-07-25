@@ -33,6 +33,12 @@ QString FlatpakReference::name() const
     return m_name;
 }
 
+QString FlatpakReference::displayName() const
+{
+    /* sometimes, the application does not seem to have a display name, so return its id */
+    return m_name.isEmpty() ? m_id : m_name;
+}
+
 QString FlatpakReference::version() const
 {
     return m_version;
@@ -90,7 +96,7 @@ QVariant FlatpakReferencesModel::data(const QModelIndex &index, int role) const
 
     switch(role) {
     case Roles::Name:
-        return m_references.at(index.row())->name();
+        return m_references.at(index.row())->displayName();
     case Roles::Version:
         return m_references.at(index.row())->version();
     case Roles::Icon:

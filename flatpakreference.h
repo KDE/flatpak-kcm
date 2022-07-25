@@ -18,6 +18,7 @@ public:
     ~FlatpakReference() override;
     explicit FlatpakReference(FlatpakReferencesModel *parent, QString name, QString m_id, QString version, QString icon = QString(), QByteArray metadata = QByteArray());
     QString name() const;
+    QString displayName() const;
     QString version() const;
     QString icon() const;
     QString path() const;
