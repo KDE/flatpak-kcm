@@ -106,6 +106,11 @@ FlatpakPermission::ValueType FlatpakPermission::type() const
     return m_type;
 }
 
+FlatpakPermission::PermType FlatpakPermission::pType() const
+{
+    return m_pType;
+}
+
 bool FlatpakPermission::enabled() const
 {
     return m_isEnabled;
@@ -124,6 +129,11 @@ void FlatpakPermission::setCurrentValue(QString val)
 void FlatpakPermission::setEnabled(bool isEnabled)
 {
     m_isEnabled = isEnabled;
+}
+
+void FlatpakPermission::setPType(PermType pType)
+{
+    m_pType = pType;
 }
 
 FlatpakPermissionModel::FlatpakPermissionModel(QObject *parent)
@@ -703,7 +713,9 @@ void FlatpakPermissionModel::setPerm(int index, bool isGranted)
             if (!data.contains(perm->name())) {
                 addPermission(perm, data, !isGranted);
             }
-            data.remove(data.indexOf(perm->name()) - 1, 1);
+            if (perm->pType() == FlatpakPermission::UserDefined) {
+                data.remove(data.indexOf(perm->name()) - 1, 1);
+            }
             // set value to read/write automatically, if not done already
         } else if (perm->enabledByDefault() && !isGranted) {
             /* if access level ("value") was changed, just remove ! from beginning.
@@ -826,6 +838,7 @@ void FlatpakPermissionModel::addUserEnteredPermission(QString name, QString cat)
     }
 
     FlatpakPermission perm(name, cat, name, type, false);
+    perm.setPType(FlatpakPermission::UserDefined);
     perm.setEnabled(true);
     perm.setCurrentValue(value);
     int i;

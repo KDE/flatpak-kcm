@@ -23,6 +23,11 @@ public:
         Complex /* other values, eg: talk/own permissions to session buses */
     };
 
+    enum PermType {
+        BuiltIn, /* all simple permissions, and all FS, Bus and Env ones that come in metadata */
+        UserDefined /* FS, Bus and Env ones that the user types */
+    };
+
     FlatpakPermission(QString name = QString(), QString category = QString(), QString description = QString(), QString defaultValue = QStringLiteral("OFF"), QStringList possibleValues = QStringList(), QString currentValue = QString(), ValueType type = ValueType::Simple);
     FlatpakPermission(QString name, QString category, QString description, ValueType type, bool isEnabledByDefault, QString defaultValue = QString(), QStringList possibleValues = QStringList());
     QString name() const;
@@ -30,6 +35,7 @@ public:
     QString categoryHeading() const;
     QString description() const;
     ValueType type() const;
+    PermType pType() const;
 
     bool enabled() const;
     bool enabledByDefault() const;
@@ -43,12 +49,14 @@ public:
 
     void setCurrentValue(QString val);
     void setEnabled(bool isEnabled);
+    void setPType(PermType pType);
 
 private:
     QString m_name;
     QString m_category;
     QString m_description;
     ValueType m_type;
+    PermType m_pType;
 
     /* applicable for all permission types */
     bool m_isEnabled;
