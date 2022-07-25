@@ -94,6 +94,7 @@ public Q_SLOTS:
     void setReference(FlatpakReference *ref);
     void setPerm(int index, bool isGranted);
     void editPerm(int index, QString newValue);
+    void addUserEnteredPermission(QString name, QString cat);
 
 Q_SIGNALS:
     void referenceChanged();
@@ -108,6 +109,7 @@ private:
     void addEnvPermission(FlatpakPermission *perm, QString &data);
     void removeEnvPermission(FlatpakPermission *perm, QString &data);
     void editEnvPermission(FlatpakPermission *perm, QString &data, const QString &newValue);
+    bool permExists(QString name);
     QVector<FlatpakPermission> m_permissions;
     FlatpakReference *m_reference;
 };

@@ -16,6 +16,9 @@ KCM.ScrollViewKCM {
     title: i18n("Permissions")
     implicitWidth: Kirigami.Units.gridUnit * 15
     property var ref
+
+    property string cat
+
     view: ListView {
         id: permsView
         model: FlatpakPermissionModel {
@@ -30,6 +33,17 @@ KCM.ScrollViewKCM {
         section.delegate: Kirigami.ListSectionHeader {
             label: section
             font.bold: true
+
+//            Controls.Button {
+//                text: i18n("+")
+//                visible: label === "Session Bus Policy" || label === "System Bus Policy" || label === "Filesystem Access" || label === "Environment"
+//                width: Kirigami.Units.gridUnit * 3
+//                height: section.height
+//                onClicked: {
+//                    cat: label
+//                    textPromptDialog.open()
+//                }
+//            }
         }
 
         delegate: Kirigami.CheckableListItem {
@@ -57,6 +71,33 @@ KCM.ScrollViewKCM {
                     enabled: permItem.checked
                     Keys.onReturnPressed: permsModel.editPerm(permItem.index, text)
                 }
+            }
+        }
+        footer: Controls.Button {
+            text: i18n("Add Permission")
+            visible: permsView.ref !== null
+            onClicked: textPromptDialog.open()
+        }
+    }
+
+    Kirigami.OverlaySheet {
+        id: textPromptDialog
+        title: "New Permission Entry"
+        contentItem: Row {
+            Controls.TextField {
+                id: nameField
+                placeholderText: qsTr("Permission name...")
+            }
+            Controls.ComboBox {
+                id: catList
+                model: ["filesystems", "Session Bus Policy", "System Bus Policy", "Environment"]
+            }
+        }
+        footer: Controls.Button {
+            text: i18n("Add")
+            onClicked: {
+                permsModel.addUserEnteredPermission(nameField.text, catList.currentText)
+                textPromptDialog.close()
             }
         }
     }
