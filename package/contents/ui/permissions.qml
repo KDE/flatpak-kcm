@@ -15,8 +15,7 @@ KCM.ScrollViewKCM {
     id: permissionPage
     title: i18n("Permissions")
     implicitWidth: Kirigami.Units.gridUnit * 15
-    property var ref
-
+    property var ref: null
     property string cat
 
     view: ListView {
@@ -33,17 +32,6 @@ KCM.ScrollViewKCM {
         section.delegate: Kirigami.ListSectionHeader {
             label: section
             font.bold: true
-
-//            Controls.Button {
-//                text: i18n("+")
-//                visible: label === "Session Bus Policy" || label === "System Bus Policy" || label === "Filesystem Access" || label === "Environment"
-//                width: Kirigami.Units.gridUnit * 3
-//                height: section.height
-//                onClicked: {
-//                    cat: label
-//                    textPromptDialog.open()
-//                }
-//            }
         }
 
         delegate: Kirigami.CheckableListItem {
@@ -75,22 +63,25 @@ KCM.ScrollViewKCM {
         }
         footer: Controls.Button {
             text: i18n("Add Permission")
-            visible: permsView.ref !== null
+            visible: permissionPage.ref !== null
             onClicked: textPromptDialog.open()
+            anchors.left: parent.left
         }
     }
 
     Kirigami.OverlaySheet {
         id: textPromptDialog
         title: "New Permission Entry"
-        contentItem: Row {
+        contentItem: Layouts.RowLayout {
             Controls.TextField {
                 id: nameField
-                placeholderText: qsTr("Permission name...")
+                placeholderText: i18n("Permission name...")
+                width: Kirigami.Units.gridUnit * 10
             }
             Controls.ComboBox {
                 id: catList
                 model: ["filesystems", "Session Bus Policy", "System Bus Policy", "Environment"]
+                width: Kirigami.Units.gridUnit * 5
             }
         }
         footer: Controls.Button {
