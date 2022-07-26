@@ -680,6 +680,11 @@ void FlatpakPermissionModel::setReference(FlatpakReference *ref)
 
 void FlatpakPermissionModel::setPerm(int index, bool isGranted)
 {
+    /* guard for invalid indices */
+    if (index < 0 || index >= m_permissions.length()) {
+        return;
+    }
+
     FlatpakPermission *perm = &m_permissions[index];
     QFile inFile(m_reference->path());
 
@@ -791,6 +796,11 @@ void FlatpakPermissionModel::setPerm(int index, bool isGranted)
 
 void FlatpakPermissionModel::editPerm(int index, QString newValue)
 {
+    /* guard for out-of-range indices */
+    if (index < 0 || index > m_permissions.length()) {
+        return;
+    }
+
     /* reading from file */
     FlatpakPermission *perm = &m_permissions[index];
     QFile inFile(m_reference->path());
