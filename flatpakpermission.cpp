@@ -536,6 +536,8 @@ void FlatpakPermissionModel::loadCurrentValues()
                 /* the permission is just being set off, the access level isn't changed */
                 if(permIndex > 0 && cat[permIndex - 1] == QLatin1Char('!')) {
                     perm->setEnabled(false);
+                } else {
+                    perm->setEnabled(true);
                 }
 
                 int valueIndex = cat.indexOf(QLatin1Char(':'), cat.indexOf(perm->name()));
@@ -612,6 +614,7 @@ void FlatpakPermissionModel::loadCurrentValues()
                 }
             }
             if (!permExists(name)) {
+                fsIndex++;
                 QStringList possibleValues;
                 possibleValues << i18n("read/write") << i18n("read-only") << i18n("create");
                 m_permissions.insert(fsIndex, FlatpakPermission(name, QStringLiteral("filesystems"), name, FlatpakPermission::Filesystems, false, value, possibleValues));
@@ -732,16 +735,9 @@ void FlatpakPermissionModel::setPerm(int index, bool isGranted)
                 removePermission(perm, data, isGranted);
             }
         } else if (!perm->enabledByDefault() && isGranted) {
-//            /* if access level ("value") was changed, just prepend ! to the name.
-//             * if access level is unchanged, remove the whole entry */
-//            if (perm->defaultValue() != perm->currentValue()) {
-//                int permIndex = data.indexOf(perm->name());
-//                data.insert(permIndex, QLatin1Char('!'));
-//            } else {
-//                removePermission(perm, data, isGranted);
-//            }
             removePermission(perm, data, isGranted);
-            //m_permissions.remove(index, 1);
+            m_permissions.remove(index, 1);
+            Q_EMIT layoutChanged();
         }
         perm->setEnabled(!perm->enabled());
     } else if (perm->type() == FlatpakPermission::Bus) {
@@ -761,7 +757,8 @@ void FlatpakPermissionModel::setPerm(int index, bool isGranted)
             perm->setEnabled(true);
         } else if (!perm->enabledByDefault() && isGranted) {
             removeBusPermission(perm, data);
-            //m_permissions.remove(index - 1, 1);
+            m_permissions.remove(index, 1);
+            Q_EMIT layoutChanged();
         }
     } else if (perm->type() == FlatpakPermission::Environment) {
         if (perm->enabledByDefault() && isGranted) {
@@ -780,7 +777,8 @@ void FlatpakPermissionModel::setPerm(int index, bool isGranted)
             perm->setEnabled(true);
         } else if (!perm->enabledByDefault() && isGranted) {
             removeEnvPermission(perm, data);
-            perm->setEnabled(false);
+            m_permissions.remove(index, 1);
+            Q_EMIT layoutChanged();
         }
     }
 
@@ -792,6 +790,8 @@ void FlatpakPermissionModel::setPerm(int index, bool isGranted)
     QTextStream outStream(&outFile);
     outStream << data;
     outFile.close();
+
+    Q_EMIT dataChanged(FlatpakPermissionModel::index(index, 0), FlatpakPermissionModel::index(index, 0));
 }
 
 void FlatpakPermissionModel::editPerm(int index, QString newValue)
@@ -821,6 +821,8 @@ void FlatpakPermissionModel::editPerm(int index, QString newValue)
     } else if (perm->type() == FlatpakPermission::Environment) {
         editEnvPermission(perm, data, newValue);
     }
+
+    Q_EMIT dataChanged(FlatpakPermissionModel::index(index, 0), FlatpakPermissionModel::index(index, 0));
 
     /* writing to file */
     QFile outFile(m_reference->path());
@@ -852,11 +854,18 @@ void FlatpakPermissionModel::addUserEnteredPermission(QString name, QString cat)
     perm.setEnabled(true);
     perm.setCurrentValue(value);
     int i;
-    for (i = 0; i < m_permissions.length() && m_permissions.at(i).category() != cat; i++);
 
-    if (i < m_permissions.length())
+    /* first, go to the index where the permissions of this category begin. then, go to the index where they end */
+    for (i = 0; i < m_permissions.length() && m_permissions.at(i).category() != cat; i++);
+    if (i != m_permissions.length()) {
+        for (; i < m_permissions.length() && m_permissions.at(i).category() == cat; i++);
+    }
+
+    if (i < m_permissions.length()) {
         m_permissions.insert(i, perm);
-    else m_permissions.append(perm);
+    } else {
+        m_permissions.append(perm);
+    }
     m_permissions[i].setEnabled(true);
 
     QFile inFile(m_reference->path());
@@ -885,6 +894,8 @@ void FlatpakPermissionModel::addUserEnteredPermission(QString name, QString cat)
     QTextStream outStream(&outFile);
     outStream << data;
     outFile.close();
+
+    Q_EMIT layoutChanged();
 }
 
 void FlatpakPermissionModel::addPermission(FlatpakPermission *perm, QString &data, const bool shouldBeOn)
