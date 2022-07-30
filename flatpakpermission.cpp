@@ -586,6 +586,7 @@ void FlatpakPermissionModel::loadCurrentValues()
             }
         }
     }
+    int additionalPerms = 0;
     const QString fsCat = contextGroup.readEntry(QStringLiteral("filesystems"), QString());
     if (!fsCat.isEmpty()) {
         const QStringList fsPerms = fsCat.split(QLatin1Char(';'));
@@ -614,12 +615,13 @@ void FlatpakPermissionModel::loadCurrentValues()
                 }
             }
             if (!permExists(name)) {
-                fsIndex++;
+                //fsIndex++;
                 QStringList possibleValues;
                 possibleValues << i18n("read/write") << i18n("read-only") << i18n("create");
                 m_permissions.insert(fsIndex, FlatpakPermission(name, QStringLiteral("filesystems"), name, FlatpakPermission::Filesystems, false, value, possibleValues));
                 m_permissions[fsIndex].setEnabled(enabled);
                 fsIndex++;
+                additionalPerms++;
             }
         }
     }
@@ -630,6 +632,7 @@ void FlatpakPermissionModel::loadCurrentValues()
         if (!group.exists()) {
             continue;
         }
+        bool flag = true;
         int *insertIndex;
         if (j == 0) {
             insertIndex = &sessionBusIndex;
@@ -641,6 +644,9 @@ void FlatpakPermissionModel::loadCurrentValues()
 
         if (*insertIndex == -1) {
             *insertIndex = m_permissions.length();
+            flag = false;
+        } else {
+            *insertIndex += additionalPerms;
         }
 
         QMap <QString, QString> map = group.entryMap();
@@ -659,6 +665,9 @@ void FlatpakPermissionModel::loadCurrentValues()
                 }
                 m_permissions[*insertIndex].setEnabled(enabled);
                 *insertIndex += 1;
+                if (flag) {
+                    additionalPerms++;
+                }
             }
         }
     }
