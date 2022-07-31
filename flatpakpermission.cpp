@@ -844,16 +844,17 @@ void FlatpakPermissionModel::editPerm(int index, QString newValue)
     outFile.close();
 }
 
-void FlatpakPermissionModel::addUserEnteredPermission(QString name, QString cat)
+void FlatpakPermissionModel::addUserEnteredPermission(QString name, QString cat, QString value)
 {
-    QString value;
+    if (cat == i18n("Filesystem Access")) {
+        cat = QStringLiteral("filesystems");
+    }
+
     FlatpakPermission::ValueType type;
     if (cat == QStringLiteral("filesystems")) {
         type = FlatpakPermission::Filesystems;
-        value = i18n("read/write");
     } else if (cat == QStringLiteral("Session Bus Policy") || cat == QStringLiteral("System Bus Policy")) {
         type = FlatpakPermission::Bus;
-        value = i18n("talk");
     } else {
         type = FlatpakPermission::Environment;
     }
@@ -875,7 +876,6 @@ void FlatpakPermissionModel::addUserEnteredPermission(QString name, QString cat)
     } else {
         m_permissions.append(perm);
     }
-    m_permissions[i].setEnabled(true);
 
     QFile inFile(m_reference->path());
 
@@ -905,6 +905,17 @@ void FlatpakPermissionModel::addUserEnteredPermission(QString name, QString cat)
     outFile.close();
 
     Q_EMIT layoutChanged();
+}
+
+QStringList FlatpakPermissionModel::valueList(QString catHeader) const
+{
+    QStringList valueList;
+    if (catHeader == i18n("Filesystem Access")) {
+        valueList << i18n("read/write") << i18n("read-only") << i18n("create");
+    } else if (catHeader == i18n("Session Bus Policy") || catHeader == i18n("System Bus Policy")) {
+        valueList << i18n("talk") << i18n("own") << i18n("see");
+    }
+    return valueList;
 }
 
 void FlatpakPermissionModel::addPermission(FlatpakPermission *perm, QString &data, const bool shouldBeOn)

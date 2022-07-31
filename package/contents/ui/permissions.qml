@@ -8,7 +8,7 @@ import QtQuick.Controls 2.15 as Controls
 import QtQuick.Layouts 1.15 as Layouts
 
 import org.kde.kcm 1.2 as KCM
-import org.kde.kirigami 2.14 as Kirigami
+import org.kde.kirigami 2.19 as Kirigami
 import org.kde.plasma.kcm.flatpakpermissions 1.0
 
 KCM.ScrollViewKCM {
@@ -16,7 +16,6 @@ KCM.ScrollViewKCM {
     title: i18n("Permissions")
     implicitWidth: Kirigami.Units.gridUnit * 15
     property var ref: null
-    property string cat
 
     view: ListView {
         id: permsView
@@ -32,6 +31,37 @@ KCM.ScrollViewKCM {
         section.delegate: Kirigami.ListSectionHeader {
             label: section
             font.bold: true
+            height: Kirigami.Units.gridUnit * 2
+            Controls.Button {
+                text: i18n('+')
+                visible: label === "Filesystem Access" || label === "Session Bus Policy" || label === "System Bus Policy" || label === "Environment"
+                onClicked: {
+                    textPromptDialog.open()
+                }
+                Kirigami.PromptDialog {
+                    id: textPromptDialog
+                    title: i18n("New Permission Entry")
+                    contentItem: Layouts.RowLayout {
+                        Controls.TextField {
+                            id: nameField
+                            placeholderText: i18n("Permission name...")
+                        }
+                        Controls.ComboBox {
+                            id: valueBox
+                            model: permsModel.valueList(section)
+                            visible: section !== "Environment"
+                        }
+                        Controls.TextField {
+                            id: valueField
+                            visible: section === "Environment"
+                            placeholderText: i18n("Enter value...")
+                        }
+                    }
+                    property string value: label === "Environment" ? valueField.text : valueBox.currentText
+                    standardButtons: Kirigami.Dialog.Ok | Kirigami.Dialog.Close
+                    onAccepted: permsModel.addUserEnteredPermission(nameField.text, section, textPromptDialog.value)
+                }
+            }
         }
 
         delegate: Kirigami.CheckableListItem {
@@ -59,36 +89,6 @@ KCM.ScrollViewKCM {
                     enabled: permItem.checked
                     Keys.onReturnPressed: permsModel.editPerm(permItem.index, text)
                 }
-            }
-        }
-        footer: Controls.Button {
-            text: i18n("Add Permission")
-            visible: permissionPage.ref !== null
-            onClicked: textPromptDialog.open()
-            anchors.left: parent.left
-        }
-    }
-
-    Kirigami.OverlaySheet {
-        id: textPromptDialog
-        title: "New Permission Entry"
-        contentItem: Layouts.RowLayout {
-            Controls.TextField {
-                id: nameField
-                placeholderText: i18n("Permission name...")
-                width: Kirigami.Units.gridUnit * 10
-            }
-            Controls.ComboBox {
-                id: catList
-                model: ["filesystems", "Session Bus Policy", "System Bus Policy", "Environment"]
-                width: Kirigami.Units.gridUnit * 5
-            }
-        }
-        footer: Controls.Button {
-            text: i18n("Add")
-            onClicked: {
-                permsModel.addUserEnteredPermission(nameField.text, catList.currentText)
-                textPromptDialog.close()
             }
         }
     }
