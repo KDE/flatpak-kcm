@@ -25,7 +25,8 @@ public:
 
     enum PermType {
         BuiltIn, /* all simple permissions, and all FS, Bus and Env ones that come in metadata */
-        UserDefined /* FS, Bus and Env ones that the user types */
+        UserDefined, /* FS, Bus and Env ones that the user types */
+        Dummy /* empty permissions, just for showing section headers for categories that don't have permissions */
     };
 
     FlatpakPermission(QString name = QString(), QString category = QString(), QString description = QString(), QString defaultValue = QStringLiteral("OFF"), QStringList possibleValues = QStringList(), QString currentValue = QString(), ValueType type = ValueType::Simple);
@@ -43,7 +44,6 @@ public:
     QString defaultValue() const;
     QStringList possibleValues() const;
     QString currentValue() const;
-
 
     QString fsCurrentValue() const;
 
@@ -86,7 +86,8 @@ public:
         Type,
         IsSimple,
         IsEnvironment,
-        Path
+        Path,
+        IsNotDummy
     };
 
     int rowCount(const QModelIndex &parent = QModelIndex()) const override;
@@ -119,6 +120,7 @@ private:
     void removeEnvPermission(FlatpakPermission *perm, QString &data);
     void editEnvPermission(FlatpakPermission *perm, QString &data, const QString &newValue);
     bool permExists(QString name);
+    int permIndex(QString category, int from = 0);
     QVector<FlatpakPermission> m_permissions;
     FlatpakReference *m_reference;
 };

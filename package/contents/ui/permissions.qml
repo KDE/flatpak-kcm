@@ -38,9 +38,11 @@ KCM.ScrollViewKCM {
                 onClicked: {
                     textPromptDialog.open()
                 }
+
                 Kirigami.PromptDialog {
                     id: textPromptDialog
                     title: i18n("New Permission Entry")
+                    parent: permissionPage
                     contentItem: Layouts.RowLayout {
                         Controls.TextField {
                             id: nameField
@@ -68,6 +70,7 @@ KCM.ScrollViewKCM {
             id: permItem
             text: model.description
             checked: model.isGranted
+            visible: model.isNotDummy
 
             onClicked: permsModel.setPerm(permsView.currentIndex, model.isGranted)
 

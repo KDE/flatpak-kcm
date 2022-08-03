@@ -17,7 +17,6 @@ KCMFlatpak::KCMFlatpak(QObject *parent, const KPluginMetaData &data, const QVari
 {
     qmlRegisterUncreatableType<KCMFlatpak>("org.kde.plasma.kcm.flatpakpermissions", 1, 0, "KCMFlatpak", QString());
     qmlRegisterType<FlatpakPermissionModel>("org.kde.plasma.kcm.flatpakpermissions", 1, 0, "FlatpakPermissionModel");
-    //qmlRegisterType<FlatpakReference>("org.kde.plasma.kcm.flatpakpermissions", 1, 0, "FlatpakReference");
 }
 
 #include "kcm.moc"
