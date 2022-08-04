@@ -38,6 +38,7 @@ KCM.ScrollViewKCM {
                 onClicked: {
                     textPromptDialog.open()
                 }
+                Layouts.Layout.alignment: Qt.AlignRight
 
                 Kirigami.PromptDialog {
                     id: textPromptDialog

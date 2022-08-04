@@ -851,8 +851,6 @@ void FlatpakPermissionModel::addUserEnteredPermission(QString name, QString cat,
     perm.setCurrentValue(value);
 
     int index = permIndex(cat);
-    qInfo() << index << m_permissions.length();
-
     m_permissions.insert(index, perm);
 
     QFile inFile(m_reference->path());
