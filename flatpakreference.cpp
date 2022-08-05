@@ -17,14 +17,15 @@ extern "C" {
 
 FlatpakReference::~FlatpakReference() = default;
 
-FlatpakReference::FlatpakReference(FlatpakReferencesModel *parent, QString name, QString id, QString version, QString icon, QByteArray metadata)
+FlatpakReference::FlatpakReference(FlatpakReferencesModel *parent, QString name, QString id, QString version, QString icon, QByteArray metadata, FlatpakReferencesModel *refsModel)
     : QObject(parent),
       m_name(name),
       m_id(id),
       m_version(version),
       m_icon(icon),
       m_path(FlatpakHelper::permDataFilePath().append(m_id)),
-      m_metadata(metadata)
+      m_metadata(metadata),
+      m_refsModel(refsModel)
 {
 }
 
@@ -59,6 +60,35 @@ QByteArray FlatpakReference::metadata() const
     return m_metadata;
 }
 
+FlatpakPermissionModel *FlatpakReference::permsModel()
+{
+    return m_permsModel;
+}
+
+void FlatpakReference::setPermsModel(FlatpakPermissionModel *permsModel)
+{
+    m_permsModel = permsModel;
+    connect(m_permsModel, &FlatpakPermissionModel::referenceChanged, this, &FlatpakReference::needsLoad);
+    connect(this, &FlatpakReference::needsLoad, m_refsModel, &FlatpakReferencesModel::needsLoad);
+    connect(m_permsModel, &FlatpakPermissionModel::dataChanged, this, &FlatpakReference::needsSaveChanged);
+    connect(this, &FlatpakReference::needsSaveChanged, m_refsModel, &FlatpakReferencesModel::needsSaveChanged);
+}
+
+void FlatpakReference::load()
+{
+    m_permsModel->load();
+}
+
+void FlatpakReference::save()
+{
+    m_permsModel->save();
+}
+
+bool FlatpakReference::isSaveNeeded() const
+{
+    return m_permsModel->isSaveNeeded();
+}
+
 FlatpakReferencesModel::FlatpakReferencesModel(QObject *parent) : QAbstractListModel(parent)
 {
     g_autoptr(FlatpakInstallation) installation = flatpak_installation_new_system(NULL, NULL);
@@ -75,7 +105,7 @@ FlatpakReferencesModel::FlatpakReferencesModel(QObject *parent) : QAbstractListM
         auto buff = g_bytes_get_data(data, &len);
         const QByteArray metadata((const char *)buff, len);
 
-        m_references.push_back(new FlatpakReference(this, name, id, version, icon, metadata));
+        m_references.push_back(new FlatpakReference(this, name, id, version, icon, metadata, this));
     }
     std::sort(m_references.begin(), m_references.end(), [] (FlatpakReference *r1, FlatpakReference *r2) {return r1->name() < r2->name(); });
 }
@@ -115,4 +145,26 @@ QHash<int, QByteArray> FlatpakReferencesModel::roleNames() const
     roles[Roles::Icon] = "icon";
     roles[Roles::Ref] = "reference";
     return roles;
+}
+
+void FlatpakReferencesModel::load(int index)
+{
+    if (index >= 0 && index < m_references.length()) {
+        m_references.at(index)->load();
+    }
+}
+
+void FlatpakReferencesModel::save(int index)
+{
+    if (index >= 0 && index < m_references.length()) {
+        m_references.at(index)->save();
+    }
+}
+
+bool FlatpakReferencesModel::isSaveNeeded(int index) const
+{
+    if (index >= 0 && index < m_references.length()) {
+        return m_references.at(index)->isSaveNeeded();
+    }
+    return false;
 }

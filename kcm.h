@@ -16,6 +16,16 @@ class KCMFlatpak : public KQuickAddons::ManagedConfigModule
 public:
     explicit KCMFlatpak(QObject *parent, const KPluginMetaData &data, const QVariantList &args);
 
+    void refreshSaveNeeded();
+
+    void load() override;
+    void save() override;
+    bool isSaveNeeded() const override;
+
+public Q_SLOTS:
+    void setIndex(int index);
+
 private:
     FlatpakReferencesModel *m_refsModel;
+    int m_index;
 };

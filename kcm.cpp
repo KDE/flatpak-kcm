@@ -17,6 +17,34 @@ KCMFlatpak::KCMFlatpak(QObject *parent, const KPluginMetaData &data, const QVari
 {
     qmlRegisterUncreatableType<KCMFlatpak>("org.kde.plasma.kcm.flatpakpermissions", 1, 0, "KCMFlatpak", QString());
     qmlRegisterType<FlatpakPermissionModel>("org.kde.plasma.kcm.flatpakpermissions", 1, 0, "FlatpakPermissionModel");
+
+    connect(m_refsModel, &FlatpakReferencesModel::needsLoad, this, &KCMFlatpak::load);
+    connect(m_refsModel, &FlatpakReferencesModel::needsSaveChanged, this, &KCMFlatpak::refreshSaveNeeded);
+}
+
+void KCMFlatpak::refreshSaveNeeded()
+{
+    setNeedsSave(isSaveNeeded());
+}
+
+void KCMFlatpak::load()
+{
+    m_refsModel->load(m_index);
+}
+
+void KCMFlatpak::save()
+{
+    m_refsModel->save(m_index);
+}
+
+bool KCMFlatpak::isSaveNeeded() const
+{
+    return m_refsModel->isSaveNeeded(m_index);
+}
+
+void KCMFlatpak::setIndex(int index)
+{
+    m_index = index;
 }
 
 #include "kcm.moc"

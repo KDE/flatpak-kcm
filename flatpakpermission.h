@@ -48,8 +48,12 @@ public:
     QString fsCurrentValue() const;
 
     void setCurrentValue(QString val);
+    void setLoadValue(QString loadValue);
     void setEnabled(bool isEnabled);
+    void setLoadEnabled(bool isLoadEnabled);
     void setPType(PermType pType);
+
+    bool isSaveNeeded() const;
 
 private:
     QString m_name;
@@ -61,11 +65,13 @@ private:
     /* applicable for all permission types */
     bool m_isEnabled;
     bool m_isEnabledByDefault;
+    bool m_isLoadEnabled; /* is it enabled before the user makes any changes in THIS session? */
 
     /* for non-simple types only */
     QString m_defaultValue;
     QStringList m_possibleValues;
     QString m_currentValue;
+    QString m_loadValue; /* what the value was before user made any changes in THIS session */
 };
 
 class FlatpakPermissionModel : public QAbstractListModel
@@ -99,6 +105,10 @@ public:
 
     FlatpakReference *reference();
 
+    void load();
+    void save();
+    bool isSaveNeeded() const;
+
 public Q_SLOTS:
     void setReference(FlatpakReference *ref);
     void setPerm(int index, bool isGranted);
@@ -110,17 +120,20 @@ Q_SIGNALS:
     void referenceChanged();
 
 private:
-    void addPermission(FlatpakPermission *perm, QString &data, const bool shouldBeOn);
-    void removePermission(FlatpakPermission *perm, QString &data, const bool isGranted);
-    void addBusPermissions(FlatpakPermission *perm, QString &data);
-    void removeBusPermission(FlatpakPermission *perm, QString &data);
-    void editFilesystemsPermissions(FlatpakPermission *perm, QString &data, const QString &newValue);
-    void editBusPermissions(FlatpakPermission *perm, QString &data, const QString &newValue);
-    void addEnvPermission(FlatpakPermission *perm, QString &data);
-    void removeEnvPermission(FlatpakPermission *perm, QString &data);
-    void editEnvPermission(FlatpakPermission *perm, QString &data, const QString &newValue);
+    void addPermission(FlatpakPermission *perm, const bool shouldBeOn);
+    void removePermission(FlatpakPermission *perm, const bool isGranted);
+    void addBusPermissions(FlatpakPermission *perm);
+    void removeBusPermission(FlatpakPermission *perm);
+    void editFilesystemsPermissions(FlatpakPermission *perm, const QString &newValue);
+    void editBusPermissions(FlatpakPermission *perm, const QString &newValue);
+    void addEnvPermission(FlatpakPermission *perm);
+    void removeEnvPermission(FlatpakPermission *perm);
+    void editEnvPermission(FlatpakPermission *perm, const QString &newValue);
     bool permExists(QString name);
     int permIndex(QString category, int from = 0);
+    void readFromFile();
+    void writeToFile();
     QVector<FlatpakPermission> m_permissions;
     FlatpakReference *m_reference;
+    QString m_overridesData;
 };

@@ -10,19 +10,33 @@
 #include <QString>
 #include <QVector>
 #include <QAbstractListModel>
+
 class FlatpakReferencesModel;
+class FlatpakPermissionModel;
+
 class FlatpakReference : public QObject
 {
     Q_OBJECT
 public:
     ~FlatpakReference() override;
-    explicit FlatpakReference(FlatpakReferencesModel *parent, QString name, QString m_id, QString version, QString icon = QString(), QByteArray metadata = QByteArray());
+    explicit FlatpakReference(FlatpakReferencesModel *parent, QString name, QString m_id, QString version, QString icon = QString(), QByteArray metadata = QByteArray(), FlatpakReferencesModel *refsModel = nullptr);
     QString name() const;
     QString displayName() const;
     QString version() const;
     QString icon() const;
     QString path() const;
     QByteArray metadata() const;
+
+    FlatpakPermissionModel *permsModel();
+    void setPermsModel(FlatpakPermissionModel *permsModel);
+
+    void load();
+    void save();
+    bool isSaveNeeded() const;
+
+Q_SIGNALS:
+    void needsLoad();
+    void needsSaveChanged();
 
 private:
     QString m_name;
@@ -31,6 +45,9 @@ private:
     QString m_icon;
     QString m_path;
     QByteArray m_metadata;
+
+    FlatpakPermissionModel *m_permsModel;
+    FlatpakReferencesModel *m_refsModel;
 };
 
 class FlatpakReferencesModel : public QAbstractListModel
@@ -49,6 +66,14 @@ public:
     int rowCount(const QModelIndex &parent = QModelIndex()) const override;
     QVariant data(const QModelIndex &parent, int role) const override;
     virtual QHash<int, QByteArray> roleNames() const override;
+
+    void load(int index);
+    void save(int index);
+    bool isSaveNeeded(int index) const;
+
+Q_SIGNALS:
+    void needsLoad();
+    void needsSaveChanged();
 
 private:
     QVector<FlatpakReference*> m_references;

@@ -23,6 +23,8 @@ KCM.ScrollViewKCM {
         kcm.push("permissions.qml")
     }
 
+    KCM.ConfigModule.buttons: KCM.ConfigModule.Apply | KCM.ConfigModule.Default
+
     view: ListView {
         id: appsListView
 
@@ -35,6 +37,7 @@ KCM.ScrollViewKCM {
 
             onClicked: {
                 kcm.pop(0)
+                kcm.setIndex(appsListView.currentIndex)
                 kcm.push("permissions.qml", {ref: model.reference})
             }
         }
