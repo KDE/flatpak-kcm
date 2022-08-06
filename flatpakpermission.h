@@ -54,6 +54,7 @@ public:
     void setPType(PermType pType);
 
     bool isSaveNeeded() const;
+    bool isDefaults() const;
 
 private:
     QString m_name;
@@ -107,6 +108,8 @@ public:
 
     void load();
     void save();
+    void defaults();
+    bool isDefaults() const;
     bool isSaveNeeded() const;
 
 public Q_SLOTS:

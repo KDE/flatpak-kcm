@@ -84,9 +84,19 @@ void FlatpakReference::save()
     m_permsModel->save();
 }
 
+void FlatpakReference::defaults()
+{
+    m_permsModel->defaults();
+}
+
 bool FlatpakReference::isSaveNeeded() const
 {
     return m_permsModel->isSaveNeeded();
+}
+
+bool FlatpakReference::isDefaults() const
+{
+    return m_permsModel->isDefaults();
 }
 
 FlatpakReferencesModel::FlatpakReferencesModel(QObject *parent) : QAbstractListModel(parent)
@@ -161,10 +171,25 @@ void FlatpakReferencesModel::save(int index)
     }
 }
 
+void FlatpakReferencesModel::defaults(int index)
+{
+    if (index >= 0 && index < m_references.length()) {
+        m_references.at(index)->defaults();
+    }
+}
+
 bool FlatpakReferencesModel::isSaveNeeded(int index) const
 {
     if (index >= 0 && index < m_references.length()) {
         return m_references.at(index)->isSaveNeeded();
     }
     return false;
+}
+
+bool FlatpakReferencesModel::isDefaults(int index) const
+{
+    if (index >= 0 && index < m_references.length()) {
+        return m_references.at(index)->isDefaults();
+    }
+    return true;
 }

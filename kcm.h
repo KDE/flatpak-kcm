@@ -20,7 +20,9 @@ public:
 
     void load() override;
     void save() override;
+    void defaults() override;
     bool isSaveNeeded() const override;
+    bool isDefaults() const override;
 
 public Q_SLOTS:
     void setIndex(int index);

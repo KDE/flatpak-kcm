@@ -32,7 +32,9 @@ public:
 
     void load();
     void save();
+    void defaults();
     bool isSaveNeeded() const;
+    bool isDefaults() const;
 
 Q_SIGNALS:
     void needsLoad();
@@ -69,7 +71,9 @@ public:
 
     void load(int index);
     void save(int index);
+    void defaults(int index);
     bool isSaveNeeded(int index) const;
+    bool isDefaults(int index) const;
 
 Q_SIGNALS:
     void needsLoad();

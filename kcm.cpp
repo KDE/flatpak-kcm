@@ -37,9 +37,19 @@ void KCMFlatpak::save()
     m_refsModel->save(m_index);
 }
 
+void KCMFlatpak::defaults()
+{
+    m_refsModel->defaults(m_index);
+}
+
 bool KCMFlatpak::isSaveNeeded() const
 {
     return m_refsModel->isSaveNeeded(m_index);
+}
+
+bool KCMFlatpak::isDefaults() const
+{
+    return m_refsModel->isDefaults(m_index);
 }
 
 void KCMFlatpak::setIndex(int index)

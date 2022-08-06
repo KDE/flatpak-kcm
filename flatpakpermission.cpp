@@ -155,6 +155,15 @@ bool FlatpakPermission::isSaveNeeded() const
     return ret;
 }
 
+bool FlatpakPermission::isDefaults() const
+{
+    bool ret = m_isEnabled == m_isEnabledByDefault;
+    if (m_type != FlatpakPermission::Simple) {
+        ret = ret && (m_currentValue == m_defaultValue);
+    }
+    return ret;
+}
+
 FlatpakPermissionModel::FlatpakPermissionModel(QObject *parent)
     : QAbstractListModel(parent)
 {
@@ -695,6 +704,7 @@ FlatpakReference *FlatpakPermissionModel::reference()
 
 void FlatpakPermissionModel::load()
 {
+    m_permissions.clear();
     loadDefaultValues();
     loadCurrentValues();
     readFromFile();
@@ -709,6 +719,25 @@ void FlatpakPermissionModel::save()
         }
     }
     writeToFile();
+}
+
+void FlatpakPermissionModel::defaults()
+{
+    m_overridesData.clear();
+    for (int i = 0; i < m_permissions.length(); ++i) {
+        m_permissions[i].setEnabled(m_permissions[i].enabledByDefault());
+        if (m_permissions[i].type() != FlatpakPermission::Simple) {
+            m_permissions[i].setCurrentValue(m_permissions[i].defaultValue());
+        }
+    }
+    Q_EMIT dataChanged(FlatpakPermissionModel::index(0, 0), FlatpakPermissionModel::index(m_permissions.length() - 1, 0));
+}
+
+bool FlatpakPermissionModel::isDefaults() const
+{
+    return std::all_of(m_permissions.constBegin(), m_permissions.constEnd(), [](FlatpakPermission perm) {
+        return perm.isDefaults();
+    });
 }
 
 bool FlatpakPermissionModel::isSaveNeeded() const
@@ -796,8 +825,8 @@ void FlatpakPermissionModel::setPerm(int index, bool isGranted)
             }
             perm->setEnabled(true);
         } else if (!perm->enabledByDefault() && isGranted) {
+            perm->setEnabled(false);
             removeBusPermission(perm);
-            m_permissions.remove(index, 1);
         }
     } else if (perm->type() == FlatpakPermission::Environment) {
         if (perm->enabledByDefault() && isGranted) {
