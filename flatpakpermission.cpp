@@ -875,6 +875,8 @@ void FlatpakPermissionModel::editPerm(int index, QString newValue)
 
 void FlatpakPermissionModel::addUserEnteredPermission(QString name, QString cat, QString value)
 {
+    QStringList possibleValues = valueList(cat);
+
     if (cat == i18n("Filesystem Access")) {
         cat = QStringLiteral("filesystems");
     }
@@ -888,7 +890,7 @@ void FlatpakPermissionModel::addUserEnteredPermission(QString name, QString cat,
         type = FlatpakPermission::Environment;
     }
 
-    FlatpakPermission perm(name, cat, name, type, false);
+    FlatpakPermission perm(name, cat, name, type, false, QString(), possibleValues);
     perm.setPType(FlatpakPermission::UserDefined);
     perm.setEnabled(true);
     perm.setCurrentValue(value);
@@ -905,6 +907,7 @@ void FlatpakPermissionModel::addUserEnteredPermission(QString name, QString cat,
     }
 
     Q_EMIT dataChanged(FlatpakPermissionModel::index(index, 0),FlatpakPermissionModel::index(index, 0));
+    Q_EMIT layoutChanged();
 }
 
 QStringList FlatpakPermissionModel::valueList(QString catHeader) const

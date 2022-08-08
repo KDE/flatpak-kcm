@@ -15,7 +15,7 @@ KCM.ScrollViewKCM {
     id: permissionPage
     title: i18n("Permissions")
     implicitWidth: Kirigami.Units.gridUnit * 15
-    property var ref: null
+    property var ref
 
     view: ListView {
         id: permsView
