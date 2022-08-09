@@ -8,5 +8,5 @@
 namespace FlatpakHelper
 {
 QString permDataFilePath();
-QString iconPath(QString name, QString id);
+QString iconPath(const QString &name, const QString &id);
 }

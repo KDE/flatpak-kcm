@@ -17,34 +17,38 @@ QString permDataFilePath() {
     return userPath;
 }
 
-QString iconPath(QString name, QString id)
+QString iconPath(const QString &name, const QString &id)
 {
     QString dirPath = QStringLiteral("/var/lib/flatpak/app/") + id + QStringLiteral("/current/active/files/share/icons/hicolor/");
-    QStringList entries = QDir(dirPath).entryList();
-    if (entries.contains(QStringLiteral("scalable"))) {
-        dirPath.append(QStringLiteral("scalable/apps/"));
-    } else if (entries.contains(QStringLiteral("symbolic"))) {
-        dirPath.append(QStringLiteral("symbolic/apps/"));
-    } else if (entries.length() > 2) {
-        dirPath.append(entries.at(2) + QStringLiteral("/apps/"));
+    QDir dir(dirPath);
+    dir.setFilter(QDir::NoDotAndDotDot | QDir::AllDirs);
+
+    QString nextDir;
+    if (dir.exists(QStringLiteral("scalable"))) {
+        nextDir = QStringLiteral("scalable");
+    } else if (dir.exists(QStringLiteral("symbolic"))) {
+        nextDir = QStringLiteral("symbolic");
+    } else if (!dir.isEmpty()) {
+        nextDir = dir.entryList().at(0);
     } else {
         return QString();
     }
+    dir.cd(nextDir + QStringLiteral("/apps"));
 
-    QString filePath = dirPath + id + QStringLiteral(".png");
-    if (!QFileInfo::exists(filePath)) {
-        filePath = dirPath + id + QStringLiteral(".svg");
-        if (!QFileInfo::exists(filePath)) {
-            filePath = dirPath + name.toLower() + QStringLiteral(".png");
-            if (!QFileInfo::exists(filePath)) {
-                filePath = dirPath + name.toLower() + QStringLiteral(".svg");
-                if (!QFileInfo::exists(filePath)) {
-                    filePath = id + QStringLiteral(".png");
+    QString file = id + QStringLiteral(".png");
+    if (!dir.exists(file)) {
+        file = id + QStringLiteral(".svg");
+        if (!dir.exists(file)) {
+            file = name.toLower() + QStringLiteral(".png");
+            if (!dir.exists(file)) {
+                file = name.toLower() + QStringLiteral(".svg");
+                if (!dir.exists(file)) {
+                    return id + QStringLiteral(".png");
                 }
             }
         }
     }
-    return filePath;
+    return dir.absoluteFilePath(file);
 }
 
 }

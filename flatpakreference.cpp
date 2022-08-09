@@ -108,6 +108,9 @@ FlatpakReferencesModel::FlatpakReferencesModel(QObject *parent) : QAbstractListM
         QString name = QString::fromUtf8(flatpak_installed_ref_get_appdata_name(FLATPAK_INSTALLED_REF(g_ptr_array_index(installedApps, i))));
         QString version = QString::fromUtf8(flatpak_installed_ref_get_appdata_version(FLATPAK_INSTALLED_REF(g_ptr_array_index(installedApps, i))));
         QString id = QString::fromUtf8(flatpak_ref_get_name(FLATPAK_REF(g_ptr_array_index(installedApps, i))));
+        if (id.endsWith(QStringLiteral(".BaseApp"))) {
+            continue;
+        }
         QString icon = FlatpakHelper::iconPath(name, id);
 
         g_autoptr(GBytes) data = flatpak_installed_ref_load_metadata(FLATPAK_INSTALLED_REF(g_ptr_array_index(installedApps, i)), NULL, NULL);

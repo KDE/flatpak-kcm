@@ -1171,7 +1171,7 @@ void FlatpakPermissionModel::readFromFile()
 
     QFile inFile(m_reference->path());
     if(!inFile.open(QIODevice::ReadOnly)) {
-        qInfo() << "File does not open for reading";
+        return;
     }
     QTextStream inStream(&inFile);
     m_overridesData = inStream.readAll();
