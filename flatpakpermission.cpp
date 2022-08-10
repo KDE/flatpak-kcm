@@ -705,9 +705,11 @@ FlatpakReference *FlatpakPermissionModel::reference()
 void FlatpakPermissionModel::load()
 {
     m_permissions.clear();
+    m_overridesData.clear();
+    readFromFile();
     loadDefaultValues();
     loadCurrentValues();
-    readFromFile();
+    Q_EMIT dataChanged(FlatpakPermissionModel::index(0), FlatpakPermissionModel::index(m_permissions.length() - 1));
 }
 
 void FlatpakPermissionModel::save()
