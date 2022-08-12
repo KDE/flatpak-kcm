@@ -14,13 +14,12 @@ KCM.ScrollViewKCM {
     id: root
     title: i18n("Flatpak Permissions")
     Kirigami.ColumnView.fillWidth: false
-    implicitWidth: Kirigami.Units.gridUnit * 30
+    implicitWidth: Kirigami.Units.gridUnit * 40
     implicitHeight: Kirigami.Units.gridUnit * 20
     framedView: true
 
     Component.onCompleted: {
         kcm.columnWidth = Kirigami.Units.gridUnit * 15
-        kcm.push("permissions.qml")
     }
 
     KCM.ConfigModule.buttons: KCM.ConfigModule.Apply | KCM.ConfigModule.Default

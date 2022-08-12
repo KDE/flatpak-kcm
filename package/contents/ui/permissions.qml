@@ -31,7 +31,7 @@ KCM.ScrollViewKCM {
         section.delegate: Kirigami.ListSectionHeader {
             label: section
             font.bold: true
-            height: Kirigami.Units.gridUnit * 2
+            height: Kirigami.Units.gridUnit * 2.5
             Controls.Button {
                 text: i18n('+')
                 visible: label === "Filesystem Access" || label === "Session Bus Policy" || label === "System Bus Policy" || label === "Environment"
