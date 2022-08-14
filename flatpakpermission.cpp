@@ -47,6 +47,11 @@ QString FlatpakPermission::currentValue() const
     return m_currentValue;
 }
 
+QString FlatpakPermission::loadValue() const
+{
+    return m_loadValue;
+}
+
 QString FlatpakPermission::fsCurrentValue() const
 {
     if (m_currentValue == i18n("OFF")) {
@@ -148,9 +153,14 @@ void FlatpakPermission::setPType(PermType pType)
 
 bool FlatpakPermission::isSaveNeeded() const
 {
+    if (m_pType == FlatpakPermission::Dummy) {
+        return false;
+    }
+
     bool ret = m_isEnabled != m_isLoadEnabled;
     if (m_type != FlatpakPermission::Simple) {
         ret = ret || (m_currentValue != m_loadValue);
+        qInfo() << m_loadValue << m_currentValue;
     }
     return ret;
 }
@@ -754,8 +764,6 @@ void FlatpakPermissionModel::setReference(FlatpakReference *ref)
     if(m_reference != ref) {
         beginResetModel();
         m_reference = ref;
-        m_permissions.clear();
-        m_overridesData.clear();
         m_reference->setPermsModel(this);
         endResetModel();
         Q_EMIT referenceChanged();
@@ -1061,7 +1069,8 @@ void FlatpakPermissionModel::editFilesystemsPermissions(FlatpakPermission *perm,
 
 void FlatpakPermissionModel::editBusPermissions(FlatpakPermission *perm, const QString &value)
 {
-    if (perm->enabledByDefault() && value == perm->defaultValue()) {
+    if (perm->enabledByDefault() && value == perm->loadValue()) {
+        perm->setCurrentValue(value);
         removeBusPermission(perm);
         return;
     }

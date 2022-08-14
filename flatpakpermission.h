@@ -44,6 +44,7 @@ public:
     QString defaultValue() const;
     QStringList possibleValues() const;
     QString currentValue() const;
+    QString loadValue() const;
 
     QString fsCurrentValue() const;
 
