@@ -160,7 +160,6 @@ bool FlatpakPermission::isSaveNeeded() const
     bool ret = m_isEnabled != m_isLoadEnabled;
     if (m_type != FlatpakPermission::Simple) {
         ret = ret || (m_currentValue != m_loadValue);
-        qInfo() << m_loadValue << m_currentValue;
     }
     return ret;
 }
