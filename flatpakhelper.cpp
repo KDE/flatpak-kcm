@@ -1,3 +1,8 @@
+/**
+ * SPDX-FileCopyrightText: 2022 Suhaas Joshi <joshiesuhaas0@gmail.com>
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
 #include "flatpakhelper.h"
 
 #include <QDir>
