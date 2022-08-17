@@ -449,7 +449,7 @@ void FlatpakPermissionModel::loadDefaultValues()
     }
 
     name = i18n("home");
-    description = i18n("Home Folder");
+    description = i18n("All User Files");
     possibleValues.removeAll(homeVal);
     if (homeVal == i18n("OFF")) {
         isEnabledByDefault = false;
@@ -470,7 +470,7 @@ void FlatpakPermissionModel::loadDefaultValues()
     m_permissions.append(FlatpakPermission(name, category, description, FlatpakPermission::Filesystems, isEnabledByDefault, hostVal, possibleValues));
 
     name = i18n("host-os");
-    description = i18n("System Libraries, Executables and Binaries");
+    description = i18n("All System Libraries, Executables and Binaries");
     if (hostOsVal == i18n("OFF")) {
         isEnabledByDefault = false;
         hostOsVal = i18n("read/write");
@@ -480,7 +480,7 @@ void FlatpakPermissionModel::loadDefaultValues()
     m_permissions.append(FlatpakPermission(name, category, description, FlatpakPermission::Filesystems, isEnabledByDefault, hostOsVal, possibleValues));
 
     name = i18n("host-etc");
-    description = i18n("System Configurations");
+    description = i18n("All System Configurations");
     if (hostEtcVal == i18n("OFF")) {
         isEnabledByDefault = false;
         hostEtcVal = i18n("read/write");

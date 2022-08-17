@@ -15,6 +15,7 @@ KCM.ScrollViewKCM {
     id: permissionPage
     title: i18n("Permissions")
     implicitWidth: Kirigami.Units.gridUnit * 15
+    framedView: true
     property var ref
 
     view: ListView {
@@ -33,31 +34,51 @@ KCM.ScrollViewKCM {
             font.bold: true
             height: Kirigami.Units.gridUnit * 2.5
             Controls.Button {
-                text: i18n('+')
+                text: i18n("Add New")
                 visible: label === "Filesystem Access" || label === "Session Bus Policy" || label === "System Bus Policy" || label === "Environment"
                 onClicked: {
                     textPromptDialog.open()
                 }
                 Layouts.Layout.alignment: Qt.AlignRight
 
+                Controls.ToolTip {
+                    function getToolTipText()
+                    {
+                        var toolTipText
+                        if (label === i18n("Filesystem Access")) {
+                            return i18n("Click here to add a new filesystem path")
+                        } else if (label === i18n("Environment")) {
+                            return i18n("Click here to add a new environment variable")
+                        } else if (label === i18n("Session Bus Policy")){
+                            return i18n("Click here to add a new session bus")
+                        } else {
+                            return i18n("Click here to add a new system bus")
+                        }
+                    }
+                    text: getToolTipText()
+                }
+
                 Kirigami.PromptDialog {
                     id: textPromptDialog
                     title: i18n("New Permission Entry")
                     parent: permissionPage
-                    contentItem: Layouts.RowLayout {
+                    Layouts.RowLayout {
                         Controls.TextField {
                             id: nameField
                             placeholderText: i18n("Permission name...")
+                            Layouts.Layout.fillWidth: true
                         }
                         Controls.ComboBox {
                             id: valueBox
                             model: permsModel.valueList(section)
                             visible: section !== "Environment"
+                            Layouts.Layout.fillWidth: true
                         }
                         Controls.TextField {
                             id: valueField
                             visible: section === "Environment"
                             placeholderText: i18n("Enter value...")
+                            Layouts.Layout.fillWidth: true
                         }
                     }
                     property string value: label === "Environment" ? valueField.text : valueBox.currentText
@@ -72,6 +93,7 @@ KCM.ScrollViewKCM {
             text: model.description
             checked: model.isGranted
             visible: model.isNotDummy
+            height: Kirigami.Units.gridUnit * 2
 
             onClicked: permsModel.setPerm(permsView.currentIndex, model.isGranted)
 
@@ -84,7 +106,7 @@ KCM.ScrollViewKCM {
                     enabled: permItem.checked
                     model: permItem.comboVals
                     visible: permItem.isComplex
-                    width: Kirigami.Units.gridUnit * 5
+                    height: Kirigami.Units.gridUnit * 0.5
                     onActivated: (index) => permsModel.editPerm(permItem.index, textAt(index))
                 }
                 Controls.TextField {
