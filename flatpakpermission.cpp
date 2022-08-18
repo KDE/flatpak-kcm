@@ -815,7 +815,6 @@ void FlatpakPermissionModel::setPerm(int index, bool isGranted)
             }
         } else if (!perm->enabledByDefault() && isGranted) {
             removePermission(perm, isGranted);
-            m_permissions.remove(index, 1);
         }
         perm->setEnabled(!perm->enabled());
     } else if (perm->type() == FlatpakPermission::Bus) {
@@ -836,6 +835,9 @@ void FlatpakPermissionModel::setPerm(int index, bool isGranted)
         } else if (!perm->enabledByDefault() && isGranted) {
             perm->setEnabled(false);
             removeBusPermission(perm);
+        } else if (!perm->enabledByDefault() && !isGranted) {
+            perm->setEnabled(true);
+            addBusPermissions(perm);
         }
     } else if (perm->type() == FlatpakPermission::Environment) {
         if (perm->enabledByDefault() && isGranted) {
@@ -853,8 +855,11 @@ void FlatpakPermissionModel::setPerm(int index, bool isGranted)
             }
             perm->setEnabled(true);
         } else if (!perm->enabledByDefault() && isGranted) {
+            perm->setEnabled(false);
             removeEnvPermission(perm);
-            m_permissions.remove(index, 1);
+        } else if (!perm->enabledByDefault() && !isGranted) {
+            perm->setEnabled(true);
+            addEnvPermission(perm);
         }
     }
 
