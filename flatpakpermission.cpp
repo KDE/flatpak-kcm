@@ -586,14 +586,14 @@ void FlatpakPermissionModel::loadCurrentValues()
                 int permIndex = cat.indexOf(perm->name());
 
                 /* the permission is just being set off, the access level isn't changed */
-                bool isEnabled = permIndex > 0 && cat[permIndex - 1] == QLatin1Char('!');
+                bool isEnabled = permIndex > 0 ? cat.at(permIndex - 1) != QLatin1Char('!') : true;
                 perm->setEnabled(isEnabled);
                 perm->setLoadEnabled(isEnabled);
 
-                int valueIndex = cat.indexOf(QLatin1Char(':'), cat.indexOf(perm->name()));
+                int valueIndex = permIndex + perm->name().length();
                 QString val;
 
-                if(valueIndex == -1) {
+                if(valueIndex >= cat.length() || cat.at(valueIndex) != QLatin1Char(':')) {
                     val = i18n("read/write");
                     perm->setCurrentValue(val);
                     perm->setLoadValue(val);

@@ -35,6 +35,7 @@ KCM.ScrollViewKCM {
             height: Kirigami.Units.gridUnit * 2.5
             Controls.Button {
                 text: i18n("Add New")
+                icon.name: "bqm-add"
                 visible: label === "Filesystem Access" || label === "Session Bus Policy" || label === "System Bus Policy" || label === "Environment"
                 onClicked: {
                     textPromptDialog.open()
@@ -46,13 +47,13 @@ KCM.ScrollViewKCM {
                     {
                         var toolTipText
                         if (label === i18n("Filesystem Access")) {
-                            return i18n("Click here to add a new filesystem path")
+                            return i18n("Add a new filesystem path")
                         } else if (label === i18n("Environment")) {
-                            return i18n("Click here to add a new environment variable")
+                            return i18n("Add a new environment variable")
                         } else if (label === i18n("Session Bus Policy")){
-                            return i18n("Click here to add a new session bus")
+                            return i18n("Add a new session bus")
                         } else {
-                            return i18n("Click here to add a new system bus")
+                            return i18n("Add a new system bus")
                         }
                     }
                     text: getToolTipText()
