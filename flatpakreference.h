@@ -30,6 +30,10 @@ public:
     FlatpakPermissionModel *permsModel();
     void setPermsModel(FlatpakPermissionModel *permsModel);
 
+    QString unsavedOverrides() const;
+    void setUnsavedOverrides(const QString &unsavedOverrides);
+    void clearUnsavedOverrides();
+
     void load();
     void save();
     void defaults();
@@ -50,6 +54,8 @@ private:
 
     FlatpakPermissionModel *m_permsModel;
     FlatpakReferencesModel *m_refsModel;
+
+    QString m_unsavedOverrides;
 };
 
 class FlatpakReferencesModel : public QAbstractListModel

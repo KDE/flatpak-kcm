@@ -74,6 +74,21 @@ void FlatpakReference::setPermsModel(FlatpakPermissionModel *permsModel)
     connect(this, &FlatpakReference::needsSaveChanged, m_refsModel, &FlatpakReferencesModel::needsSaveChanged);
 }
 
+QString FlatpakReference::unsavedOverrides() const
+{
+    return m_unsavedOverrides;
+}
+
+void FlatpakReference::setUnsavedOverrides(const QString &unsavedOverrides)
+{
+    m_unsavedOverrides = unsavedOverrides;
+}
+
+void FlatpakReference::clearUnsavedOverrides()
+{
+    m_unsavedOverrides.clear();
+}
+
 void FlatpakReference::load()
 {
     m_permsModel->load();

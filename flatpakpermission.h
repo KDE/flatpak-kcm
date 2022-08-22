@@ -104,6 +104,7 @@ public:
 
     void loadDefaultValues();
     void loadCurrentValues();
+    void loadAppliedValues();
 
     FlatpakReference *reference();
 
