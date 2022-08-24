@@ -30,7 +30,7 @@ void KCMFlatpak::refreshSaveNeeded()
 void KCMFlatpak::load()
 {
     m_refsModel->load(m_index);
-//    setNeedsSave(isSaveNeeded());
+    setNeedsSave(false);
 }
 
 void KCMFlatpak::save()
