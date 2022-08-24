@@ -5,8 +5,9 @@
 
 import QtQuick 2.12
 import QtQuick.Controls 2.12 as Controls
+import QtQuick.Layouts 1.15 as Layouts
 
-import org.kde.kirigami 2.7 as Kirigami
+import org.kde.kirigami 2.19 as Kirigami
 import org.kde.kcm 1.2 as KCM
 import org.kde.plasma.kcm.flatpakpermissions 1.0
 
@@ -34,10 +35,46 @@ KCM.ScrollViewKCM {
             text: model.name
             icon: model.icon
 
-            onClicked: {
+            function shouldChange()
+            {
+                if (kcm.isSaveNeeded()) {
+                    promptDialog.open()
+                } else {
+                    changeApp()
+                }
+            }
+
+            function changeApp()
+            {
                 kcm.pop(0)
                 kcm.setIndex(appsListView.currentIndex)
                 kcm.push("permissions.qml", {ref: model.reference})
+            }
+
+            onClicked: shouldChange()
+
+            Kirigami.PromptDialog {
+                id: promptDialog
+                parent: root
+                title: i18n("Apply Permissions")
+                subtitle: i18n("The permissions of this application have been changed. Do you want to apply these changes or discard them?")
+                standardButtons: Kirigami.Dialog.Apply | Kirigami.Dialog.Discard
+
+                onApplied: {
+                    kcm.save()
+                    changeApp()
+                    promptDialog.close()
+                }
+
+                onDiscarded: {
+                    kcm.load()
+                    changeApp()
+                    promptDialog.close()
+                }
+
+                onRejected: {
+                    appsListView.currentIndex = kcm.currentIndex()
+                }
             }
         }
     }

@@ -18,6 +18,7 @@ public:
 
     void refreshSaveNeeded();
 
+public Q_SLOTS:
     void load() override;
     void save() override;
     void defaults() override;
@@ -26,6 +27,7 @@ public:
 
 public Q_SLOTS:
     void setIndex(int index);
+    int currentIndex() const;
 
 private:
     FlatpakReferencesModel *m_refsModel;

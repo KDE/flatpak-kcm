@@ -58,4 +58,9 @@ void KCMFlatpak::setIndex(int index)
     m_index = index;
 }
 
+int KCMFlatpak::currentIndex() const
+{
+    return m_index;
+}
+
 #include "kcm.moc"
