@@ -61,12 +61,39 @@ KCM.ScrollViewKCM {
 
                 Kirigami.PromptDialog {
                     id: textPromptDialog
-                    title: i18n("New Permission Entry")
+                    title: getDialogTitle()
                     parent: permissionPage
+
+                    function getPlaceHolderText()
+                    {
+                        if (label === i18n("Filesystem Access")) {
+                            return i18n("Enter filesystem path...")
+                        } else if (label === i18n("Environment")) {
+                            return i18n("Enter variable...")
+                        } else if (label === i18n("Session Bus Policy")){
+                            return i18n("Enter session bus name...")
+                        } else {
+                            return i18n("Enter system bus name...")
+                        }
+                    }
+
+                    function getDialogTitle()
+                    {
+                        if (label === i18n("Filesystem Access")) {
+                            return i18n("Add Filesystem Path Permission")
+                        } else if (label === i18n("Environment")) {
+                            return i18n("Set Environment Variable")
+                        } else if (label === i18n("Session Bus Policy")){
+                            return i18n("Add Session Bus Permission")
+                        } else {
+                            return i18n("Add System Bus Permission")
+                        }
+                    }
+
                     Layouts.RowLayout {
                         Controls.TextField {
                             id: nameField
-                            placeholderText: i18n("Permission name...")
+                            placeholderText: textPromptDialog.getPlaceHolderText()
                             Layouts.Layout.fillWidth: true
                         }
                         Controls.ComboBox {
