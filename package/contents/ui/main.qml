@@ -15,7 +15,7 @@ KCM.ScrollViewKCM {
     id: root
     title: i18n("Flatpak Permissions")
     Kirigami.ColumnView.fillWidth: false
-    implicitWidth: Kirigami.Units.gridUnit * 40
+    implicitWidth: Kirigami.Units.gridUnit * 80
     implicitHeight: Kirigami.Units.gridUnit * 20
     framedView: true
 
@@ -48,7 +48,7 @@ KCM.ScrollViewKCM {
             {
                 kcm.pop(0)
                 kcm.setIndex(appsListView.currentIndex)
-                kcm.push("permissions.qml", {ref: model.reference})
+                kcm.push("BasicAdvancedPage.qml", {ref: model.reference})
             }
 
             onClicked: shouldChange()

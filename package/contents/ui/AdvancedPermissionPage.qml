@@ -17,14 +17,11 @@ KCM.ScrollViewKCM {
     implicitWidth: Kirigami.Units.gridUnit * 15
     framedView: true
     property var ref
+    property QtObject permsModel
 
     view: ListView {
         id: permsView
-        model: FlatpakPermissionModel {
-            id: permsModel
-            reference: permissionPage.ref
-        }
-
+        model: permsModel
         currentIndex: -1
 
         section.property: "category"
@@ -116,34 +113,8 @@ KCM.ScrollViewKCM {
             }
         }
 
-        delegate: Kirigami.CheckableListItem {
-            id: permItem
-            text: model.description
-            checked: model.isGranted
-            visible: model.isNotDummy
-            height: Kirigami.Units.gridUnit * 2
-
-            onClicked: permsModel.setPerm(permsView.currentIndex, model.isGranted)
-
-            property bool isComplex: !(model.isSimple) && !(model.isEnvironment)
-            property var comboVals: model.valueList
-            property int index: model.index
-
-            trailing: Layouts.RowLayout {
-                Controls.ComboBox {
-                    enabled: permItem.checked
-                    model: permItem.comboVals
-                    visible: permItem.isComplex
-                    height: Kirigami.Units.gridUnit * 0.5
-                    onActivated: (index) => permsModel.editPerm(permItem.index, textAt(index))
-                }
-                Controls.TextField {
-                    text: model.currentValue
-                    visible: model.isEnvironment
-                    enabled: permItem.checked
-                    Keys.onReturnPressed: permsModel.editPerm(permItem.index, text)
-                }
-            }
+        delegate: PermissionDelegate {
+            showAdvanced: true
         }
     }
 }
