@@ -1,7 +1,6 @@
 {
     "KPlugin": {
         "Description": "Configure Flatpak Permissions",
-        "Description[x-test]": "xxChange Permission Settingsxx",
         "FormFactors": [
             "desktop",
             "handset",
@@ -11,10 +10,8 @@
 
         "Id": "kcm_flatpak",
         "Icon": "flatpak-discover",
-        "Name": "Flatpak Permission Settings",
-        "Name[x-test]": "xxFlatpakxx"
+        "Name": "Flatpak Permission Settings"
     },
-    "X-KDE-Keywords": "Flatpak,Permission",
-    "X-KDE-Keywords[x-test]": "xxFlatpakxx,xxPermissionxx,",
+    "X-KDE-Keywords": "Flatpak,permission,permissions,access,sandbox,sandboxed,filesystem,file,files,folder,folders,network,networks,networking,bluetooth,print,printer,printing,audio,sound,login,remote login,ssh,smart card,kvm,device,session,session bus,system,system bus,environment,environment variable",
     "X-KDE-System-Settings-Parent-Category": "applications"
 }
