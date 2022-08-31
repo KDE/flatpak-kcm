@@ -35,7 +35,6 @@ FlatpakPermission::FlatpakPermission(QString name, QString category, QString des
     /* will override while loading current values */
     m_isEnabled = m_isLoadEnabled = isEnabledByDefault;
     m_currentValue = m_loadValue = m_defaultValue;
-    m_sType = m_category == QStringLiteral("filesystems") ? FlatpakPermission::Basic : FlatpakPermission::Advanced;
 }
 
 QString FlatpakPermission::name() const
@@ -117,11 +116,6 @@ FlatpakPermission::PermType FlatpakPermission::pType() const
     return m_pType;
 }
 
-FlatpakPermission::SectionType FlatpakPermission::sType() const
-{
-    return m_sType;
-}
-
 bool FlatpakPermission::enabled() const
 {
     return m_isEnabled;
@@ -155,11 +149,6 @@ void FlatpakPermission::setLoadEnabled(bool isLoadEnabled)
 void FlatpakPermission::setPType(PermType pType)
 {
     m_pType = pType;
-}
-
-void FlatpakPermission::setSType(SectionType sType)
-{
-    m_sType = sType;
 }
 
 bool FlatpakPermission::isSaveNeeded() const
@@ -224,8 +213,6 @@ QVariant FlatpakPermissionModel::data(const QModelIndex &index, int role) const
         return m_permissions.at(index.row()).type() == FlatpakPermission::Environment;
     case Roles::IsNotDummy:
         return m_permissions.at(index.row()).pType() != FlatpakPermission::Dummy;
-    case Roles::IsBasic:
-        return m_permissions.at(index.row()).sType() == FlatpakPermission::Basic;
     case Roles::ValueList:
         QStringList valuesTmp = m_permissions.at(index.row()).possibleValues();
         QString currentVal = m_permissions.at(index.row()).currentValue();
@@ -251,7 +238,6 @@ QHash<int, QByteArray> FlatpakPermissionModel::roleNames() const
     roles[Roles::IsSimple] = "isSimple";
     roles[Roles::IsEnvironment] = "isEnvironment";
     roles[Roles::IsNotDummy] = "isNotDummy";
-    roles[Roles::IsBasic] = "isBasic";
     return roles;
 }
 
@@ -282,7 +268,6 @@ void FlatpakPermissionModel::loadDefaultValues()
     description = i18n("Internet Connection");
     isEnabledByDefault = sharedPerms.contains(name);
     m_permissions.append(FlatpakPermission(name, category, description, FlatpakPermission::Simple, isEnabledByDefault));
-    m_permissions.last().setSType(FlatpakPermission::Basic);
 
     name = i18n("ipc");
     description = i18n("Inter-process Communication");
@@ -313,7 +298,6 @@ void FlatpakPermissionModel::loadDefaultValues()
     description = i18n("Pulseaudio Sound Server");
     isEnabledByDefault = socketPerms.contains(name);
     m_permissions.append(FlatpakPermission(name, category, description, FlatpakPermission::Simple, isEnabledByDefault));
-    m_permissions.last().setSType(FlatpakPermission::Basic);
 
     name = i18n("session-bus");
     description = i18n("Session Bus Access");
@@ -329,19 +313,16 @@ void FlatpakPermissionModel::loadDefaultValues()
     description = i18n("Remote Login Access");
     isEnabledByDefault = socketPerms.contains(name);
     m_permissions.append(FlatpakPermission(name, category, description, FlatpakPermission::Simple, isEnabledByDefault));
-    m_permissions.last().setSType(FlatpakPermission::Basic);
 
     name = i18n("pcsc");
     description = i18n("Smart Card Access");
     isEnabledByDefault = socketPerms.contains(name);
     m_permissions.append(FlatpakPermission(name, category, description, FlatpakPermission::Simple, isEnabledByDefault));
-    m_permissions.last().setSType(FlatpakPermission::Basic);
 
     name = i18n("cups");
     description = i18n("Print System Access");
     isEnabledByDefault = socketPerms.contains(name);
     m_permissions.append(FlatpakPermission(name, category, description, FlatpakPermission::Simple, isEnabledByDefault));
-    m_permissions.last().setSType(FlatpakPermission::Basic);
     /* SOCKETS category */
 
     /* DEVICES category */
@@ -367,7 +348,6 @@ void FlatpakPermissionModel::loadDefaultValues()
     description = i18n("Device Access");
     isEnabledByDefault = devicesPerms.contains(name);
     m_permissions.append(FlatpakPermission(name, category, description, FlatpakPermission::Simple, isEnabledByDefault));
-    m_permissions.last().setSType(FlatpakPermission::Basic);
     /* DEVICES category */
 
     /* FEATURES category */
@@ -388,7 +368,6 @@ void FlatpakPermissionModel::loadDefaultValues()
     description = i18n("Bluetooth");
     isEnabledByDefault = featuresPerms.contains(name);
     m_permissions.append(FlatpakPermission(name, category, description, FlatpakPermission::Simple, isEnabledByDefault));
-    m_permissions.last().setSType(FlatpakPermission::Basic);
 
     name = i18n("canbus");
     description = i18n("Canbus Socket Access");

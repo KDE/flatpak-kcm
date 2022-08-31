@@ -29,11 +29,6 @@ public:
         Dummy /* empty permissions, just for showing section headers for categories that don't have permissions */
     };
 
-    enum SectionType {
-        Basic,
-        Advanced
-    };
-
     FlatpakPermission(QString name = QString(), QString category = QString(), QString description = QString(), QString defaultValue = QStringLiteral("OFF"), QStringList possibleValues = QStringList(), QString currentValue = QString(), ValueType type = ValueType::Simple);
     FlatpakPermission(QString name, QString category, QString description, ValueType type, bool isEnabledByDefault, QString defaultValue = QString(), QStringList possibleValues = QStringList());
     QString name() const;
@@ -42,7 +37,6 @@ public:
     QString description() const;
     ValueType type() const;
     PermType pType() const;
-    SectionType sType() const;
 
     bool enabled() const;
     bool enabledByDefault() const;
@@ -59,7 +53,6 @@ public:
     void setEnabled(bool isEnabled);
     void setLoadEnabled(bool isLoadEnabled);
     void setPType(PermType pType);
-    void setSType(SectionType sType);
 
     bool isSaveNeeded() const;
     bool isDefaults() const;
@@ -70,7 +63,6 @@ private:
     QString m_description;
     ValueType m_type;
     PermType m_pType;
-    SectionType m_sType;
 
     /* applicable for all permission types */
     bool m_isEnabled;
@@ -103,8 +95,7 @@ public:
         IsSimple,
         IsEnvironment,
         Path,
-        IsNotDummy,
-        IsBasic
+        IsNotDummy
     };
 
     int rowCount(const QModelIndex &parent = QModelIndex()) const override;
