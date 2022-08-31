@@ -13,10 +13,11 @@ import org.kde.plasma.kcm.flatpakpermissions 1.0
 
 KCM.ScrollViewKCM {
     id: permissionPage
-    title: i18n("Permissions")
+    title: showAdvanced ? i18n("All Permissions") : i18n("Basic Permissions")
     implicitWidth: Kirigami.Units.gridUnit * 15
     framedView: true
     property var ref
+    property bool showAdvanced: false
 
     view: ListView {
         id: permsView
@@ -27,12 +28,18 @@ KCM.ScrollViewKCM {
 
         currentIndex: -1
 
-        section.property: "category"
+        section.property: showAdvanced ? "category" : "sectionType"
         section.criteria: ViewSection.FullString
         section.delegate: Kirigami.ListSectionHeader {
             label: section
             font.bold: true
             height: Kirigami.Units.gridUnit * 2.5
+            Controls.ToolButton {
+                text: showAdvanced ? "^" : "v"
+                visible: label === "Advanced Permissions"
+                onClicked: showAdvanced = !showAdvanced
+                Layouts.Layout.alignment: Qt.AlignRight
+            }
             Controls.Button {
                 text: i18n("Add New")
                 icon.name: "bqm-add"
@@ -120,7 +127,7 @@ KCM.ScrollViewKCM {
             id: permItem
             text: model.description
             checked: model.isGranted
-            visible: model.isNotDummy
+            visible: showAdvanced ? model.isNotDummy : model.isBasic
             height: Kirigami.Units.gridUnit * 2
 
             onClicked: permsModel.setPerm(permsView.currentIndex, model.isGranted)
