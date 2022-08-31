@@ -35,10 +35,15 @@ KCM.ScrollViewKCM {
             font.bold: true
             height: Kirigami.Units.gridUnit * 2.5
             Controls.ToolButton {
-                text: showAdvanced ? "^" : "v"
+                text: showAdvanced ? i18n("Hide advanced permissions") : i18n("Show advanced permissions")
+                display: Controls.AbstractButton.IconOnly
+                icon.name: showAdvanced ? "collapse" : "expand"
                 visible: label === "Advanced Permissions"
                 onClicked: showAdvanced = !showAdvanced
                 Layouts.Layout.alignment: Qt.AlignRight
+                Controls.ToolTip {
+                    text: parent.text
+                }
             }
             Controls.Button {
                 text: i18n("Add New")
