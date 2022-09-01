@@ -13,7 +13,7 @@ import org.kde.plasma.kcm.flatpakpermissions 1.0
 
 KCM.ScrollViewKCM {
     id: permissionPage
-    title: showAdvanced ? i18n("All Permissions") : i18n("Basic Permissions")
+    title: ref === null ? i18n("Permissions") : showAdvanced ? i18n("All Permissions") : i18n("Basic Permissions")
     implicitWidth: Kirigami.Units.gridUnit * 15
     framedView: true
     property var ref
