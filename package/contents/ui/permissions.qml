@@ -19,6 +19,17 @@ KCM.ScrollViewKCM {
     property var ref
     property bool showAdvanced: false
 
+    Kirigami.Heading {
+        text: i18n("Select an application from the list to view its permissions here")
+        width: parent.width - (Kirigami.Units.largeSpacing * 4)
+        anchors.centerIn: parent
+        visible: ref === null
+        opacity: 0.65
+        Layouts.Layout.fillWidth: true
+        horizontalAlignment: Qt.AlignHCenter
+        wrapMode: Text.WordWrap
+    }
+
     view: ListView {
         id: permsView
         model: FlatpakPermissionModel {
