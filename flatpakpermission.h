@@ -30,8 +30,8 @@ public:
     };
 
     enum SectionType {
-        Basic,
-        Advanced
+        Basic, /* easy-to-understand permissions, includes: print system access, internet connection, filesystems etc. */
+        Advanced /* more "technical" permissions */
     };
 
     FlatpakPermission(QString name = QString(), QString category = QString(), QString description = QString(), QString defaultValue = QStringLiteral("OFF"), QStringList possibleValues = QStringList(), QString currentValue = QString(), ValueType type = ValueType::Simple);
@@ -104,6 +104,7 @@ public:
         IsEnvironment,
         Path,
         IsNotDummy,
+        SectionType,
         IsBasic
     };
 

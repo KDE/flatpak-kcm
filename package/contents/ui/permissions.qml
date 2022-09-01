@@ -13,24 +13,39 @@ import org.kde.plasma.kcm.flatpakpermissions 1.0
 
 KCM.ScrollViewKCM {
     id: permissionPage
-    title: i18n("Permissions")
+    title: showAdvanced ? i18n("All Permissions") : i18n("Basic Permissions")
     implicitWidth: Kirigami.Units.gridUnit * 15
     framedView: true
     property var ref
-    property QtObject permsModel
+    property bool showAdvanced: false
 
     view: ListView {
         id: permsView
-        model: permsModel
+        model: FlatpakPermissionModel {
+            id: permsModel
+            reference: permissionPage.ref
+        }
+
         currentIndex: -1
 
-        section.property: "category"
+        section.property: showAdvanced ? "category" : "sectionType"
         section.criteria: ViewSection.FullString
         section.delegate: Kirigami.ListSectionHeader {
             label: section
             font.bold: true
             height: Kirigami.Units.gridUnit * 2.5
-            Controls.Button {
+            Controls.ToolButton {
+                text: showAdvanced ? i18n("Hide advanced permissions") : i18n("Show advanced permissions")
+                display: Controls.AbstractButton.IconOnly
+                icon.name: showAdvanced ? "collapse" : "expand"
+                visible: label === "Advanced Permissions"
+                onClicked: showAdvanced = !showAdvanced
+                Layouts.Layout.alignment: Qt.AlignRight
+                Controls.ToolTip {
+                    text: parent.text
+                }
+            }
+            Controls.ToolButton {
                 text: i18n("Add New")
                 icon.name: "bqm-add"
                 visible: label === "Filesystem Access" || label === "Session Bus Policy" || label === "System Bus Policy" || label === "Environment"
@@ -107,14 +122,40 @@ KCM.ScrollViewKCM {
                         }
                     }
                     property string value: label === "Environment" ? valueField.text : valueBox.currentText
-                    standardButtons: Kirigami.Dialog.Ok | Kirigami.Dialog.Close
+                    standardButtons: Kirigami.Dialog.Ok | Kirigami.Dialog.Cancel
                     onAccepted: permsModel.addUserEnteredPermission(nameField.text, section, textPromptDialog.value)
                 }
             }
         }
 
-        delegate: PermissionDelegate {
-            showAdvanced: true
+        delegate: Kirigami.CheckableListItem {
+            id: permItem
+            text: model.description
+            checked: model.isGranted
+            visible: showAdvanced ? model.isNotDummy : model.isBasic
+            height: Kirigami.Units.gridUnit * 2
+
+            onClicked: permsModel.setPerm(permsView.currentIndex, model.isGranted)
+
+            property bool isComplex: !(model.isSimple) && !(model.isEnvironment)
+            property var comboVals: model.valueList
+            property int index: model.index
+
+            trailing: Layouts.RowLayout {
+                Controls.ComboBox {
+                    enabled: permItem.checked
+                    model: permItem.comboVals
+                    visible: permItem.isComplex
+                    height: Kirigami.Units.gridUnit * 0.5
+                    onActivated: (index) => permsModel.editPerm(permItem.index, textAt(index))
+                }
+                Controls.TextField {
+                    text: model.currentValue
+                    visible: model.isEnvironment
+                    enabled: permItem.checked
+                    Keys.onReturnPressed: permsModel.editPerm(permItem.index, text)
+                }
+            }
         }
     }
 }
