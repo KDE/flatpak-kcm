@@ -45,7 +45,7 @@ KCM.ScrollViewKCM {
                     text: parent.text
                 }
             }
-            Controls.Button {
+            Controls.ToolButton {
                 text: i18n("Add New")
                 icon.name: "bqm-add"
                 visible: label === "Filesystem Access" || label === "Session Bus Policy" || label === "System Bus Policy" || label === "Environment"
@@ -122,7 +122,7 @@ KCM.ScrollViewKCM {
                         }
                     }
                     property string value: label === "Environment" ? valueField.text : valueBox.currentText
-                    standardButtons: Kirigami.Dialog.Ok | Kirigami.Dialog.Close
+                    standardButtons: Kirigami.Dialog.Ok | Kirigami.Dialog.Cancel
                     onAccepted: permsModel.addUserEnteredPermission(nameField.text, section, textPromptDialog.value)
                 }
             }
