@@ -134,8 +134,14 @@ KCM.ScrollViewKCM {
             checked: model.isGranted
             visible: showAdvanced ? model.isNotDummy : model.isBasic
             height: Kirigami.Units.gridUnit * 2
+            icon: undefined
 
-            onClicked: permsModel.setPerm(permsView.currentIndex, model.isGranted)
+            action: Controls.Action {
+                onTriggered: {
+                    checked = !checked
+                    permsModel.setPerm(model.index, model.isGranted)
+                }
+            }
 
             property bool isComplex: !(model.isSimple) && !(model.isEnvironment)
             property var comboVals: model.valueList
