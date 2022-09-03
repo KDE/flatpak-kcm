@@ -13,11 +13,18 @@ import org.kde.plasma.kcm.flatpakpermissions 1.0
 
 KCM.ScrollViewKCM {
     id: permissionPage
-    title: showAdvanced ? i18n("All Permissions") : i18n("Basic Permissions")
+    title: ref === null ? i18n("Permissions") : showAdvanced ? i18n("All Permissions") : i18n("Basic Permissions")
     implicitWidth: Kirigami.Units.gridUnit * 15
     framedView: true
     property var ref
     property bool showAdvanced: false
+
+    Kirigami.PlaceholderMessage {
+        text: i18n("Select an application from the list to view its permissions here")
+        width: parent.width - (Kirigami.Units.largeSpacing * 4)
+        anchors.centerIn: parent
+        visible: ref === null
+    }
 
     view: ListView {
         id: permsView
