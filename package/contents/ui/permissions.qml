@@ -128,28 +128,36 @@ KCM.ScrollViewKCM {
             }
         }
 
-        delegate: Kirigami.CheckableListItem {
+        /* FIXME: use Kirigami.CheckableListItem here. Currently it uses BasicListItem, because
+         * clicking the checkbox in CheckableListItem does not call the associated slot, and by implication
+         * does not enable the "apply" and "reset" buttons. Once a solution for this has been found,
+         * the delegate below must be ported to CheckableListItem.
+         */
+        delegate: Kirigami.BasicListItem {
             id: permItem
             text: model.description
-            checked: model.isGranted
             visible: showAdvanced ? model.isNotDummy : model.isBasic
             height: Kirigami.Units.gridUnit * 2
             icon: undefined
-
-            action: Controls.Action {
-                onTriggered: {
-                    checked = !checked
-                    permsModel.setPerm(model.index, model.isGranted)
-                }
-            }
+            hoverEnabled: false
+            checkable: true
+            activeBackgroundColor: "transparent"
+            onClicked: checkBox.clicked()
 
             property bool isComplex: !(model.isSimple) && !(model.isEnvironment)
             property var comboVals: model.valueList
             property int index: model.index
 
+            leading: Controls.CheckBox {
+                id: checkBox
+                checked: model.isGranted
+                onClicked: permsModel.setPerm(model.index)
+            }
+
             trailing: Layouts.RowLayout {
+                anchors.right: parent.right
                 Controls.ComboBox {
-                    enabled: permItem.checked
+                    enabled: checkBox.checked
                     model: permItem.comboVals
                     visible: permItem.isComplex
                     height: Kirigami.Units.gridUnit * 0.5
