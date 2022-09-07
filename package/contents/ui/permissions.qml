@@ -138,11 +138,11 @@ KCM.ScrollViewKCM {
             text: model.description
             visible: showAdvanced ? model.isNotDummy : model.isBasic
             height: Kirigami.Units.gridUnit * 2
-            icon: undefined
             hoverEnabled: false
             checkable: true
             activeBackgroundColor: "transparent"
-            onClicked: checkBox.clicked()
+            activeTextColor: Kirigami.Theme.textColor
+            onClicked: permsModel.setPerm(model.index)
 
             property bool isComplex: !(model.isSimple) && !(model.isEnvironment)
             property var comboVals: model.valueList
@@ -151,11 +151,10 @@ KCM.ScrollViewKCM {
             leading: Controls.CheckBox {
                 id: checkBox
                 checked: model.isGranted
-                onClicked: permsModel.setPerm(model.index)
+                onToggled: permsModel.setPerm(model.index)
             }
 
             trailing: Layouts.RowLayout {
-                anchors.right: parent.right
                 Controls.ComboBox {
                     enabled: checkBox.checked
                     model: permItem.comboVals
