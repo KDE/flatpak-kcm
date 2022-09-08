@@ -7,6 +7,8 @@ SPDX-License-Identifier: GPL-2.0-or-later
 
 Still under development.
 
+![alt text](https://invent.kde.org/jsuhaas/flatpak-kcm/uploads/cd0eee337bc3568af2f2d74a95a8e413/TITLES.png)
+
 ## Building and Running:
 
 - cd wherever/you/like
@@ -15,6 +17,6 @@ Still under development.
 - mkdir build
 - cd build
 - cmake .. -DCMAKE_INSTALL_PREFIX=~/.local/kde
-- make -j8 install
+- make install
 - source prefix.sh
 - kcmshell5 kcm_flatpak
