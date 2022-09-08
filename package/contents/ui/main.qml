@@ -13,7 +13,7 @@ import org.kde.plasma.kcm.flatpakpermissions 1.0
 
 KCM.ScrollViewKCM {
     id: root
-    title: i18n("Flatpak Permissions")
+    title: i18n("Flatpak Applications")
     Kirigami.ColumnView.fillWidth: false
     implicitWidth: Kirigami.Units.gridUnit * 40
     implicitHeight: Kirigami.Units.gridUnit * 20
