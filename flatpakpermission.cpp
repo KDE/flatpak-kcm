@@ -811,14 +811,16 @@ void FlatpakPermissionModel::setReference(FlatpakReference *ref)
     }
 }
 
-void FlatpakPermissionModel::setPerm(int index, bool isGranted)
+void FlatpakPermissionModel::setPerm(int index)
 {
+
     /* guard for invalid indices */
     if (index < 0 || index >= m_permissions.length()) {
         return;
     }
 
     FlatpakPermission *perm = &m_permissions[index];
+    bool isGranted = perm->enabled();
 
     if (perm->type() == FlatpakPermission::Simple) {
         bool setToNonDefault = (perm->enabledByDefault() && isGranted) || (!perm->enabledByDefault() && !isGranted);

@@ -125,7 +125,7 @@ public:
 
 public Q_SLOTS:
     void setReference(FlatpakReference *ref);
-    void setPerm(int index, bool isGranted);
+    void setPerm(int index);
     void editPerm(int index, QString newValue);
     void addUserEnteredPermission(QString name, QString cat, QString value);
     QStringList valueList(QString catHeader) const;
