@@ -210,34 +210,36 @@ QVariant FlatpakPermissionModel::data(const QModelIndex &index, int role) const
         return QVariant();
     }
 
+    const auto permission = m_permissions.at(index.row());
+
     switch(role) {
     case Roles::Name:
-        return m_permissions.at(index.row()).name();
+        return permission.name();
     case Roles::Category:
-        return m_permissions.at(index.row()).categoryHeading();
+        return permission.categoryHeading();
     case Roles::Description:
-        return m_permissions.at(index.row()).description();
+        return permission.description();
     case Roles::CurrentValue:
-        return m_permissions.at(index.row()).currentValue();
+        return permission.currentValue();
     case Roles::DefaultValue:
-        return m_permissions.at(index.row()).defaultValue();
+        return permission.defaultValue();
     case Roles::IsGranted:
-        return m_permissions.at(index.row()).enabled();
+        return permission.enabled();
     case Roles::Type:
-        return m_permissions.at(index.row()).type();
+        return permission.type();
     case Roles::IsSimple:
-        return m_permissions.at(index.row()).type() == FlatpakPermission::ValueType::Simple;
+        return permission.type() == FlatpakPermission::ValueType::Simple;
     case Roles::IsEnvironment:
-        return m_permissions.at(index.row()).type() == FlatpakPermission::Environment;
+        return permission.type() == FlatpakPermission::Environment;
     case Roles::IsNotDummy:
-        return m_permissions.at(index.row()).pType() != FlatpakPermission::Dummy;
+        return permission.pType() != FlatpakPermission::Dummy;
     case Roles::SectionType:
-        return m_permissions.at(index.row()).sType() == FlatpakPermission::Basic ? m_permissions.at(index.row()).type() == FlatpakPermission::Filesystems ? i18n("Filesystem Access") : i18n("Basic Permissions") : i18n("Advanced Permissions");
+        return permission.sType() == FlatpakPermission::Basic ? permission.type() == FlatpakPermission::Filesystems ? i18n("Filesystem Access") : i18n("Basic Permissions") : i18n("Advanced Permissions");
     case Roles::IsBasic:
-        return m_permissions.at(index.row()).sType() == FlatpakPermission::Basic;
+        return permission.sType() == FlatpakPermission::Basic;
     case Roles::ValueList:
-        QStringList valuesTmp = m_permissions.at(index.row()).possibleValues();
-        QString currentVal = m_permissions.at(index.row()).currentValue();
+        QStringList valuesTmp = permission.possibleValues();
+        QString currentVal = permission.currentValue();
         valuesTmp.removeAll(currentVal);
         valuesTmp.prepend(currentVal);
         return valuesTmp;
