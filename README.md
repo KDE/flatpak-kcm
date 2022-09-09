@@ -7,7 +7,8 @@ SPDX-License-Identifier: GPL-2.0-or-later
 
 Still under development.
 
-![alt text](https://invent.kde.org/jsuhaas/flatpak-kcm/uploads/cd0eee337bc3568af2f2d74a95a8e413/TITLES.png)
+![Basic Section](Resources/FlatpakKCMBasicSection.png)
+![Advanced Section](Resources/FlatpakKCMAdvancedSection.png)
 
 ## Building and Running:
 
