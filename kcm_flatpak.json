@@ -7,9 +7,8 @@
             "tablet",
             "mediacenter"
         ],
-
-        "Id": "kcm_flatpak",
         "Icon": "flatpak-discover",
+        "Id": "kcm_flatpak",
         "Name": "Flatpak Permission Settings"
     },
     "X-KDE-Keywords": "Flatpak,permission,permissions,access,sandbox,sandboxed,filesystem,file,files,folder,folders,network,networks,networking,bluetooth,print,printer,printing,audio,sound,login,remote login,ssh,smart card,kvm,device,session,session bus,system,system bus,environment,environment variable",
