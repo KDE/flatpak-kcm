@@ -1,6 +1,14 @@
 {
     "KPlugin": {
         "Description": "Configure Flatpak Permissions",
+        "Description[ca@valencia]": "Configura els permisos de Flatpak",
+        "Description[ca]": "Configura els permisos del Flatpak",
+        "Description[es]": "Configurar los permisos de Flatpak",
+        "Description[eu]": "Konfiguratu Flatpak-en baimenak",
+        "Description[nl]": "Toegangsrechten van Flatpak configureren",
+        "Description[pt]": "Configurar as Permissões do Flatpak",
+        "Description[uk]": "Налаштовування прав доступу Flatpak",
+        "Description[x-test]": "xxConfigure Flatpak Permissionsxx",
         "FormFactors": [
             "desktop",
             "handset",
@@ -9,7 +17,15 @@
         ],
         "Icon": "flatpak-discover",
         "Id": "kcm_flatpak",
-        "Name": "Flatpak Permission Settings"
+        "Name": "Flatpak Permission Settings",
+        "Name[ca@valencia]": "Configuració dels permisos de Flatpak",
+        "Name[ca]": "Configuració dels permisos del Flatpak",
+        "Name[es]": "Preferencias de permisos de Flatpak",
+        "Name[eu]": "Flatpak baimenen ezarpenak",
+        "Name[nl]": "Instellingen voor toegangsrechten van Flatpak",
+        "Name[pt]": "Configuração das Permissões do Flatpak",
+        "Name[uk]": "Параметри доступу Flatpak",
+        "Name[x-test]": "xxFlatpak Permission Settingsxx"
     },
     "X-KDE-Keywords": "Flatpak,permission,permissions,access,sandbox,sandboxed,filesystem,file,files,folder,folders,network,networks,networking,bluetooth,print,printer,printing,audio,sound,login,remote login,ssh,smart card,kvm,device,session,session bus,system,system bus,environment,environment variable",
     "X-KDE-System-Settings-Parent-Category": "applications"
