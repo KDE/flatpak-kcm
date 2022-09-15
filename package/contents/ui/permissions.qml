@@ -143,7 +143,7 @@ KCM.ScrollViewKCM {
         delegate: Kirigami.BasicListItem {
             id: permItem
             text: model.description
-            visible: showAdvanced ? model.isNotDummy : model.isBasic
+            visible: showAdvanced ? model.isNotDummy : model.isBasic && model.isNotDummy
             height: Kirigami.Units.gridUnit * 2
             hoverEnabled: false
             checkable: true

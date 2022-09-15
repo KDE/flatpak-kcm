@@ -553,6 +553,7 @@ void FlatpakPermissionModel::loadDefaultValues()
         }
     } else {
         FlatpakPermission perm(QStringLiteral("Session Bus Dummy"), QStringLiteral("Session Bus Policy"));
+        perm.setSType(FlatpakPermission::SectionType::Advanced);
         perm.setPType(FlatpakPermission::Dummy);
         m_permissions.append(perm);
     }
@@ -574,6 +575,7 @@ void FlatpakPermissionModel::loadDefaultValues()
         }
     } else {
         FlatpakPermission perm(QStringLiteral("System Bus Dummy"), QStringLiteral("System Bus Policy"));
+        perm.setSType(FlatpakPermission::SectionType::Advanced);
         perm.setPType(FlatpakPermission::Dummy);
         m_permissions.append(perm);
     }
@@ -593,6 +595,7 @@ void FlatpakPermissionModel::loadDefaultValues()
         }
     } else {
         FlatpakPermission perm(QStringLiteral("Environment Dummy"), QStringLiteral("Environment"));
+        perm.setSType(FlatpakPermission::SectionType::Advanced);
         perm.setPType(FlatpakPermission::Dummy);
         m_permissions.append(perm);
     }
