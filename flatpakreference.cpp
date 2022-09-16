@@ -17,16 +17,17 @@ extern "C" {
 
 FlatpakReference::~FlatpakReference() = default;
 
-FlatpakReference::FlatpakReference(FlatpakReferencesModel *parent, QString name, QString id, QString version, QString icon, QByteArray metadata, FlatpakReferencesModel *refsModel)
+FlatpakReference::FlatpakReference(FlatpakReferencesModel *parent, QString name, QString id, const QString &path, QString version, QString icon, QByteArray metadata, FlatpakReferencesModel *refsModel)
     : QObject(parent),
       m_name(name),
       m_id(id),
       m_version(version),
       m_icon(icon),
-      m_path(FlatpakHelper::permDataFilePath().append(m_id)),
+      m_path(path),
       m_metadata(metadata),
       m_refsModel(refsModel)
 {
+    m_path.append(m_id);
 }
 
 QString FlatpakReference::name() const
@@ -103,6 +104,7 @@ FlatpakReferencesModel::FlatpakReferencesModel(QObject *parent) : QAbstractListM
 {
     g_autoptr(FlatpakInstallation) installation = flatpak_installation_new_system(NULL, NULL);
     g_autoptr(GPtrArray) installedApps = flatpak_installation_list_installed_refs_by_kind(installation, FLATPAK_REF_KIND_APP, NULL, NULL);
+    QString path = FlatpakHelper::permDataFilePath();
 
     for(uint i = 0; i < installedApps->len; ++i) {
         QString name = QString::fromUtf8(flatpak_installed_ref_get_appdata_name(FLATPAK_INSTALLED_REF(g_ptr_array_index(installedApps, i))));
@@ -118,7 +120,7 @@ FlatpakReferencesModel::FlatpakReferencesModel(QObject *parent) : QAbstractListM
         auto buff = g_bytes_get_data(data, &len);
         const QByteArray metadata((const char *)buff, len);
 
-        m_references.push_back(new FlatpakReference(this, name, id, version, icon, metadata, this));
+        m_references.push_back(new FlatpakReference(this, name, id, path, version, icon, metadata, this));
     }
     std::sort(m_references.begin(), m_references.end(), [] (FlatpakReference *r1, FlatpakReference *r2) {return r1->name() < r2->name(); });
 }
