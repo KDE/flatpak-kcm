@@ -970,7 +970,6 @@ void FlatpakPermissionModel::addUserEnteredPermission(QString name, QString cat,
     }
 
     Q_EMIT dataChanged(FlatpakPermissionModel::index(index, 0),FlatpakPermissionModel::index(index, 0));
-    Q_EMIT layoutChanged();
 }
 
 QStringList FlatpakPermissionModel::valueList(QString catHeader) const
