@@ -19,16 +19,9 @@ QString permDataFilePath()
             userPath = QDir::homePath().append(QStringLiteral("/.local/share"));
         }
     }
-    userPath.append(QStringLiteral("/flatpak"));
-    QString overrides = QStringLiteral("overrides");
-
-    QDir dir(userPath);
-    if (!dir.exists(overrides)) {
-        dir.mkdir(overrides);
-    }
-    dir.cd(overrides);
-
-    return dir.absolutePath().append(QLatin1Char('/'));
+    userPath.append(QStringLiteral("/flatpak/overrides/"));
+    QDir().mkpath(userPath);
+    return userPath;
 }
 
 QString iconPath(const QString &name, const QString &id)
