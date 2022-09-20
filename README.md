@@ -5,7 +5,10 @@ SPDX-License-Identifier: GPL-2.0-or-later
 
 # Flatpak Permissions Management KCM
 
-Still under development.
+The KCM allows changing what permissions have been granted to installed Flatpak applications.
+
+![Basic Section](Resources/BasicPermissionsScreenshot.png)
+![Advanced Section](Resources/AdvancedPermissionsScreenshot.png)
 
 ## Building and Running:
 
@@ -15,6 +18,6 @@ Still under development.
 - mkdir build
 - cd build
 - cmake .. -DCMAKE_INSTALL_PREFIX=~/.local/kde
-- make -j8 install
+- make install
 - source prefix.sh
 - kcmshell5 kcm_flatpak
