@@ -10,7 +10,8 @@
 
 namespace FlatpakHelper
 {
-QString permDataFilePath() {
+QString permDataFilePath()
+{
     QString userPath = QString::fromStdString(qgetenv("FLATPAK_USER_DIR").toStdString());
     if(userPath.isEmpty()) {
         userPath = QString::fromStdString(qgetenv("HOST_XDG_DATA_HOME").toStdString());
@@ -19,6 +20,7 @@ QString permDataFilePath() {
         }
     }
     userPath.append(QStringLiteral("/flatpak/overrides/"));
+    QDir().mkpath(userPath);
     return userPath;
 }
 
