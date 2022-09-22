@@ -172,7 +172,7 @@ KCM.ScrollViewKCM {
                 Controls.TextField {
                     text: model.currentValue
                     visible: model.isEnvironment
-                    enabled: permItem.checked
+                    enabled: checkBox.checked
                     Keys.onReturnPressed: permsModel.editPerm(permItem.index, text)
                 }
             }
