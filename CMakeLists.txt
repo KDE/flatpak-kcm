@@ -54,3 +54,5 @@ target_link_libraries(kcm_flatpak
 install(TARGETS kcm_flatpak DESTINATION ${KDE_INSTALL_PLUGINDIR}/plasma/kcms/systemsettings)
 
 kpackage_install_package(package kcm_flatpak kcms)
+
+ki18n_install(po)
