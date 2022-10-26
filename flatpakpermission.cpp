@@ -55,7 +55,7 @@ QString FlatpakPermission::loadValue() const
 
 QString FlatpakPermission::fsCurrentValue() const
 {
-    if (m_currentValue == i18n("OFF")) {
+    if (m_currentValue == i18nc("The permission is not granted", "OFF")) {
         return QString();
     }
 
@@ -79,21 +79,21 @@ QString FlatpakPermission::categoryHeading() const
 {
     if (m_sType == FlatpakPermission::Basic) {
         if (m_type == FlatpakPermission::Filesystems) {
-            return i18n("Filesystem Access");
+            return i18nc("List section header text for permissions belonging to 'filesystems' category", "Filesystem Access");
         }
-        return i18n("Basic Permissions");
+        return i18nc("List section header text for permissions belonging to 'basic' section of the UI", "Basic Permissions");
     }
 
     if (m_category == QStringLiteral("shared")) {
-        return i18n("Subsystems Shared");
+        return i18nc("Header text for permissions belonging to 'shared' category", "Subsystems Shared");
     } else if (m_category == QStringLiteral ("sockets")) {
-        return i18n("Sockets");
+        return i18nc("Header text for permissions belonging to 'sockets' category", "Sockets");
     } else if (m_category == QStringLiteral("devices")) {
-        return i18n("Device Access");
+        return i18nc("Header text for permissions belonging to 'devices' category", "Device Access");
     } else if (m_category == QStringLiteral("features")) {
-        return i18n("Features Allowed");
+        return i18nc("Header text for permissions belonging to 'features' category", "Features Allowed");
     } else if (m_category == QStringLiteral("Advanced Dummy")) {
-        return i18n("Advanced Permissions");
+        return i18nc("Header text for permissions belonging to 'advanced' section of the UI", "Advanced Permissions");
     } else {
         return m_category;
     }
@@ -234,7 +234,7 @@ QVariant FlatpakPermissionModel::data(const QModelIndex &index, int role) const
     case Roles::IsNotDummy:
         return permission.pType() != FlatpakPermission::Dummy;
     case Roles::SectionType:
-        return permission.sType() == FlatpakPermission::Basic ? permission.type() == FlatpakPermission::Filesystems ? i18n("Filesystem Access") : i18n("Basic Permissions") : i18n("Advanced Permissions");
+        return permission.sType() == FlatpakPermission::Basic ? permission.type() == FlatpakPermission::Filesystems ? i18nc("Header for permissions belonging to 'filesystems' category", "Filesystem Access") : i18nc("Header text for permissions belonging to 'basic' section of UI", "Basic Permissions") : i18nc("Header text for permissions belonging to 'advanced' section of UI", "Advanced Permissions");
     case Roles::IsBasic:
         return permission.sType() == FlatpakPermission::Basic;
     case Roles::ValueList:
@@ -289,123 +289,123 @@ void FlatpakPermissionModel::loadDefaultValues()
     int basicIndex = 0;
 
     /* SHARED category */
-    category = i18n("shared");
+    category = i18nc("A category of permissions dealing with subsystems that flatpak can use", "shared");
     const QString sharedPerms = contextGroup.readEntry("shared", QString());
 
     name = i18n("network");
-    description = i18n("Internet Connection");
+    description = i18nc("Permission determining if flatpak has access to the internet", "Internet Connection");
     isEnabledByDefault = sharedPerms.contains(name);
     m_permissions.insert(basicIndex, FlatpakPermission(name, category, description, FlatpakPermission::Simple, isEnabledByDefault));
     m_permissions[basicIndex++].setSType(FlatpakPermission::Basic);
 
     name = i18n("ipc");
-    description = i18n("Inter-process Communication");
+    description = i18nc("Permission determining if flatpak can communicate to other processes", "Inter-process Communication");
     isEnabledByDefault = sharedPerms.contains(name);
     m_permissions.append(FlatpakPermission(name, category, description, FlatpakPermission::Simple, isEnabledByDefault));
     /* SHARED category */
 
     /* SOCKETS category */
-    category = i18n("sockets");
+    category = i18nc("Category containing permissions that allow access to system's sockets", "sockets");
     const QString socketPerms = contextGroup.readEntry("sockets", QString());
 
     name = i18n("x11");
-    description = i18n("X11 Windowing System");
+    description = i18nc("Permission determining if flatpak can open in X11 window", "X11 Windowing System");
     isEnabledByDefault = socketPerms.contains(name);
     m_permissions.append(FlatpakPermission(name, category, description, FlatpakPermission::Simple, isEnabledByDefault));
 
     name = i18n("wayland");
-    description = i18n("Wayland Windowing System");
+    description = i18nc("Permission determining if flatpak can open in Wayland window", "Wayland Windowing System");
     isEnabledByDefault = socketPerms.contains(name);
     m_permissions.append(FlatpakPermission(name, category, description, FlatpakPermission::Simple, isEnabledByDefault));
 
     name = i18n("fallback-x11");
-    description = i18n("Fallback to X11 Windowing System");
+    description = i18nc("Permission determining if flatpak can open in X11 window if it fails to open in Wayland window", "Fallback to X11 Windowing System");
     isEnabledByDefault = socketPerms.contains(name);
     m_permissions.append(FlatpakPermission(name, category, description, FlatpakPermission::Simple, isEnabledByDefault));
 
     name = i18n("pulseaudio");
-    description = i18n("Pulseaudio Sound Server");
+    description = i18nc("Permission determining if flatpak can emit sounds and use microphone", "Pulseaudio Sound Server");
     isEnabledByDefault = socketPerms.contains(name);
     m_permissions.insert(basicIndex, FlatpakPermission(name, category, description, FlatpakPermission::Simple, isEnabledByDefault));
     m_permissions[basicIndex++].setSType(FlatpakPermission::Basic);
 
     name = i18n("session-bus");
-    description = i18n("Session Bus Access");
+    description = i18nc("Permission determining if flatpak has access to entire session bus", "Session Bus Access");
     isEnabledByDefault = socketPerms.contains(name);
     m_permissions.append(FlatpakPermission(name, category, description, FlatpakPermission::Simple, isEnabledByDefault));
 
     name = i18n("system-bus");
-    description = i18n("System Bus Access");
+    description = i18nc("Permission determining if flatpak has access to system bus", "System Bus Access");
     isEnabledByDefault = socketPerms.contains(name);
     m_permissions.append(FlatpakPermission(name, category, description, FlatpakPermission::Simple, isEnabledByDefault));
 
     name = i18n("ssh-auth");
-    description = i18n("Remote Login Access");
+    description = i18nc("Permission determining if flatpak can use SSH authentication", "Remote Login Access");
     isEnabledByDefault = socketPerms.contains(name);
     m_permissions.insert(basicIndex, FlatpakPermission(name, category, description, FlatpakPermission::Simple, isEnabledByDefault));
     m_permissions[basicIndex++].setSType(FlatpakPermission::Basic);
 
     name = i18n("pcsc");
-    description = i18n("Smart Card Access");
+    description = i18nc("Permission determining if flatpak has access to smart cards", "Smart Card Access");
     isEnabledByDefault = socketPerms.contains(name);
     m_permissions.insert(basicIndex, FlatpakPermission(name, category, description, FlatpakPermission::Simple, isEnabledByDefault));
     m_permissions[basicIndex++].setSType(FlatpakPermission::Basic);
 
     name = i18n("cups");
-    description = i18n("Print System Access");
+    description = i18nc("Permission determining if flatpak can use the printing system", "Print System Access");
     isEnabledByDefault = socketPerms.contains(name);
     m_permissions.insert(basicIndex, FlatpakPermission(name, category, description, FlatpakPermission::Simple, isEnabledByDefault));
     m_permissions[basicIndex++].setSType(FlatpakPermission::Basic);
     /* SOCKETS category */
 
     /* DEVICES category */
-    category = i18n("devices");
+    category = i18nc("Category containing permissions restricting access to other devices like webcams", "devices");
     const QString devicesPerms = contextGroup.readEntry("devices", QString());
 
     name = i18n("kvm");
-    description = i18n("Kernel-based Virtual Machine Access");
+    description = i18nc("Permission determining if flatpak can access virtualization", "Kernel-based Virtual Machine Access");
     isEnabledByDefault = devicesPerms.contains(name);
     m_permissions.append(FlatpakPermission(name, category, description, FlatpakPermission::Simple, isEnabledByDefault));
 
     name = i18n("dri");
-    description = i18n("Direct Graphic Rendering");
+    description = i18nc("Permission determining if flatpak can take advantage of GPU acceleration", "Direct Graphic Rendering");
     isEnabledByDefault = devicesPerms.contains(name);
     m_permissions.append(FlatpakPermission(name, category, description, FlatpakPermission::Simple, isEnabledByDefault));
 
     name = i18n("shm");
-    description = i18n("Host dev/shm");
+    description = i18nc("Permission determining if flatpak can access shared memory", "Host dev/shm");
     isEnabledByDefault = devicesPerms.contains(name);
     m_permissions.append(FlatpakPermission(name, category, description, FlatpakPermission::Simple, isEnabledByDefault));
 
     name = i18n("all");
-    description = i18n("Device Access");
+    description = i18nc("Permission determining if flatpak can access all connected devices", "Device Access");
     isEnabledByDefault = devicesPerms.contains(name);
     m_permissions.insert(basicIndex, FlatpakPermission(name, category, description, FlatpakPermission::Simple, isEnabledByDefault));
     m_permissions[basicIndex++].setSType(FlatpakPermission::Basic);
     /* DEVICES category */
 
     /* FEATURES category */
-    category = i18n("features");
+    category = i18nc("Category with permissions dealing with system features flatpaks can access", "features");
     const QString featuresPerms = contextGroup.readEntry("features", QString());
 
     name = i18n("devel");
-    description = i18n("System Calls by Development Tools");
+    description = i18nc("Permission determining if flatpak can access system calls", "System Calls by Development Tools");
     isEnabledByDefault = featuresPerms.contains(name);
     m_permissions.append(FlatpakPermission(name, category, description, FlatpakPermission::Simple, isEnabledByDefault));
 
     name = i18n("multiarch");
-    description = i18n("Run Multiarch/Multilib Binaries");
+    description = i18nc("Permission determining if flatpak can execute programs for other non-native architectures", "Run Multiarch/Multilib Binaries");
     isEnabledByDefault = featuresPerms.contains(name);
     m_permissions.append(FlatpakPermission(name, category, description, FlatpakPermission::Simple, isEnabledByDefault));
 
     name = i18n("bluetooth");
-    description = i18n("Bluetooth");
+    description = i18nc("Permission determining if flatpak can use bluetooth", "Bluetooth");
     isEnabledByDefault = featuresPerms.contains(name);
     m_permissions.insert(basicIndex, FlatpakPermission(name, category, description, FlatpakPermission::Simple, isEnabledByDefault));
     m_permissions[basicIndex++].setSType(FlatpakPermission::Basic);
 
     name = i18n("canbus");
-    description = i18n("Canbus Socket Access");
+    description = i18nc("Permission determining if flatpak can use canbus socket", "Canbus Socket Access");
     isEnabledByDefault = featuresPerms.contains(name);
     m_permissions.append(FlatpakPermission(name, category, description, FlatpakPermission::Simple, isEnabledByDefault));
 
@@ -416,14 +416,14 @@ void FlatpakPermissionModel::loadDefaultValues()
     /* FEATURES category */
 
     /* FILESYSTEM category */
-    category = i18n("filesystems");
+    category = i18nc("Category dealing with access to directories and files", "filesystems");
     const QString fileSystemPerms = contextGroup.readEntry("filesystems", QString());
     const auto dirs = QStringView(fileSystemPerms).split(QLatin1Char(';'), Qt::SkipEmptyParts);
 
     QString homeVal, hostVal, hostOsVal, hostEtcVal;
-    homeVal = hostVal = hostOsVal = hostEtcVal = i18n("OFF");
+    homeVal = hostVal = hostOsVal = hostEtcVal = i18nc("Access is disallowed entirely", "OFF");
     possibleValues.clear();
-    possibleValues << i18n("read/write") << i18n("read-only") << i18n("create");
+    possibleValues << i18nc("Flatpak can read and write to the directory", "read/write") << i18nc("Flatpak can only read the files in a directory", "read-only") << i18nc("Flatpak can create files in a directory", "create");
 
     QVector<FlatpakPermission> filesysTemp;
 
@@ -484,7 +484,7 @@ void FlatpakPermissionModel::loadDefaultValues()
     }
 
     name = i18n("home");
-    description = i18n("All User Files");
+    description = i18nc("Permission determining if flatpak can access all files in home directory", "All User Files");
     possibleValues.removeAll(homeVal);
     if (homeVal == i18n("OFF")) {
         isEnabledByDefault = false;
@@ -495,7 +495,7 @@ void FlatpakPermissionModel::loadDefaultValues()
     m_permissions.insert(basicIndex++, FlatpakPermission(name, category, description, FlatpakPermission::Filesystems, isEnabledByDefault, homeVal, possibleValues));
 
     name = i18n("host");
-    description = i18n("All System Files");
+    description = i18nc("Permission determining if flatpak can access whole filesystem", "All System Files");
     if (hostVal == i18n("OFF")) {
         isEnabledByDefault = false;
         hostVal = i18n("read/write");
@@ -505,7 +505,7 @@ void FlatpakPermissionModel::loadDefaultValues()
     m_permissions.insert(basicIndex++, FlatpakPermission(name, category, description, FlatpakPermission::Filesystems, isEnabledByDefault, hostVal, possibleValues));
 
     name = i18n("host-os");
-    description = i18n("All System Libraries, Executables and Binaries");
+    description = i18nc("Permission determining if flatpak can access system libraries and files in /usr", "All System Libraries, Executables and Binaries");
     if (hostOsVal == i18n("OFF")) {
         isEnabledByDefault = false;
         hostOsVal = i18n("read/write");
@@ -515,7 +515,7 @@ void FlatpakPermissionModel::loadDefaultValues()
     m_permissions.insert(basicIndex++, FlatpakPermission(name, category, description, FlatpakPermission::Filesystems, isEnabledByDefault, hostOsVal, possibleValues));
 
     name = i18n("host-etc");
-    description = i18n("All System Configurations");
+    description = i18nc("Permission determining if flatpak can access configurations in /etc", "All System Configurations");
     if (hostEtcVal == i18n("OFF")) {
         isEnabledByDefault = false;
         hostEtcVal = i18n("read/write");
@@ -537,10 +537,10 @@ void FlatpakPermissionModel::loadDefaultValues()
     /* DUMMY ADVANCED category */
 
     /* SESSION BUS category */
-    category = i18n("Session Bus Policy");
+    category = i18nc("Category with permissions dealing with different session buses a flatpak can use", "Session Bus Policy");
     const KConfigGroup sessionBusGroup = parser.group("Session Bus Policy");
     possibleValues.clear();
-    possibleValues << i18n("talk") << i18n("own") << i18n("see");
+    possibleValues << i18nc("Flatpak can communicate with bus", "talk") << i18nc("Flatpak can have ownership over a bus", "own") << i18nc("Flatpak can see a bus", "see");
     if(sessionBusGroup.exists()) {
         const QMap<QString, QString> busMap = sessionBusGroup.entryMap();
         const QStringList busList = busMap.keys();
@@ -560,7 +560,7 @@ void FlatpakPermissionModel::loadDefaultValues()
     /* SESSION BUS category */
 
     /* SYSTEM BUS category */
-    category = i18n("System Bus Policy");
+    category = i18nc("Category with permissions dealing with different system buses a flatpak can use", "System Bus Policy");
     const KConfigGroup systemBusGroup = parser.group("System Bus Policy");
     possibleValues.clear();
     possibleValues << i18n("talk") << i18n("own") << i18n("see");
@@ -582,7 +582,7 @@ void FlatpakPermissionModel::loadDefaultValues()
     /* SYSTEM BUS category */
 
     /* ENVIRONMENT category */
-    category = i18n("Environment");
+    category = i18nc("Category dealing with different environment variables a flatpak has set", "Environment");
     const KConfigGroup environmentGroup = parser.group("Environment");
     possibleValues.clear();
     if(environmentGroup.exists()) {
@@ -940,7 +940,7 @@ void FlatpakPermissionModel::addUserEnteredPermission(QString name, QString cat,
 {
     QStringList possibleValues = valueList(cat);
 
-    if (cat == i18n("Filesystem Access")) {
+    if (cat == i18nc("List secion header for 'filesystems' category", "Filesystem Access")) {
         cat = QStringLiteral("filesystems");
     }
 
