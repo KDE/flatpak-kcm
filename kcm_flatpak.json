@@ -17,6 +17,7 @@
         "Description[tr]": "Flatpak İzinlerini Yapılandır",
         "Description[uk]": "Налаштовування прав доступу Flatpak",
         "Description[x-test]": "xxConfigure Flatpak Permissionsxx",
+        "Description[zh_TW]": "設定 Flatpak 權限",
         "FormFactors": [
             "desktop",
             "handset",
@@ -40,7 +41,8 @@
         "Name[sl]": "Nastavitve dovoljenja za Flatpak",
         "Name[tr]": "Flatpak İzin Ayarları",
         "Name[uk]": "Параметри доступу Flatpak",
-        "Name[x-test]": "xxFlatpak Permission Settingsxx"
+        "Name[x-test]": "xxFlatpak Permission Settingsxx",
+        "Name[zh_TW]": "Flatpak 權限設定"
     },
     "X-KDE-Keywords": "Flatpak,permission,permissions,access,sandbox,sandboxed,filesystem,file,files,folder,folders,network,networks,networking,bluetooth,print,printer,printing,audio,sound,login,remote login,ssh,smart card,kvm,device,session,session bus,system,system bus,environment,environment variable",
     "X-KDE-System-Settings-Parent-Category": "applications"
