@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-09-22 00:46+0000\n"
-"PO-Revision-Date: 2022-09-26 09:51+0200\n"
+"PO-Revision-Date: 2022-11-20 07:25+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 3.2\n"
 
 #: flatpakpermission.cpp:58 flatpakpermission.cpp:424 flatpakpermission.cpp:473
 #: flatpakpermission.cpp:489 flatpakpermission.cpp:499
@@ -277,6 +277,7 @@ msgstr "per-app-dev-shm"
 #, kde-format
 msgid "Share dev/shm across all instances of an app per user ID"
 msgstr ""
+"თითოეული მომხმარებლის ID-ის გაშვებული ასლებისთვის /dev/shm ფაილის გაზიარება"
 
 #: flatpakpermission.cpp:419
 #, kde-format
@@ -418,6 +419,8 @@ msgid ""
 "The permissions of this application have been changed. Do you want to apply "
 "these changes or discard them?"
 msgstr ""
+"ამ აპლიკაციის წვდომები შეიცვალა. გნებავთ ამ ცვლილებების გადატარება, თუ "
+"გნებავთ, გააუქმოთ ისინი?"
 
 #: package/contents/ui/permissions.qml:16
 #, kde-format
@@ -427,7 +430,7 @@ msgstr "წვდომები"
 #: package/contents/ui/permissions.qml:23
 #, kde-format
 msgid "Select an application from the list to view its permissions here"
-msgstr ""
+msgstr "აირჩიეთ აპლიკაცია, რომლის წვდომების ნახვაც აქ გსურთ"
 
 #: package/contents/ui/permissions.qml:45
 #, kde-format
