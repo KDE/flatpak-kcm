@@ -21,7 +21,7 @@ KCM.ScrollViewKCM {
 
     Component.onCompleted: {
         kcm.columnWidth = Kirigami.Units.gridUnit * 15
-        kcm.push("permissions.qml", {ref: null})
+        kcm.push("permissions.qml")
     }
 
     KCM.ConfigModule.buttons: KCM.ConfigModule.Apply | KCM.ConfigModule.Default

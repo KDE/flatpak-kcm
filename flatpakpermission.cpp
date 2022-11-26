@@ -807,6 +807,10 @@ bool FlatpakPermissionModel::isSaveNeeded() const
 
 void FlatpakPermissionModel::setReference(FlatpakReference *ref)
 {
+    if (!ref) {
+        return;
+    }
+
     if(m_reference != ref) {
         beginResetModel();
         m_reference = ref;

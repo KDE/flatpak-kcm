@@ -16,7 +16,7 @@ KCM.ScrollViewKCM {
     title: i18n("Permissions")
     implicitWidth: Kirigami.Units.gridUnit * 15
     framedView: true
-    property var ref
+    property var ref: null
     property bool showAdvanced: false
 
     Kirigami.PlaceholderMessage {
