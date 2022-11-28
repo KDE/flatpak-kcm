@@ -20,7 +20,7 @@ include(KDEInstallDirs)
 include(KDECMakeSettings)
 include(KDEFrameworkCompilerSettings NO_POLICY_SCOPE)
 
-find_package(Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS
+find_package(Qt${QT_MAJOR_VERSION} ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS
     Quick
     Svg
 )
@@ -42,13 +42,13 @@ set(flatpakkcm_SRCS
 add_library(kcm_flatpak MODULE ${flatpakkcm_SRCS})
 
 target_link_libraries(kcm_flatpak
-    Qt5::Core
+    Qt::Core
     KF5::CoreAddons
     KF5::ConfigCore
     KF5::I18n
     KF5::QuickAddons
     PkgConfig::Flatpak
-    Qt5::DBus
+    Qt::DBus
 )
 
 install(TARGETS kcm_flatpak DESTINATION ${KDE_INSTALL_PLUGINDIR}/plasma/kcms/systemsettings)
