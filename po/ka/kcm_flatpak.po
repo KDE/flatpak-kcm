@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-11-27 00:47+0000\n"
-"PO-Revision-Date: 2022-11-20 07:25+0100\n"
+"PO-Revision-Date: 2022-12-30 03:33+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.2\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #: flatpakpermission.cpp:58 flatpakpermission.cpp:424 flatpakpermission.cpp:473
 #: flatpakpermission.cpp:489 flatpakpermission.cpp:499
@@ -251,7 +251,7 @@ msgstr "მრავალარქიტექტურული/მრავ�
 #: flatpakpermission.cpp:401
 #, kde-format
 msgid "bluetooth"
-msgstr "bluetooth"
+msgstr "ბლუთუზი"
 
 #: flatpakpermission.cpp:402
 #, kde-format
