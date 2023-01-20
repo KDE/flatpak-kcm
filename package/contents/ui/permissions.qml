@@ -15,7 +15,7 @@ KCM.ScrollViewKCM {
     id: permissionPage
     title: i18n("Permissions")
     implicitWidth: Kirigami.Units.gridUnit * 15
-    framedView: true
+    framedView: false
     property var ref: null
     property bool showAdvanced: false
 
@@ -24,6 +24,11 @@ KCM.ScrollViewKCM {
         width: parent.width - (Kirigami.Units.largeSpacing * 4)
         anchors.centerIn: parent
         visible: ref === null
+    }
+
+    Kirigami.Separator {
+        anchors.left: parent.left
+        height: parent.height
     }
 
     view: ListView {

@@ -17,7 +17,7 @@ KCM.ScrollViewKCM {
     Kirigami.ColumnView.fillWidth: false
     implicitWidth: Kirigami.Units.gridUnit * 40
     implicitHeight: Kirigami.Units.gridUnit * 20
-    framedView: true
+    framedView: false
 
     Component.onCompleted: {
         kcm.columnWidth = Kirigami.Units.gridUnit * 15
