@@ -31,5 +31,5 @@ public Q_SLOTS:
 
 private:
     FlatpakReferencesModel *m_refsModel;
-    int m_index;
+    int m_index = -1;
 };
