@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-27 00:47+0000\n"
+"POT-Creation-Date: 2023-01-21 00:59+0000\n"
 "PO-Revision-Date: 2023-01-12 10:32\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -25,9 +25,9 @@ msgid "OFF"
 msgstr "关"
 
 #: flatpakpermission.cpp:82 flatpakpermission.cpp:237 flatpakpermission.cpp:947
-#: flatpakpermission.cpp:982 package/contents/ui/permissions.qml:68
-#: package/contents/ui/permissions.qml:88
-#: package/contents/ui/permissions.qml:101
+#: flatpakpermission.cpp:982 package/contents/ui/permissions.qml:73
+#: package/contents/ui/permissions.qml:93
+#: package/contents/ui/permissions.qml:106
 #, kde-format
 msgid "Filesystem Access"
 msgstr "文件系统访问"
@@ -353,9 +353,9 @@ msgid "All System Configurations"
 msgstr "所有系统配置"
 
 #: flatpakpermission.cpp:540 flatpakpermission.cpp:984
-#: package/contents/ui/permissions.qml:72
-#: package/contents/ui/permissions.qml:92
-#: package/contents/ui/permissions.qml:105
+#: package/contents/ui/permissions.qml:77
+#: package/contents/ui/permissions.qml:97
+#: package/contents/ui/permissions.qml:110
 #, kde-format
 msgid "Session Bus Policy"
 msgstr "会话总线策略"
@@ -383,9 +383,9 @@ msgstr "see"
 msgid "System Bus Policy"
 msgstr "系统总线策略"
 
-#: flatpakpermission.cpp:585 package/contents/ui/permissions.qml:70
-#: package/contents/ui/permissions.qml:90
-#: package/contents/ui/permissions.qml:103
+#: flatpakpermission.cpp:585 package/contents/ui/permissions.qml:75
+#: package/contents/ui/permissions.qml:95
+#: package/contents/ui/permissions.qml:108
 #, kde-format
 msgid "Environment"
 msgstr "环境"
@@ -428,82 +428,82 @@ msgstr "权限"
 msgid "Select an application from the list to view its permissions here"
 msgstr "在列表中选择一个应用程序以查看其权限"
 
-#: package/contents/ui/permissions.qml:45
+#: package/contents/ui/permissions.qml:50
 #, kde-format
 msgid "Hide advanced permissions"
 msgstr "隐藏高级权限"
 
-#: package/contents/ui/permissions.qml:45
+#: package/contents/ui/permissions.qml:50
 #, kde-format
 msgid "Show advanced permissions"
 msgstr "显示高级权限"
 
-#: package/contents/ui/permissions.qml:56
+#: package/contents/ui/permissions.qml:61
 #, kde-format
 msgid "Add New"
 msgstr "添加"
 
-#: package/contents/ui/permissions.qml:69
+#: package/contents/ui/permissions.qml:74
 #, kde-format
 msgid "Add a new filesystem path"
 msgstr "添加新的文件系统路径"
 
-#: package/contents/ui/permissions.qml:71
+#: package/contents/ui/permissions.qml:76
 #, kde-format
 msgid "Add a new environment variable"
 msgstr "添加新的环境变量"
 
-#: package/contents/ui/permissions.qml:73
+#: package/contents/ui/permissions.qml:78
 #, kde-format
 msgid "Add a new session bus"
 msgstr "添加新的会话总线"
 
-#: package/contents/ui/permissions.qml:75
+#: package/contents/ui/permissions.qml:80
 #, kde-format
 msgid "Add a new system bus"
 msgstr "添加新的系统总线"
 
-#: package/contents/ui/permissions.qml:89
+#: package/contents/ui/permissions.qml:94
 #, kde-format
 msgid "Enter filesystem path..."
 msgstr "输入文件系统路径..."
 
-#: package/contents/ui/permissions.qml:91
+#: package/contents/ui/permissions.qml:96
 #, kde-format
 msgid "Enter variable..."
 msgstr "输入变量..."
 
-#: package/contents/ui/permissions.qml:93
+#: package/contents/ui/permissions.qml:98
 #, kde-format
 msgid "Enter session bus name..."
 msgstr "输入会话总线名称..."
 
-#: package/contents/ui/permissions.qml:95
+#: package/contents/ui/permissions.qml:100
 #, kde-format
 msgid "Enter system bus name..."
 msgstr "输入系统总线名称..."
 
-#: package/contents/ui/permissions.qml:102
+#: package/contents/ui/permissions.qml:107
 #, kde-format
 msgid "Add Filesystem Path Permission"
 msgstr "添加文件系统路径权限"
 
-#: package/contents/ui/permissions.qml:104
+#: package/contents/ui/permissions.qml:109
 #, kde-format
 msgid "Set Environment Variable"
 msgstr "设置环境变量"
 
-#: package/contents/ui/permissions.qml:106
+#: package/contents/ui/permissions.qml:111
 #, kde-format
 msgid "Add Session Bus Permission"
 msgstr "添加会话总线权限"
 
-#: package/contents/ui/permissions.qml:108
+#: package/contents/ui/permissions.qml:113
 #, kde-format
 msgid "Add System Bus Permission"
 msgstr "添加系统总线权限"
 
-#: package/contents/ui/permissions.qml:127
+#: package/contents/ui/permissions.qml:132
 #, kde-format
 msgid "Enter value..."
 msgstr "输入值..."

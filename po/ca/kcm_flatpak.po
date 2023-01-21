@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-27 00:47+0000\n"
+"POT-Creation-Date: 2023-01-21 00:59+0000\n"
 "PO-Revision-Date: 2022-09-13 13:55+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -27,9 +27,9 @@ msgid "OFF"
 msgstr "Inactiu"
 
 #: flatpakpermission.cpp:82 flatpakpermission.cpp:237 flatpakpermission.cpp:947
-#: flatpakpermission.cpp:982 package/contents/ui/permissions.qml:68
-#: package/contents/ui/permissions.qml:88
-#: package/contents/ui/permissions.qml:101
+#: flatpakpermission.cpp:982 package/contents/ui/permissions.qml:73
+#: package/contents/ui/permissions.qml:93
+#: package/contents/ui/permissions.qml:106
 #, kde-format
 msgid "Filesystem Access"
 msgstr "Accés al sistema de fitxers"
@@ -357,9 +357,9 @@ msgid "All System Configurations"
 msgstr "Totes les configuracions del sistema"
 
 #: flatpakpermission.cpp:540 flatpakpermission.cpp:984
-#: package/contents/ui/permissions.qml:72
-#: package/contents/ui/permissions.qml:92
-#: package/contents/ui/permissions.qml:105
+#: package/contents/ui/permissions.qml:77
+#: package/contents/ui/permissions.qml:97
+#: package/contents/ui/permissions.qml:110
 #, kde-format
 msgid "Session Bus Policy"
 msgstr "Política del bus de sessió"
@@ -387,9 +387,9 @@ msgstr "veure"
 msgid "System Bus Policy"
 msgstr "Política del bus de sistema"
 
-#: flatpakpermission.cpp:585 package/contents/ui/permissions.qml:70
-#: package/contents/ui/permissions.qml:90
-#: package/contents/ui/permissions.qml:103
+#: flatpakpermission.cpp:585 package/contents/ui/permissions.qml:75
+#: package/contents/ui/permissions.qml:95
+#: package/contents/ui/permissions.qml:108
 #, kde-format
 msgid "Environment"
 msgstr "Entorn"
@@ -435,82 +435,82 @@ msgid "Select an application from the list to view its permissions here"
 msgstr ""
 "Seleccioneu una aplicació de la llista per a veure aquí els seus permisos"
 
-#: package/contents/ui/permissions.qml:45
+#: package/contents/ui/permissions.qml:50
 #, kde-format
 msgid "Hide advanced permissions"
 msgstr "Oculta els permisos avançats"
 
-#: package/contents/ui/permissions.qml:45
+#: package/contents/ui/permissions.qml:50
 #, kde-format
 msgid "Show advanced permissions"
 msgstr "Mostra els permisos avançats"
 
-#: package/contents/ui/permissions.qml:56
+#: package/contents/ui/permissions.qml:61
 #, kde-format
 msgid "Add New"
 msgstr "Afegeix un nou"
 
-#: package/contents/ui/permissions.qml:69
+#: package/contents/ui/permissions.qml:74
 #, kde-format
 msgid "Add a new filesystem path"
 msgstr "Afegeix un camí nou del sistema de fitxers"
 
-#: package/contents/ui/permissions.qml:71
+#: package/contents/ui/permissions.qml:76
 #, kde-format
 msgid "Add a new environment variable"
 msgstr "Afegeix una variable d'entorn nova"
 
-#: package/contents/ui/permissions.qml:73
+#: package/contents/ui/permissions.qml:78
 #, kde-format
 msgid "Add a new session bus"
 msgstr "Afegeix un bus nou de sessió"
 
-#: package/contents/ui/permissions.qml:75
+#: package/contents/ui/permissions.qml:80
 #, kde-format
 msgid "Add a new system bus"
 msgstr "Afegeix un bus nou de sistema"
 
-#: package/contents/ui/permissions.qml:89
+#: package/contents/ui/permissions.qml:94
 #, kde-format
 msgid "Enter filesystem path..."
 msgstr "Introduïu el camí del sistema de fitxers..."
 
-#: package/contents/ui/permissions.qml:91
+#: package/contents/ui/permissions.qml:96
 #, kde-format
 msgid "Enter variable..."
 msgstr "Introduïu una variable..."
 
-#: package/contents/ui/permissions.qml:93
+#: package/contents/ui/permissions.qml:98
 #, kde-format
 msgid "Enter session bus name..."
 msgstr "Introduïu un nom de bus de sessió..."
 
-#: package/contents/ui/permissions.qml:95
+#: package/contents/ui/permissions.qml:100
 #, kde-format
 msgid "Enter system bus name..."
 msgstr "Introduïu un nom de bus de sistema..."
 
-#: package/contents/ui/permissions.qml:102
+#: package/contents/ui/permissions.qml:107
 #, kde-format
 msgid "Add Filesystem Path Permission"
 msgstr "Afegeix un permís del sistema de fitxers"
 
-#: package/contents/ui/permissions.qml:104
+#: package/contents/ui/permissions.qml:109
 #, kde-format
 msgid "Set Environment Variable"
 msgstr "Estableix la variable d'entorn"
 
-#: package/contents/ui/permissions.qml:106
+#: package/contents/ui/permissions.qml:111
 #, kde-format
 msgid "Add Session Bus Permission"
 msgstr "Afegeix un permís del bus de sessió"
 
-#: package/contents/ui/permissions.qml:108
+#: package/contents/ui/permissions.qml:113
 #, kde-format
 msgid "Add System Bus Permission"
 msgstr "Afegeix un permís del bus de sistema"
 
-#: package/contents/ui/permissions.qml:127
+#: package/contents/ui/permissions.qml:132
 #, kde-format
 msgid "Enter value..."
 msgstr "Introduïu un valor..."

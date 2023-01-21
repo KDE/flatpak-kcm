@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-27 00:47+0000\n"
+"POT-Creation-Date: 2023-01-21 00:59+0000\n"
 "PO-Revision-Date: 2022-10-28 19:47+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@neuf.fr>\n"
 "Language-Team: French <kde-francophone@kde.org>\n"
@@ -22,9 +22,9 @@ msgid "OFF"
 msgstr "Éteint"
 
 #: flatpakpermission.cpp:82 flatpakpermission.cpp:237 flatpakpermission.cpp:947
-#: flatpakpermission.cpp:982 package/contents/ui/permissions.qml:68
-#: package/contents/ui/permissions.qml:88
-#: package/contents/ui/permissions.qml:101
+#: flatpakpermission.cpp:982 package/contents/ui/permissions.qml:73
+#: package/contents/ui/permissions.qml:93
+#: package/contents/ui/permissions.qml:106
 #, kde-format
 msgid "Filesystem Access"
 msgstr "Accès au système de fichiers"
@@ -352,9 +352,9 @@ msgid "All System Configurations"
 msgstr "Toutes les configurations du système"
 
 #: flatpakpermission.cpp:540 flatpakpermission.cpp:984
-#: package/contents/ui/permissions.qml:72
-#: package/contents/ui/permissions.qml:92
-#: package/contents/ui/permissions.qml:105
+#: package/contents/ui/permissions.qml:77
+#: package/contents/ui/permissions.qml:97
+#: package/contents/ui/permissions.qml:110
 #, kde-format
 msgid "Session Bus Policy"
 msgstr "Stratégie de bus de session"
@@ -382,9 +382,9 @@ msgstr "voir"
 msgid "System Bus Policy"
 msgstr "Stratégie de bus système"
 
-#: flatpakpermission.cpp:585 package/contents/ui/permissions.qml:70
-#: package/contents/ui/permissions.qml:90
-#: package/contents/ui/permissions.qml:103
+#: flatpakpermission.cpp:585 package/contents/ui/permissions.qml:75
+#: package/contents/ui/permissions.qml:95
+#: package/contents/ui/permissions.qml:108
 #, kde-format
 msgid "Environment"
 msgstr "Environnement"
@@ -431,82 +431,82 @@ msgstr ""
 "Sélectionner une application à partir de la liste pour afficher ici ses "
 "droits d'accès"
 
-#: package/contents/ui/permissions.qml:45
+#: package/contents/ui/permissions.qml:50
 #, kde-format
 msgid "Hide advanced permissions"
 msgstr "Masquer les droits d'accès avancés"
 
-#: package/contents/ui/permissions.qml:45
+#: package/contents/ui/permissions.qml:50
 #, kde-format
 msgid "Show advanced permissions"
 msgstr "Afficher les droits d'accès avancés"
 
-#: package/contents/ui/permissions.qml:56
+#: package/contents/ui/permissions.qml:61
 #, kde-format
 msgid "Add New"
 msgstr "Ajouter un nouveau"
 
-#: package/contents/ui/permissions.qml:69
+#: package/contents/ui/permissions.qml:74
 #, kde-format
 msgid "Add a new filesystem path"
 msgstr "Ajouter un nouvel emplacement au système de fichiers"
 
-#: package/contents/ui/permissions.qml:71
+#: package/contents/ui/permissions.qml:76
 #, kde-format
 msgid "Add a new environment variable"
 msgstr "Ajouter une nouvelle variable d'environnement"
 
-#: package/contents/ui/permissions.qml:73
+#: package/contents/ui/permissions.qml:78
 #, kde-format
 msgid "Add a new session bus"
 msgstr "Ajouter un nouveau bus de session"
 
-#: package/contents/ui/permissions.qml:75
+#: package/contents/ui/permissions.qml:80
 #, kde-format
 msgid "Add a new system bus"
 msgstr "Ajouter un nouveau bus système"
 
-#: package/contents/ui/permissions.qml:89
+#: package/contents/ui/permissions.qml:94
 #, kde-format
 msgid "Enter filesystem path..."
 msgstr "Saisir un Emplacement du système de fichiers..."
 
-#: package/contents/ui/permissions.qml:91
+#: package/contents/ui/permissions.qml:96
 #, kde-format
 msgid "Enter variable..."
 msgstr "Saisissez une variable…"
 
-#: package/contents/ui/permissions.qml:93
+#: package/contents/ui/permissions.qml:98
 #, kde-format
 msgid "Enter session bus name..."
 msgstr "Saisir un nom de session de bus..."
 
-#: package/contents/ui/permissions.qml:95
+#: package/contents/ui/permissions.qml:100
 #, kde-format
 msgid "Enter system bus name..."
 msgstr "Saisir un nom de bus système..."
 
-#: package/contents/ui/permissions.qml:102
+#: package/contents/ui/permissions.qml:107
 #, kde-format
 msgid "Add Filesystem Path Permission"
 msgstr "Ajouter un droit d'accès sur l'emplacement du système de fichiers"
 
-#: package/contents/ui/permissions.qml:104
+#: package/contents/ui/permissions.qml:109
 #, kde-format
 msgid "Set Environment Variable"
 msgstr "Définir une variable d'environnement"
 
-#: package/contents/ui/permissions.qml:106
+#: package/contents/ui/permissions.qml:111
 #, kde-format
 msgid "Add Session Bus Permission"
 msgstr "Ajouter un droit d'accès au bus de session"
 
-#: package/contents/ui/permissions.qml:108
+#: package/contents/ui/permissions.qml:113
 #, kde-format
 msgid "Add System Bus Permission"
 msgstr "Ajouter un droit d'accès au bus système"
 
-#: package/contents/ui/permissions.qml:127
+#: package/contents/ui/permissions.qml:132
 #, kde-format
 msgid "Enter value..."
 msgstr "Saisissez une valeur..."
