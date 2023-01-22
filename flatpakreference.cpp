@@ -14,7 +14,7 @@ extern "C" {
 }
 #endif
 #include <glib.h>
-
+#include <QDebug>
 FlatpakReference::~FlatpakReference() = default;
 
 FlatpakReference::FlatpakReference(FlatpakReferencesModel *parent, QString name, QString id, const QString &path, QString version, QString icon, QByteArray metadata, FlatpakReferencesModel *refsModel)
@@ -116,8 +116,8 @@ FlatpakReferencesModel::FlatpakReferencesModel(QObject *parent) : QAbstractListM
         if (id.endsWith(QStringLiteral(".BaseApp"))) {
             continue;
         }
-        QString icon = FlatpakHelper::iconPath(name, id);
-
+        QString appBasePath = QString::fromUtf8(flatpak_installed_ref_get_deploy_dir(FLATPAK_INSTALLED_REF(g_ptr_array_index(installedApps, i))));
+        QString icon = FlatpakHelper::iconPath(name, id, appBasePath);
         g_autoptr(GBytes) data = flatpak_installed_ref_load_metadata(FLATPAK_INSTALLED_REF(g_ptr_array_index(installedApps, i)), NULL, NULL);
         gsize len = 0;
         auto buff = g_bytes_get_data(data, &len);

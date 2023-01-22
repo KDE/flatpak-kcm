@@ -24,9 +24,9 @@ QString permDataFilePath()
     return userPath;
 }
 
-QString iconPath(const QString &name, const QString &id)
+QString iconPath(const QString &name, const QString &id, const QString &appBasePath)
 {
-    QString dirPath = QStringLiteral("/var/lib/flatpak/app/") + id + QStringLiteral("/current/active/files/share/icons/hicolor/");
+    QString dirPath = appBasePath + QStringLiteral("/files/share/icons/hicolor/");
     QDir dir(dirPath);
     dir.setFilter(QDir::NoDotAndDotDot | QDir::AllDirs);
 
