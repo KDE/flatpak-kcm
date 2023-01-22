@@ -104,6 +104,9 @@ FlatpakReferencesModel::FlatpakReferencesModel(QObject *parent) : QAbstractListM
 {
     g_autoptr(FlatpakInstallation) installation = flatpak_installation_new_system(NULL, NULL);
     g_autoptr(GPtrArray) installedApps = flatpak_installation_list_installed_refs_by_kind(installation, FLATPAK_REF_KIND_APP, NULL, NULL);
+    g_autoptr(FlatpakInstallation) userInstallation = flatpak_installation_new_user(NULL, NULL);
+    g_autoptr(GPtrArray) installedUserApps = flatpak_installation_list_installed_refs_by_kind(userInstallation, FLATPAK_REF_KIND_APP, NULL, NULL);
+    g_ptr_array_extend_and_steal(installedApps, installedUserApps);
     QString path = FlatpakHelper::permDataFilePath();
 
     for(uint i = 0; i < installedApps->len; ++i) {
