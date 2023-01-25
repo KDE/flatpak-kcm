@@ -922,7 +922,7 @@ void FlatpakPermissionModel::setPerm(int index)
 void FlatpakPermissionModel::editPerm(int index, QString newValue)
 {
     /* guard for out-of-range indices */
-    if (index < 0 || index > m_permissions.length()) {
+    if (index < 0 || index >= m_permissions.length()) {
         return;
     }
 
