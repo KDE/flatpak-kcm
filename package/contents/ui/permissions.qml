@@ -40,6 +40,10 @@ KCM.ScrollViewKCM {
         }
 
         currentIndex: -1
+        // Mitigate ListView's poor layouting stills.
+        // Without it, section delegates may shift down and overlap.
+        reuseItems: false
+        cacheBuffer: 10000
 
         section.property: permissionPage.showAdvanced ? "category" : "sectionType"
         section.criteria: ViewSection.FullString
