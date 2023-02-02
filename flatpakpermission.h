@@ -9,6 +9,7 @@
 
 #include <QString>
 #include <QAbstractListModel>
+#include <QPointer>
 
 class FlatpakReference;
 
@@ -147,7 +148,8 @@ private:
     int permIndex(QString category, int from = 0);
     void readFromFile();
     void writeToFile();
+
     QVector<FlatpakPermission> m_permissions;
-    FlatpakReference *m_reference;
+    QPointer<FlatpakReference> m_reference;
     QString m_overridesData;
 };
