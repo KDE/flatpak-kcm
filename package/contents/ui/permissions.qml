@@ -113,6 +113,11 @@ KCM.ScrollViewKCM {
                             visible: section !== i18n("Environment")
                             Layout.fillWidth: true
                         }
+                        Kirigami.Heading {
+                            text: "="
+                            level: 3
+                            visible: section === i18n("Environment")
+                        }
                         QQC2.TextField {
                             id: valueField
                             visible: section === i18n("Environment")
