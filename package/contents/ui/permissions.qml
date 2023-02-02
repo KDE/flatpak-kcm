@@ -48,6 +48,7 @@ KCM.ScrollViewKCM {
         section.property: permissionPage.showAdvanced ? "category" : "sectionType"
         section.criteria: ViewSection.FullString
         section.delegate: Kirigami.ListSectionHeader {
+            width: ListView.view.width - ListView.view.leftMargin - ListView.view.rightMargin
             label: section
             QQC2.ToolButton {
                 id: buttonToggleAdvanced
@@ -144,9 +145,14 @@ KCM.ScrollViewKCM {
             property var comboVals: model.valueList
             property int index: model.index
 
+            // default formula does not take leading/trailing into account
+            implicitHeight: Math.max(iconSize, labelItem.implicitHeight, trailing.implicitHeight) + topPadding + bottomPadding
+            width: ListView.view.width - ListView.view.leftMargin - ListView.view.rightMargin
+            height: implicitHeight
+            trailingFillVertically: false
+
             text: model.description
             visible: showAdvanced ? model.isNotDummy : model.isBasic && model.isNotDummy
-            height: Kirigami.Units.gridUnit * 2
             hoverEnabled: false
             checkable: true
             activeBackgroundColor: "transparent"
