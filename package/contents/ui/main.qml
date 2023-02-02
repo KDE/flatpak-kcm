@@ -1,13 +1,11 @@
 /**
  * SPDX-FileCopyrightText: 2022 Suhaas Joshi <joshiesuhaas0@gmail.com>
+ * SPDX-FileCopyrightText: 2023 ivan tkachenko <me@ratijas.tk>
  * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
-import QtQuick 2.12
-import QtQuick.Controls 2.12 as Controls
-import QtQuick.Layouts 1.15 as Layouts
-
-import org.kde.kirigami 2.19 as Kirigami
+import QtQuick 2.15
+import org.kde.kirigami 2.20 as Kirigami
 import org.kde.kcm 1.2 as KCM
 import org.kde.plasma.kcm.flatpakpermissions 1.0
 
@@ -36,8 +34,7 @@ KCM.ScrollViewKCM {
             text: model.name
             icon: model.icon
 
-            function shouldChange()
-            {
+            function shouldChange() {
                 if (kcm.isSaveNeeded()) {
                     promptDialog.open()
                 } else {
@@ -45,8 +42,7 @@ KCM.ScrollViewKCM {
                 }
             }
 
-            function changeApp()
-            {
+            function changeApp() {
                 kcm.pop(0)
                 kcm.setIndex(appsListView.currentIndex)
                 kcm.push("permissions.qml", {ref: model.reference})

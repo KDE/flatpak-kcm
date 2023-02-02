@@ -1,14 +1,15 @@
 /**
  * SPDX-FileCopyrightText: 2022 Suhaas Joshi <joshiesuhaas0@gmail.com>
+ * SPDX-FileCopyrightText: 2023 ivan tkachenko <me@ratijas.tk>
  * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
-import QtQuick 2.0
-import QtQuick.Controls 2.15 as Controls
-import QtQuick.Layouts 1.15 as Layouts
+import QtQuick 2.15
+import QtQuick.Controls 2.15 as QQC2
+import QtQuick.Layouts 1.15
 
 import org.kde.kcm 1.2 as KCM
-import org.kde.kirigami 2.19 as Kirigami
+import org.kde.kirigami 2.20 as Kirigami
 import org.kde.plasma.kcm.flatpakpermissions 1.0
 
 KCM.ScrollViewKCM {
@@ -17,7 +18,7 @@ KCM.ScrollViewKCM {
     implicitWidth: Kirigami.Units.gridUnit * 15
     framedView: false
     property var ref: null
-    property bool showAdvanced: false
+    property bool showAdvanced: true
 
     Kirigami.PlaceholderMessage {
         text: i18n("Select an application from the list to view its permissions here")
@@ -40,100 +41,82 @@ KCM.ScrollViewKCM {
 
         currentIndex: -1
 
-        section.property: showAdvanced ? "category" : "sectionType"
+        section.property: permissionPage.showAdvanced ? "category" : "sectionType"
         section.criteria: ViewSection.FullString
         section.delegate: Kirigami.ListSectionHeader {
             label: section
-            font.bold: true
-            height: Kirigami.Units.gridUnit * 2.5
-            Controls.ToolButton {
-                text: showAdvanced ? i18n("Hide advanced permissions") : i18n("Show advanced permissions")
-                display: Controls.AbstractButton.IconOnly
-                icon.name: showAdvanced ? "collapse" : "expand"
-                visible: label === "Advanced Permissions"
-                onClicked: showAdvanced = !showAdvanced
-                Layouts.Layout.alignment: Qt.AlignRight
-                Controls.ToolTip {
-                    text: parent.text
-                }
+            QQC2.ToolButton {
+                id: buttonToggleAdvanced
+                text: permissionPage.showAdvanced ? i18n("Hide advanced permissions") : i18n("Show advanced permissions")
+                display: QQC2.AbstractButton.IconOnly
+                icon.name: permissionPage.showAdvanced ? "collapse" : "expand"
+                visible: section === i18n("Advanced Permissions")
+                onClicked: permissionPage.showAdvanced = !permissionPage.showAdvanced
+                Layout.alignment: Qt.AlignRight
+
+                QQC2.ToolTip.text: text
+                QQC2.ToolTip.visible: Kirigami.Settings.tabletMode ? buttonToggleAdvanced.pressed : buttonToggleAdvanced.hovered
+                QQC2.ToolTip.delay: Kirigami.Settings.tabletMode ? Qt.styleHints.mousePressAndHoldInterval : Kirigami.Units.toolTipDelay
             }
-            Controls.ToolButton {
+            QQC2.ToolButton {
+                id: buttonAddNew
                 text: i18n("Add New")
                 icon.name: "bqm-add"
-                visible: label === "Filesystem Access" || label === "Session Bus Policy" || label === "System Bus Policy" || label === "Environment"
+                visible: [
+                    i18n("Filesystem Access"),
+                    i18n("Environment"),
+                    i18n("Session Bus Policy"),
+                    i18n("System Bus Policy"),
+                ].includes(section)
                 onClicked: {
                     textPromptDialog.open()
                 }
-                Layouts.Layout.alignment: Qt.AlignRight
+                Layout.alignment: Qt.AlignRight
 
-                Controls.ToolTip {
-                    function getToolTipText()
-                    {
-                        var toolTipText
-                        if (label === i18n("Filesystem Access")) {
-                            return i18n("Add a new filesystem path")
-                        } else if (label === i18n("Environment")) {
-                            return i18n("Add a new environment variable")
-                        } else if (label === i18n("Session Bus Policy")){
-                            return i18n("Add a new session bus")
-                        } else {
-                            return i18n("Add a new system bus")
-                        }
-                    }
-                    text: getToolTipText()
+                QQC2.ToolTip.text: switch (section) {
+                    case i18n("Filesystem Access"): return i18n("Add a new filesystem path")
+                    case i18n("Environment"): return i18n("Add a new environment variable")
+                    case i18n("Session Bus Policy"): return i18n("Add a new session bus")
+                    default: return i18n("Add a new system bus")
                 }
+                QQC2.ToolTip.visible: Kirigami.Settings.tabletMode ? buttonAddNew.pressed : buttonAddNew.hovered
+                QQC2.ToolTip.delay: Kirigami.Settings.tabletMode ? Qt.styleHints.mousePressAndHoldInterval : Kirigami.Units.toolTipDelay
 
                 Kirigami.PromptDialog {
                     id: textPromptDialog
-                    title: getDialogTitle()
                     parent: permissionPage
-
-                    function getPlaceHolderText()
-                    {
-                        if (label === i18n("Filesystem Access")) {
-                            return i18n("Enter filesystem path...")
-                        } else if (label === i18n("Environment")) {
-                            return i18n("Enter variable...")
-                        } else if (label === i18n("Session Bus Policy")){
-                            return i18n("Enter session bus name...")
-                        } else {
-                            return i18n("Enter system bus name...")
-                        }
+                    title: switch (section) {
+                        case i18n("Filesystem Access"): return i18n("Add Filesystem Path Permission")
+                        case i18n("Environment"): return i18n("Set Environment Variable")
+                        case i18n("Session Bus Policy"): return i18n("Add Session Bus Permission")
+                        default: return i18n("Add System Bus Permission")
                     }
 
-                    function getDialogTitle()
-                    {
-                        if (label === i18n("Filesystem Access")) {
-                            return i18n("Add Filesystem Path Permission")
-                        } else if (label === i18n("Environment")) {
-                            return i18n("Set Environment Variable")
-                        } else if (label === i18n("Session Bus Policy")){
-                            return i18n("Add Session Bus Permission")
-                        } else {
-                            return i18n("Add System Bus Permission")
-                        }
-                    }
-
-                    Layouts.RowLayout {
-                        Controls.TextField {
+                    RowLayout {
+                        QQC2.TextField {
                             id: nameField
-                            placeholderText: textPromptDialog.getPlaceHolderText()
-                            Layouts.Layout.fillWidth: true
+                            placeholderText: switch (section) {
+                                case i18n("Filesystem Access"): return i18n("Enter filesystem path...")
+                                case i18n("Environment"): return i18n("Enter variable...")
+                                case i18n("Session Bus Policy"): return i18n("Enter session bus name...")
+                                default: return i18n("Enter system bus name...")
+                            }
+                            Layout.fillWidth: true
                         }
-                        Controls.ComboBox {
+                        QQC2.ComboBox {
                             id: valueBox
                             model: permsModel.valueList(section)
-                            visible: section !== "Environment"
-                            Layouts.Layout.fillWidth: true
+                            visible: section !== i18n("Environment")
+                            Layout.fillWidth: true
                         }
-                        Controls.TextField {
+                        QQC2.TextField {
                             id: valueField
-                            visible: section === "Environment"
+                            visible: section === i18n("Environment")
                             placeholderText: i18n("Enter value...")
-                            Layouts.Layout.fillWidth: true
+                            Layout.fillWidth: true
                         }
                     }
-                    property string value: label === "Environment" ? valueField.text : valueBox.currentText
+                    property string value: section === i18n("Environment") ? valueField.text : valueBox.currentText
                     standardButtons: Kirigami.Dialog.Ok | Kirigami.Dialog.Cancel
                     onAccepted: permsModel.addUserEnteredPermission(nameField.text, section, textPromptDialog.value)
                 }
@@ -147,6 +130,11 @@ KCM.ScrollViewKCM {
          */
         delegate: Kirigami.BasicListItem {
             id: permItem
+
+            property bool isComplex: !(model.isSimple) && !(model.isEnvironment)
+            property var comboVals: model.valueList
+            property int index: model.index
+
             text: model.description
             visible: showAdvanced ? model.isNotDummy : model.isBasic && model.isNotDummy
             height: Kirigami.Units.gridUnit * 2
@@ -154,27 +142,22 @@ KCM.ScrollViewKCM {
             checkable: true
             activeBackgroundColor: "transparent"
             activeTextColor: Kirigami.Theme.textColor
-            onClicked: permsModel.setPerm(model.index)
+            onClicked: permsModel.setPerm(permItem.index)
 
-            property bool isComplex: !(model.isSimple) && !(model.isEnvironment)
-            property var comboVals: model.valueList
-            property int index: model.index
-
-            leading: Controls.CheckBox {
+            leading: QQC2.CheckBox {
                 id: checkBox
                 checked: model.isGranted
-                onToggled: permsModel.setPerm(model.index)
+                onToggled: permsModel.setPerm(permItem.index)
             }
 
-            trailing: Layouts.RowLayout {
-                Controls.ComboBox {
+            trailing: RowLayout {
+                QQC2.ComboBox {
                     enabled: checkBox.checked
                     model: permItem.comboVals
                     visible: permItem.isComplex
-                    height: Kirigami.Units.gridUnit * 0.5
-                    onActivated: (index) => permsModel.editPerm(permItem.index, textAt(index))
+                    onActivated: index => permsModel.editPerm(permItem.index, textAt(index))
                 }
-                Controls.TextField {
+                QQC2.TextField {
                     text: model.currentValue
                     visible: model.isEnvironment
                     enabled: checkBox.checked
