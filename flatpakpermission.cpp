@@ -813,16 +813,17 @@ bool FlatpakPermissionModel::isSaveNeeded() const
     });
 }
 
-void FlatpakPermissionModel::setReference(FlatpakReference *ref)
+void FlatpakPermissionModel::setReference(FlatpakReference *reference)
 {
-    if (!ref) {
-        return;
-    }
-
-    if(m_reference != ref) {
+    if (reference != m_reference) {
         beginResetModel();
-        m_reference = ref;
-        m_reference->setPermsModel(this);
+        if (m_reference) {
+            m_reference->setPermsModel(nullptr);
+        }
+        m_reference = reference;
+        if (m_reference) {
+            m_reference->setPermsModel(this);
+        }
         endResetModel();
         Q_EMIT referenceChanged();
     }

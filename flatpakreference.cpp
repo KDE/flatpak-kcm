@@ -25,6 +25,7 @@ FlatpakReference::FlatpakReference(FlatpakReferencesModel *parent, QString name,
       m_icon(icon),
       m_path(path),
       m_metadata(metadata),
+      m_permsModel(nullptr),
       m_refsModel(refsModel)
 {
     m_path.append(m_id);
@@ -68,36 +69,58 @@ FlatpakPermissionModel *FlatpakReference::permsModel()
 
 void FlatpakReference::setPermsModel(FlatpakPermissionModel *permsModel)
 {
-    m_permsModel = permsModel;
-    connect(m_permsModel, &FlatpakPermissionModel::referenceChanged, this, &FlatpakReference::needsLoad);
-    connect(this, &FlatpakReference::needsLoad, m_refsModel, &FlatpakReferencesModel::needsLoad);
-    connect(m_permsModel, &FlatpakPermissionModel::dataChanged, this, &FlatpakReference::needsSaveChanged);
-    connect(this, &FlatpakReference::needsSaveChanged, m_refsModel, &FlatpakReferencesModel::needsSaveChanged);
+    if (permsModel != m_permsModel) {
+        if (m_permsModel) {
+            disconnect(m_permsModel, &FlatpakPermissionModel::referenceChanged, this, &FlatpakReference::needsLoad);
+            disconnect(this, &FlatpakReference::needsLoad, m_refsModel, &FlatpakReferencesModel::needsLoad);
+            disconnect(m_permsModel, &FlatpakPermissionModel::dataChanged, this, &FlatpakReference::needsSaveChanged);
+            disconnect(this, &FlatpakReference::needsSaveChanged, m_refsModel, &FlatpakReferencesModel::needsSaveChanged);
+        }
+        m_permsModel = permsModel;
+        if (m_permsModel) {
+            connect(m_permsModel, &FlatpakPermissionModel::referenceChanged, this, &FlatpakReference::needsLoad);
+            connect(this, &FlatpakReference::needsLoad, m_refsModel, &FlatpakReferencesModel::needsLoad);
+            connect(m_permsModel, &FlatpakPermissionModel::dataChanged, this, &FlatpakReference::needsSaveChanged);
+            connect(this, &FlatpakReference::needsSaveChanged, m_refsModel, &FlatpakReferencesModel::needsSaveChanged);
+        }
+    }
 }
 
 void FlatpakReference::load()
 {
-    m_permsModel->load();
+    if (m_permsModel) {
+        m_permsModel->load();
+    }
 }
 
 void FlatpakReference::save()
 {
-    m_permsModel->save();
+    if (m_permsModel) {
+        m_permsModel->save();
+    }
 }
 
 void FlatpakReference::defaults()
 {
-    m_permsModel->defaults();
+    if (m_permsModel) {
+        m_permsModel->defaults();
+    }
 }
 
 bool FlatpakReference::isSaveNeeded() const
 {
-    return m_permsModel->isSaveNeeded();
+    if (m_permsModel) {
+        return m_permsModel->isSaveNeeded();
+    }
+    return false;
 }
 
 bool FlatpakReference::isDefaults() const
 {
-    return m_permsModel->isDefaults();
+    if (m_permsModel) {
+        return m_permsModel->isDefaults();
+    }
+    return true;
 }
 
 FlatpakReferencesModel::FlatpakReferencesModel(QObject *parent) : QAbstractListModel(parent)

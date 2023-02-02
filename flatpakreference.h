@@ -10,6 +10,7 @@
 #include <QString>
 #include <QVector>
 #include <QAbstractListModel>
+#include <QPointer>
 
 class FlatpakReferencesModel;
 class FlatpakPermissionModel;
@@ -48,8 +49,8 @@ private:
     QString m_path;
     QByteArray m_metadata;
 
-    FlatpakPermissionModel *m_permsModel;
-    FlatpakReferencesModel *m_refsModel;
+    QPointer<FlatpakPermissionModel> m_permsModel;
+    QPointer<FlatpakReferencesModel> m_refsModel;
 };
 
 class FlatpakReferencesModel : public QAbstractListModel
