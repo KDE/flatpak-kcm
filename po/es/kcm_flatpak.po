@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcm_flatpak\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-21 00:59+0000\n"
+"POT-Creation-Date: 2023-02-03 01:00+0000\n"
 "PO-Revision-Date: 2022-09-14 11:26+0200\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
@@ -19,22 +19,23 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Lokalize 22.08.1\n"
 
-#: flatpakpermission.cpp:58 flatpakpermission.cpp:424 flatpakpermission.cpp:473
-#: flatpakpermission.cpp:489 flatpakpermission.cpp:499
-#: flatpakpermission.cpp:509 flatpakpermission.cpp:519
+#: flatpakpermission.cpp:58 flatpakpermission.cpp:432 flatpakpermission.cpp:481
+#: flatpakpermission.cpp:497 flatpakpermission.cpp:507
+#: flatpakpermission.cpp:517 flatpakpermission.cpp:527
 #, kde-format
 msgid "OFF"
 msgstr "Desactivado"
 
-#: flatpakpermission.cpp:82 flatpakpermission.cpp:237 flatpakpermission.cpp:947
-#: flatpakpermission.cpp:982 package/contents/ui/permissions.qml:73
-#: package/contents/ui/permissions.qml:93
-#: package/contents/ui/permissions.qml:106
+#: flatpakpermission.cpp:82 flatpakpermission.cpp:239 flatpakpermission.cpp:955
+#: flatpakpermission.cpp:990 package/contents/ui/permissions.qml:71
+#: package/contents/ui/permissions.qml:82
+#: package/contents/ui/permissions.qml:94
+#: package/contents/ui/permissions.qml:104
 #, kde-format
 msgid "Filesystem Access"
 msgstr "Acceso al sistema de archivos"
 
-#: flatpakpermission.cpp:84 flatpakpermission.cpp:237
+#: flatpakpermission.cpp:84 flatpakpermission.cpp:241
 #, kde-format
 msgid "Basic Permissions"
 msgstr "Permisos básicos"
@@ -49,7 +50,7 @@ msgstr "Subsistemas compartidos"
 msgid "Sockets"
 msgstr "Conectores"
 
-#: flatpakpermission.cpp:92 flatpakpermission.cpp:381
+#: flatpakpermission.cpp:92 flatpakpermission.cpp:389
 #, kde-format
 msgid "Device Access"
 msgstr "Acceso a dispositivos"
@@ -59,363 +60,371 @@ msgstr "Acceso a dispositivos"
 msgid "Features Allowed"
 msgstr "Funcionalidades permitidas"
 
-#: flatpakpermission.cpp:96 flatpakpermission.cpp:237
+#: flatpakpermission.cpp:96 flatpakpermission.cpp:244
+#: package/contents/ui/permissions.qml:58
 #, kde-format
 msgid "Advanced Permissions"
 msgstr "Permisos avanzados"
 
-#: flatpakpermission.cpp:292
+#: flatpakpermission.cpp:300
 #, kde-format
 msgid "shared"
 msgstr "recursos compartidos"
 
-#: flatpakpermission.cpp:295
+#: flatpakpermission.cpp:303
 #, kde-format
 msgid "network"
 msgstr "red"
 
-#: flatpakpermission.cpp:296
+#: flatpakpermission.cpp:304
 #, kde-format
 msgid "Internet Connection"
 msgstr "Conexión a Internet"
 
-#: flatpakpermission.cpp:301
+#: flatpakpermission.cpp:309
 #, kde-format
 msgid "ipc"
 msgstr "ipc"
 
-#: flatpakpermission.cpp:302
+#: flatpakpermission.cpp:310
 #, kde-format
 msgid "Inter-process Communication"
 msgstr "Comunicación entre procesos"
 
-#: flatpakpermission.cpp:308
+#: flatpakpermission.cpp:316
 #, kde-format
 msgid "sockets"
 msgstr "conectores"
 
-#: flatpakpermission.cpp:311
+#: flatpakpermission.cpp:319
 #, kde-format
 msgid "x11"
 msgstr "x11"
 
-#: flatpakpermission.cpp:312
+#: flatpakpermission.cpp:320
 #, kde-format
 msgid "X11 Windowing System"
 msgstr "Sistema de ventanas X11"
 
-#: flatpakpermission.cpp:316
+#: flatpakpermission.cpp:324
 #, kde-format
 msgid "wayland"
 msgstr "wayland"
 
-#: flatpakpermission.cpp:317
+#: flatpakpermission.cpp:325
 #, kde-format
 msgid "Wayland Windowing System"
 msgstr "Sistema de ventanas Wayland"
 
-#: flatpakpermission.cpp:321
+#: flatpakpermission.cpp:329
 #, kde-format
 msgid "fallback-x11"
 msgstr "fallback-x11"
 
-#: flatpakpermission.cpp:322
+#: flatpakpermission.cpp:330
 #, kde-format
 msgid "Fallback to X11 Windowing System"
 msgstr "Recurrir al sistema de ventanas X11"
 
-#: flatpakpermission.cpp:326
+#: flatpakpermission.cpp:334
 #, kde-format
 msgid "pulseaudio"
 msgstr "pulseaudio"
 
-#: flatpakpermission.cpp:327
+#: flatpakpermission.cpp:335
 #, kde-format
 msgid "Pulseaudio Sound Server"
 msgstr "Servidor de sonido PulseAudio"
 
-#: flatpakpermission.cpp:332
+#: flatpakpermission.cpp:340
 #, kde-format
 msgid "session-bus"
 msgstr "bus de sesión"
 
-#: flatpakpermission.cpp:333
+#: flatpakpermission.cpp:341
 #, kde-format
 msgid "Session Bus Access"
 msgstr "Acceso al bus de la sesión"
 
-#: flatpakpermission.cpp:337
+#: flatpakpermission.cpp:345
 #, kde-format
 msgid "system-bus"
 msgstr "bus del sistema"
 
-#: flatpakpermission.cpp:338
+#: flatpakpermission.cpp:346
 #, kde-format
 msgid "System Bus Access"
 msgstr "Acceso al bus del sistema"
 
-#: flatpakpermission.cpp:342
+#: flatpakpermission.cpp:350
 #, kde-format
 msgid "ssh-auth"
 msgstr "autenticación ssh"
 
-#: flatpakpermission.cpp:343
+#: flatpakpermission.cpp:351
 #, kde-format
 msgid "Remote Login Access"
 msgstr "Acceso de sesión remota"
 
-#: flatpakpermission.cpp:348
+#: flatpakpermission.cpp:356
 #, kde-format
 msgid "pcsc"
 msgstr "pcsc"
 
-#: flatpakpermission.cpp:349
+#: flatpakpermission.cpp:357
 #, kde-format
 msgid "Smart Card Access"
 msgstr "Acceso de tarjetas inteligentes"
 
-#: flatpakpermission.cpp:354
+#: flatpakpermission.cpp:362
 #, kde-format
 msgid "cups"
 msgstr "cups"
 
-#: flatpakpermission.cpp:355
+#: flatpakpermission.cpp:363
 #, kde-format
 msgid "Print System Access"
 msgstr "Acceso al sistema de impresión"
 
-#: flatpakpermission.cpp:362
+#: flatpakpermission.cpp:370
 #, kde-format
 msgid "devices"
 msgstr "dispositivos"
 
-#: flatpakpermission.cpp:365
+#: flatpakpermission.cpp:373
 #, kde-format
 msgid "kvm"
 msgstr "kvm"
 
-#: flatpakpermission.cpp:366
+#: flatpakpermission.cpp:374
 #, kde-format
 msgid "Kernel-based Virtual Machine Access"
 msgstr "Acceso a máquinas virtuales basado en kernel"
 
-#: flatpakpermission.cpp:370
+#: flatpakpermission.cpp:378
 #, kde-format
 msgid "dri"
 msgstr "dri"
 
-#: flatpakpermission.cpp:371
+#: flatpakpermission.cpp:379
 #, kde-format
 msgid "Direct Graphic Rendering"
 msgstr "Renderizado de gráficos directo"
 
-#: flatpakpermission.cpp:375
+#: flatpakpermission.cpp:383
 #, kde-format
 msgid "shm"
 msgstr "shm"
 
-#: flatpakpermission.cpp:376
+#: flatpakpermission.cpp:384
 #, kde-format
 msgid "Host dev/shm"
 msgstr "dev/shm de la máquina"
 
-#: flatpakpermission.cpp:380
+#: flatpakpermission.cpp:388
 #, kde-format
 msgid "all"
 msgstr "todos"
 
-#: flatpakpermission.cpp:388
+#: flatpakpermission.cpp:396
 #, kde-format
 msgid "features"
 msgstr "funcionalidades"
 
-#: flatpakpermission.cpp:391
+#: flatpakpermission.cpp:399
 #, kde-format
 msgid "devel"
 msgstr "desarrollo"
 
-#: flatpakpermission.cpp:392
+#: flatpakpermission.cpp:400
 #, kde-format
 msgid "System Calls by Development Tools"
 msgstr "Llamadas del sistema por herramientas de desarrollo"
 
-#: flatpakpermission.cpp:396
+#: flatpakpermission.cpp:404
 #, kde-format
 msgid "multiarch"
 msgstr "multiarquitectura"
 
-#: flatpakpermission.cpp:397
+#: flatpakpermission.cpp:405
 #, kde-format
 msgid "Run Multiarch/Multilib Binaries"
 msgstr "Ejecutar binarios multiarquitectura/multibiblioteca"
 
-#: flatpakpermission.cpp:401
+#: flatpakpermission.cpp:409
 #, kde-format
 msgid "bluetooth"
 msgstr "bluetooth"
 
-#: flatpakpermission.cpp:402
+#: flatpakpermission.cpp:410
 #, kde-format
 msgid "Bluetooth"
 msgstr "Bluetooth"
 
-#: flatpakpermission.cpp:407
+#: flatpakpermission.cpp:415
 #, kde-format
 msgid "canbus"
 msgstr "canbus"
 
-#: flatpakpermission.cpp:408
+#: flatpakpermission.cpp:416
 #, kde-format
 msgid "Canbus Socket Access"
 msgstr "Acceso al conector Canbus"
 
-#: flatpakpermission.cpp:412
+#: flatpakpermission.cpp:420
 #, kde-format
 msgid "per-app-dev-shm"
 msgstr "dev-shm por aplicación"
 
-#: flatpakpermission.cpp:413
+#: flatpakpermission.cpp:421
 #, kde-format
 msgid "Share dev/shm across all instances of an app per user ID"
 msgstr ""
 "Compartir dev/shm entre todas las instancias de una aplicación por ID de "
 "usuario"
 
-#: flatpakpermission.cpp:419
+#: flatpakpermission.cpp:427
 #, kde-format
 msgid "filesystems"
 msgstr "sistemas de archivos"
 
-#: flatpakpermission.cpp:426 flatpakpermission.cpp:444
-#: flatpakpermission.cpp:452 flatpakpermission.cpp:460
-#: flatpakpermission.cpp:468 flatpakpermission.cpp:479
-#: flatpakpermission.cpp:491 flatpakpermission.cpp:501
-#: flatpakpermission.cpp:511 flatpakpermission.cpp:521
-#: flatpakpermission.cpp:644 flatpakpermission.cpp:652
-#: flatpakpermission.cpp:701 flatpakpermission.cpp:715
-#: flatpakpermission.cpp:983
+#: flatpakpermission.cpp:434 flatpakpermission.cpp:452
+#: flatpakpermission.cpp:460 flatpakpermission.cpp:468
+#: flatpakpermission.cpp:476 flatpakpermission.cpp:487
+#: flatpakpermission.cpp:499 flatpakpermission.cpp:509
+#: flatpakpermission.cpp:519 flatpakpermission.cpp:529
+#: flatpakpermission.cpp:652 flatpakpermission.cpp:660
+#: flatpakpermission.cpp:709 flatpakpermission.cpp:723
+#: flatpakpermission.cpp:991
 #, kde-format
 msgid "read/write"
 msgstr "lectura/escritura"
 
-#: flatpakpermission.cpp:426 flatpakpermission.cpp:440
-#: flatpakpermission.cpp:448 flatpakpermission.cpp:456
-#: flatpakpermission.cpp:464 flatpakpermission.cpp:475
-#: flatpakpermission.cpp:654 flatpakpermission.cpp:699
-#: flatpakpermission.cpp:715 flatpakpermission.cpp:983
+#: flatpakpermission.cpp:434 flatpakpermission.cpp:448
+#: flatpakpermission.cpp:456 flatpakpermission.cpp:464
+#: flatpakpermission.cpp:472 flatpakpermission.cpp:483
+#: flatpakpermission.cpp:662 flatpakpermission.cpp:707
+#: flatpakpermission.cpp:723 flatpakpermission.cpp:991
 #, kde-format
 msgid "read-only"
 msgstr "solo lectura"
 
-#: flatpakpermission.cpp:426 flatpakpermission.cpp:442
-#: flatpakpermission.cpp:450 flatpakpermission.cpp:458
-#: flatpakpermission.cpp:466 flatpakpermission.cpp:477
-#: flatpakpermission.cpp:657 flatpakpermission.cpp:705
-#: flatpakpermission.cpp:715 flatpakpermission.cpp:983
+#: flatpakpermission.cpp:434 flatpakpermission.cpp:450
+#: flatpakpermission.cpp:458 flatpakpermission.cpp:466
+#: flatpakpermission.cpp:474 flatpakpermission.cpp:485
+#: flatpakpermission.cpp:665 flatpakpermission.cpp:713
+#: flatpakpermission.cpp:723 flatpakpermission.cpp:991
 #, kde-format
 msgid "create"
 msgstr "crear"
 
-#: flatpakpermission.cpp:486
+#: flatpakpermission.cpp:494
 #, kde-format
 msgid "home"
 msgstr "carpeta personal"
 
-#: flatpakpermission.cpp:487
+#: flatpakpermission.cpp:495
 #, kde-format
 msgid "All User Files"
 msgstr "Todos los archivos de usuario"
 
-#: flatpakpermission.cpp:497
+#: flatpakpermission.cpp:505
 #, kde-format
 msgid "host"
 msgstr "host"
 
-#: flatpakpermission.cpp:498
+#: flatpakpermission.cpp:506
 #, kde-format
 msgid "All System Files"
 msgstr "Todos los archivos del sistema"
 
-#: flatpakpermission.cpp:507
+#: flatpakpermission.cpp:515
 #, kde-format
 msgid "host-os"
 msgstr "host-os"
 
-#: flatpakpermission.cpp:508
+#: flatpakpermission.cpp:516
 #, kde-format
 msgid "All System Libraries, Executables and Binaries"
 msgstr "Todas las bibliotecas, ejecutables y binarios del sistema"
 
-#: flatpakpermission.cpp:517
+#: flatpakpermission.cpp:525
 #, kde-format
 msgid "host-etc"
 msgstr "host-etc"
 
-#: flatpakpermission.cpp:518
+#: flatpakpermission.cpp:526
 #, kde-format
 msgid "All System Configurations"
 msgstr "Todas las configuraciones del sistema"
 
-#: flatpakpermission.cpp:540 flatpakpermission.cpp:984
-#: package/contents/ui/permissions.qml:77
-#: package/contents/ui/permissions.qml:97
-#: package/contents/ui/permissions.qml:110
+#: flatpakpermission.cpp:548 flatpakpermission.cpp:992
+#: package/contents/ui/permissions.qml:73
+#: package/contents/ui/permissions.qml:84
+#: package/contents/ui/permissions.qml:96
+#: package/contents/ui/permissions.qml:106
 #, kde-format
 msgid "Session Bus Policy"
 msgstr "Política de bus de sesión"
 
-#: flatpakpermission.cpp:543 flatpakpermission.cpp:566
-#: flatpakpermission.cpp:742 flatpakpermission.cpp:985
+#: flatpakpermission.cpp:551 flatpakpermission.cpp:574
+#: flatpakpermission.cpp:750 flatpakpermission.cpp:993
 #, kde-format
 msgid "talk"
 msgstr "hablar"
 
-#: flatpakpermission.cpp:543 flatpakpermission.cpp:566
-#: flatpakpermission.cpp:742 flatpakpermission.cpp:985
+#: flatpakpermission.cpp:551 flatpakpermission.cpp:574
+#: flatpakpermission.cpp:750 flatpakpermission.cpp:993
 #, kde-format
 msgid "own"
 msgstr "propio"
 
-#: flatpakpermission.cpp:543 flatpakpermission.cpp:566
-#: flatpakpermission.cpp:742 flatpakpermission.cpp:985
+#: flatpakpermission.cpp:551 flatpakpermission.cpp:574
+#: flatpakpermission.cpp:750 flatpakpermission.cpp:993
 #, kde-format
 msgid "see"
 msgstr "ver"
 
-#: flatpakpermission.cpp:563 flatpakpermission.cpp:984
+#: flatpakpermission.cpp:571 flatpakpermission.cpp:992
+#: package/contents/ui/permissions.qml:74
 #, kde-format
 msgid "System Bus Policy"
 msgstr "Política del bus del sistema"
 
-#: flatpakpermission.cpp:585 package/contents/ui/permissions.qml:75
+#: flatpakpermission.cpp:593 package/contents/ui/permissions.qml:72
+#: package/contents/ui/permissions.qml:83
 #: package/contents/ui/permissions.qml:95
-#: package/contents/ui/permissions.qml:108
+#: package/contents/ui/permissions.qml:105
+#: package/contents/ui/permissions.qml:114
+#: package/contents/ui/permissions.qml:120
+#: package/contents/ui/permissions.qml:124
+#: package/contents/ui/permissions.qml:129
 #, kde-format
 msgid "Environment"
 msgstr "Entorno"
 
-#: flatpakpermission.cpp:739 flatpakpermission.cpp:877
-#: flatpakpermission.cpp:1071 flatpakpermission.cpp:1146
+#: flatpakpermission.cpp:747 flatpakpermission.cpp:885
+#: flatpakpermission.cpp:1079 flatpakpermission.cpp:1154
 #, kde-format
 msgid "None"
 msgstr "Ninguno"
 
-#: flatpakpermission.cpp:1001 flatpakpermission.cpp:1003
+#: flatpakpermission.cpp:1009 flatpakpermission.cpp:1011
 #, kde-format
 msgid "=\n"
 msgstr "=\n"
 
-#: package/contents/ui/main.qml:16
+#: package/contents/ui/main.qml:14
 #, kde-format
 msgid "Flatpak Applications"
 msgstr "Aplicaciones Flatpak"
 
-#: package/contents/ui/main.qml:60
+#: package/contents/ui/main.qml:56
 #, kde-format
 msgid "Apply Permissions"
 msgstr "Aplicar permisos"
 
-#: package/contents/ui/main.qml:61
+#: package/contents/ui/main.qml:57
 #, kde-format
 msgid ""
 "The permissions of this application have been changed. Do you want to apply "
@@ -424,92 +433,92 @@ msgstr ""
 "Los permisos de esta aplicación se han cambiado. ¿Desea aplicar estos "
 "cambios o descartarlos?"
 
-#: package/contents/ui/permissions.qml:16
+#: package/contents/ui/permissions.qml:17
 #, kde-format
 msgid "Permissions"
 msgstr "Permisos"
 
-#: package/contents/ui/permissions.qml:23
+#: package/contents/ui/permissions.qml:24
 #, kde-format
 msgid "Select an application from the list to view its permissions here"
 msgstr "Seleccione una aplicación de la lista para ver sus permisos aquí"
 
-#: package/contents/ui/permissions.qml:50
+#: package/contents/ui/permissions.qml:55
 #, kde-format
 msgid "Hide advanced permissions"
 msgstr "Ocultar permisos avanzados"
 
-#: package/contents/ui/permissions.qml:50
+#: package/contents/ui/permissions.qml:55
 #, kde-format
 msgid "Show advanced permissions"
 msgstr "Mostrar permisos avanzados"
 
-#: package/contents/ui/permissions.qml:61
+#: package/contents/ui/permissions.qml:68
 #, kde-format
 msgid "Add New"
 msgstr "Añadir nuevo"
 
-#: package/contents/ui/permissions.qml:74
+#: package/contents/ui/permissions.qml:82
 #, kde-format
 msgid "Add a new filesystem path"
 msgstr "Añadir una nueva ruta del sistema de archivos"
 
-#: package/contents/ui/permissions.qml:76
+#: package/contents/ui/permissions.qml:83
 #, kde-format
 msgid "Add a new environment variable"
 msgstr "Añadir una nueva variable de entorno"
 
-#: package/contents/ui/permissions.qml:78
+#: package/contents/ui/permissions.qml:84
 #, kde-format
 msgid "Add a new session bus"
 msgstr "Añadir un nuevo bus de sesión"
 
-#: package/contents/ui/permissions.qml:80
+#: package/contents/ui/permissions.qml:85
 #, kde-format
 msgid "Add a new system bus"
 msgstr "Añadir un nuevo bus del sistema"
 
 #: package/contents/ui/permissions.qml:94
 #, kde-format
-msgid "Enter filesystem path..."
-msgstr "Introduzca ruta del sistema de archivos..."
-
-#: package/contents/ui/permissions.qml:96
-#, kde-format
-msgid "Enter variable..."
-msgstr "Introduzca variable..."
-
-#: package/contents/ui/permissions.qml:98
-#, kde-format
-msgid "Enter session bus name..."
-msgstr "Introduzca nombre del bus de sesión..."
-
-#: package/contents/ui/permissions.qml:100
-#, kde-format
-msgid "Enter system bus name..."
-msgstr "Introduzca nombre del bus del sistema..."
-
-#: package/contents/ui/permissions.qml:107
-#, kde-format
 msgid "Add Filesystem Path Permission"
 msgstr "Añadir permiso de ruta del sistema de archivos"
 
-#: package/contents/ui/permissions.qml:109
+#: package/contents/ui/permissions.qml:95
 #, kde-format
 msgid "Set Environment Variable"
 msgstr "Definir variable de entorno"
 
-#: package/contents/ui/permissions.qml:111
+#: package/contents/ui/permissions.qml:96
 #, kde-format
 msgid "Add Session Bus Permission"
 msgstr "Añadir permiso de bus de sesión"
 
-#: package/contents/ui/permissions.qml:113
+#: package/contents/ui/permissions.qml:97
 #, kde-format
 msgid "Add System Bus Permission"
 msgstr "Añadir permiso de bus del sistema"
 
-#: package/contents/ui/permissions.qml:132
+#: package/contents/ui/permissions.qml:104
+#, kde-format
+msgid "Enter filesystem path..."
+msgstr "Introduzca ruta del sistema de archivos..."
+
+#: package/contents/ui/permissions.qml:105
+#, kde-format
+msgid "Enter variable..."
+msgstr "Introduzca variable..."
+
+#: package/contents/ui/permissions.qml:106
+#, kde-format
+msgid "Enter session bus name..."
+msgstr "Introduzca nombre del bus de sesión..."
+
+#: package/contents/ui/permissions.qml:107
+#, kde-format
+msgid "Enter system bus name..."
+msgstr "Introduzca nombre del bus del sistema..."
+
+#: package/contents/ui/permissions.qml:125
 #, kde-format
 msgid "Enter value..."
 msgstr "Introduzca valor..."
