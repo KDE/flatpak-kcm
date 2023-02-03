@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-21 02:38+0000\n"
+"POT-Creation-Date: 2023-02-03 03:01+0000\n"
 "PO-Revision-Date: 2022-09-15 08:47+0200\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian <kde-i18n-doc@kde.org>\n"
@@ -21,22 +21,23 @@ msgstr ""
 "%100==4 ? 3 : 0);\n"
 "X-Generator: Poedit 3.1.1\n"
 
-#: flatpakpermission.cpp:58 flatpakpermission.cpp:424 flatpakpermission.cpp:473
-#: flatpakpermission.cpp:489 flatpakpermission.cpp:499
-#: flatpakpermission.cpp:509 flatpakpermission.cpp:519
+#: flatpakpermission.cpp:58 flatpakpermission.cpp:432 flatpakpermission.cpp:481
+#: flatpakpermission.cpp:497 flatpakpermission.cpp:507
+#: flatpakpermission.cpp:517 flatpakpermission.cpp:527
 #, kde-format
 msgid "OFF"
 msgstr "Izklopljeno"
 
-#: flatpakpermission.cpp:82 flatpakpermission.cpp:237 flatpakpermission.cpp:947
-#: flatpakpermission.cpp:982 package/contents/ui/permissions.qml:73
-#: package/contents/ui/permissions.qml:93
-#: package/contents/ui/permissions.qml:106
+#: flatpakpermission.cpp:82 flatpakpermission.cpp:239 flatpakpermission.cpp:955
+#: flatpakpermission.cpp:990 package/contents/ui/permissions.qml:71
+#: package/contents/ui/permissions.qml:82
+#: package/contents/ui/permissions.qml:94
+#: package/contents/ui/permissions.qml:104
 #, kde-format
 msgid "Filesystem Access"
 msgstr "Dostop do datotečnega sistema"
 
-#: flatpakpermission.cpp:84 flatpakpermission.cpp:237
+#: flatpakpermission.cpp:84 flatpakpermission.cpp:241
 #, kde-format
 msgid "Basic Permissions"
 msgstr "Osnovna dovoljenja"
@@ -51,7 +52,7 @@ msgstr "Podsistemi v skupni rabi"
 msgid "Sockets"
 msgstr "Vtičnice"
 
-#: flatpakpermission.cpp:92 flatpakpermission.cpp:381
+#: flatpakpermission.cpp:92 flatpakpermission.cpp:389
 #, kde-format
 msgid "Device Access"
 msgstr "Dostop do naprave"
@@ -61,361 +62,369 @@ msgstr "Dostop do naprave"
 msgid "Features Allowed"
 msgstr "Dovoljene funkcije"
 
-#: flatpakpermission.cpp:96 flatpakpermission.cpp:237
+#: flatpakpermission.cpp:96 flatpakpermission.cpp:244
+#: package/contents/ui/permissions.qml:58
 #, kde-format
 msgid "Advanced Permissions"
 msgstr "Napredna dovoljenja"
 
-#: flatpakpermission.cpp:292
+#: flatpakpermission.cpp:300
 #, kde-format
 msgid "shared"
 msgstr " skupna raba"
 
-#: flatpakpermission.cpp:295
+#: flatpakpermission.cpp:303
 #, kde-format
 msgid "network"
 msgstr "omrežje"
 
-#: flatpakpermission.cpp:296
+#: flatpakpermission.cpp:304
 #, kde-format
 msgid "Internet Connection"
 msgstr "Internetna povezava"
 
-#: flatpakpermission.cpp:301
+#: flatpakpermission.cpp:309
 #, kde-format
 msgid "ipc"
 msgstr "ipc"
 
-#: flatpakpermission.cpp:302
+#: flatpakpermission.cpp:310
 #, kde-format
 msgid "Inter-process Communication"
 msgstr "Medprocesna komunikacija"
 
-#: flatpakpermission.cpp:308
+#: flatpakpermission.cpp:316
 #, kde-format
 msgid "sockets"
 msgstr "Vtičnice"
 
-#: flatpakpermission.cpp:311
+#: flatpakpermission.cpp:319
 #, kde-format
 msgid "x11"
 msgstr "x11"
 
-#: flatpakpermission.cpp:312
+#: flatpakpermission.cpp:320
 #, kde-format
 msgid "X11 Windowing System"
 msgstr "Okenski sistem X11"
 
-#: flatpakpermission.cpp:316
+#: flatpakpermission.cpp:324
 #, kde-format
 msgid "wayland"
 msgstr "Wayland"
 
-#: flatpakpermission.cpp:317
+#: flatpakpermission.cpp:325
 #, kde-format
 msgid "Wayland Windowing System"
 msgstr "Okenski sistem Wayland"
 
-#: flatpakpermission.cpp:321
+#: flatpakpermission.cpp:329
 #, kde-format
 msgid "fallback-x11"
 msgstr "Povratni-x11"
 
-#: flatpakpermission.cpp:322
+#: flatpakpermission.cpp:330
 #, kde-format
 msgid "Fallback to X11 Windowing System"
 msgstr "Povratek na okenski sistem X11"
 
-#: flatpakpermission.cpp:326
+#: flatpakpermission.cpp:334
 #, kde-format
 msgid "pulseaudio"
 msgstr "PulseAudio"
 
-#: flatpakpermission.cpp:327
+#: flatpakpermission.cpp:335
 #, kde-format
 msgid "Pulseaudio Sound Server"
 msgstr "Zvočni strežnik PulseAudio"
 
-#: flatpakpermission.cpp:332
+#: flatpakpermission.cpp:340
 #, kde-format
 msgid "session-bus"
 msgstr "sejno-vodilo"
 
-#: flatpakpermission.cpp:333
+#: flatpakpermission.cpp:341
 #, kde-format
 msgid "Session Bus Access"
 msgstr "Dostop do sejnega vodila"
 
-#: flatpakpermission.cpp:337
+#: flatpakpermission.cpp:345
 #, kde-format
 msgid "system-bus"
 msgstr "sistemsko-vodilo"
 
-#: flatpakpermission.cpp:338
+#: flatpakpermission.cpp:346
 #, kde-format
 msgid "System Bus Access"
 msgstr "Dostop do sistemskega vodila"
 
-#: flatpakpermission.cpp:342
+#: flatpakpermission.cpp:350
 #, kde-format
 msgid "ssh-auth"
 msgstr "ssh-auth"
 
-#: flatpakpermission.cpp:343
+#: flatpakpermission.cpp:351
 #, kde-format
 msgid "Remote Login Access"
 msgstr "Dostop z oddaljeno prijavo"
 
-#: flatpakpermission.cpp:348
+#: flatpakpermission.cpp:356
 #, kde-format
 msgid "pcsc"
 msgstr "pcsc"
 
-#: flatpakpermission.cpp:349
+#: flatpakpermission.cpp:357
 #, kde-format
 msgid "Smart Card Access"
 msgstr "Dostop s pametno kartico"
 
-#: flatpakpermission.cpp:354
+#: flatpakpermission.cpp:362
 #, kde-format
 msgid "cups"
 msgstr "cups"
 
-#: flatpakpermission.cpp:355
+#: flatpakpermission.cpp:363
 #, kde-format
 msgid "Print System Access"
 msgstr "Dostop do sistema tiskanja"
 
-#: flatpakpermission.cpp:362
+#: flatpakpermission.cpp:370
 #, kde-format
 msgid "devices"
 msgstr "Naprave"
 
-#: flatpakpermission.cpp:365
+#: flatpakpermission.cpp:373
 #, kde-format
 msgid "kvm"
 msgstr "kvm"
 
-#: flatpakpermission.cpp:366
+#: flatpakpermission.cpp:374
 #, kde-format
 msgid "Kernel-based Virtual Machine Access"
 msgstr "Dostop do navideznega stroja na ravni jedra"
 
-#: flatpakpermission.cpp:370
+#: flatpakpermission.cpp:378
 #, kde-format
 msgid "dri"
 msgstr "dri"
 
-#: flatpakpermission.cpp:371
+#: flatpakpermission.cpp:379
 #, kde-format
 msgid "Direct Graphic Rendering"
 msgstr "Neposredno grafično upodabljanje"
 
-#: flatpakpermission.cpp:375
+#: flatpakpermission.cpp:383
 #, kde-format
 msgid "shm"
 msgstr "shm"
 
-#: flatpakpermission.cpp:376
+#: flatpakpermission.cpp:384
 #, kde-format
 msgid "Host dev/shm"
 msgstr "Gostiteljev dev/shm"
 
-#: flatpakpermission.cpp:380
+#: flatpakpermission.cpp:388
 #, kde-format
 msgid "all"
 msgstr "Vse"
 
-#: flatpakpermission.cpp:388
+#: flatpakpermission.cpp:396
 #, kde-format
 msgid "features"
 msgstr "značilnosti"
 
-#: flatpakpermission.cpp:391
+#: flatpakpermission.cpp:399
 #, kde-format
 msgid "devel"
 msgstr "devel"
 
-#: flatpakpermission.cpp:392
+#: flatpakpermission.cpp:400
 #, kde-format
 msgid "System Calls by Development Tools"
 msgstr "Sistemski klici iz razvojnih orodij"
 
-#: flatpakpermission.cpp:396
+#: flatpakpermission.cpp:404
 #, kde-format
 msgid "multiarch"
 msgstr "multiarh"
 
-#: flatpakpermission.cpp:397
+#: flatpakpermission.cpp:405
 #, kde-format
 msgid "Run Multiarch/Multilib Binaries"
 msgstr "Zaženi večarhitekturne/večknjižnične izvršilne datoteke"
 
-#: flatpakpermission.cpp:401
+#: flatpakpermission.cpp:409
 #, kde-format
 msgid "bluetooth"
 msgstr "bluetooth"
 
-#: flatpakpermission.cpp:402
+#: flatpakpermission.cpp:410
 #, kde-format
 msgid "Bluetooth"
 msgstr "Bluetooth"
 
-#: flatpakpermission.cpp:407
+#: flatpakpermission.cpp:415
 #, kde-format
 msgid "canbus"
 msgstr "canbus"
 
-#: flatpakpermission.cpp:408
+#: flatpakpermission.cpp:416
 #, kde-format
 msgid "Canbus Socket Access"
 msgstr "Dostop do vtičnic Canbus"
 
-#: flatpakpermission.cpp:412
+#: flatpakpermission.cpp:420
 #, kde-format
 msgid "per-app-dev-shm"
 msgstr "per-app-dev-shm"
 
-#: flatpakpermission.cpp:413
+#: flatpakpermission.cpp:421
 #, kde-format
 msgid "Share dev/shm across all instances of an app per user ID"
 msgstr "Skupna raba dev/shm v vseh primerih aplikacije na ID uporabnika"
 
-#: flatpakpermission.cpp:419
+#: flatpakpermission.cpp:427
 #, kde-format
 msgid "filesystems"
 msgstr "datotečni sistemi"
 
-#: flatpakpermission.cpp:426 flatpakpermission.cpp:444
-#: flatpakpermission.cpp:452 flatpakpermission.cpp:460
-#: flatpakpermission.cpp:468 flatpakpermission.cpp:479
-#: flatpakpermission.cpp:491 flatpakpermission.cpp:501
-#: flatpakpermission.cpp:511 flatpakpermission.cpp:521
-#: flatpakpermission.cpp:644 flatpakpermission.cpp:652
-#: flatpakpermission.cpp:701 flatpakpermission.cpp:715
-#: flatpakpermission.cpp:983
+#: flatpakpermission.cpp:434 flatpakpermission.cpp:452
+#: flatpakpermission.cpp:460 flatpakpermission.cpp:468
+#: flatpakpermission.cpp:476 flatpakpermission.cpp:487
+#: flatpakpermission.cpp:499 flatpakpermission.cpp:509
+#: flatpakpermission.cpp:519 flatpakpermission.cpp:529
+#: flatpakpermission.cpp:652 flatpakpermission.cpp:660
+#: flatpakpermission.cpp:709 flatpakpermission.cpp:723
+#: flatpakpermission.cpp:991
 #, kde-format
 msgid "read/write"
 msgstr "branje/pisanje"
 
-#: flatpakpermission.cpp:426 flatpakpermission.cpp:440
-#: flatpakpermission.cpp:448 flatpakpermission.cpp:456
-#: flatpakpermission.cpp:464 flatpakpermission.cpp:475
-#: flatpakpermission.cpp:654 flatpakpermission.cpp:699
-#: flatpakpermission.cpp:715 flatpakpermission.cpp:983
+#: flatpakpermission.cpp:434 flatpakpermission.cpp:448
+#: flatpakpermission.cpp:456 flatpakpermission.cpp:464
+#: flatpakpermission.cpp:472 flatpakpermission.cpp:483
+#: flatpakpermission.cpp:662 flatpakpermission.cpp:707
+#: flatpakpermission.cpp:723 flatpakpermission.cpp:991
 #, kde-format
 msgid "read-only"
 msgstr "samo za branje"
 
-#: flatpakpermission.cpp:426 flatpakpermission.cpp:442
-#: flatpakpermission.cpp:450 flatpakpermission.cpp:458
-#: flatpakpermission.cpp:466 flatpakpermission.cpp:477
-#: flatpakpermission.cpp:657 flatpakpermission.cpp:705
-#: flatpakpermission.cpp:715 flatpakpermission.cpp:983
+#: flatpakpermission.cpp:434 flatpakpermission.cpp:450
+#: flatpakpermission.cpp:458 flatpakpermission.cpp:466
+#: flatpakpermission.cpp:474 flatpakpermission.cpp:485
+#: flatpakpermission.cpp:665 flatpakpermission.cpp:713
+#: flatpakpermission.cpp:723 flatpakpermission.cpp:991
 #, kde-format
 msgid "create"
 msgstr "Ustvari"
 
-#: flatpakpermission.cpp:486
+#: flatpakpermission.cpp:494
 #, kde-format
 msgid "home"
 msgstr "začetek"
 
-#: flatpakpermission.cpp:487
+#: flatpakpermission.cpp:495
 #, kde-format
 msgid "All User Files"
 msgstr "Vse uporabniške datoteke"
 
-#: flatpakpermission.cpp:497
+#: flatpakpermission.cpp:505
 #, kde-format
 msgid "host"
 msgstr "gostitelj"
 
-#: flatpakpermission.cpp:498
+#: flatpakpermission.cpp:506
 #, kde-format
 msgid "All System Files"
 msgstr "Vse sistemske datoteke"
 
-#: flatpakpermission.cpp:507
+#: flatpakpermission.cpp:515
 #, kde-format
 msgid "host-os"
 msgstr "os-gostitelja"
 
-#: flatpakpermission.cpp:508
+#: flatpakpermission.cpp:516
 #, kde-format
 msgid "All System Libraries, Executables and Binaries"
 msgstr "Vse sistemske knjižnice, izvršilne in binarne datoteke"
 
-#: flatpakpermission.cpp:517
+#: flatpakpermission.cpp:525
 #, kde-format
 msgid "host-etc"
 msgstr "gostitelj-etc"
 
-#: flatpakpermission.cpp:518
+#: flatpakpermission.cpp:526
 #, kde-format
 msgid "All System Configurations"
 msgstr "Vse sistemske konfiguracije"
 
-#: flatpakpermission.cpp:540 flatpakpermission.cpp:984
-#: package/contents/ui/permissions.qml:77
-#: package/contents/ui/permissions.qml:97
-#: package/contents/ui/permissions.qml:110
+#: flatpakpermission.cpp:548 flatpakpermission.cpp:992
+#: package/contents/ui/permissions.qml:73
+#: package/contents/ui/permissions.qml:84
+#: package/contents/ui/permissions.qml:96
+#: package/contents/ui/permissions.qml:106
 #, kde-format
 msgid "Session Bus Policy"
 msgstr "Pravilna sejnega vodila"
 
-#: flatpakpermission.cpp:543 flatpakpermission.cpp:566
-#: flatpakpermission.cpp:742 flatpakpermission.cpp:985
+#: flatpakpermission.cpp:551 flatpakpermission.cpp:574
+#: flatpakpermission.cpp:750 flatpakpermission.cpp:993
 #, kde-format
 msgid "talk"
 msgstr "govori"
 
-#: flatpakpermission.cpp:543 flatpakpermission.cpp:566
-#: flatpakpermission.cpp:742 flatpakpermission.cpp:985
+#: flatpakpermission.cpp:551 flatpakpermission.cpp:574
+#: flatpakpermission.cpp:750 flatpakpermission.cpp:993
 #, kde-format
 msgid "own"
 msgstr "lasten"
 
-#: flatpakpermission.cpp:543 flatpakpermission.cpp:566
-#: flatpakpermission.cpp:742 flatpakpermission.cpp:985
+#: flatpakpermission.cpp:551 flatpakpermission.cpp:574
+#: flatpakpermission.cpp:750 flatpakpermission.cpp:993
 #, kde-format
 msgid "see"
 msgstr "glejte"
 
-#: flatpakpermission.cpp:563 flatpakpermission.cpp:984
+#: flatpakpermission.cpp:571 flatpakpermission.cpp:992
+#: package/contents/ui/permissions.qml:74
 #, kde-format
 msgid "System Bus Policy"
 msgstr "Pravila sistemskega vodila"
 
-#: flatpakpermission.cpp:585 package/contents/ui/permissions.qml:75
+#: flatpakpermission.cpp:593 package/contents/ui/permissions.qml:72
+#: package/contents/ui/permissions.qml:83
 #: package/contents/ui/permissions.qml:95
-#: package/contents/ui/permissions.qml:108
+#: package/contents/ui/permissions.qml:105
+#: package/contents/ui/permissions.qml:114
+#: package/contents/ui/permissions.qml:120
+#: package/contents/ui/permissions.qml:124
+#: package/contents/ui/permissions.qml:129
 #, kde-format
 msgid "Environment"
 msgstr "Okolje"
 
-#: flatpakpermission.cpp:739 flatpakpermission.cpp:877
-#: flatpakpermission.cpp:1071 flatpakpermission.cpp:1146
+#: flatpakpermission.cpp:747 flatpakpermission.cpp:885
+#: flatpakpermission.cpp:1079 flatpakpermission.cpp:1154
 #, kde-format
 msgid "None"
 msgstr "Brez"
 
-#: flatpakpermission.cpp:1001 flatpakpermission.cpp:1003
+#: flatpakpermission.cpp:1009 flatpakpermission.cpp:1011
 #, kde-format
 msgid "=\n"
 msgstr "=\n"
 
-#: package/contents/ui/main.qml:16
+#: package/contents/ui/main.qml:14
 #, kde-format
 msgid "Flatpak Applications"
 msgstr "Aplikacije Flatpak"
 
-#: package/contents/ui/main.qml:60
+#: package/contents/ui/main.qml:56
 #, kde-format
 msgid "Apply Permissions"
 msgstr "Uveljavi dovoljenja"
 
-#: package/contents/ui/main.qml:61
+#: package/contents/ui/main.qml:57
 #, kde-format
 msgid ""
 "The permissions of this application have been changed. Do you want to apply "
@@ -424,93 +433,93 @@ msgstr ""
 "Dovoljenja tega programa so bila spremenjena. Ali želite uporabiti te "
 "spremembe ali jih zavreči?"
 
-#: package/contents/ui/permissions.qml:16
+#: package/contents/ui/permissions.qml:17
 #, kde-format
 msgid "Permissions"
 msgstr "Dovoljenja"
 
-#: package/contents/ui/permissions.qml:23
+#: package/contents/ui/permissions.qml:24
 #, kde-format
 msgid "Select an application from the list to view its permissions here"
 msgstr ""
 "Izberite aplikacijo s seznama, če si želite ogledati njena dovoljenja tukaj"
 
-#: package/contents/ui/permissions.qml:50
+#: package/contents/ui/permissions.qml:55
 #, kde-format
 msgid "Hide advanced permissions"
 msgstr "Skrij napredna dovoljenja"
 
-#: package/contents/ui/permissions.qml:50
+#: package/contents/ui/permissions.qml:55
 #, kde-format
 msgid "Show advanced permissions"
 msgstr "Pokaži napredna dovoljenja"
 
-#: package/contents/ui/permissions.qml:61
+#: package/contents/ui/permissions.qml:68
 #, kde-format
 msgid "Add New"
 msgstr "Dodaj novega"
 
-#: package/contents/ui/permissions.qml:74
+#: package/contents/ui/permissions.qml:82
 #, kde-format
 msgid "Add a new filesystem path"
 msgstr "Dodaj novo poti datotečnega sistema"
 
-#: package/contents/ui/permissions.qml:76
+#: package/contents/ui/permissions.qml:83
 #, kde-format
 msgid "Add a new environment variable"
 msgstr "Dodaj novo okoljsko spremenljivko"
 
-#: package/contents/ui/permissions.qml:78
+#: package/contents/ui/permissions.qml:84
 #, kde-format
 msgid "Add a new session bus"
 msgstr "Dodaj novo sejno vodilo"
 
-#: package/contents/ui/permissions.qml:80
+#: package/contents/ui/permissions.qml:85
 #, kde-format
 msgid "Add a new system bus"
 msgstr "Dodaj novo sistemsko vodilo"
 
 #: package/contents/ui/permissions.qml:94
 #, kde-format
-msgid "Enter filesystem path..."
-msgstr "Vnesi pot datotečnega sistema ..."
-
-#: package/contents/ui/permissions.qml:96
-#, kde-format
-msgid "Enter variable..."
-msgstr "Vnesi spremenljivko ..."
-
-#: package/contents/ui/permissions.qml:98
-#, kde-format
-msgid "Enter session bus name..."
-msgstr "Vnesi ime sejnega vodila ..."
-
-#: package/contents/ui/permissions.qml:100
-#, kde-format
-msgid "Enter system bus name..."
-msgstr "Vnesi ime sistemskega vodila ..."
-
-#: package/contents/ui/permissions.qml:107
-#, kde-format
 msgid "Add Filesystem Path Permission"
 msgstr "Dodaj dovoljenje za pot datotečnega sistema"
 
-#: package/contents/ui/permissions.qml:109
+#: package/contents/ui/permissions.qml:95
 #, kde-format
 msgid "Set Environment Variable"
 msgstr "Nastavi spremenljivko okolja"
 
-#: package/contents/ui/permissions.qml:111
+#: package/contents/ui/permissions.qml:96
 #, kde-format
 msgid "Add Session Bus Permission"
 msgstr "Dodaj dovoljenje za sejno vodilo"
 
-#: package/contents/ui/permissions.qml:113
+#: package/contents/ui/permissions.qml:97
 #, kde-format
 msgid "Add System Bus Permission"
 msgstr "Dodaj dovoljenja za sistemsko vodilo"
 
-#: package/contents/ui/permissions.qml:132
+#: package/contents/ui/permissions.qml:104
+#, kde-format
+msgid "Enter filesystem path..."
+msgstr "Vnesi pot datotečnega sistema ..."
+
+#: package/contents/ui/permissions.qml:105
+#, kde-format
+msgid "Enter variable..."
+msgstr "Vnesi spremenljivko ..."
+
+#: package/contents/ui/permissions.qml:106
+#, kde-format
+msgid "Enter session bus name..."
+msgstr "Vnesi ime sejnega vodila ..."
+
+#: package/contents/ui/permissions.qml:107
+#, kde-format
+msgid "Enter system bus name..."
+msgstr "Vnesi ime sistemskega vodila ..."
+
+#: package/contents/ui/permissions.qml:125
 #, kde-format
 msgid "Enter value..."
 msgstr "Vnesi vrednost …"
