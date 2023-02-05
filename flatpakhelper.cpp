@@ -12,9 +12,9 @@ namespace FlatpakHelper
 {
 QString permDataFilePath()
 {
-    QString userPath = QString::fromStdString(qgetenv("FLATPAK_USER_DIR").toStdString());
+    QString userPath = qEnvironmentVariable("FLATPAK_USER_DIR");
     if(userPath.isEmpty()) {
-        userPath = QString::fromStdString(qgetenv("HOST_XDG_DATA_HOME").toStdString());
+        userPath = qEnvironmentVariable("HOST_XDG_DATA_HOME");
         if(userPath.isEmpty()) {
             userPath = QDir::homePath().append(QStringLiteral("/.local/share"));
         }
