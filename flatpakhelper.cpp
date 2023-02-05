@@ -7,6 +7,7 @@
 
 #include <QDir>
 #include <QFileInfo>
+#include <QStandardPaths>
 
 namespace FlatpakHelper
 {
@@ -16,7 +17,7 @@ QString permDataFilePath()
     if(userPath.isEmpty()) {
         userPath = QString::fromStdString(qgetenv("HOST_XDG_DATA_HOME").toStdString());
         if(userPath.isEmpty()) {
-            userPath = QDir::homePath().append(QStringLiteral("/.local/share"));
+            userPath = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation);
         }
     }
     userPath.append(QStringLiteral("/flatpak/overrides/"));
