@@ -57,4 +57,6 @@ install(TARGETS kcm_flatpak DESTINATION ${KDE_INSTALL_PLUGINDIR}/plasma/kcms/sys
 
 kpackage_install_package(package kcm_flatpak kcms)
 
+kcmutils_generate_desktop_file(kcm_flatpak)
+
 ki18n_install(po)
