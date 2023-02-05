@@ -13,14 +13,13 @@ add_definitions(-DTRANSLATION_DOMAIN="kcm_flatpak")
 
 find_package(ECM ${KF5_MIN_VERSION} REQUIRED NO_MODULE)
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules)
-set(KF_IGNORE_PLATFORM_CHECK ON)
 
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(Flatpak REQUIRED IMPORTED_TARGET flatpak>=0.11.8)
 
 include(KDEInstallDirs)
 include(KDECMakeSettings)
-include(KDEFrameworkCompilerSettings NO_POLICY_SCOPE)
+include(KDECompilerSettings NO_POLICY_SCOPE)
 
 find_package(Qt${QT_MAJOR_VERSION} ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS
     Quick
