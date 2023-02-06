@@ -19,7 +19,15 @@ KCM.ScrollViewKCM {
 
     Component.onCompleted: {
         kcm.columnWidth = Kirigami.Units.gridUnit * 15
-        kcm.push("permissions.qml")
+
+        let ref = null;
+        const row = kcm.currentIndex();
+        if (row !== -1) {
+            appsListView.currentIndex = row;
+            const m = kcm.refsModel;
+            ref = m.data(m.index(row, 0), FlatpakReferencesModel.Ref);
+        }
+        kcm.push("permissions.qml", { ref });
     }
 
     KCM.ConfigModule.buttons: KCM.ConfigModule.Apply | KCM.ConfigModule.Default

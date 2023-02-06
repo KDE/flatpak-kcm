@@ -14,6 +14,11 @@ class KCMFlatpak : public KQuickAddons::ManagedConfigModule
     Q_OBJECT
     Q_PROPERTY(FlatpakReferencesModel *refsModel MEMBER m_refsModel CONSTANT)
 public:
+    /**
+     * This KCM manages permissions for Flatpak application. It can open any
+     * installed application page directly: use @param args in the form of
+     * ["<ref>"], where <ref> is a FlatpakRef in formatted like "app/org.videolan.VLC/x86_64/stable".
+     */
     explicit KCMFlatpak(QObject *parent, const KPluginMetaData &data, const QVariantList &args);
 
     void refreshSaveNeeded();
