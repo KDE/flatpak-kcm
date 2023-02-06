@@ -242,3 +242,8 @@ bool FlatpakReferencesModel::isDefaults(int index) const
     }
     return true;
 }
+
+const QVector<FlatpakReference *> &FlatpakReferencesModel::references() const
+{
+    return m_references;
+}

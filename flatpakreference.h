@@ -86,6 +86,8 @@ public:
     bool isSaveNeeded(int index) const;
     bool isDefaults(int index) const;
 
+    const QVector<FlatpakReference *> &references() const;
+
 Q_SIGNALS:
     void needsLoad();
     void needsSaveChanged();
