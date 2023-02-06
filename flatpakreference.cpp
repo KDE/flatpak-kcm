@@ -132,7 +132,7 @@ FlatpakReferencesModel::FlatpakReferencesModel(QObject *parent) : QAbstractListM
     g_ptr_array_extend_and_steal(installedApps, installedUserApps);
     QString path = FlatpakHelper::permDataFilePath();
 
-    for(uint i = 0; i < installedApps->len; ++i) {
+    for (uint i = 0; i < installedApps->len; ++i) {
         QString name = QString::fromUtf8(flatpak_installed_ref_get_appdata_name(FLATPAK_INSTALLED_REF(g_ptr_array_index(installedApps, i))));
         QString version = QString::fromUtf8(flatpak_installed_ref_get_appdata_version(FLATPAK_INSTALLED_REF(g_ptr_array_index(installedApps, i))));
         QString id = QString::fromUtf8(flatpak_ref_get_name(FLATPAK_REF(g_ptr_array_index(installedApps, i))));
@@ -153,7 +153,7 @@ FlatpakReferencesModel::FlatpakReferencesModel(QObject *parent) : QAbstractListM
 
 int FlatpakReferencesModel::rowCount(const QModelIndex &parent) const
 {
-    if(parent.isValid()) {
+    if (parent.isValid()) {
         return 0;
     }
     return m_references.count();
@@ -161,7 +161,7 @@ int FlatpakReferencesModel::rowCount(const QModelIndex &parent) const
 
 QVariant FlatpakReferencesModel::data(const QModelIndex &index, int role) const
 {
-    if(!index.isValid()) {
+    if (!index.isValid()) {
         return QVariant();
     }
 

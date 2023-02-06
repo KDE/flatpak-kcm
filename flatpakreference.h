@@ -81,5 +81,5 @@ Q_SIGNALS:
     void needsSaveChanged();
 
 private:
-    QVector<FlatpakReference*> m_references;
+    QVector<FlatpakReference *> m_references;
 };
