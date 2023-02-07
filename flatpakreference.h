@@ -66,6 +66,7 @@ public:
     explicit FlatpakReferencesModel(QObject *parent = nullptr);
 
     enum Roles { Name = Qt::UserRole + 1, Version, Icon, Ref };
+    Q_ENUM(Roles)
 
     int rowCount(const QModelIndex &parent = QModelIndex()) const override;
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
