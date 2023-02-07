@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-03 03:01+0000\n"
+"POT-Creation-Date: 2023-02-07 02:52+0000\n"
 "PO-Revision-Date: 2022-11-10 20:24+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Chinese <zh-l10n@linux.org.tw>\n"
@@ -24,8 +24,8 @@ msgstr ""
 msgid "OFF"
 msgstr "關閉"
 
-#: flatpakpermission.cpp:82 flatpakpermission.cpp:239 flatpakpermission.cpp:955
-#: flatpakpermission.cpp:990 package/contents/ui/permissions.qml:71
+#: flatpakpermission.cpp:82 flatpakpermission.cpp:239 flatpakpermission.cpp:956
+#: flatpakpermission.cpp:991 package/contents/ui/permissions.qml:71
 #: package/contents/ui/permissions.qml:82
 #: package/contents/ui/permissions.qml:94
 #: package/contents/ui/permissions.qml:104
@@ -291,7 +291,7 @@ msgstr "filesystems"
 #: flatpakpermission.cpp:519 flatpakpermission.cpp:529
 #: flatpakpermission.cpp:652 flatpakpermission.cpp:660
 #: flatpakpermission.cpp:709 flatpakpermission.cpp:723
-#: flatpakpermission.cpp:991
+#: flatpakpermission.cpp:992
 #, kde-format
 msgid "read/write"
 msgstr "read/write"
@@ -300,7 +300,7 @@ msgstr "read/write"
 #: flatpakpermission.cpp:456 flatpakpermission.cpp:464
 #: flatpakpermission.cpp:472 flatpakpermission.cpp:483
 #: flatpakpermission.cpp:662 flatpakpermission.cpp:707
-#: flatpakpermission.cpp:723 flatpakpermission.cpp:991
+#: flatpakpermission.cpp:723 flatpakpermission.cpp:992
 #, kde-format
 msgid "read-only"
 msgstr "read-only"
@@ -309,7 +309,7 @@ msgstr "read-only"
 #: flatpakpermission.cpp:458 flatpakpermission.cpp:466
 #: flatpakpermission.cpp:474 flatpakpermission.cpp:485
 #: flatpakpermission.cpp:665 flatpakpermission.cpp:713
-#: flatpakpermission.cpp:723 flatpakpermission.cpp:991
+#: flatpakpermission.cpp:723 flatpakpermission.cpp:992
 #, kde-format
 msgid "create"
 msgstr "create"
@@ -354,7 +354,7 @@ msgstr "host-etc"
 msgid "All System Configurations"
 msgstr "所有系統組態"
 
-#: flatpakpermission.cpp:548 flatpakpermission.cpp:992
+#: flatpakpermission.cpp:548 flatpakpermission.cpp:993
 #: package/contents/ui/permissions.qml:73
 #: package/contents/ui/permissions.qml:84
 #: package/contents/ui/permissions.qml:96
@@ -364,24 +364,24 @@ msgid "Session Bus Policy"
 msgstr "工作階段匯流排政策"
 
 #: flatpakpermission.cpp:551 flatpakpermission.cpp:574
-#: flatpakpermission.cpp:750 flatpakpermission.cpp:993
+#: flatpakpermission.cpp:750 flatpakpermission.cpp:994
 #, kde-format
 msgid "talk"
 msgstr "talk"
 
 #: flatpakpermission.cpp:551 flatpakpermission.cpp:574
-#: flatpakpermission.cpp:750 flatpakpermission.cpp:993
+#: flatpakpermission.cpp:750 flatpakpermission.cpp:994
 #, kde-format
 msgid "own"
 msgstr "own"
 
 #: flatpakpermission.cpp:551 flatpakpermission.cpp:574
-#: flatpakpermission.cpp:750 flatpakpermission.cpp:993
+#: flatpakpermission.cpp:750 flatpakpermission.cpp:994
 #, kde-format
 msgid "see"
 msgstr "see"
 
-#: flatpakpermission.cpp:571 flatpakpermission.cpp:992
+#: flatpakpermission.cpp:571 flatpakpermission.cpp:993
 #: package/contents/ui/permissions.qml:74
 #, kde-format
 msgid "System Bus Policy"
@@ -399,13 +399,13 @@ msgstr "系統匯流排政策"
 msgid "Environment"
 msgstr "環境"
 
-#: flatpakpermission.cpp:747 flatpakpermission.cpp:885
-#: flatpakpermission.cpp:1079 flatpakpermission.cpp:1154
+#: flatpakpermission.cpp:747 flatpakpermission.cpp:886
+#: flatpakpermission.cpp:1080 flatpakpermission.cpp:1155
 #, kde-format
 msgid "None"
 msgstr "無"
 
-#: flatpakpermission.cpp:1009 flatpakpermission.cpp:1011
+#: flatpakpermission.cpp:1010 flatpakpermission.cpp:1012
 #, kde-format
 msgid "=\n"
 msgstr "=\n"
