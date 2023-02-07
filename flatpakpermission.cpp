@@ -589,6 +589,7 @@ void FlatpakPermissionModel::loadDefaultValues()
     }
     /* SYSTEM BUS category */
 
+#if 0 // Disabled because BUG 465502
     /* ENVIRONMENT category */
     category = i18n("Environment");
     const KConfigGroup environmentGroup = parser.group("Environment");
@@ -608,6 +609,7 @@ void FlatpakPermissionModel::loadDefaultValues()
         m_permissions.append(perm);
     }
     /* ENVIRONMENT category */
+#endif
 }
 
 void FlatpakPermissionModel::loadCurrentValues()
