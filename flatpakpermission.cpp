@@ -695,7 +695,7 @@ void FlatpakPermissionModel::loadCurrentValues()
 
     const QString fsCat = contextGroup.readEntry(QStringLiteral("filesystems"), QString());
     if (!fsCat.isEmpty()) {
-        const QStringList fsPerms = fsCat.split(QLatin1Char(';'));
+        const QStringList fsPerms = fsCat.split(QLatin1Char(';'), Qt::SkipEmptyParts);
         for (int j = 0; j < fsPerms.length(); ++j) {
             QString name = fsPerms.at(j);
             QString value;
