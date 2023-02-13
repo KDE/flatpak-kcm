@@ -1,5 +1,6 @@
 /**
  * SPDX-FileCopyrightText: 2022 Suhaas Joshi <joshiesuhaas0@gmail.com>
+ * SPDX-FileCopyrightText: 2023 ivan tkachenko <me@ratijas.tk>
  * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
@@ -16,6 +17,7 @@
 class FlatpakReferencesModel;
 class FlatpakPermissionModel;
 
+// Slightly similar to FlatpakResource from libdiscover
 class FlatpakReference : public QObject
 {
     Q_OBJECT
@@ -23,21 +25,27 @@ public:
     ~FlatpakReference() override;
     explicit FlatpakReference(
         FlatpakReferencesModel *parent,
-        const QString &name,
-        const QString &id,
-        const QString &permissionsDirectory,
+        const QString &flatpakName,
+        const QString &arch,
+        const QString &branch,
         const QString &version,
+        const QString &displayName,
+        const QString &permissionsDirectory,
         const QUrl &iconSource,
         const QByteArray &metadata);
 
     FlatpakReferencesModel *parent() const;
 
-    QString name() const;
-    QString displayName() const;
+    QString arch() const;
+    QString branch() const;
     QString version() const;
+
     QUrl iconSource() const;
     QString permissionsFilename() const;
     QByteArray metadata() const;
+
+    QString displayName() const;
+    QString flatpakName() const;
 
     FlatpakPermissionModel *permsModel();
     void setPermsModel(FlatpakPermissionModel *permsModel);
@@ -53,9 +61,16 @@ Q_SIGNALS:
     void needsSaveChanged();
 
 private:
-    QString m_name;
-    QString m_id;
+    // ID of a ref constitutes of these three members:
+    QString m_flatpakName;
+    QString m_arch;
+    QString m_branch;
+    // Human-readable version string.
     QString m_version;
+    // Human-readable app name, only exists for installed apps.
+    // Might be empty, in which case code should fallback to flatpakName.
+    QString m_displayName;
+
     QUrl m_iconSource;
     QString m_permissionsFilename;
     QByteArray m_metadata;

@@ -1,5 +1,6 @@
 /**
  * SPDX-FileCopyrightText: 2022 Suhaas Joshi <joshiesuhaas0@gmail.com>
+ * SPDX-FileCopyrightText: 2023 ivan tkachenko <me@ratijas.tk>
  * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
@@ -20,22 +21,26 @@ FlatpakReference::~FlatpakReference() = default;
 
 FlatpakReference::FlatpakReference(
     FlatpakReferencesModel *parent,
-    const QString &name,
-    const QString &id,
-    const QString &permissionsDirectory,
+    const QString &flatpakName,
+    const QString &arch,
+    const QString &branch,
     const QString &version,
+    const QString &displayName,
+    const QString &permissionsDirectory,
     const QUrl &iconSource,
     const QByteArray &metadata
 ) : QObject(parent),
-    m_name(name),
-    m_id(id),
+    m_flatpakName(flatpakName),
+    m_arch(arch),
+    m_branch(branch),
     m_version(version),
+    m_displayName(displayName),
     m_iconSource(iconSource),
     m_permissionsFilename(permissionsDirectory),
     m_metadata(metadata),
     m_permsModel(nullptr)
 {
-    m_permissionsFilename.append(m_id);
+    m_permissionsFilename.append(m_flatpakName);
 }
 
 FlatpakReferencesModel *FlatpakReference::parent() const
@@ -44,15 +49,14 @@ FlatpakReferencesModel *FlatpakReference::parent() const
     return static_cast<FlatpakReferencesModel *>(QObject::parent());
 }
 
-QString FlatpakReference::name() const
+QString FlatpakReference::arch() const
 {
-    return m_name;
+    return m_arch;
 }
 
-QString FlatpakReference::displayName() const
+QString FlatpakReference::branch() const
 {
-    /* sometimes, the application does not seem to have a display name, so return its id */
-    return m_name.isEmpty() ? m_id : m_name;
+    return m_branch;
 }
 
 QString FlatpakReference::version() const
@@ -73,6 +77,18 @@ QString FlatpakReference::permissionsFilename() const
 QByteArray FlatpakReference::metadata() const
 {
     return m_metadata;
+}
+
+QString FlatpakReference::displayName() const
+{
+    /* sometimes, the application does not seem to have a display name, so return its id */
+    return m_displayName.isEmpty() ? m_flatpakName : m_displayName;
+}
+
+QString FlatpakReference::flatpakName() const
+{
+    // Reduced implementation of libdiscover, as this KCM lists only installed apps
+    return m_flatpakName;
 }
 
 FlatpakPermissionModel *FlatpakReference::permsModel()
@@ -156,29 +172,36 @@ FlatpakReferencesModel::FlatpakReferencesModel(QObject *parent) : QAbstractListM
         auto *ref = FLATPAK_REF(g_ptr_array_index(installedApps, i));
         auto *iRef = FLATPAK_INSTALLED_REF(g_ptr_array_index(installedApps, i));
 
-        QString name = QString::fromUtf8(flatpak_installed_ref_get_appdata_name(iRef));
-        QString version = QString::fromUtf8(flatpak_installed_ref_get_appdata_version(iRef));
-        QString id = QString::fromUtf8(flatpak_ref_get_name(ref));
-        if (id.endsWith(QStringLiteral(".BaseApp"))) {
+        const QString flatpakName = QString::fromUtf8(flatpak_ref_get_name(ref));
+        if (flatpakName.endsWith(QStringLiteral(".BaseApp"))) {
             continue;
         }
-        QString appBasePath = QString::fromUtf8(flatpak_installed_ref_get_deploy_dir(iRef));
-        const QUrl iconSource = FlatpakHelper::iconSourceUrl(name, id, appBasePath);
+
+        const QString arch = QString::fromUtf8(flatpak_ref_get_arch(ref));
+        const QString branch = QString::fromUtf8(flatpak_ref_get_branch(ref));
+        const QString version = QString::fromUtf8(flatpak_installed_ref_get_appdata_version(iRef));
+        const QString displayName = QString::fromUtf8(flatpak_installed_ref_get_appdata_name(iRef));
+        const QString appBasePath = QString::fromUtf8(flatpak_installed_ref_get_deploy_dir(iRef));
+        const QUrl iconSource = FlatpakHelper::iconSourceUrl(displayName, flatpakName, appBasePath);
 
         g_autoptr(GBytes) data = flatpak_installed_ref_load_metadata(iRef, nullptr, nullptr);
         const QByteArray metadata = qByteArrayFromGBytes(data);
 
         m_references.push_back(new FlatpakReference(
             this,
-            name,
-            id,
-            permissionsDirectory,
+            flatpakName,
+            arch,
+            branch,
             version,
+            displayName,
+            permissionsDirectory,
             iconSource,
             metadata
         ));
     }
-    std::sort(m_references.begin(), m_references.end(), [] (FlatpakReference *r1, FlatpakReference *r2) {return r1->name() < r2->name(); });
+    std::sort(m_references.begin(), m_references.end(), [] (const FlatpakReference *r1, const FlatpakReference *r2) {
+        return r1->displayName() < r2->displayName();
+    });
 }
 
 int FlatpakReferencesModel::rowCount(const QModelIndex &parent) const

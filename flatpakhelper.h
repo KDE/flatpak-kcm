@@ -12,5 +12,5 @@
 namespace FlatpakHelper
 {
 QString permissionsDataDirectory();
-QUrl iconSourceUrl(const QString &name, const QString &id, const QString &appBasePath);
+QUrl iconSourceUrl(const QString &displayName, const QString &flatpakName, const QString &appBasePath);
 }

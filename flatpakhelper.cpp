@@ -26,7 +26,7 @@ QString permissionsDataDirectory()
     return userPath;
 }
 
-QUrl iconSourceUrl(const QString &name, const QString &id, const QString &appBasePath)
+QUrl iconSourceUrl(const QString &displayName, const QString &flatpakName, const QString &appBasePath)
 {
     QString dirPath = appBasePath + QStringLiteral("/files/share/icons/hicolor/");
     QDir dir(dirPath);
@@ -44,15 +44,15 @@ QUrl iconSourceUrl(const QString &name, const QString &id, const QString &appBas
     }
     dir.cd(nextDir + QStringLiteral("/apps"));
 
-    QString file = id + QStringLiteral(".png");
+    QString file = flatpakName + QStringLiteral(".png");
     if (!dir.exists(file)) {
-        file = id + QStringLiteral(".svg");
+        file = flatpakName + QStringLiteral(".svg");
         if (!dir.exists(file)) {
-            file = name.toLower() + QStringLiteral(".png");
+            file = displayName.toLower() + QStringLiteral(".png");
             if (!dir.exists(file)) {
-                file = name.toLower() + QStringLiteral(".svg");
+                file = displayName.toLower() + QStringLiteral(".svg");
                 if (!dir.exists(file)) {
-                    return QUrl::fromLocalFile(id + QStringLiteral(".png"));
+                    return QUrl::fromLocalFile(flatpakName + QStringLiteral(".png"));
                 }
             }
         }
