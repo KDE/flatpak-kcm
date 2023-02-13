@@ -132,6 +132,13 @@ bool FlatpakReference::isDefaults() const
     return true;
 }
 
+static QByteArray qByteArrayFromGBytes(GBytes *data)
+{
+    gsize len = 0;
+    auto buff = g_bytes_get_data(data, &len);
+    return QByteArray((const char *)buff, len);
+}
+
 FlatpakReferencesModel::FlatpakReferencesModel(QObject *parent) : QAbstractListModel(parent)
 {
     g_autoptr(FlatpakInstallation) installation = flatpak_installation_new_system(nullptr, nullptr);
@@ -153,10 +160,9 @@ FlatpakReferencesModel::FlatpakReferencesModel(QObject *parent) : QAbstractListM
         }
         QString appBasePath = QString::fromUtf8(flatpak_installed_ref_get_deploy_dir(iRef));
         QString icon = FlatpakHelper::iconPath(name, id, appBasePath);
+
         g_autoptr(GBytes) data = flatpak_installed_ref_load_metadata(iRef, nullptr, nullptr);
-        gsize len = 0;
-        auto buff = g_bytes_get_data(data, &len);
-        const QByteArray metadata((const char *)buff, len);
+        const QByteArray metadata = qByteArrayFromGBytes(data);
 
         m_references.push_back(new FlatpakReference(
             this,
