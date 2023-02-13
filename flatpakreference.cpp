@@ -22,7 +22,7 @@ FlatpakReference::FlatpakReference(
     FlatpakReferencesModel *parent,
     const QString &name,
     const QString &id,
-    const QString &path,
+    const QString &permissionsDirectory,
     const QString &version,
     const QString &icon,
     const QByteArray &metadata
@@ -31,11 +31,11 @@ FlatpakReference::FlatpakReference(
     m_id(id),
     m_version(version),
     m_icon(icon),
-    m_path(path),
+    m_permissionsFilename(permissionsDirectory),
     m_metadata(metadata),
     m_permsModel(nullptr)
 {
-    m_path.append(m_id);
+    m_permissionsFilename.append(m_id);
 }
 
 FlatpakReferencesModel *FlatpakReference::parent() const
@@ -65,9 +65,9 @@ QString FlatpakReference::icon() const
     return m_icon;
 }
 
-QString FlatpakReference::path() const
+QString FlatpakReference::permissionsFilename() const
 {
-    return m_path;
+    return m_permissionsFilename;
 }
 
 QByteArray FlatpakReference::metadata() const
@@ -150,7 +150,7 @@ FlatpakReferencesModel::FlatpakReferencesModel(QObject *parent) : QAbstractListM
     g_autoptr(FlatpakInstallation) userInstallation = flatpak_installation_new_user(nullptr, nullptr);
     g_autoptr(GPtrArray) installedUserApps = flatpak_installation_list_installed_refs_by_kind(userInstallation, FLATPAK_REF_KIND_APP, nullptr, nullptr);
     g_ptr_array_extend_and_steal(installedApps, installedUserApps);
-    QString path = FlatpakHelper::permDataFilePath();
+    QString permissionsDirectory = FlatpakHelper::permissionsDataDirectory();
 
     for (uint i = 0; i < installedApps->len; ++i) {
         auto *ref = FLATPAK_REF(g_ptr_array_index(installedApps, i));
@@ -172,7 +172,7 @@ FlatpakReferencesModel::FlatpakReferencesModel(QObject *parent) : QAbstractListM
             this,
             name,
             id,
-            path,
+            permissionsDirectory,
             version,
             icon,
             metadata

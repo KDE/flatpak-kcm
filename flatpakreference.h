@@ -24,7 +24,7 @@ public:
         FlatpakReferencesModel *parent,
         const QString &name,
         const QString &id,
-        const QString &path,
+        const QString &permissionsDirectory,
         const QString &version,
         const QString &icon = QString(),
         const QByteArray &metadata = QByteArray());
@@ -35,7 +35,7 @@ public:
     QString displayName() const;
     QString version() const;
     QString icon() const;
-    QString path() const;
+    QString permissionsFilename() const;
     QByteArray metadata() const;
 
     FlatpakPermissionModel *permsModel();
@@ -56,7 +56,7 @@ private:
     QString m_id;
     QString m_version;
     QString m_icon;
-    QString m_path;
+    QString m_permissionsFilename;
     QByteArray m_metadata;
 
     QPointer<FlatpakPermissionModel> m_permsModel;

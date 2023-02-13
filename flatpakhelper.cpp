@@ -11,7 +11,7 @@
 
 namespace FlatpakHelper
 {
-QString permDataFilePath()
+QString permissionsDataDirectory()
 {
     QString userPath = qEnvironmentVariable("FLATPAK_USER_DIR");
     if (userPath.isEmpty()) {

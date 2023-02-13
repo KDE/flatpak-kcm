@@ -282,7 +282,7 @@ void FlatpakPermissionModel::loadDefaultValues()
     bool isEnabledByDefault;
 
     const QByteArray metadata = m_reference->metadata();
-    const QString path = m_reference->path();
+    const QString path = m_reference->permissionsFilename();
 
     QTemporaryFile f;
     if (!f.open()) {
@@ -614,7 +614,7 @@ void FlatpakPermissionModel::loadDefaultValues()
 
 void FlatpakPermissionModel::loadCurrentValues()
 {
-    const QString path = m_reference->path();
+    const QString path = m_reference->permissionsFilename();
 
     /* all permissions are at default, so nothing to load */
     if (!QFileInfo(path).exists()) {
@@ -1247,7 +1247,7 @@ void FlatpakPermissionModel::readFromFile()
         return;
     }
 
-    QFile inFile(m_reference->path());
+    QFile inFile(m_reference->permissionsFilename());
     if (!inFile.open(QIODevice::ReadOnly)) {
         return;
     }
@@ -1258,7 +1258,7 @@ void FlatpakPermissionModel::readFromFile()
 
 void FlatpakPermissionModel::writeToFile()
 {
-    QFile outFile(m_reference->path());
+    QFile outFile(m_reference->permissionsFilename());
     if (!outFile.open(QIODevice::WriteOnly)) {
         qInfo() << "File does not open for write only";
     }
