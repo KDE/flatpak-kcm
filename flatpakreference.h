@@ -27,8 +27,9 @@ public:
         const QString &path,
         const QString &version,
         const QString &icon = QString(),
-        const QByteArray &metadata = QByteArray(),
-        FlatpakReferencesModel *refsModel = nullptr);
+        const QByteArray &metadata = QByteArray());
+
+    FlatpakReferencesModel *parent() const;
 
     QString name() const;
     QString displayName() const;
@@ -59,7 +60,6 @@ private:
     QByteArray m_metadata;
 
     QPointer<FlatpakPermissionModel> m_permsModel;
-    QPointer<FlatpakReferencesModel> m_refsModel;
 };
 
 class FlatpakReferencesModel : public QAbstractListModel

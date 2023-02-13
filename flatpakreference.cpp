@@ -25,8 +25,7 @@ FlatpakReference::FlatpakReference(
     const QString &path,
     const QString &version,
     const QString &icon,
-    const QByteArray &metadata,
-    FlatpakReferencesModel *refsModel
+    const QByteArray &metadata
 ) : QObject(parent),
     m_name(name),
     m_id(id),
@@ -34,10 +33,15 @@ FlatpakReference::FlatpakReference(
     m_icon(icon),
     m_path(path),
     m_metadata(metadata),
-    m_permsModel(nullptr),
-    m_refsModel(refsModel)
+    m_permsModel(nullptr)
 {
     m_path.append(m_id);
+}
+
+FlatpakReferencesModel *FlatpakReference::parent() const
+{
+    // SAFETY: There's only one constructor, and it always initializes parent with a model object
+    return static_cast<FlatpakReferencesModel *>(QObject::parent());
 }
 
 QString FlatpakReference::name() const
@@ -81,16 +85,16 @@ void FlatpakReference::setPermsModel(FlatpakPermissionModel *permsModel)
     if (permsModel != m_permsModel) {
         if (m_permsModel) {
             disconnect(m_permsModel, &FlatpakPermissionModel::referenceChanged, this, &FlatpakReference::needsLoad);
-            disconnect(this, &FlatpakReference::needsLoad, m_refsModel, &FlatpakReferencesModel::needsLoad);
+            disconnect(this, &FlatpakReference::needsLoad, parent(), &FlatpakReferencesModel::needsLoad);
             disconnect(m_permsModel, &FlatpakPermissionModel::dataChanged, this, &FlatpakReference::needsSaveChanged);
-            disconnect(this, &FlatpakReference::needsSaveChanged, m_refsModel, &FlatpakReferencesModel::needsSaveChanged);
+            disconnect(this, &FlatpakReference::needsSaveChanged, parent(), &FlatpakReferencesModel::needsSaveChanged);
         }
         m_permsModel = permsModel;
         if (m_permsModel) {
             connect(m_permsModel, &FlatpakPermissionModel::referenceChanged, this, &FlatpakReference::needsLoad);
-            connect(this, &FlatpakReference::needsLoad, m_refsModel, &FlatpakReferencesModel::needsLoad);
+            connect(this, &FlatpakReference::needsLoad, parent(), &FlatpakReferencesModel::needsLoad);
             connect(m_permsModel, &FlatpakPermissionModel::dataChanged, this, &FlatpakReference::needsSaveChanged);
-            connect(this, &FlatpakReference::needsSaveChanged, m_refsModel, &FlatpakReferencesModel::needsSaveChanged);
+            connect(this, &FlatpakReference::needsSaveChanged, parent(), &FlatpakReferencesModel::needsSaveChanged);
         }
     }
 }
@@ -171,8 +175,7 @@ FlatpakReferencesModel::FlatpakReferencesModel(QObject *parent) : QAbstractListM
             path,
             version,
             icon,
-            metadata,
-            this
+            metadata
         ));
     }
     std::sort(m_references.begin(), m_references.end(), [] (FlatpakReference *r1, FlatpakReference *r2) {return r1->name() < r2->name(); });
