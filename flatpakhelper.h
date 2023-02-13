@@ -8,10 +8,11 @@
 #include "flatpakpermission.h"
 
 #include <QString>
+#include <QUrl>
 #include <QVector>
 
 namespace FlatpakHelper
 {
 QString permissionsDataDirectory();
-QString iconPath(const QString &name, const QString &id, const QString &appBasePath);
+QUrl iconSourceUrl(const QString &name, const QString &id, const QString &appBasePath);
 }

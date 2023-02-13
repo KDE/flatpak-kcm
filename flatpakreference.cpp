@@ -24,13 +24,13 @@ FlatpakReference::FlatpakReference(
     const QString &id,
     const QString &permissionsDirectory,
     const QString &version,
-    const QString &icon,
+    const QUrl &iconSource,
     const QByteArray &metadata
 ) : QObject(parent),
     m_name(name),
     m_id(id),
     m_version(version),
-    m_icon(icon),
+    m_iconSource(iconSource),
     m_permissionsFilename(permissionsDirectory),
     m_metadata(metadata),
     m_permsModel(nullptr)
@@ -60,9 +60,9 @@ QString FlatpakReference::version() const
     return m_version;
 }
 
-QString FlatpakReference::icon() const
+QUrl FlatpakReference::iconSource() const
 {
-    return m_icon;
+    return m_iconSource;
 }
 
 QString FlatpakReference::permissionsFilename() const
@@ -163,7 +163,7 @@ FlatpakReferencesModel::FlatpakReferencesModel(QObject *parent) : QAbstractListM
             continue;
         }
         QString appBasePath = QString::fromUtf8(flatpak_installed_ref_get_deploy_dir(iRef));
-        QString icon = FlatpakHelper::iconPath(name, id, appBasePath);
+        const QUrl iconSource = FlatpakHelper::iconSourceUrl(name, id, appBasePath);
 
         g_autoptr(GBytes) data = flatpak_installed_ref_load_metadata(iRef, nullptr, nullptr);
         const QByteArray metadata = qByteArrayFromGBytes(data);
@@ -174,7 +174,7 @@ FlatpakReferencesModel::FlatpakReferencesModel(QObject *parent) : QAbstractListM
             id,
             permissionsDirectory,
             version,
-            icon,
+            iconSource,
             metadata
         ));
     }
@@ -201,7 +201,7 @@ QVariant FlatpakReferencesModel::data(const QModelIndex &index, int role) const
     case Roles::Version:
         return m_references.at(index.row())->version();
     case Roles::Icon:
-        return m_references.at(index.row())->icon();
+        return m_references.at(index.row())->iconSource();
     case Roles::Ref:
         return QVariant::fromValue<FlatpakReference*>(m_references.at(index.row()));
     }

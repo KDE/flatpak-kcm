@@ -7,10 +7,11 @@
 
 #include "flatpakpermission.h"
 
-#include <QString>
-#include <QVector>
 #include <QAbstractListModel>
 #include <QPointer>
+#include <QString>
+#include <QUrl>
+#include <QVector>
 
 class FlatpakReferencesModel;
 class FlatpakPermissionModel;
@@ -26,7 +27,7 @@ public:
         const QString &id,
         const QString &permissionsDirectory,
         const QString &version,
-        const QString &icon = QString(),
+        const QUrl &iconSource = QUrl(),
         const QByteArray &metadata = QByteArray());
 
     FlatpakReferencesModel *parent() const;
@@ -34,7 +35,7 @@ public:
     QString name() const;
     QString displayName() const;
     QString version() const;
-    QString icon() const;
+    QUrl iconSource() const;
     QString permissionsFilename() const;
     QByteArray metadata() const;
 
@@ -55,7 +56,7 @@ private:
     QString m_name;
     QString m_id;
     QString m_version;
-    QString m_icon;
+    QUrl m_iconSource;
     QString m_permissionsFilename;
     QByteArray m_metadata;
 

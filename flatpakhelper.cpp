@@ -8,6 +8,7 @@
 #include <QDir>
 #include <QFileInfo>
 #include <QStandardPaths>
+#include <QUrl>
 
 namespace FlatpakHelper
 {
@@ -25,7 +26,7 @@ QString permissionsDataDirectory()
     return userPath;
 }
 
-QString iconPath(const QString &name, const QString &id, const QString &appBasePath)
+QUrl iconSourceUrl(const QString &name, const QString &id, const QString &appBasePath)
 {
     QString dirPath = appBasePath + QStringLiteral("/files/share/icons/hicolor/");
     QDir dir(dirPath);
@@ -39,7 +40,7 @@ QString iconPath(const QString &name, const QString &id, const QString &appBaseP
     } else if (!dir.isEmpty()) {
         nextDir = dir.entryList().at(0);
     } else {
-        return QString();
+        return QUrl();
     }
     dir.cd(nextDir + QStringLiteral("/apps"));
 
@@ -51,12 +52,12 @@ QString iconPath(const QString &name, const QString &id, const QString &appBaseP
             if (!dir.exists(file)) {
                 file = name.toLower() + QStringLiteral(".svg");
                 if (!dir.exists(file)) {
-                    return id + QStringLiteral(".png");
+                    return QUrl::fromLocalFile(id + QStringLiteral(".png"));
                 }
             }
         }
     }
-    return dir.absoluteFilePath(file);
+    return QUrl::fromLocalFile(dir.absoluteFilePath(file));
 }
 
 }
