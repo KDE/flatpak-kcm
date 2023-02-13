@@ -5,8 +5,6 @@
 
 #pragma once
 
-#include "flatpakpermission.h"
-
 #include <QString>
 #include <QUrl>
 #include <QVector>
