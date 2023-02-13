@@ -142,15 +142,18 @@ FlatpakReferencesModel::FlatpakReferencesModel(QObject *parent) : QAbstractListM
     QString path = FlatpakHelper::permDataFilePath();
 
     for (uint i = 0; i < installedApps->len; ++i) {
-        QString name = QString::fromUtf8(flatpak_installed_ref_get_appdata_name(FLATPAK_INSTALLED_REF(g_ptr_array_index(installedApps, i))));
-        QString version = QString::fromUtf8(flatpak_installed_ref_get_appdata_version(FLATPAK_INSTALLED_REF(g_ptr_array_index(installedApps, i))));
-        QString id = QString::fromUtf8(flatpak_ref_get_name(FLATPAK_REF(g_ptr_array_index(installedApps, i))));
+        auto *ref = FLATPAK_REF(g_ptr_array_index(installedApps, i));
+        auto *iRef = FLATPAK_INSTALLED_REF(g_ptr_array_index(installedApps, i));
+
+        QString name = QString::fromUtf8(flatpak_installed_ref_get_appdata_name(iRef));
+        QString version = QString::fromUtf8(flatpak_installed_ref_get_appdata_version(iRef));
+        QString id = QString::fromUtf8(flatpak_ref_get_name(ref));
         if (id.endsWith(QStringLiteral(".BaseApp"))) {
             continue;
         }
-        QString appBasePath = QString::fromUtf8(flatpak_installed_ref_get_deploy_dir(FLATPAK_INSTALLED_REF(g_ptr_array_index(installedApps, i))));
+        QString appBasePath = QString::fromUtf8(flatpak_installed_ref_get_deploy_dir(iRef));
         QString icon = FlatpakHelper::iconPath(name, id, appBasePath);
-        g_autoptr(GBytes) data = flatpak_installed_ref_load_metadata(FLATPAK_INSTALLED_REF(g_ptr_array_index(installedApps, i)), nullptr, nullptr);
+        g_autoptr(GBytes) data = flatpak_installed_ref_load_metadata(iRef, nullptr, nullptr);
         gsize len = 0;
         auto buff = g_bytes_get_data(data, &len);
         const QByteArray metadata((const char *)buff, len);
