@@ -91,6 +91,12 @@ QString FlatpakReference::flatpakName() const
     return m_flatpakName;
 }
 
+QString FlatpakReference::ref() const
+{
+    // KCM lists only apps
+    return QStringLiteral("app/%1/%2/%3").arg(flatpakName(), arch(), branch());
+}
+
 FlatpakPermissionModel *FlatpakReference::permsModel()
 {
     return m_permsModel;

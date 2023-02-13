@@ -46,6 +46,7 @@ public:
 
     QString displayName() const;
     QString flatpakName() const;
+    QString ref() const;
 
     FlatpakPermissionModel *permsModel();
     void setPermsModel(FlatpakPermissionModel *permsModel);
