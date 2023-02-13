@@ -27,8 +27,8 @@ public:
         const QString &id,
         const QString &permissionsDirectory,
         const QString &version,
-        const QUrl &iconSource = QUrl(),
-        const QByteArray &metadata = QByteArray());
+        const QUrl &iconSource,
+        const QByteArray &metadata);
 
     FlatpakReferencesModel *parent() const;
 
