@@ -22,12 +22,12 @@ public:
     ~FlatpakReference() override;
     explicit FlatpakReference(
         FlatpakReferencesModel *parent,
-        QString name,
-        QString id,
+        const QString &name,
+        const QString &id,
         const QString &path,
-        QString version,
-        QString icon = QString(),
-        QByteArray metadata = QByteArray(),
+        const QString &version,
+        const QString &icon = QString(),
+        const QByteArray &metadata = QByteArray(),
         FlatpakReferencesModel *refsModel = nullptr);
 
     QString name() const;

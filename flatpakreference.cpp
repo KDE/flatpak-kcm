@@ -20,12 +20,12 @@ FlatpakReference::~FlatpakReference() = default;
 
 FlatpakReference::FlatpakReference(
     FlatpakReferencesModel *parent,
-    QString name,
-    QString id,
+    const QString &name,
+    const QString &id,
     const QString &path,
-    QString version,
-    QString icon,
-    QByteArray metadata,
+    const QString &version,
+    const QString &icon,
+    const QByteArray &metadata,
     FlatpakReferencesModel *refsModel
 ) : QObject(parent),
     m_name(name),
