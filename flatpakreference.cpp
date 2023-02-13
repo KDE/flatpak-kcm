@@ -15,18 +15,27 @@ extern "C" {
 #endif
 #include <glib.h>
 #include <QDebug>
+
 FlatpakReference::~FlatpakReference() = default;
 
-FlatpakReference::FlatpakReference(FlatpakReferencesModel *parent, QString name, QString id, const QString &path, QString version, QString icon, QByteArray metadata, FlatpakReferencesModel *refsModel)
-    : QObject(parent),
-      m_name(name),
-      m_id(id),
-      m_version(version),
-      m_icon(icon),
-      m_path(path),
-      m_metadata(metadata),
-      m_permsModel(nullptr),
-      m_refsModel(refsModel)
+FlatpakReference::FlatpakReference(
+    FlatpakReferencesModel *parent,
+    QString name,
+    QString id,
+    const QString &path,
+    QString version,
+    QString icon,
+    QByteArray metadata,
+    FlatpakReferencesModel *refsModel
+) : QObject(parent),
+    m_name(name),
+    m_id(id),
+    m_version(version),
+    m_icon(icon),
+    m_path(path),
+    m_metadata(metadata),
+    m_permsModel(nullptr),
+    m_refsModel(refsModel)
 {
     m_path.append(m_id);
 }
@@ -146,7 +155,16 @@ FlatpakReferencesModel::FlatpakReferencesModel(QObject *parent) : QAbstractListM
         auto buff = g_bytes_get_data(data, &len);
         const QByteArray metadata((const char *)buff, len);
 
-        m_references.push_back(new FlatpakReference(this, name, id, path, version, icon, metadata, this));
+        m_references.push_back(new FlatpakReference(
+            this,
+            name,
+            id,
+            path,
+            version,
+            icon,
+            metadata,
+            this
+        ));
     }
     std::sort(m_references.begin(), m_references.end(), [] (FlatpakReference *r1, FlatpakReference *r2) {return r1->name() < r2->name(); });
 }
