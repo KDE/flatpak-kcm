@@ -101,10 +101,10 @@ KCM.ScrollViewKCM {
                         QQC2.TextField {
                             id: nameField
                             placeholderText: switch (section) {
-                                case i18n("Filesystem Access"): return i18n("Enter filesystem path...")
-                                case i18n("Environment"): return i18n("Enter variable...")
-                                case i18n("Session Bus Policy"): return i18n("Enter session bus name...")
-                                default: return i18n("Enter system bus name...")
+                                case i18n("Filesystem Access"): return i18n("Enter filesystem path…")
+                                case i18n("Environment"): return i18n("Enter variable…")
+                                case i18n("Session Bus Policy"): return i18n("Enter session bus name…")
+                                default: return i18n("Enter system bus name…")
                             }
                             Layout.fillWidth: true
                         }
@@ -122,7 +122,7 @@ KCM.ScrollViewKCM {
                         QQC2.TextField {
                             id: valueField
                             visible: section === i18n("Environment")
-                            placeholderText: i18n("Enter value...")
+                            placeholderText: i18n("Enter value…")
                             Layout.fillWidth: true
                         }
                     }
