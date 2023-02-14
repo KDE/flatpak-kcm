@@ -31,7 +31,7 @@
         ],
         "Icon": "flatpak-discover",
         "Id": "kcm_flatpak",
-        "Name": "Flatpak Permission Settings",
+        "Name": "Flatpak Permissions",
         "Name[ar]": "إعدادات التصاريح لفلاتباك",
         "Name[ca@valencia]": "Configureu els permisos de Flatpak",
         "Name[ca]": "Configuració dels permisos del Flatpak",
