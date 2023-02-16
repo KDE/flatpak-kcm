@@ -294,7 +294,7 @@ void FlatpakPermissionModel::loadDefaultValues()
     QString description;
     QString defaultValue;
     QStringList possibleValues;
-    bool isEnabledByDefault;
+    bool isEnabledByDefault = false;
 
     const QByteArray metadata = m_reference->metadata();
     const QString path = m_reference->permissionsFilename();
@@ -721,8 +721,8 @@ void FlatpakPermissionModel::loadCurrentValues()
         for (int j = 0; j < fsPerms.length(); ++j) {
             QString name = fsPerms.at(j);
             QString value;
-            int len;
-            bool enabled;
+            int len = 0;
+            bool enabled = false;
             int valBeginIndex = name.indexOf(QLatin1Char(':'));
             if (valBeginIndex != -1) {
                 if (name[valBeginIndex + 1] == QLatin1Char('r')) {
@@ -982,13 +982,11 @@ void FlatpakPermissionModel::addUserEnteredPermission(const QString &name, QStri
         cat = QStringLiteral("filesystems");
     }
 
-    FlatpakPermission::ValueType type;
+    FlatpakPermission::ValueType type = FlatpakPermission::Environment;
     if (cat == QStringLiteral("filesystems")) {
         type = FlatpakPermission::Filesystems;
     } else if (cat == QStringLiteral("Session Bus Policy") || cat == QStringLiteral("System Bus Policy")) {
         type = FlatpakPermission::Bus;
-    } else {
-        type = FlatpakPermission::Environment;
     }
 
     FlatpakPermission perm(name, cat, name, type, false, QString(), possibleValues);
