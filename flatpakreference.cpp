@@ -18,8 +18,6 @@ extern "C" {
 
 #include <QDebug>
 
-FlatpakReference::~FlatpakReference() = default;
-
 FlatpakReference::FlatpakReference(
     FlatpakReferencesModel *parent,
     const QString &flatpakName,

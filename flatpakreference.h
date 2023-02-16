@@ -22,7 +22,6 @@ class FlatpakReference : public QObject
 {
     Q_OBJECT
 public:
-    ~FlatpakReference() override;
     explicit FlatpakReference(
         FlatpakReferencesModel *parent,
         const QString &flatpakName,
