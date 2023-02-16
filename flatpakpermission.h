@@ -102,7 +102,7 @@ class FlatpakPermissionModel : public QAbstractListModel
     Q_OBJECT
     Q_PROPERTY(FlatpakReference *reference READ reference WRITE setReference NOTIFY referenceChanged)
 public:
-    explicit FlatpakPermissionModel(QObject *parent = nullptr);
+    using QAbstractListModel::QAbstractListModel;
 
     enum Roles {
         Name = Qt::UserRole + 1,
