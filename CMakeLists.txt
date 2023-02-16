@@ -21,6 +21,7 @@ pkg_check_modules(Flatpak REQUIRED IMPORTED_TARGET flatpak>=0.11.8)
 include(KDEInstallDirs)
 include(KDECMakeSettings)
 include(KDEFrameworkCompilerSettings NO_POLICY_SCOPE)
+include(FeatureSummary)
 
 find_package(Qt${QT_MAJOR_VERSION} ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS
     Quick
@@ -60,3 +61,5 @@ kpackage_install_package(package kcm_flatpak kcms)
 kcmutils_generate_desktop_file(kcm_flatpak)
 
 ki18n_install(po)
+
+feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)
