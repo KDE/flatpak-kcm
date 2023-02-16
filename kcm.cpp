@@ -5,8 +5,8 @@
 
 #include "kcm.h"
 
-#include <KPluginFactory>
 #include <KLocalizedString>
+#include <KPluginFactory>
 #include <QFile>
 #include <algorithm>
 

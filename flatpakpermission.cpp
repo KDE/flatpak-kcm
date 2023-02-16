@@ -5,12 +5,12 @@
 
 #include "flatpakpermission.h"
 
-#include <KLocalizedString>
-#include <QTemporaryFile>
-#include <QFileInfo>
-#include <KDesktopFile>
 #include <KConfigGroup>
+#include <KDesktopFile>
+#include <KLocalizedString>
 #include <QDebug>
+#include <QFileInfo>
+#include <QTemporaryFile>
 
 FlatpakPermission::FlatpakPermission(QString name, QString category, QString description, QString defaultValue, QStringList possibleValues, QString currentValue, ValueType type)
     : m_name(name),

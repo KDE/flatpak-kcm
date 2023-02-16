@@ -15,6 +15,7 @@ extern "C" {
 }
 #endif
 #include <glib.h>
+
 #include <QDebug>
 
 FlatpakReference::~FlatpakReference() = default;
