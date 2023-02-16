@@ -1,0 +1,4 @@
+[Context]
+filesystems=host:rw;xdg-run/app/com.discordapp.Discord:create;home
+[Session Bus Policy]
+org.kde.StatusNotifierWatcher=own

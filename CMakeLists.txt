@@ -36,16 +36,12 @@ find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
     Config
 )
 
-set(flatpakkcm_SRCS
-    kcm.cpp
+add_library(kcm_flatpak_static STATIC
     flatpakreference.cpp
     flatpakpermission.cpp
-    flatpakhelper.cpp
-)
-
-add_library(kcm_flatpak MODULE ${flatpakkcm_SRCS})
-
-target_link_libraries(kcm_flatpak
+    flatpakhelper.cpp)
+set_property(TARGET kcm_flatpak_static PROPERTY POSITION_INDEPENDENT_CODE ON)
+target_link_libraries(kcm_flatpak_static
     Qt::Core
     KF5::CoreAddons
     KF5::ConfigCore
@@ -55,6 +51,9 @@ target_link_libraries(kcm_flatpak
     Qt::DBus
 )
 
+add_library(kcm_flatpak MODULE kcm.cpp)
+target_link_libraries(kcm_flatpak kcm_flatpak_static)
+
 install(TARGETS kcm_flatpak DESTINATION ${KDE_INSTALL_PLUGINDIR}/plasma/kcms/systemsettings)
 
 kpackage_install_package(package kcm_flatpak kcms)
@@ -62,6 +61,8 @@ kpackage_install_package(package kcm_flatpak kcms)
 kcmutils_generate_desktop_file(kcm_flatpak)
 
 ki18n_install(po)
+
+add_subdirectory(autotests)
 
 file(GLOB_RECURSE ALL_CLANG_FORMAT_SOURCE_FILES *.cpp *.h)
 kde_clang_format(${ALL_CLANG_FORMAT_SOURCE_FILES})
