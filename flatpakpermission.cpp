@@ -1016,7 +1016,7 @@ QStringList FlatpakPermissionModel::valueList(const QString &catHeader) const
     return valueList;
 }
 
-void FlatpakPermissionModel::addPermission(FlatpakPermission *perm, const bool shouldBeOn)
+void FlatpakPermissionModel::addPermission(FlatpakPermission *perm, bool shouldBeOn)
 {
     if (!m_overridesData.contains(QStringLiteral("[Context]"))) {
         m_overridesData.insert(m_overridesData.length(), QStringLiteral("[Context]\n"));
@@ -1054,7 +1054,7 @@ void FlatpakPermissionModel::addPermission(FlatpakPermission *perm, const bool s
     }
 }
 
-void FlatpakPermissionModel::removePermission(FlatpakPermission *perm, const bool isGranted)
+void FlatpakPermissionModel::removePermission(FlatpakPermission *perm, bool isGranted)
 {
     int permStartIndex = m_overridesData.indexOf(perm->name());
     int permEndIndex = permStartIndex + perm->name().length();
