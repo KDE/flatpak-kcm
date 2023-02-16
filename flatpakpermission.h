@@ -7,9 +7,9 @@
 
 #include "flatpakreference.h"
 
-#include <QString>
 #include <QAbstractListModel>
 #include <QPointer>
+#include <QString>
 
 class FlatpakReference;
 

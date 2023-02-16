@@ -5,8 +5,8 @@
 
 #include "kcm.h"
 
-#include <KPluginFactory>
 #include <KLocalizedString>
+#include <KPluginFactory>
 #include <QFile>
 
 K_PLUGIN_CLASS_WITH_JSON(KCMFlatpak, "kcm_flatpak.json")
