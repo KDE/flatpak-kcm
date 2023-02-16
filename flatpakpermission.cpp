@@ -12,12 +12,12 @@
 #include <QFileInfo>
 #include <QTemporaryFile>
 
-FlatpakPermission::FlatpakPermission(QString name,
-                                     QString category,
-                                     QString description,
-                                     QString defaultValue,
-                                     QStringList possibleValues,
-                                     QString currentValue,
+FlatpakPermission::FlatpakPermission(const QString &name,
+                                     const QString &category,
+                                     const QString &description,
+                                     const QString &defaultValue,
+                                     const QStringList &possibleValues,
+                                     const QString &currentValue,
                                      ValueType type)
     : m_name(name)
     , m_category(category)
@@ -29,13 +29,13 @@ FlatpakPermission::FlatpakPermission(QString name,
 {
 }
 
-FlatpakPermission::FlatpakPermission(QString name,
-                                     QString category,
-                                     QString description,
+FlatpakPermission::FlatpakPermission(const QString &name,
+                                     const QString &category,
+                                     const QString &description,
                                      ValueType type,
                                      bool isEnabledByDefault,
-                                     QString defaultValue,
-                                     QStringList possibleValues)
+                                     const QString &defaultValue,
+                                     const QStringList &possibleValues)
     : m_name(name)
     , m_category(category)
     , m_description(description)
@@ -151,12 +151,12 @@ bool FlatpakPermission::enabledByDefault() const
     return m_isEnabledByDefault;
 }
 
-void FlatpakPermission::setCurrentValue(QString val)
+void FlatpakPermission::setCurrentValue(const QString &val)
 {
     m_currentValue = val;
 }
 
-void FlatpakPermission::setLoadValue(QString loadValue)
+void FlatpakPermission::setLoadValue(const QString &loadValue)
 {
     m_loadValue = loadValue;
 }
@@ -948,7 +948,7 @@ void FlatpakPermissionModel::setPerm(int index)
     Q_EMIT dataChanged(FlatpakPermissionModel::index(index, 0), FlatpakPermissionModel::index(index, 0));
 }
 
-void FlatpakPermissionModel::editPerm(int index, QString newValue)
+void FlatpakPermissionModel::editPerm(int index, const QString &newValue)
 {
     /* guard for out-of-range indices */
     if (index < 0 || index >= m_permissions.length()) {
@@ -969,7 +969,7 @@ void FlatpakPermissionModel::editPerm(int index, QString newValue)
     Q_EMIT dataChanged(FlatpakPermissionModel::index(index, 0), FlatpakPermissionModel::index(index, 0));
 }
 
-void FlatpakPermissionModel::addUserEnteredPermission(QString name, QString cat, QString value)
+void FlatpakPermissionModel::addUserEnteredPermission(const QString &name, QString cat, const QString &value)
 {
     QStringList possibleValues = valueList(cat);
 
@@ -1005,7 +1005,7 @@ void FlatpakPermissionModel::addUserEnteredPermission(QString name, QString cat,
     Q_EMIT dataChanged(FlatpakPermissionModel::index(index, 0), FlatpakPermissionModel::index(index, 0));
 }
 
-QStringList FlatpakPermissionModel::valueList(QString catHeader) const
+QStringList FlatpakPermissionModel::valueList(const QString &catHeader) const
 {
     QStringList valueList;
     if (catHeader == i18n("Filesystem Access")) {
@@ -1226,7 +1226,7 @@ void FlatpakPermissionModel::editEnvPermission(FlatpakPermission *perm, const QS
     }
 }
 
-bool FlatpakPermissionModel::permExists(QString name)
+bool FlatpakPermissionModel::permExists(const QString &name)
 {
     for (int i = 0; i < m_permissions.length(); ++i) {
         if (m_permissions.at(i).name() == name) {
@@ -1236,7 +1236,7 @@ bool FlatpakPermissionModel::permExists(QString name)
     return false;
 }
 
-int FlatpakPermissionModel::permIndex(QString category, int from)
+int FlatpakPermissionModel::permIndex(const QString &category, int from)
 {
     int i = from;
     while (i < m_permissions.length()) {

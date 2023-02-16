@@ -35,20 +35,20 @@ public:
         Advanced /* more "technical" permissions */
     };
 
-    explicit FlatpakPermission(QString name = QString(),
-                               QString category = QString(),
-                               QString description = QString(),
-                               QString defaultValue = QStringLiteral("OFF"),
-                               QStringList possibleValues = QStringList(),
-                               QString currentValue = QString(),
+    explicit FlatpakPermission(const QString &name = {},
+                               const QString &category = {},
+                               const QString &description = {},
+                               const QString &defaultValue = QStringLiteral("OFF"),
+                               const QStringList &possibleValues = {},
+                               const QString &currentValue = {},
                                ValueType type = ValueType::Simple);
-    FlatpakPermission(QString name,
-                      QString category,
-                      QString description,
+    FlatpakPermission(const QString &name,
+                      const QString &category,
+                      const QString &description,
                       ValueType type,
                       bool isEnabledByDefault,
-                      QString defaultValue = QString(),
-                      QStringList possibleValues = QStringList());
+                      const QString &defaultValue = {},
+                      const QStringList &possibleValues = {});
     QString name() const;
     QString category() const;
     QString categoryHeading() const;
@@ -67,8 +67,8 @@ public:
 
     QString fsCurrentValue() const;
 
-    void setCurrentValue(QString val);
-    void setLoadValue(QString loadValue);
+    void setCurrentValue(const QString &val);
+    void setLoadValue(const QString &loadValue);
     void setEnabled(bool isEnabled);
     void setLoadEnabled(bool isLoadEnabled);
     void setPType(PermType pType);
@@ -136,13 +136,13 @@ public:
     bool isDefaults() const;
     bool isSaveNeeded() const;
 
-    Q_INVOKABLE QStringList valueList(QString catHeader) const;
+    Q_INVOKABLE QStringList valueList(const QString &catHeader) const;
 
 public Q_SLOTS:
     void setReference(FlatpakReference *ref);
     void setPerm(int index);
-    void editPerm(int index, QString newValue);
-    void addUserEnteredPermission(QString name, QString cat, QString value);
+    void editPerm(int index, const QString &newValue);
+    void addUserEnteredPermission(const QString &name, QString cat, const QString &value);
 
 Q_SIGNALS:
     void referenceChanged();
@@ -157,8 +157,8 @@ private:
     void addEnvPermission(FlatpakPermission *perm);
     void removeEnvPermission(FlatpakPermission *perm);
     void editEnvPermission(FlatpakPermission *perm, const QString &newValue);
-    bool permExists(QString name);
-    int permIndex(QString category, int from = 0);
+    bool permExists(const QString &name);
+    int permIndex(const QString &category, int from = 0);
     void readFromFile();
     void writeToFile();
 
