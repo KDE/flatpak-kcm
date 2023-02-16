@@ -21,6 +21,8 @@ pkg_check_modules(Flatpak REQUIRED IMPORTED_TARGET flatpak>=0.11.8)
 include(KDEInstallDirs)
 include(KDECMakeSettings)
 include(KDEFrameworkCompilerSettings NO_POLICY_SCOPE)
+include(KDEClangFormat)
+include(KDEGitCommitHooks)
 include(FeatureSummary)
 
 find_package(Qt${QT_MAJOR_VERSION} ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS
@@ -61,5 +63,9 @@ kpackage_install_package(package kcm_flatpak kcms)
 kcmutils_generate_desktop_file(kcm_flatpak)
 
 ki18n_install(po)
+
+file(GLOB_RECURSE ALL_CLANG_FORMAT_SOURCE_FILES *.cpp *.h)
+kde_clang_format(${ALL_CLANG_FORMAT_SOURCE_FILES})
+kde_configure_git_pre_commit_hook(CHECKS CLANG_FORMAT)
 
 feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)
