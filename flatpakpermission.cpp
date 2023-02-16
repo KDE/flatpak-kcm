@@ -206,11 +206,6 @@ bool FlatpakPermission::isDefaults() const
     return ret;
 }
 
-FlatpakPermissionModel::FlatpakPermissionModel(QObject *parent)
-    : QAbstractListModel(parent)
-{
-}
-
 int FlatpakPermissionModel::rowCount(const QModelIndex &parent) const
 {
     if (parent.isValid()) {
