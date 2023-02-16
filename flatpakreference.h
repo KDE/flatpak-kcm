@@ -22,16 +22,15 @@ class FlatpakReference : public QObject
 {
     Q_OBJECT
 public:
-    explicit FlatpakReference(
-        FlatpakReferencesModel *parent,
-        const QString &flatpakName,
-        const QString &arch,
-        const QString &branch,
-        const QString &version,
-        const QString &displayName,
-        const QString &permissionsDirectory,
-        const QUrl &iconSource,
-        const QByteArray &metadata);
+    explicit FlatpakReference(FlatpakReferencesModel *parent,
+                              const QString &flatpakName,
+                              const QString &arch,
+                              const QString &branch,
+                              const QString &version,
+                              const QString &displayName,
+                              const QString &permissionsDirectory,
+                              const QUrl &iconSource,
+                              const QByteArray &metadata);
 
     FlatpakReferencesModel *parent() const;
 
@@ -84,12 +83,7 @@ class FlatpakReferencesModel : public QAbstractListModel
 public:
     explicit FlatpakReferencesModel(QObject *parent = nullptr);
 
-    enum Roles {
-        Name = Qt::UserRole + 1,
-        Version,
-        Icon,
-        Ref
-    };
+    enum Roles { Name = Qt::UserRole + 1, Version, Icon, Ref };
     Q_ENUM(Roles)
 
     int rowCount(const QModelIndex &parent = QModelIndex()) const override;

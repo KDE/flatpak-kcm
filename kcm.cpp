@@ -13,8 +13,8 @@
 K_PLUGIN_CLASS_WITH_JSON(KCMFlatpak, "kcm_flatpak.json")
 
 KCMFlatpak::KCMFlatpak(QObject *parent, const KPluginMetaData &data, const QVariantList &args)
-    : KQuickAddons::ManagedConfigModule(parent, data, args),
-      m_refsModel(new FlatpakReferencesModel(this))
+    : KQuickAddons::ManagedConfigModule(parent, data, args)
+    , m_refsModel(new FlatpakReferencesModel(this))
 {
     QString requrestedRef;
     if (args.count() > 0) {
@@ -27,14 +27,18 @@ KCMFlatpak::KCMFlatpak(QObject *parent, const KPluginMetaData &data, const QVari
 
     qmlRegisterUncreatableType<KCMFlatpak>("org.kde.plasma.kcm.flatpakpermissions", 1, 0, "KCMFlatpak", QString());
     qmlRegisterType<FlatpakPermissionModel>("org.kde.plasma.kcm.flatpakpermissions", 1, 0, "FlatpakPermissionModel");
-    qmlRegisterUncreatableType<FlatpakReferencesModel>("org.kde.plasma.kcm.flatpakpermissions", 1, 0, "FlatpakReferencesModel", QStringLiteral("For enum access only"));
+    qmlRegisterUncreatableType<FlatpakReferencesModel>("org.kde.plasma.kcm.flatpakpermissions",
+                                                       1,
+                                                       0,
+                                                       "FlatpakReferencesModel",
+                                                       QStringLiteral("For enum access only"));
 
     connect(m_refsModel, &FlatpakReferencesModel::needsLoad, this, &KCMFlatpak::load);
     connect(m_refsModel, &FlatpakReferencesModel::needsSaveChanged, this, &KCMFlatpak::refreshSaveNeeded);
 
     if (!requrestedRef.isEmpty()) {
         const auto &refs = m_refsModel->references();
-        const auto it = std::find_if(refs.constBegin(), refs.constEnd(), [&] (FlatpakReference *ref) {
+        const auto it = std::find_if(refs.constBegin(), refs.constEnd(), [&](FlatpakReference *ref) {
             return ref->ref() == requrestedRef;
         });
         if (it != refs.constEnd()) {
