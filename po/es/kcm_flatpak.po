@@ -3,13 +3,13 @@
 # This file is distributed under the same license as the flatpak-kcm package.
 #
 # Automatically generated, 2022.
-# Eloy Cuadra <ecuadra@eloihr.net>, 2022.
+# Eloy Cuadra <ecuadra@eloihr.net>, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: kcm_flatpak\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-02-15 01:00+0000\n"
-"PO-Revision-Date: 2022-09-14 11:26+0200\n"
+"PO-Revision-Date: 2023-02-16 00:59+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 22.08.1\n"
+"X-Generator: Lokalize 22.12.2\n"
 
 #: flatpakpermission.cpp:58 flatpakpermission.cpp:432 flatpakpermission.cpp:481
 #: flatpakpermission.cpp:497 flatpakpermission.cpp:507
@@ -499,31 +499,26 @@ msgid "Add System Bus Permission"
 msgstr "Añadir permiso de bus del sistema"
 
 #: package/contents/ui/permissions.qml:104
-#, fuzzy, kde-format
-#| msgid "Enter filesystem path..."
+#, kde-format
 msgid "Enter filesystem path…"
 msgstr "Introduzca ruta del sistema de archivos..."
 
 #: package/contents/ui/permissions.qml:105
-#, fuzzy, kde-format
-#| msgid "Enter variable..."
+#, kde-format
 msgid "Enter variable…"
 msgstr "Introduzca variable..."
 
 #: package/contents/ui/permissions.qml:106
-#, fuzzy, kde-format
-#| msgid "Enter session bus name..."
+#, kde-format
 msgid "Enter session bus name…"
 msgstr "Introduzca nombre del bus de sesión..."
 
 #: package/contents/ui/permissions.qml:107
-#, fuzzy, kde-format
-#| msgid "Enter system bus name..."
+#, kde-format
 msgid "Enter system bus name…"
 msgstr "Introduzca nombre del bus del sistema..."
 
 #: package/contents/ui/permissions.qml:125
-#, fuzzy, kde-format
-#| msgid "Enter value..."
+#, kde-format
 msgid "Enter value…"
 msgstr "Introduzca valor..."

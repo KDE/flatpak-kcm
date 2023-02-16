@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This file is copyright:
 # This file is distributed under the same license as the flatpak-kcm package.
 #
-# Freek de Kruijf <freekdekruijf@kde.nl>, 2022.
+# Freek de Kruijf <freekdekruijf@kde.nl>, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-02-15 01:00+0000\n"
-"PO-Revision-Date: 2022-09-13 11:22+0200\n"
+"PO-Revision-Date: 2023-02-15 11:40+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 22.08.1\n"
+"X-Generator: Lokalize 22.12.2\n"
 
 #: flatpakpermission.cpp:58 flatpakpermission.cpp:432 flatpakpermission.cpp:481
 #: flatpakpermission.cpp:497 flatpakpermission.cpp:507
@@ -497,31 +497,26 @@ msgid "Add System Bus Permission"
 msgstr "Toegangsrechten van systeembus toevoegen"
 
 #: package/contents/ui/permissions.qml:104
-#, fuzzy, kde-format
-#| msgid "Enter filesystem path..."
+#, kde-format
 msgid "Enter filesystem path…"
-msgstr "Bestandssysteempad invoeren..."
+msgstr "Bestandssysteempad invoeren…"
 
 #: package/contents/ui/permissions.qml:105
-#, fuzzy, kde-format
-#| msgid "Enter variable..."
+#, kde-format
 msgid "Enter variable…"
-msgstr "Variabele invoeren..."
+msgstr "Variabele invoeren…"
 
 #: package/contents/ui/permissions.qml:106
-#, fuzzy, kde-format
-#| msgid "Enter session bus name..."
+#, kde-format
 msgid "Enter session bus name…"
-msgstr "Sessiebusnaam invoeren..."
+msgstr "Sessiebusnaam invoeren…"
 
 #: package/contents/ui/permissions.qml:107
-#, fuzzy, kde-format
-#| msgid "Enter system bus name..."
+#, kde-format
 msgid "Enter system bus name…"
-msgstr "Systeembusnaam invoeren..."
+msgstr "Systeembusnaam invoeren…"
 
 #: package/contents/ui/permissions.qml:125
-#, fuzzy, kde-format
-#| msgid "Enter value..."
+#, kde-format
 msgid "Enter value…"
-msgstr "Waarde invoeren..."
+msgstr "Waarde invoeren…"

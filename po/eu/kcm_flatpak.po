@@ -1,16 +1,16 @@
 # Translation for kcm_flatpak.po to Euskara/Basque (eu).
-# Copyright (C) 2022 This file is copyright:
+# Copyright (C) 2022-2023 This file is copyright:
 # This file is distributed under the same license as the flatpak-kcm package.
 # KDE euskaratzeko proiektuko arduraduna <xalba@ni.eus>.
 #
 # Translators:
-# Iñigo Salvador Azurmendi <xalba@ni.eus>, 2022.
+# Iñigo Salvador Azurmendi <xalba@ni.eus>, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-02-15 01:00+0000\n"
-"PO-Revision-Date: 2022-09-13 22:44+0200\n"
+"PO-Revision-Date: 2023-02-15 20:21+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 22.08.0\n"
+"X-Generator: Lokalize 22.12.2\n"
 
 #: flatpakpermission.cpp:58 flatpakpermission.cpp:432 flatpakpermission.cpp:481
 #: flatpakpermission.cpp:497 flatpakpermission.cpp:507
@@ -500,31 +500,26 @@ msgid "Add System Bus Permission"
 msgstr "Gehitu sistemako bus-erako baimena"
 
 #: package/contents/ui/permissions.qml:104
-#, fuzzy, kde-format
-#| msgid "Enter filesystem path..."
+#, kde-format
 msgid "Enter filesystem path…"
-msgstr "Sartu fitxategi-sistemako bide-izenera..."
+msgstr "Sartu fitxategi-sistemako bide-izena..."
 
 #: package/contents/ui/permissions.qml:105
-#, fuzzy, kde-format
-#| msgid "Enter variable..."
+#, kde-format
 msgid "Enter variable…"
 msgstr "Sartu aldagaia..."
 
 #: package/contents/ui/permissions.qml:106
-#, fuzzy, kde-format
-#| msgid "Enter session bus name..."
+#, kde-format
 msgid "Enter session bus name…"
 msgstr "Sartu saioko bus-aren izena..."
 
 #: package/contents/ui/permissions.qml:107
-#, fuzzy, kde-format
-#| msgid "Enter system bus name..."
+#, kde-format
 msgid "Enter system bus name…"
 msgstr "Sartu sistemako bus-aren izena..."
 
 #: package/contents/ui/permissions.qml:125
-#, fuzzy, kde-format
-#| msgid "Enter value..."
+#, kde-format
 msgid "Enter value…"
 msgstr "Sartu balioa..."

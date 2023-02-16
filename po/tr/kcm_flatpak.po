@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-02-15 01:00+0000\n"
-"PO-Revision-Date: 2023-02-08 14:22+0300\n"
+"PO-Revision-Date: 2023-02-15 11:42+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -497,31 +497,26 @@ msgid "Add System Bus Permission"
 msgstr "Sistem Veriyolu İzini Ekle"
 
 #: package/contents/ui/permissions.qml:104
-#, fuzzy, kde-format
-#| msgid "Enter filesystem path..."
+#, kde-format
 msgid "Enter filesystem path…"
-msgstr "Dosya sistemi yolu gir..."
+msgstr "Dosya sistemi yolu gir…"
 
 #: package/contents/ui/permissions.qml:105
-#, fuzzy, kde-format
-#| msgid "Enter variable..."
+#, kde-format
 msgid "Enter variable…"
-msgstr "Değişken gir..."
+msgstr "Değişken gir…"
 
 #: package/contents/ui/permissions.qml:106
-#, fuzzy, kde-format
-#| msgid "Enter session bus name..."
+#, kde-format
 msgid "Enter session bus name…"
-msgstr "Oturum veriyolu adı gir..."
+msgstr "Oturum veriyolu adı gir…"
 
 #: package/contents/ui/permissions.qml:107
-#, fuzzy, kde-format
-#| msgid "Enter system bus name..."
+#, kde-format
 msgid "Enter system bus name…"
-msgstr "Sistem veriyolu adı gir..."
+msgstr "Sistem veriyolu adı gir…"
 
 #: package/contents/ui/permissions.qml:125
-#, fuzzy, kde-format
-#| msgid "Enter value..."
+#, kde-format
 msgid "Enter value…"
-msgstr "Değer gir..."
+msgstr "Değer gir…"

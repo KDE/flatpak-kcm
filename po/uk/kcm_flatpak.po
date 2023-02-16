@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This file is copyright:
 # This file is distributed under the same license as the flatpak-kcm package.
 #
-# Yuri Chornoivan <yurchor@ukr.net>, 2022.
+# Yuri Chornoivan <yurchor@ukr.net>, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-02-15 01:00+0000\n"
-"PO-Revision-Date: 2022-09-13 07:26+0300\n"
+"PO-Revision-Date: 2023-02-15 09:03+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
 "Language: uk\n"
@@ -498,31 +498,26 @@ msgid "Add System Bus Permission"
 msgstr "Додати права доступу до системи"
 
 #: package/contents/ui/permissions.qml:104
-#, fuzzy, kde-format
-#| msgid "Enter filesystem path..."
+#, kde-format
 msgid "Enter filesystem path…"
 msgstr "Введіть шлях у файловій системі…"
 
 #: package/contents/ui/permissions.qml:105
-#, fuzzy, kde-format
-#| msgid "Enter variable..."
+#, kde-format
 msgid "Enter variable…"
 msgstr "Вкажіть змінну…"
 
 #: package/contents/ui/permissions.qml:106
-#, fuzzy, kde-format
-#| msgid "Enter session bus name..."
+#, kde-format
 msgid "Enter session bus name…"
 msgstr "Введіть назву шини сеансу…"
 
 #: package/contents/ui/permissions.qml:107
-#, fuzzy, kde-format
-#| msgid "Enter system bus name..."
+#, kde-format
 msgid "Enter system bus name…"
 msgstr "Введіть назву шини системи…"
 
 #: package/contents/ui/permissions.qml:125
-#, fuzzy, kde-format
-#| msgid "Enter value..."
+#, kde-format
 msgid "Enter value…"
 msgstr "Введіть значення…"
