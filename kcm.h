@@ -18,16 +18,15 @@ public:
 
     void refreshSaveNeeded();
 
+    Q_INVOKABLE bool isSaveNeeded() const override;
+    Q_INVOKABLE bool isDefaults() const override;
+    Q_INVOKABLE int currentIndex() const;
+
 public Q_SLOTS:
     void load() override;
     void save() override;
     void defaults() override;
-    bool isSaveNeeded() const override;
-    bool isDefaults() const override;
-
-public Q_SLOTS:
     void setIndex(int index);
-    int currentIndex() const;
 
 private:
     FlatpakReferencesModel *m_refsModel;
