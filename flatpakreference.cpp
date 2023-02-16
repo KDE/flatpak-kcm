@@ -16,8 +16,6 @@ extern "C" {
 #include <glib.h>
 
 #include <QDebug>
-FlatpakReference::~FlatpakReference() = default;
-
 FlatpakReference::FlatpakReference(FlatpakReferencesModel *parent, QString name, QString id, const QString &path, QString version, QString icon, QByteArray metadata, FlatpakReferencesModel *refsModel)
     : QObject(parent),
       m_name(name),
