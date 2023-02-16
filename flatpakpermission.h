@@ -124,12 +124,13 @@ public:
     bool isDefaults() const;
     bool isSaveNeeded() const;
 
+    Q_INVOKABLE QStringList valueList(QString catHeader) const;
+
 public Q_SLOTS:
     void setReference(FlatpakReference *ref);
     void setPerm(int index);
     void editPerm(int index, QString newValue);
     void addUserEnteredPermission(QString name, QString cat, QString value);
-    QStringList valueList(QString catHeader) const;
 
 Q_SIGNALS:
     void referenceChanged();
