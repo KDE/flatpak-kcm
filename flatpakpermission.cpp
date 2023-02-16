@@ -98,17 +98,20 @@ QString FlatpakPermission::categoryHeading() const
 
     if (m_category == QStringLiteral("shared")) {
         return i18n("Subsystems Shared");
-    } else if (m_category == QStringLiteral("sockets")) {
-        return i18n("Sockets");
-    } else if (m_category == QStringLiteral("devices")) {
-        return i18n("Device Access");
-    } else if (m_category == QStringLiteral("features")) {
-        return i18n("Features Allowed");
-    } else if (m_category == QStringLiteral("Advanced Dummy")) {
-        return i18n("Advanced Permissions");
-    } else {
-        return m_category;
     }
+    if (m_category == QStringLiteral("sockets")) {
+        return i18n("Sockets");
+    }
+    if (m_category == QStringLiteral("devices")) {
+        return i18n("Device Access");
+    }
+    if (m_category == QStringLiteral("features")) {
+        return i18n("Features Allowed");
+    }
+    if (m_category == QStringLiteral("Advanced Dummy")) {
+        return i18n("Advanced Permissions");
+    }
+    return m_category;
 }
 
 QString FlatpakPermission::description() const
@@ -249,12 +252,10 @@ QVariant FlatpakPermissionModel::data(const QModelIndex &index, int role) const
         if (permission.sType() == FlatpakPermission::Basic) {
             if (permission.type() == FlatpakPermission::Filesystems) {
                 return i18n("Filesystem Access");
-            } else {
-                return i18n("Basic Permissions");
             }
-        } else {
-            return i18n("Advanced Permissions");
+            return i18n("Basic Permissions");
         }
+        return i18n("Advanced Permissions");
     case Roles::IsBasic:
         return permission.sType() == FlatpakPermission::Basic;
     case Roles::ValueList:
