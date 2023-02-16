@@ -44,7 +44,7 @@ FlatpakReference::FlatpakReference(FlatpakReferencesModel *parent,
 FlatpakReferencesModel *FlatpakReference::parent() const
 {
     // SAFETY: There's only one constructor, and it always initializes parent with a model object
-    return static_cast<FlatpakReferencesModel *>(QObject::parent());
+    return qobject_cast<FlatpakReferencesModel *>(QObject::parent());
 }
 
 QString FlatpakReference::arch() const
