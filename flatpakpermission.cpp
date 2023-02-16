@@ -1,5 +1,6 @@
 /**
  * SPDX-FileCopyrightText: 2022 Suhaas Joshi <joshiesuhaas0@gmail.com>
+ * SPDX-FileCopyrightText: 2023 Harald Sitter <sitter@kde.org>
  * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
@@ -55,6 +56,42 @@ QString FlatpakPermission::name() const
     return m_name;
 }
 
+static QString toFrontendDBusValue(const QString &value)
+{
+    if (value == QStringLiteral("talk")) {
+        return i18n("talk");
+    }
+    if (value == QStringLiteral("own")) {
+        return i18n("own");
+    }
+    if (value == QStringLiteral("see")) {
+        return i18n("see");
+    }
+    if (value == QStringLiteral("None")) {
+        return i18n("None");
+    }
+    Q_ASSERT_X(false, Q_FUNC_INFO, qUtf8Printable(QStringLiteral("unmapped value %1").arg(value)));
+    return {};
+}
+
+static QString toBackendDBusValue(const QString &value)
+{
+    if (value == i18n("talk")) {
+        return QStringLiteral("talk");
+    }
+    if (value == i18n("own")) {
+        return QStringLiteral("own");
+    }
+    if (value == i18n("see")) {
+        return QStringLiteral("see");
+    }
+    if (value == i18n("None")) {
+        return QStringLiteral("None");
+    }
+    Q_ASSERT_X(false, Q_FUNC_INFO, qUtf8Printable(QStringLiteral("unmapped value %1").arg(value)));
+    return {};
+}
+
 QString FlatpakPermission::currentValue() const
 {
     return m_currentValue;
@@ -72,9 +109,12 @@ QString FlatpakPermission::fsCurrentValue() const
     }
 
     QString val;
-    if (m_currentValue == QStringLiteral("read-only")) {
+    // NB: the use of i18n here is actually kind of wrong but at the time of writing fixing the mapping
+    // between ui and backend *here* is easier/safer than trying to reinvent the way the mapping works in a
+    // more reliable fashion.
+    if (m_currentValue == i18n("read-only")) {
         val = QStringLiteral("ro");
-    } else if (m_currentValue == QStringLiteral("create")) {
+    } else if (m_currentValue == i18n("create")) {
         val = QStringLiteral("create");
     } else {
         val = QStringLiteral("rw");
@@ -308,69 +348,69 @@ void FlatpakPermissionModel::loadDefaultValues()
     int basicIndex = 0;
 
     /* SHARED category */
-    category = i18n("shared");
+    category = QStringLiteral("shared");
     const QString sharedPerms = contextGroup.readEntry("shared", QString());
 
-    name = i18n("network");
+    name = QStringLiteral("network");
     description = i18n("Internet Connection");
     isEnabledByDefault = sharedPerms.contains(name);
     m_permissions.insert(basicIndex, FlatpakPermission(name, category, description, FlatpakPermission::Simple, isEnabledByDefault));
     m_permissions[basicIndex++].setSType(FlatpakPermission::Basic);
 
-    name = i18n("ipc");
+    name = QStringLiteral("ipc");
     description = i18n("Inter-process Communication");
     isEnabledByDefault = sharedPerms.contains(name);
     m_permissions.append(FlatpakPermission(name, category, description, FlatpakPermission::Simple, isEnabledByDefault));
     /* SHARED category */
 
     /* SOCKETS category */
-    category = i18n("sockets");
+    category = QStringLiteral("sockets");
     const QString socketPerms = contextGroup.readEntry("sockets", QString());
 
-    name = i18n("x11");
+    name = QStringLiteral("x11");
     description = i18n("X11 Windowing System");
     isEnabledByDefault = socketPerms.contains(name);
     m_permissions.append(FlatpakPermission(name, category, description, FlatpakPermission::Simple, isEnabledByDefault));
 
-    name = i18n("wayland");
+    name = QStringLiteral("wayland");
     description = i18n("Wayland Windowing System");
     isEnabledByDefault = socketPerms.contains(name);
     m_permissions.append(FlatpakPermission(name, category, description, FlatpakPermission::Simple, isEnabledByDefault));
 
-    name = i18n("fallback-x11");
+    name = QStringLiteral("fallback-x11");
     description = i18n("Fallback to X11 Windowing System");
     isEnabledByDefault = socketPerms.contains(name);
     m_permissions.append(FlatpakPermission(name, category, description, FlatpakPermission::Simple, isEnabledByDefault));
 
-    name = i18n("pulseaudio");
+    name = QStringLiteral("pulseaudio");
     description = i18n("Pulseaudio Sound Server");
     isEnabledByDefault = socketPerms.contains(name);
     m_permissions.insert(basicIndex, FlatpakPermission(name, category, description, FlatpakPermission::Simple, isEnabledByDefault));
     m_permissions[basicIndex++].setSType(FlatpakPermission::Basic);
 
-    name = i18n("session-bus");
+    name = QStringLiteral("session-bus");
     description = i18n("Session Bus Access");
     isEnabledByDefault = socketPerms.contains(name);
     m_permissions.append(FlatpakPermission(name, category, description, FlatpakPermission::Simple, isEnabledByDefault));
 
-    name = i18n("system-bus");
+    name = QStringLiteral("system-bus");
     description = i18n("System Bus Access");
     isEnabledByDefault = socketPerms.contains(name);
     m_permissions.append(FlatpakPermission(name, category, description, FlatpakPermission::Simple, isEnabledByDefault));
 
-    name = i18n("ssh-auth");
+    name = QStringLiteral("ssh-auth");
     description = i18n("Remote Login Access");
     isEnabledByDefault = socketPerms.contains(name);
     m_permissions.insert(basicIndex, FlatpakPermission(name, category, description, FlatpakPermission::Simple, isEnabledByDefault));
     m_permissions[basicIndex++].setSType(FlatpakPermission::Basic);
 
-    name = i18n("pcsc");
+    name = QStringLiteral("pcsc");
     description = i18n("Smart Card Access");
     isEnabledByDefault = socketPerms.contains(name);
     m_permissions.insert(basicIndex, FlatpakPermission(name, category, description, FlatpakPermission::Simple, isEnabledByDefault));
     m_permissions[basicIndex++].setSType(FlatpakPermission::Basic);
 
-    name = i18n("cups");
+    name = QStringLiteral("cups");
     description = i18n("Print System Access");
     isEnabledByDefault = socketPerms.contains(name);
     m_permissions.insert(basicIndex, FlatpakPermission(name, category, description, FlatpakPermission::Simple, isEnabledByDefault));
@@ -378,25 +418,25 @@ void FlatpakPermissionModel::loadDefaultValues()
     /* SOCKETS category */
 
     /* DEVICES category */
-    category = i18n("devices");
+    category = QStringLiteral("devices");
     const QString devicesPerms = contextGroup.readEntry("devices", QString());
 
-    name = i18n("kvm");
+    name = QStringLiteral("kvm");
     description = i18n("Kernel-based Virtual Machine Access");
     isEnabledByDefault = devicesPerms.contains(name);
     m_permissions.append(FlatpakPermission(name, category, description, FlatpakPermission::Simple, isEnabledByDefault));
 
-    name = i18n("dri");
+    name = QStringLiteral("dri");
     description = i18n("Direct Graphic Rendering");
     isEnabledByDefault = devicesPerms.contains(name);
     m_permissions.append(FlatpakPermission(name, category, description, FlatpakPermission::Simple, isEnabledByDefault));
 
-    name = i18n("shm");
+    name = QStringLiteral("shm");
     description = i18n("Host dev/shm");
     isEnabledByDefault = devicesPerms.contains(name);
     m_permissions.append(FlatpakPermission(name, category, description, FlatpakPermission::Simple, isEnabledByDefault));
 
-    name = i18n("all");
+    name = QStringLiteral("all");
     description = i18n("Device Access");
     isEnabledByDefault = devicesPerms.contains(name);
     m_permissions.insert(basicIndex, FlatpakPermission(name, category, description, FlatpakPermission::Simple, isEnabledByDefault));
@@ -404,26 +444,26 @@ void FlatpakPermissionModel::loadDefaultValues()
     /* DEVICES category */
 
     /* FEATURES category */
-    category = i18n("features");
+    category = QStringLiteral("features");
     const QString featuresPerms = contextGroup.readEntry("features", QString());
 
-    name = i18n("devel");
+    name = QStringLiteral("devel");
     description = i18n("System Calls by Development Tools");
     isEnabledByDefault = featuresPerms.contains(name);
     m_permissions.append(FlatpakPermission(name, category, description, FlatpakPermission::Simple, isEnabledByDefault));
 
-    name = i18n("multiarch");
+    name = QStringLiteral("multiarch");
     description = i18n("Run Multiarch/Multilib Binaries");
     isEnabledByDefault = featuresPerms.contains(name);
     m_permissions.append(FlatpakPermission(name, category, description, FlatpakPermission::Simple, isEnabledByDefault));
 
-    name = i18n("bluetooth");
+    name = QStringLiteral("bluetooth");
     description = i18n("Bluetooth");
     isEnabledByDefault = featuresPerms.contains(name);
     m_permissions.insert(basicIndex, FlatpakPermission(name, category, description, FlatpakPermission::Simple, isEnabledByDefault));
     m_permissions[basicIndex++].setSType(FlatpakPermission::Basic);
 
-    name = i18n("canbus");
+    name = QStringLiteral("canbus");
     description = i18n("Canbus Socket Access");
     isEnabledByDefault = featuresPerms.contains(name);
     m_permissions.append(FlatpakPermission(name, category, description, FlatpakPermission::Simple, isEnabledByDefault));
@@ -435,7 +475,7 @@ void FlatpakPermissionModel::loadDefaultValues()
     /* FEATURES category */
 
     /* FILESYSTEM category */
-    category = i18n("filesystems");
+    category = QStringLiteral("filesystems");
     const QString fileSystemPerms = contextGroup.readEntry("filesystems", QString());
     const auto dirs = QStringView(fileSystemPerms).split(QLatin1Char(';'), Qt::SkipEmptyParts);
 
@@ -504,7 +544,7 @@ void FlatpakPermissionModel::loadDefaultValues()
         }
     }
 
-    name = i18n("home");
+    name = QStringLiteral("home");
     description = i18n("All User Files");
     possibleValues.removeAll(homeVal);
     if (homeVal == i18n("OFF")) {
@@ -516,7 +556,7 @@ void FlatpakPermissionModel::loadDefaultValues()
     m_permissions.insert(basicIndex++,
                          FlatpakPermission(name, category, description, FlatpakPermission::Filesystems, isEnabledByDefault, homeVal, possibleValues));
 
-    name = i18n("host");
+    name = QStringLiteral("host");
     description = i18n("All System Files");
     if (hostVal == i18n("OFF")) {
         isEnabledByDefault = false;
@@ -527,7 +567,7 @@ void FlatpakPermissionModel::loadDefaultValues()
     m_permissions.insert(basicIndex++,
                          FlatpakPermission(name, category, description, FlatpakPermission::Filesystems, isEnabledByDefault, hostVal, possibleValues));
 
-    name = i18n("host-os");
+    name = QStringLiteral("host-os");
     description = i18n("All System Libraries, Executables and Binaries");
     if (hostOsVal == i18n("OFF")) {
         isEnabledByDefault = false;
@@ -538,7 +578,7 @@ void FlatpakPermissionModel::loadDefaultValues()
     m_permissions.insert(basicIndex++,
                          FlatpakPermission(name, category, description, FlatpakPermission::Filesystems, isEnabledByDefault, hostOsVal, possibleValues));
 
-    name = i18n("host-etc");
+    name = QStringLiteral("host-etc");
     description = i18n("All System Configurations");
     if (hostEtcVal == i18n("OFF")) {
         isEnabledByDefault = false;
@@ -562,7 +602,7 @@ void FlatpakPermissionModel::loadDefaultValues()
     /* DUMMY ADVANCED category */
 
     /* SESSION BUS category */
-    category = i18n("Session Bus Policy");
+    category = QStringLiteral("Session Bus Policy");
     const KConfigGroup sessionBusGroup = parser.group("Session Bus Policy");
     possibleValues.clear();
     possibleValues << i18n("talk") << i18n("own") << i18n("see");
@@ -571,7 +611,7 @@ void FlatpakPermissionModel::loadDefaultValues()
         const QStringList busList = busMap.keys();
         for (int i = 0; i < busList.length(); ++i) {
             name = description = busList.at(i);
-            defaultValue = busMap.value(busList.at(i));
+            defaultValue = toFrontendDBusValue(busMap.value(busList.at(i)));
             isEnabledByDefault = true;
             //            m_permissions.append(FlatpakPermission(name, category, description, defaultValue, possibleValues, defaultValue,
             //            FlatpakPermission::ValueType::Complex));
@@ -586,7 +626,7 @@ void FlatpakPermissionModel::loadDefaultValues()
     /* SESSION BUS category */
 
     /* SYSTEM BUS category */
-    category = i18n("System Bus Policy");
+    category = QStringLiteral("System Bus Policy");
     const KConfigGroup systemBusGroup = parser.group("System Bus Policy");
     possibleValues.clear();
     possibleValues << i18n("talk") << i18n("own") << i18n("see");
@@ -595,7 +635,7 @@ void FlatpakPermissionModel::loadDefaultValues()
         const QStringList busList = busMap.keys();
         for (int i = 0; i < busList.length(); ++i) {
             name = description = busList.at(i);
-            defaultValue = busMap.value(busList.at(i));
+            defaultValue = toFrontendDBusValue(busMap.value(busList.at(i)));
             isEnabledByDefault = true;
             m_permissions.append(FlatpakPermission(name, category, description, FlatpakPermission::Bus, isEnabledByDefault, defaultValue, possibleValues));
         }
@@ -609,7 +649,7 @@ void FlatpakPermissionModel::loadDefaultValues()
 
 #if 0 // Disabled because BUG 465502
     /* ENVIRONMENT category */
-    category = i18n("Environment");
+    category = QStringLiteral("Environment");
     const KConfigGroup environmentGroup = parser.group("Environment");
     possibleValues.clear();
     if (environmentGroup.exists()) {
@@ -701,7 +741,10 @@ void FlatpakPermissionModel::loadCurrentValues()
                     if (value == offSig) {
                         enabled = false;
                         value = perm->currentValue();
+                    } else {
+                        value = toFrontendDBusValue(value);
                     }
+
                     perm->setCurrentValue(value);
                     perm->setLoadValue(value);
                     perm->setEnabled(enabled);
@@ -1117,9 +1160,9 @@ void FlatpakPermissionModel::removeBusPermission(FlatpakPermission *perm)
 void FlatpakPermissionModel::editFilesystemsPermissions(FlatpakPermission *perm, const QString &newValue)
 {
     QString value;
-    if (newValue == QStringLiteral("read-only")) {
+    if (newValue == i18n("read-only")) {
         value = QStringLiteral(":ro");
-    } else if (newValue == QStringLiteral("create")) {
+    } else if (newValue == i18n("create")) {
         value = QStringLiteral(":create");
     } else {
         value = QStringLiteral(":rw");
@@ -1151,10 +1194,10 @@ void FlatpakPermissionModel::editFilesystemsPermissions(FlatpakPermission *perm,
     perm->setCurrentValue(newValue);
 }
 
-void FlatpakPermissionModel::editBusPermissions(FlatpakPermission *perm, const QString &value)
+void FlatpakPermissionModel::editBusPermissions(FlatpakPermission *perm, const QString &l10nValue)
 {
-    if (perm->enabledByDefault() && value == perm->loadValue()) {
-        perm->setCurrentValue(value);
+    if (perm->enabledByDefault() && l10nValue == perm->loadValue()) {
+        perm->setCurrentValue(l10nValue);
         removeBusPermission(perm);
         return;
     }
@@ -1165,15 +1208,13 @@ void FlatpakPermissionModel::editBusPermissions(FlatpakPermission *perm, const Q
         permIndex = m_overridesData.indexOf(perm->name());
     }
     int valueBeginIndex = permIndex + perm->name().length();
-    m_overridesData.insert(valueBeginIndex, QLatin1Char('=') + value);
-    if (m_overridesData[valueBeginIndex + value.length() + 2] == QLatin1Char('t')
-        || m_overridesData[valueBeginIndex + value.length() + 2] == QLatin1Char('N')) {
-        m_overridesData.remove(valueBeginIndex + value.length() + 1, 5);
-    } else {
-        m_overridesData.remove(valueBeginIndex + value.length() + 1, 4);
-    }
-    if (value != i18n("None")) {
-        perm->setCurrentValue(value);
+    const QString backendValue = toBackendDBusValue(l10nValue);
+    m_overridesData.insert(valueBeginIndex, QLatin1Char('=') + backendValue);
+    valueBeginIndex = valueBeginIndex + 1 /* '=' character */ + backendValue.length();
+    auto valueEndOfLine = m_overridesData.indexOf(QLatin1Char('\n'), valueBeginIndex);
+    m_overridesData.remove(valueBeginIndex, valueEndOfLine - valueBeginIndex);
+    if (l10nValue != i18n("None")) {
+        perm->setCurrentValue(l10nValue);
     }
 }
 
