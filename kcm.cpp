@@ -16,12 +16,12 @@ KCMFlatpak::KCMFlatpak(QObject *parent, const KPluginMetaData &data, const QVari
     : KQuickAddons::ManagedConfigModule(parent, data, args)
     , m_refsModel(new FlatpakReferencesModel(this))
 {
-    QString requrestedRef;
+    QString requestedReference;
     if (args.count() > 0) {
         const QVariant &arg0 = args.at(0);
         if (arg0.canConvert<QString>()) {
             const QString arg0str = arg0.toString();
-            requrestedRef = arg0str;
+            requestedReference = arg0str;
         }
     }
 
@@ -36,10 +36,10 @@ KCMFlatpak::KCMFlatpak(QObject *parent, const KPluginMetaData &data, const QVari
     connect(m_refsModel, &FlatpakReferencesModel::needsLoad, this, &KCMFlatpak::load);
     connect(m_refsModel, &FlatpakReferencesModel::needsSaveChanged, this, &KCMFlatpak::refreshSaveNeeded);
 
-    if (!requrestedRef.isEmpty()) {
+    if (!requestedReference.isEmpty()) {
         const auto &refs = m_refsModel->references();
         const auto it = std::find_if(refs.constBegin(), refs.constEnd(), [&](FlatpakReference *ref) {
-            return ref->ref() == requrestedRef;
+            return ref->ref() == requestedReference;
         });
         if (it != refs.constEnd()) {
             const auto index = std::distance(refs.constBegin(), it);
