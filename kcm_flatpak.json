@@ -8,7 +8,7 @@
         "Description[cs]": "Nastavte oprávnění Flatpak",
         "Description[en_GB]": "Configure Flatpak Permissions",
         "Description[es]": "Configurar los permisos de Flatpak",
-        "Description[eu]": "Konfiguratu Flatpak-en baimenak",
+        "Description[eu]": "Konfiguratu «Flatpak»en baimenak",
         "Description[fr]": "Configurer les permissions pour Flatpak",
         "Description[it]": "Configura i permessi per Flatpak",
         "Description[ka]": "Flatpak-ის წვდომების მორგება",
@@ -31,7 +31,15 @@
         ],
         "Icon": "flatpak-discover",
         "Id": "kcm_flatpak",
-        "Name": "Flatpak Permissions"
+        "Name": "Flatpak Permissions",
+        "Name[ca]": "Permisos del Flatpak",
+        "Name[es]": "Permisos de Flatpak",
+        "Name[eu]": "«Flatpak»en baimenak",
+        "Name[fr]": "Permissions pour Flatpak",
+        "Name[nl]": "Toegangsrechten van Flatpak",
+        "Name[tr]": "Flatpak İzinleri",
+        "Name[uk]": "Права доступу Flatpak",
+        "Name[x-test]": "xxFlatpak Permissionsxx"
     },
     "X-KDE-Keywords": "Flatpak,permission,permissions,access,sandbox,sandboxed,filesystem,file,files,folder,folders,network,networks,networking,bluetooth,print,printer,printing,audio,sound,login,remote login,ssh,smart card,kvm,device,session,session bus,system,system bus,environment,environment variable",
     "X-KDE-System-Settings-Parent-Category": "applications"
