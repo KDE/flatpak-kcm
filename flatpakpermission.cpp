@@ -289,7 +289,10 @@ QHash<int, QByteArray> FlatpakPermissionModel::roleNames() const
 
 void FlatpakPermissionModel::loadDefaultValues()
 {
-    QString name, category, description, defaultValue;
+    QString name;
+    QString category;
+    QString description;
+    QString defaultValue;
     QStringList possibleValues;
     bool isEnabledByDefault;
 
@@ -440,8 +443,10 @@ void FlatpakPermissionModel::loadDefaultValues()
     const QString fileSystemPerms = contextGroup.readEntry("filesystems", QString());
     const auto dirs = QStringView(fileSystemPerms).split(QLatin1Char(';'), Qt::SkipEmptyParts);
 
-    QString homeVal, hostVal, hostOsVal, hostEtcVal;
-    homeVal = hostVal = hostOsVal = hostEtcVal = i18n("OFF");
+    QString homeVal = i18n("OFF");
+    QString hostVal = i18n("OFF");
+    QString hostOsVal = i18n("OFF");
+    QString hostEtcVal = i18n("OFF");
     possibleValues.clear();
     possibleValues << i18n("read/write") << i18n("read-only") << i18n("create");
 
