@@ -148,8 +148,8 @@ Q_SIGNALS:
     void referenceChanged();
 
 private:
-    void addPermission(FlatpakPermission *perm, const bool shouldBeOn);
-    void removePermission(FlatpakPermission *perm, const bool isGranted);
+    void addPermission(FlatpakPermission *perm, bool shouldBeOn);
+    void removePermission(FlatpakPermission *perm, bool isGranted);
     void addBusPermissions(FlatpakPermission *perm);
     void removeBusPermission(FlatpakPermission *perm);
     void editFilesystemsPermissions(FlatpakPermission *perm, const QString &newValue);
