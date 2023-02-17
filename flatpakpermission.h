@@ -99,6 +99,7 @@ private:
 
 class FlatpakPermissionModel : public QAbstractListModel
 {
+    friend class FlatpakPermissionModelTest;
     Q_OBJECT
     Q_PROPERTY(FlatpakReference *reference READ reference WRITE setReference NOTIFY referenceChanged)
 public:
