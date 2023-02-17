@@ -35,6 +35,10 @@ KCM.ScrollViewKCM {
             icon: model.icon
 
             function shouldChange() {
+                if (index === kcm.currentIndex()) {
+                    // Don't reload if it's current anyway.
+                    return;
+                }
                 if (kcm.isSaveNeeded()) {
                     promptDialog.open()
                 } else {
