@@ -52,7 +52,7 @@ KCM.ScrollViewKCM {
         Kirigami.PromptDialog {
             id: dialog
 
-            parent: root
+            parent: root.Kirigami.ColumnView.view
             title: i18n("Apply Permissions")
             subtitle: i18n("The permissions of this application have been changed. Do you want to apply these changes or discard them?")
             standardButtons: QQC2.Dialog.Apply | QQC2.Dialog.Discard
