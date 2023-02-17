@@ -43,7 +43,10 @@ private Q_SLOTS:
                 containsNetwork = true;
             }
         }
+
         QVERIFY(containsNetwork);
+        QVERIFY(model.permExists("network"));
+        QVERIFY(!model.permExists("yolo-foobar"));
     }
 
     void testMutable()

@@ -842,10 +842,10 @@ void FlatpakPermissionModel::load()
 
 void FlatpakPermissionModel::save()
 {
-    for (int i = 0; i < m_permissions.length(); i++) {
-        m_permissions[i].setLoadEnabled(m_permissions.at(i).enabled());
-        if (m_permissions.at(i).type() != FlatpakPermission::Simple) {
-            m_permissions[i].setLoadValue(m_permissions.at(i).currentValue());
+    for (auto &permission : m_permissions) {
+        permission.setLoadEnabled(permission.enabled());
+        if (permission.type() != FlatpakPermission::Simple) {
+            permission.setLoadValue(permission.currentValue());
         }
     }
     writeToFile();
@@ -854,10 +854,10 @@ void FlatpakPermissionModel::save()
 void FlatpakPermissionModel::defaults()
 {
     m_overridesData.clear();
-    for (int i = 0; i < m_permissions.length(); ++i) {
-        m_permissions[i].setEnabled(m_permissions[i].enabledByDefault());
-        if (m_permissions[i].type() != FlatpakPermission::Simple) {
-            m_permissions[i].setCurrentValue(m_permissions[i].defaultValue());
+    for (auto &permission : m_permissions) {
+        permission.setEnabled(permission.enabledByDefault());
+        if (permission.type() != FlatpakPermission::Simple) {
+            permission.setCurrentValue(permission.defaultValue());
         }
     }
     Q_EMIT dataChanged(FlatpakPermissionModel::index(0, 0), FlatpakPermissionModel::index(m_permissions.length() - 1, 0));
@@ -1267,12 +1267,9 @@ void FlatpakPermissionModel::editEnvPermission(FlatpakPermission *perm, const QS
 
 bool FlatpakPermissionModel::permExists(const QString &name)
 {
-    for (int i = 0; i < m_permissions.length(); ++i) {
-        if (m_permissions.at(i).name() == name) {
-            return true;
-        }
-    }
-    return false;
+    return std::any_of(m_permissions.cbegin(), m_permissions.cend(), [name](const FlatpakPermission &permission) {
+        return permission.name() == name;
+    });
 }
 
 int FlatpakPermissionModel::permIndex(const QString &category, int from)
