@@ -333,7 +333,6 @@ void FlatpakPermissionModel::loadDefaultValues()
     bool isEnabledByDefault = false;
 
     const QByteArray metadata = m_reference->metadata();
-    const QString path = m_reference->permissionsFilename();
 
     QTemporaryFile f;
     if (!f.open()) {
@@ -675,7 +674,7 @@ void FlatpakPermissionModel::loadCurrentValues()
     const QString path = m_reference->permissionsFilename();
 
     /* all permissions are at default, so nothing to load */
-    if (!QFileInfo(path).exists()) {
+    if (!QFileInfo::exists(path)) {
         return;
     }
 
