@@ -48,13 +48,17 @@ KCM.ScrollViewKCM {
             required property string applicationName
             required property url applicationIcon
 
+            readonly property bool narrow: (parent.width - leftMargin - rightMargin) < Kirigami.Units.gridUnit * 20
+
             parent: root.Kirigami.ColumnView.view
             title: i18n("Apply Permissions")
             subtitle: i18n("The permissions of this application have been changed. Do you want to apply these changes or discard them?")
             standardButtons: QQC2.Dialog.Apply | QQC2.Dialog.Discard
 
-            RowLayout {
-                spacing: Kirigami.Units.largeSpacing
+            GridLayout {
+                columns: dialog.narrow ? 1 : 2
+                columnSpacing: Kirigami.Units.largeSpacing
+                rowSpacing: Kirigami.Units.largeSpacing
 
                 Kirigami.Icon {
                     source: dialog.applicationIcon
