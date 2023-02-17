@@ -35,8 +35,20 @@ public:
         Advanced /* more "technical" permissions */
     };
 
-    explicit FlatpakPermission(QString name = QString(), QString category = QString(), QString description = QString(), QString defaultValue = QStringLiteral("OFF"), QStringList possibleValues = QStringList(), QString currentValue = QString(), ValueType type = ValueType::Simple);
-    FlatpakPermission(QString name, QString category, QString description, ValueType type, bool isEnabledByDefault, QString defaultValue = QString(), QStringList possibleValues = QStringList());
+    explicit FlatpakPermission(QString name = QString(),
+                               QString category = QString(),
+                               QString description = QString(),
+                               QString defaultValue = QStringLiteral("OFF"),
+                               QStringList possibleValues = QStringList(),
+                               QString currentValue = QString(),
+                               ValueType type = ValueType::Simple);
+    FlatpakPermission(QString name,
+                      QString category,
+                      QString description,
+                      ValueType type,
+                      bool isEnabledByDefault,
+                      QString defaultValue = QString(),
+                      QStringList possibleValues = QStringList());
     QString name() const;
     QString category() const;
     QString categoryHeading() const;

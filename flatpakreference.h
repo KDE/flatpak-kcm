@@ -7,10 +7,10 @@
 
 #include "flatpakpermission.h"
 
-#include <QString>
-#include <QVector>
 #include <QAbstractListModel>
 #include <QPointer>
+#include <QString>
+#include <QVector>
 
 class FlatpakReferencesModel;
 class FlatpakPermissionModel;
@@ -19,7 +19,14 @@ class FlatpakReference : public QObject
 {
     Q_OBJECT
 public:
-    explicit FlatpakReference(FlatpakReferencesModel *parent, QString name, QString id, const QString &path, QString version, QString icon = QString(), QByteArray metadata = QByteArray(), FlatpakReferencesModel *refsModel = nullptr);
+    explicit FlatpakReference(FlatpakReferencesModel *parent,
+                              QString name,
+                              QString id,
+                              const QString &path,
+                              QString version,
+                              QString icon = QString(),
+                              QByteArray metadata = QByteArray(),
+                              FlatpakReferencesModel *refsModel = nullptr);
     QString name() const;
     QString displayName() const;
     QString version() const;
@@ -58,12 +65,7 @@ class FlatpakReferencesModel : public QAbstractListModel
 public:
     explicit FlatpakReferencesModel(QObject *parent = nullptr);
 
-    enum Roles {
-        Name = Qt::UserRole + 1,
-        Version,
-        Icon,
-        Ref
-    };
+    enum Roles { Name = Qt::UserRole + 1, Version, Icon, Ref };
 
     int rowCount(const QModelIndex &parent = QModelIndex()) const override;
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
@@ -80,5 +82,5 @@ Q_SIGNALS:
     void needsSaveChanged();
 
 private:
-    QVector<FlatpakReference*> m_references;
+    QVector<FlatpakReference *> m_references;
 };

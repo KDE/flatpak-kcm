@@ -14,9 +14,9 @@ namespace FlatpakHelper
 QString permDataFilePath()
 {
     QString userPath = QString::fromStdString(qgetenv("FLATPAK_USER_DIR").toStdString());
-    if(userPath.isEmpty()) {
+    if (userPath.isEmpty()) {
         userPath = QString::fromStdString(qgetenv("HOST_XDG_DATA_HOME").toStdString());
-        if(userPath.isEmpty()) {
+        if (userPath.isEmpty()) {
             userPath = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation);
         }
     }

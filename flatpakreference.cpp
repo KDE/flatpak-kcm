@@ -16,16 +16,23 @@ extern "C" {
 #include <glib.h>
 
 #include <QDebug>
-FlatpakReference::FlatpakReference(FlatpakReferencesModel *parent, QString name, QString id, const QString &path, QString version, QString icon, QByteArray metadata, FlatpakReferencesModel *refsModel)
-    : QObject(parent),
-      m_name(name),
-      m_id(id),
-      m_version(version),
-      m_icon(icon),
-      m_path(path),
-      m_metadata(metadata),
-      m_permsModel(nullptr),
-      m_refsModel(refsModel)
+FlatpakReference::FlatpakReference(FlatpakReferencesModel *parent,
+                                   QString name,
+                                   QString id,
+                                   const QString &path,
+                                   QString version,
+                                   QString icon,
+                                   QByteArray metadata,
+                                   FlatpakReferencesModel *refsModel)
+    : QObject(parent)
+    , m_name(name)
+    , m_id(id)
+    , m_version(version)
+    , m_icon(icon)
+    , m_path(path)
+    , m_metadata(metadata)
+    , m_permsModel(nullptr)
+    , m_refsModel(refsModel)
 {
     m_path.append(m_id);
 }
@@ -122,7 +129,8 @@ bool FlatpakReference::isDefaults() const
     return true;
 }
 
-FlatpakReferencesModel::FlatpakReferencesModel(QObject *parent) : QAbstractListModel(parent)
+FlatpakReferencesModel::FlatpakReferencesModel(QObject *parent)
+    : QAbstractListModel(parent)
 {
     g_autoptr(FlatpakInstallation) installation = flatpak_installation_new_system(NULL, NULL);
     g_autoptr(GPtrArray) installedApps = flatpak_installation_list_installed_refs_by_kind(installation, FLATPAK_REF_KIND_APP, NULL, NULL);
@@ -131,7 +139,7 @@ FlatpakReferencesModel::FlatpakReferencesModel(QObject *parent) : QAbstractListM
     g_ptr_array_extend_and_steal(installedApps, installedUserApps);
     QString path = FlatpakHelper::permDataFilePath();
 
-    for(uint i = 0; i < installedApps->len; ++i) {
+    for (uint i = 0; i < installedApps->len; ++i) {
         QString name = QString::fromUtf8(flatpak_installed_ref_get_appdata_name(FLATPAK_INSTALLED_REF(g_ptr_array_index(installedApps, i))));
         QString version = QString::fromUtf8(flatpak_installed_ref_get_appdata_version(FLATPAK_INSTALLED_REF(g_ptr_array_index(installedApps, i))));
         QString id = QString::fromUtf8(flatpak_ref_get_name(FLATPAK_REF(g_ptr_array_index(installedApps, i))));
@@ -147,12 +155,14 @@ FlatpakReferencesModel::FlatpakReferencesModel(QObject *parent) : QAbstractListM
 
         m_references.push_back(new FlatpakReference(this, name, id, path, version, icon, metadata, this));
     }
-    std::sort(m_references.begin(), m_references.end(), [] (FlatpakReference *r1, FlatpakReference *r2) {return r1->name() < r2->name(); });
+    std::sort(m_references.begin(), m_references.end(), [](FlatpakReference *r1, FlatpakReference *r2) {
+        return r1->name() < r2->name();
+    });
 }
 
 int FlatpakReferencesModel::rowCount(const QModelIndex &parent) const
 {
-    if(parent.isValid()) {
+    if (parent.isValid()) {
         return 0;
     }
     return m_references.count();
@@ -160,11 +170,11 @@ int FlatpakReferencesModel::rowCount(const QModelIndex &parent) const
 
 QVariant FlatpakReferencesModel::data(const QModelIndex &index, int role) const
 {
-    if(!index.isValid()) {
+    if (!index.isValid()) {
         return QVariant();
     }
 
-    switch(role) {
+    switch (role) {
     case Roles::Name:
         return m_references.at(index.row())->displayName();
     case Roles::Version:
@@ -172,7 +182,7 @@ QVariant FlatpakReferencesModel::data(const QModelIndex &index, int role) const
     case Roles::Icon:
         return m_references.at(index.row())->icon();
     case Roles::Ref:
-        return QVariant::fromValue<FlatpakReference*>(m_references.at(index.row()));
+        return QVariant::fromValue<FlatpakReference *>(m_references.at(index.row()));
     }
     return QVariant();
 }
