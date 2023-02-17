@@ -18,7 +18,7 @@ private Q_SLOTS:
         QDir().rmdir(QFINDTESTDATA("fixtures/overrides/"));
     }
 
-    void testContainsNetwork()
+    void testRead()
     {
         // The primary motivation behind this test is to make sure that translations aren't being pulled in for the raw names.
         FlatpakReferencesModel referencesModel;
@@ -36,14 +36,22 @@ private Q_SLOTS:
         model.setReference(&reference);
         model.load();
         bool containsNetwork = false;
+        bool containsXdgDownload = false;
         for (auto i = 0; i <= model.rowCount(); ++i) {
             const QString name = model.data(model.index(i, 0), FlatpakPermissionModel::Name).toString();
             if (name == "network") {
                 containsNetwork = true;
             }
+
+            if (name == "xdg-download") {
+                containsXdgDownload = true;
+                QCOMPARE(model.data(model.index(i, 0), FlatpakPermissionModel::IsGranted), true);
+                QCOMPARE(model.data(model.index(i, 0), FlatpakPermissionModel::CurrentValue), i18n("read/write"));
+            }
         }
 
         QVERIFY(containsNetwork);
+        QVERIFY(containsXdgDownload);
         QVERIFY(model.permExists("network"));
         QVERIFY(!model.permExists("yolo-foobar"));
     }
@@ -80,6 +88,14 @@ private Q_SLOTS:
 
             if (name == "org.kde.StatusNotifierWatcher") {
                 model.editPerm(i, i18n("own"));
+            }
+
+            if (name == "host-os") {
+                // Make sure the config manipulation works across multiple changes
+                model.editPerm(i, i18n("read-only"));
+                model.editPerm(i, i18n("read-write"));
+                model.editPerm(i, i18n("create"));
+                model.editPerm(i, i18n("read-only"));
             }
         }
         model.save();
