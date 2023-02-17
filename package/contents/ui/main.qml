@@ -17,6 +17,19 @@ KCM.ScrollViewKCM {
     implicitHeight: Kirigami.Units.gridUnit * 20
     framedView: false
 
+    function changeApp() {
+        let ref = null;
+        const row = appsListView.currentIndex;
+        if (row !== -1) {
+            const m = kcm.refsModel;
+            const index = m.index(row, 0);
+            ref = m.data(m.index(row, 0), FlatpakReferencesModel.Ref);
+        }
+        kcm.pop(0)
+        kcm.setIndex(row)
+        kcm.push("permissions.qml", { ref })
+    }
+
     Component.onCompleted: {
         kcm.columnWidth = Kirigami.Units.gridUnit * 15
 
@@ -50,14 +63,8 @@ KCM.ScrollViewKCM {
                 if (kcm.isSaveNeeded()) {
                     promptDialog.open()
                 } else {
-                    changeApp()
+                    root.changeApp()
                 }
-            }
-
-            function changeApp() {
-                kcm.pop(0)
-                kcm.setIndex(appsListView.currentIndex)
-                kcm.push("permissions.qml", {ref: model.reference})
             }
 
             onClicked: shouldChange()
@@ -71,13 +78,13 @@ KCM.ScrollViewKCM {
 
                 onApplied: {
                     kcm.save()
-                    changeApp()
+                    root.changeApp()
                     promptDialog.close()
                 }
 
                 onDiscarded: {
                     kcm.load()
-                    changeApp()
+                    root.changeApp()
                     promptDialog.close()
                 }
 
