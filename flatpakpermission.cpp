@@ -1080,7 +1080,7 @@ void FlatpakPermissionModel::addPermission(FlatpakPermission *perm, bool shouldB
     }
     int permIndex = catIndex + perm->category().length() + 1;
 
-    /* if there are other permissions in this category, we must add a ';' to seperate this from the other */
+    /* if there are other permissions in this category, we must add a ';' to separate this from the other */
     if (m_overridesData[permIndex] != QLatin1Char('\n')) {
         name.append(QLatin1Char(';'));
     }

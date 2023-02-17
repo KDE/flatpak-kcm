@@ -20,7 +20,7 @@ private Q_SLOTS:
 
     void testContainsNetwork()
     {
-        // The primary motivatoni behind this test is to make sure that translations aren't being pulled in for the raw names.
+        // The primary motivation behind this test is to make sure that translations aren't being pulled in for the raw names.
         FlatpakReferencesModel referencesModel;
         QFile metadataFile(QFINDTESTDATA("fixtures/metadata/com.discordapp.Discord"));
         QVERIFY(metadataFile.open(QFile::ReadOnly));
