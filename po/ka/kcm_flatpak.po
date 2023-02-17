@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-02-15 01:00+0000\n"
-"PO-Revision-Date: 2022-12-30 03:33+0100\n"
+"PO-Revision-Date: 2023-02-16 06:00+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -497,31 +497,26 @@ msgid "Add System Bus Permission"
 msgstr "სისტემის მატარებლის წვდომის დამატება"
 
 #: package/contents/ui/permissions.qml:104
-#, fuzzy, kde-format
-#| msgid "Enter filesystem path..."
+#, kde-format
 msgid "Enter filesystem path…"
-msgstr "შეიყვანეთ ფაილური სისტემის ბილიკი..."
+msgstr "შეიყვანეთ ფაილური სისტემის ბილიკი…"
 
 #: package/contents/ui/permissions.qml:105
-#, fuzzy, kde-format
-#| msgid "Enter variable..."
+#, kde-format
 msgid "Enter variable…"
-msgstr "შეიყვანეთ ცვლადი..."
+msgstr "შეიყვანეთ ცვლადი…"
 
 #: package/contents/ui/permissions.qml:106
-#, fuzzy, kde-format
-#| msgid "Enter session bus name..."
+#, kde-format
 msgid "Enter session bus name…"
-msgstr "შეიყვანეთ სესიის მატარებლის სახელი..."
+msgstr "შეიყვანეთ სესიის მატარებლის სახელი…"
 
 #: package/contents/ui/permissions.qml:107
-#, fuzzy, kde-format
-#| msgid "Enter system bus name..."
+#, kde-format
 msgid "Enter system bus name…"
-msgstr "შეიყვანეთ სისტემის მატარებლის სახელი..."
+msgstr "შეიყვანეთ სისტემის მატარებლის სახელი…"
 
 #: package/contents/ui/permissions.qml:125
-#, fuzzy, kde-format
-#| msgid "Enter value..."
+#, kde-format
 msgid "Enter value…"
-msgstr "შეიყვანეთ მნიშვნელობა..."
+msgstr "შეიყვანეთ მნიშვნელობა…"

@@ -170,7 +170,7 @@ msgstr "pcsc"
 #: flatpakpermission.cpp:357
 #, kde-format
 msgid "Smart Card Access"
-msgstr "A"
+msgstr "Accès à la carte mémoire"
 
 #: flatpakpermission.cpp:362
 #, kde-format
