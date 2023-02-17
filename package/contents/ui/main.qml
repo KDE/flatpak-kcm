@@ -45,6 +45,37 @@ KCM.ScrollViewKCM {
 
     KCM.ConfigModule.buttons: KCM.ConfigModule.Apply | KCM.ConfigModule.Default
 
+    Component {
+        id: applyOrDiscardDialogComponent
+
+        Kirigami.PromptDialog {
+            id: dialog
+
+            parent: root
+            title: i18n("Apply Permissions")
+            subtitle: i18n("The permissions of this application have been changed. Do you want to apply these changes or discard them?")
+            standardButtons: Kirigami.Dialog.Apply | Kirigami.Dialog.Discard
+
+            onApplied: {
+                kcm.save()
+                root.changeApp()
+                dialog.close()
+            }
+
+            onDiscarded: {
+                kcm.load()
+                root.changeApp()
+                dialog.close()
+            }
+
+            onRejected: {
+                appsListView.currentIndex = kcm.currentIndex()
+            }
+
+            onClosed: destroy()
+        }
+    }
+
     view: ListView {
         id: appsListView
 
@@ -61,37 +92,14 @@ KCM.ScrollViewKCM {
                     return;
                 }
                 if (kcm.isSaveNeeded()) {
-                    promptDialog.open()
+                    const dialog = applyOrDiscardDialogComponent.createObject(root, {});
+                    dialog.open();
                 } else {
                     root.changeApp()
                 }
             }
 
             onClicked: shouldChange()
-
-            Kirigami.PromptDialog {
-                id: promptDialog
-                parent: root
-                title: i18n("Apply Permissions")
-                subtitle: i18n("The permissions of this application have been changed. Do you want to apply these changes or discard them?")
-                standardButtons: Kirigami.Dialog.Apply | Kirigami.Dialog.Discard
-
-                onApplied: {
-                    kcm.save()
-                    root.changeApp()
-                    promptDialog.close()
-                }
-
-                onDiscarded: {
-                    kcm.load()
-                    root.changeApp()
-                    promptDialog.close()
-                }
-
-                onRejected: {
-                    appsListView.currentIndex = kcm.currentIndex()
-                }
-            }
         }
     }
 }
