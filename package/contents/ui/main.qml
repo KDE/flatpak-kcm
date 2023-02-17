@@ -5,6 +5,7 @@
  */
 
 import QtQuick 2.15
+import QtQuick.Controls 2.15 as QQC2
 import org.kde.kirigami 2.20 as Kirigami
 import org.kde.kcm 1.2 as KCM
 import org.kde.plasma.kcm.flatpakpermissions 1.0
@@ -54,7 +55,7 @@ KCM.ScrollViewKCM {
             parent: root
             title: i18n("Apply Permissions")
             subtitle: i18n("The permissions of this application have been changed. Do you want to apply these changes or discard them?")
-            standardButtons: Kirigami.Dialog.Apply | Kirigami.Dialog.Discard
+            standardButtons: QQC2.Dialog.Apply | QQC2.Dialog.Discard
 
             onApplied: {
                 kcm.save()
