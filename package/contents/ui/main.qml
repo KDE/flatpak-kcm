@@ -5,6 +5,7 @@
  */
 
 import QtQuick 2.15
+import QtQuick.Layouts 1.15
 import QtQuick.Controls 2.15 as QQC2
 import org.kde.kirigami 2.20 as Kirigami
 import org.kde.kcm 1.2 as KCM
@@ -52,10 +53,32 @@ KCM.ScrollViewKCM {
         Kirigami.PromptDialog {
             id: dialog
 
+            required property string applicationName
+            required property url applicationIcon
+
             parent: root.Kirigami.ColumnView.view
             title: i18n("Apply Permissions")
-            subtitle: i18n("The permissions of this application have been changed. Do you want to apply these changes or discard them?")
+            subtitle: i18n("The permissions of application %1 have been changed. Do you want to apply these changes or discard them?", applicationName)
             standardButtons: QQC2.Dialog.Apply | QQC2.Dialog.Discard
+
+            RowLayout {
+                spacing: Kirigami.Units.largeSpacing
+
+                Kirigami.Icon {
+                    source: dialog.applicationIcon
+
+                    Layout.alignment: Qt.AlignCenter
+                    Layout.preferredWidth: Kirigami.Units.iconSizes.large
+                    Layout.preferredHeight: Kirigami.Units.iconSizes.large
+                }
+                Kirigami.SelectableLabel {
+                    text: dialog.subtitle
+                    wrapMode: QQC2.Label.Wrap
+
+                    Layout.fillWidth: true
+                    Layout.fillHeight: true
+                }
+            }
 
             onApplied: {
                 kcm.save()
@@ -93,7 +116,14 @@ KCM.ScrollViewKCM {
                     return;
                 }
                 if (kcm.isSaveNeeded()) {
-                    const dialog = applyOrDiscardDialogComponent.createObject(root, {});
+                    const m = kcm.refsModel;
+                    const index = m.index(kcm.currentIndex(), 0);
+                    const applicationName = m.data(index, FlatpakReferencesModel.Name);
+                    const applicationIcon = m.data(index, FlatpakReferencesModel.Icon);
+                    const dialog = applyOrDiscardDialogComponent.createObject(root, {
+                        applicationName,
+                        applicationIcon,
+                    });
                     dialog.open();
                 } else {
                     root.changeApp()
