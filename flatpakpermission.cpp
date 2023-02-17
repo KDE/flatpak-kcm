@@ -102,6 +102,17 @@ QString FlatpakPermission::loadValue() const
     return m_loadValue;
 }
 
+static QString postfixToFrontendFileSystemValue(const QStringView &postfix)
+{
+    if (postfix == QStringLiteral(":ro")) {
+        return i18n("read-only");
+    }
+    if (postfix == QStringLiteral(":create")) {
+        return i18n("create");
+    }
+    return i18n("read/write");
+}
+
 QString FlatpakPermission::fsCurrentValue() const
 {
     if (m_currentValue == i18n("OFF")) {
@@ -496,50 +507,20 @@ void FlatpakPermissionModel::loadDefaultValues()
         const QStringView symbolicName = dir.left(sep);
 
         if (symbolicName == QStringLiteral("home")) {
-            if (postfix == QStringLiteral(":ro")) {
-                homeVal = i18n("read-only");
-            } else if (postfix == QStringLiteral(":create")) {
-                homeVal = i18n("create");
-            } else {
-                homeVal = i18n("read/write");
-            }
+            homeVal = postfixToFrontendFileSystemValue(postfix);
         } else if (symbolicName == QStringLiteral("host")) {
-            if (postfix == QStringLiteral(":ro")) {
-                hostVal = i18n("read-only");
-            } else if (postfix == QStringLiteral(":create")) {
-                hostVal = i18n("create");
-            } else {
-                hostVal = i18n("read/write");
-            }
+            hostVal = postfixToFrontendFileSystemValue(postfix);
         } else if (symbolicName == QStringLiteral("host-os")) {
-            if (postfix == QStringLiteral(":ro")) {
-                hostOsVal = i18n("read-only");
-            } else if (postfix == QStringLiteral(":create")) {
-                hostOsVal = i18n("create");
-            } else {
-                hostOsVal = i18n("read/write");
-            }
+            hostOsVal = postfixToFrontendFileSystemValue(postfix);
         } else if (symbolicName == QStringLiteral("host-etc")) {
-            if (postfix == QStringLiteral(":ro")) {
-                hostEtcVal = i18n("read-only");
-            } else if (postfix == QStringLiteral(":create")) {
-                hostEtcVal = i18n("create");
-            } else {
-                hostEtcVal = i18n("read/write");
-            }
+            hostEtcVal = postfixToFrontendFileSystemValue(postfix);
         } else {
             name = symbolicName.toString();
             description = name;
-            QString fsval = i18n("OFF");
-            if (postfix == QStringLiteral(":ro")) {
-                fsval = i18n("read-only");
-            } else if (postfix == QStringLiteral(":create")) {
-                fsval = i18n("create");
-            } else {
-                fsval = i18n("read/write");
-            }
+            const QString fileSystemValue = postfixToFrontendFileSystemValue(postfix);
             isEnabledByDefault = true;
-            filesysTemp.append(FlatpakPermission(name, category, description, FlatpakPermission::Filesystems, isEnabledByDefault, fsval, possibleValues));
+            filesysTemp.append(
+                FlatpakPermission(name, category, description, FlatpakPermission::Filesystems, isEnabledByDefault, fileSystemValue, possibleValues));
         }
     }
 
