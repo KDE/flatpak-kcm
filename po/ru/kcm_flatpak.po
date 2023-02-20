@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This file is copyright:
 # This file is distributed under the same license as the flatpak-kcm package.
 #
-# Alexander Yavorsky <kekcuha@gmail.com>, 2022.
+# Alexander Yavorsky <kekcuha@gmail.com>, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-02-18 02:52+0000\n"
-"PO-Revision-Date: 2022-09-24 15:04+0300\n"
+"PO-Revision-Date: 2023-02-17 13:19+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
 "Language: ru\n"
@@ -257,12 +257,12 @@ msgstr "Все системные файлы конфигурации"
 #: package/contents/ui/permissions.qml:106
 #, kde-format
 msgid "Session Bus Policy"
-msgstr ""
+msgstr "Политика доступа к шине на уровне сеанса"
 
 #: flatpakpermission.cpp:1055 package/contents/ui/permissions.qml:74
 #, kde-format
 msgid "System Bus Policy"
-msgstr ""
+msgstr "Политика доступа к шине на уровне системы"
 
 #: flatpakpermission.cpp:1072 flatpakpermission.cpp:1074
 #, kde-format
@@ -272,12 +272,12 @@ msgstr ""
 #: package/contents/ui/main.qml:14
 #, kde-format
 msgid "Flatpak Applications"
-msgstr ""
+msgstr "Приложения в формате Flatpak"
 
 #: package/contents/ui/main.qml:56
 #, kde-format
 msgid "Apply Permissions"
-msgstr ""
+msgstr "Применить права доступа"
 
 #: package/contents/ui/main.qml:57
 #, kde-format
@@ -289,7 +289,7 @@ msgstr ""
 #: package/contents/ui/permissions.qml:17
 #, kde-format
 msgid "Permissions"
-msgstr ""
+msgstr "Права доступа"
 
 #: package/contents/ui/permissions.qml:24
 #, kde-format
@@ -304,7 +304,7 @@ msgstr ""
 #: package/contents/ui/permissions.qml:55
 #, kde-format
 msgid "Show advanced permissions"
-msgstr ""
+msgstr "Показать дополнительные права"
 
 #: package/contents/ui/permissions.qml:68
 #, kde-format
