@@ -84,6 +84,8 @@ KCM.ScrollViewKCM {
                 }
             }
 
+            QQC2.Overlay.modal: KcmPopupModal {}
+
             onApplied: {
                 kcm.save()
                 root.changeApp()
