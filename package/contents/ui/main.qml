@@ -77,7 +77,7 @@ KCM.ScrollViewKCM {
                 }
                 Kirigami.SelectableLabel {
                     text: dialog.subtitle
-                    wrapMode: QQC2.Label.Wrap
+                    wrapMode: Text.Wrap
 
                     Layout.fillWidth: true
                     Layout.fillHeight: true
