@@ -32,6 +32,52 @@ KCM.ScrollViewKCM {
         height: parent.height
     }
 
+    // Having it inside a component helps to separate layouts and workarounds for nullable property accesses.
+    Component {
+        id: headerComponent
+
+        RowLayout {
+            id: header
+
+            readonly property url icon: permissionPage.ref.iconSource
+            readonly property string title: permissionPage.ref.displayName
+            readonly property string subtitle: permissionPage.ref.version
+
+            spacing: 0
+
+            Kirigami.Icon {
+                source: header.icon
+
+                Layout.alignment: Qt.AlignCenter
+                Layout.preferredWidth: Kirigami.Units.iconSizes.large
+                Layout.preferredHeight: Kirigami.Units.iconSizes.large
+
+                // RowLayout is incapable of paddings, so use margins on both child items instead.
+                Layout.margins: Kirigami.Units.largeSpacing
+            }
+            ColumnLayout {
+                spacing: Kirigami.Units.smallSpacing
+                Layout.fillWidth: true
+
+                Layout.margins: Kirigami.Units.largeSpacing
+                Layout.leftMargin: 0
+
+                Kirigami.Heading {
+                    text: header.title
+                    wrapMode: Text.Wrap
+                    Layout.fillWidth: true
+                }
+                Kirigami.Heading {
+                    text: header.subtitle
+                    type: Kirigami.Heading.Secondary
+                    level: 3
+                    wrapMode: Text.Wrap
+                    Layout.fillWidth: true
+                }
+            }
+        }
+    }
+
     view: ListView {
         id: permsView
         model: FlatpakPermissionModel {
@@ -44,6 +90,12 @@ KCM.ScrollViewKCM {
         // Without it, section delegates may shift down and overlap.
         reuseItems: false
         cacheBuffer: 10000
+
+        // Ref is assumed to remain constant for the lifetime of this page. If
+        // it's not null, then it would remain so, and no further checks are
+        // needed inside the component.
+        header: permissionPage.ref === null ? null : headerComponent
+        headerPositioning: ListView.InlineHeader
 
         section.property: permissionPage.showAdvanced ? "category" : "sectionType"
         section.criteria: ViewSection.FullString

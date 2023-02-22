@@ -21,6 +21,10 @@ class FlatpakPermissionModel;
 class FlatpakReference : public QObject
 {
     Q_OBJECT
+    Q_PROPERTY(QString version READ version CONSTANT FINAL)
+    Q_PROPERTY(QString displayName READ displayName CONSTANT FINAL)
+    Q_PROPERTY(QUrl iconSource READ iconSource CONSTANT FINAL)
+
 public:
     explicit FlatpakReference(FlatpakReferencesModel *parent,
                               const QString &flatpakName,
