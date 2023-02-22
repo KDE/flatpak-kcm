@@ -3,13 +3,13 @@
 # This file is distributed under the same license as the flatpak-kcm package.
 #
 # Automatically generated, 2022.
-# Eloy Cuadra <ecuadra@eloihr.net>, 2022.
+# Eloy Cuadra <ecuadra@eloihr.net>, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: kcm_flatpak\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-02-21 02:49+0000\n"
-"PO-Revision-Date: 2022-09-14 11:26+0200\n"
+"PO-Revision-Date: 2023-02-21 14:05+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 22.08.1\n"
+"X-Generator: Lokalize 22.12.2\n"
 
 #: autotests/flatpakpermissiontest.cpp:49 flatpakpermission.cpp:113
 #: flatpakpermission.cpp:497 flatpakpermission.cpp:532
@@ -50,10 +50,9 @@ msgid "read-only"
 msgstr "solo lectura"
 
 #: autotests/flatpakpermissiontest.cpp:96
-#, fuzzy, kde-format
-#| msgid "read/write"
+#, kde-format
 msgid "read-write"
-msgstr "lectura/escritura"
+msgstr "lectura y escritura"
 
 #: autotests/flatpakpermissiontest.cpp:97 flatpakpermission.cpp:111
 #: flatpakpermission.cpp:128 flatpakpermission.cpp:497

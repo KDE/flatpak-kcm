@@ -1,15 +1,15 @@
 # Translation of kcm_flatpak.po to Catalan (Valencian)
-# Copyright (C) 2022 This_file_is_part_of_KDE
+# Copyright (C) 2022-2023 This_file_is_part_of_KDE
 # This file is distributed under the license LGPL version 2.1 or
 # version 3 or later versions approved by the membership of KDE e.V.
 #
-# Josep M. Ferrer <txemaq@gmail.com>, 2022.
+# Josep M. Ferrer <txemaq@gmail.com>, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-02-21 02:49+0000\n"
-"PO-Revision-Date: 2022-09-13 13:55+0200\n"
+"PO-Revision-Date: 2023-02-21 08:50+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -50,10 +50,9 @@ msgid "read-only"
 msgstr "només-de-lectura"
 
 #: autotests/flatpakpermissiontest.cpp:96
-#, fuzzy, kde-format
-#| msgid "read/write"
+#, kde-format
 msgid "read-write"
-msgstr "lectura/escriptura"
+msgstr "lectura-escriptura"
 
 #: autotests/flatpakpermissiontest.cpp:97 flatpakpermission.cpp:111
 #: flatpakpermission.cpp:128 flatpakpermission.cpp:497
@@ -396,87 +395,3 @@ msgstr "Introduïu un nom de bus de sistema..."
 #, kde-format
 msgid "Enter value..."
 msgstr "Introduïu un valor..."
-
-#~ msgid "shared"
-#~ msgstr "compartit"
-
-#~ msgid "network"
-#~ msgstr "xarxa"
-
-#~ msgid "ipc"
-#~ msgstr "ipc"
-
-#~ msgid "sockets"
-#~ msgstr "sòcols"
-
-#~ msgid "x11"
-#~ msgstr "x11"
-
-#~ msgid "wayland"
-#~ msgstr "wayland"
-
-#~ msgid "fallback-x11"
-#~ msgstr "fallback-x11"
-
-#~ msgid "pulseaudio"
-#~ msgstr "pulseaudio"
-
-#~ msgid "session-bus"
-#~ msgstr "session-bus"
-
-#~ msgid "system-bus"
-#~ msgstr "system-bus"
-
-#~ msgid "ssh-auth"
-#~ msgstr "ssh-auth"
-
-#~ msgid "pcsc"
-#~ msgstr "pcsc"
-
-#~ msgid "cups"
-#~ msgstr "cups"
-
-#~ msgid "devices"
-#~ msgstr "dispositius"
-
-#~ msgid "kvm"
-#~ msgstr "kvm"
-
-#~ msgid "dri"
-#~ msgstr "dri"
-
-#~ msgid "shm"
-#~ msgstr "shm"
-
-#~ msgid "all"
-#~ msgstr "tot"
-
-#~ msgid "features"
-#~ msgstr "característiques"
-
-#~ msgid "devel"
-#~ msgstr "devel"
-
-#~ msgid "multiarch"
-#~ msgstr "multiarch"
-
-#~ msgid "bluetooth"
-#~ msgstr "bluetooth"
-
-#~ msgid "canbus"
-#~ msgstr "canbus"
-
-#~ msgid "filesystems"
-#~ msgstr "filesystems"
-
-#~ msgid "home"
-#~ msgstr "inici"
-
-#~ msgid "host"
-#~ msgstr "amfitrió"
-
-#~ msgid "host-os"
-#~ msgstr "host-os"
-
-#~ msgid "host-etc"
-#~ msgstr "host-etc"
