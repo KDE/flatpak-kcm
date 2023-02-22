@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-21 01:01+0000\n"
-"PO-Revision-Date: 2023-02-15 12:41+0100\n"
+"POT-Creation-Date: 2023-02-22 00:59+0000\n"
+"PO-Revision-Date: 2023-02-21 08:50+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -50,10 +50,9 @@ msgid "read-only"
 msgstr "només-de-lectura"
 
 #: autotests/flatpakpermissiontest.cpp:98
-#, fuzzy, kde-format
-#| msgid "read/write"
+#, kde-format
 msgid "read-write"
-msgstr "lectura/escriptura"
+msgstr "lectura-escriptura"
 
 #: autotests/flatpakpermissiontest.cpp:99 flatpakpermission.cpp:111
 #: flatpakpermission.cpp:128 flatpakpermission.cpp:497
@@ -275,20 +274,23 @@ msgstr "Política del bus de sistema"
 msgid "=\n"
 msgstr "=\n"
 
-#: package/contents/ui/main.qml:14
+#: package/contents/ui/main.qml:16
 #, kde-format
 msgid "Flatpak Applications"
 msgstr "Aplicacions de Flatpak"
 
-#: package/contents/ui/main.qml:64
+#: package/contents/ui/main.qml:62
 #, kde-format
 msgid "Apply Permissions"
 msgstr "Aplica els permisos"
 
-#: package/contents/ui/main.qml:65
-#, kde-format
+#: package/contents/ui/main.qml:63
+#, fuzzy, kde-format
+#| msgid ""
+#| "The permissions of this application have been changed. Do you want to "
+#| "apply these changes or discard them?"
 msgid ""
-"The permissions of this application have been changed. Do you want to apply "
+"The permissions of application %1 have been changed. Do you want to apply "
 "these changes or discard them?"
 msgstr ""
 "S'han canviat els permisos d'esta aplicació. Voleu aplicar estos canvis o "
@@ -396,87 +398,3 @@ msgstr "Introduïu un nom de bus de sistema…"
 #, kde-format
 msgid "Enter value…"
 msgstr "Introduïu un valor…"
-
-#~ msgid "shared"
-#~ msgstr "compartit"
-
-#~ msgid "network"
-#~ msgstr "xarxa"
-
-#~ msgid "ipc"
-#~ msgstr "ipc"
-
-#~ msgid "sockets"
-#~ msgstr "sòcols"
-
-#~ msgid "x11"
-#~ msgstr "x11"
-
-#~ msgid "wayland"
-#~ msgstr "wayland"
-
-#~ msgid "fallback-x11"
-#~ msgstr "fallback-x11"
-
-#~ msgid "pulseaudio"
-#~ msgstr "pulseaudio"
-
-#~ msgid "session-bus"
-#~ msgstr "session-bus"
-
-#~ msgid "system-bus"
-#~ msgstr "system-bus"
-
-#~ msgid "ssh-auth"
-#~ msgstr "ssh-auth"
-
-#~ msgid "pcsc"
-#~ msgstr "pcsc"
-
-#~ msgid "cups"
-#~ msgstr "cups"
-
-#~ msgid "devices"
-#~ msgstr "dispositius"
-
-#~ msgid "kvm"
-#~ msgstr "kvm"
-
-#~ msgid "dri"
-#~ msgstr "dri"
-
-#~ msgid "shm"
-#~ msgstr "shm"
-
-#~ msgid "all"
-#~ msgstr "tot"
-
-#~ msgid "features"
-#~ msgstr "característiques"
-
-#~ msgid "devel"
-#~ msgstr "devel"
-
-#~ msgid "multiarch"
-#~ msgstr "multiarch"
-
-#~ msgid "bluetooth"
-#~ msgstr "bluetooth"
-
-#~ msgid "canbus"
-#~ msgstr "canbus"
-
-#~ msgid "filesystems"
-#~ msgstr "filesystems"
-
-#~ msgid "home"
-#~ msgstr "inici"
-
-#~ msgid "host"
-#~ msgstr "amfitrió"
-
-#~ msgid "host-os"
-#~ msgstr "host-os"
-
-#~ msgid "host-etc"
-#~ msgstr "host-etc"

@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-21 01:01+0000\n"
-"PO-Revision-Date: 2023-02-15 09:03+0200\n"
+"POT-Creation-Date: 2023-02-22 00:59+0000\n"
+"PO-Revision-Date: 2023-02-21 07:53+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
 "Language: uk\n"
@@ -49,8 +49,7 @@ msgid "read-only"
 msgstr "лише читання"
 
 #: autotests/flatpakpermissiontest.cpp:98
-#, fuzzy, kde-format
-#| msgid "read/write"
+#, kde-format
 msgid "read-write"
 msgstr "читання-запис"
 
@@ -274,20 +273,23 @@ msgstr "Правила доступу до шини системи"
 msgid "=\n"
 msgstr "=\n"
 
-#: package/contents/ui/main.qml:14
+#: package/contents/ui/main.qml:16
 #, kde-format
 msgid "Flatpak Applications"
 msgstr "Програми Flatpak"
 
-#: package/contents/ui/main.qml:64
+#: package/contents/ui/main.qml:62
 #, kde-format
 msgid "Apply Permissions"
 msgstr "Застосувати права доступу"
 
-#: package/contents/ui/main.qml:65
-#, kde-format
+#: package/contents/ui/main.qml:63
+#, fuzzy, kde-format
+#| msgid ""
+#| "The permissions of this application have been changed. Do you want to "
+#| "apply these changes or discard them?"
 msgid ""
-"The permissions of this application have been changed. Do you want to apply "
+"The permissions of application %1 have been changed. Do you want to apply "
 "these changes or discard them?"
 msgstr ""
 "Права доступу для цієї програми було змінено. Хочете застосувати змінені "

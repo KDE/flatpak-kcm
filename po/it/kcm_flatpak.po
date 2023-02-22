@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-21 01:01+0000\n"
+"POT-Creation-Date: 2023-02-22 00:59+0000\n"
 "PO-Revision-Date: 2023-02-16 09:14+0100\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -271,20 +271,23 @@ msgstr "Regola bus di sistema"
 msgid "=\n"
 msgstr "=\n"
 
-#: package/contents/ui/main.qml:14
+#: package/contents/ui/main.qml:16
 #, kde-format
 msgid "Flatpak Applications"
 msgstr "Applicazioni Flatpak"
 
-#: package/contents/ui/main.qml:64
+#: package/contents/ui/main.qml:62
 #, kde-format
 msgid "Apply Permissions"
 msgstr "Applica permessi"
 
-#: package/contents/ui/main.qml:65
-#, kde-format
+#: package/contents/ui/main.qml:63
+#, fuzzy, kde-format
+#| msgid ""
+#| "The permissions of this application have been changed. Do you want to "
+#| "apply these changes or discard them?"
 msgid ""
-"The permissions of this application have been changed. Do you want to apply "
+"The permissions of application %1 have been changed. Do you want to apply "
 "these changes or discard them?"
 msgstr ""
 "I permessi di questa applicazione sono stati modificati. Vuoi applicare "

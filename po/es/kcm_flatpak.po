@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcm_flatpak\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-21 01:01+0000\n"
-"PO-Revision-Date: 2023-02-16 00:59+0100\n"
+"POT-Creation-Date: 2023-02-22 00:59+0000\n"
+"PO-Revision-Date: 2023-02-21 14:05+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -50,10 +50,9 @@ msgid "read-only"
 msgstr "solo lectura"
 
 #: autotests/flatpakpermissiontest.cpp:98
-#, fuzzy, kde-format
-#| msgid "read/write"
+#, kde-format
 msgid "read-write"
-msgstr "lectura/escritura"
+msgstr "lectura y escritura"
 
 #: autotests/flatpakpermissiontest.cpp:99 flatpakpermission.cpp:111
 #: flatpakpermission.cpp:128 flatpakpermission.cpp:497
@@ -275,20 +274,23 @@ msgstr "Política del bus del sistema"
 msgid "=\n"
 msgstr "=\n"
 
-#: package/contents/ui/main.qml:14
+#: package/contents/ui/main.qml:16
 #, kde-format
 msgid "Flatpak Applications"
 msgstr "Aplicaciones Flatpak"
 
-#: package/contents/ui/main.qml:64
+#: package/contents/ui/main.qml:62
 #, kde-format
 msgid "Apply Permissions"
 msgstr "Aplicar permisos"
 
-#: package/contents/ui/main.qml:65
-#, kde-format
+#: package/contents/ui/main.qml:63
+#, fuzzy, kde-format
+#| msgid ""
+#| "The permissions of this application have been changed. Do you want to "
+#| "apply these changes or discard them?"
 msgid ""
-"The permissions of this application have been changed. Do you want to apply "
+"The permissions of application %1 have been changed. Do you want to apply "
 "these changes or discard them?"
 msgstr ""
 "Los permisos de esta aplicación se han cambiado. ¿Desea aplicar estos "
