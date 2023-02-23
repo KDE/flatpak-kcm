@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcm_flatpak\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-21 02:49+0000\n"
+"POT-Creation-Date: 2023-02-23 02:55+0000\n"
 "PO-Revision-Date: 2023-02-21 14:05+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
@@ -274,17 +274,17 @@ msgstr "Política del bus del sistema"
 msgid "=\n"
 msgstr "=\n"
 
-#: package/contents/ui/main.qml:14
+#: package/contents/ui/main.qml:16
 #, kde-format
 msgid "Flatpak Applications"
 msgstr "Aplicaciones Flatpak"
 
-#: package/contents/ui/main.qml:56
+#: package/contents/ui/main.qml:54
 #, kde-format
 msgid "Apply Permissions"
 msgstr "Aplicar permisos"
 
-#: package/contents/ui/main.qml:57
+#: package/contents/ui/main.qml:55
 #, kde-format
 msgid ""
 "The permissions of this application have been changed. Do you want to apply "

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-21 02:49+0000\n"
+"POT-Creation-Date: 2023-02-23 02:55+0000\n"
 "PO-Revision-Date: 2022-11-10 20:24+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Chinese <zh-l10n@linux.org.tw>\n"
@@ -271,17 +271,17 @@ msgstr "系統匯流排政策"
 msgid "=\n"
 msgstr "=\n"
 
-#: package/contents/ui/main.qml:14
+#: package/contents/ui/main.qml:16
 #, kde-format
 msgid "Flatpak Applications"
 msgstr "Flatpak 應用程式"
 
-#: package/contents/ui/main.qml:56
+#: package/contents/ui/main.qml:54
 #, kde-format
 msgid "Apply Permissions"
 msgstr "套用權限"
 
-#: package/contents/ui/main.qml:57
+#: package/contents/ui/main.qml:55
 #, kde-format
 msgid ""
 "The permissions of this application have been changed. Do you want to apply "

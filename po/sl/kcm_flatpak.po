@@ -1,25 +1,24 @@
-# SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR This file is copyright:
 # This file is distributed under the same license as the flatpak-kcm package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
 #
 # Martin Srebotnjak <miles@filmsi.net>, 2022.
-#
+# Matjaž Jeran <matjaz.jeran@amis.net>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-21 02:49+0000\n"
-"PO-Revision-Date: 2022-09-15 08:47+0200\n"
-"Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
-"Language-Team: Slovenian <kde-i18n-doc@kde.org>\n"
+"POT-Creation-Date: 2023-02-23 02:55+0000\n"
+"PO-Revision-Date: 2023-02-22 08:45+0100\n"
+"Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
+"Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
 "%100==4 ? 3 : 0);\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #: autotests/flatpakpermissiontest.cpp:49 flatpakpermission.cpp:113
 #: flatpakpermission.cpp:497 flatpakpermission.cpp:532
@@ -52,10 +51,9 @@ msgid "read-only"
 msgstr "samo za branje"
 
 #: autotests/flatpakpermissiontest.cpp:96
-#, fuzzy, kde-format
-#| msgid "read/write"
+#, kde-format
 msgid "read-write"
-msgstr "branje/pisanje"
+msgstr "branje-pisanje"
 
 #: autotests/flatpakpermissiontest.cpp:97 flatpakpermission.cpp:111
 #: flatpakpermission.cpp:128 flatpakpermission.cpp:497
@@ -64,7 +62,7 @@ msgstr "branje/pisanje"
 #: flatpakpermission.cpp:1145
 #, kde-format
 msgid "create"
-msgstr "Ustvari"
+msgstr "ustvari"
 
 #: flatpakpermission.cpp:62 flatpakpermission.cpp:79 flatpakpermission.cpp:588
 #: flatpakpermission.cpp:612 flatpakpermission.cpp:795
@@ -275,17 +273,17 @@ msgstr "Pravila sistemskega vodila"
 msgid "=\n"
 msgstr "=\n"
 
-#: package/contents/ui/main.qml:14
+#: package/contents/ui/main.qml:16
 #, kde-format
 msgid "Flatpak Applications"
 msgstr "Aplikacije Flatpak"
 
-#: package/contents/ui/main.qml:56
+#: package/contents/ui/main.qml:54
 #, kde-format
 msgid "Apply Permissions"
 msgstr "Uveljavi dovoljenja"
 
-#: package/contents/ui/main.qml:57
+#: package/contents/ui/main.qml:55
 #, kde-format
 msgid ""
 "The permissions of this application have been changed. Do you want to apply "

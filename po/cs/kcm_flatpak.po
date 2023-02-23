@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-21 02:49+0000\n"
-"PO-Revision-Date: 2023-02-13 15:23+0100\n"
+"POT-Creation-Date: 2023-02-23 02:55+0000\n"
+"PO-Revision-Date: 2023-02-22 14:13+0100\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -48,10 +48,9 @@ msgid "read-only"
 msgstr "pouze čtení"
 
 #: autotests/flatpakpermissiontest.cpp:96
-#, fuzzy, kde-format
-#| msgid "read/write"
+#, kde-format
 msgid "read-write"
-msgstr "čtení/zápis"
+msgstr "čtení-zápis"
 
 #: autotests/flatpakpermissiontest.cpp:97 flatpakpermission.cpp:111
 #: flatpakpermission.cpp:128 flatpakpermission.cpp:497
@@ -272,17 +271,17 @@ msgstr ""
 msgid "=\n"
 msgstr "=\n"
 
-#: package/contents/ui/main.qml:14
+#: package/contents/ui/main.qml:16
 #, kde-format
 msgid "Flatpak Applications"
 msgstr "Aplikace Flatpak"
 
-#: package/contents/ui/main.qml:56
+#: package/contents/ui/main.qml:54
 #, kde-format
 msgid "Apply Permissions"
 msgstr "Aplikovat oprávnění"
 
-#: package/contents/ui/main.qml:57
+#: package/contents/ui/main.qml:55
 #, kde-format
 msgid ""
 "The permissions of this application have been changed. Do you want to apply "
@@ -390,60 +389,3 @@ msgstr ""
 #, kde-format
 msgid "Enter value..."
 msgstr "Zadejte hodnotu..."
-
-#~ msgid "shared"
-#~ msgstr "sdílené"
-
-#~ msgid "network"
-#~ msgstr "Síť"
-
-#~ msgid "ipc"
-#~ msgstr "ipc"
-
-#~ msgid "sockets"
-#~ msgstr "sokety"
-
-#~ msgid "x11"
-#~ msgstr "x11"
-
-#~ msgid "wayland"
-#~ msgstr "wayland"
-
-#~ msgid "pulseaudio"
-#~ msgstr "PulseAudio"
-
-#~ msgid "pcsc"
-#~ msgstr "pcsc"
-
-#~ msgid "cups"
-#~ msgstr "cups"
-
-#~ msgid "devices"
-#~ msgstr "zařízení"
-
-#~ msgid "kvm"
-#~ msgstr "kvm"
-
-#~ msgid "dri"
-#~ msgstr "dri"
-
-#~ msgid "shm"
-#~ msgstr "shm"
-
-#~ msgid "all"
-#~ msgstr "vše"
-
-#~ msgid "features"
-#~ msgstr "vlastnosti"
-
-#~ msgid "bluetooth"
-#~ msgstr "bluetooth"
-
-#~ msgid "filesystems"
-#~ msgstr "souborové systémy"
-
-#~ msgid "home"
-#~ msgstr "domů"
-
-#~ msgid "host"
-#~ msgstr "hostitel"
