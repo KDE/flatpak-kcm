@@ -31,6 +31,28 @@ KCM.ScrollViewKCM {
         height: parent.height
     }
 
+    Component {
+        id: addEnvironmentVariableDialogComponent
+
+        AddEnvironmentVariableDialog {
+            parent: root.Kirigami.ColumnView.view
+            model: permsModel
+
+            onClosed: destroy()
+        }
+    }
+
+    Component {
+        id: textPromptDialogComponent
+
+        TextPromptDialog {
+            parent: root.Kirigami.ColumnView.view
+            model: permsModel
+
+            onClosed: destroy()
+        }
+    }
+
     // Having it inside a component helps to separate layouts and workarounds for nullable property accesses.
     Component {
         id: headerComponent
@@ -130,113 +152,24 @@ KCM.ScrollViewKCM {
                     FlatpakPermissionsSectionType.Environment,
                 ].includes(sectionDelegate.sectionType)
                 onClicked: {
-                    textPromptDialog.open()
+                    if (sectionDelegate.sectionType === FlatpakPermissionsSectionType.Environment) {
+                        const dialog = addEnvironmentVariableDialogComponent.createObject(root, {
+                            model: permsModel,
+                        });
+                        dialog.open();
+                    } else {
+                        const dialog = textPromptDialogComponent.createObject(root, {
+                            model: permsModel,
+                            sectionType: sectionDelegate.sectionType,
+                        });
+                        dialog.open();
+                    }
                 }
                 Layout.alignment: Qt.AlignRight
 
                 QQC2.ToolTip.text: permsModel.sectionAddButtonToolTipTextForSectionType(sectionDelegate.sectionType)
                 QQC2.ToolTip.visible: Kirigami.Settings.tabletMode ? pressed : hovered
                 QQC2.ToolTip.delay: Kirigami.Settings.tabletMode ? Qt.styleHints.mousePressAndHoldInterval : Kirigami.Units.toolTipDelay
-
-                Kirigami.PromptDialog {
-                    id: textPromptDialog
-                    parent: root
-                    title: switch (sectionDelegate.sectionType) {
-                        case FlatpakPermissionsSectionType.Filesystems: return i18n("Add Filesystem Path Permission")
-                        case FlatpakPermissionsSectionType.SessionBus: return i18n("Add Session Bus Permission")
-                        case FlatpakPermissionsSectionType.SystemBus: return i18n("Add System Bus Permission")
-                        case FlatpakPermissionsSectionType.Environment: return i18n("Set Environment Variable")
-                        default: return ""
-                    }
-
-                    RowLayout {
-                        QQC2.TextField {
-                            id: nameField
-                            placeholderText: switch (sectionDelegate.sectionType) {
-                                case FlatpakPermissionsSectionType.Filesystems: return i18n("Enter filesystem path…")
-                                case FlatpakPermissionsSectionType.SessionBus: return i18n("Enter session bus name…")
-                                case FlatpakPermissionsSectionType.SystemBus: return i18n("Enter system bus name…")
-                                case FlatpakPermissionsSectionType.Environment: return i18n("Enter variable…")
-                                default: return ""
-                            }
-                            Layout.fillWidth: true
-                        }
-                        QQC2.ComboBox {
-                            id: valueBox
-
-                            model: permsModel.valuesModelForSectionType(sectionDelegate.sectionType)
-                            textRole: "display"
-                            valueRole: "value"
-
-                            visible: sectionDelegate.sectionType !== FlatpakPermissionsSectionType.Environment
-                            Layout.fillWidth: true
-                        }
-                        Kirigami.Heading {
-                            text: "="
-                            level: 3
-                            visible: sectionDelegate.sectionType === FlatpakPermissionsSectionType.Environment
-                        }
-                        QQC2.TextField {
-                            id: valueField
-                            visible: sectionDelegate.sectionType === FlatpakPermissionsSectionType.Environment
-                            placeholderText: i18n("Enter value…")
-                            Layout.fillWidth: true
-                        }
-                    }
-                    standardButtons: Kirigami.Dialog.Ok | Kirigami.Dialog.Cancel
-
-                    function getValue(): var {
-                        switch (sectionDelegate.sectionType) {
-                        case FlatpakPermissionsSectionType.SessionBus:
-                        case FlatpakPermissionsSectionType.SystemBus:
-                        case FlatpakPermissionsSectionType.Filesystems:
-                            return valueBox.currentValue;
-                        case FlatpakPermissionsSectionType.Environment:
-                            return valueField.text;
-                        default:
-                            return undefined;
-                        }
-                    }
-
-                    function acceptableInput() {
-                        const section = sectionDelegate.sectionType;
-                        const name = nameField.text;
-
-                        if (permsModel.permissionExists(section, name)) {
-                            return false;
-                        }
-
-                        switch (section) {
-                        case FlatpakPermissionsSectionType.Filesystems:
-                            return permsModel.isFilesystemNameValid(name);
-                        case FlatpakPermissionsSectionType.SessionBus:
-                        case FlatpakPermissionsSectionType.SystemBus:
-                            return permsModel.isDBusServiceNameValid(name);
-                        case FlatpakPermissionsSectionType.Environment:
-                            return permsModel.isEnvironmentVariableNameValid(name);
-                        default:
-                            return false;
-                        }
-                    }
-
-                    onAboutToShow: {
-                        nameField.text = "";
-                        if (sectionDelegate.sectionType !== FlatpakPermissionsSectionType.Environment) {
-                            valueBox.currentIndex = 0;
-                        }
-                        valueField.text = "";
-                    }
-
-                    onAccepted: {
-                        const value = getValue();
-                        permsModel.addUserEnteredPermission(sectionDelegate.sectionType, nameField.text, value);
-                    }
-
-                    Component.onCompleted: {
-                        const ok = standardButton(QQC2.Dialog.Ok);
-                        ok.enabled = Qt.binding(() => acceptableInput());
-                    }
-                }
             }
         }
 
@@ -287,6 +220,7 @@ KCM.ScrollViewKCM {
             }
 
             trailing: RowLayout {
+                enabled: checkBox.checked
                 QQC2.ComboBox {
                     visible: [
                         FlatpakPermissionsSectionType.Filesystems,
