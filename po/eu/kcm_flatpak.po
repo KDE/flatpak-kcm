@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-02-22 00:59+0000\n"
-"PO-Revision-Date: 2023-02-15 20:21+0100\n"
+"PO-Revision-Date: 2023-02-22 22:38+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -28,7 +28,7 @@ msgstr ""
 #: flatpakpermission.cpp:766 flatpakpermission.cpp:1034
 #, kde-format
 msgid "read/write"
-msgstr "Irakurri/idatzi"
+msgstr "irakurri/idatzi"
 
 #: autotests/flatpakpermissiontest.cpp:92 flatpakpermission.cpp:65
 #: flatpakpermission.cpp:82 flatpakpermission.cpp:588 flatpakpermission.cpp:612
@@ -51,10 +51,9 @@ msgid "read-only"
 msgstr "irakurtzeko soilik"
 
 #: autotests/flatpakpermissiontest.cpp:98
-#, fuzzy, kde-format
-#| msgid "read/write"
+#, kde-format
 msgid "read-write"
-msgstr "Irakurri/idatzi"
+msgstr "irakurri-idatzi"
 
 #: autotests/flatpakpermissiontest.cpp:99 flatpakpermission.cpp:111
 #: flatpakpermission.cpp:128 flatpakpermission.cpp:497
@@ -287,15 +286,12 @@ msgid "Apply Permissions"
 msgstr "Ezarri baimenak"
 
 #: package/contents/ui/main.qml:63
-#, fuzzy, kde-format
-#| msgid ""
-#| "The permissions of this application have been changed. Do you want to "
-#| "apply these changes or discard them?"
+#, kde-format
 msgid ""
 "The permissions of application %1 have been changed. Do you want to apply "
 "these changes or discard them?"
 msgstr ""
-"Aplikazio honetako baimenak aldatu egin dira. Aldaketa hauek ezarri edo "
+"%1 aplikazioaren baimenak aldatu egin dira. Aldaketa hauek ezarri edo "
 "baztertu nahi dituzu?"
 
 #: package/contents/ui/permissions.qml:17

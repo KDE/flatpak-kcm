@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-02-22 00:59+0000\n"
-"PO-Revision-Date: 2023-02-17 09:27+0100\n"
+"PO-Revision-Date: 2023-02-22 14:13+0100\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -48,10 +48,9 @@ msgid "read-only"
 msgstr "pouze čtení"
 
 #: autotests/flatpakpermissiontest.cpp:98
-#, fuzzy, kde-format
-#| msgid "read/write"
+#, kde-format
 msgid "read-write"
-msgstr "čtení/zápis"
+msgstr "čtení-zápis"
 
 #: autotests/flatpakpermissiontest.cpp:99 flatpakpermission.cpp:111
 #: flatpakpermission.cpp:128 flatpakpermission.cpp:497
@@ -288,6 +287,7 @@ msgid ""
 "The permissions of application %1 have been changed. Do you want to apply "
 "these changes or discard them?"
 msgstr ""
+"Oprávnění aplikace %1 byla změněna. Přejete si změny provést nebo je zahodit?"
 
 #: package/contents/ui/permissions.qml:17
 #, kde-format
@@ -390,60 +390,3 @@ msgstr ""
 #, kde-format
 msgid "Enter value…"
 msgstr "Zadejte hodnotu…"
-
-#~ msgid "shared"
-#~ msgstr "sdílené"
-
-#~ msgid "network"
-#~ msgstr "Síť"
-
-#~ msgid "ipc"
-#~ msgstr "ipc"
-
-#~ msgid "sockets"
-#~ msgstr "sokety"
-
-#~ msgid "x11"
-#~ msgstr "x11"
-
-#~ msgid "wayland"
-#~ msgstr "wayland"
-
-#~ msgid "pulseaudio"
-#~ msgstr "PulseAudio"
-
-#~ msgid "pcsc"
-#~ msgstr "pcsc"
-
-#~ msgid "cups"
-#~ msgstr "cups"
-
-#~ msgid "devices"
-#~ msgstr "zařízení"
-
-#~ msgid "kvm"
-#~ msgstr "kvm"
-
-#~ msgid "dri"
-#~ msgstr "dri"
-
-#~ msgid "shm"
-#~ msgstr "shm"
-
-#~ msgid "all"
-#~ msgstr "vše"
-
-#~ msgid "features"
-#~ msgstr "vlastnosti"
-
-#~ msgid "bluetooth"
-#~ msgstr "bluetooth"
-
-#~ msgid "filesystems"
-#~ msgstr "souborové systémy"
-
-#~ msgid "home"
-#~ msgstr "domů"
-
-#~ msgid "host"
-#~ msgstr "hostitel"
