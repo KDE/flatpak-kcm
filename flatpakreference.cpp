@@ -131,8 +131,8 @@ bool FlatpakReference::isDefaults() const
 FlatpakReferencesModel::FlatpakReferencesModel(QObject *parent)
     : QAbstractListModel(parent)
 {
-    g_autoptr(FlatpakInstallation) installation = flatpak_installation_new_system(nullptr, nullptr);
-    g_autoptr(GPtrArray) installedApps = flatpak_installation_list_installed_refs_by_kind(installation, FLATPAK_REF_KIND_APP, nullptr, nullptr);
+    g_autoptr(FlatpakInstallation) systemInstallation = flatpak_installation_new_system(nullptr, nullptr);
+    g_autoptr(GPtrArray) installedApps = flatpak_installation_list_installed_refs_by_kind(systemInstallation, FLATPAK_REF_KIND_APP, nullptr, nullptr);
     g_autoptr(FlatpakInstallation) userInstallation = flatpak_installation_new_user(nullptr, nullptr);
     // it's the only pointer, so extend_and_steal will destroy it.
     GPtrArray *installedUserApps = flatpak_installation_list_installed_refs_by_kind(userInstallation, FLATPAK_REF_KIND_APP, nullptr, nullptr);
