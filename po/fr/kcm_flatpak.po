@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-02-22 00:59+0000\n"
-"PO-Revision-Date: 2023-02-22 10:31+0100\n"
+"PO-Revision-Date: 2023-02-22 21:16+0100\n"
 "Last-Translator: Xavier BESNARD <xavier.besnard]neuf.fr>\n"
 "Language-Team: fr\n"
 "Language: fr\n"
@@ -281,15 +281,12 @@ msgid "Apply Permissions"
 msgstr "Appliquer les droits d'accès"
 
 #: package/contents/ui/main.qml:63
-#, fuzzy, kde-format
-#| msgid ""
-#| "The permissions of this application have been changed. Do you want to "
-#| "apply these changes or discard them?"
+#, kde-format
 msgid ""
 "The permissions of application %1 have been changed. Do you want to apply "
 "these changes or discard them?"
 msgstr ""
-"Les droits d'accès de cette application ont été modifiés. Voulez-vous "
+"Les droits d'accès de l'application %1 ont été modifiés. Voulez-vous "
 "vraiment appliquer ces modifications ou les supprimer ?"
 
 #: package/contents/ui/permissions.qml:17

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-02-22 00:59+0000\n"
-"PO-Revision-Date: 2023-02-21 05:33+0100\n"
+"PO-Revision-Date: 2023-02-23 07:04+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -283,15 +283,12 @@ msgid "Apply Permissions"
 msgstr "წვდომების გადატარება"
 
 #: package/contents/ui/main.qml:63
-#, fuzzy, kde-format
-#| msgid ""
-#| "The permissions of this application have been changed. Do you want to "
-#| "apply these changes or discard them?"
+#, kde-format
 msgid ""
 "The permissions of application %1 have been changed. Do you want to apply "
 "these changes or discard them?"
 msgstr ""
-"ამ აპლიკაციის წვდომები შეიცვალა. გნებავთ ამ ცვლილებების გადატარება, თუ "
+"აპლიკაციის (%1) წვდომები შეიცვალა. გნებავთ ამ ცვლილებების გადატარება, თუ "
 "გნებავთ, გააუქმოთ ისინი?"
 
 #: package/contents/ui/permissions.qml:17
