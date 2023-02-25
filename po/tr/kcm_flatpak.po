@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-22 00:59+0000\n"
+"POT-Creation-Date: 2023-02-25 01:01+0000\n"
 "PO-Revision-Date: 2023-02-22 20:02+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -93,10 +93,10 @@ msgstr "KAPALI"
 
 #: flatpakpermission.cpp:145 flatpakpermission.cpp:300
 #: flatpakpermission.cpp:1000 flatpakpermission.cpp:1033
-#: package/contents/ui/permissions.qml:71
-#: package/contents/ui/permissions.qml:82
-#: package/contents/ui/permissions.qml:94
-#: package/contents/ui/permissions.qml:104
+#: package/contents/ui/permissions.qml:123
+#: package/contents/ui/permissions.qml:134
+#: package/contents/ui/permissions.qml:146
+#: package/contents/ui/permissions.qml:156
 #, kde-format
 msgid "Filesystem Access"
 msgstr "Dosya Sistemi Erişimi"
@@ -127,7 +127,7 @@ msgid "Features Allowed"
 msgstr "İzin Verilen Özellikler"
 
 #: flatpakpermission.cpp:163 flatpakpermission.cpp:304
-#: package/contents/ui/permissions.qml:58
+#: package/contents/ui/permissions.qml:110
 #, kde-format
 msgid "Advanced Permissions"
 msgstr "Gelişmiş İzinler"
@@ -254,15 +254,15 @@ msgstr "Tüm Sistem Kitaplıkları, Yürütülebilirleri ve İkilileri"
 msgid "All System Configurations"
 msgstr "Tüm Sistem Yapılandırmaları"
 
-#: flatpakpermission.cpp:1035 package/contents/ui/permissions.qml:73
-#: package/contents/ui/permissions.qml:84
-#: package/contents/ui/permissions.qml:96
-#: package/contents/ui/permissions.qml:106
+#: flatpakpermission.cpp:1035 package/contents/ui/permissions.qml:125
+#: package/contents/ui/permissions.qml:136
+#: package/contents/ui/permissions.qml:148
+#: package/contents/ui/permissions.qml:158
 #, kde-format
 msgid "Session Bus Policy"
 msgstr "Oturum Veriyolu Politikası"
 
-#: flatpakpermission.cpp:1035 package/contents/ui/permissions.qml:74
+#: flatpakpermission.cpp:1035 package/contents/ui/permissions.qml:126
 #, kde-format
 msgid "System Bus Policy"
 msgstr "Sistem Veriyolu Politikası"
@@ -272,17 +272,17 @@ msgstr "Sistem Veriyolu Politikası"
 msgid "=\n"
 msgstr "=\n"
 
-#: package/contents/ui/main.qml:16
+#: package/contents/ui/main.qml:17
 #, kde-format
 msgid "Flatpak Applications"
 msgstr "Flatpak Uygulamalar"
 
-#: package/contents/ui/main.qml:62
+#: package/contents/ui/main.qml:87
 #, kde-format
 msgid "Apply Permissions"
 msgstr "İzinleri Uygula"
 
-#: package/contents/ui/main.qml:63
+#: package/contents/ui/main.qml:88
 #, kde-format
 msgid ""
 "The permissions of application %1 have been changed. Do you want to apply "
@@ -301,94 +301,94 @@ msgstr "İzinler"
 msgid "Select an application from the list to view its permissions here"
 msgstr "İzinlerini görmek için listeden bir uygulama seçin"
 
-#: package/contents/ui/permissions.qml:55
+#: package/contents/ui/permissions.qml:107
 #, kde-format
 msgid "Hide advanced permissions"
 msgstr "Gelişmiş izinleri gizle"
 
-#: package/contents/ui/permissions.qml:55
+#: package/contents/ui/permissions.qml:107
 #, kde-format
 msgid "Show advanced permissions"
 msgstr "Gelişmiş izinleri göster"
 
-#: package/contents/ui/permissions.qml:68
+#: package/contents/ui/permissions.qml:120
 #, kde-format
 msgid "Add New"
 msgstr "Yeni Ekle"
 
-#: package/contents/ui/permissions.qml:72
-#: package/contents/ui/permissions.qml:83
-#: package/contents/ui/permissions.qml:95
-#: package/contents/ui/permissions.qml:105
-#: package/contents/ui/permissions.qml:114
-#: package/contents/ui/permissions.qml:120
 #: package/contents/ui/permissions.qml:124
-#: package/contents/ui/permissions.qml:129
+#: package/contents/ui/permissions.qml:135
+#: package/contents/ui/permissions.qml:147
+#: package/contents/ui/permissions.qml:157
+#: package/contents/ui/permissions.qml:166
+#: package/contents/ui/permissions.qml:172
+#: package/contents/ui/permissions.qml:176
+#: package/contents/ui/permissions.qml:181
 #, kde-format
 msgid "Environment"
 msgstr "Çevre"
 
-#: package/contents/ui/permissions.qml:82
+#: package/contents/ui/permissions.qml:134
 #, kde-format
 msgid "Add a new filesystem path"
 msgstr "Yeni bir dosya sistemi yolu ekle"
 
-#: package/contents/ui/permissions.qml:83
+#: package/contents/ui/permissions.qml:135
 #, kde-format
 msgid "Add a new environment variable"
 msgstr "Yeni bir çevre değişkeni ekle"
 
-#: package/contents/ui/permissions.qml:84
+#: package/contents/ui/permissions.qml:136
 #, kde-format
 msgid "Add a new session bus"
 msgstr "Yeni bir oturum veriyolu ekle"
 
-#: package/contents/ui/permissions.qml:85
+#: package/contents/ui/permissions.qml:137
 #, kde-format
 msgid "Add a new system bus"
 msgstr "Yeni bir sistem veriyolu ekle"
 
-#: package/contents/ui/permissions.qml:94
+#: package/contents/ui/permissions.qml:146
 #, kde-format
 msgid "Add Filesystem Path Permission"
 msgstr "Dosya Sistemi Yolu İzini Ekle"
 
-#: package/contents/ui/permissions.qml:95
+#: package/contents/ui/permissions.qml:147
 #, kde-format
 msgid "Set Environment Variable"
 msgstr "Çevre Değişkeni Ayarla"
 
-#: package/contents/ui/permissions.qml:96
+#: package/contents/ui/permissions.qml:148
 #, kde-format
 msgid "Add Session Bus Permission"
 msgstr "Oturum Veriyolu İzini Ekle"
 
-#: package/contents/ui/permissions.qml:97
+#: package/contents/ui/permissions.qml:149
 #, kde-format
 msgid "Add System Bus Permission"
 msgstr "Sistem Veriyolu İzini Ekle"
 
-#: package/contents/ui/permissions.qml:104
+#: package/contents/ui/permissions.qml:156
 #, kde-format
 msgid "Enter filesystem path…"
 msgstr "Dosya sistemi yolu gir…"
 
-#: package/contents/ui/permissions.qml:105
+#: package/contents/ui/permissions.qml:157
 #, kde-format
 msgid "Enter variable…"
 msgstr "Değişken gir…"
 
-#: package/contents/ui/permissions.qml:106
+#: package/contents/ui/permissions.qml:158
 #, kde-format
 msgid "Enter session bus name…"
 msgstr "Oturum veriyolu adı gir…"
 
-#: package/contents/ui/permissions.qml:107
+#: package/contents/ui/permissions.qml:159
 #, kde-format
 msgid "Enter system bus name…"
 msgstr "Sistem veriyolu adı gir…"
 
-#: package/contents/ui/permissions.qml:125
+#: package/contents/ui/permissions.qml:177
 #, kde-format
 msgid "Enter value…"
 msgstr "Değer gir…"
