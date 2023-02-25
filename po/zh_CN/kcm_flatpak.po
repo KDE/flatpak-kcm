@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-02-23 02:55+0000\n"
-"PO-Revision-Date: 2023-02-15 11:08\n"
+"PO-Revision-Date: 2023-02-24 12:59\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -25,7 +25,7 @@ msgstr ""
 #: flatpakpermission.cpp:766 flatpakpermission.cpp:1034
 #, kde-format
 msgid "read/write"
-msgstr "读写"
+msgstr "read/write"
 
 #: autotests/flatpakpermissiontest.cpp:90 flatpakpermission.cpp:65
 #: flatpakpermission.cpp:82 flatpakpermission.cpp:588 flatpakpermission.cpp:612
@@ -45,13 +45,12 @@ msgstr "own"
 #: flatpakpermission.cpp:1143
 #, kde-format
 msgid "read-only"
-msgstr "只读"
+msgstr "read-only"
 
 #: autotests/flatpakpermissiontest.cpp:96
-#, fuzzy, kde-format
-#| msgid "read/write"
+#, kde-format
 msgid "read-write"
-msgstr "读写"
+msgstr "read-write"
 
 #: autotests/flatpakpermissiontest.cpp:97 flatpakpermission.cpp:111
 #: flatpakpermission.cpp:128 flatpakpermission.cpp:497
@@ -60,7 +59,7 @@ msgstr "读写"
 #: flatpakpermission.cpp:1145
 #, kde-format
 msgid "create"
-msgstr "创建"
+msgstr "create"
 
 #: flatpakpermission.cpp:62 flatpakpermission.cpp:79 flatpakpermission.cpp:588
 #: flatpakpermission.cpp:612 flatpakpermission.cpp:795
@@ -389,87 +388,3 @@ msgstr "输入系统总线名称..."
 #, kde-format
 msgid "Enter value..."
 msgstr "输入值..."
-
-#~ msgid "shared"
-#~ msgstr "已共享"
-
-#~ msgid "network"
-#~ msgstr "网络"
-
-#~ msgid "ipc"
-#~ msgstr "ipc"
-
-#~ msgid "sockets"
-#~ msgstr "套接字"
-
-#~ msgid "x11"
-#~ msgstr "x11"
-
-#~ msgid "wayland"
-#~ msgstr "wayland"
-
-#~ msgid "fallback-x11"
-#~ msgstr "fallback-x11"
-
-#~ msgid "pulseaudio"
-#~ msgstr "pulseaudio"
-
-#~ msgid "session-bus"
-#~ msgstr "session-bus"
-
-#~ msgid "system-bus"
-#~ msgstr "system-bus"
-
-#~ msgid "ssh-auth"
-#~ msgstr "ssh-auth"
-
-#~ msgid "pcsc"
-#~ msgstr "pcsc"
-
-#~ msgid "cups"
-#~ msgstr "cups"
-
-#~ msgid "devices"
-#~ msgstr "设备"
-
-#~ msgid "kvm"
-#~ msgstr "kvm"
-
-#~ msgid "dri"
-#~ msgstr "dri"
-
-#~ msgid "shm"
-#~ msgstr "shm"
-
-#~ msgid "all"
-#~ msgstr "全部"
-
-#~ msgid "features"
-#~ msgstr "特性"
-
-#~ msgid "devel"
-#~ msgstr "开发"
-
-#~ msgid "multiarch"
-#~ msgstr "multiarch"
-
-#~ msgid "bluetooth"
-#~ msgstr "bluetooth"
-
-#~ msgid "canbus"
-#~ msgstr "canbus"
-
-#~ msgid "filesystems"
-#~ msgstr "文件系统"
-
-#~ msgid "home"
-#~ msgstr "home"
-
-#~ msgid "host"
-#~ msgstr "host"
-
-#~ msgid "host-os"
-#~ msgstr "host-os"
-
-#~ msgid "host-etc"
-#~ msgstr "host-etc"
