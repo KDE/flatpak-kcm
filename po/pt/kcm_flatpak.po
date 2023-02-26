@@ -51,10 +51,9 @@ msgid "read-only"
 msgstr "apenas-leitura"
 
 #: autotests/flatpakpermissiontest.cpp:98
-#, fuzzy, kde-format
-#| msgid "read/write"
+#, kde-format
 msgid "read-write"
-msgstr "leitura/escrita"
+msgstr "leitura-escrita"
 
 #: autotests/flatpakpermissiontest.cpp:99 flatpakpermission.cpp:111
 #: flatpakpermission.cpp:128 flatpakpermission.cpp:497
