@@ -7,6 +7,7 @@
 
 #include <KLocalizedString>
 #include <KPluginFactory>
+#include <KProcess>
 #include <QFile>
 #include <algorithm>
 
@@ -87,6 +88,15 @@ void KCMFlatpak::setIndex(int index)
 int KCMFlatpak::currentIndex() const
 {
     return m_index;
+}
+
+void KCMFlatpak::openDiscover(const QString &searchQuery)
+{
+    QStringList args;
+    if (!searchQuery.isEmpty()) {
+        args << QStringLiteral("--search") << searchQuery;
+    }
+    KProcess::startDetached(QStringLiteral("plasma-discover"), args);
 }
 
 #include "kcm.moc"

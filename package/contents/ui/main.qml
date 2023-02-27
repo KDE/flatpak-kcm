@@ -136,6 +136,46 @@ KCM.ScrollViewKCM {
         }
     }
 
+    // // Use two placeholders instead of one with conditional properties, so
+    // // icons won't blend when fading out from empty search
+    // property Item __placeholder: Placeholder {}
+
+
+    // We don't want it to go into default property and be reparented to a
+    // ScrollView, otherwise after clearing search term the scrollbar would
+    // appear and shift the fading out placeholder to the left.
+    property Item __placeholder: Loader {
+        parent: root
+        anchors.centerIn: parent
+        anchors.verticalCenterOffset: Math.round(root.header.height / 2)
+        width: parent.width - (Kirigami.Units.gridUnit * 4)
+        opacity: filteredRefsModel.count === 0 ? 1 : 0
+        active: opacity > 0
+        visible: active
+        Behavior on opacity {
+            NumberAnimation {
+                duration: Kirigami.Units.longDuration
+                easing.type: Easing.InOutQuad
+            }
+        }
+        sourceComponent: Kirigami.PlaceholderMessage {
+            width: parent.width
+            icon.name: "edit-none"
+            // The trick here is to keep message text about matching items
+            // during fade out when search field is cleared.
+            text: (filterField.text === "" && filteredRefsModel.count === 0)
+                ? i18nc("List of applications is empty", "No Flatpak applications installed")
+                : i18nc("A search yielded no results", "No items matching your search")
+            helpfulAction: Kirigami.Action {
+                icon.name: "plasmadiscover"
+                text: "Browse applications"
+                onTriggered: {
+                    kcm.openDiscover(filterField.text);
+                }
+            }
+        }
+    }
+
     header: Kirigami.SearchField {
         id: filterField
         KeyNavigation.tab: appsListView

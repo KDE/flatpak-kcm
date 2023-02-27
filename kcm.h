@@ -32,6 +32,7 @@ public Q_SLOTS:
     void save() override;
     void defaults() override;
     void setIndex(int index);
+    void openDiscover(const QString &searchQuery);
 
 private:
     FlatpakReferencesModel *m_refsModel;
