@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-02-25 01:01+0000\n"
-"PO-Revision-Date: 2023-02-02 12:29+0400\n"
+"PO-Revision-Date: 2023-02-27 19:22+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -49,10 +49,9 @@ msgid "read-only"
 msgstr "للقراءة فقط"
 
 #: autotests/flatpakpermissiontest.cpp:98
-#, fuzzy, kde-format
-#| msgid "read/write"
+#, kde-format
 msgid "read-write"
-msgstr "للقراءة و الكتابة"
+msgstr "القراءة والكتابة"
 
 #: autotests/flatpakpermissiontest.cpp:99 flatpakpermission.cpp:111
 #: flatpakpermission.cpp:128 flatpakpermission.cpp:497
@@ -283,14 +282,11 @@ msgid "Apply Permissions"
 msgstr "طبّق التّصاريح"
 
 #: package/contents/ui/main.qml:88
-#, fuzzy, kde-format
-#| msgid ""
-#| "The permissions of this application have been changed. Do you want to "
-#| "apply these changes or discard them?"
+#, kde-format
 msgid ""
 "The permissions of application %1 have been changed. Do you want to apply "
 "these changes or discard them?"
-msgstr "تغيرت تصاريح التطبيق. هل تريد تطبيق هذه التغيرات أم لا؟"
+msgstr "تغيرت تصاريح تطبيق %1. هل تريد تطبيق هذه التغيرات أم لا؟"
 
 #: package/contents/ui/permissions.qml:17
 #, kde-format
@@ -370,32 +366,27 @@ msgid "Add System Bus Permission"
 msgstr "أضف تصريح ناقل نظام"
 
 #: package/contents/ui/permissions.qml:156
-#, fuzzy, kde-format
-#| msgid "Enter filesystem path..."
+#, kde-format
 msgid "Enter filesystem path…"
 msgstr "أدخل مسار نظام الملفات…"
 
 #: package/contents/ui/permissions.qml:157
-#, fuzzy, kde-format
-#| msgid "Enter variable..."
+#, kde-format
 msgid "Enter variable…"
 msgstr "أدخل متغير…"
 
 #: package/contents/ui/permissions.qml:158
-#, fuzzy, kde-format
-#| msgid "Enter session bus name..."
+#, kde-format
 msgid "Enter session bus name…"
 msgstr "أدخل اسم جلسة ناقل…"
 
 #: package/contents/ui/permissions.qml:159
-#, fuzzy, kde-format
-#| msgid "Enter system bus name..."
+#, kde-format
 msgid "Enter system bus name…"
 msgstr "أدخل اسم ناقل النظام…"
 
 #: package/contents/ui/permissions.qml:177
-#, fuzzy, kde-format
-#| msgid "Enter value..."
+#, kde-format
 msgid "Enter value…"
 msgstr "أدخل قيمة..."
 
