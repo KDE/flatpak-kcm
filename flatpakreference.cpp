@@ -39,6 +39,9 @@ FlatpakReference::FlatpakReference(FlatpakReferencesModel *parent,
     , m_permsModel(nullptr)
 {
     m_permissionsFilename.append(m_flatpakName);
+
+    connect(this, &FlatpakReference::needsLoad, parent, &FlatpakReferencesModel::needsLoad);
+    connect(this, &FlatpakReference::needsSaveChanged, parent, &FlatpakReferencesModel::needsSaveChanged);
 }
 
 FlatpakReferencesModel *FlatpakReference::parent() const
@@ -105,16 +108,12 @@ void FlatpakReference::setPermsModel(FlatpakPermissionModel *permsModel)
     if (permsModel != m_permsModel) {
         if (m_permsModel) {
             disconnect(m_permsModel, &FlatpakPermissionModel::referenceChanged, this, &FlatpakReference::needsLoad);
-            disconnect(this, &FlatpakReference::needsLoad, parent(), &FlatpakReferencesModel::needsLoad);
             disconnect(m_permsModel, &FlatpakPermissionModel::dataChanged, this, &FlatpakReference::needsSaveChanged);
-            disconnect(this, &FlatpakReference::needsSaveChanged, parent(), &FlatpakReferencesModel::needsSaveChanged);
         }
         m_permsModel = permsModel;
         if (m_permsModel) {
             connect(m_permsModel, &FlatpakPermissionModel::referenceChanged, this, &FlatpakReference::needsLoad);
-            connect(this, &FlatpakReference::needsLoad, parent(), &FlatpakReferencesModel::needsLoad);
             connect(m_permsModel, &FlatpakPermissionModel::dataChanged, this, &FlatpakReference::needsSaveChanged);
-            connect(this, &FlatpakReference::needsSaveChanged, parent(), &FlatpakReferencesModel::needsSaveChanged);
         }
     }
 }
