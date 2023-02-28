@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-02-23 02:55+0000\n"
-"PO-Revision-Date: 2023-02-02 12:29+0400\n"
+"PO-Revision-Date: 2023-02-27 19:22+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -49,10 +49,9 @@ msgid "read-only"
 msgstr "للقراءة فقط"
 
 #: autotests/flatpakpermissiontest.cpp:96
-#, fuzzy, kde-format
-#| msgid "read/write"
+#, kde-format
 msgid "read-write"
-msgstr "للقراءة و الكتابة"
+msgstr "القراءة والكتابة"
 
 #: autotests/flatpakpermissiontest.cpp:97 flatpakpermission.cpp:111
 #: flatpakpermission.cpp:128 flatpakpermission.cpp:497

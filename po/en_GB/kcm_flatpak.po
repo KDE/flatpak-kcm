@@ -1,15 +1,15 @@
 # Copyright (C) YEAR This file is copyright:
 # This file is distributed under the same license as the flatpak-kcm package.
 #
-# Steve Allewell <steve.allewell@gmail.com>, 2022.
+# Steve Allewell <steve.allewell@gmail.com>, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-02-23 02:55+0000\n"
-"PO-Revision-Date: 2022-12-31 17:26+0000\n"
+"PO-Revision-Date: 2023-02-27 22:40+0000\n"
 "Last-Translator: Steve Allewell <steve.allewell@gmail.com>\n"
-"Language-Team: English <kde-i18n-doc@kde.org>\n"
+"Language-Team: English <kde-l10n-en_gb@kde.org>\n"
 "Language: en_GB\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -48,10 +48,9 @@ msgid "read-only"
 msgstr "read-only"
 
 #: autotests/flatpakpermissiontest.cpp:96
-#, fuzzy, kde-format
-#| msgid "read/write"
+#, kde-format
 msgid "read-write"
-msgstr "read/write"
+msgstr "read-write"
 
 #: autotests/flatpakpermissiontest.cpp:97 flatpakpermission.cpp:111
 #: flatpakpermission.cpp:128 flatpakpermission.cpp:497
