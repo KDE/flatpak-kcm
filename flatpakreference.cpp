@@ -35,6 +35,9 @@ FlatpakReference::FlatpakReference(FlatpakReferencesModel *parent,
     , m_refsModel(refsModel)
 {
     m_path.append(m_id);
+
+    connect(this, &FlatpakReference::needsLoad, parent, &FlatpakReferencesModel::needsLoad);
+    connect(this, &FlatpakReference::needsSaveChanged, parent, &FlatpakReferencesModel::needsSaveChanged);
 }
 
 QString FlatpakReference::name() const
@@ -78,16 +81,12 @@ void FlatpakReference::setPermsModel(FlatpakPermissionModel *permsModel)
     if (permsModel != m_permsModel) {
         if (m_permsModel) {
             disconnect(m_permsModel, &FlatpakPermissionModel::referenceChanged, this, &FlatpakReference::needsLoad);
-            disconnect(this, &FlatpakReference::needsLoad, m_refsModel, &FlatpakReferencesModel::needsLoad);
             disconnect(m_permsModel, &FlatpakPermissionModel::dataChanged, this, &FlatpakReference::needsSaveChanged);
-            disconnect(this, &FlatpakReference::needsSaveChanged, m_refsModel, &FlatpakReferencesModel::needsSaveChanged);
         }
         m_permsModel = permsModel;
         if (m_permsModel) {
             connect(m_permsModel, &FlatpakPermissionModel::referenceChanged, this, &FlatpakReference::needsLoad);
-            connect(this, &FlatpakReference::needsLoad, m_refsModel, &FlatpakReferencesModel::needsLoad);
             connect(m_permsModel, &FlatpakPermissionModel::dataChanged, this, &FlatpakReference::needsSaveChanged);
-            connect(this, &FlatpakReference::needsSaveChanged, m_refsModel, &FlatpakReferencesModel::needsSaveChanged);
         }
     }
 }
