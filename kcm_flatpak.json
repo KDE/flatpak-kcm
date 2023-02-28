@@ -32,9 +32,11 @@
         "Icon": "flatpak-discover",
         "Id": "kcm_flatpak",
         "Name": "Flatpak Permissions",
+        "Name[ar]": "تصاريح فلاتباك",
         "Name[ca@valencia]": "Permisos de Flatpak",
         "Name[ca]": "Permisos del Flatpak",
         "Name[cs]": "Oprávnění Flatpak",
+        "Name[en_GB]": "Flatpak Permissions",
         "Name[es]": "Permisos de Flatpak",
         "Name[eu]": "«Flatpak»en baimenak",
         "Name[fr]": "Permissions pour Flatpak",
@@ -46,7 +48,8 @@
         "Name[tr]": "Flatpak İzinleri",
         "Name[uk]": "Права доступу Flatpak",
         "Name[x-test]": "xxFlatpak Permissionsxx",
-        "Name[zh_CN]": "Flatpak 权限"
+        "Name[zh_CN]": "Flatpak 权限",
+        "Name[zh_TW]": "Flatpak 權限"
     },
     "X-KDE-Keywords": "Flatpak,permission,permissions,access,sandbox,sandboxed,filesystem,file,files,folder,folders,network,networks,networking,bluetooth,print,printer,printing,audio,sound,login,remote login,ssh,smart card,kvm,device,session,session bus,system,system bus,environment,environment variable",
     "X-KDE-System-Settings-Parent-Category": "applications"
