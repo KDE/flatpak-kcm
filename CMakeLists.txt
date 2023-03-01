@@ -6,8 +6,8 @@ cmake_minimum_required(VERSION 3.16)
 
 project(flatpakkcm)
 
-set(QT_MIN_VERSION "5.15.2")
-set(KF6_MIN_VERSION "5.102.0")
+set(QT_MIN_VERSION "6.4.0")
+set(KF6_MIN_VERSION "5.240.0")
 
 add_definitions(-DTRANSLATION_DOMAIN="kcm_flatpak")
 
