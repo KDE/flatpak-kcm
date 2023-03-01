@@ -7,11 +7,11 @@ cmake_minimum_required(VERSION 3.16)
 project(flatpakkcm)
 
 set(QT_MIN_VERSION "5.15.2")
-set(KF5_MIN_VERSION "5.102.0")
+set(KF6_MIN_VERSION "5.102.0")
 
 add_definitions(-DTRANSLATION_DOMAIN="kcm_flatpak")
 
-find_package(ECM ${KF5_MIN_VERSION} REQUIRED NO_MODULE)
+find_package(ECM ${KF6_MIN_VERSION} REQUIRED NO_MODULE)
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules)
 
 find_package(PkgConfig REQUIRED)
@@ -29,11 +29,12 @@ find_package(Qt${QT_MAJOR_VERSION} ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS
     Svg
 )
 
-find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
+find_package(KF6 ${KF6_MIN_VERSION} REQUIRED COMPONENTS
     I18n
     KCMUtils
     Declarative
     Config
+    Package
 )
 
 add_library(kcm_flatpak_static STATIC
@@ -43,10 +44,10 @@ add_library(kcm_flatpak_static STATIC
 set_property(TARGET kcm_flatpak_static PROPERTY POSITION_INDEPENDENT_CODE ON)
 target_link_libraries(kcm_flatpak_static
     Qt::Core
-    KF5::CoreAddons
-    KF5::ConfigCore
-    KF5::I18n
-    KF5::QuickAddons
+    KF6::CoreAddons
+    KF6::ConfigCore
+    KF6::I18n
+    KF6::QuickAddons
     PkgConfig::Flatpak
     Qt::DBus
 )
