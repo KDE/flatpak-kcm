@@ -269,6 +269,10 @@ bool FlatpakPermission::isSaveNeeded() const
 
 bool FlatpakPermission::isDefaults() const
 {
+    if (m_originType == FlatpakPermission::Dummy) {
+        return true;
+    }
+
     bool ret = m_effectiveEnable == m_defaultEnable;
     if (m_valueType != FlatpakPermission::Simple) {
         ret = ret && (m_effectiveValue == m_defaultValue);
