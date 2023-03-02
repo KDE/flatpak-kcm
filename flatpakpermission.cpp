@@ -621,8 +621,6 @@ void FlatpakPermissionModel::loadDefaultValues()
             name = description = busList.at(i);
             defaultValue = toFrontendDBusValue(busMap.value(busList.at(i)));
             isEnabledByDefault = true;
-            //            m_permissions.append(FlatpakPermission(name, category, description, defaultValue, possibleValues, defaultValue,
-            //            FlatpakPermission::ValueType::Complex));
             m_permissions.append(FlatpakPermission(name, category, description, FlatpakPermission::Bus, isEnabledByDefault, defaultValue, possibleValues));
         }
     } else {
