@@ -213,11 +213,12 @@ bool FlatpakPermission::isSaveNeeded() const
         return false;
     }
 
-    bool ret = m_effectiveEnable != m_overrideEnable;
+    const bool enableDiffers = m_effectiveEnable != m_overrideEnable;
     if (m_valueType != FlatpakPermission::Simple) {
-        ret = ret || (m_effectiveValue != m_overrideValue);
+        const bool valueDiffers = m_effectiveValue != m_overrideValue;
+        return enableDiffers || valueDiffers;
     }
-    return ret;
+    return enableDiffers;
 }
 
 bool FlatpakPermission::isDefaults() const
@@ -226,11 +227,12 @@ bool FlatpakPermission::isDefaults() const
         return true;
     }
 
-    bool ret = m_effectiveEnable == m_defaultEnable;
+    const bool enableIsTheSame = m_effectiveEnable == m_defaultEnable;
     if (m_valueType != FlatpakPermission::Simple) {
-        ret = ret && (m_effectiveValue == m_defaultValue);
+        const bool valueIsTheSame = m_effectiveValue == m_defaultValue;
+        return enableIsTheSame && valueIsTheSame;
     }
-    return ret;
+    return enableIsTheSame;
 }
 
 static QString toFrontendDBusValue(const QString &value)
