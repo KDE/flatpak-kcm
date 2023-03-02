@@ -209,12 +209,12 @@ KCM.ScrollViewKCM {
             checkable: true
             activeBackgroundColor: "transparent"
             activeTextColor: Kirigami.Theme.textColor
-            onClicked: permsModel.setPerm(permItem.index)
+            onClicked: permsModel.togglePermissionAtIndex(permItem.index)
 
             leading: QQC2.CheckBox {
                 id: checkBox
                 checked: model.isGranted
-                onToggled: permsModel.setPerm(permItem.index)
+                onToggled: permsModel.togglePermissionAtIndex(permItem.index)
             }
 
             trailing: RowLayout {

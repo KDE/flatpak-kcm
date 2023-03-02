@@ -906,7 +906,7 @@ void FlatpakPermissionModel::setReference(FlatpakReference *reference)
     }
 }
 
-void FlatpakPermissionModel::setPerm(int index)
+void FlatpakPermissionModel::togglePermissionAtIndex(int index)
 {
     /* guard for invalid indices */
     if (index < 0 || index >= m_permissions.length()) {
