@@ -224,14 +224,14 @@ bool FlatpakPermission::isDefaultEnabled() const
     return m_defaultEnable;
 }
 
-void FlatpakPermission::setEffectiveValue(const QString &val)
+void FlatpakPermission::setEffectiveValue(const QString &value)
 {
-    m_effectiveValue = val;
+    m_effectiveValue = value;
 }
 
-void FlatpakPermission::setOverrideValue(const QString &loadValue)
+void FlatpakPermission::setOverrideValue(const QString &value)
 {
-    m_overrideValue = loadValue;
+    m_overrideValue = value;
 }
 
 void FlatpakPermission::setEffectiveEnabled(bool enabled)
@@ -244,14 +244,14 @@ void FlatpakPermission::setOverrideEnabled(bool enabled)
     m_overrideEnable = enabled;
 }
 
-void FlatpakPermission::setOriginType(OriginType pType)
+void FlatpakPermission::setOriginType(OriginType type)
 {
-    m_originType = pType;
+    m_originType = type;
 }
 
-void FlatpakPermission::setSectionType(SectionType sType)
+void FlatpakPermission::setSectionType(SectionType type)
 {
-    m_sectionType = sType;
+    m_sectionType = type;
 }
 
 bool FlatpakPermission::isSaveNeeded() const
