@@ -65,22 +65,20 @@ public:
          * They shall not be removed from the list of permissions when
          * unchecked.
          *
-         * TODO: Instead of unchecking there should be more obvious UI. For Bus
-         * type, there's a "none" value. For environment we should implement
-         * "unset-environment" category. For filesystem paths it is not
-         * specified, so we probably should remove the ability to "uncheck"
-         * them, and show a "Remove" button instead.
-         *
          * Predefined resources come with translated description.
          */
+        // TODO: Instead of unchecking there should be more obvious UI. For Bus
+        // type, there's a "none" value. For environment we should implement
+        // "unset-environment" category. For filesystem paths it is not
+        // specified, so we probably should remove the ability to "uncheck"
+        // them, and show a "Remove" button instead.
         BuiltIn,
         /**
          * User-defined permissions are resources that user has manually added
          * in their overrides. In other words, they are not present in app
          * metadata manifest, and can be removed completely when unchecked.
-         *
-         * TODO: Same as in BuiltIn, consider "Remove" button instead of unchecking.
          */
+        // TODO: Same as in BuiltIn, consider "Remove" button instead of unchecking.
         UserDefined,
         /**
          * Empty permissions, just for showing section headers for categories
@@ -114,37 +112,120 @@ public:
                                bool isEnabledByDefault,
                                const QString &defaultValue = {},
                                const QStringList &possibleValues = {});
+
+    /**
+     * Technical untranslated name of the resource managed by this permission entry.
+     *
+     * See ValueType enum for more.
+     */
     QString name() const;
+
+    /**
+     * Technical untranslated category name of the resource managed by this permission entry.
+     *
+     * See ValueType enum for more.
+     */
     QString category() const;
+
+    /**
+     * User-facing translated string used as section header.
+     */
     QString categoryHeading() const;
+
     /**
      * Untranslate section heading back into category identifier. It's a hack
      * until the model is refactored to only operate on identifiers, and all
      * i18n stuff is moved elsewhere.
      */
     static QString categoryHeadingToRawCategory(const QString &section);
+
+    /**
+     * User-facing translated description of the resource managed by this permission entry.
+     *
+     * See ValueType enum for more.
+     */
     QString description() const;
+
     ValueType type() const;
+
+    /**
+     * Type of permission this entry represents.
+     */
     PermType pType() const;
+
+    /**
+     * Set which type of permissions this entry represents.
+     */
+    // TODO: This method should be replaced with constructor argument.
+    void setPType(PermType pType);
+
+    /**
+     * Section type of this permission. Defaults to SectionType::Basic for
+     * ValueType::Filesystems, and Advanced for everything else.
+     */
     SectionType sType() const;
 
-    bool enabled() const;
-    bool enabledByDefault() const;
-
-    QString defaultValue() const;
-    QStringList possibleValues() const;
-    QString currentValue() const;
-    QString loadValue() const;
-
-    QString fsCurrentValue() const;
-
-    void setCurrentValue(const QString &val);
-    void setLoadValue(const QString &loadValue);
-    void setEnabled(bool isEnabled);
-    void setLoadEnabled(bool isLoadEnabled);
-    void setPType(PermType pType);
+    /**
+     * Set section type for this permission.
+     */
+    // TODO: This method should be replaced with constructor argument.
     void setSType(SectionType sType);
 
+    bool enabledByDefault() const;
+
+    /** Set user override */
+    void setLoadEnabled(bool isLoadEnabled);
+
+    /**
+     * This property reports the current effective "enabled" status of this
+     * permission in KCM.
+     *
+     * For ValueType::Simple permissions, if current enabled status matches
+     * system defaults, it will be removed from user overrides.
+     *
+     * For user-defined permissions of other ValueType types, disabling them
+     * would mark them for removal.
+     */
+    // TODO: What should it do for built-in permissions of other ValueType
+    // types? It doesn't make much sense.
+    bool enabled() const;
+    void setEnabled(bool isEnabled);
+
+    /**
+     * System default value for this permission. It can not be modified.
+     *
+     * Applicable for any permissions other than ValueType::Simple.
+     */
+    QString defaultValue() const;
+
+    // TODO: Remove this method.
+    QString loadValue() const;
+
+    /** Set user override */
+    void setLoadValue(const QString &value);
+
+    /**
+     * This property holds the current effective value of this permission in
+     * KCM.
+     *
+     * See ValueType enum for more.
+     */
+    QString currentValue() const;
+    void setCurrentValue(const QString &value);
+
+    /** Untranslate value of ValueTyep::Filesystems permission. */
+    // TODO: Remove this method, store enum variants or otherwise raw untranslated data.
+    QString fsCurrentValue() const;
+
+    /**
+     * Provide a user-facing translated list of possible values for this kind of
+     * permission.
+     */
+    // TODO: It should be a model that also contains detailed description
+    // (help text) and untranslated value identifier.
+    QStringList possibleValues() const;
+
+    /** Integration with KCM. */
     bool isSaveNeeded() const;
     bool isDefaults() const;
 
