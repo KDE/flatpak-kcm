@@ -323,7 +323,7 @@ public:
 
 public Q_SLOTS:
     void setReference(FlatpakReference *ref);
-    void setPerm(int index);
+    void togglePermissionAtIndex(int index);
     void editPerm(int index, const QString &newValue);
     void addUserEnteredPermission(const QString &name, QString cat, const QString &value);
 

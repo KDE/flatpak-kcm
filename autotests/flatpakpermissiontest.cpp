@@ -82,7 +82,7 @@ private Q_SLOTS:
                 }
 
                 QCOMPARE(model.data(model.index(i, 0), FlatpakPermissionModel::IsGranted), false);
-                model.setPerm(i);
+                model.togglePermissionAtIndex(i);
                 QCOMPARE(model.data(model.index(i, 0), FlatpakPermissionModel::IsGranted), true);
             }
 
