@@ -803,17 +803,17 @@ void FlatpakPermissionModel::loadCurrentValues()
     }
 
     // Disabled because BUG 465502
-    QVector<QString> cats = {
+    QVector<QString> categories = {
         QLatin1String(FLATPAK_METADATA_GROUP_SESSION_BUS_POLICY),
         QLatin1String(FLATPAK_METADATA_GROUP_SYSTEM_BUS_POLICY),
         /* QLatin1String(FLATPAK_METADATA_GROUP_ENVIRONMENT) */
     };
-    for (int j = 0; j < cats.length(); j++) {
-        const KConfigGroup group = parser.group(cats.at(j));
+    for (int j = 0; j < categories.length(); j++) {
+        const KConfigGroup group = parser.group(categories.at(j));
         if (!group.exists()) {
             continue;
         }
-        int insertIndex = permIndex(cats.at(j));
+        int insertIndex = permIndex(categories.at(j));
 
         QMap<QString, QString> map = group.entryMap();
         QList<QString> list = map.keys();
@@ -825,9 +825,9 @@ void FlatpakPermissionModel::loadCurrentValues()
                 if (j == 0 || j == 1) {
                     QStringList possibleValues;
                     possibleValues << i18n("talk") << i18n("own") << i18n("see");
-                    m_permissions.insert(insertIndex, FlatpakPermission(name, cats[j], name, FlatpakPermission::Bus, false, value, possibleValues));
+                    m_permissions.insert(insertIndex, FlatpakPermission(name, categories[j], name, FlatpakPermission::Bus, false, value, possibleValues));
                 } else {
-                    m_permissions.insert(insertIndex, FlatpakPermission(name, cats[j], name, FlatpakPermission::Environment, false, value));
+                    m_permissions.insert(insertIndex, FlatpakPermission(name, categories[j], name, FlatpakPermission::Environment, false, value));
                 }
                 m_permissions[insertIndex].setEffectiveEnabled(enabled);
                 m_permissions[insertIndex].setOverrideEnabled(enabled);
@@ -914,88 +914,88 @@ void FlatpakPermissionModel::togglePermissionAtIndex(int index)
     }
 
     FlatpakPermission *perm = &m_permissions[index];
-    bool isGranted = perm->isEffectiveEnabled();
+    bool wasEnabled = perm->isEffectiveEnabled();
 
     if (perm->valueType() == FlatpakPermission::Simple) {
-        bool setToNonDefault = (perm->isDefaultEnabled() && isGranted) || (!perm->isDefaultEnabled() && !isGranted);
+        bool setToNonDefault = (perm->isDefaultEnabled() && wasEnabled) || (!perm->isDefaultEnabled() && !wasEnabled);
         if (setToNonDefault) {
-            addPermission(perm, !isGranted);
+            addPermission(perm, !wasEnabled);
         } else {
-            removePermission(perm, isGranted);
+            removePermission(perm, wasEnabled);
         }
         perm->setEffectiveEnabled(!perm->isEffectiveEnabled());
     } else if (perm->valueType() == FlatpakPermission::Filesystems) {
-        if (perm->isDefaultEnabled() && isGranted) {
+        if (perm->isDefaultEnabled() && wasEnabled) {
             /* if access level ("value") was changed, there's already an entry. Prepend ! to it.
              * if access level is unchanged, add a new entry */
             if (perm->defaultValue() != perm->effectiveValue()) {
                 int permIndex = m_overridesData.indexOf(perm->name());
                 m_overridesData.insert(permIndex, QLatin1Char('!'));
             } else {
-                addPermission(perm, !isGranted);
+                addPermission(perm, !wasEnabled);
             }
-        } else if (!perm->isDefaultEnabled() && !isGranted) {
+        } else if (!perm->isDefaultEnabled() && !wasEnabled) {
             if (!m_overridesData.contains(perm->name())) {
-                addPermission(perm, !isGranted);
+                addPermission(perm, !wasEnabled);
             }
             if (perm->originType() == FlatpakPermission::UserDefined) {
                 m_overridesData.remove(m_overridesData.indexOf(perm->name()) - 1, 1);
             }
             // set value to read/write automatically, if not done already
-        } else if (perm->isDefaultEnabled() && !isGranted) {
+        } else if (perm->isDefaultEnabled() && !wasEnabled) {
             /* if access level ("value") was changed, just remove ! from beginning.
              * if access level is unchanged, remove the whole entry */
             if (perm->defaultValue() != perm->effectiveValue()) {
                 int permIndex = m_overridesData.indexOf(perm->name());
                 m_overridesData.remove(permIndex - 1, 1);
             } else {
-                removePermission(perm, isGranted);
+                removePermission(perm, wasEnabled);
             }
-        } else if (!perm->isDefaultEnabled() && isGranted) {
-            removePermission(perm, isGranted);
+        } else if (!perm->isDefaultEnabled() && wasEnabled) {
+            removePermission(perm, wasEnabled);
         }
         perm->setEffectiveEnabled(!perm->isEffectiveEnabled());
     } else if (perm->valueType() == FlatpakPermission::Bus) {
-        if (perm->isDefaultEnabled() && isGranted) {
+        if (perm->isDefaultEnabled() && wasEnabled) {
             perm->setEffectiveEnabled(false);
             if (perm->defaultValue() != perm->effectiveValue()) {
                 editBusPermissions(perm, i18n("None"));
             } else {
                 addBusPermissions(perm);
             }
-        } else if (perm->isDefaultEnabled() && !isGranted) {
+        } else if (perm->isDefaultEnabled() && !wasEnabled) {
             if (perm->defaultValue() != perm->effectiveValue()) {
                 editBusPermissions(perm, perm->effectiveValue());
             } else {
                 removeBusPermission(perm);
             }
             perm->setEffectiveEnabled(true);
-        } else if (!perm->isDefaultEnabled() && isGranted) {
+        } else if (!perm->isDefaultEnabled() && wasEnabled) {
             perm->setEffectiveEnabled(false);
             removeBusPermission(perm);
-        } else if (!perm->isDefaultEnabled() && !isGranted) {
+        } else if (!perm->isDefaultEnabled() && !wasEnabled) {
             perm->setEffectiveEnabled(true);
             addBusPermissions(perm);
         }
     } else if (perm->valueType() == FlatpakPermission::Environment) {
-        if (perm->isDefaultEnabled() && isGranted) {
+        if (perm->isDefaultEnabled() && wasEnabled) {
             perm->setEffectiveEnabled(false);
             if (perm->defaultValue() != perm->effectiveValue()) {
                 editEnvPermission(perm, QString());
             } else {
                 addEnvPermission(perm);
             }
-        } else if (perm->isDefaultEnabled() && !isGranted) {
+        } else if (perm->isDefaultEnabled() && !wasEnabled) {
             if (perm->defaultValue() != perm->effectiveValue()) {
                 editEnvPermission(perm, perm->effectiveValue());
             } else {
                 removeEnvPermission(perm);
             }
             perm->setEffectiveEnabled(true);
-        } else if (!perm->isDefaultEnabled() && isGranted) {
+        } else if (!perm->isDefaultEnabled() && wasEnabled) {
             perm->setEffectiveEnabled(false);
             removeEnvPermission(perm);
-        } else if (!perm->isDefaultEnabled() && !isGranted) {
+        } else if (!perm->isDefaultEnabled() && !wasEnabled) {
             perm->setEffectiveEnabled(true);
             addEnvPermission(perm);
         }
