@@ -66,7 +66,7 @@ static QString toFrontendDBusValue(const QString &value)
         return i18n("None");
     }
     Q_ASSERT_X(false, Q_FUNC_INFO, qUtf8Printable(QStringLiteral("unmapped value %1").arg(value)));
-    return {};
+    return QString();
 }
 
 static QString toBackendDBusValue(const QString &value)
@@ -84,7 +84,7 @@ static QString toBackendDBusValue(const QString &value)
         return QStringLiteral("None");
     }
     Q_ASSERT_X(false, Q_FUNC_INFO, qUtf8Printable(QStringLiteral("unmapped value %1").arg(value)));
-    return {};
+    return QString();
 }
 
 QString FlatpakPermission::currentValue() const
@@ -99,10 +99,10 @@ QString FlatpakPermission::loadValue() const
 
 static QString postfixToFrontendFileSystemValue(const QStringView &postfix)
 {
-    if (postfix == QStringLiteral(":ro")) {
+    if (postfix == QLatin1String(":ro")) {
         return i18n("read-only");
     }
-    if (postfix == QStringLiteral(":create")) {
+    if (postfix == QLatin1String(":create")) {
         return i18n("create");
     }
     return i18n("read/write");
@@ -110,22 +110,19 @@ static QString postfixToFrontendFileSystemValue(const QStringView &postfix)
 
 QString FlatpakPermission::fsCurrentValue() const
 {
-    if (m_currentValue == i18n("OFF")) {
-        return QString();
-    }
-
-    QString val;
     // NB: the use of i18n here is actually kind of wrong but at the time of writing fixing the mapping
     // between ui and backend *here* is easier/safer than trying to reinvent the way the mapping works in a
     // more reliable fashion.
-    if (m_currentValue == i18n("read-only")) {
-        val = QStringLiteral("ro");
-    } else if (m_currentValue == i18n("create")) {
-        val = QStringLiteral("create");
-    } else {
-        val = QStringLiteral("rw");
+    if (m_currentValue == i18n("OFF")) {
+        return QString();
     }
-    return val;
+    if (m_currentValue == i18n("read-only")) {
+        return QLatin1String("ro");
+    }
+    if (m_currentValue == i18n("create")) {
+        return QLatin1String("create");
+    }
+    return QLatin1String("rw");
 }
 
 QString FlatpakPermission::category() const
