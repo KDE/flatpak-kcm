@@ -41,6 +41,7 @@ add_library(kcm_flatpak_static STATIC
     flatpakreference.cpp flatpakreference.h
     flatpakpermission.cpp flatpakpermission.h
     flatpakhelper.cpp flatpakhelper.h
+    flatpakcommon.cpp flatpakcommon.h
 )
 set_property(TARGET kcm_flatpak_static PROPERTY POSITION_INDEPENDENT_CODE ON)
 target_link_libraries(kcm_flatpak_static
