@@ -151,7 +151,7 @@ QString FlatpakPermission::categoryHeading() const
     if (m_category == QStringLiteral("shared")) {
         return i18n("Subsystems Shared");
     }
-    if (m_category == QStringLiteral("sockets")) {
+    if (m_category == QLatin1String(FLATPAK_METADATA_KEY_SOCKETS)) {
         return i18n("Sockets");
     }
     if (m_category == QStringLiteral("devices")) {
@@ -384,8 +384,8 @@ void FlatpakPermissionModel::loadDefaultValues()
     /* SHARED category */
 
     /* SOCKETS category */
-    category = QStringLiteral("sockets");
-    const QString socketPerms = contextGroup.readEntry("sockets", QString());
+    category = QLatin1String(FLATPAK_METADATA_KEY_SOCKETS);
+    const QString socketPerms = contextGroup.readEntry(QLatin1String(FLATPAK_METADATA_KEY_SOCKETS), QString());
 
     name = QStringLiteral("x11");
     description = i18n("X11 Windowing System");
