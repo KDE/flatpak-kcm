@@ -5,6 +5,7 @@
  */
 
 #include "flatpakpermission.h"
+#include "flatpakcommon.h"
 
 #include <KConfigGroup>
 #include <KDesktopFile>
@@ -362,7 +363,7 @@ void FlatpakPermissionModel::loadDefaultValues()
     f.close();
 
     KDesktopFile parser(f.fileName());
-    const KConfigGroup contextGroup = parser.group("Context");
+    const KConfigGroup contextGroup = parser.group(FLATPAK_METADATA_GROUP_CONTEXT);
 
     int basicIndex = 0;
 
@@ -669,7 +670,7 @@ void FlatpakPermissionModel::loadCurrentValues()
     }
 
     KDesktopFile parser(path);
-    const KConfigGroup contextGroup = parser.group("Context");
+    const KConfigGroup contextGroup = parser.group(FLATPAK_METADATA_GROUP_CONTEXT);
 
     int fsIndex = -1;
 
