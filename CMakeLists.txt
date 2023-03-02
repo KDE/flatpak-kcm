@@ -38,9 +38,10 @@ find_package(KF6 ${KF6_MIN_VERSION} REQUIRED COMPONENTS
 )
 
 add_library(kcm_flatpak_static STATIC
-    flatpakreference.cpp
-    flatpakpermission.cpp
-    flatpakhelper.cpp)
+    flatpakreference.cpp flatpakreference.h
+    flatpakpermission.cpp flatpakpermission.h
+    flatpakhelper.cpp flatpakhelper.h
+)
 set_property(TARGET kcm_flatpak_static PROPERTY POSITION_INDEPENDENT_CODE ON)
 target_link_libraries(kcm_flatpak_static
     Qt::Core
@@ -52,7 +53,9 @@ target_link_libraries(kcm_flatpak_static
     Qt::DBus
 )
 
-add_library(kcm_flatpak MODULE kcm.cpp)
+add_library(kcm_flatpak MODULE
+    kcm.cpp kcm.h
+)
 target_link_libraries(kcm_flatpak kcm_flatpak_static)
 
 install(TARGETS kcm_flatpak DESTINATION ${KDE_INSTALL_PLUGINDIR}/plasma/kcms/systemsettings)
