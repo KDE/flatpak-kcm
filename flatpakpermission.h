@@ -78,8 +78,18 @@ public:
     bool isDefaults() const;
 
 private:
+    /**
+     * Untranslatable identifier of permission.
+     *
+     * For ValueType::Simple permissions, it's the name of the entry in the list of togglable options in that category.
+     * For ValueType::Filesystems it's either one of the pre-defined symbolic names or the absolute filepath.
+     * For ValueType::Bus permissions it's the the name or glob pattern of D-Bus service(s).
+     * For ValueType::Environment permissions it's the name of environment variable.
+     */
     QString m_name;
+    /** Untranslatable name of [Category] as seen in metadata and override ini-style files. */
     QString m_category;
+    /** Human-readable description of the permission, or whatever to be displayed in UI. */
     QString m_description;
     ValueType m_type;
     PermType m_pType;
