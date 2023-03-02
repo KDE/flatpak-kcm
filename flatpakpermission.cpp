@@ -46,7 +46,7 @@ FlatpakPermission::FlatpakPermission(const QString &name,
 {
 }
 
-QString FlatpakPermission::name() const
+const QString &FlatpakPermission::name() const
 {
     return m_name;
 }
@@ -87,12 +87,12 @@ static QString toBackendDBusValue(const QString &value)
     return QString();
 }
 
-QString FlatpakPermission::effectiveValue() const
+const QString &FlatpakPermission::effectiveValue() const
 {
     return m_effectiveValue;
 }
 
-QString FlatpakPermission::overrideValue() const
+const QString &FlatpakPermission::overrideValue() const
 {
     return m_overrideValue;
 }
@@ -125,7 +125,7 @@ QString FlatpakPermission::fsCurrentValue() const
     return QLatin1String("rw");
 }
 
-QString FlatpakPermission::category() const
+const QString &FlatpakPermission::category() const
 {
     return m_category;
 }
@@ -184,17 +184,17 @@ QString FlatpakPermission::categoryHeadingToRawCategory(const QString &section)
     return QString();
 }
 
-QString FlatpakPermission::description() const
+const QString &FlatpakPermission::description() const
 {
     return m_description;
 }
 
-QString FlatpakPermission::defaultValue() const
+const QString &FlatpakPermission::defaultValue() const
 {
     return m_defaultValue;
 }
 
-QStringList FlatpakPermission::possibleValues() const
+const QStringList &FlatpakPermission::possibleValues() const
 {
     return m_possibleValues;
 }

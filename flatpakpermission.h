@@ -118,14 +118,14 @@ public:
      *
      * See ValueType enum for more.
      */
-    QString name() const;
+    const QString &name() const;
 
     /**
      * Technical untranslated category name of the resource managed by this permission entry.
      *
      * See ValueType enum for more.
      */
-    QString category() const;
+    const QString &category() const;
 
     /**
      * User-facing translated string used as section header.
@@ -144,7 +144,7 @@ public:
      *
      * See ValueType enum for more.
      */
-    QString description() const;
+    const QString &description() const;
 
     ValueType valueType() const;
 
@@ -199,10 +199,10 @@ public:
      *
      * Applicable for any permissions other than ValueType::Simple.
      */
-    QString defaultValue() const;
+    const QString &defaultValue() const;
 
     // TODO: Remove this method.
-    QString overrideValue() const;
+    const QString &overrideValue() const;
 
     /** Set user override */
     void setOverrideValue(const QString &value);
@@ -213,7 +213,7 @@ public:
      *
      * See ValueType enum for more.
      */
-    QString effectiveValue() const;
+    const QString &effectiveValue() const;
     void setEffectiveValue(const QString &value);
 
     /** Untranslate value of ValueTyep::Filesystems permission. */
@@ -226,7 +226,7 @@ public:
      */
     // TODO: It should be a model that also contains detailed description
     // (help text) and untranslated value identifier.
-    QStringList possibleValues() const;
+    const QStringList &possibleValues() const;
 
     /** Integration with KCM. */
     bool isSaveNeeded() const;
