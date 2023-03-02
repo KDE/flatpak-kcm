@@ -13,7 +13,7 @@ import org.kde.kirigami 2.20 as Kirigami
 import org.kde.plasma.kcm.flatpakpermissions 1.0
 
 KCM.ScrollViewKCM {
-    id: permissionPage
+    id: root
     title: i18n("Permissions")
     implicitWidth: Kirigami.Units.gridUnit * 15
     framedView: false
@@ -39,9 +39,9 @@ KCM.ScrollViewKCM {
         RowLayout {
             id: header
 
-            readonly property url icon: permissionPage.ref.iconSource
-            readonly property string title: permissionPage.ref.displayName
-            readonly property string subtitle: permissionPage.ref.version
+            readonly property url icon: root.ref.iconSource
+            readonly property string title: root.ref.displayName
+            readonly property string subtitle: root.ref.version
 
             spacing: 0
 
@@ -82,7 +82,7 @@ KCM.ScrollViewKCM {
         id: permsView
         model: FlatpakPermissionModel {
             id: permsModel
-            reference: permissionPage.ref
+            reference: root.ref
         }
 
         currentIndex: -1
@@ -94,21 +94,21 @@ KCM.ScrollViewKCM {
         // Ref is assumed to remain constant for the lifetime of this page. If
         // it's not null, then it would remain so, and no further checks are
         // needed inside the component.
-        header: permissionPage.ref === null ? null : headerComponent
+        header: root.ref === null ? null : headerComponent
         headerPositioning: ListView.InlineHeader
 
-        section.property: permissionPage.showAdvanced ? "category" : "sectionType"
+        section.property: root.showAdvanced ? "category" : "sectionType"
         section.criteria: ViewSection.FullString
         section.delegate: Kirigami.ListSectionHeader {
             width: ListView.view.width - ListView.view.leftMargin - ListView.view.rightMargin
             label: section
             QQC2.ToolButton {
                 id: buttonToggleAdvanced
-                text: permissionPage.showAdvanced ? i18n("Hide advanced permissions") : i18n("Show advanced permissions")
+                text: root.showAdvanced ? i18n("Hide advanced permissions") : i18n("Show advanced permissions")
                 display: QQC2.AbstractButton.IconOnly
-                icon.name: permissionPage.showAdvanced ? "collapse" : "expand"
+                icon.name: root.showAdvanced ? "collapse" : "expand"
                 visible: section === i18n("Advanced Permissions")
-                onClicked: permissionPage.showAdvanced = !permissionPage.showAdvanced
+                onClicked: root.showAdvanced = !root.showAdvanced
                 Layout.alignment: Qt.AlignRight
 
                 QQC2.ToolTip.text: text
@@ -141,7 +141,7 @@ KCM.ScrollViewKCM {
 
                 Kirigami.PromptDialog {
                     id: textPromptDialog
-                    parent: permissionPage
+                    parent: root
                     title: switch (section) {
                         case i18n("Filesystem Access"): return i18n("Add Filesystem Path Permission")
                         case i18n("Environment"): return i18n("Set Environment Variable")
