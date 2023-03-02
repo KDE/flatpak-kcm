@@ -20,8 +20,7 @@ public:
         Simple, /* on/off values, eg: internet connection */
         Filesystems, /* OFF, read-only, read/write, create */
         Bus,
-        Environment,
-        Complex /* other values, eg: talk/own permissions to session buses */
+        Environment
     };
 
     enum PermType {
