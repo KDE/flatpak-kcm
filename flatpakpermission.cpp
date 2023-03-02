@@ -51,80 +51,6 @@ const QString &FlatpakPermission::name() const
     return m_name;
 }
 
-static QString toFrontendDBusValue(const QString &value)
-{
-    if (value == QStringLiteral("talk")) {
-        return i18n("talk");
-    }
-    if (value == QStringLiteral("own")) {
-        return i18n("own");
-    }
-    if (value == QStringLiteral("see")) {
-        return i18n("see");
-    }
-    if (value == QStringLiteral("None")) {
-        return i18n("None");
-    }
-    Q_ASSERT_X(false, Q_FUNC_INFO, qUtf8Printable(QStringLiteral("unmapped value %1").arg(value)));
-    return QString();
-}
-
-static QString toBackendDBusValue(const QString &value)
-{
-    if (value == i18n("talk")) {
-        return QStringLiteral("talk");
-    }
-    if (value == i18n("own")) {
-        return QStringLiteral("own");
-    }
-    if (value == i18n("see")) {
-        return QStringLiteral("see");
-    }
-    if (value == i18n("None")) {
-        return QStringLiteral("None");
-    }
-    Q_ASSERT_X(false, Q_FUNC_INFO, qUtf8Printable(QStringLiteral("unmapped value %1").arg(value)));
-    return QString();
-}
-
-const QString &FlatpakPermission::effectiveValue() const
-{
-    return m_effectiveValue;
-}
-
-const QString &FlatpakPermission::overrideValue() const
-{
-    return m_overrideValue;
-}
-
-static QString postfixToFrontendFileSystemValue(const QStringView &postfix)
-{
-    if (postfix == QLatin1String(":ro")) {
-        return i18n("read-only");
-    }
-    if (postfix == QLatin1String(":create")) {
-        return i18n("create");
-    }
-    return i18n("read/write");
-}
-
-QString FlatpakPermission::fsCurrentValue() const
-{
-    // NB: the use of i18n here is actually kind of wrong but at the time of writing fixing the mapping
-    // between ui and backend *here* is easier/safer than trying to reinvent the way the mapping works in a
-    // more reliable fashion.
-    if (m_effectiveValue == i18n("OFF")) {
-        return QString();
-    }
-    if (m_effectiveValue == i18n("read-only")) {
-        return QLatin1String("ro");
-    }
-    if (m_effectiveValue == i18n("create")) {
-        return QLatin1String("create");
-    }
-    return QLatin1String("rw");
-}
-
 const QString &FlatpakPermission::category() const
 {
     return m_category;
@@ -189,16 +115,6 @@ const QString &FlatpakPermission::description() const
     return m_description;
 }
 
-const QString &FlatpakPermission::defaultValue() const
-{
-    return m_defaultValue;
-}
-
-const QStringList &FlatpakPermission::possibleValues() const
-{
-    return m_possibleValues;
-}
-
 FlatpakPermission::ValueType FlatpakPermission::valueType() const
 {
     return m_valueType;
@@ -209,14 +125,19 @@ FlatpakPermission::OriginType FlatpakPermission::originType() const
     return m_originType;
 }
 
+void FlatpakPermission::setOriginType(OriginType type)
+{
+    m_originType = type;
+}
+
 FlatpakPermission::SectionType FlatpakPermission::sectionType() const
 {
     return m_sectionType;
 }
 
-bool FlatpakPermission::isEffectiveEnabled() const
+void FlatpakPermission::setSectionType(SectionType type)
 {
-    return m_effectiveEnable;
+    m_sectionType = type;
 }
 
 bool FlatpakPermission::isDefaultEnabled() const
@@ -224,14 +145,14 @@ bool FlatpakPermission::isDefaultEnabled() const
     return m_defaultEnable;
 }
 
-void FlatpakPermission::setEffectiveValue(const QString &value)
+void FlatpakPermission::setOverrideEnabled(bool enabled)
 {
-    m_effectiveValue = value;
+    m_overrideEnable = enabled;
 }
 
-void FlatpakPermission::setOverrideValue(const QString &value)
+bool FlatpakPermission::isEffectiveEnabled() const
 {
-    m_overrideValue = value;
+    return m_effectiveEnable;
 }
 
 void FlatpakPermission::setEffectiveEnabled(bool enabled)
@@ -239,19 +160,51 @@ void FlatpakPermission::setEffectiveEnabled(bool enabled)
     m_effectiveEnable = enabled;
 }
 
-void FlatpakPermission::setOverrideEnabled(bool enabled)
+const QString &FlatpakPermission::defaultValue() const
 {
-    m_overrideEnable = enabled;
+    return m_defaultValue;
 }
 
-void FlatpakPermission::setOriginType(OriginType type)
+const QString &FlatpakPermission::overrideValue() const
 {
-    m_originType = type;
+    return m_overrideValue;
 }
 
-void FlatpakPermission::setSectionType(SectionType type)
+void FlatpakPermission::setOverrideValue(const QString &value)
 {
-    m_sectionType = type;
+    m_overrideValue = value;
+}
+
+const QString &FlatpakPermission::effectiveValue() const
+{
+    return m_effectiveValue;
+}
+
+void FlatpakPermission::setEffectiveValue(const QString &value)
+{
+    m_effectiveValue = value;
+}
+
+QString FlatpakPermission::fsCurrentValue() const
+{
+    // NB: the use of i18n here is actually kind of wrong but at the time of writing fixing the mapping
+    // between ui and backend *here* is easier/safer than trying to reinvent the way the mapping works in a
+    // more reliable fashion.
+    if (m_effectiveValue == i18n("OFF")) {
+        return QString();
+    }
+    if (m_effectiveValue == i18n("read-only")) {
+        return QLatin1String("ro");
+    }
+    if (m_effectiveValue == i18n("create")) {
+        return QLatin1String("create");
+    }
+    return QLatin1String("rw");
+}
+
+const QStringList &FlatpakPermission::possibleValues() const
+{
+    return m_possibleValues;
 }
 
 bool FlatpakPermission::isSaveNeeded() const
@@ -278,6 +231,53 @@ bool FlatpakPermission::isDefaults() const
         ret = ret && (m_effectiveValue == m_defaultValue);
     }
     return ret;
+}
+
+static QString toFrontendDBusValue(const QString &value)
+{
+    if (value == QStringLiteral("talk")) {
+        return i18n("talk");
+    }
+    if (value == QStringLiteral("own")) {
+        return i18n("own");
+    }
+    if (value == QStringLiteral("see")) {
+        return i18n("see");
+    }
+    if (value == QStringLiteral("None")) {
+        return i18n("None");
+    }
+    Q_ASSERT_X(false, Q_FUNC_INFO, qUtf8Printable(QStringLiteral("unmapped value %1").arg(value)));
+    return QString();
+}
+
+static QString toBackendDBusValue(const QString &value)
+{
+    if (value == i18n("talk")) {
+        return QStringLiteral("talk");
+    }
+    if (value == i18n("own")) {
+        return QStringLiteral("own");
+    }
+    if (value == i18n("see")) {
+        return QStringLiteral("see");
+    }
+    if (value == i18n("None")) {
+        return QStringLiteral("None");
+    }
+    Q_ASSERT_X(false, Q_FUNC_INFO, qUtf8Printable(QStringLiteral("unmapped value %1").arg(value)));
+    return QString();
+}
+
+static QString postfixToFrontendFileSystemValue(const QStringView &postfix)
+{
+    if (postfix == QLatin1String(":ro")) {
+        return i18n("read-only");
+    }
+    if (postfix == QLatin1String(":create")) {
+        return i18n("create");
+    }
+    return i18n("read/write");
 }
 
 int FlatpakPermissionModel::rowCount(const QModelIndex &parent) const
