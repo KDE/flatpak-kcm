@@ -154,7 +154,7 @@ QString FlatpakPermission::categoryHeading() const
     if (m_category == QLatin1String(FLATPAK_METADATA_KEY_SOCKETS)) {
         return i18n("Sockets");
     }
-    if (m_category == QStringLiteral("devices")) {
+    if (m_category == QLatin1String(FLATPAK_METADATA_KEY_DEVICES)) {
         return i18n("Device Access");
     }
     if (m_category == QStringLiteral("features")) {
@@ -438,8 +438,8 @@ void FlatpakPermissionModel::loadDefaultValues()
     /* SOCKETS category */
 
     /* DEVICES category */
-    category = QStringLiteral("devices");
-    const QString devicesPerms = contextGroup.readEntry("devices", QString());
+    category = QLatin1String(FLATPAK_METADATA_KEY_DEVICES);
+    const QString devicesPerms = contextGroup.readEntry(QLatin1String(FLATPAK_METADATA_KEY_DEVICES), QString());
 
     name = QStringLiteral("kvm");
     description = i18n("Kernel-based Virtual Machine Access");
