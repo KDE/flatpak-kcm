@@ -605,7 +605,7 @@ void FlatpakPermissionModel::loadDefaultValues()
     const KConfigGroup sessionBusGroup = parser.group(QLatin1String(FLATPAK_METADATA_GROUP_SESSION_BUS_POLICY));
     possibleValues.clear();
     possibleValues << i18n("talk") << i18n("own") << i18n("see");
-    if (sessionBusGroup.exists()) {
+    if (sessionBusGroup.exists() && !sessionBusGroup.entryMap().isEmpty()) {
         const QMap<QString, QString> busMap = sessionBusGroup.entryMap();
         const QStringList busList = busMap.keys();
         for (int i = 0; i < busList.length(); ++i) {
@@ -627,7 +627,7 @@ void FlatpakPermissionModel::loadDefaultValues()
     const KConfigGroup systemBusGroup = parser.group(QLatin1String(FLATPAK_METADATA_GROUP_SYSTEM_BUS_POLICY));
     possibleValues.clear();
     possibleValues << i18n("talk") << i18n("own") << i18n("see");
-    if (systemBusGroup.exists()) {
+    if (systemBusGroup.exists() && !systemBusGroup.entryMap().isEmpty()) {
         const QMap<QString, QString> busMap = systemBusGroup.entryMap();
         const QStringList busList = busMap.keys();
         for (int i = 0; i < busList.length(); ++i) {
@@ -652,7 +652,7 @@ if (false) {
     category = QLatin1String(FLATPAK_METADATA_GROUP_ENVIRONMENT);
     const KConfigGroup environmentGroup = parser.group(QLatin1String(FLATPAK_METADATA_GROUP_ENVIRONMENT));
     possibleValues.clear();
-    if (environmentGroup.exists()) {
+    if (environmentGroup.exists() && !environmentGroup.entryMap().isEmpty()) {
         const QMap<QString, QString> busMap = environmentGroup.entryMap();
         const QStringList busList = busMap.keys();
         for (int i = 0; i < busList.length(); ++i) {
