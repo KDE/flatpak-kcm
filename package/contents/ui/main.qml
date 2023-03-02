@@ -204,7 +204,7 @@ KCM.ScrollViewKCM {
         delegate: Kirigami.BasicListItem {
 
             text: model.name
-            icon: model.icon
+            icon.name: model.icon
 
             onClicked: root.shouldChange(index)
         }
