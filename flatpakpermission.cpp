@@ -652,10 +652,10 @@ if (false) {
     category = QLatin1String(FLATPAK_METADATA_GROUP_ENVIRONMENT);
     const KConfigGroup environmentGroup = parser.group(QLatin1String(FLATPAK_METADATA_GROUP_ENVIRONMENT));
     possibleValues.clear();
-    if(environmentGroup.exists()) {
+    if (environmentGroup.exists()) {
         const QMap<QString, QString> busMap = environmentGroup.entryMap();
         const QStringList busList = busMap.keys();
-        for(int i = 0; i < busList.length(); ++i) {
+        for (int i = 0; i < busList.length(); ++i) {
             name = description = busList.at(i);
             defaultValue = busMap.value(busList.at(i));
             m_permissions.append(FlatpakPermission(name, category, description, FlatpakPermission::Environment, true, defaultValue));
