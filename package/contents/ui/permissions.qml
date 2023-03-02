@@ -110,7 +110,7 @@ KCM.ScrollViewKCM {
                         }
                         QQC2.ComboBox {
                             id: valueBox
-                            model: permsModel.valueList(section)
+                            model: permsModel.valueListForSection(section)
                             visible: section !== i18n("Environment")
                             Layout.fillWidth: true
                         }

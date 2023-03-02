@@ -52,6 +52,11 @@ public:
     QString name() const;
     QString category() const;
     QString categoryHeading() const;
+    /** Untranslate section heading back into category identifier.
+     * It's a hack until the model is refactored to only operate on identifiers,
+     * and all i18n stuff is moved elsewhere.
+     */
+    static QString categoryHeadingToRawCategory(const QString &section);
     QString description() const;
     ValueType type() const;
     PermType pType() const;
@@ -148,7 +153,8 @@ public:
     bool isDefaults() const;
     bool isSaveNeeded() const;
 
-    Q_INVOKABLE QStringList valueList(const QString &catHeader) const;
+    Q_INVOKABLE QStringList valueListForSection(const QString &sectionHeader) const;
+    Q_INVOKABLE QStringList valueListForUntranslatedCategory(const QString &category) const;
 
 public Q_SLOTS:
     void setReference(FlatpakReference *ref);
