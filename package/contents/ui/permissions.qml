@@ -13,7 +13,7 @@ import org.kde.kirigami 2.20 as Kirigami
 import org.kde.plasma.kcm.flatpakpermissions 1.0
 
 KCM.ScrollViewKCM {
-    id: permissionPage
+    id: root
     title: i18n("Permissions")
     implicitWidth: Kirigami.Units.gridUnit * 15
     framedView: false
@@ -36,7 +36,7 @@ KCM.ScrollViewKCM {
         id: permsView
         model: FlatpakPermissionModel {
             id: permsModel
-            reference: permissionPage.ref
+            reference: root.ref
         }
 
         currentIndex: -1
@@ -45,18 +45,18 @@ KCM.ScrollViewKCM {
         reuseItems: false
         cacheBuffer: 10000
 
-        section.property: permissionPage.showAdvanced ? "category" : "sectionType"
+        section.property: root.showAdvanced ? "category" : "sectionType"
         section.criteria: ViewSection.FullString
         section.delegate: Kirigami.ListSectionHeader {
             width: ListView.view.width - ListView.view.leftMargin - ListView.view.rightMargin
             label: section
             QQC2.ToolButton {
                 id: buttonToggleAdvanced
-                text: permissionPage.showAdvanced ? i18n("Hide advanced permissions") : i18n("Show advanced permissions")
+                text: root.showAdvanced ? i18n("Hide advanced permissions") : i18n("Show advanced permissions")
                 display: QQC2.AbstractButton.IconOnly
-                icon.name: permissionPage.showAdvanced ? "collapse" : "expand"
+                icon.name: root.showAdvanced ? "collapse" : "expand"
                 visible: section === i18n("Advanced Permissions")
-                onClicked: permissionPage.showAdvanced = !permissionPage.showAdvanced
+                onClicked: root.showAdvanced = !root.showAdvanced
                 Layout.alignment: Qt.AlignRight
 
                 QQC2.ToolTip.text: text
@@ -89,7 +89,7 @@ KCM.ScrollViewKCM {
 
                 Kirigami.PromptDialog {
                     id: textPromptDialog
-                    parent: permissionPage
+                    parent: root
                     title: switch (section) {
                         case i18n("Filesystem Access"): return i18n("Add Filesystem Path Permission")
                         case i18n("Environment"): return i18n("Set Environment Variable")
