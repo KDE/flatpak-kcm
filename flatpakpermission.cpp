@@ -1028,22 +1028,22 @@ void FlatpakPermissionModel::editPerm(int index, const QString &newValue)
 
 void FlatpakPermissionModel::addUserEnteredPermission(const QString &name, QString section, const QString &value)
 {
-    QString cat = FlatpakPermission::categoryHeadingToRawCategory(section);
-    QStringList possibleValues = valueListForSection(cat);
+    QString category = FlatpakPermission::categoryHeadingToRawCategory(section);
+    QStringList possibleValues = valueListForSection(category);
 
     FlatpakPermission::ValueType type = FlatpakPermission::Environment;
-    if (cat == QLatin1String(FLATPAK_METADATA_KEY_FILESYSTEMS)) {
+    if (category == QLatin1String(FLATPAK_METADATA_KEY_FILESYSTEMS)) {
         type = FlatpakPermission::Filesystems;
-    } else if (cat == QLatin1String(FLATPAK_METADATA_GROUP_SESSION_BUS_POLICY) || cat == QLatin1String(FLATPAK_METADATA_GROUP_SYSTEM_BUS_POLICY)) {
+    } else if (category == QLatin1String(FLATPAK_METADATA_GROUP_SESSION_BUS_POLICY) || category == QLatin1String(FLATPAK_METADATA_GROUP_SYSTEM_BUS_POLICY)) {
         type = FlatpakPermission::Bus;
     }
 
-    FlatpakPermission perm(name, cat, name, type, false, QString(), possibleValues);
+    FlatpakPermission perm(name, category, name, type, false, QString(), possibleValues);
     perm.setPType(FlatpakPermission::UserDefined);
     perm.setEnabled(true);
     perm.setCurrentValue(value);
 
-    int index = permIndex(cat);
+    int index = permIndex(category);
     m_permissions.insert(index, perm);
 
     if (type == FlatpakPermission::Filesystems) {
