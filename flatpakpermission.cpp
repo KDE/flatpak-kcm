@@ -495,8 +495,8 @@ void FlatpakPermissionModel::loadDefaultValues()
     /* FEATURES category */
 
     /* FILESYSTEM category */
-    category = QStringLiteral("filesystems");
-    const QString fileSystemPerms = contextGroup.readEntry("filesystems", QString());
+    category = QLatin1String(FLATPAK_METADATA_KEY_FILESYSTEMS);
+    const QString fileSystemPerms = contextGroup.readEntry(QLatin1String(FLATPAK_METADATA_KEY_FILESYSTEMS), QString());
     const auto dirs = QStringView(fileSystemPerms).split(QLatin1Char(';'), Qt::SkipEmptyParts);
 
     QString homeVal = i18n("OFF");
@@ -744,7 +744,7 @@ void FlatpakPermissionModel::loadCurrentValues()
         }
     }
 
-    const QString fsCat = contextGroup.readEntry(QStringLiteral("filesystems"), QString());
+    const QString fsCat = contextGroup.readEntry(QLatin1String(FLATPAK_METADATA_KEY_FILESYSTEMS), QString());
     if (!fsCat.isEmpty()) {
         const QStringList fsPerms = fsCat.split(QLatin1Char(';'), Qt::SkipEmptyParts);
         for (int j = 0; j < fsPerms.length(); ++j) {
@@ -774,9 +774,14 @@ void FlatpakPermissionModel::loadCurrentValues()
             if (!permExists(name)) {
                 QStringList possibleValues;
                 possibleValues << i18n("read/write") << i18n("read-only") << i18n("create");
-                m_permissions.insert(
-                    fsIndex,
-                    FlatpakPermission(name, QStringLiteral("filesystems"), name, FlatpakPermission::Filesystems, false, value, possibleValues));
+                m_permissions.insert(fsIndex,
+                                     FlatpakPermission(name,
+                                                       QLatin1String(FLATPAK_METADATA_KEY_FILESYSTEMS),
+                                                       name,
+                                                       FlatpakPermission::Filesystems,
+                                                       false,
+                                                       value,
+                                                       possibleValues));
                 m_permissions[fsIndex].setEnabled(enabled);
                 m_permissions[fsIndex].setLoadEnabled(enabled);
                 m_permissions[fsIndex].setLoadValue(value);
@@ -992,7 +997,7 @@ void FlatpakPermissionModel::editPerm(int index, const QString &newValue)
     FlatpakPermission *perm = &m_permissions[index];
 
     /* editing the permission */
-    if (perm->category() == QStringLiteral("filesystems")) {
+    if (perm->category() == QLatin1String(FLATPAK_METADATA_KEY_FILESYSTEMS)) {
         editFilesystemsPermissions(perm, newValue);
     } else if (perm->type() == FlatpakPermission::Bus) {
         editBusPermissions(perm, newValue);
@@ -1008,11 +1013,11 @@ void FlatpakPermissionModel::addUserEnteredPermission(const QString &name, QStri
     QStringList possibleValues = valueList(cat);
 
     if (cat == i18n("Filesystem Access")) {
-        cat = QStringLiteral("filesystems");
+        cat = QLatin1String(FLATPAK_METADATA_KEY_FILESYSTEMS);
     }
 
     FlatpakPermission::ValueType type = FlatpakPermission::Environment;
-    if (cat == QStringLiteral("filesystems")) {
+    if (cat == QLatin1String(FLATPAK_METADATA_KEY_FILESYSTEMS)) {
         type = FlatpakPermission::Filesystems;
     } else if (cat == QStringLiteral("Session Bus Policy") || cat == QStringLiteral("System Bus Policy")) {
         type = FlatpakPermission::Bus;
