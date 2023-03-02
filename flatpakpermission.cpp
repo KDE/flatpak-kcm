@@ -148,7 +148,7 @@ QString FlatpakPermission::categoryHeading() const
         return i18n("Basic Permissions");
     }
 
-    if (m_category == QStringLiteral("shared")) {
+    if (m_category == QLatin1String(FLATPAK_METADATA_KEY_SHARED)) {
         return i18n("Subsystems Shared");
     }
     if (m_category == QLatin1String(FLATPAK_METADATA_KEY_SOCKETS)) {
@@ -368,8 +368,8 @@ void FlatpakPermissionModel::loadDefaultValues()
     int basicIndex = 0;
 
     /* SHARED category */
-    category = QStringLiteral("shared");
-    const QString sharedPerms = contextGroup.readEntry("shared", QString());
+    category = QLatin1String(FLATPAK_METADATA_KEY_SHARED);
+    const QString sharedPerms = contextGroup.readEntry(QLatin1String(FLATPAK_METADATA_KEY_SHARED), QString());
 
     name = QStringLiteral("network");
     description = i18n("Internet Connection");
