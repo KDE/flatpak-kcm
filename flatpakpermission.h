@@ -160,7 +160,7 @@ private:
     void removeEnvPermission(FlatpakPermission *perm);
     void editEnvPermission(FlatpakPermission *perm, const QString &newValue);
     bool permExists(const QString &name);
-    int permIndex(const QString &category, int from = 0);
+    int permIndex(const QString &category);
     void readFromFile();
     void writeToFile();
 

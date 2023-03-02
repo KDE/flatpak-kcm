@@ -1253,9 +1253,9 @@ bool FlatpakPermissionModel::permExists(const QString &name)
     });
 }
 
-int FlatpakPermissionModel::permIndex(const QString &category, int from)
+int FlatpakPermissionModel::permIndex(const QString &category)
 {
-    int i = from;
+    int i = 0;
     while (i < m_permissions.length()) {
         if (m_permissions.at(i).category() == category) {
             break;
