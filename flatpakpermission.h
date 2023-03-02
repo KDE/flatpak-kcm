@@ -107,13 +107,13 @@ public:
      */
     explicit FlatpakPermission(const QString &name, const QString &category);
 
-    FlatpakPermission(const QString &name,
-                      const QString &category,
-                      const QString &description,
-                      ValueType type,
-                      bool isEnabledByDefault,
-                      const QString &defaultValue = {},
-                      const QStringList &possibleValues = {});
+    explicit FlatpakPermission(const QString &name,
+                               const QString &category,
+                               const QString &description,
+                               ValueType type,
+                               bool isEnabledByDefault,
+                               const QString &defaultValue = {},
+                               const QStringList &possibleValues = {});
     QString name() const;
     QString category() const;
     QString categoryHeading() const;
