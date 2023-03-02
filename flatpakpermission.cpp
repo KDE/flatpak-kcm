@@ -166,7 +166,7 @@ QString FlatpakPermission::categoryHeading() const
     if (m_category == QLatin1String(FLATPAK_METADATA_GROUP_SYSTEM_BUS_POLICY)) {
         return i18n("System Bus Policy");
     }
-    if (m_category == QLatin1String("Environment")) {
+    if (m_category == QLatin1String(FLATPAK_METADATA_GROUP_ENVIRONMENT)) {
         return i18n("Environment");
     }
     if (m_category == QStringLiteral("Advanced Dummy")) {
@@ -639,8 +639,8 @@ void FlatpakPermissionModel::loadDefaultValues()
 
 #if 0 // Disabled because BUG 465502
     /* ENVIRONMENT category */
-    category = QStringLiteral("Environment");
-    const KConfigGroup environmentGroup = parser.group("Environment");
+    category = QLatin1String(FLATPAK_METADATA_GROUP_ENVIRONMENT);
+    const KConfigGroup environmentGroup = parser.group(QLatin1String(FLATPAK_METADATA_GROUP_ENVIRONMENT));
     possibleValues.clear();
     if (environmentGroup.exists()) {
         const QMap<QString, QString> busMap = environmentGroup.entryMap();
@@ -651,7 +651,7 @@ void FlatpakPermissionModel::loadDefaultValues()
             m_permissions.append(FlatpakPermission(name, category, description, FlatpakPermission::Environment, true, defaultValue));
         }
     } else {
-        FlatpakPermission perm(QStringLiteral("Environment Dummy"), QStringLiteral("Environment"));
+        FlatpakPermission perm(QStringLiteral("Environment Dummy"), QLatin1String(FLATPAK_METADATA_GROUP_ENVIRONMENT));
         perm.setSType(FlatpakPermission::SectionType::Advanced);
         perm.setPType(FlatpakPermission::Dummy);
         m_permissions.append(perm);
@@ -792,7 +792,7 @@ void FlatpakPermissionModel::loadCurrentValues()
 
     QVector<QString> cats = {QLatin1String(FLATPAK_METADATA_GROUP_SESSION_BUS_POLICY),
                              QLatin1String(FLATPAK_METADATA_GROUP_SYSTEM_BUS_POLICY),
-                             QStringLiteral("Environment")};
+                             QLatin1String(FLATPAK_METADATA_GROUP_ENVIRONMENT)};
     for (int j = 0; j < cats.length(); j++) {
         const KConfigGroup group = parser.group(cats.at(j));
         if (!group.exists()) {
