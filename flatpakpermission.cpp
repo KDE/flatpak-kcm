@@ -478,7 +478,7 @@ void FlatpakPermissionModel::loadDefaultValues()
     isEnabledByDefault = featuresPerms.contains(name);
     m_permissions.append(FlatpakPermission(name, category, description, FlatpakPermission::Simple, isEnabledByDefault));
 
-    name = i18n("per-app-dev-shm");
+    name = QStringLiteral("per-app-dev-shm");
     description = i18n("Share dev/shm across all instances of an app per user ID");
     isEnabledByDefault = featuresPerms.contains(name);
     m_permissions.append(FlatpakPermission(name, category, description, FlatpakPermission::Simple, isEnabledByDefault));
