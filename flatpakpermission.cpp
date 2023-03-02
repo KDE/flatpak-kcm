@@ -157,7 +157,7 @@ QString FlatpakPermission::categoryHeading() const
     if (m_category == QLatin1String(FLATPAK_METADATA_KEY_DEVICES)) {
         return i18n("Device Access");
     }
-    if (m_category == QStringLiteral("features")) {
+    if (m_category == QLatin1String(FLATPAK_METADATA_KEY_FEATURES)) {
         return i18n("Features Allowed");
     }
     if (m_category == QLatin1String("Session Bus Policy")) {
@@ -464,8 +464,8 @@ void FlatpakPermissionModel::loadDefaultValues()
     /* DEVICES category */
 
     /* FEATURES category */
-    category = QStringLiteral("features");
-    const QString featuresPerms = contextGroup.readEntry("features", QString());
+    category = QLatin1String(FLATPAK_METADATA_KEY_FEATURES);
+    const QString featuresPerms = contextGroup.readEntry(QLatin1String(FLATPAK_METADATA_KEY_FEATURES), QString());
 
     name = QStringLiteral("devel");
     description = i18n("System Calls by Development Tools");
