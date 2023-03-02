@@ -27,7 +27,7 @@ KCM.ScrollViewKCM {
             const index = m.index(row, 0);
             ref = m.data(m.index(row, 0), FlatpakReferencesModel.Ref);
         }
-        kcm.pop(0)
+        kcm.pop()
         kcm.setIndex(row)
         kcm.push("permissions.qml", { ref })
     }
