@@ -175,6 +175,24 @@ QString FlatpakPermission::categoryHeading() const
     return m_category;
 }
 
+QString FlatpakPermission::categoryHeadingToRawCategory(const QString &section)
+{
+    // we expect this method call only from 4 section headers.
+    if (section == i18n("Filesystem Access")) {
+        return QLatin1String(FLATPAK_METADATA_KEY_FILESYSTEMS);
+    }
+    if (section == i18n("Session Bus Policy")) {
+        return QLatin1String(FLATPAK_METADATA_GROUP_SESSION_BUS_POLICY);
+    }
+    if (section == i18n("System Bus Policy")) {
+        return QLatin1String(FLATPAK_METADATA_GROUP_SYSTEM_BUS_POLICY);
+    }
+    if (section == i18n("Environment")) {
+        return QLatin1String(FLATPAK_METADATA_GROUP_ENVIRONMENT);
+    }
+    return QString();
+}
+
 QString FlatpakPermission::description() const
 {
     return m_description;
@@ -1010,13 +1028,10 @@ void FlatpakPermissionModel::editPerm(int index, const QString &newValue)
     Q_EMIT dataChanged(FlatpakPermissionModel::index(index, 0), FlatpakPermissionModel::index(index, 0));
 }
 
-void FlatpakPermissionModel::addUserEnteredPermission(const QString &name, QString cat, const QString &value)
+void FlatpakPermissionModel::addUserEnteredPermission(const QString &name, QString section, const QString &value)
 {
-    QStringList possibleValues = valueList(cat);
-
-    if (cat == i18n("Filesystem Access")) {
-        cat = QLatin1String(FLATPAK_METADATA_KEY_FILESYSTEMS);
-    }
+    QString cat = FlatpakPermission::categoryHeadingToRawCategory(section);
+    QStringList possibleValues = valueListForSection(cat);
 
     FlatpakPermission::ValueType type = FlatpakPermission::Environment;
     if (cat == QLatin1String(FLATPAK_METADATA_KEY_FILESYSTEMS)) {
@@ -1044,15 +1059,21 @@ void FlatpakPermissionModel::addUserEnteredPermission(const QString &name, QStri
     Q_EMIT dataChanged(FlatpakPermissionModel::index(index, 0), FlatpakPermissionModel::index(index, 0));
 }
 
-QStringList FlatpakPermissionModel::valueList(const QString &catHeader) const
+QStringList FlatpakPermissionModel::valueListForSection(const QString &sectionHeader) const
 {
-    QStringList valueList;
-    if (catHeader == i18n("Filesystem Access")) {
-        valueList << i18n("read/write") << i18n("read-only") << i18n("create");
-    } else if (catHeader == i18n("Session Bus Policy") || catHeader == i18n("System Bus Policy")) {
-        valueList << i18n("talk") << i18n("own") << i18n("see");
+    const QString category = FlatpakPermission::categoryHeadingToRawCategory(sectionHeader);
+    return valueListForUntranslatedCategory(category);
+}
+
+QStringList FlatpakPermissionModel::valueListForUntranslatedCategory(const QString &category) const
+{
+    if (category == QLatin1String(FLATPAK_METADATA_KEY_FILESYSTEMS)) {
+        return QStringList{i18n("read/write"), i18n("read-only"), i18n("create")};
     }
-    return valueList;
+    if (category == QLatin1String(FLATPAK_METADATA_GROUP_SESSION_BUS_POLICY) || category == QLatin1String(FLATPAK_METADATA_GROUP_SYSTEM_BUS_POLICY)) {
+        return QStringList{i18n("talk"), i18n("own"), i18n("see")};
+    }
+    return QStringList();
 }
 
 void FlatpakPermissionModel::addPermission(FlatpakPermission *perm, bool shouldBeOn)
