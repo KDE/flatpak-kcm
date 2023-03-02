@@ -1005,7 +1005,8 @@ void FlatpakPermissionModel::togglePermissionAtIndex(int index)
         }
     }
 
-    Q_EMIT dataChanged(FlatpakPermissionModel::index(index, 0), FlatpakPermissionModel::index(index, 0));
+    const auto idx = FlatpakPermissionModel::index(index, 0);
+    Q_EMIT dataChanged(idx, idx);
 }
 
 void FlatpakPermissionModel::editPerm(int index, const QString &newValue)
@@ -1026,7 +1027,8 @@ void FlatpakPermissionModel::editPerm(int index, const QString &newValue)
         editEnvPermission(perm, newValue);
     }
 
-    Q_EMIT dataChanged(FlatpakPermissionModel::index(index, 0), FlatpakPermissionModel::index(index, 0));
+    const auto idx = FlatpakPermissionModel::index(index, 0);
+    Q_EMIT dataChanged(idx, idx);
 }
 
 void FlatpakPermissionModel::addUserEnteredPermission(const QString &name, QString section, const QString &value)
@@ -1057,7 +1059,8 @@ void FlatpakPermissionModel::addUserEnteredPermission(const QString &name, QStri
         addEnvPermission(&perm);
     }
 
-    Q_EMIT dataChanged(FlatpakPermissionModel::index(index, 0), FlatpakPermissionModel::index(index, 0));
+    const auto idx = FlatpakPermissionModel::index(index, 0);
+    Q_EMIT dataChanged(idx, idx);
 }
 
 QStringList FlatpakPermissionModel::valueListForSection(const QString &sectionHeader) const
