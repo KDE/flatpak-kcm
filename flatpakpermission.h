@@ -56,7 +56,7 @@ public:
         Environment
     };
 
-    enum PermType {
+    enum OriginType {
         /**
          * Built-in type is for all pre-defined system resources (permissions)
          * as found in flatpak-metadata(5) man page, and any other additional
@@ -109,7 +109,7 @@ public:
                                const QString &category,
                                const QString &description,
                                ValueType type,
-                               bool isEnabledByDefault,
+                               bool isDefaultEnabled,
                                const QString &defaultValue = {},
                                const QStringList &possibleValues = {});
 
@@ -146,35 +146,38 @@ public:
      */
     QString description() const;
 
-    ValueType type() const;
+    ValueType valueType() const;
 
     /**
      * Type of permission this entry represents.
      */
-    PermType pType() const;
+    OriginType originType() const;
 
     /**
      * Set which type of permissions this entry represents.
      */
     // TODO: This method should be replaced with constructor argument.
-    void setPType(PermType pType);
+    void setOriginType(OriginType type);
 
     /**
      * Section type of this permission. Defaults to SectionType::Basic for
      * ValueType::Filesystems, and Advanced for everything else.
      */
-    SectionType sType() const;
+    SectionType sectionType() const;
 
     /**
      * Set section type for this permission.
      */
     // TODO: This method should be replaced with constructor argument.
-    void setSType(SectionType sType);
+    void setSectionType(SectionType type);
 
-    bool enabledByDefault() const;
+    /**
+     * System default "enabled" status of this permission. It can not be modified.
+     */
+    bool isDefaultEnabled() const;
 
     /** Set user override */
-    void setLoadEnabled(bool isLoadEnabled);
+    void setOverrideEnabled(bool enabled);
 
     /**
      * This property reports the current effective "enabled" status of this
@@ -188,8 +191,8 @@ public:
      */
     // TODO: What should it do for built-in permissions of other ValueType
     // types? It doesn't make much sense.
-    bool enabled() const;
-    void setEnabled(bool isEnabled);
+    bool isEffectiveEnabled() const;
+    void setEffectiveEnabled(bool enabled);
 
     /**
      * System default value for this permission. It can not be modified.
@@ -199,10 +202,10 @@ public:
     QString defaultValue() const;
 
     // TODO: Remove this method.
-    QString loadValue() const;
+    QString overrideValue() const;
 
     /** Set user override */
-    void setLoadValue(const QString &value);
+    void setOverrideValue(const QString &value);
 
     /**
      * This property holds the current effective value of this permission in
@@ -210,8 +213,8 @@ public:
      *
      * See ValueType enum for more.
      */
-    QString currentValue() const;
-    void setCurrentValue(const QString &value);
+    QString effectiveValue() const;
+    void setEffectiveValue(const QString &value);
 
     /** Untranslate value of ValueTyep::Filesystems permission. */
     // TODO: Remove this method, store enum variants or otherwise raw untranslated data.
@@ -246,27 +249,27 @@ private:
 
     /* Attempts to classify permissions into various types and groups. */
 
-    ValueType m_type;
-    PermType m_pType;
-    SectionType m_sType;
+    ValueType m_valueType;
+    OriginType m_originType;
+    SectionType m_sectionType;
 
     /* Applicable for all ValueType permissions. */
 
     /** System defaults */
-    bool m_isEnabledByDefault;
+    bool m_defaultEnable;
     /** User overrides */
-    bool m_isLoadEnabled;
+    bool m_overrideEnable;
     /** Current value in KCM */
-    bool m_isEnabled;
+    bool m_effectiveEnable;
 
     /* Applicable for any permissions other than ValueType::Simple. */
 
     /** System defaults */
     QString m_defaultValue;
     /** User overrides */
-    QString m_loadValue;
+    QString m_overrideValue;
     /** Current value in KCM */
-    QString m_currentValue;
+    QString m_effectiveValue;
 
     /* Applicable for ValueType::Filesystems and ValueType::Bus only. */
 
