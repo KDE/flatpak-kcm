@@ -659,8 +659,8 @@ void FlatpakPermissionModel::loadDefaultValues()
         }
     } else {
         FlatpakPermission perm(QStringLiteral("Environment Dummy"), QLatin1String(FLATPAK_METADATA_GROUP_ENVIRONMENT));
-        perm.setSType(FlatpakPermission::SectionType::Advanced);
-        perm.setPType(FlatpakPermission::Dummy);
+        perm.setSectionType(FlatpakPermission::SectionType::Advanced);
+        perm.setOriginType(FlatpakPermission::Dummy);
         m_permissions.append(perm);
     }
     /* ENVIRONMENT category */
