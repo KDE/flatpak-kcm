@@ -802,9 +802,12 @@ void FlatpakPermissionModel::loadCurrentValues()
         }
     }
 
-    QVector<QString> cats = {QLatin1String(FLATPAK_METADATA_GROUP_SESSION_BUS_POLICY),
-                             QLatin1String(FLATPAK_METADATA_GROUP_SYSTEM_BUS_POLICY),
-                             QLatin1String(FLATPAK_METADATA_GROUP_ENVIRONMENT)};
+    // Disabled because BUG 465502
+    QVector<QString> cats = {
+        QLatin1String(FLATPAK_METADATA_GROUP_SESSION_BUS_POLICY),
+        QLatin1String(FLATPAK_METADATA_GROUP_SYSTEM_BUS_POLICY),
+        /* QLatin1String(FLATPAK_METADATA_GROUP_ENVIRONMENT) */
+    };
     for (int j = 0; j < cats.length(); j++) {
         const KConfigGroup group = parser.group(cats.at(j));
         if (!group.exists()) {
