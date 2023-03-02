@@ -160,7 +160,7 @@ QString FlatpakPermission::categoryHeading() const
     if (m_category == QLatin1String(FLATPAK_METADATA_KEY_FEATURES)) {
         return i18n("Features Allowed");
     }
-    if (m_category == QLatin1String("Session Bus Policy")) {
+    if (m_category == QLatin1String(FLATPAK_METADATA_GROUP_SESSION_BUS_POLICY)) {
         return i18n("Session Bus Policy");
     }
     if (m_category == QLatin1String("System Bus Policy")) {
@@ -592,8 +592,8 @@ void FlatpakPermissionModel::loadDefaultValues()
     /* DUMMY ADVANCED category */
 
     /* SESSION BUS category */
-    category = QStringLiteral("Session Bus Policy");
-    const KConfigGroup sessionBusGroup = parser.group("Session Bus Policy");
+    category = QLatin1String(FLATPAK_METADATA_GROUP_SESSION_BUS_POLICY);
+    const KConfigGroup sessionBusGroup = parser.group(QLatin1String(FLATPAK_METADATA_GROUP_SESSION_BUS_POLICY));
     possibleValues.clear();
     possibleValues << i18n("talk") << i18n("own") << i18n("see");
     if (sessionBusGroup.exists()) {
@@ -608,7 +608,7 @@ void FlatpakPermissionModel::loadDefaultValues()
             m_permissions.append(FlatpakPermission(name, category, description, FlatpakPermission::Bus, isEnabledByDefault, defaultValue, possibleValues));
         }
     } else {
-        FlatpakPermission perm(QStringLiteral("Session Bus Dummy"), QStringLiteral("Session Bus Policy"));
+        FlatpakPermission perm(QStringLiteral("Session Bus Dummy"), QLatin1String(FLATPAK_METADATA_GROUP_SESSION_BUS_POLICY));
         perm.setSType(FlatpakPermission::SectionType::Advanced);
         perm.setPType(FlatpakPermission::Dummy);
         m_permissions.append(perm);
@@ -790,7 +790,7 @@ void FlatpakPermissionModel::loadCurrentValues()
         }
     }
 
-    QVector<QString> cats = {QStringLiteral("Session Bus Policy"), QStringLiteral("System Bus Policy"), QStringLiteral("Environment")};
+    QVector<QString> cats = {QLatin1String(FLATPAK_METADATA_GROUP_SESSION_BUS_POLICY), QStringLiteral("System Bus Policy"), QStringLiteral("Environment")};
     for (int j = 0; j < cats.length(); j++) {
         const KConfigGroup group = parser.group(cats.at(j));
         if (!group.exists()) {
@@ -1019,7 +1019,7 @@ void FlatpakPermissionModel::addUserEnteredPermission(const QString &name, QStri
     FlatpakPermission::ValueType type = FlatpakPermission::Environment;
     if (cat == QLatin1String(FLATPAK_METADATA_KEY_FILESYSTEMS)) {
         type = FlatpakPermission::Filesystems;
-    } else if (cat == QStringLiteral("Session Bus Policy") || cat == QStringLiteral("System Bus Policy")) {
+    } else if (cat == QLatin1String(FLATPAK_METADATA_GROUP_SESSION_BUS_POLICY) || cat == QStringLiteral("System Bus Policy")) {
         type = FlatpakPermission::Bus;
     }
 
