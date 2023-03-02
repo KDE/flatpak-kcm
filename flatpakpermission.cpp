@@ -29,16 +29,21 @@ FlatpakPermission::FlatpakPermission(const QString &name,
     : m_name(name)
     , m_category(category)
     , m_description(description)
+    //
     , m_type(type)
     , m_pType(FlatpakPermission::BuiltIn)
+    , m_sType(type == FlatpakPermission::Filesystems ? FlatpakPermission::Basic : FlatpakPermission::Advanced)
+    //
     , m_isEnabledByDefault(isEnabledByDefault)
+    , m_isLoadEnabled(isEnabledByDefault)
+    , m_isEnabled(isEnabledByDefault)
+    //
     , m_defaultValue(defaultValue)
+    , m_loadValue(defaultValue)
+    , m_currentValue(defaultValue)
+    //
     , m_possibleValues(possibleValues)
 {
-    /* will override while loading current values */
-    m_isEnabled = m_isLoadEnabled = isEnabledByDefault;
-    m_currentValue = m_loadValue = m_defaultValue;
-    m_sType = m_type == FlatpakPermission::Filesystems ? FlatpakPermission::Basic : FlatpakPermission::Advanced;
 }
 
 QString FlatpakPermission::name() const

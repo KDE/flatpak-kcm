@@ -13,25 +13,92 @@
 
 class FlatpakReference;
 
+/**
+ * @class FlatpakPermission describes a single configurable entry in the list model of permissions.
+ *
+ * The content of instances of this class can be interpretted in different ways depending on their
+ * value type(), permission pType() and section sType().
+ *
+ * See flatpak-metadata(5) for more.
+ */
 class FlatpakPermission
 {
 public:
     enum ValueType {
-        Simple, /* on/off values, eg: internet connection */
-        Filesystems, /* OFF, read-only, read/write, create */
+        /**
+         * This type is for permission entries representing simple boolean
+         * toggles.
+         *
+         * Name of such entry is one of the predefined resource names, e.g.:
+         * "bluetooth" from "features" category, "kvm" from "devices" category
+         * etc, "pulseaudio" from "sockets" category etc.
+         */
+        Simple,
+        /**
+         * Filesystem permissions fall into the "Basic" section type, i.e.
+         * always shown.
+         *
+         * Name of such entry is an actual filesystem path, and the value is
+         * one of the suffixes: ":ro", ":rw" (default), ":create".
+         */
+        Filesystems,
+        /**
+         * Name of such permission entry is a D-Bus bus name or prefix thereof,
+         * for example org.gnome.SessionManager or org.freedesktop.portal.*
+         *
+         * The possible values for entry are: "none", "see", "talk" or "own".
+         */
         Bus,
+        /**
+         * Name and value of such permission entry are name and value of an
+         * environment variable.
+         */
         Environment
     };
 
     enum PermType {
-        BuiltIn, /* all simple permissions, and all FS, Bus and Env ones that come in metadata */
-        UserDefined, /* FS, Bus and Env ones that the user types */
-        Dummy /* empty permissions, just for showing section headers for categories that don't have permissions */
+        /**
+         * Built-in type is for all pre-defined system resources (permissions)
+         * as found in flatpak-metadata(5) man page, and any other additional
+         * resources declared in app metadata.
+         *
+         * They shall not be removed from the list of permissions when
+         * unchecked.
+         *
+         * TODO: Instead of unchecking there should be more obvious UI. For Bus
+         * type, there's a "none" value. For environment we should implement
+         * "unset-environment" category. For filesystem paths it is not
+         * specified, so we probably should remove the ability to "uncheck"
+         * them, and show a "Remove" button instead.
+         *
+         * Predefined resources come with translated description.
+         */
+        BuiltIn,
+        /**
+         * User-defined permissions are resources that user has manually added
+         * in their overrides. In other words, they are not present in app
+         * metadata manifest, and can be removed completely when unchecked.
+         *
+         * TODO: Same as in BuiltIn, consider "Remove" button instead of unchecking.
+         */
+        UserDefined,
+        /**
+         * Empty permissions, just for showing section headers for categories
+         * that don't have permissions.
+         */
+        Dummy
     };
 
     enum SectionType {
-        Basic, /* easy-to-understand permissions, includes: print system access, internet connection, filesystems etc. */
-        Advanced /* more "technical" permissions */
+        /**
+         * Easy-to-understand permissions, such as: print system access,
+         * internet connection, all filesystem resources etc.
+         */
+        Basic,
+        /**
+         * More "technical" permissions.
+         */
+        Advanced
     };
 
     /**
@@ -50,9 +117,10 @@ public:
     QString name() const;
     QString category() const;
     QString categoryHeading() const;
-    /** Untranslate section heading back into category identifier.
-     * It's a hack until the model is refactored to only operate on identifiers,
-     * and all i18n stuff is moved elsewhere.
+    /**
+     * Untranslate section heading back into category identifier. It's a hack
+     * until the model is refactored to only operate on identifiers, and all
+     * i18n stuff is moved elsewhere.
      */
     static QString categoryHeadingToRawCategory(const QString &section);
     QString description() const;
@@ -94,20 +162,35 @@ private:
     QString m_category;
     /** Human-readable description of the permission, or whatever to be displayed in UI. */
     QString m_description;
+
+    /* Attempts to classify permissions into various types and groups. */
+
     ValueType m_type;
     PermType m_pType;
     SectionType m_sType;
 
-    /* applicable for all permission types */
-    bool m_isEnabled;
-    bool m_isEnabledByDefault;
-    bool m_isLoadEnabled; /* is it enabled before the user makes any changes in THIS session? */
+    /* Applicable for all ValueType permissions. */
 
-    /* for non-simple types only */
+    /** System defaults */
+    bool m_isEnabledByDefault;
+    /** User overrides */
+    bool m_isLoadEnabled;
+    /** Current value in KCM */
+    bool m_isEnabled;
+
+    /* Applicable for any permissions other than ValueType::Simple. */
+
+    /** System defaults */
     QString m_defaultValue;
-    QStringList m_possibleValues;
+    /** User overrides */
+    QString m_loadValue;
+    /** Current value in KCM */
     QString m_currentValue;
-    QString m_loadValue; /* what the value was before user made any changes in THIS session */
+
+    /* Applicable for ValueType::Filesystems and ValueType::Bus only. */
+
+    /** Static list of translated policy names. */
+    QStringList m_possibleValues;
 };
 
 class FlatpakPermissionModel : public QAbstractListModel
