@@ -14,20 +14,8 @@
 #include <QFileInfo>
 #include <QTemporaryFile>
 
-FlatpakPermission::FlatpakPermission(const QString &name,
-                                     const QString &category,
-                                     const QString &description,
-                                     const QString &defaultValue,
-                                     const QStringList &possibleValues,
-                                     const QString &currentValue,
-                                     ValueType type)
-    : m_name(name)
-    , m_category(category)
-    , m_description(description)
-    , m_type(type)
-    , m_defaultValue(defaultValue)
-    , m_possibleValues(possibleValues)
-    , m_currentValue(currentValue)
+FlatpakPermission::FlatpakPermission(const QString &name, const QString &category)
+    : FlatpakPermission(name, category, QString(), ValueType::Simple, false)
 {
 }
 

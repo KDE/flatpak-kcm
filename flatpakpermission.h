@@ -34,13 +34,12 @@ public:
         Advanced /* more "technical" permissions */
     };
 
-    explicit FlatpakPermission(const QString &name = {},
-                               const QString &category = {},
-                               const QString &description = {},
-                               const QString &defaultValue = QStringLiteral("OFF"),
-                               const QStringList &possibleValues = {},
-                               const QString &currentValue = {},
-                               ValueType type = ValueType::Simple);
+    /**
+     * Create dummy section content, just so that ListView shows a section
+     * header even if there are no actual rows in it.
+     */
+    explicit FlatpakPermission(const QString &name, const QString &category);
+
     FlatpakPermission(const QString &name,
                       const QString &category,
                       const QString &description,
