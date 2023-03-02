@@ -159,6 +159,15 @@ QString FlatpakPermission::categoryHeading() const
     if (m_category == QStringLiteral("features")) {
         return i18n("Features Allowed");
     }
+    if (m_category == QLatin1String("Session Bus Policy")) {
+        return i18n("Session Bus Policy");
+    }
+    if (m_category == QLatin1String("System Bus Policy")) {
+        return i18n("System Bus Policy");
+    }
+    if (m_category == QLatin1String("Environment")) {
+        return i18n("Environment");
+    }
     if (m_category == QStringLiteral("Advanced Dummy")) {
         return i18n("Advanced Permissions");
     }
