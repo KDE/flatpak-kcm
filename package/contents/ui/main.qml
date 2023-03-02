@@ -56,7 +56,7 @@ KCM.ScrollViewKCM {
             ref = kcm.refsModel.data(sourceIndex, FlatpakReferencesModel.Ref);
             appsListView.setCurrentIndexLater(toAppAtSourceRowIndex);
         }
-        kcm.pop(0);
+        kcm.pop();
         kcm.setIndex(toAppAtSourceRowIndex);
         kcm.push("permissions.qml", { ref });
     }
