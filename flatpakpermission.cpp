@@ -644,7 +644,10 @@ void FlatpakPermissionModel::loadDefaultValues()
     }
     /* SYSTEM BUS category */
 
-#if 0 // Disabled because BUG 465502
+    /* clang-format off */
+// Disabled because BUG 465502
+if (false) {
+
     /* ENVIRONMENT category */
     category = QLatin1String(FLATPAK_METADATA_GROUP_ENVIRONMENT);
     const KConfigGroup environmentGroup = parser.group(QLatin1String(FLATPAK_METADATA_GROUP_ENVIRONMENT));
@@ -664,7 +667,9 @@ void FlatpakPermissionModel::loadDefaultValues()
         m_permissions.append(perm);
     }
     /* ENVIRONMENT category */
-#endif
+
+} // end of if (false)
+    /* clang-format on */
 }
 
 void FlatpakPermissionModel::loadCurrentValues()
