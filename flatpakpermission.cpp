@@ -30,6 +30,7 @@ FlatpakPermission::FlatpakPermission(const QString &name,
     , m_category(category)
     , m_description(description)
     , m_type(type)
+    , m_pType(FlatpakPermission::BuiltIn)
     , m_isEnabledByDefault(isEnabledByDefault)
     , m_defaultValue(defaultValue)
     , m_possibleValues(possibleValues)
