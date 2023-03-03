@@ -834,7 +834,7 @@ void FlatpakPermissionModel::loadCurrentValues()
     }
 }
 
-FlatpakReference *FlatpakPermissionModel::reference()
+FlatpakReference *FlatpakPermissionModel::reference() const
 {
     return m_reference;
 }
