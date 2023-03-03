@@ -100,8 +100,8 @@ public:
     };
 
     /**
-     * Create dummy section content, just so that ListView shows a section
-     * header even if there are no actual rows in it.
+     * Create a Dummy entry in the Advanced section, just so that ListView shows
+     * a section header even if there are no actual rows in it.
      */
     explicit FlatpakPermission(const QString &name, const QString &category);
 
