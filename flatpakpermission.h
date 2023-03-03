@@ -24,7 +24,7 @@ class FlatpakReference;
 class FlatpakPermission
 {
 public:
-    enum ValueType {
+    enum class ValueType {
         /**
          * This type is for permission entries representing simple boolean
          * toggles.
@@ -56,7 +56,7 @@ public:
         Environment
     };
 
-    enum OriginType {
+    enum class OriginType {
         /**
          * Built-in type is for all pre-defined system resources (permissions)
          * as found in flatpak-metadata(5) man page, and any other additional
@@ -87,7 +87,7 @@ public:
         Dummy
     };
 
-    enum SectionType {
+    enum class SectionType {
         /**
          * Easy-to-understand permissions, such as: print system access,
          * internet connection, all filesystem resources etc.
