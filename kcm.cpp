@@ -33,7 +33,6 @@ KCMFlatpak::KCMFlatpak(QObject *parent, const KPluginMetaData &data, const QVari
 
     connect(m_refsModel, &FlatpakReferencesModel::needsLoad, this, &KCMFlatpak::load);
     connect(m_refsModel, &FlatpakReferencesModel::needsSaveChanged, this, &KCMFlatpak::settingsChanged);
-    settingsChanged(); // Initialize Reset & Defaults buttons
 
     if (!requestedReference.isEmpty()) {
         const auto &refs = m_refsModel->references();
@@ -45,6 +44,8 @@ KCMFlatpak::KCMFlatpak(QObject *parent, const KPluginMetaData &data, const QVari
             m_index = index;
         }
     }
+
+    settingsChanged(); // Initialize Reset & Defaults buttons
 }
 
 void KCMFlatpak::load()
@@ -76,6 +77,7 @@ bool KCMFlatpak::isDefaults() const
 void KCMFlatpak::setIndex(int index)
 {
     m_index = index;
+    settingsChanged(); // Because Apply, Reset & Defaults buttons depend on m_index.
 }
 
 int KCMFlatpak::currentIndex() const
