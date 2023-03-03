@@ -311,6 +311,7 @@ public:
     void loadCurrentValues();
 
     FlatpakReference *reference();
+    void setReference(FlatpakReference *ref);
 
     void load();
     void save();
@@ -322,7 +323,6 @@ public:
     Q_INVOKABLE QStringList valueListForUntranslatedCategory(const QString &category) const;
 
 public Q_SLOTS:
-    void setReference(FlatpakReference *ref);
     void togglePermissionAtIndex(int index);
     void editPerm(int index, const QString &newValue);
     void addUserEnteredPermission(const QString &name, QString cat, const QString &value);
