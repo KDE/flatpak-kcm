@@ -152,10 +152,7 @@ KCM.ScrollViewKCM {
 
             text: model.description
             visible: model.isNotDummy
-            hoverEnabled: false
             checkable: true
-            activeBackgroundColor: "transparent"
-            activeTextColor: Kirigami.Theme.textColor
             onClicked: permsModel.togglePermissionAtIndex(permItem.index)
 
             leading: QQC2.CheckBox {
