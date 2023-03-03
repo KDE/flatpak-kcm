@@ -17,6 +17,8 @@
 FlatpakPermission::FlatpakPermission(const QString &name, const QString &category)
     : FlatpakPermission(name, category, QString(), ValueType::Simple, false)
 {
+    m_originType = OriginType::Dummy;
+    m_sectionType = SectionType::Advanced;
 }
 
 FlatpakPermission::FlatpakPermission(const QString &name,
@@ -600,10 +602,7 @@ void FlatpakPermissionModel::loadDefaultValues()
     /* FILESYSTEM category */
 
     /* DUMMY ADVANCED category */
-    FlatpakPermission perm(QStringLiteral("Advanced Dummy"), QStringLiteral("Advanced Dummy"));
-    perm.setOriginType(FlatpakPermission::Dummy);
-    perm.setSectionType(FlatpakPermission::Advanced);
-    m_permissions.insert(basicIndex++, perm);
+    m_permissions.insert(basicIndex++, FlatpakPermission(QStringLiteral("Advanced Dummy"), QStringLiteral("Advanced Dummy")));
     /* DUMMY ADVANCED category */
 
     /* SESSION BUS category */
@@ -621,10 +620,7 @@ void FlatpakPermissionModel::loadDefaultValues()
             m_permissions.append(FlatpakPermission(name, category, description, FlatpakPermission::Bus, isEnabledByDefault, defaultValue, possibleValues));
         }
     } else {
-        FlatpakPermission perm(QStringLiteral("Session Bus Dummy"), QLatin1String(FLATPAK_METADATA_GROUP_SESSION_BUS_POLICY));
-        perm.setSectionType(FlatpakPermission::SectionType::Advanced);
-        perm.setOriginType(FlatpakPermission::Dummy);
-        m_permissions.append(perm);
+        m_permissions.append(FlatpakPermission(QStringLiteral("Session Bus Dummy"), QLatin1String(FLATPAK_METADATA_GROUP_SESSION_BUS_POLICY)));
     }
     /* SESSION BUS category */
 
@@ -643,10 +639,7 @@ void FlatpakPermissionModel::loadDefaultValues()
             m_permissions.append(FlatpakPermission(name, category, description, FlatpakPermission::Bus, isEnabledByDefault, defaultValue, possibleValues));
         }
     } else {
-        FlatpakPermission perm(QStringLiteral("System Bus Dummy"), QLatin1String(FLATPAK_METADATA_GROUP_SYSTEM_BUS_POLICY));
-        perm.setSectionType(FlatpakPermission::SectionType::Advanced);
-        perm.setOriginType(FlatpakPermission::Dummy);
-        m_permissions.append(perm);
+        m_permissions.append(FlatpakPermission(QStringLiteral("System Bus Dummy"), QLatin1String(FLATPAK_METADATA_GROUP_SYSTEM_BUS_POLICY)));
     }
     /* SYSTEM BUS category */
 
@@ -667,10 +660,7 @@ if (false) {
             m_permissions.append(FlatpakPermission(name, category, description, FlatpakPermission::Environment, true, defaultValue));
         }
     } else {
-        FlatpakPermission perm(QStringLiteral("Environment Dummy"), QLatin1String(FLATPAK_METADATA_GROUP_ENVIRONMENT));
-        perm.setSectionType(FlatpakPermission::SectionType::Advanced);
-        perm.setOriginType(FlatpakPermission::Dummy);
-        m_permissions.append(perm);
+        m_permissions.append(FlatpakPermission(QStringLiteral("Environment Dummy"), QLatin1String(FLATPAK_METADATA_GROUP_ENVIRONMENT)));
     }
     /* ENVIRONMENT category */
 
