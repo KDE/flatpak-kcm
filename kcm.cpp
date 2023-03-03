@@ -32,7 +32,7 @@ KCMFlatpak::KCMFlatpak(QObject *parent, const KPluginMetaData &data, const QVari
     qmlRegisterUncreatableType<FlatpakReferencesModel>(uri, 1, 0, "FlatpakReferencesModel", QStringLiteral("For enum access only"));
 
     connect(m_refsModel, &FlatpakReferencesModel::needsLoad, this, &KCMFlatpak::load);
-    connect(m_refsModel, &FlatpakReferencesModel::needsSaveChanged, this, &KCMFlatpak::refreshSaveNeeded);
+    connect(m_refsModel, &FlatpakReferencesModel::needsSaveChanged, this, &KCMFlatpak::settingsChanged);
 
     if (!requestedReference.isEmpty()) {
         const auto &refs = m_refsModel->references();
@@ -44,11 +44,6 @@ KCMFlatpak::KCMFlatpak(QObject *parent, const KPluginMetaData &data, const QVari
             m_index = index;
         }
     }
-}
-
-void KCMFlatpak::refreshSaveNeeded()
-{
-    setNeedsSave(isSaveNeeded());
 }
 
 void KCMFlatpak::load()

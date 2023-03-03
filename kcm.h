@@ -21,8 +21,6 @@ public:
      */
     explicit KCMFlatpak(QObject *parent, const KPluginMetaData &data, const QVariantList &args);
 
-    void refreshSaveNeeded();
-
     Q_INVOKABLE bool isSaveNeeded() const override;
     Q_INVOKABLE bool isDefaults() const override;
     Q_INVOKABLE int currentIndex() const;
