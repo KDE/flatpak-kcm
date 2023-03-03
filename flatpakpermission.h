@@ -296,7 +296,6 @@ public:
         IsGranted,
         IsSimple,
         IsEnvironment,
-        Path,
         IsNotDummy,
         IsBasic
     };
