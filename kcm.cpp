@@ -23,6 +23,7 @@ KCMFlatpak::KCMFlatpak(QObject *parent, const KPluginMetaData &data, const QVari
 
     connect(m_refsModel, &FlatpakReferencesModel::needsLoad, this, &KCMFlatpak::load);
     connect(m_refsModel, &FlatpakReferencesModel::needsSaveChanged, this, &KCMFlatpak::settingsChanged);
+    settingsChanged(); // Initialize Reset & Defaults buttons
 }
 
 void KCMFlatpak::load()
