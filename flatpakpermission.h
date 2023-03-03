@@ -310,7 +310,7 @@ public:
     void loadDefaultValues();
     void loadCurrentValues();
 
-    FlatpakReference *reference();
+    FlatpakReference *reference() const;
     void setReference(FlatpakReference *ref);
 
     void load();
