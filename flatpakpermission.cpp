@@ -839,6 +839,22 @@ FlatpakReference *FlatpakPermissionModel::reference() const
     return m_reference;
 }
 
+void FlatpakPermissionModel::setReference(FlatpakReference *reference)
+{
+    if (reference != m_reference) {
+        beginResetModel();
+        if (m_reference) {
+            m_reference->setPermsModel(nullptr);
+        }
+        m_reference = reference;
+        if (m_reference) {
+            m_reference->setPermsModel(this);
+        }
+        endResetModel();
+        Q_EMIT referenceChanged();
+    }
+}
+
 void FlatpakPermissionModel::load()
 {
     m_permissions.clear();
@@ -886,20 +902,21 @@ bool FlatpakPermissionModel::isSaveNeeded() const
     });
 }
 
-void FlatpakPermissionModel::setReference(FlatpakReference *reference)
+QStringList FlatpakPermissionModel::valueListForSection(const QString &sectionHeader) const
 {
-    if (reference != m_reference) {
-        beginResetModel();
-        if (m_reference) {
-            m_reference->setPermsModel(nullptr);
-        }
-        m_reference = reference;
-        if (m_reference) {
-            m_reference->setPermsModel(this);
-        }
-        endResetModel();
-        Q_EMIT referenceChanged();
+    const QString category = FlatpakPermission::categoryHeadingToRawCategory(sectionHeader);
+    return valueListForUntranslatedCategory(category);
+}
+
+QStringList FlatpakPermissionModel::valueListForUntranslatedCategory(const QString &category) const
+{
+    if (category == QLatin1String(FLATPAK_METADATA_KEY_FILESYSTEMS)) {
+        return QStringList{i18n("read/write"), i18n("read-only"), i18n("create")};
     }
+    if (category == QLatin1String(FLATPAK_METADATA_GROUP_SESSION_BUS_POLICY) || category == QLatin1String(FLATPAK_METADATA_GROUP_SYSTEM_BUS_POLICY)) {
+        return QStringList{i18n("talk"), i18n("own"), i18n("see")};
+    }
+    return QStringList();
 }
 
 void FlatpakPermissionModel::togglePermissionAtIndex(int index)
@@ -1053,23 +1070,6 @@ void FlatpakPermissionModel::addUserEnteredPermission(const QString &name, QStri
 
     const auto idx = FlatpakPermissionModel::index(index, 0);
     Q_EMIT dataChanged(idx, idx);
-}
-
-QStringList FlatpakPermissionModel::valueListForSection(const QString &sectionHeader) const
-{
-    const QString category = FlatpakPermission::categoryHeadingToRawCategory(sectionHeader);
-    return valueListForUntranslatedCategory(category);
-}
-
-QStringList FlatpakPermissionModel::valueListForUntranslatedCategory(const QString &category) const
-{
-    if (category == QLatin1String(FLATPAK_METADATA_KEY_FILESYSTEMS)) {
-        return QStringList{i18n("read/write"), i18n("read-only"), i18n("create")};
-    }
-    if (category == QLatin1String(FLATPAK_METADATA_GROUP_SESSION_BUS_POLICY) || category == QLatin1String(FLATPAK_METADATA_GROUP_SYSTEM_BUS_POLICY)) {
-        return QStringList{i18n("talk"), i18n("own"), i18n("see")};
-    }
-    return QStringList();
 }
 
 void FlatpakPermissionModel::addPermission(FlatpakPermission *perm, bool shouldBeOn)
