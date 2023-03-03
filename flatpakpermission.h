@@ -294,7 +294,6 @@ public:
         CurrentValue,
         DefaultValue,
         IsGranted,
-        Type,
         IsSimple,
         IsEnvironment,
         Path,
