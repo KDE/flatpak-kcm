@@ -66,7 +66,9 @@ QString FlatpakPermission::categoryHeading() const
         }
         return i18n("Basic Permissions");
     }
-
+    if (m_category == QStringLiteral("Advanced Dummy")) {
+        return i18n("Advanced Permissions");
+    }
     if (m_category == QLatin1String(FLATPAK_METADATA_KEY_SHARED)) {
         return i18n("Subsystems Shared");
     }
@@ -87,9 +89,6 @@ QString FlatpakPermission::categoryHeading() const
     }
     if (m_category == QLatin1String(FLATPAK_METADATA_GROUP_ENVIRONMENT)) {
         return i18n("Environment");
-    }
-    if (m_category == QStringLiteral("Advanced Dummy")) {
-        return i18n("Advanced Permissions");
     }
     return m_category;
 }
@@ -284,12 +283,18 @@ static QString postfixToFrontendFileSystemValue(const QStringView &postfix)
     return i18n("read/write");
 }
 
+FlatpakPermissionModel::FlatpakPermissionModel(QObject *parent)
+    : QAbstractListModel(parent)
+    , m_showAdvanced(false)
+{
+}
+
 int FlatpakPermissionModel::rowCount(const QModelIndex &parent) const
 {
     if (parent.isValid()) {
         return 0;
     }
-    return m_permissions.count();
+    return rowCount(m_showAdvanced);
 }
 
 QVariant FlatpakPermissionModel::data(const QModelIndex &index, int role) const
@@ -321,14 +326,6 @@ QVariant FlatpakPermissionModel::data(const QModelIndex &index, int role) const
         return permission.valueType() == FlatpakPermission::Environment;
     case Roles::IsNotDummy:
         return permission.originType() != FlatpakPermission::Dummy;
-    case Roles::SectionType:
-        if (permission.sectionType() == FlatpakPermission::Basic) {
-            if (permission.valueType() == FlatpakPermission::Filesystems) {
-                return i18n("Filesystem Access");
-            }
-            return i18n("Basic Permissions");
-        }
-        return i18n("Advanced Permissions");
     case Roles::IsBasic:
         return permission.sectionType() == FlatpakPermission::Basic;
     case Roles::ValueList:
@@ -356,7 +353,6 @@ QHash<int, QByteArray> FlatpakPermissionModel::roleNames() const
     roles[Roles::IsSimple] = "isSimple";
     roles[Roles::IsEnvironment] = "isEnvironment";
     roles[Roles::IsNotDummy] = "isNotDummy";
-    roles[Roles::SectionType] = "sectionType";
     roles[Roles::IsBasic] = "isBasic";
     return roles;
 }
@@ -852,6 +848,52 @@ void FlatpakPermissionModel::setReference(FlatpakReference *reference)
         }
         endResetModel();
         Q_EMIT referenceChanged();
+    }
+}
+
+bool FlatpakPermissionModel::showAdvanced() const
+{
+    return m_showAdvanced;
+}
+
+void FlatpakPermissionModel::setShowAdvanced(bool show)
+{
+    if (m_showAdvanced != show) {
+        const int whenHidden = rowCount(false);
+        const int whenShown = rowCount(true);
+
+        if (show) {
+            beginInsertRows(QModelIndex(), whenHidden, whenShown - 1);
+        } else {
+            beginRemoveRows(QModelIndex(), whenHidden, whenShown - 1);
+        }
+
+        m_showAdvanced = show;
+
+        if (show) {
+            endInsertRows();
+        } else {
+            endRemoveRows();
+        }
+
+        Q_EMIT showAdvancedChanged();
+    }
+}
+
+int FlatpakPermissionModel::rowCount(bool showAdvanced) const
+{
+    if (showAdvanced) {
+        return m_permissions.count();
+    } else {
+        int count = 0;
+        for (const auto &permission : m_permissions) {
+            if (permission.sectionType() == FlatpakPermission::SectionType::Basic || permission.category() == QStringLiteral("Advanced Dummy")) {
+                count += 1;
+            } else {
+                break;
+            }
+        }
+        return count;
     }
 }
 
