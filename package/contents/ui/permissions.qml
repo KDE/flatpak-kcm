@@ -18,7 +18,6 @@ KCM.ScrollViewKCM {
     implicitWidth: Kirigami.Units.gridUnit * 15
     framedView: false
     property var ref: null
-    property bool showAdvanced: false
 
     Kirigami.PlaceholderMessage {
         text: i18n("Select an application from the list to view its permissions here")
@@ -97,18 +96,18 @@ KCM.ScrollViewKCM {
         header: root.ref === null ? null : headerComponent
         headerPositioning: ListView.InlineHeader
 
-        section.property: root.showAdvanced ? "category" : "sectionType"
+        section.property: "category"
         section.criteria: ViewSection.FullString
         section.delegate: Kirigami.ListSectionHeader {
             width: ListView.view.width - ListView.view.leftMargin - ListView.view.rightMargin
             label: section
             QQC2.ToolButton {
                 id: buttonToggleAdvanced
-                text: root.showAdvanced ? i18n("Hide advanced permissions") : i18n("Show advanced permissions")
+                text: permsModel.showAdvanced ? i18n("Hide advanced permissions") : i18n("Show advanced permissions")
                 display: QQC2.AbstractButton.IconOnly
-                icon.name: root.showAdvanced ? "collapse" : "expand"
+                icon.name: permsModel.showAdvanced ? "collapse" : "expand"
                 visible: section === i18n("Advanced Permissions")
-                onClicked: root.showAdvanced = !root.showAdvanced
+                onClicked: permsModel.showAdvanced = !permsModel.showAdvanced
                 Layout.alignment: Qt.AlignRight
 
                 QQC2.ToolTip.text: text
@@ -204,7 +203,7 @@ KCM.ScrollViewKCM {
             trailingFillVertically: false
 
             text: model.description
-            visible: showAdvanced ? model.isNotDummy : model.isBasic && model.isNotDummy
+            visible: model.isNotDummy
             hoverEnabled: false
             checkable: true
             activeBackgroundColor: "transparent"

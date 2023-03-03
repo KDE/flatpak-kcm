@@ -282,8 +282,9 @@ class FlatpakPermissionModel : public QAbstractListModel
     friend class FlatpakPermissionModelTest;
     Q_OBJECT
     Q_PROPERTY(FlatpakReference *reference READ reference WRITE setReference NOTIFY referenceChanged)
+    Q_PROPERTY(bool showAdvanced READ showAdvanced WRITE setShowAdvanced NOTIFY showAdvancedChanged)
 public:
-    using QAbstractListModel::QAbstractListModel;
+    FlatpakPermissionModel(QObject *parent = nullptr);
 
     enum Roles {
         Name = Qt::UserRole + 1,
@@ -298,7 +299,6 @@ public:
         IsEnvironment,
         Path,
         IsNotDummy,
-        SectionType,
         IsBasic
     };
     Q_ENUM(Roles)
@@ -312,6 +312,11 @@ public:
 
     FlatpakReference *reference() const;
     void setReference(FlatpakReference *ref);
+
+    bool showAdvanced() const;
+    void setShowAdvanced(bool);
+    /** Helper function to count actual rows regardless of current "showAdvanced" setting. */
+    int rowCount(bool showAdvanced) const;
 
     void load();
     void save();
@@ -329,6 +334,7 @@ public Q_SLOTS:
 
 Q_SIGNALS:
     void referenceChanged();
+    void showAdvancedChanged();
 
 private:
     void addPermission(FlatpakPermission *perm, bool shouldBeOn);
@@ -348,4 +354,5 @@ private:
     QVector<FlatpakPermission> m_permissions;
     QPointer<FlatpakReference> m_reference;
     QString m_overridesData;
+    bool m_showAdvanced;
 };
