@@ -216,7 +216,7 @@ public:
     const QString &effectiveValue() const;
     void setEffectiveValue(const QString &value);
 
-    /** Untranslate value of ValueTyep::Filesystems permission. */
+    /** Untranslate value of ValueType::Filesystems permission. */
     // TODO: Remove this method, store enum variants or otherwise raw untranslated data.
     QString fsCurrentValue() const;
 
