@@ -312,18 +312,22 @@ QVariant FlatpakPermissionModel::data(const QModelIndex &index, int role) const
         return permission.categoryHeading();
     case Roles::Description:
         return permission.description();
-    case Roles::CurrentValue:
-        return permission.effectiveValue();
-    case Roles::DefaultValue:
-        return permission.defaultValue();
-    case Roles::IsGranted:
-        return permission.isEffectiveEnabled();
+    //
     case Roles::IsSimple:
         return permission.valueType() == FlatpakPermission::ValueType::Simple;
     case Roles::IsEnvironment:
         return permission.valueType() == FlatpakPermission::ValueType::Environment;
     case Roles::IsNotDummy:
         return permission.originType() != FlatpakPermission::OriginType::Dummy;
+    //
+    case Roles::IsGranted:
+        return permission.isEffectiveEnabled();
+    //
+    case Roles::CurrentValue:
+        return permission.effectiveValue();
+    case Roles::DefaultValue:
+        return permission.defaultValue();
+    //
     case Roles::ValueList:
         QStringList valuesTmp = permission.possibleValues();
         QString currentVal = permission.effectiveValue();
@@ -338,16 +342,21 @@ QVariant FlatpakPermissionModel::data(const QModelIndex &index, int role) const
 QHash<int, QByteArray> FlatpakPermissionModel::roleNames() const
 {
     QHash<int, QByteArray> roles;
+    //
     roles[Roles::Name] = "name";
     roles[Roles::Category] = "category";
     roles[Roles::Description] = "description";
-    roles[Roles::ValueList] = "valueList";
-    roles[Roles::CurrentValue] = "currentValue";
-    roles[Roles::DefaultValue] = "defaultValue";
-    roles[Roles::IsGranted] = "isGranted";
+    //
     roles[Roles::IsSimple] = "isSimple";
     roles[Roles::IsEnvironment] = "isEnvironment";
     roles[Roles::IsNotDummy] = "isNotDummy";
+    //
+    roles[Roles::IsGranted] = "isGranted";
+    //
+    roles[Roles::CurrentValue] = "currentValue";
+    roles[Roles::DefaultValue] = "defaultValue";
+    //
+    roles[Roles::ValueList] = "valueList";
     return roles;
 }
 

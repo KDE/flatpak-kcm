@@ -290,13 +290,17 @@ public:
         Name = Qt::UserRole + 1, //
         Category,
         Description,
-        ValueList,
-        CurrentValue,
-        DefaultValue,
-        IsGranted,
+        //
         IsSimple,
         IsEnvironment,
-        IsNotDummy
+        IsNotDummy,
+        //
+        IsGranted,
+        //
+        CurrentValue,
+        DefaultValue,
+        //
+        ValueList,
     };
     Q_ENUM(Roles)
 
