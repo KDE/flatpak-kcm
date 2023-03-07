@@ -204,13 +204,18 @@ KCM.ScrollViewKCM {
 
             text: model.description
             visible: model.isNotDummy
-            checkable: true
-            onClicked: permsModel.togglePermissionAtIndex(permItem.index)
+            onClicked: {
+                permsModel.togglePermissionAtIndex(permItem.index);
+                permsView.currentIndex = -1;
+            }
 
             leading: QQC2.CheckBox {
                 id: checkBox
                 checked: model.isGranted
-                onToggled: permsModel.togglePermissionAtIndex(permItem.index)
+                onToggled: {
+                    permsModel.togglePermissionAtIndex(permItem.index);
+                    permsView.currentIndex = -1;
+                }
             }
 
             trailing: RowLayout {
