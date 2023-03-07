@@ -390,7 +390,8 @@ void FlatpakPermissionModel::loadDefaultValues()
     description = i18n("Internet Connection");
     isEnabledByDefault = sharedPerms.contains(name);
     m_permissions.insert(basicIndex, FlatpakPermission(name, category, description, FlatpakPermission::ValueType::Simple, isEnabledByDefault));
-    m_permissions[basicIndex++].setSectionType(FlatpakPermission::SectionType::Basic);
+    m_permissions[basicIndex].setSectionType(FlatpakPermission::SectionType::Basic);
+    basicIndex += 1;
 
     name = QStringLiteral("ipc");
     description = i18n("Inter-process Communication");
@@ -421,7 +422,8 @@ void FlatpakPermissionModel::loadDefaultValues()
     description = i18n("Pulseaudio Sound Server");
     isEnabledByDefault = socketPerms.contains(name);
     m_permissions.insert(basicIndex, FlatpakPermission(name, category, description, FlatpakPermission::ValueType::Simple, isEnabledByDefault));
-    m_permissions[basicIndex++].setSectionType(FlatpakPermission::SectionType::Basic);
+    m_permissions[basicIndex].setSectionType(FlatpakPermission::SectionType::Basic);
+    basicIndex += 1;
 
     name = QStringLiteral("session-bus");
     description = i18n("Session Bus Access");
@@ -437,19 +439,22 @@ void FlatpakPermissionModel::loadDefaultValues()
     description = i18n("Remote Login Access");
     isEnabledByDefault = socketPerms.contains(name);
     m_permissions.insert(basicIndex, FlatpakPermission(name, category, description, FlatpakPermission::ValueType::Simple, isEnabledByDefault));
-    m_permissions[basicIndex++].setSectionType(FlatpakPermission::SectionType::Basic);
+    m_permissions[basicIndex].setSectionType(FlatpakPermission::SectionType::Basic);
+    basicIndex += 1;
 
     name = QStringLiteral("pcsc");
     description = i18n("Smart Card Access");
     isEnabledByDefault = socketPerms.contains(name);
     m_permissions.insert(basicIndex, FlatpakPermission(name, category, description, FlatpakPermission::ValueType::Simple, isEnabledByDefault));
-    m_permissions[basicIndex++].setSectionType(FlatpakPermission::SectionType::Basic);
+    m_permissions[basicIndex].setSectionType(FlatpakPermission::SectionType::Basic);
+    basicIndex += 1;
 
     name = QStringLiteral("cups");
     description = i18n("Print System Access");
     isEnabledByDefault = socketPerms.contains(name);
     m_permissions.insert(basicIndex, FlatpakPermission(name, category, description, FlatpakPermission::ValueType::Simple, isEnabledByDefault));
-    m_permissions[basicIndex++].setSectionType(FlatpakPermission::SectionType::Basic);
+    m_permissions[basicIndex].setSectionType(FlatpakPermission::SectionType::Basic);
+    basicIndex += 1;
     /* SOCKETS category */
 
     /* DEVICES category */
@@ -475,7 +480,8 @@ void FlatpakPermissionModel::loadDefaultValues()
     description = i18n("Device Access");
     isEnabledByDefault = devicesPerms.contains(name);
     m_permissions.insert(basicIndex, FlatpakPermission(name, category, description, FlatpakPermission::ValueType::Simple, isEnabledByDefault));
-    m_permissions[basicIndex++].setSectionType(FlatpakPermission::SectionType::Basic);
+    m_permissions[basicIndex].setSectionType(FlatpakPermission::SectionType::Basic);
+    basicIndex += 1;
     /* DEVICES category */
 
     /* FEATURES category */
@@ -496,7 +502,8 @@ void FlatpakPermissionModel::loadDefaultValues()
     description = i18n("Bluetooth");
     isEnabledByDefault = featuresPerms.contains(name);
     m_permissions.insert(basicIndex, FlatpakPermission(name, category, description, FlatpakPermission::ValueType::Simple, isEnabledByDefault));
-    m_permissions[basicIndex++].setSectionType(FlatpakPermission::SectionType::Basic);
+    m_permissions[basicIndex].setSectionType(FlatpakPermission::SectionType::Basic);
+    basicIndex += 1;
 
     name = QStringLiteral("canbus");
     description = i18n("Canbus Socket Access");
@@ -559,8 +566,9 @@ void FlatpakPermissionModel::loadDefaultValues()
         isEnabledByDefault = true;
     }
     m_permissions.insert(
-        basicIndex++,
+        basicIndex,
         FlatpakPermission(name, category, description, FlatpakPermission::ValueType::Filesystems, isEnabledByDefault, homeVal, possibleValues));
+    basicIndex += 1;
 
     name = QStringLiteral("host");
     description = i18n("All System Files");
@@ -571,8 +579,9 @@ void FlatpakPermissionModel::loadDefaultValues()
         isEnabledByDefault = true;
     }
     m_permissions.insert(
-        basicIndex++,
+        basicIndex,
         FlatpakPermission(name, category, description, FlatpakPermission::ValueType::Filesystems, isEnabledByDefault, hostVal, possibleValues));
+    basicIndex += 1;
 
     name = QStringLiteral("host-os");
     description = i18n("All System Libraries, Executables and Binaries");
@@ -583,8 +592,9 @@ void FlatpakPermissionModel::loadDefaultValues()
         isEnabledByDefault = true;
     }
     m_permissions.insert(
-        basicIndex++,
+        basicIndex,
         FlatpakPermission(name, category, description, FlatpakPermission::ValueType::Filesystems, isEnabledByDefault, hostOsVal, possibleValues));
+    basicIndex += 1;
 
     name = QStringLiteral("host-etc");
     description = i18n("All System Configurations");
@@ -595,16 +605,19 @@ void FlatpakPermissionModel::loadDefaultValues()
         isEnabledByDefault = true;
     }
     m_permissions.insert(
-        basicIndex++,
+        basicIndex,
         FlatpakPermission(name, category, description, FlatpakPermission::ValueType::Filesystems, isEnabledByDefault, hostEtcVal, possibleValues));
+    basicIndex += 1;
 
     for (int i = 0; i < filesysTemp.length(); i++) {
-        m_permissions.insert(basicIndex++, filesysTemp.at(i));
+        m_permissions.insert(basicIndex, filesysTemp.at(i));
+        basicIndex += 1;
     }
     /* FILESYSTEM category */
 
     /* DUMMY ADVANCED category */
-    m_permissions.insert(basicIndex++, FlatpakPermission(QStringLiteral("Advanced Dummy")));
+    m_permissions.insert(basicIndex, FlatpakPermission(QStringLiteral("Advanced Dummy")));
+    basicIndex += 1;
     /* DUMMY ADVANCED category */
 
     /* SESSION BUS category */
