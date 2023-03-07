@@ -392,6 +392,3 @@ msgstr "Introduïu un nom de bus de sistema…"
 #, kde-format
 msgid "Enter value…"
 msgstr "Introduïu un valor…"
-
-#~ msgid "per-app-dev-shm"
-#~ msgstr "per-app-dev-shm"
