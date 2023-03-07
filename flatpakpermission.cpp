@@ -324,8 +324,6 @@ QVariant FlatpakPermissionModel::data(const QModelIndex &index, int role) const
         return permission.valueType() == FlatpakPermission::ValueType::Environment;
     case Roles::IsNotDummy:
         return permission.originType() != FlatpakPermission::OriginType::Dummy;
-    case Roles::IsBasic:
-        return permission.sectionType() == FlatpakPermission::SectionType::Basic;
     case Roles::ValueList:
         QStringList valuesTmp = permission.possibleValues();
         QString currentVal = permission.effectiveValue();
@@ -350,7 +348,6 @@ QHash<int, QByteArray> FlatpakPermissionModel::roleNames() const
     roles[Roles::IsSimple] = "isSimple";
     roles[Roles::IsEnvironment] = "isEnvironment";
     roles[Roles::IsNotDummy] = "isNotDummy";
-    roles[Roles::IsBasic] = "isBasic";
     return roles;
 }
 

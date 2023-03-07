@@ -287,7 +287,7 @@ public:
     FlatpakPermissionModel(QObject *parent = nullptr);
 
     enum Roles {
-        Name = Qt::UserRole + 1,
+        Name = Qt::UserRole + 1, //
         Category,
         Description,
         ValueList,
@@ -296,8 +296,7 @@ public:
         IsGranted,
         IsSimple,
         IsEnvironment,
-        IsNotDummy,
-        IsBasic
+        IsNotDummy
     };
     Q_ENUM(Roles)
 
