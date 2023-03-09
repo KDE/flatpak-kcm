@@ -330,6 +330,7 @@ public:
 
     Q_INVOKABLE QStringList valueListForSectionType(int /*FlatpakPermissionsSectionType::Type*/ rawSection) const;
     Q_INVOKABLE static QString sectionHeaderForSectionType(int /*FlatpakPermissionsSectionType::Type*/ rawSection);
+    Q_INVOKABLE static QString sectionAddButtonToolTipTextForSectionType(int /*FlatpakPermissionsSectionType::Type*/ rawSection);
 
 public Q_SLOTS:
     void togglePermissionAtIndex(int index);

@@ -85,13 +85,7 @@ KCM.ScrollViewKCM {
                 }
                 Layout.alignment: Qt.AlignRight
 
-                QQC2.ToolTip.text: switch (sectionDelegate.sectionType) {
-                    case FlatpakPermissionsSectionType.Filesystems: return i18n("Add a new filesystem path")
-                    case FlatpakPermissionsSectionType.SessionBus: return i18n("Add a new session bus")
-                    case FlatpakPermissionsSectionType.SystemBus: return i18n("Add a new system bus")
-                    case FlatpakPermissionsSectionType.Environment: return i18n("Add a new environment variable")
-                    default: return ""
-                }
+                QQC2.ToolTip.text: permsModel.sectionAddButtonToolTipTextForSectionType(sectionDelegate.sectionType)
                 QQC2.ToolTip.visible: Kirigami.Settings.tabletMode ? buttonAddNew.pressed : buttonAddNew.hovered
                 QQC2.ToolTip.delay: Kirigami.Settings.tabletMode ? Qt.styleHints.mousePressAndHoldInterval : Kirigami.Units.toolTipDelay
 
