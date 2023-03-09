@@ -942,15 +942,15 @@ void FlatpakPermissionModel::defaults()
 
 bool FlatpakPermissionModel::isDefaults() const
 {
-    return std::all_of(m_permissions.constBegin(), m_permissions.constEnd(), [](FlatpakPermission perm) {
-        return perm.isDefaults();
+    return std::all_of(m_permissions.constBegin(), m_permissions.constEnd(), [](const FlatpakPermission &permission) {
+        return permission.isDefaults();
     });
 }
 
 bool FlatpakPermissionModel::isSaveNeeded() const
 {
-    return std::any_of(m_permissions.begin(), m_permissions.end(), [](FlatpakPermission perm) {
-        return perm.isSaveNeeded();
+    return std::any_of(m_permissions.constBegin(), m_permissions.constEnd(), [](const FlatpakPermission &permission) {
+        return permission.isSaveNeeded();
     });
 }
 
