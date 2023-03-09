@@ -492,8 +492,7 @@ void FlatpakPermissionModel::loadDefaultValues()
     QString hostVal = i18n("OFF");
     QString hostOsVal = i18n("OFF");
     QString hostEtcVal = i18n("OFF");
-    possibleValues.clear();
-    possibleValues << i18n("read/write") << i18n("read-only") << i18n("create");
+    possibleValues = valueListForSectionType(FlatpakPermissionsSectionType::Filesystems);
 
     QVector<FlatpakPermission> filesysTemp;
 
@@ -620,8 +619,7 @@ void FlatpakPermissionModel::loadDefaultValues()
     /* SESSION BUS category */
     category = QLatin1String(FLATPAK_METADATA_GROUP_SESSION_BUS_POLICY);
     const KConfigGroup sessionBusGroup = parser.group(QLatin1String(FLATPAK_METADATA_GROUP_SESSION_BUS_POLICY));
-    possibleValues.clear();
-    possibleValues << i18n("None") << i18n("talk") << i18n("own") << i18n("see");
+    possibleValues = valueListForSectionType(FlatpakPermissionsSectionType::SessionBus);
     if (sessionBusGroup.exists() && !sessionBusGroup.entryMap().isEmpty()) {
         const QMap<QString, QString> busMap = sessionBusGroup.entryMap();
         const QStringList busList = busMap.keys();
@@ -646,8 +644,7 @@ void FlatpakPermissionModel::loadDefaultValues()
     /* SYSTEM BUS category */
     category = QLatin1String(FLATPAK_METADATA_GROUP_SYSTEM_BUS_POLICY);
     const KConfigGroup systemBusGroup = parser.group(QLatin1String(FLATPAK_METADATA_GROUP_SYSTEM_BUS_POLICY));
-    possibleValues.clear();
-    possibleValues << i18n("None") << i18n("talk") << i18n("own") << i18n("see");
+    possibleValues = valueListForSectionType(FlatpakPermissionsSectionType::SystemBus);
     if (systemBusGroup.exists() && !systemBusGroup.entryMap().isEmpty()) {
         const QMap<QString, QString> busMap = systemBusGroup.entryMap();
         const QStringList busList = busMap.keys();
@@ -811,8 +808,7 @@ void FlatpakPermissionModel::loadCurrentValues()
                 }
             }
             if (!permExists(name)) {
-                QStringList possibleValues;
-                possibleValues << i18n("read/write") << i18n("read-only") << i18n("create");
+                const auto possibleValues = valueListForSectionType(FlatpakPermissionsSectionType::Filesystems);
                 m_permissions.insert(fsIndex,
                                      FlatpakPermission(FlatpakPermissionsSectionType::Filesystems,
                                                        name,
@@ -856,8 +852,8 @@ void FlatpakPermissionModel::loadCurrentValues()
                 QString value = map.value(name);
                 const bool isBus = section == FlatpakPermissionsSectionType::SessionBus || section == FlatpakPermissionsSectionType::SystemBus;
                 if (isBus) {
-                    QStringList possibleValues{i18n("None"), i18n("talk"), i18n("own"), i18n("see")};
                     value = toFrontendDBusValue(value);
+                    const auto possibleValues = valueListForSectionType(section);
                     m_permissions.insert(insertIndex, FlatpakPermission(section, name, category, name, valueType, false, value, possibleValues));
                 } else {
                     m_permissions.insert(insertIndex, FlatpakPermission(section, name, category, name, valueType, false, value));
@@ -1203,7 +1199,7 @@ void FlatpakPermissionModel::addUserEnteredPermission(int /*FlatpakPermissionsSe
         return;
     }
 
-    QStringList possibleValues = valueListForSectionType(rawSection);
+    const auto possibleValues = valueListForSectionType(rawSection);
 
     FlatpakPermission perm(section, name, category, name, type, false, QString(), possibleValues);
     perm.setOriginType(FlatpakPermission::OriginType::UserDefined);
