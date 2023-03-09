@@ -77,6 +77,8 @@ public:
         Environment
     };
 
+    static ValueType valueTypeFromSectionType(FlatpakPermissionsSectionType::Type section);
+
     enum class OriginType {
         /**
          * Built-in type is for all pre-defined system resources (permissions)
@@ -123,7 +125,6 @@ public:
                                const QString &name,
                                const QString &category,
                                const QString &description,
-                               ValueType type,
                                bool isDefaultEnabled,
                                const QString &defaultValue = {},
                                const QStringList &possibleValues = {});
@@ -159,6 +160,9 @@ public:
      */
     const QString &description() const;
 
+    /**
+     * Return type of value of this entry, inferred from its SectionType.
+     */
     ValueType valueType() const;
 
     /**
@@ -253,7 +257,6 @@ private:
 
     /* Attempts to classify permissions into various types and groups. */
 
-    ValueType m_valueType;
     OriginType m_originType;
 
     /* Applicable for all ValueType permissions. */
