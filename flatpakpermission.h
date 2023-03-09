@@ -100,10 +100,11 @@ public:
     };
 
     /**
-     * Create a Dummy entry in the Advanced section, just so that ListView shows
-     * a section header even if there are no actual rows in it.
+     * Create a Dummy entry for the Advanced and user-editable sections, just so
+     * that ListView shows a section header even if there are no permission row
+     * entries in it.
      */
-    explicit FlatpakPermission(const QString &name, const QString &category);
+    explicit FlatpakPermission(const QString &category);
 
     explicit FlatpakPermission(const QString &name,
                                const QString &category,

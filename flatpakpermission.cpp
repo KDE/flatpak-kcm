@@ -16,8 +16,8 @@
 
 #include <array>
 
-FlatpakPermission::FlatpakPermission(const QString &name, const QString &category)
-    : FlatpakPermission(name, category, QString(), ValueType::Simple, false)
+FlatpakPermission::FlatpakPermission(const QString &category)
+    : FlatpakPermission(QString(), category, QString(), ValueType::Simple, false)
 {
     m_originType = OriginType::Dummy;
     m_sectionType = SectionType::Advanced;
@@ -607,7 +607,7 @@ void FlatpakPermissionModel::loadDefaultValues()
     /* FILESYSTEM category */
 
     /* DUMMY ADVANCED category */
-    m_permissions.insert(basicIndex++, FlatpakPermission(QStringLiteral("Advanced Dummy"), QStringLiteral("Advanced Dummy")));
+    m_permissions.insert(basicIndex++, FlatpakPermission(QStringLiteral("Advanced Dummy")));
     /* DUMMY ADVANCED category */
 
     /* SESSION BUS category */
@@ -626,7 +626,7 @@ void FlatpakPermissionModel::loadDefaultValues()
                 FlatpakPermission(name, category, description, FlatpakPermission::ValueType::Bus, isEnabledByDefault, defaultValue, possibleValues));
         }
     } else {
-        m_permissions.append(FlatpakPermission(QStringLiteral("Session Bus Dummy"), QLatin1String(FLATPAK_METADATA_GROUP_SESSION_BUS_POLICY)));
+        m_permissions.append(FlatpakPermission(QLatin1String(FLATPAK_METADATA_GROUP_SESSION_BUS_POLICY)));
     }
     /* SESSION BUS category */
 
@@ -646,7 +646,7 @@ void FlatpakPermissionModel::loadDefaultValues()
                 FlatpakPermission(name, category, description, FlatpakPermission::ValueType::Bus, isEnabledByDefault, defaultValue, possibleValues));
         }
     } else {
-        m_permissions.append(FlatpakPermission(QStringLiteral("System Bus Dummy"), QLatin1String(FLATPAK_METADATA_GROUP_SYSTEM_BUS_POLICY)));
+        m_permissions.append(FlatpakPermission(QLatin1String(FLATPAK_METADATA_GROUP_SYSTEM_BUS_POLICY)));
     }
     /* SYSTEM BUS category */
 
@@ -665,7 +665,7 @@ void FlatpakPermissionModel::loadDefaultValues()
                 m_permissions.append(FlatpakPermission(name, category, description, FlatpakPermission::ValueType::Environment, true, defaultValue));
             }
         } else {
-            m_permissions.append(FlatpakPermission(QStringLiteral("Environment Dummy"), QLatin1String(FLATPAK_METADATA_GROUP_ENVIRONMENT)));
+            m_permissions.append(FlatpakPermission(QLatin1String(FLATPAK_METADATA_GROUP_ENVIRONMENT)));
         }
         /* ENVIRONMENT category */
     } // end of if (false)
