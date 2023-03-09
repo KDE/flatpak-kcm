@@ -650,29 +650,25 @@ void FlatpakPermissionModel::loadDefaultValues()
     }
     /* SYSTEM BUS category */
 
-    /* clang-format off */
-// Disabled because BUG 465502
-if (false) {
-
-    /* ENVIRONMENT category */
-    category = QLatin1String(FLATPAK_METADATA_GROUP_ENVIRONMENT);
-    const KConfigGroup environmentGroup = parser.group(QLatin1String(FLATPAK_METADATA_GROUP_ENVIRONMENT));
-    possibleValues.clear();
-    if (environmentGroup.exists() && !environmentGroup.entryMap().isEmpty()) {
-        const QMap<QString, QString> busMap = environmentGroup.entryMap();
-        const QStringList busList = busMap.keys();
-        for (int i = 0; i < busList.length(); ++i) {
-            name = description = busList.at(i);
-            defaultValue = busMap.value(busList.at(i));
-            m_permissions.append(FlatpakPermission(name, category, description, FlatpakPermission::ValueType::Environment, true, defaultValue));
+    // Disabled because BUG 465502
+    if (false) {
+        /* ENVIRONMENT category */
+        category = QLatin1String(FLATPAK_METADATA_GROUP_ENVIRONMENT);
+        const KConfigGroup environmentGroup = parser.group(QLatin1String(FLATPAK_METADATA_GROUP_ENVIRONMENT));
+        possibleValues.clear();
+        if (environmentGroup.exists() && !environmentGroup.entryMap().isEmpty()) {
+            const QMap<QString, QString> busMap = environmentGroup.entryMap();
+            const QStringList busList = busMap.keys();
+            for (int i = 0; i < busList.length(); ++i) {
+                name = description = busList.at(i);
+                defaultValue = busMap.value(busList.at(i));
+                m_permissions.append(FlatpakPermission(name, category, description, FlatpakPermission::ValueType::Environment, true, defaultValue));
+            }
+        } else {
+            m_permissions.append(FlatpakPermission(QStringLiteral("Environment Dummy"), QLatin1String(FLATPAK_METADATA_GROUP_ENVIRONMENT)));
         }
-    } else {
-        m_permissions.append(FlatpakPermission(QStringLiteral("Environment Dummy"), QLatin1String(FLATPAK_METADATA_GROUP_ENVIRONMENT)));
-    }
-    /* ENVIRONMENT category */
-
-} // end of if (false)
-    /* clang-format on */
+        /* ENVIRONMENT category */
+    } // end of if (false)
 }
 
 void FlatpakPermissionModel::loadCurrentValues()
@@ -693,69 +689,69 @@ void FlatpakPermissionModel::loadCurrentValues()
         FlatpakPermission *perm = &m_permissions[i];
 
         if (perm->valueType() == FlatpakPermission::ValueType::Simple) {
-        const QString cat = contextGroup.readEntry(perm->category(), QString());
-        if (cat.contains(perm->name())) {
-            // perm->setEnabled(!perm->enabledByDefault());
-            bool isEnabled = !perm->isDefaultEnabled();
-            perm->setEffectiveEnabled(isEnabled);
-            perm->setOverrideEnabled(isEnabled);
-        }
+            const QString cat = contextGroup.readEntry(perm->category(), QString());
+            if (cat.contains(perm->name())) {
+                // perm->setEnabled(!perm->enabledByDefault());
+                bool isEnabled = !perm->isDefaultEnabled();
+                perm->setEffectiveEnabled(isEnabled);
+                perm->setOverrideEnabled(isEnabled);
+            }
         } else if (perm->valueType() == FlatpakPermission::ValueType::Filesystems) {
-        const QString cat = contextGroup.readEntry(perm->category(), QString());
-        if (cat.contains(perm->name())) {
-            int permIndex = cat.indexOf(perm->name());
+            const QString cat = contextGroup.readEntry(perm->category(), QString());
+            if (cat.contains(perm->name())) {
+                int permIndex = cat.indexOf(perm->name());
 
-            /* the permission is just being set off, the access level isn't changed */
-            bool isEnabled = permIndex > 0 ? cat.at(permIndex - 1) != QLatin1Char('!') : true;
-            perm->setEffectiveEnabled(isEnabled);
-            perm->setOverrideEnabled(isEnabled);
+                /* the permission is just being set off, the access level isn't changed */
+                bool isEnabled = permIndex > 0 ? cat.at(permIndex - 1) != QLatin1Char('!') : true;
+                perm->setEffectiveEnabled(isEnabled);
+                perm->setOverrideEnabled(isEnabled);
 
-            int valueIndex = permIndex + perm->name().length();
-            QString val;
+                int valueIndex = permIndex + perm->name().length();
+                QString val;
 
-            if (valueIndex >= cat.length() || cat.at(valueIndex) != QLatin1Char(':')) {
-                val = i18n("read/write");
+                if (valueIndex >= cat.length() || cat.at(valueIndex) != QLatin1Char(':')) {
+                    val = i18n("read/write");
+                    perm->setEffectiveValue(val);
+                    perm->setOverrideValue(val);
+                    continue;
+                }
+
+                if (cat[valueIndex + 1] == QLatin1Char('r')) {
+                    if (cat[valueIndex + 2] == QLatin1Char('w')) {
+                        val = i18n("read/write");
+                    } else {
+                        val = i18n("read-only");
+                    }
+                } else if (cat[valueIndex + 1] == QLatin1Char('c')) {
+                    val = i18n("create");
+                }
                 perm->setEffectiveValue(val);
                 perm->setOverrideValue(val);
-                continue;
             }
-
-            if (cat[valueIndex + 1] == QLatin1Char('r')) {
-                if (cat[valueIndex + 2] == QLatin1Char('w')) {
-                    val = i18n("read/write");
-                } else {
-                    val = i18n("read-only");
-                }
-            } else if (cat[valueIndex + 1] == QLatin1Char('c')) {
-                val = i18n("create");
-            }
-            perm->setEffectiveValue(val);
-            perm->setOverrideValue(val);
-        }
-        fsIndex = i;
+            fsIndex = i;
         } else if (perm->valueType() == FlatpakPermission::ValueType::Bus || perm->valueType() == FlatpakPermission::ValueType::Environment) {
-        const KConfigGroup group = parser.group(perm->category());
-        if (group.exists()) {
-            QMap<QString, QString> map = group.entryMap();
-            QList<QString> list = map.keys();
-            int index = list.indexOf(perm->name());
-            if (index != -1) {
-                bool enabled = true;
-                QString value = map.value(list.at(index));
-                QString offSig = perm->valueType() == FlatpakPermission::ValueType::Bus ? QStringLiteral("None") : QString();
-                if (value == offSig) {
-                    enabled = false;
-                    value = perm->effectiveValue();
-                } else {
-                    value = toFrontendDBusValue(value);
-                }
+            const KConfigGroup group = parser.group(perm->category());
+            if (group.exists()) {
+                QMap<QString, QString> map = group.entryMap();
+                QList<QString> list = map.keys();
+                int index = list.indexOf(perm->name());
+                if (index != -1) {
+                    bool enabled = true;
+                    QString value = map.value(list.at(index));
+                    QString offSig = perm->valueType() == FlatpakPermission::ValueType::Bus ? QStringLiteral("None") : QString();
+                    if (value == offSig) {
+                        enabled = false;
+                        value = perm->effectiveValue();
+                    } else {
+                        value = toFrontendDBusValue(value);
+                    }
 
-                perm->setEffectiveValue(value);
-                perm->setOverrideValue(value);
-                perm->setEffectiveEnabled(enabled);
-                perm->setOverrideEnabled(enabled);
+                    perm->setEffectiveValue(value);
+                    perm->setOverrideValue(value);
+                    perm->setEffectiveEnabled(enabled);
+                    perm->setOverrideEnabled(enabled);
+                }
             }
-        }
         }
     }
 
