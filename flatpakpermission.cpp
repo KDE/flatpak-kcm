@@ -1143,13 +1143,24 @@ void FlatpakPermissionModel::editPerm(int index, const QString &newValue)
 
     FlatpakPermission *perm = &m_permissions[index];
 
-    /* editing the permission */
-    if (perm->category() == QLatin1String(FLATPAK_METADATA_KEY_FILESYSTEMS)) {
+    switch (perm->section()) {
+    case FlatpakPermissionsSectionType::Filesystems:
         editFilesystemsPermissions(perm, newValue);
-    } else if (perm->valueType() == FlatpakPermission::ValueType::Bus) {
+        break;
+    case FlatpakPermissionsSectionType::SessionBus:
+    case FlatpakPermissionsSectionType::SystemBus:
         editBusPermissions(perm, newValue);
-    } else if (perm->valueType() == FlatpakPermission::ValueType::Environment) {
+        break;
+    case FlatpakPermissionsSectionType::Environment:
         editEnvPermission(perm, newValue);
+        break;
+    case FlatpakPermissionsSectionType::Basic:
+    case FlatpakPermissionsSectionType::Advanced:
+    case FlatpakPermissionsSectionType::SubsystemsShared:
+    case FlatpakPermissionsSectionType::Sockets:
+    case FlatpakPermissionsSectionType::Devices:
+    case FlatpakPermissionsSectionType::Features:
+        return;
     }
 
     const auto idx = FlatpakPermissionModel::index(index, 0);
