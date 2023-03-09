@@ -688,7 +688,8 @@ void FlatpakPermissionModel::loadCurrentValues()
     for (int i = 0; i < m_permissions.length(); ++i) {
         FlatpakPermission *perm = &m_permissions[i];
 
-        if (perm->valueType() == FlatpakPermission::ValueType::Simple) {
+        switch (perm->valueType()) {
+        case FlatpakPermission::ValueType::Simple: {
             const QString cat = contextGroup.readEntry(perm->category(), QString());
             if (cat.contains(perm->name())) {
                 // perm->setEnabled(!perm->enabledByDefault());
@@ -696,7 +697,9 @@ void FlatpakPermissionModel::loadCurrentValues()
                 perm->setEffectiveEnabled(isEnabled);
                 perm->setOverrideEnabled(isEnabled);
             }
-        } else if (perm->valueType() == FlatpakPermission::ValueType::Filesystems) {
+            break;
+        }
+        case FlatpakPermission::ValueType::Filesystems: {
             const QString cat = contextGroup.readEntry(perm->category(), QString());
             if (cat.contains(perm->name())) {
                 int permIndex = cat.indexOf(perm->name());
@@ -729,7 +732,10 @@ void FlatpakPermissionModel::loadCurrentValues()
                 perm->setOverrideValue(val);
             }
             fsIndex = i;
-        } else if (perm->valueType() == FlatpakPermission::ValueType::Bus || perm->valueType() == FlatpakPermission::ValueType::Environment) {
+            break;
+        }
+        case FlatpakPermission::ValueType::Bus:
+        case FlatpakPermission::ValueType::Environment: {
             const KConfigGroup group = parser.group(perm->category());
             if (group.exists()) {
                 QMap<QString, QString> map = group.entryMap();
@@ -752,7 +758,9 @@ void FlatpakPermissionModel::loadCurrentValues()
                     perm->setOverrideEnabled(enabled);
                 }
             }
+            break;
         }
+        } // end of switch
     }
 
     const QString fsCat = contextGroup.readEntry(QLatin1String(FLATPAK_METADATA_KEY_FILESYSTEMS), QString());
