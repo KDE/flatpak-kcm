@@ -914,7 +914,7 @@ void FlatpakPermissionModel::load()
     readFromFile();
     loadDefaultValues();
     loadCurrentValues();
-    Q_EMIT dataChanged(FlatpakPermissionModel::index(0), FlatpakPermissionModel::index(m_permissions.length() - 1));
+    Q_EMIT dataChanged(FlatpakPermissionModel::index(0, 0), FlatpakPermissionModel::index(rowCount() - 1, 0));
 }
 
 void FlatpakPermissionModel::save()
@@ -937,7 +937,7 @@ void FlatpakPermissionModel::defaults()
             permission.setEffectiveValue(permission.defaultValue());
         }
     }
-    Q_EMIT dataChanged(FlatpakPermissionModel::index(0, 0), FlatpakPermissionModel::index(m_permissions.length() - 1, 0));
+    Q_EMIT dataChanged(FlatpakPermissionModel::index(0, 0), FlatpakPermissionModel::index(rowCount() - 1, 0), QVector<int>{IsGranted, CurrentValue});
 }
 
 bool FlatpakPermissionModel::isDefaults() const
