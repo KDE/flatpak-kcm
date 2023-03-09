@@ -14,6 +14,8 @@
 #include <QFileInfo>
 #include <QTemporaryFile>
 
+#include <array>
+
 FlatpakPermission::FlatpakPermission(const QString &name, const QString &category)
     : FlatpakPermission(name, category, QString(), ValueType::Simple, false)
 {
@@ -804,17 +806,17 @@ void FlatpakPermissionModel::loadCurrentValues()
     }
 
     // Disabled because BUG 465502
-    QVector<QString> categories = {
+    const std::array categories = {
         QLatin1String(FLATPAK_METADATA_GROUP_SESSION_BUS_POLICY),
         QLatin1String(FLATPAK_METADATA_GROUP_SYSTEM_BUS_POLICY),
         /* QLatin1String(FLATPAK_METADATA_GROUP_ENVIRONMENT) */
     };
-    for (int j = 0; j < categories.length(); j++) {
-        const KConfigGroup group = parser.group(categories.at(j));
+    for (const auto &category : categories) {
+        const KConfigGroup group = parser.group(category);
         if (!group.exists()) {
             continue;
         }
-        int insertIndex = permIndex(categories.at(j));
+        int insertIndex = permIndex(category);
 
         QMap<QString, QString> map = group.entryMap();
         QList<QString> list = map.keys();
@@ -822,14 +824,15 @@ void FlatpakPermissionModel::loadCurrentValues()
             if (!permExists(list.at(k))) {
                 QString name = list.at(k);
                 QString value = map.value(name);
-                bool enabled = (j == 0 || j == 1) ? value != i18n("None") : !value.isEmpty();
-                if (j == 0 || j == 1) {
+                const bool isBus = (category == QLatin1String(FLATPAK_METADATA_GROUP_SESSION_BUS_POLICY)
+                                    || category == QLatin1String(FLATPAK_METADATA_GROUP_SYSTEM_BUS_POLICY));
+                bool enabled = isBus ? value != i18n("None") : !value.isEmpty();
+                if (isBus) {
                     QStringList possibleValues;
                     possibleValues << i18n("talk") << i18n("own") << i18n("see");
-                    m_permissions.insert(insertIndex,
-                                         FlatpakPermission(name, categories[j], name, FlatpakPermission::ValueType::Bus, false, value, possibleValues));
+                    m_permissions.insert(insertIndex, FlatpakPermission(name, category, name, FlatpakPermission::ValueType::Bus, false, value, possibleValues));
                 } else {
-                    m_permissions.insert(insertIndex, FlatpakPermission(name, categories[j], name, FlatpakPermission::ValueType::Environment, false, value));
+                    m_permissions.insert(insertIndex, FlatpakPermission(name, category, name, FlatpakPermission::ValueType::Environment, false, value));
                 }
                 m_permissions[insertIndex].setEffectiveEnabled(enabled);
                 m_permissions[insertIndex].setOverrideEnabled(enabled);
