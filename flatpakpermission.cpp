@@ -1043,6 +1043,35 @@ Q_INVOKABLE QString FlatpakPermissionModel::sectionHeaderForSectionType(int /*Fl
     return {};
 }
 
+Q_INVOKABLE QString FlatpakPermissionModel::sectionAddButtonToolTipTextForSectionType(int /*FlatpakPermissionsSectionType::Type*/ rawSection)
+{
+    if (!QMetaEnum::fromType<FlatpakPermissionsSectionType::Type>().valueToKey(rawSection)) {
+        return {};
+    }
+    // SAFETY: QMetaEnum above ensures that coercion is valid.
+    const auto section = static_cast<FlatpakPermissionsSectionType::Type>(rawSection);
+
+    switch (section) {
+    case FlatpakPermissionsSectionType::Filesystems:
+        return i18n("Add a new filesystem path");
+    case FlatpakPermissionsSectionType::SessionBus:
+        return i18n("Add a new session bus");
+    case FlatpakPermissionsSectionType::SystemBus:
+        return i18n("Add a new system bus");
+    case FlatpakPermissionsSectionType::Environment:
+        return i18n("Add a new environment variable");
+    case FlatpakPermissionsSectionType::Basic:
+    case FlatpakPermissionsSectionType::Advanced:
+    case FlatpakPermissionsSectionType::SubsystemsShared:
+    case FlatpakPermissionsSectionType::Sockets:
+    case FlatpakPermissionsSectionType::Devices:
+    case FlatpakPermissionsSectionType::Features:
+        break;
+    }
+
+    return {};
+}
+
 void FlatpakPermissionModel::togglePermissionAtIndex(int index)
 {
     /* guard for invalid indices */
