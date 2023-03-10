@@ -18,3 +18,7 @@ ecm_add_test(flatpakpermissiontest.cpp
     LINK_LIBRARIES Qt${QT_MAJOR_VERSION}::Test kcm_flatpak_static)
 set_tests_properties(flatpakpermissiontest PROPERTIES ENVIRONMENT "LANGUAGE=fr")
 add_dependencies(flatpakpermissiontest generate_overrides)
+
+ecm_add_test(flatpakfilesystemstest.cpp
+    TEST_NAME flatpakfilesystemstest
+    LINK_LIBRARIES Qt${QT_MAJOR_VERSION}::Test kcm_flatpak_static)
