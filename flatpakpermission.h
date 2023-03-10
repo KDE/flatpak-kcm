@@ -297,9 +297,7 @@ public:
         IsNotDummy,
         //
         IsGranted,
-        //
         CurrentValue,
-        DefaultValue,
         //
         ValueList,
     };
