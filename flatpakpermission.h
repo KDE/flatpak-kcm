@@ -346,7 +346,7 @@ private:
     void addEnvPermission(FlatpakPermission *perm);
     void removeEnvPermission(FlatpakPermission *perm);
     void editEnvPermission(FlatpakPermission *perm, const QString &newValue);
-    bool permExists(const QString &name);
+    bool permExists(const QString &name) const;
     int permIndex(const QString &category);
     void readFromFile();
     void writeToFile();
