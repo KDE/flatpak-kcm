@@ -1334,7 +1334,7 @@ void FlatpakPermissionModel::editEnvPermission(FlatpakPermission *perm, const QS
     }
 }
 
-bool FlatpakPermissionModel::permExists(const QString &name)
+bool FlatpakPermissionModel::permExists(const QString &name) const
 {
     return std::any_of(m_permissions.cbegin(), m_permissions.cend(), [name](const FlatpakPermission &permission) {
         return permission.name() == name;
