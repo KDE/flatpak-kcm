@@ -1,23 +1,21 @@
-# Translation of kcm_flatpak to Norwegian Nynorsk
+# Copyright (C) YEAR This file is copyright:
+# This file is distributed under the same license as the flatpak-kcm package.
+# Tommi Nieminen <translator@legisign.org>, 2022, 2023.
 #
-# Karl Ove Hufthammer <karl@huftis.org>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-03-10 03:04+0000\n"
-"PO-Revision-Date: 2023-03-05 12:18+0100\n"
-"Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
-"Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
-"Language: nn\n"
+"PO-Revision-Date: 2023-03-04 18:47+0200\n"
+"Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
+"Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
+"Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 22.12.3\n"
-"X-Environment: kde\n"
-"X-Accelerator-Marker: &\n"
-"X-Text-Markup: kde4\n"
 
 #: autotests/flatpakpermissiontest.cpp:49 flatpakpermission.cpp:285
 #: flatpakpermission.cpp:525 flatpakpermission.cpp:560
@@ -27,7 +25,7 @@ msgstr ""
 #: flatpakpermission.cpp:795 flatpakpermission.cpp:973
 #, kde-format
 msgid "read/write"
-msgstr "lesa/skriva"
+msgstr "luku/kirjoitus"
 
 #: autotests/flatpakpermissiontest.cpp:90 flatpakpermission.cpp:247
 #: flatpakpermission.cpp:264 flatpakpermission.cpp:617
@@ -35,7 +33,7 @@ msgstr "lesa/skriva"
 #: flatpakpermission.cpp:976
 #, kde-format
 msgid "own"
-msgstr "eiga"
+msgstr "oma"
 
 #: autotests/flatpakpermissiontest.cpp:95
 #: autotests/flatpakpermissiontest.cpp:98 flatpakpermission.cpp:199
@@ -45,12 +43,12 @@ msgstr "eiga"
 #: flatpakpermission.cpp:1236
 #, kde-format
 msgid "read-only"
-msgstr "berre lesa"
+msgstr "vain luku"
 
 #: autotests/flatpakpermissiontest.cpp:96
 #, kde-format
 msgid "read-write"
-msgstr "lesa/skriva"
+msgstr "luku/kirjoitus"
 
 #: autotests/flatpakpermissiontest.cpp:97 flatpakpermission.cpp:202
 #: flatpakpermission.cpp:283 flatpakpermission.cpp:525
@@ -59,7 +57,7 @@ msgstr "lesa/skriva"
 #: flatpakpermission.cpp:1238
 #, kde-format
 msgid "create"
-msgstr "oppretta"
+msgstr "luonti"
 
 #: flatpakpermission.cpp:67 flatpakpermission.cpp:101
 #: package/contents/ui/permissions.qml:70
@@ -68,38 +66,37 @@ msgstr "oppretta"
 #: package/contents/ui/permissions.qml:103
 #, kde-format
 msgid "Filesystem Access"
-msgstr "Filsystem-tilgang"
+msgstr "Tiedostojärjestelmän käyttö"
 
 #: flatpakpermission.cpp:69
 #, kde-format
 msgid "Basic Permissions"
-msgstr "Grunnleggjande tilgangsløyve"
+msgstr "Peruskäyttöoikeudet"
 
 #: flatpakpermission.cpp:72 package/contents/ui/permissions.qml:57
 #, kde-format
 msgid "Advanced Permissions"
-msgstr "Avanserte tilgangsløyve"
+msgstr "Tarkemmat käyttöoikeusasetukset"
 
 #: flatpakpermission.cpp:75
 #, kde-format
 msgid "Subsystems Shared"
-msgstr "Delte undersystem"
+msgstr "Jaetut alijärjestelmät"
 
 #: flatpakpermission.cpp:78
 #, kde-format
 msgid "Sockets"
-msgstr "Socket-ar"
+msgstr "Pistokkeet"
 
-# Unødvendig å gjenta ordet «tilgang» her (er uansett inkonsekvent formulert på engelsk).
 #: flatpakpermission.cpp:81 flatpakpermission.cpp:478
 #, kde-format
 msgid "Device Access"
-msgstr "Maskinvareeiningar"
+msgstr "Laitesaanti"
 
 #: flatpakpermission.cpp:84
 #, kde-format
 msgid "Features Allowed"
-msgstr "Tillatne funksjonar"
+msgstr "Sallitut ominaisuudet"
 
 #: flatpakpermission.cpp:87 flatpakpermission.cpp:104
 #: package/contents/ui/permissions.qml:72
@@ -108,13 +105,13 @@ msgstr "Tillatne funksjonar"
 #: package/contents/ui/permissions.qml:105
 #, kde-format
 msgid "Session Bus Policy"
-msgstr "Reglar for øktbuss"
+msgstr "Istuntoväyläkäytäntö"
 
 #: flatpakpermission.cpp:90 flatpakpermission.cpp:107
 #: package/contents/ui/permissions.qml:73
 #, kde-format
 msgid "System Bus Policy"
-msgstr "Reglar for systembuss"
+msgstr "Järjestelmäväyläkäytäntö"
 
 #: flatpakpermission.cpp:93 flatpakpermission.cpp:110
 #: package/contents/ui/permissions.qml:71
@@ -127,7 +124,7 @@ msgstr "Reglar for systembuss"
 #: package/contents/ui/permissions.qml:128
 #, kde-format
 msgid "Environment"
-msgstr "Omgjevnad"
+msgstr "Ympäristö"
 
 #. i18n here is actually kind of wrong but at the time of writing fixing the mapping
 #. between ui and backend *here* is easier/safer than trying to reinvent the way the mapping works in a
@@ -139,112 +136,108 @@ msgstr "Omgjevnad"
 #: flatpakpermission.cpp:594
 #, kde-format
 msgid "OFF"
-msgstr "AV"
+msgstr "EI KÄYTÖSSÄ"
 
 #: flatpakpermission.cpp:244 flatpakpermission.cpp:261
 #: flatpakpermission.cpp:617 flatpakpermission.cpp:637
 #: flatpakpermission.cpp:836 flatpakpermission.cpp:976
 #, kde-format
 msgid "talk"
-msgstr "snakka"
+msgstr "viesti"
 
 #: flatpakpermission.cpp:250 flatpakpermission.cpp:267
 #: flatpakpermission.cpp:617 flatpakpermission.cpp:637
 #: flatpakpermission.cpp:836 flatpakpermission.cpp:976
 #, kde-format
 msgid "see"
-msgstr "sjå"
+msgstr "katso"
 
 #: flatpakpermission.cpp:253 flatpakpermission.cpp:270
 #: flatpakpermission.cpp:833 flatpakpermission.cpp:1034
 #: flatpakpermission.cpp:1215 flatpakpermission.cpp:1289
 #, kde-format
 msgid "None"
-msgstr "Ingen"
+msgstr "Ei mitään"
 
 #: flatpakpermission.cpp:393
 #, kde-format
 msgid "Internet Connection"
-msgstr "Internett-tilgang"
+msgstr "Internetyhteys"
 
 #: flatpakpermission.cpp:399
 #, kde-format
 msgid "Inter-process Communication"
-msgstr "Kommunikasjon mellom prosessar"
+msgstr "Prosessienvälinen viestintä"
 
 #: flatpakpermission.cpp:409
 #, kde-format
 msgid "X11 Windowing System"
-msgstr "Vindaugssystemet X11"
+msgstr "X11-ikkunointijärjestelmä"
 
 #: flatpakpermission.cpp:414
 #, kde-format
 msgid "Wayland Windowing System"
-msgstr "Vindaugssystemet Wayland"
+msgstr "Wayland-ikkunointijärjestelmä"
 
 #: flatpakpermission.cpp:419
 #, kde-format
 msgid "Fallback to X11 Windowing System"
-msgstr "Vindaugssystemet X11 som reserve"
+msgstr "Vara-X11-ikkunointijärjestelmä"
 
 #: flatpakpermission.cpp:424
 #, kde-format
 msgid "Pulseaudio Sound Server"
-msgstr "Lydtenaren PulseAudio"
+msgstr "Pulseaudio-äänipalvelin"
 
 #: flatpakpermission.cpp:430
 #, kde-format
 msgid "Session Bus Access"
-msgstr "Tilgang til øktbussen"
+msgstr "Istuntoväylän käyttö"
 
 #: flatpakpermission.cpp:435
 #, kde-format
 msgid "System Bus Access"
-msgstr "Tilgang til systembussen"
+msgstr "Järjestelmäväylän käyttö"
 
-# Unødvendig å gjenta ordet «tilgang» her (er uansett inkonsekvent formulert på engelsk).
 #: flatpakpermission.cpp:440
 #, kde-format
 msgid "Remote Login Access"
-msgstr "Fjerninnlogging"
+msgstr "Etäkirjautumiskäyttö"
 
 #: flatpakpermission.cpp:446
 #, kde-format
 msgid "Smart Card Access"
-msgstr "Smartkort"
+msgstr "Älykorttien käyttö"
 
-# Unødvendig å gjenta ordet «tilgang» her (er uansett inkonsekvent formulert på engelsk).
 #: flatpakpermission.cpp:452
 #, kde-format
 msgid "Print System Access"
-msgstr "Utskriftssystemet"
+msgstr "Tulostusjärjestelmän käyttö"
 
 #: flatpakpermission.cpp:463
 #, kde-format
 msgid "Kernel-based Virtual Machine Access"
-msgstr "Kjernebasert tilgang til virtuelle maskiner"
+msgstr "Ydinpohjaisen virtuaalikoneen käyttö"
 
 #: flatpakpermission.cpp:468
 #, kde-format
 msgid "Direct Graphic Rendering"
-msgstr "Direkte grafikkoppteikning"
+msgstr "Suora grafiikkahahmonnus"
 
-# https://docs.flatpak.org/en/latest/flatpak-command-reference.html
 #: flatpakpermission.cpp:473
 #, kde-format
 msgid "Host dev/shm"
-msgstr "Delt minne (/dev/shm) på vert"
+msgstr "Koneen dev/shm"
 
-# Rettare med «for» enn «frå» her. Eksempel er perf, strace og gdb.
 #: flatpakpermission.cpp:489
 #, kde-format
 msgid "System Calls by Development Tools"
-msgstr "Systemkall for utviklingsverktøy"
+msgstr "Kehitystyökalujen järjestelmäkutsut"
 
 #: flatpakpermission.cpp:494
 #, kde-format
 msgid "Run Multiarch/Multilib Binaries"
-msgstr "Køyra fleirarkitektur/-bibliotek-programfiler"
+msgstr "Suorita useamman arkkitehtuurin ohjelmatiedostoja"
 
 #: flatpakpermission.cpp:499
 #, kde-format
@@ -254,32 +247,34 @@ msgstr "Bluetooth"
 #: flatpakpermission.cpp:505
 #, kde-format
 msgid "Canbus Socket Access"
-msgstr "Tilgang til CAN-buss"
+msgstr "Canbus-pistokkeen käyttö"
 
 #: flatpakpermission.cpp:510
 #, kde-format
 msgid "Share dev/shm across all instances of an app per user ID"
-msgstr "Dela /dev/shm på tvers av alle instansar av ein app per brukar-ID"
+msgstr ""
+"Jaa dev/shm sovelluksen kaikkien instanssien kesken "
+"käyttäjätunnistekohtaisesti"
 
 #: flatpakpermission.cpp:556
 #, kde-format
 msgid "All User Files"
-msgstr "Alle brukarfilene"
+msgstr "Kaikki käyttäjän tiedostot"
 
 #: flatpakpermission.cpp:569
 #, kde-format
 msgid "All System Files"
-msgstr "Alle systemfilene"
+msgstr "Kaikki järjestelmätiedostot"
 
 #: flatpakpermission.cpp:581
 #, kde-format
 msgid "All System Libraries, Executables and Binaries"
-msgstr "Alle systembiblioteka og alle køyrbare filer"
+msgstr "Kaikki järjestelmäkirjastot ja -ohjelmatiedostot"
 
 #: flatpakpermission.cpp:593
 #, kde-format
 msgid "All System Configurations"
-msgstr "Alle systeminnstillingane"
+msgstr "Kaikki järjestelmäasetukset"
 
 #: flatpakpermission.cpp:1145 flatpakpermission.cpp:1147
 #, kde-format
@@ -289,12 +284,12 @@ msgstr "=\n"
 #: package/contents/ui/main.qml:16
 #, kde-format
 msgid "Flatpak Applications"
-msgstr "Flatpak-program"
+msgstr "Flatpak-sovellukset"
 
 #: package/contents/ui/main.qml:54
 #, kde-format
 msgid "Apply Permissions"
-msgstr "Ta i bruk løyve"
+msgstr "Ota käyttöoikeudet käyttöön"
 
 #: package/contents/ui/main.qml:55
 #, kde-format
@@ -302,95 +297,95 @@ msgid ""
 "The permissions of this application have been changed. Do you want to apply "
 "these changes or discard them?"
 msgstr ""
-"Tilgangsløyva til dette programmet er endra. Vil du ta i bruk eller forkasta "
-"dei nye løyva?"
+"Sovelluksen käyttöoikeudet ovat muuttuneet. Haluatko ottaa muutokset "
+"käyttöön vai hylätä ne?"
 
 #: package/contents/ui/permissions.qml:17
 #, kde-format
 msgid "Permissions"
-msgstr "Tilgangsløyve"
+msgstr "Käyttöoikeudet"
 
 #: package/contents/ui/permissions.qml:23
 #, kde-format
 msgid "Select an application from the list to view its permissions here"
-msgstr "Vel eit program i lista som du vil sjå tilgangsløyve for"
+msgstr "Näytä sovelluksen käyttöoikeudet valitsemalla se luettelosta"
 
 #: package/contents/ui/permissions.qml:54
 #, kde-format
 msgid "Hide advanced permissions"
-msgstr "Gøym avanserte tilgangsløyve"
+msgstr "Piilota lisäkäyttöoikeudet"
 
 #: package/contents/ui/permissions.qml:54
 #, kde-format
 msgid "Show advanced permissions"
-msgstr "Vis avanserte tilgangsløyve"
+msgstr "Näytä lisäkäyttöoikeudet"
 
 #: package/contents/ui/permissions.qml:67
 #, kde-format
 msgid "Add New"
-msgstr "Legg til ny"
+msgstr "Lisää uusi"
 
 #: package/contents/ui/permissions.qml:81
 #, kde-format
 msgid "Add a new filesystem path"
-msgstr "Legg til ny adresse på filsystemet"
+msgstr "Lisää uusi tiedostojärjestelmäpolku"
 
 #: package/contents/ui/permissions.qml:82
 #, kde-format
 msgid "Add a new environment variable"
-msgstr "Legg til ny miljøvariabel"
+msgstr "Lisää uusi ympäristömuuttuja"
 
 #: package/contents/ui/permissions.qml:83
 #, kde-format
 msgid "Add a new session bus"
-msgstr "Legg til ny øktbuss"
+msgstr "Lisää uusi istuntoväylä"
 
 #: package/contents/ui/permissions.qml:84
 #, kde-format
 msgid "Add a new system bus"
-msgstr "Legg til ny systembuss"
+msgstr "Lisää uusi järjestelmäväylä"
 
 #: package/contents/ui/permissions.qml:93
 #, kde-format
 msgid "Add Filesystem Path Permission"
-msgstr "Legg til løyve for adresse på filsystemet"
+msgstr "Lisää tiedostojärjestelmäpolun käyttöoikeus"
 
 #: package/contents/ui/permissions.qml:94
 #, kde-format
 msgid "Set Environment Variable"
-msgstr "Registrer miljøvariabel"
+msgstr "Aseta ympäristömuuttuja"
 
 #: package/contents/ui/permissions.qml:95
 #, kde-format
 msgid "Add Session Bus Permission"
-msgstr "Legg til løyve for øktbuss"
+msgstr "Lisää istuntoväylän käyttöoikeus"
 
 #: package/contents/ui/permissions.qml:96
 #, kde-format
 msgid "Add System Bus Permission"
-msgstr "Legg til løyve for systembuss"
+msgstr "Lisää järjestelmäväylän käyttöoikeus"
 
 #: package/contents/ui/permissions.qml:103
 #, kde-format
 msgid "Enter filesystem path..."
-msgstr "Skriv inn adresse på filsystemet …"
+msgstr "Anna tiedostojärjestelmäpolku…"
 
 #: package/contents/ui/permissions.qml:104
 #, kde-format
 msgid "Enter variable..."
-msgstr "Skriv inn variabel ..."
+msgstr "Anna muuttuja…"
 
 #: package/contents/ui/permissions.qml:105
 #, kde-format
 msgid "Enter session bus name..."
-msgstr "Skriv inn namn på øktbuss …"
+msgstr "Anna istuntoväylän nimi…"
 
 #: package/contents/ui/permissions.qml:106
 #, kde-format
 msgid "Enter system bus name..."
-msgstr "Skriv inn namn på systembuss …"
+msgstr "Anna järjestelmäväylän nimi…"
 
 #: package/contents/ui/permissions.qml:124
 #, kde-format
 msgid "Enter value..."
-msgstr "Skriv inn verdi …"
+msgstr "Anna arvo…"
