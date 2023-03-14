@@ -46,7 +46,7 @@ private Q_SLOTS:
             if (name == "xdg-download") {
                 containsXdgDownload = true;
                 QCOMPARE(model.data(model.index(i, 0), FlatpakPermissionModel::IsGranted), true);
-                QCOMPARE(model.data(model.index(i, 0), FlatpakPermissionModel::CurrentValue), i18n("read/write"));
+                QCOMPARE(model.data(model.index(i, 0), FlatpakPermissionModel::EffectiveValue), i18n("read/write"));
             }
         }
 
