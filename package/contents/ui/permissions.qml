@@ -141,6 +141,7 @@ KCM.ScrollViewKCM {
             id: permItem
 
             property bool isComplex: !(model.isSimple) && !(model.isEnvironment)
+            property string effectiveValue: model.effectiveValue
             property var comboVals: model.valueList
             property int index: model.index
 
@@ -172,6 +173,11 @@ KCM.ScrollViewKCM {
                     model: permItem.comboVals
                     visible: permItem.isComplex
                     onActivated: index => permsModel.editPerm(permItem.index, textAt(index))
+                    Component.onCompleted: {
+                        if (permItem.isComplex) {
+                            currentIndex = Qt.binding(() => indexOfValue(permItem.effectiveValue));
+                        }
+                    }
                 }
                 QQC2.TextField {
                     text: model.effectiveValue

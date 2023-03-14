@@ -328,11 +328,7 @@ QVariant FlatpakPermissionModel::data(const QModelIndex &index, int role) const
         return permission.effectiveValue();
     //
     case Roles::ValueList:
-        QStringList valuesTmp = permission.possibleValues();
-        QString currentVal = permission.effectiveValue();
-        valuesTmp.removeAll(currentVal);
-        valuesTmp.prepend(currentVal);
-        return valuesTmp;
+        return permission.possibleValues();
     }
 
     return QVariant();
