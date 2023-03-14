@@ -45,7 +45,7 @@ private Q_SLOTS:
 
             if (name == "xdg-download") {
                 containsXdgDownload = true;
-                QCOMPARE(model.data(model.index(i, 0), FlatpakPermissionModel::IsGranted), true);
+                QCOMPARE(model.data(model.index(i, 0), FlatpakPermissionModel::IsEffectiveEnabled), true);
                 QCOMPARE(model.data(model.index(i, 0), FlatpakPermissionModel::EffectiveValue), i18n("read/write"));
             }
         }
@@ -82,9 +82,9 @@ private Q_SLOTS:
                     qDebug() << metaEnum.key(j) << model.data(model.index(i, 0), metaEnum.value(j));
                 }
 
-                QCOMPARE(model.data(model.index(i, 0), FlatpakPermissionModel::IsGranted), false);
+                QCOMPARE(model.data(model.index(i, 0), FlatpakPermissionModel::IsEffectiveEnabled), false);
                 model.togglePermissionAtIndex(i);
-                QCOMPARE(model.data(model.index(i, 0), FlatpakPermissionModel::IsGranted), true);
+                QCOMPARE(model.data(model.index(i, 0), FlatpakPermissionModel::IsEffectiveEnabled), true);
             }
 
             if (name == "org.kde.StatusNotifierWatcher") {
