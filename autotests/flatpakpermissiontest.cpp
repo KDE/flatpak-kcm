@@ -73,6 +73,7 @@ private Q_SLOTS:
         FlatpakPermissionModel model;
         model.setReference(&reference);
         model.load();
+        model.setShowAdvanced(true);
         for (auto i = 0; i <= model.rowCount(); ++i) {
             const QString name = model.data(model.index(i, 0), FlatpakPermissionModel::Name).toString();
             if (name == "host") {
