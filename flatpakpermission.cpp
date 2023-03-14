@@ -322,7 +322,7 @@ QVariant FlatpakPermissionModel::data(const QModelIndex &index, int role) const
     case Roles::IsNotDummy:
         return permission.originType() != FlatpakPermission::OriginType::Dummy;
     //
-    case Roles::IsGranted:
+    case Roles::IsEffectiveEnabled:
         return permission.isEffectiveEnabled();
     case Roles::EffectiveValue:
         return permission.effectiveValue();
@@ -350,7 +350,7 @@ QHash<int, QByteArray> FlatpakPermissionModel::roleNames() const
     roles[Roles::IsEnvironment] = "isEnvironment";
     roles[Roles::IsNotDummy] = "isNotDummy";
     //
-    roles[Roles::IsGranted] = "isGranted";
+    roles[Roles::IsEffectiveEnabled] = "isEffectiveEnabled";
     roles[Roles::EffectiveValue] = "effectiveValue";
     //
     roles[Roles::ValueList] = "valueList";
@@ -939,7 +939,7 @@ void FlatpakPermissionModel::defaults()
             permission.setEffectiveValue(permission.defaultValue());
         }
     }
-    Q_EMIT dataChanged(FlatpakPermissionModel::index(0, 0), FlatpakPermissionModel::index(rowCount() - 1, 0), QVector<int>{IsGranted, EffectiveValue});
+    Q_EMIT dataChanged(FlatpakPermissionModel::index(0, 0), FlatpakPermissionModel::index(rowCount() - 1, 0), QVector<int>{IsEffectiveEnabled, EffectiveValue});
 }
 
 bool FlatpakPermissionModel::isDefaults() const

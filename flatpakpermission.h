@@ -296,7 +296,7 @@ public:
         IsEnvironment,
         IsNotDummy,
         //
-        IsGranted,
+        IsEffectiveEnabled,
         EffectiveValue,
         //
         ValueList,

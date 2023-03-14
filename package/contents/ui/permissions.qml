@@ -211,7 +211,7 @@ KCM.ScrollViewKCM {
 
             leading: QQC2.CheckBox {
                 id: checkBox
-                checked: model.isGranted
+                checked: model.isEffectiveEnabled
                 onToggled: {
                     permsModel.togglePermissionAtIndex(permItem.index);
                     permsView.currentIndex = -1;
