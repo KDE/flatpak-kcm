@@ -109,7 +109,7 @@ QUrl iconSourceUrl(const QString &displayName, const QString &flatpakName, const
             if (!dir.exists(file)) {
                 file = displayName.toLower() + QStringLiteral(".svg");
                 if (!dir.exists(file)) {
-                    return QUrl::fromLocalFile(flatpakName + QStringLiteral(".png"));
+                    return QUrl();
                 }
             }
         }

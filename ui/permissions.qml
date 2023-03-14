@@ -69,7 +69,8 @@ KCM.ScrollViewKCM {
             width: ListView.view.width - ListView.view.leftMargin - ListView.view.rightMargin
 
             Kirigami.Icon {
-                source: header.icon
+                // Fallback doesn't kick in when source is an empty string/url
+                source: header.icon.toString() !== "" ? header.icon : "application-vnd.flatpak.ref"
 
                 Layout.alignment: Qt.AlignCenter
                 Layout.preferredWidth: Kirigami.Units.iconSizes.large

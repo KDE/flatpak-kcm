@@ -94,7 +94,7 @@ KCM.ScrollViewKCM {
                 rowSpacing: Kirigami.Units.largeSpacing
 
                 Kirigami.Icon {
-                    source: dialog.applicationIcon
+                    source: dialog.applicationIcon.toString() !== "" ? dialog.applicationIcon : "application-vnd.flatpak.ref"
 
                     Layout.alignment: Qt.AlignCenter
                     Layout.preferredWidth: Kirigami.Units.iconSizes.large
@@ -204,7 +204,9 @@ KCM.ScrollViewKCM {
         delegate: Kirigami.BasicListItem {
 
             text: model.name
-            icon.name: model.icon
+            // Prefer source, fallback to name. This is unusual for QtQuick.Controls.
+            icon.name: model.icon.toString() !== "" ? "" : "application-vnd.flatpak.ref"
+            icon.source: model.icon.toString() === "" ? "" : model.icon
 
             onClicked: root.shouldChange(index)
         }
