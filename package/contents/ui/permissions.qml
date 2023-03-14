@@ -226,7 +226,7 @@ KCM.ScrollViewKCM {
                     onActivated: index => permsModel.editPerm(permItem.index, textAt(index))
                 }
                 QQC2.TextField {
-                    text: model.currentValue
+                    text: model.effectiveValue
                     visible: model.isEnvironment
                     enabled: checkBox.checked
                     Keys.onReturnPressed: permsModel.editPerm(permItem.index, text)
