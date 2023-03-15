@@ -11,6 +11,8 @@
 #include <QPointer>
 #include <QString>
 
+#include <optional>
+
 class FlatpakReference;
 
 /** For exporting enum to QML */
@@ -33,6 +35,112 @@ public:
     };
     Q_ENUM(Type)
 };
+
+/**
+ * Entry of the `filesystems=` list.
+ *
+ * "Deny" access mode represents an entry prefixes with a `!` bang character.
+ * Other modes correspond to `:ro`, `:rw` and `:create` suffixes.
+ *
+ * Path should be without trailing `/` slash character.
+ * See flatpak-metadata(5) for possible values.
+ */
+class FlatpakFilesystemsEntry
+{
+public:
+    enum class AccessMode {
+        /** Make the given directory available read-only. */
+        ReadOnly,
+        /** Make the given directory available read/write. This is the default. */
+        ReadWrite,
+        /** Make the given directory available read/write, and create it if it does not already exist. */
+        Create,
+        /** Don't expose filesystem to app. */
+        Deny,
+    };
+
+    enum class PathMode {
+        Required,
+        Optional,
+        NoPath,
+    };
+
+    enum class FilesystemPrefix {
+        /** Path is required. */
+        Absolute,
+        /** Path is optional. */
+        Home,
+        /** Path is invalid. */
+        Host,
+        HostOs,
+        HostEtc,
+        /** Path is optional. */
+        XdgDesktop,
+        XdgDocuments,
+        XdgDownload,
+        XdgMusic,
+        XdgPictures,
+        XdgPublicShare,
+        XdgVideos,
+        XdgTemplates,
+        /** Path is optional. */
+        XdgCache,
+        XdgConfig,
+        XdgData,
+        /** Path is required. */
+        XdgRun,
+        // Future-proof fallback variant. Prefix is empty, so path mode is
+        // required, which also ensures that is will be non-empty.
+        Unknown,
+    };
+
+    // For Required path mode, fixed string is empty because it is meaningless.
+    // For Invalid path mode, second, prefix string is empty.
+    struct TableEntry {
+        FilesystemPrefix prefix;
+        PathMode mode;
+        // Fixed magic filesystem name
+        QLatin1String fixedString;
+        // Same as fixed, but with '/' appended.
+        QLatin1String prefixString;
+    };
+
+    // Default constructor is required for meta-type registration.
+    /** Default constructor. Creates an invalid entry. */
+    FlatpakFilesystemsEntry() = default;
+
+    /**
+     * Construct new entry directly from raw unvalidated data.
+     */
+    explicit FlatpakFilesystemsEntry(FilesystemPrefix prefix, AccessMode mode, const QString &path = QString());
+
+    /**
+     * Parse list entry into data structure. Might fail for various reasons,
+     * such as ill-formed access mode, so returns an optional value.
+     */
+    static std::optional<FlatpakFilesystemsEntry> parse(QStringView entry);
+
+    /**
+     * Format this entry into string. Opposite of parse(). Omits default `:rw` suffix.
+     */
+    QString format() const;
+
+    FilesystemPrefix prefix() const;
+    QString path() const;
+    AccessMode mode() const;
+
+    // TODO C++20: use `= default` implementation.
+    bool operator==(const FlatpakFilesystemsEntry &other) const;
+    bool operator!=(const FlatpakFilesystemsEntry &other) const;
+
+private:
+    FilesystemPrefix m_prefix = FilesystemPrefix::Absolute;
+    AccessMode m_mode = AccessMode::ReadWrite;
+    // Depending on prefix type, path can be optional, required or illegal.
+    QString m_path;
+};
+
+Q_DECLARE_METATYPE(FlatpakFilesystemsEntry)
 
 /**
  * @class FlatpakPermission describes a single configurable entry in the list model of permissions.
