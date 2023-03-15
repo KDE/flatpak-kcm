@@ -99,6 +99,10 @@ public:
         Advanced
     };
 
+    // Default constructor is required for meta-type registration.
+    /** Default constructor. Creates an invalid entry. */
+    FlatpakPermission() = default;
+
     /**
      * Create a Dummy entry for the Advanced and user-editable sections, just so
      * that ListView shows a section header even if there are no permission row
