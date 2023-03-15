@@ -10,12 +10,196 @@
 #include <KConfig>
 #include <KConfigGroup>
 #include <KLocalizedString>
+#include <QChar>
 #include <QDebug>
 #include <QFileInfo>
 #include <QMetaEnum>
 #include <QTemporaryFile>
+#include <QUrl>
 
+#include <algorithm>
 #include <array>
+#include <optional>
+
+namespace
+{
+
+const QLatin1String SUFFIX_RO = QLatin1String(":ro");
+const QLatin1String SUFFIX_RW = QLatin1String(":rw");
+const QLatin1String SUFFIX_CREATE = QLatin1String(":create");
+const QLatin1Char PREFIX_DENY = QLatin1Char('!');
+
+using FilesystemPrefix = FlatpakFilesystemsEntry::FilesystemPrefix;
+using PathMode = FlatpakFilesystemsEntry::PathMode;
+
+constexpr FlatpakFilesystemsEntry::TableEntry makeRequiredPath(FilesystemPrefix prefix, const char *prefixString)
+{
+    return FlatpakFilesystemsEntry::TableEntry{prefix, PathMode::Required, QLatin1String(), QLatin1String(prefixString)};
+}
+
+constexpr FlatpakFilesystemsEntry::TableEntry makeOptionalPath(FilesystemPrefix prefix, const char *fixedString, const char *prefixString)
+{
+    return FlatpakFilesystemsEntry::TableEntry{prefix, PathMode::Optional, QLatin1String(fixedString), QLatin1String(prefixString)};
+}
+
+constexpr FlatpakFilesystemsEntry::TableEntry makeInvalidPath(FilesystemPrefix prefix, const char *fixedString)
+{
+    return FlatpakFilesystemsEntry::TableEntry{prefix, PathMode::NoPath, QLatin1String(fixedString), QLatin1String()};
+}
+
+const auto s_filesystems = {
+    //
+    makeRequiredPath(FilesystemPrefix::Absolute, "/"),
+    //
+    makeOptionalPath(FilesystemPrefix::Home, "~", "~/"),
+    makeOptionalPath(FilesystemPrefix::Home, "home", "home/"),
+    //
+    makeInvalidPath(FilesystemPrefix::Host, "host"),
+    makeInvalidPath(FilesystemPrefix::HostOs, "host-os"),
+    makeInvalidPath(FilesystemPrefix::HostEtc, "host-etc"),
+    //
+    makeOptionalPath(FilesystemPrefix::XdgDesktop, "xdg-desktop", "xdg-desktop/"),
+    makeOptionalPath(FilesystemPrefix::XdgDocuments, "xdg-documents", "xdg-documents/"),
+    makeOptionalPath(FilesystemPrefix::XdgDownload, "xdg-download", "xdg-download/"),
+    makeOptionalPath(FilesystemPrefix::XdgMusic, "xdg-music", "xdg-music/"),
+    makeOptionalPath(FilesystemPrefix::XdgPictures, "xdg-pictures", "xdg-pictures/"),
+    makeOptionalPath(FilesystemPrefix::XdgPublicShare, "xdg-public-share", "xdg-public-share/"),
+    makeOptionalPath(FilesystemPrefix::XdgVideos, "xdg-videos", "xdg-videos/"),
+    makeOptionalPath(FilesystemPrefix::XdgTemplates, "xdg-templates", "xdg-templates/"),
+    //
+    makeOptionalPath(FilesystemPrefix::XdgCache, "xdg-cache", "xdg-cache/"),
+    makeOptionalPath(FilesystemPrefix::XdgConfig, "xdg-config", "xdg-config/"),
+    makeOptionalPath(FilesystemPrefix::XdgData, "xdg-data", "xdg-data/"),
+    //
+    makeRequiredPath(FilesystemPrefix::XdgRun, "xdg-run/"),
+    //
+    makeRequiredPath(FilesystemPrefix::Unknown, ""),
+};
+
+} // namespace
+
+FlatpakFilesystemsEntry::FlatpakFilesystemsEntry(FilesystemPrefix prefix, AccessMode mode, const QString &path)
+    : m_prefix(prefix)
+    , m_mode(mode)
+    , m_path(path)
+{
+}
+
+std::optional<FlatpakFilesystemsEntry> FlatpakFilesystemsEntry::parse(QStringView entry)
+{
+    std::optional<AccessMode> accessMode = std::nullopt;
+
+    if (entry.endsWith(SUFFIX_RO)) {
+        entry.chop(SUFFIX_RO.size());
+        accessMode = std::optional(AccessMode::ReadOnly);
+    } else if (entry.endsWith(SUFFIX_RW)) {
+        entry.chop(SUFFIX_RW.size());
+        accessMode = std::optional(AccessMode::ReadWrite);
+    } else if (entry.endsWith(SUFFIX_CREATE)) {
+        entry.chop(SUFFIX_CREATE.size());
+        accessMode = std::optional(AccessMode::Create);
+    }
+
+    if (entry.startsWith(PREFIX_DENY)) {
+        // ensure there is no access mode suffix
+        if (accessMode.has_value()) {
+            return std::nullopt;
+        }
+        entry = entry.mid(1);
+        accessMode = std::optional(AccessMode::Deny);
+    }
+
+    AccessMode effectiveAccessMode = accessMode.value_or(AccessMode::ReadWrite);
+
+    for (const TableEntry &filesystem : s_filesystems) {
+        // Deliberately not using switch here, because of the overlapping Optional case.
+        if (filesystem.mode == PathMode::Optional || filesystem.mode == PathMode::Required) {
+            if (entry.startsWith(filesystem.prefixString) || filesystem.prefix == FilesystemPrefix::Unknown) {
+                if (filesystem.prefix != FilesystemPrefix::Unknown) {
+                    entry = entry.mid(filesystem.prefixString.size());
+                }
+                QString path;
+                if (!entry.isEmpty()) {
+                    path = QUrl(entry.toString()).toDisplayString(QUrl::RemoveScheme | QUrl::StripTrailingSlash);
+                } else if (filesystem.mode == PathMode::Required) {
+                    return std::nullopt;
+                }
+                return std::optional(FlatpakFilesystemsEntry(filesystem.prefix, effectiveAccessMode, path));
+            }
+        }
+        if (filesystem.mode == PathMode::NoPath || filesystem.mode == PathMode::Optional) {
+            if (entry == filesystem.fixedString) {
+                return std::optional(FlatpakFilesystemsEntry(filesystem.prefix, effectiveAccessMode, QString()));
+            }
+        }
+    }
+
+    return std::nullopt;
+}
+
+QString FlatpakFilesystemsEntry::format() const
+{
+    const auto it = std::find_if(s_filesystems.begin(), s_filesystems.end(), [this](const TableEntry &filesystem) {
+        if (filesystem.prefix != m_prefix) {
+            return false;
+        }
+        // home/path should be serialized as ~/path, and fixed string "~" as "home".
+        // So either the path should be empty, XOR current table entry is the "~" variant.
+        if (filesystem.prefix == FilesystemPrefix::Home) {
+            return m_path.isEmpty() != (filesystem.fixedString == QLatin1String("~"));
+        }
+        return true;
+    });
+    if (it == s_filesystems.end()) {
+        // all prefixes are covered in the table, so this should never happen.
+        Q_UNREACHABLE();
+        return {};
+    }
+
+    if ((m_path.isEmpty() && it->mode == PathMode::Required) || (!m_path.isEmpty() && it->mode == PathMode::NoPath)) {
+        return {};
+    }
+
+    const QString path = (m_path.isEmpty() ? QString(it->fixedString) : it->prefixString + m_path);
+
+    switch (m_mode) {
+    case AccessMode::ReadOnly:
+        return path + SUFFIX_RO;
+    case AccessMode::ReadWrite:
+        // Omit default value
+        return path;
+    case AccessMode::Create:
+        return path + SUFFIX_CREATE;
+    case AccessMode::Deny:
+        return PREFIX_DENY + path;
+    }
+    return {};
+}
+
+FlatpakFilesystemsEntry::FilesystemPrefix FlatpakFilesystemsEntry::prefix() const
+{
+    return m_prefix;
+}
+
+QString FlatpakFilesystemsEntry::path() const
+{
+    return m_path;
+}
+
+FlatpakFilesystemsEntry::AccessMode FlatpakFilesystemsEntry::mode() const
+{
+    return m_mode;
+}
+
+bool FlatpakFilesystemsEntry::operator==(const FlatpakFilesystemsEntry &other) const
+{
+    return other.m_prefix == m_prefix && other.m_mode == m_mode && other.m_path == m_path;
+}
+
+bool FlatpakFilesystemsEntry::operator!=(const FlatpakFilesystemsEntry &other) const
+{
+    return !(*this == other);
+}
 
 FlatpakPermission::ValueType FlatpakPermission::valueTypeFromSectionType(FlatpakPermissionsSectionType::Type section)
 {
