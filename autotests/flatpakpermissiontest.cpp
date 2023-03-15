@@ -7,6 +7,7 @@
 
 #include <KLocalizedString>
 
+#include "flatpakcommon.h"
 #include "flatpakpermission.h"
 
 class FlatpakPermissionModelTest : public QObject
@@ -54,6 +55,48 @@ private Q_SLOTS:
         QVERIFY(containsXdgDownload);
         QVERIFY(model.permExists("network"));
         QVERIFY(!model.permExists("yolo-foobar"));
+    }
+
+    void testDefaultFilesystemsGoFirst()
+    {
+        // If there are no custom filesystems specified in defaults, then all custom ones should go below it.
+        // The Discord test above can't be reused, because it has custom filesystems in base metadata, so
+        // the well-known "host-etc" filesystem would not be the last one. But we want to test for the last
+        // default index too.
+        FlatpakReferencesModel referencesModel;
+        QFile metadataFile(QFINDTESTDATA("fixtures/metadata/org.gnome.dfeet"));
+        QVERIFY(metadataFile.open(QFile::ReadOnly));
+        FlatpakReference reference(&referencesModel,
+                                   "D-Feet",
+                                   "org.gnome.dfeet",
+                                   QFINDTESTDATA("fixtures/overrides/"),
+                                   "0.3.16",
+                                   QString(),
+                                   metadataFile.readAll(),
+                                   &referencesModel);
+        FlatpakPermissionModel model;
+        model.setReference(&reference);
+        model.load();
+        QStringList filesystems;
+        for (auto i = 0; i <= model.rowCount(); ++i) {
+            const QString name = model.data(model.index(i, 0), FlatpakPermissionModel::Name).toString();
+            // collect all filesystems
+            const QString categoryi18n = model.data(model.index(i, 0), FlatpakPermissionModel::Category).toString();
+            const QString category = FlatpakPermission::categoryHeadingToRawCategory(categoryi18n);
+            if (category == QLatin1String(FLATPAK_METADATA_KEY_FILESYSTEMS)) {
+                filesystems.append(name);
+            }
+        }
+
+        // Note: update this name when more standard filesystems are added.
+        const QString hostEtc = QLatin1String("host-etc");
+        const auto indexOfHostEtc = filesystems.indexOf(hostEtc);
+        QVERIFY(indexOfHostEtc == 3);
+        // But custom overrides should come after standard ones anyway.
+        const auto custom = QLatin1String("/custom/path");
+        const auto indexOfCustom = filesystems.indexOf(custom);
+        QVERIFY(indexOfCustom != -1);
+        QVERIFY(indexOfHostEtc < indexOfCustom);
     }
 
     void testMutable()
