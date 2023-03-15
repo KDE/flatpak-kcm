@@ -722,7 +722,7 @@ void FlatpakPermissionModel::loadCurrentValues()
                 perm->setEffectiveValue(val);
                 perm->setOverrideValue(val);
             }
-            fsIndex = i;
+            fsIndex = i + 1;
             break;
         }
         case FlatpakPermission::ValueType::Bus:
