@@ -35,7 +35,6 @@
             "mediacenter"
         ],
         "Icon": "flatpak-discover",
-        "Id": "kcm_flatpak",
         "Name": "Flatpak Permissions",
         "Name[ar]": "تصاريح فلاتباك",
         "Name[ca@valencia]": "Permisos de Flatpak",
