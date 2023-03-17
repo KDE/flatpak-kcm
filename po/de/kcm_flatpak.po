@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-16 02:49+0000\n"
+"POT-Creation-Date: 2023-03-17 03:17+0000\n"
 "PO-Revision-Date: 2023-02-25 23:51+0100\n"
 "Last-Translator: Jannick Kuhr <opensource@kuhr.org>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -16,10 +16,10 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 22.12.2\n"
 
-#: autotests/flatpakpermissiontest.cpp:49 flatpakpermission.cpp:285
+#: autotests/flatpakpermissiontest.cpp:50 flatpakpermission.cpp:285
 #: flatpakpermission.cpp:516 flatpakpermission.cpp:551
 #: flatpakpermission.cpp:563 flatpakpermission.cpp:575
 #: flatpakpermission.cpp:587 flatpakpermission.cpp:707
@@ -29,7 +29,7 @@ msgstr ""
 msgid "read/write"
 msgstr "lesen/schreiben"
 
-#: autotests/flatpakpermissiontest.cpp:91 flatpakpermission.cpp:247
+#: autotests/flatpakpermissiontest.cpp:134 flatpakpermission.cpp:247
 #: flatpakpermission.cpp:264 flatpakpermission.cpp:608
 #: flatpakpermission.cpp:628 flatpakpermission.cpp:827
 #: flatpakpermission.cpp:967
@@ -37,8 +37,8 @@ msgstr "lesen/schreiben"
 msgid "own"
 msgstr "besitzen"
 
-#: autotests/flatpakpermissiontest.cpp:96
-#: autotests/flatpakpermissiontest.cpp:99 flatpakpermission.cpp:199
+#: autotests/flatpakpermissiontest.cpp:139
+#: autotests/flatpakpermissiontest.cpp:142 flatpakpermission.cpp:199
 #: flatpakpermission.cpp:280 flatpakpermission.cpp:516
 #: flatpakpermission.cpp:717 flatpakpermission.cpp:770
 #: flatpakpermission.cpp:786 flatpakpermission.cpp:964
@@ -47,12 +47,12 @@ msgstr "besitzen"
 msgid "read-only"
 msgstr "nur lesen"
 
-#: autotests/flatpakpermissiontest.cpp:97
+#: autotests/flatpakpermissiontest.cpp:140
 #, kde-format
 msgid "read-write"
 msgstr "lesen/schreiben"
 
-#: autotests/flatpakpermissiontest.cpp:98 flatpakpermission.cpp:202
+#: autotests/flatpakpermissiontest.cpp:141 flatpakpermission.cpp:202
 #: flatpakpermission.cpp:283 flatpakpermission.cpp:516
 #: flatpakpermission.cpp:720 flatpakpermission.cpp:776
 #: flatpakpermission.cpp:786 flatpakpermission.cpp:964
