@@ -322,8 +322,12 @@ QVariant FlatpakPermissionModel::data(const QModelIndex &index, int role) const
     case Roles::IsNotDummy:
         return permission.originType() != FlatpakPermission::OriginType::Dummy;
     //
+    case Roles::IsDefaultEnabled:
+        return permission.isDefaultEnabled();
     case Roles::IsEffectiveEnabled:
         return permission.isEffectiveEnabled();
+    case Roles::DefaultValue:
+        return permission.defaultValue();
     case Roles::EffectiveValue:
         return permission.effectiveValue();
     //
@@ -346,7 +350,9 @@ QHash<int, QByteArray> FlatpakPermissionModel::roleNames() const
     roles[Roles::IsEnvironment] = "isEnvironment";
     roles[Roles::IsNotDummy] = "isNotDummy";
     //
+    roles[Roles::IsDefaultEnabled] = "isDefaultEnabled";
     roles[Roles::IsEffectiveEnabled] = "isEffectiveEnabled";
+    roles[Roles::DefaultValue] = "defaultValue";
     roles[Roles::EffectiveValue] = "effectiveValue";
     //
     roles[Roles::ValueList] = "valueList";
