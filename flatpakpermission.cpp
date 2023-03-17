@@ -605,7 +605,7 @@ void FlatpakPermissionModel::loadDefaultValues()
     category = QLatin1String(FLATPAK_METADATA_GROUP_SESSION_BUS_POLICY);
     const KConfigGroup sessionBusGroup = parser.group(QLatin1String(FLATPAK_METADATA_GROUP_SESSION_BUS_POLICY));
     possibleValues.clear();
-    possibleValues << i18n("talk") << i18n("own") << i18n("see");
+    possibleValues << i18n("None") << i18n("talk") << i18n("own") << i18n("see");
     if (sessionBusGroup.exists() && !sessionBusGroup.entryMap().isEmpty()) {
         const QMap<QString, QString> busMap = sessionBusGroup.entryMap();
         const QStringList busList = busMap.keys();
@@ -625,7 +625,7 @@ void FlatpakPermissionModel::loadDefaultValues()
     category = QLatin1String(FLATPAK_METADATA_GROUP_SYSTEM_BUS_POLICY);
     const KConfigGroup systemBusGroup = parser.group(QLatin1String(FLATPAK_METADATA_GROUP_SYSTEM_BUS_POLICY));
     possibleValues.clear();
-    possibleValues << i18n("talk") << i18n("own") << i18n("see");
+    possibleValues << i18n("None") << i18n("talk") << i18n("own") << i18n("see");
     if (systemBusGroup.exists() && !systemBusGroup.entryMap().isEmpty()) {
         const QMap<QString, QString> busMap = systemBusGroup.entryMap();
         const QStringList busList = busMap.keys();
@@ -824,7 +824,7 @@ void FlatpakPermissionModel::loadCurrentValues()
                 bool enabled = isBus ? value != QLatin1String("none") : !value.isEmpty();
                 if (isBus) {
                     QStringList possibleValues;
-                    possibleValues << i18n("talk") << i18n("own") << i18n("see");
+                    possibleValues << i18n("None") << i18n("talk") << i18n("own") << i18n("see");
                     value = toFrontendDBusValue(value);
                     m_permissions.insert(insertIndex, FlatpakPermission(name, category, name, FlatpakPermission::ValueType::Bus, false, value, possibleValues));
                 } else {
@@ -965,7 +965,7 @@ QStringList FlatpakPermissionModel::valueListForUntranslatedCategory(const QStri
         return QStringList{i18n("read/write"), i18n("read-only"), i18n("create")};
     }
     if (category == QLatin1String(FLATPAK_METADATA_GROUP_SESSION_BUS_POLICY) || category == QLatin1String(FLATPAK_METADATA_GROUP_SYSTEM_BUS_POLICY)) {
-        return QStringList{i18n("talk"), i18n("own"), i18n("see")};
+        return QStringList{i18n("None"), i18n("talk"), i18n("own"), i18n("see")};
     }
     return QStringList();
 }
