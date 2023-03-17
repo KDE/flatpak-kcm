@@ -177,6 +177,17 @@ private Q_SLOTS:
         setAndCheckBus(QLatin1String("see"), i18n("see"));
         setAndCheckBus(QLatin1String("talk"), i18n("talk"));
         setAndCheckBus(QLatin1String("own"), i18n("own"));
+
+        const auto checkPossibleValues = [&](int row) {
+            const auto values = model.data(model.index(row, 0), FlatpakPermissionModel::ValueList).toStringList();
+            QVERIFY(values.contains(i18n("None")));
+            QVERIFY(values.contains(i18n("see")));
+            QVERIFY(values.contains(i18n("talk")));
+            QVERIFY(values.contains(i18n("own")));
+        };
+        checkPossibleValues(indexOfService0);
+        checkPossibleValues(indexOfService1);
+        checkPossibleValues(indexOfService2);
     }
 
     void testMutable()
