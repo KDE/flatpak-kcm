@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcm_flatpak\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-16 02:19+0000\n"
+"POT-Creation-Date: 2023-03-17 02:32+0000\n"
 "PO-Revision-Date: 2022-09-21 19:04+0200\n"
 "Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
@@ -15,7 +15,7 @@ msgstr ""
 "X-Generator: Lokalize 22.04.3\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
-#: autotests/flatpakpermissiontest.cpp:50 flatpakpermission.cpp:285
+#: autotests/flatpakpermissiontest.cpp:51 flatpakpermission.cpp:285
 #: flatpakpermission.cpp:516 flatpakpermission.cpp:551
 #: flatpakpermission.cpp:563 flatpakpermission.cpp:575
 #: flatpakpermission.cpp:587 flatpakpermission.cpp:707
@@ -25,7 +25,7 @@ msgstr ""
 msgid "read/write"
 msgstr "čítanie aj zápis"
 
-#: autotests/flatpakpermissiontest.cpp:93 flatpakpermission.cpp:247
+#: autotests/flatpakpermissiontest.cpp:136 flatpakpermission.cpp:247
 #: flatpakpermission.cpp:264 flatpakpermission.cpp:608
 #: flatpakpermission.cpp:628 flatpakpermission.cpp:827
 #: flatpakpermission.cpp:967
@@ -33,8 +33,8 @@ msgstr "čítanie aj zápis"
 msgid "own"
 msgstr ""
 
-#: autotests/flatpakpermissiontest.cpp:98
-#: autotests/flatpakpermissiontest.cpp:101 flatpakpermission.cpp:199
+#: autotests/flatpakpermissiontest.cpp:141
+#: autotests/flatpakpermissiontest.cpp:144 flatpakpermission.cpp:199
 #: flatpakpermission.cpp:280 flatpakpermission.cpp:516
 #: flatpakpermission.cpp:717 flatpakpermission.cpp:770
 #: flatpakpermission.cpp:786 flatpakpermission.cpp:964
@@ -43,13 +43,13 @@ msgstr ""
 msgid "read-only"
 msgstr "iba čítanie"
 
-#: autotests/flatpakpermissiontest.cpp:99
+#: autotests/flatpakpermissiontest.cpp:142
 #, fuzzy, kde-format
 #| msgid "read/write"
 msgid "read-write"
 msgstr "čítanie aj zápis"
 
-#: autotests/flatpakpermissiontest.cpp:100 flatpakpermission.cpp:202
+#: autotests/flatpakpermissiontest.cpp:143 flatpakpermission.cpp:202
 #: flatpakpermission.cpp:283 flatpakpermission.cpp:516
 #: flatpakpermission.cpp:720 flatpakpermission.cpp:776
 #: flatpakpermission.cpp:786 flatpakpermission.cpp:964
