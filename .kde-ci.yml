@@ -11,3 +11,5 @@ Dependencies:
     'frameworks/kcoreaddons': '@latest'
     'frameworks/kdeclarative': '@latest'
     'frameworks/ki18n': '@latest'
+Options:
+  require-passing-tests-on: ['Linux']
