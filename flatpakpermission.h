@@ -300,7 +300,9 @@ public:
         IsEnvironment,
         IsNotDummy,
         //
+        IsDefaultEnabled,
         IsEffectiveEnabled,
+        DefaultValue,
         EffectiveValue,
         //
         ValueList,
