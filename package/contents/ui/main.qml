@@ -9,6 +9,7 @@ import QtQuick.Layouts 1.15
 import QtQuick.Controls 2.15 as QQC2
 import org.kde.kirigami 2.20 as Kirigami
 import org.kde.kcm 1.2 as KCM
+import org.kde.kcmutils 1.0 as KcmUtils
 import org.kde.kitemmodels 1.0 as KItemModels
 import org.kde.plasma.kcm.flatpakpermissions 1.0
 
@@ -21,19 +22,19 @@ KCM.ScrollViewKCM {
     framedView: false
 
     function shouldChange(toAppAtFilteredRowIndex: int) {
-        const fromAppAtSourceRowIndex = kcm.currentIndex();
+        const fromAppAtSourceRowIndex = KcmUtils.ConfigModule.currentIndex();
 
         const toAppAtSourceRowIndex = (toAppAtFilteredRowIndex === -1)
             ? toAppAtFilteredRowIndex
             : filteredRefsModel.mapToSource(filteredRefsModel.index(toAppAtFilteredRowIndex, 0)).row;
 
-        if (toAppAtSourceRowIndex === kcm.currentIndex()) {
+        if (toAppAtSourceRowIndex === KcmUtils.ConfigModule.currentIndex()) {
             // Don't reload if it's current anyway.
             return;
         }
 
-        if (fromAppAtSourceRowIndex !== -1 && kcm.isSaveNeeded()) {
-            const m = kcm.refsModel;
+        if (fromAppAtSourceRowIndex !== -1 && KcmUtils.ConfigModule.isSaveNeeded()) {
+            const m = KcmUtils.ConfigModule.refsModel;
             const fromAppAtSourceIndex = m.index(fromAppAtSourceRowIndex, 0);
             const applicationName = m.data(fromAppAtSourceIndex, FlatpakReferencesModel.Name);
             const applicationIcon = m.data(fromAppAtSourceIndex, FlatpakReferencesModel.Icon);
@@ -52,21 +53,21 @@ KCM.ScrollViewKCM {
     function changeApp(toAppAtSourceRowIndex) {
         let ref = null;
         if (toAppAtSourceRowIndex !== -1) {
-            const sourceIndex = kcm.refsModel.index(toAppAtSourceRowIndex, 0);
-            ref = kcm.refsModel.data(sourceIndex, FlatpakReferencesModel.Ref);
+            const sourceIndex = KcmUtils.ConfigModule.refsModel.index(toAppAtSourceRowIndex, 0);
+            ref = KcmUtils.ConfigModule.refsModel.data(sourceIndex, FlatpakReferencesModel.Ref);
             appsListView.setCurrentIndexLater(toAppAtSourceRowIndex);
         }
-        kcm.pop();
-        kcm.setIndex(toAppAtSourceRowIndex);
-        kcm.push("permissions.qml", { ref });
+        KcmUtils.ConfigModule.pop();
+        KcmUtils.ConfigModule.setIndex(toAppAtSourceRowIndex);
+        KcmUtils.ConfigModule.push("permissions.qml", { ref });
     }
 
     Component.onCompleted: {
-        kcm.columnWidth = Kirigami.Units.gridUnit * 15
-        changeApp(kcm.currentIndex());
+        KcmUtils.ConfigModule.columnWidth = Kirigami.Units.gridUnit * 15
+        changeApp(KcmUtils.ConfigModule.currentIndex());
     }
 
-    KCM.ConfigModule.buttons: KCM.ConfigModule.Apply | KCM.ConfigModule.Default
+    KcmUtils.ConfigModule.buttons: KcmUtils.ConfigModule.Apply | KcmUtils.ConfigModule.Default
 
     Component {
         id: applyOrDiscardDialogComponent
@@ -117,19 +118,19 @@ KCM.ScrollViewKCM {
             }
 
             onApplied: {
-                kcm.save()
+                KcmUtils.ConfigModule.save()
                 root.changeApp(toAppAtSourceRowIndex)
                 dialog.close()
             }
 
             onDiscarded: {
-                kcm.load()
+                KcmUtils.ConfigModule.load()
                 root.changeApp(fromAppAtSourceRowIndex)
                 dialog.close()
             }
 
             onRejected: {
-                appsListView.currentIndex = kcm.currentIndex()
+                appsListView.currentIndex = KcmUtils.ConfigModule.currentIndex()
             }
 
             onClosed: destroy()
@@ -187,7 +188,7 @@ KCM.ScrollViewKCM {
 
         model: KItemModels.KSortFilterProxyModel {
             id: filteredRefsModel
-            sourceModel: kcm.refsModel
+            sourceModel: root.KcmUtils.ConfigModule.refsModel
             sortOrder: Qt.AscendingOrder
             sortRole: FlatpakReferencesModel.Name
             filterRole: FlatpakReferencesModel.Name
@@ -195,7 +196,7 @@ KCM.ScrollViewKCM {
             filterCaseSensitivity: Qt.CaseInsensitive
             onCountChanged: {
                 if (count >= 0) {
-                    const sourceRowIndex = kcm.currentIndex();
+                    const sourceRowIndex = root.KcmUtils.ConfigModule.currentIndex();
                     appsListView.setCurrentIndexLater(sourceRowIndex);
                 }
             }

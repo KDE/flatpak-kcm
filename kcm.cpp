@@ -13,7 +13,7 @@
 K_PLUGIN_CLASS_WITH_JSON(KCMFlatpak, "kcm_flatpak.json")
 
 KCMFlatpak::KCMFlatpak(QObject *parent, const KPluginMetaData &data, const QVariantList &args)
-    : KQuickAddons::ManagedConfigModule(parent, data, args)
+    : KQuickManagedConfigModule(parent, data, args)
     , m_refsModel(new FlatpakReferencesModel(this))
 {
     QString requestedReference;

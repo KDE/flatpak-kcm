@@ -32,7 +32,6 @@ find_package(Qt${QT_MAJOR_VERSION} ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS
 find_package(KF6 ${KF6_MIN_VERSION} REQUIRED COMPONENTS
     Config
     CoreAddons
-    Declarative
     I18n
     KCMUtils
     Package
@@ -49,7 +48,7 @@ target_link_libraries(kcm_flatpak_static
     KF6::ConfigCore
     KF6::CoreAddons
     KF6::I18n
-    KF6::QuickAddons
+    KF6::KCMUtilsQuick
     PkgConfig::Flatpak
     Qt::Core
 )

@@ -7,9 +7,9 @@
 
 #include "flatpakreference.h"
 
-#include <KQuickAddons/ManagedConfigModule>
+#include <KQuickManagedConfigModule>
 
-class KCMFlatpak : public KQuickAddons::ManagedConfigModule
+class KCMFlatpak : public KQuickManagedConfigModule
 {
     Q_OBJECT
     Q_PROPERTY(FlatpakReferencesModel *refsModel MEMBER m_refsModel CONSTANT)
