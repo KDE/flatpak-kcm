@@ -197,6 +197,13 @@ KCM.ScrollViewKCM {
             property var comboVals: model.valueList
             property int index: model.index
 
+            // Default-provided custom entries are not meant to be unchecked:
+            // it is a meaningless undefined operation.
+            checkable: [
+                i18n("Session Bus Policy"),
+                i18n("System Bus Policy")
+            ].includes(model.category) ? !model.isDefaultEnabled : true
+
             // default formula does not take leading/trailing into account
             implicitHeight: Math.max(iconSize, labelItem.implicitHeight, trailing.implicitHeight) + topPadding + bottomPadding
             width: ListView.view.width - ListView.view.leftMargin - ListView.view.rightMargin
@@ -206,12 +213,15 @@ KCM.ScrollViewKCM {
             text: model.description
             visible: model.isNotDummy
             onClicked: {
-                permsModel.togglePermissionAtIndex(permItem.index);
+                if (checkable) {
+                    permsModel.togglePermissionAtIndex(permItem.index);
+                }
                 permsView.currentIndex = -1;
             }
 
             leading: QQC2.CheckBox {
                 id: checkBox
+                enabled: permItem.checkable
                 checked: model.isEffectiveEnabled
                 onToggled: {
                     permsModel.togglePermissionAtIndex(permItem.index);

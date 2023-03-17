@@ -1019,20 +1019,8 @@ void FlatpakPermissionModel::togglePermissionAtIndex(int index)
         }
         perm->setEffectiveEnabled(!perm->isEffectiveEnabled());
     } else if (perm->valueType() == FlatpakPermission::ValueType::Bus) {
-        if (perm->isDefaultEnabled() && wasEnabled) {
-            perm->setEffectiveEnabled(false);
-            if (perm->defaultValue() != perm->effectiveValue()) {
-                editBusPermissions(perm, i18n("None"));
-            } else {
-                addBusPermissions(perm);
-            }
-        } else if (perm->isDefaultEnabled() && !wasEnabled) {
-            if (perm->defaultValue() != perm->effectiveValue()) {
-                editBusPermissions(perm, perm->effectiveValue());
-            } else {
-                removeBusPermission(perm);
-            }
-            perm->setEffectiveEnabled(true);
+        if (perm->isDefaultEnabled()) {
+            qWarning() << "Illegal operation: D-Bus value provided by upstream can not be toggled:" << perm->name();
         } else if (!perm->isDefaultEnabled() && wasEnabled) {
             perm->setEffectiveEnabled(false);
             removeBusPermission(perm);
