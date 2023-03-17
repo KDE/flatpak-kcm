@@ -51,7 +51,6 @@ target_link_libraries(kcm_flatpak_static
     KF6::QuickAddons
     PkgConfig::Flatpak
     Qt::Core
-    Qt::DBus
 )
 
 add_library(kcm_flatpak MODULE
