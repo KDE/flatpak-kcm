@@ -30,10 +30,10 @@ find_package(Qt${QT_MAJOR_VERSION} ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS
 )
 
 find_package(KF6 ${KF6_MIN_VERSION} REQUIRED COMPONENTS
+    Config
+    Declarative
     I18n
     KCMUtils
-    Declarative
-    Config
     Package
 )
 
@@ -45,12 +45,12 @@ add_library(kcm_flatpak_static STATIC
 )
 set_property(TARGET kcm_flatpak_static PROPERTY POSITION_INDEPENDENT_CODE ON)
 target_link_libraries(kcm_flatpak_static
-    Qt::Core
-    KF6::CoreAddons
     KF6::ConfigCore
+    KF6::CoreAddons
     KF6::I18n
     KF6::QuickAddons
     PkgConfig::Flatpak
+    Qt::Core
     Qt::DBus
 )
 
