@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-17 02:32+0000\n"
+"POT-Creation-Date: 2023-03-18 02:34+0000\n"
 "PO-Revision-Date: 2023-02-22 08:50+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
@@ -28,7 +28,7 @@ msgstr ""
 msgid "read/write"
 msgstr "читання-запис"
 
-#: autotests/flatpakpermissiontest.cpp:136 flatpakpermission.cpp:247
+#: autotests/flatpakpermissiontest.cpp:137 flatpakpermission.cpp:247
 #: flatpakpermission.cpp:264 flatpakpermission.cpp:608
 #: flatpakpermission.cpp:628 flatpakpermission.cpp:827
 #: flatpakpermission.cpp:967
@@ -36,8 +36,8 @@ msgstr "читання-запис"
 msgid "own"
 msgstr "власність"
 
-#: autotests/flatpakpermissiontest.cpp:141
-#: autotests/flatpakpermissiontest.cpp:144 flatpakpermission.cpp:199
+#: autotests/flatpakpermissiontest.cpp:142
+#: autotests/flatpakpermissiontest.cpp:145 flatpakpermission.cpp:199
 #: flatpakpermission.cpp:280 flatpakpermission.cpp:516
 #: flatpakpermission.cpp:717 flatpakpermission.cpp:770
 #: flatpakpermission.cpp:786 flatpakpermission.cpp:964
@@ -46,12 +46,12 @@ msgstr "власність"
 msgid "read-only"
 msgstr "лише читання"
 
-#: autotests/flatpakpermissiontest.cpp:142
+#: autotests/flatpakpermissiontest.cpp:143
 #, kde-format
 msgid "read-write"
 msgstr "читання-запис"
 
-#: autotests/flatpakpermissiontest.cpp:143 flatpakpermission.cpp:202
+#: autotests/flatpakpermissiontest.cpp:144 flatpakpermission.cpp:202
 #: flatpakpermission.cpp:283 flatpakpermission.cpp:516
 #: flatpakpermission.cpp:720 flatpakpermission.cpp:776
 #: flatpakpermission.cpp:786 flatpakpermission.cpp:964
@@ -282,17 +282,17 @@ msgstr "Усі налаштування системи"
 msgid "=\n"
 msgstr "=\n"
 
-#: package/contents/ui/main.qml:17
+#: package/contents/ui/main.qml:18
 #, kde-format
 msgid "Flatpak Applications"
 msgstr "Програми Flatpak"
 
-#: package/contents/ui/main.qml:87
+#: package/contents/ui/main.qml:88
 #, kde-format
 msgid "Apply Permissions"
 msgstr "Застосувати права доступу"
 
-#: package/contents/ui/main.qml:88
+#: package/contents/ui/main.qml:89
 #, kde-format
 msgid ""
 "The permissions of application %1 have been changed. Do you want to apply "

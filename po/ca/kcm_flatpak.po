@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-17 02:32+0000\n"
+"POT-Creation-Date: 2023-03-18 02:34+0000\n"
 "PO-Revision-Date: 2023-02-22 09:28+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -29,7 +29,7 @@ msgstr ""
 msgid "read/write"
 msgstr "lectura/escriptura"
 
-#: autotests/flatpakpermissiontest.cpp:136 flatpakpermission.cpp:247
+#: autotests/flatpakpermissiontest.cpp:137 flatpakpermission.cpp:247
 #: flatpakpermission.cpp:264 flatpakpermission.cpp:608
 #: flatpakpermission.cpp:628 flatpakpermission.cpp:827
 #: flatpakpermission.cpp:967
@@ -37,8 +37,8 @@ msgstr "lectura/escriptura"
 msgid "own"
 msgstr "propietat"
 
-#: autotests/flatpakpermissiontest.cpp:141
-#: autotests/flatpakpermissiontest.cpp:144 flatpakpermission.cpp:199
+#: autotests/flatpakpermissiontest.cpp:142
+#: autotests/flatpakpermissiontest.cpp:145 flatpakpermission.cpp:199
 #: flatpakpermission.cpp:280 flatpakpermission.cpp:516
 #: flatpakpermission.cpp:717 flatpakpermission.cpp:770
 #: flatpakpermission.cpp:786 flatpakpermission.cpp:964
@@ -47,12 +47,12 @@ msgstr "propietat"
 msgid "read-only"
 msgstr "només-de-lectura"
 
-#: autotests/flatpakpermissiontest.cpp:142
+#: autotests/flatpakpermissiontest.cpp:143
 #, kde-format
 msgid "read-write"
 msgstr "lectura-escriptura"
 
-#: autotests/flatpakpermissiontest.cpp:143 flatpakpermission.cpp:202
+#: autotests/flatpakpermissiontest.cpp:144 flatpakpermission.cpp:202
 #: flatpakpermission.cpp:283 flatpakpermission.cpp:516
 #: flatpakpermission.cpp:720 flatpakpermission.cpp:776
 #: flatpakpermission.cpp:786 flatpakpermission.cpp:964
@@ -283,17 +283,17 @@ msgstr "Totes les configuracions del sistema"
 msgid "=\n"
 msgstr "=\n"
 
-#: package/contents/ui/main.qml:17
+#: package/contents/ui/main.qml:18
 #, kde-format
 msgid "Flatpak Applications"
 msgstr "Aplicacions del Flatpak"
 
-#: package/contents/ui/main.qml:87
+#: package/contents/ui/main.qml:88
 #, kde-format
 msgid "Apply Permissions"
 msgstr "Aplica els permisos"
 
-#: package/contents/ui/main.qml:88
+#: package/contents/ui/main.qml:89
 #, kde-format
 msgid ""
 "The permissions of application %1 have been changed. Do you want to apply "
