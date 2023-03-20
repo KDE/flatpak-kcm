@@ -27,6 +27,18 @@ public:
                               QString icon = QString(),
                               QByteArray metadata = QByteArray(),
                               FlatpakReferencesModel *refsModel = nullptr);
+
+    // This constructor is cherry-picked from master branch for usage in tests.
+    explicit FlatpakReference(FlatpakReferencesModel *parent,
+                              const QString &flatpakName,
+                              const QString &arch,
+                              const QString &branch,
+                              const QString &version,
+                              const QString &displayName,
+                              const QString &permissionsDirectory,
+                              const QUrl &iconSource,
+                              const QByteArray &metadata);
+
     QString name() const;
     QString displayName() const;
     QString version() const;

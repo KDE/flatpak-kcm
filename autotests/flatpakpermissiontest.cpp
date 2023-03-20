@@ -26,13 +26,14 @@ private Q_SLOTS:
         QFile metadataFile(QFINDTESTDATA("fixtures/metadata/com.discordapp.Discord"));
         QVERIFY(metadataFile.open(QFile::ReadOnly));
         FlatpakReference reference(&referencesModel,
-                                   "Discord",
                                    "com.discordapp.Discord",
-                                   QFINDTESTDATA("fixtures/overrides/"),
+                                   "x86_64",
+                                   "stable",
                                    "0.0.24",
-                                   QString(),
-                                   metadataFile.readAll(),
-                                   &referencesModel);
+                                   "Discord",
+                                   QFINDTESTDATA("fixtures/overrides/"),
+                                   QUrl(),
+                                   metadataFile.readAll());
         FlatpakPermissionModel model;
         model.setReference(&reference);
         model.load();
@@ -67,13 +68,14 @@ private Q_SLOTS:
         QFile metadataFile(QFINDTESTDATA("fixtures/metadata/org.gnome.dfeet"));
         QVERIFY(metadataFile.open(QFile::ReadOnly));
         FlatpakReference reference(&referencesModel,
-                                   "D-Feet",
                                    "org.gnome.dfeet",
-                                   QFINDTESTDATA("fixtures/overrides/"),
+                                   "x86_64",
+                                   "stable",
                                    "0.3.16",
-                                   QString(),
-                                   metadataFile.readAll(),
-                                   &referencesModel);
+                                   "D-Feet",
+                                   QFINDTESTDATA("fixtures/overrides/"),
+                                   QUrl(),
+                                   metadataFile.readAll());
         FlatpakPermissionModel model;
         model.setReference(&reference);
         model.load();
@@ -106,13 +108,14 @@ private Q_SLOTS:
         QFile metadataFile(QFINDTESTDATA("fixtures/metadata/com.discordapp.Discord"));
         QVERIFY(metadataFile.open(QFile::ReadOnly));
         FlatpakReference reference(&referencesModel,
-                                   "Discord",
                                    "com.discordapp.Discord",
-                                   QFINDTESTDATA("fixtures/overrides/"),
+                                   "x86_64",
+                                   "stable",
                                    "0.0.24",
-                                   QString(),
-                                   metadataFile.readAll(),
-                                   &referencesModel);
+                                   "Discord",
+                                   QFINDTESTDATA("fixtures/overrides/"),
+                                   QUrl(),
+                                   metadataFile.readAll());
         FlatpakPermissionModel model;
         model.setReference(&reference);
         model.load();

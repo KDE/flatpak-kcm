@@ -16,6 +16,8 @@ extern "C" {
 #include <glib.h>
 
 #include <QDebug>
+#include <QUrl>
+
 FlatpakReference::FlatpakReference(FlatpakReferencesModel *parent,
                                    QString name,
                                    QString id,
@@ -38,6 +40,21 @@ FlatpakReference::FlatpakReference(FlatpakReferencesModel *parent,
 
     connect(this, &FlatpakReference::needsLoad, parent, &FlatpakReferencesModel::needsLoad);
     connect(this, &FlatpakReference::needsSaveChanged, parent, &FlatpakReferencesModel::needsSaveChanged);
+}
+
+FlatpakReference::FlatpakReference(FlatpakReferencesModel *parent,
+                                   const QString &flatpakName,
+                                   const QString &arch,
+                                   const QString &branch,
+                                   const QString &version,
+                                   const QString &displayName,
+                                   const QString &permissionsDirectory,
+                                   const QUrl &iconSource,
+                                   const QByteArray &metadata)
+    : FlatpakReference(parent, displayName, flatpakName, permissionsDirectory, version, iconSource.toString(), metadata, parent)
+{
+    Q_UNUSED(arch)
+    Q_UNUSED(branch)
 }
 
 QString FlatpakReference::name() const
