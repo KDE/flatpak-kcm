@@ -249,7 +249,7 @@ static QString toFrontendDBusValue(const QString &value)
     if (value == QStringLiteral("see")) {
         return i18n("see");
     }
-    if (value == QStringLiteral("None")) {
+    if (value == QStringLiteral("none")) {
         return i18n("None");
     }
     Q_ASSERT_X(false, Q_FUNC_INFO, qUtf8Printable(QStringLiteral("unmapped value %1").arg(value)));
@@ -268,7 +268,7 @@ static QString toBackendDBusValue(const QString &value)
         return QStringLiteral("see");
     }
     if (value == i18n("None")) {
-        return QStringLiteral("None");
+        return QStringLiteral("none");
     }
     Q_ASSERT_X(false, Q_FUNC_INFO, qUtf8Printable(QStringLiteral("unmapped value %1").arg(value)));
     return QString();
@@ -735,7 +735,7 @@ void FlatpakPermissionModel::loadCurrentValues()
                 if (index != -1) {
                     bool enabled = true;
                     QString value = map.value(list.at(index));
-                    QString offSig = perm->valueType() == FlatpakPermission::ValueType::Bus ? QStringLiteral("None") : QString();
+                    QString offSig = perm->valueType() == FlatpakPermission::ValueType::Bus ? QStringLiteral("none") : QString();
                     if (value == offSig) {
                         enabled = false;
                         value = perm->effectiveValue();
@@ -821,10 +821,11 @@ void FlatpakPermissionModel::loadCurrentValues()
                 QString value = map.value(name);
                 const bool isBus = (category == QLatin1String(FLATPAK_METADATA_GROUP_SESSION_BUS_POLICY)
                                     || category == QLatin1String(FLATPAK_METADATA_GROUP_SYSTEM_BUS_POLICY));
-                bool enabled = isBus ? value != i18n("None") : !value.isEmpty();
+                bool enabled = isBus ? value != QLatin1String("none") : !value.isEmpty();
                 if (isBus) {
                     QStringList possibleValues;
                     possibleValues << i18n("talk") << i18n("own") << i18n("see");
+                    value = toFrontendDBusValue(value);
                     m_permissions.insert(insertIndex, FlatpakPermission(name, category, name, FlatpakPermission::ValueType::Bus, false, value, possibleValues));
                 } else {
                     m_permissions.insert(insertIndex, FlatpakPermission(name, category, name, FlatpakPermission::ValueType::Environment, false, value));
@@ -1203,7 +1204,7 @@ void FlatpakPermissionModel::addBusPermissions(FlatpakPermission *perm)
         m_overridesData.insert(m_overridesData.length(), groupHeader + QLatin1Char('\n'));
     }
     int permIndex = m_overridesData.indexOf(QLatin1Char('\n'), m_overridesData.indexOf(groupHeader)) + 1;
-    QString val = perm->isEffectiveEnabled() ? perm->effectiveValue() : i18n("None");
+    QString val = perm->isEffectiveEnabled() ? perm->effectiveValue() : QStringLiteral("none");
     m_overridesData.insert(permIndex, perm->name() + QLatin1Char('=') + val + QLatin1Char('\n'));
 }
 
@@ -1277,9 +1278,7 @@ void FlatpakPermissionModel::editBusPermissions(FlatpakPermission *perm, const Q
     valueBeginIndex = valueBeginIndex + 1 /* '=' character */ + backendValue.length();
     auto valueEndOfLine = m_overridesData.indexOf(QLatin1Char('\n'), valueBeginIndex);
     m_overridesData.remove(valueBeginIndex, valueEndOfLine - valueBeginIndex);
-    if (l10nValue != i18n("None")) {
-        perm->setEffectiveValue(l10nValue);
-    }
+    perm->setEffectiveValue(l10nValue);
 }
 
 void FlatpakPermissionModel::addEnvPermission(FlatpakPermission *perm)
