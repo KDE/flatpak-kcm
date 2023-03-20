@@ -7,8 +7,8 @@
 #include "flatpakpermission.h"
 #include "flatpakcommon.h"
 
+#include <KConfig>
 #include <KConfigGroup>
-#include <KDesktopFile>
 #include <KLocalizedString>
 #include <QDebug>
 #include <QFileInfo>
@@ -371,7 +371,7 @@ void FlatpakPermissionModel::loadDefaultValues()
     f.write(metadata);
     f.close();
 
-    KDesktopFile parser(f.fileName());
+    KConfig parser(f.fileName());
     const KConfigGroup contextGroup = parser.group(FLATPAK_METADATA_GROUP_CONTEXT);
 
     int basicIndex = 0;
@@ -671,7 +671,7 @@ void FlatpakPermissionModel::loadCurrentValues()
         return;
     }
 
-    KDesktopFile parser(path);
+    KConfig parser(path);
     const KConfigGroup contextGroup = parser.group(FLATPAK_METADATA_GROUP_CONTEXT);
 
     int fsIndex = -1;
