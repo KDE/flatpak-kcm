@@ -188,6 +188,38 @@ private Q_SLOTS:
         checkPossibleValues(indexOfService0);
         checkPossibleValues(indexOfService1);
         checkPossibleValues(indexOfService2);
+
+        const auto isEffectiveEnabled = [&](int row) -> bool {
+            return model.data(model.index(row, 0), FlatpakPermissionModel::IsEffectiveEnabled).toBool();
+        };
+        QVERIFY(isEffectiveEnabled(indexOfService0));
+        QVERIFY(isEffectiveEnabled(indexOfService1));
+        QVERIFY(isEffectiveEnabled(indexOfService2));
+
+        // Toggling non-default bus entry should disable it (i.e. mark for deletion)
+        model.togglePermissionAtIndex(indexOfService2);
+        QVERIFY(!isEffectiveEnabled(indexOfService2));
+        // Reloading data should re-enable it again.
+        model.load();
+        QVERIFY(isEffectiveEnabled(indexOfService2));
+        // Disabling non-default bus entry and saving it should remove it from override file.
+        model.togglePermissionAtIndex(indexOfService2);
+        QVERIFY(!isEffectiveEnabled(indexOfService2));
+        model.save();
+        {
+            const KConfig expectedDesktopFile(QFINDTESTDATA("fixtures/overrides/org.gnome.dfeet"));
+            const auto group = expectedDesktopFile.group(QLatin1String(FLATPAK_METADATA_GROUP_SESSION_BUS_POLICY));
+            QVERIFY(!group.hasKey(service2));
+        }
+        // Re-enabling non-default bus entry and saving it should add it back to override file.
+        model.togglePermissionAtIndex(indexOfService2);
+        QVERIFY(isEffectiveEnabled(indexOfService2));
+        model.save();
+        {
+            const KConfig expectedDesktopFile(QFINDTESTDATA("fixtures/overrides/org.gnome.dfeet"));
+            const auto group = expectedDesktopFile.group(QLatin1String(FLATPAK_METADATA_GROUP_SESSION_BUS_POLICY));
+            QVERIFY(group.hasKey(service2));
+        }
     }
 
     void testMutable()

@@ -733,20 +733,15 @@ void FlatpakPermissionModel::loadCurrentValues()
                 QList<QString> list = map.keys();
                 int index = list.indexOf(perm->name());
                 if (index != -1) {
-                    bool enabled = true;
-                    QString value = map.value(list.at(index));
-                    QString offSig = perm->valueType() == FlatpakPermission::ValueType::Bus ? QStringLiteral("none") : QString();
-                    if (value == offSig) {
-                        enabled = false;
-                        value = perm->effectiveValue();
-                    } else {
+                    QString value = map.value(perm->name());
+                    if (perm->valueType() == FlatpakPermission::ValueType::Bus) {
                         value = toFrontendDBusValue(value);
                     }
 
-                    perm->setEffectiveValue(value);
                     perm->setOverrideValue(value);
-                    perm->setEffectiveEnabled(enabled);
-                    perm->setOverrideEnabled(enabled);
+                    perm->setEffectiveValue(value);
+                    perm->setOverrideEnabled(true);
+                    perm->setEffectiveEnabled(true);
                 }
             }
             break;
@@ -821,7 +816,6 @@ void FlatpakPermissionModel::loadCurrentValues()
                 QString value = map.value(name);
                 const bool isBus = (category == QLatin1String(FLATPAK_METADATA_GROUP_SESSION_BUS_POLICY)
                                     || category == QLatin1String(FLATPAK_METADATA_GROUP_SYSTEM_BUS_POLICY));
-                bool enabled = isBus ? value != QLatin1String("none") : !value.isEmpty();
                 if (isBus) {
                     QStringList possibleValues;
                     possibleValues << i18n("None") << i18n("talk") << i18n("own") << i18n("see");
@@ -830,9 +824,8 @@ void FlatpakPermissionModel::loadCurrentValues()
                 } else {
                     m_permissions.insert(insertIndex, FlatpakPermission(name, category, name, FlatpakPermission::ValueType::Environment, false, value));
                 }
-                m_permissions[insertIndex].setEffectiveEnabled(enabled);
-                m_permissions[insertIndex].setOverrideEnabled(enabled);
-                m_permissions[insertIndex].setOverrideValue(value);
+                m_permissions[insertIndex].setOverrideEnabled(true);
+                m_permissions[insertIndex].setEffectiveEnabled(true);
                 insertIndex++;
             }
         }
@@ -1204,21 +1197,18 @@ void FlatpakPermissionModel::addBusPermissions(FlatpakPermission *perm)
         m_overridesData.insert(m_overridesData.length(), groupHeader + QLatin1Char('\n'));
     }
     int permIndex = m_overridesData.indexOf(QLatin1Char('\n'), m_overridesData.indexOf(groupHeader)) + 1;
-    QString val = perm->isEffectiveEnabled() ? perm->effectiveValue() : QStringLiteral("none");
+    QString val = perm->effectiveValue();
     m_overridesData.insert(permIndex, perm->name() + QLatin1Char('=') + val + QLatin1Char('\n'));
 }
 
 void FlatpakPermissionModel::removeBusPermission(FlatpakPermission *perm)
 {
-    int permBeginIndex = m_overridesData.indexOf(perm->name());
+    int permBeginIndex = m_overridesData.indexOf(perm->name() + QLatin1Char('='));
     if (permBeginIndex == -1) {
         return;
     }
 
-    /* if it is enabled, the current value is not None. So get the length. Otherwise, it is 4 for None */
-    int valueLen = perm->isEffectiveEnabled() ? perm->effectiveValue().length() : 4;
-
-    int permLen = perm->name().length() + 1 + valueLen + 1;
+    int permLen = perm->name().length() + 1 + perm->effectiveValue().length() + 1;
     m_overridesData.remove(permBeginIndex, permLen);
 }
 
