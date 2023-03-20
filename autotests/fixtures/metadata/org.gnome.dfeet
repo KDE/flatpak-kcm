@@ -8,6 +8,9 @@ command=d-feet
 shared=ipc;
 sockets=x11;wayland;session-bus;system-bus;fallback-x11;
 
+[Session Bus Policy]
+com.example.service0=none
+
 [Extension org.gnome.dfeet.Locale]
 directory=share/runtime/locale
 autodelete=true
