@@ -44,17 +44,25 @@ KCM.ScrollViewKCM {
         reuseItems: false
         cacheBuffer: 10000
 
-        section.property: "category"
+        section.property: "section"
         section.criteria: ViewSection.FullString
         section.delegate: Kirigami.ListSectionHeader {
+            id: sectionDelegate
+
+            /**
+             * Sorry about this mess. ListView automatically converts data of
+             * section role to string, so we parse it back into enum.
+             */
+            property /*FlatpakPermissionsSectionType::Type*/ int sectionType: parseInt(section)
+
             width: ListView.view.width - ListView.view.leftMargin - ListView.view.rightMargin
-            label: section
+            label: permsModel.sectionHeaderForSectionType(sectionType)
             QQC2.ToolButton {
                 id: buttonToggleAdvanced
                 text: permsModel.showAdvanced ? i18n("Hide advanced permissions") : i18n("Show advanced permissions")
                 display: QQC2.AbstractButton.IconOnly
                 icon.name: permsModel.showAdvanced ? "collapse" : "expand"
-                visible: section === i18n("Advanced Permissions")
+                visible: sectionDelegate.sectionType === FlatpakPermissionsSectionType.Advanced
                 onClicked: permsModel.showAdvanced = !permsModel.showAdvanced
                 Layout.alignment: Qt.AlignRight
 
@@ -67,21 +75,22 @@ KCM.ScrollViewKCM {
                 text: i18n("Add New")
                 icon.name: "bqm-add"
                 visible: [
-                    i18n("Filesystem Access"),
-                    i18n("Environment"),
-                    i18n("Session Bus Policy"),
-                    i18n("System Bus Policy"),
-                ].includes(section)
+                    FlatpakPermissionsSectionType.Filesystems,
+                    FlatpakPermissionsSectionType.SessionBus,
+                    FlatpakPermissionsSectionType.SystemBus,
+                    FlatpakPermissionsSectionType.Environment,
+                ].includes(sectionDelegate.sectionType)
                 onClicked: {
                     textPromptDialog.open()
                 }
                 Layout.alignment: Qt.AlignRight
 
-                QQC2.ToolTip.text: switch (section) {
-                    case i18n("Filesystem Access"): return i18n("Add a new filesystem path")
-                    case i18n("Environment"): return i18n("Add a new environment variable")
-                    case i18n("Session Bus Policy"): return i18n("Add a new session bus")
-                    default: return i18n("Add a new system bus")
+                QQC2.ToolTip.text: switch (sectionDelegate.sectionType) {
+                    case FlatpakPermissionsSectionType.Filesystems: return i18n("Add a new filesystem path")
+                    case FlatpakPermissionsSectionType.SessionBus: return i18n("Add a new session bus")
+                    case FlatpakPermissionsSectionType.SystemBus: return i18n("Add a new system bus")
+                    case FlatpakPermissionsSectionType.Environment: return i18n("Add a new environment variable")
+                    default: return ""
                 }
                 QQC2.ToolTip.visible: Kirigami.Settings.tabletMode ? buttonAddNew.pressed : buttonAddNew.hovered
                 QQC2.ToolTip.delay: Kirigami.Settings.tabletMode ? Qt.styleHints.mousePressAndHoldInterval : Kirigami.Units.toolTipDelay
@@ -89,45 +98,47 @@ KCM.ScrollViewKCM {
                 Kirigami.PromptDialog {
                     id: textPromptDialog
                     parent: root
-                    title: switch (section) {
-                        case i18n("Filesystem Access"): return i18n("Add Filesystem Path Permission")
-                        case i18n("Environment"): return i18n("Set Environment Variable")
-                        case i18n("Session Bus Policy"): return i18n("Add Session Bus Permission")
-                        default: return i18n("Add System Bus Permission")
+                    title: switch (sectionDelegate.sectionType) {
+                        case FlatpakPermissionsSectionType.Filesystems: return i18n("Add Filesystem Path Permission")
+                        case FlatpakPermissionsSectionType.SessionBus: return i18n("Add Session Bus Permission")
+                        case FlatpakPermissionsSectionType.SystemBus: return i18n("Add System Bus Permission")
+                        case FlatpakPermissionsSectionType.Environment: return i18n("Set Environment Variable")
+                        default: return ""
                     }
 
                     RowLayout {
                         QQC2.TextField {
                             id: nameField
-                            placeholderText: switch (section) {
-                                case i18n("Filesystem Access"): return i18n("Enter filesystem path...")
-                                case i18n("Environment"): return i18n("Enter variable...")
-                                case i18n("Session Bus Policy"): return i18n("Enter session bus name...")
-                                default: return i18n("Enter system bus name...")
+                            placeholderText: switch (sectionDelegate.sectionType) {
+                                case FlatpakPermissionsSectionType.Filesystems: return i18n("Enter filesystem path…")
+                                case FlatpakPermissionsSectionType.SessionBus: return i18n("Enter session bus name…")
+                                case FlatpakPermissionsSectionType.SystemBus: return i18n("Enter system bus name…")
+                                case FlatpakPermissionsSectionType.Environment: return i18n("Enter variable…")
+                                default: return ""
                             }
                             Layout.fillWidth: true
                         }
                         QQC2.ComboBox {
                             id: valueBox
-                            model: permsModel.valueListForSection(section)
-                            visible: section !== i18n("Environment")
+                            model: permsModel.valueListForSectionType(sectionDelegate.sectionType)
+                            visible: sectionDelegate.sectionType !== FlatpakPermissionsSectionType.Environment
                             Layout.fillWidth: true
                         }
                         Kirigami.Heading {
                             text: "="
                             level: 3
-                            visible: section === i18n("Environment")
+                            visible: sectionDelegate.sectionType === FlatpakPermissionsSectionType.Environment
                         }
                         QQC2.TextField {
                             id: valueField
-                            visible: section === i18n("Environment")
-                            placeholderText: i18n("Enter value...")
+                            visible: sectionDelegate.sectionType === FlatpakPermissionsSectionType.Environment
+                            placeholderText: i18n("Enter value…")
                             Layout.fillWidth: true
                         }
                     }
-                    property string value: section === i18n("Environment") ? valueField.text : valueBox.currentText
+                    property string value: sectionDelegate.sectionType === FlatpakPermissionsSectionType.Environment ? valueField.text : valueBox.currentText
                     standardButtons: Kirigami.Dialog.Ok | Kirigami.Dialog.Cancel
-                    onAccepted: permsModel.addUserEnteredPermission(nameField.text, section, textPromptDialog.value)
+                    onAccepted: permsModel.addUserEnteredPermission(sectionDelegate.sectionType, nameField.text, textPromptDialog.value)
                 }
             }
         }
@@ -148,9 +159,9 @@ KCM.ScrollViewKCM {
             // Default-provided custom entries are not meant to be unchecked:
             // it is a meaningless undefined operation.
             checkable: [
-                i18n("Session Bus Policy"),
-                i18n("System Bus Policy")
-            ].includes(model.category) ? !model.isDefaultEnabled : true
+                FlatpakPermissionsSectionType.SessionBus,
+                FlatpakPermissionsSectionType.SystemBus,
+            ].includes(model.section) ? !model.isDefaultEnabled : true
 
             // default formula does not take leading/trailing into account
             implicitHeight: Math.max(iconSize, labelItem.implicitHeight, trailing.implicitHeight) + topPadding + bottomPadding

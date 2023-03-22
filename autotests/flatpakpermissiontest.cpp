@@ -85,9 +85,8 @@ private Q_SLOTS:
         for (auto i = 0; i <= model.rowCount(); ++i) {
             const QString name = model.data(model.index(i, 0), FlatpakPermissionModel::Name).toString();
             // collect all filesystems
-            const QString categoryi18n = model.data(model.index(i, 0), FlatpakPermissionModel::Category).toString();
-            const QString category = FlatpakPermission::categoryHeadingToRawCategory(categoryi18n);
-            if (category == QLatin1String(FLATPAK_METADATA_KEY_FILESYSTEMS)) {
+            const auto section = model.data(model.index(i, 0), FlatpakPermissionModel::Section).value<FlatpakPermissionsSectionType::Type>();
+            if (section == FlatpakPermissionsSectionType::Filesystems) {
                 filesystems.append(name);
             }
         }
@@ -95,7 +94,7 @@ private Q_SLOTS:
         // Note: update this name when more standard filesystems are added.
         const QString hostEtc = QLatin1String("host-etc");
         const auto indexOfHostEtc = filesystems.indexOf(hostEtc);
-        QVERIFY(indexOfHostEtc == 3);
+        QCOMPARE(indexOfHostEtc, 3);
         // But custom overrides should come after standard ones anyway.
         const auto custom = QLatin1String("/custom/path");
         const auto indexOfCustom = filesystems.indexOf(custom);
@@ -137,9 +136,8 @@ private Q_SLOTS:
 
         for (auto i = 0; i <= model.rowCount(); ++i) {
             const QString name = model.data(model.index(i, 0), FlatpakPermissionModel::Name).toString();
-            const QString categoryi18n = model.data(model.index(i, 0), FlatpakPermissionModel::Category).toString();
-            const QString category = FlatpakPermission::categoryHeadingToRawCategory(categoryi18n);
-            if (category == QLatin1String(FLATPAK_METADATA_GROUP_SESSION_BUS_POLICY)) {
+            const auto section = model.data(model.index(i, 0), FlatpakPermissionModel::Section).value<FlatpakPermissionsSectionType::Type>();
+            if (section == FlatpakPermissionsSectionType::SessionBus) {
                 if (name == service0) {
                     indexOfService0 = i;
                 } else if (name == service1) {
@@ -158,6 +156,12 @@ private Q_SLOTS:
         QCOMPARE(name0, i18n("None"));
         QCOMPARE(name1, i18n("None"));
         QCOMPARE(name2, i18n("see"));
+        const auto isDefaultEnabled0 = model.data(model.index(indexOfService0, 0), FlatpakPermissionModel::IsDefaultEnabled).toBool();
+        const auto isDefaultEnabled1 = model.data(model.index(indexOfService1, 0), FlatpakPermissionModel::IsDefaultEnabled).toBool();
+        const auto isDefaultEnabled2 = model.data(model.index(indexOfService2, 0), FlatpakPermissionModel::IsDefaultEnabled).toBool();
+        QVERIFY(isDefaultEnabled0);
+        QVERIFY(!isDefaultEnabled1);
+        QVERIFY(!isDefaultEnabled2);
 
         const auto setAndCheckBus = [&](const QString &value, const QString &i18nValue) {
             model.editPerm(indexOfService2, i18nValue);
