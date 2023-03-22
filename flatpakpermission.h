@@ -13,6 +13,27 @@
 
 class FlatpakReference;
 
+/** For exporting enum to QML */
+class FlatpakPermissionsSectionType : public QObject
+{
+    Q_OBJECT
+
+public:
+    enum Type {
+        Basic,
+        Filesystems,
+        Advanced,
+        SubsystemsShared,
+        Sockets,
+        Devices,
+        Features,
+        SessionBus,
+        SystemBus,
+        Environment,
+    };
+    Q_ENUM(Type)
+};
+
 /**
  * @class FlatpakPermission describes a single configurable entry in the list model of permissions.
  *
@@ -87,18 +108,6 @@ public:
         Dummy
     };
 
-    enum class SectionType {
-        /**
-         * Easy-to-understand permissions, such as: print system access,
-         * internet connection, all filesystem resources etc.
-         */
-        Basic,
-        /**
-         * More "technical" permissions.
-         */
-        Advanced
-    };
-
     // Default constructor is required for meta-type registration.
     /** Default constructor. Creates an invalid entry. */
     FlatpakPermission() = default;
@@ -108,15 +117,19 @@ public:
      * that ListView shows a section header even if there are no permission row
      * entries in it.
      */
-    explicit FlatpakPermission(const QString &category);
+    explicit FlatpakPermission(FlatpakPermissionsSectionType::Type section);
 
-    explicit FlatpakPermission(const QString &name,
+    explicit FlatpakPermission(FlatpakPermissionsSectionType::Type section,
+                               const QString &name,
                                const QString &category,
                                const QString &description,
                                ValueType type,
                                bool isDefaultEnabled,
                                const QString &defaultValue = {},
                                const QStringList &possibleValues = {});
+
+    /** Section type for QtQuick/ListView. */
+    FlatpakPermissionsSectionType::Type section() const;
 
     /**
      * Technical untranslated name of the resource managed by this permission entry.
@@ -131,11 +144,6 @@ public:
      * See ValueType enum for more.
      */
     const QString &category() const;
-
-    /**
-     * User-facing translated string used as section header.
-     */
-    QString categoryHeading() const;
 
     /**
      * Untranslate section heading back into category identifier. It's a hack
@@ -163,18 +171,6 @@ public:
      */
     // TODO: This method should be replaced with constructor argument.
     void setOriginType(OriginType type);
-
-    /**
-     * Section type of this permission. Defaults to SectionType::Basic for
-     * ValueType::Filesystems, and Advanced for everything else.
-     */
-    SectionType sectionType() const;
-
-    /**
-     * Set section type for this permission.
-     */
-    // TODO: This method should be replaced with constructor argument.
-    void setSectionType(SectionType type);
 
     /**
      * System default "enabled" status of this permission. It can not be modified.
@@ -238,6 +234,9 @@ public:
     bool isDefaults() const;
 
 private:
+    /** Section type for QtQuick/ListView. */
+    FlatpakPermissionsSectionType::Type m_section;
+
     /**
      * Untranslatable identifier of permission.
      *
@@ -256,7 +255,6 @@ private:
 
     ValueType m_valueType;
     OriginType m_originType;
-    SectionType m_sectionType;
 
     /* Applicable for all ValueType permissions. */
 
@@ -292,8 +290,8 @@ public:
     FlatpakPermissionModel(QObject *parent = nullptr);
 
     enum Roles {
-        Name = Qt::UserRole + 1, //
-        Category,
+        Section = Qt::UserRole + 1,
+        Name,
         Description,
         //
         IsSimple,
@@ -330,13 +328,13 @@ public:
     bool isDefaults() const;
     bool isSaveNeeded() const;
 
-    Q_INVOKABLE QStringList valueListForSection(const QString &sectionHeader) const;
-    Q_INVOKABLE QStringList valueListForUntranslatedCategory(const QString &category) const;
+    Q_INVOKABLE QStringList valueListForSectionType(int /*FlatpakPermissionsSectionType::Type*/ rawSection) const;
+    Q_INVOKABLE static QString sectionHeaderForSectionType(int /*FlatpakPermissionsSectionType::Type*/ rawSection);
 
 public Q_SLOTS:
     void togglePermissionAtIndex(int index);
     void editPerm(int index, const QString &newValue);
-    void addUserEnteredPermission(const QString &name, QString cat, const QString &value);
+    void addUserEnteredPermission(int /*FlatpakPermissionsSectionType::Type*/ rawSection, const QString &name, const QString &value);
 
 Q_SIGNALS:
     void referenceChanged();
