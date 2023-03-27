@@ -234,8 +234,7 @@ public:
                                const QString &category,
                                const QString &description,
                                bool isDefaultEnabled,
-                               const QString &defaultValue = {},
-                               const QStringList &possibleValues = {});
+                               const QString &defaultValue = {});
 
     /** Section type for QtQuick/ListView. */
     FlatpakPermissionsSectionType::Type section() const;
@@ -333,14 +332,6 @@ public:
     // TODO: Remove this method, store enum variants or otherwise raw untranslated data.
     QString fsCurrentValue() const;
 
-    /**
-     * Provide a user-facing translated list of possible values for this kind of
-     * permission.
-     */
-    // TODO: It should be a model that also contains detailed description
-    // (help text) and untranslated value identifier.
-    const QStringList &possibleValues() const;
-
     /** Integration with KCM. */
     bool isSaveNeeded() const;
     bool isDefaults() const;
@@ -384,11 +375,6 @@ private:
     QString m_overrideValue;
     /** Current value in KCM */
     QString m_effectiveValue;
-
-    /* Applicable for ValueType::Filesystems and ValueType::Bus only. */
-
-    /** Static list of translated policy names. */
-    QStringList m_possibleValues;
 };
 
 class FlatpakPermissionModel : public QAbstractListModel
@@ -439,7 +425,18 @@ public:
     bool isDefaults() const;
     bool isSaveNeeded() const;
 
-    Q_INVOKABLE QStringList valueListForSectionType(int /*FlatpakPermissionsSectionType::Type*/ rawSection) const;
+    /**
+     * Static list of user-facing translated policy names for this kind of
+     * permission.
+     *
+     * Applicable for ValueType::Filesystems and ValueType::Bus only.
+     */
+    // TODO: It should be a model that also contains detailed description
+    // (help text) and untranslated value identifier.
+    Q_INVOKABLE static QStringList valueListForSectionType(int /*FlatpakPermissionsSectionType::Type*/ rawSection);
+    Q_INVOKABLE static QStringList valueListForFilesystemsSection();
+    Q_INVOKABLE static QStringList valueListForBusSections();
+
     Q_INVOKABLE static QString sectionHeaderForSectionType(int /*FlatpakPermissionsSectionType::Type*/ rawSection);
     Q_INVOKABLE static QString sectionAddButtonToolTipTextForSectionType(int /*FlatpakPermissionsSectionType::Type*/ rawSection);
 

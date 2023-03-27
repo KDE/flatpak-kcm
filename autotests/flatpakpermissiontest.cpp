@@ -226,6 +226,69 @@ private Q_SLOTS:
         }
     }
 
+    void testDBusBrokenPolicies()
+    {
+        FlatpakReferencesModel referencesModel;
+        QFile metadataFile(QFINDTESTDATA("fixtures/metadata/org.gnome.Boxes"));
+        QVERIFY(metadataFile.open(QFile::ReadOnly));
+        FlatpakReference reference(&referencesModel,
+                                   "org.gnome.Boxes",
+                                   "x86_64",
+                                   "stable",
+                                   "43.1",
+                                   "Boxes",
+                                   QFINDTESTDATA("fixtures/overrides/"),
+                                   QUrl(),
+                                   metadataFile.readAll());
+        FlatpakPermissionModel model;
+        model.setReference(&reference);
+        model.load();
+        model.setShowAdvanced(true);
+
+        // This service is set to "hello" by default (in metadata).
+        const auto session0 = QLatin1String("org.freedesktop.secrets");
+        int indexOfSession0 = -1;
+        // This service is set to "talk" by default (in metadata) but overriden with an invalid policy string.
+        const auto session1 = QLatin1String("ca.desrt.dconf");
+        int indexOfSession1 = -1;
+        // This service is set to an invalid policy string by default (in metadata) but overridden with "see".
+        const auto system = QLatin1String("org.freedesktop.timedate1");
+        int indexOfSystem = -1;
+
+        for (auto i = 0; i <= model.rowCount(); ++i) {
+            const auto name = model.data(model.index(i, 0), FlatpakPermissionModel::Name).toString();
+            const auto section = model.data(model.index(i, 0), FlatpakPermissionModel::Section).value<FlatpakPermissionsSectionType::Type>();
+            if (section == FlatpakPermissionsSectionType::SessionBus) {
+                if (name == session0) {
+                    indexOfSession0 = i;
+                } else if (name == session1) {
+                    indexOfSession1 = i;
+                }
+            } else if (section == FlatpakPermissionsSectionType::SystemBus) {
+                if (name == system) {
+                    indexOfSystem = i;
+                }
+            }
+        }
+        QVERIFY(indexOfSession0 != -1);
+        QVERIFY(indexOfSession1 != -1);
+        QVERIFY(indexOfSystem != -1);
+
+        QVERIFY(model.data(model.index(indexOfSession0, 0), FlatpakPermissionModel::IsDefaultEnabled).toBool());
+        QCOMPARE(model.data(model.index(indexOfSession0, 0), FlatpakPermissionModel::DefaultValue).toString(), i18n("None"));
+        QCOMPARE(model.data(model.index(indexOfSession0, 0), FlatpakPermissionModel::EffectiveValue).toString(), i18n("None"));
+
+        QVERIFY(model.data(model.index(indexOfSession1, 0), FlatpakPermissionModel::IsDefaultEnabled).toBool());
+        QVERIFY(model.data(model.index(indexOfSession1, 0), FlatpakPermissionModel::IsEffectiveEnabled).toBool());
+        QCOMPARE(model.data(model.index(indexOfSession1, 0), FlatpakPermissionModel::DefaultValue).toString(), i18n("talk"));
+        QCOMPARE(model.data(model.index(indexOfSession1, 0), FlatpakPermissionModel::EffectiveValue).toString(), i18n("None"));
+
+        QVERIFY(model.data(model.index(indexOfSystem, 0), FlatpakPermissionModel::IsDefaultEnabled).toBool());
+        QVERIFY(model.data(model.index(indexOfSystem, 0), FlatpakPermissionModel::IsEffectiveEnabled).toBool());
+        QCOMPARE(model.data(model.index(indexOfSystem, 0), FlatpakPermissionModel::DefaultValue).toString(), i18n("None"));
+        QCOMPARE(model.data(model.index(indexOfSystem, 0), FlatpakPermissionModel::EffectiveValue).toString(), i18n("see"));
+    }
+
     void testMutable()
     {
         // Ensure override files mutate properly
@@ -276,6 +339,47 @@ private Q_SLOTS:
         QFile expectedFile(QFINDTESTDATA("fixtures/overrides.out/com.discordapp.Discord"));
         QVERIFY(expectedFile.open(QFile::ReadOnly));
         QCOMPARE(actualFile.readAll(), expectedFile.readAll());
+    }
+
+    void testValuesModelForSectionsWithoutModels()
+    {
+        const auto values = FlatpakPermissionModel::valueListForSectionType(FlatpakPermissionsSectionType::Features);
+        QCOMPARE(values.size(), 0);
+    }
+
+    void testValuesModelForFilesystemsSection()
+    {
+        const auto values = FlatpakPermissionModel::valueListForFilesystemsSection();
+        QCOMPARE(values.size(), 3);
+        QEXPECT_FAIL("", "Filesystems logic is not ready to use 'OFF' value yet.", Continue);
+        QVERIFY(values.contains(i18n("OFF")));
+        QVERIFY(values.contains(i18n("read/write")));
+        QVERIFY(values.contains(i18n("read-only")));
+        QVERIFY(values.contains(i18n("create")));
+    }
+
+    void testValuesModelForBusSections()
+    {
+        const auto values = FlatpakPermissionModel::valueListForBusSections();
+        QCOMPARE(values.size(), 4);
+        QVERIFY(values.contains(i18n("None")));
+        QVERIFY(values.contains(i18n("talk")));
+        QVERIFY(values.contains(i18n("own")));
+        QVERIFY(values.contains(i18n("see")));
+    }
+
+    void testValuesModelMapping()
+    {
+        auto expected = FlatpakPermissionModel::valueListForFilesystemsSection();
+        auto actual = FlatpakPermissionModel::valueListForSectionType(FlatpakPermissionsSectionType::Filesystems);
+        QCOMPARE(actual, expected);
+
+        expected = FlatpakPermissionModel::valueListForBusSections();
+        actual = FlatpakPermissionModel::valueListForSectionType(FlatpakPermissionsSectionType::SessionBus);
+        QCOMPARE(actual, expected);
+
+        actual = FlatpakPermissionModel::valueListForSectionType(FlatpakPermissionsSectionType::SystemBus);
+        QCOMPARE(actual, expected);
     }
 };
 
