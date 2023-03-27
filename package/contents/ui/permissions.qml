@@ -110,10 +110,10 @@ KCM.ScrollViewKCM {
                         QQC2.TextField {
                             id: nameField
                             placeholderText: switch (sectionDelegate.sectionType) {
-                                case FlatpakPermissionsSectionType.Filesystems: return i18n("Enter filesystem path…")
-                                case FlatpakPermissionsSectionType.SessionBus: return i18n("Enter session bus name…")
-                                case FlatpakPermissionsSectionType.SystemBus: return i18n("Enter system bus name…")
-                                case FlatpakPermissionsSectionType.Environment: return i18n("Enter variable…")
+                                case FlatpakPermissionsSectionType.Filesystems: return i18n("Enter filesystem path...")
+                                case FlatpakPermissionsSectionType.SessionBus: return i18n("Enter session bus name...")
+                                case FlatpakPermissionsSectionType.SystemBus: return i18n("Enter system bus name...")
+                                case FlatpakPermissionsSectionType.Environment: return i18n("Enter variable...")
                                 default: return ""
                             }
                             Layout.fillWidth: true
@@ -132,7 +132,7 @@ KCM.ScrollViewKCM {
                         QQC2.TextField {
                             id: valueField
                             visible: sectionDelegate.sectionType === FlatpakPermissionsSectionType.Environment
-                            placeholderText: i18n("Enter value…")
+                            placeholderText: i18n("Enter value...")
                             Layout.fillWidth: true
                         }
                     }
