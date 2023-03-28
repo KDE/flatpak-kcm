@@ -1320,7 +1320,7 @@ void FlatpakPermissionModel::addUserEnteredPermission(int /*FlatpakPermissionsSe
         return;
     }
 
-    FlatpakPermission perm(section, name, category, name, false, QString());
+    FlatpakPermission perm(section, name, category, name, false, value);
     perm.setOriginType(FlatpakPermission::OriginType::UserDefined);
     perm.setEffectiveEnabled(true);
     perm.setEffectiveValue(value);
