@@ -3,6 +3,8 @@
  * SPDX-License-Identifier: LGPL-2.1-or-later
  */
 
+#pragma once
+
 // This file contains helpers, constants and other minor nice things from flatpak internals.
 
 /* See flatpak-metadata(5) */
