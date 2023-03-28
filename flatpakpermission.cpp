@@ -1433,8 +1433,9 @@ void FlatpakPermissionModel::addBusPermissions(FlatpakPermission *perm)
         m_overridesData.insert(m_overridesData.length(), groupHeader + QLatin1Char('\n'));
     }
     int permIndex = m_overridesData.indexOf(QLatin1Char('\n'), m_overridesData.indexOf(groupHeader)) + 1;
-    QString val = perm->effectiveValue();
-    m_overridesData.insert(permIndex, perm->name() + QLatin1Char('=') + val + QLatin1Char('\n'));
+    const auto &i18nValue = perm->effectiveValue();
+    const auto backendValue = toBackendDBusValue(i18nValue);
+    m_overridesData.insert(permIndex, perm->name() + QLatin1Char('=') + backendValue + QLatin1Char('\n'));
 }
 
 void FlatpakPermissionModel::removeBusPermission(FlatpakPermission *perm)
@@ -1444,7 +1445,10 @@ void FlatpakPermissionModel::removeBusPermission(FlatpakPermission *perm)
         return;
     }
 
-    int permLen = perm->name().length() + 1 + perm->effectiveValue().length() + 1;
+    const auto &i18nValue = perm->effectiveValue();
+    const auto backendValue = toBackendDBusValue(i18nValue);
+
+    int permLen = perm->name().length() + 1 + backendValue.length() + 1;
     m_overridesData.remove(permBeginIndex, permLen);
 }
 
