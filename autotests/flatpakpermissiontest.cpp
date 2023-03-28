@@ -9,16 +9,143 @@
 #include <KConfigGroup>
 #include <KLocalizedString>
 
+#include <array>
+
 #include "flatpakcommon.h"
 #include "flatpakpermission.h"
 
 class FlatpakPermissionModelTest : public QObject
 {
     Q_OBJECT
+private:
+    /** KConfig comparison with a grain of Flatpak specifics. */
+    bool operatorFlatpakConfigEquals(const KConfig &actual, const KConfig &expected)
+    {
+        auto actualGroups = actual.groupList();
+        actualGroups.sort();
+        auto expectedGroups = expected.groupList();
+        expectedGroups.sort();
+
+        if (actualGroups != expectedGroups) {
+            return false;
+        }
+
+        for (const auto &group : std::as_const(actualGroups)) {
+            const auto actualGroup = actual.group(group);
+            const auto expectedGroup = expected.group(group);
+
+            auto actualKeys = actualGroup.keyList();
+            actualKeys.sort();
+            auto expectedKeys = expectedGroup.keyList();
+            expectedKeys.sort();
+
+            if (actualKeys != expectedKeys) {
+                return false;
+            }
+
+            for (const auto &key : std::as_const(actualKeys)) {
+                if (group == QLatin1String(FLATPAK_METADATA_GROUP_CONTEXT)) {
+                    // Treat everything in [Context] as XDG lists
+                    auto actualValues = actualGroup.readXdgListEntry(key);
+                    actualValues.sort();
+                    auto expectedValues = expectedGroup.readXdgListEntry(key);
+                    expectedValues.sort();
+
+                    if (actualValues != expectedValues) {
+                        return false;
+                    }
+                } else {
+                    auto actualValue = actualGroup.readEntry(key);
+                    auto expectedValue = expectedGroup.readEntry(key);
+
+                    if (actualValue != expectedValue) {
+                        return false;
+                    }
+                }
+            }
+        }
+        return true;
+    }
+
 private Q_SLOTS:
     void init()
     {
         QDir().rmdir(QFINDTESTDATA("fixtures/overrides/"));
+    }
+
+    void testCompareFlatpakConfigsEqual()
+    {
+        KConfig configA(QString(), KConfig::SimpleConfig);
+        KConfig configB(QString(), KConfig::SimpleConfig);
+
+        const std::array configs = {&configA, &configB};
+        for (const auto &config : configs) {
+            auto group1 = config->group(QLatin1String(FLATPAK_METADATA_GROUP_ENVIRONMENT));
+            auto group2 = config->group(QLatin1String(FLATPAK_METADATA_GROUP_CONTEXT));
+
+            group1.writeEntry(QStringLiteral("key1"), QStringLiteral("value1"));
+            group1.writeEntry(QStringLiteral("key2"), QStringLiteral("value2"));
+
+            QStringList values = QStringList{QStringLiteral("itemA"), QStringLiteral("itemB")};
+            group2.writeEntry(QStringLiteral("key3"), values);
+            // Reorder list entries
+            if (config == &configB) {
+                values = {QStringLiteral("itemC"), QStringLiteral("itemD")};
+            } else {
+                values = {QStringLiteral("itemD"), QStringLiteral("itemC")};
+            }
+            group2.writeXdgListEntry(QStringLiteral("key4"), values);
+        }
+
+        QVERIFY(operatorFlatpakConfigEquals(configA, configB));
+    }
+
+    void testCompareFlatpakConfigsWhereXDGListsDiffer()
+    {
+        KConfig configA(QString(), KConfig::SimpleConfig);
+        KConfig configB(QString(), KConfig::SimpleConfig);
+
+        auto groupA = configA.group(QLatin1String(FLATPAK_METADATA_GROUP_CONTEXT));
+        auto groupB = configB.group(QLatin1String(FLATPAK_METADATA_GROUP_CONTEXT));
+
+        QStringList values = QStringList{QStringLiteral("itemA"), QStringLiteral("itemB")};
+        groupA.writeXdgListEntry(QStringLiteral("key4"), values);
+        values.append(QStringLiteral("itemC"));
+        groupB.writeXdgListEntry(QStringLiteral("key4"), values);
+
+        QVERIFY(!operatorFlatpakConfigEquals(configA, configB));
+    }
+
+    void testCompareFlatpakConfigsWhereNumberOfGroupsDiffers()
+    {
+        KConfig configA(QString(), KConfig::SimpleConfig);
+        KConfig configB(QString(), KConfig::SimpleConfig);
+
+        const std::array configs = {&configA, &configB};
+        for (const auto &config : configs) {
+            const std::array groupNames = {QLatin1String("G1"), QLatin1String("G2")};
+            for (const auto &groupName : groupNames) {
+                auto group = config->group(groupName);
+                group.writeEntry(QStringLiteral("key1"), QStringLiteral("value1"));
+            }
+        }
+        QVERIFY(operatorFlatpakConfigEquals(configA, configB));
+        const auto extraGroupName = QLatin1String("GExtra");
+        {
+            auto groupA3 = configA.group(extraGroupName);
+            groupA3.writeEntry(QStringLiteral("key1"), QStringLiteral("value1"));
+        }
+        QVERIFY(!operatorFlatpakConfigEquals(configA, configB));
+        configA.deleteGroup(extraGroupName);
+        QVERIFY(operatorFlatpakConfigEquals(configA, configB));
+        {
+            // Test the other way around too
+            auto groupB3 = configB.group(extraGroupName);
+            groupB3.writeEntry(QStringLiteral("key1"), QStringLiteral("value1"));
+        }
+        QVERIFY(!operatorFlatpakConfigEquals(configA, configB));
+        configB.deleteGroup(extraGroupName);
+        QVERIFY(operatorFlatpakConfigEquals(configA, configB));
     }
 
     void testRead()
@@ -334,11 +461,9 @@ private Q_SLOTS:
             }
         }
         model.save();
-        QFile actualFile(QFINDTESTDATA("fixtures/overrides/com.discordapp.Discord"));
-        QVERIFY(actualFile.open(QFile::ReadOnly));
-        QFile expectedFile(QFINDTESTDATA("fixtures/overrides.out/com.discordapp.Discord"));
-        QVERIFY(expectedFile.open(QFile::ReadOnly));
-        QCOMPARE(actualFile.readAll(), expectedFile.readAll());
+        const KConfig actual(QFINDTESTDATA("fixtures/overrides/com.discordapp.Discord"));
+        const KConfig expected(QFINDTESTDATA("fixtures/overrides.out/com.discordapp.Discord"));
+        QVERIFY(operatorFlatpakConfigEquals(actual, expected));
     }
 
     void testValuesModelForSectionsWithoutModels()
