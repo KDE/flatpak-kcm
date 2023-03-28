@@ -435,6 +435,18 @@ private Q_SLOTS:
         model.setReference(&reference);
         model.load();
         model.setShowAdvanced(true);
+
+        const auto filesystem = QLatin1String("~/path");
+        const auto session = QLatin1String("com.example.session");
+        const auto system = QLatin1String("com.example.system");
+        const auto envName = QLatin1String("SOME_ENV");
+        const auto envValue = QLatin1String("abc123");
+
+        model.addUserEnteredPermission(FlatpakPermissionsSectionType::Filesystems, filesystem, i18n("create"));
+        model.addUserEnteredPermission(FlatpakPermissionsSectionType::SessionBus, session, i18n("talk"));
+        model.addUserEnteredPermission(FlatpakPermissionsSectionType::SystemBus, system, i18n("see"));
+        model.addUserEnteredPermission(FlatpakPermissionsSectionType::Environment, envName, envValue);
+
         for (auto i = 0; i <= model.rowCount(); ++i) {
             const QString name = model.data(model.index(i, 0), FlatpakPermissionModel::Name).toString();
             if (name == "host") {
@@ -458,6 +470,34 @@ private Q_SLOTS:
                 model.editPerm(i, i18n("read-write"));
                 model.editPerm(i, i18n("create"));
                 model.editPerm(i, i18n("read-only"));
+            }
+
+            if (name == filesystem) {
+                QVERIFY(!model.data(model.index(i, 0), FlatpakPermissionModel::IsDefaultEnabled).toBool());
+                QVERIFY(model.data(model.index(i, 0), FlatpakPermissionModel::IsEffectiveEnabled).toBool());
+                QCOMPARE(model.data(model.index(i, 0), FlatpakPermissionModel::DefaultValue).toString(), i18n("create"));
+                QCOMPARE(model.data(model.index(i, 0), FlatpakPermissionModel::EffectiveValue).toString(), i18n("create"));
+            }
+
+            if (name == session) {
+                QVERIFY(!model.data(model.index(i, 0), FlatpakPermissionModel::IsDefaultEnabled).toBool());
+                QVERIFY(model.data(model.index(i, 0), FlatpakPermissionModel::IsEffectiveEnabled).toBool());
+                QCOMPARE(model.data(model.index(i, 0), FlatpakPermissionModel::DefaultValue).toString(), i18n("talk"));
+                QCOMPARE(model.data(model.index(i, 0), FlatpakPermissionModel::EffectiveValue).toString(), i18n("talk"));
+            }
+
+            if (name == system) {
+                QVERIFY(!model.data(model.index(i, 0), FlatpakPermissionModel::IsDefaultEnabled).toBool());
+                QVERIFY(model.data(model.index(i, 0), FlatpakPermissionModel::IsEffectiveEnabled).toBool());
+                QCOMPARE(model.data(model.index(i, 0), FlatpakPermissionModel::DefaultValue).toString(), i18n("see"));
+                QCOMPARE(model.data(model.index(i, 0), FlatpakPermissionModel::EffectiveValue).toString(), i18n("see"));
+            }
+
+            if (name == envName) {
+                QVERIFY(!model.data(model.index(i, 0), FlatpakPermissionModel::IsDefaultEnabled).toBool());
+                QVERIFY(model.data(model.index(i, 0), FlatpakPermissionModel::IsEffectiveEnabled).toBool());
+                QCOMPARE(model.data(model.index(i, 0), FlatpakPermissionModel::DefaultValue).toString(), envValue);
+                QCOMPARE(model.data(model.index(i, 0), FlatpakPermissionModel::EffectiveValue).toString(), envValue);
             }
         }
         model.save();
