@@ -86,13 +86,13 @@ private Q_SLOTS:
             group1.writeEntry(QStringLiteral("key1"), QStringLiteral("value1"));
             group1.writeEntry(QStringLiteral("key2"), QStringLiteral("value2"));
 
-            QStringList values = QStringList{QStringLiteral("itemA"), QStringLiteral("itemB")};
+            auto values = QStringList{QStringLiteral("itemA"), QStringLiteral("itemB")};
             group2.writeEntry(QStringLiteral("key3"), values);
             // Reorder list entries
             if (config == &configB) {
-                values = {QStringLiteral("itemC"), QStringLiteral("itemD")};
+                values = QStringList{QStringLiteral("itemC"), QStringLiteral("itemD")};
             } else {
-                values = {QStringLiteral("itemD"), QStringLiteral("itemC")};
+                values = QStringList{QStringLiteral("itemD"), QStringLiteral("itemC")};
             }
             group2.writeXdgListEntry(QStringLiteral("key4"), values);
         }
