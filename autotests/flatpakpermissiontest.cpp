@@ -289,12 +289,12 @@ private Q_SLOTS:
         QVERIFY(indexOfService0 != -1);
         QVERIFY(indexOfService1 != -1);
         QVERIFY(indexOfService2 != -1);
-        const auto name0 = model.data(model.index(indexOfService0, 0), FlatpakPermissionModel::EffectiveValue).toString();
-        const auto name1 = model.data(model.index(indexOfService1, 0), FlatpakPermissionModel::EffectiveValue).toString();
-        const auto name2 = model.data(model.index(indexOfService2, 0), FlatpakPermissionModel::EffectiveValue).toString();
-        QCOMPARE(name0, i18n("None"));
-        QCOMPARE(name1, i18n("None"));
-        QCOMPARE(name2, i18n("see"));
+        const auto name0 = model.data(model.index(indexOfService0, 0), FlatpakPermissionModel::EffectiveValue).value<FlatpakPolicy>();
+        const auto name1 = model.data(model.index(indexOfService1, 0), FlatpakPermissionModel::EffectiveValue).value<FlatpakPolicy>();
+        const auto name2 = model.data(model.index(indexOfService2, 0), FlatpakPermissionModel::EffectiveValue).value<FlatpakPolicy>();
+        QCOMPARE(name0, FlatpakPolicy::FLATPAK_POLICY_NONE);
+        QCOMPARE(name1, FlatpakPolicy::FLATPAK_POLICY_NONE);
+        QCOMPARE(name2, FlatpakPolicy::FLATPAK_POLICY_SEE);
         const auto isDefaultEnabled0 = model.data(model.index(indexOfService0, 0), FlatpakPermissionModel::IsDefaultEnabled).toBool();
         const auto isDefaultEnabled1 = model.data(model.index(indexOfService1, 0), FlatpakPermissionModel::IsDefaultEnabled).toBool();
         const auto isDefaultEnabled2 = model.data(model.index(indexOfService2, 0), FlatpakPermissionModel::IsDefaultEnabled).toBool();
@@ -302,10 +302,10 @@ private Q_SLOTS:
         QVERIFY(!isDefaultEnabled1);
         QVERIFY(!isDefaultEnabled2);
 
-        const auto setAndCheckBus = [&](const QString &value, const QString &i18nValue) {
-            model.editPerm(indexOfService2, i18nValue);
-            const auto name2i18nValue = model.data(model.index(indexOfService2, 0), FlatpakPermissionModel::EffectiveValue).toString();
-            QCOMPARE(name2i18nValue, i18nValue);
+        const auto setAndCheckBus = [&](const QString &value, FlatpakPolicy newPolicy) {
+            model.editPerm(indexOfService2, newPolicy);
+            const auto name2i18nValue = model.data(model.index(indexOfService2, 0), FlatpakPermissionModel::EffectiveValue).value<FlatpakPolicy>();
+            QCOMPARE(name2i18nValue, newPolicy);
 
             QVERIFY(model.isSaveNeeded());
             model.save();
@@ -316,10 +316,10 @@ private Q_SLOTS:
             QCOMPARE(name2value, value);
         };
 
-        setAndCheckBus(QLatin1String("none"), i18n("None"));
-        setAndCheckBus(QLatin1String("see"), i18n("see"));
-        setAndCheckBus(QLatin1String("talk"), i18n("talk"));
-        setAndCheckBus(QLatin1String("own"), i18n("own"));
+        setAndCheckBus(QLatin1String("none"), FlatpakPolicy::FLATPAK_POLICY_NONE);
+        setAndCheckBus(QLatin1String("see"), FlatpakPolicy::FLATPAK_POLICY_SEE);
+        setAndCheckBus(QLatin1String("talk"), FlatpakPolicy::FLATPAK_POLICY_TALK);
+        setAndCheckBus(QLatin1String("own"), FlatpakPolicy::FLATPAK_POLICY_OWN);
 
         const auto checkPossibleValues = [&](int row) {
             const auto values = model.data(model.index(row, 0), FlatpakPermissionModel::ValuesModel).value<QAbstractListModel *>();
@@ -414,18 +414,20 @@ private Q_SLOTS:
         QVERIFY(indexOfSystem != -1);
 
         QVERIFY(model.data(model.index(indexOfSession0, 0), FlatpakPermissionModel::IsDefaultEnabled).toBool());
-        QCOMPARE(model.data(model.index(indexOfSession0, 0), FlatpakPermissionModel::DefaultValue).toString(), i18n("None"));
-        QCOMPARE(model.data(model.index(indexOfSession0, 0), FlatpakPermissionModel::EffectiveValue).toString(), i18n("None"));
+        QCOMPARE(model.data(model.index(indexOfSession0, 0), FlatpakPermissionModel::DefaultValue).value<FlatpakPolicy>(), FlatpakPolicy::FLATPAK_POLICY_NONE);
+        QCOMPARE(model.data(model.index(indexOfSession0, 0), FlatpakPermissionModel::EffectiveValue).value<FlatpakPolicy>(),
+                 FlatpakPolicy::FLATPAK_POLICY_NONE);
 
         QVERIFY(model.data(model.index(indexOfSession1, 0), FlatpakPermissionModel::IsDefaultEnabled).toBool());
         QVERIFY(model.data(model.index(indexOfSession1, 0), FlatpakPermissionModel::IsEffectiveEnabled).toBool());
-        QCOMPARE(model.data(model.index(indexOfSession1, 0), FlatpakPermissionModel::DefaultValue).toString(), i18n("talk"));
-        QCOMPARE(model.data(model.index(indexOfSession1, 0), FlatpakPermissionModel::EffectiveValue).toString(), i18n("None"));
+        QCOMPARE(model.data(model.index(indexOfSession1, 0), FlatpakPermissionModel::DefaultValue).value<FlatpakPolicy>(), FlatpakPolicy::FLATPAK_POLICY_TALK);
+        QCOMPARE(model.data(model.index(indexOfSession1, 0), FlatpakPermissionModel::EffectiveValue).value<FlatpakPolicy>(),
+                 FlatpakPolicy::FLATPAK_POLICY_NONE);
 
         QVERIFY(model.data(model.index(indexOfSystem, 0), FlatpakPermissionModel::IsDefaultEnabled).toBool());
         QVERIFY(model.data(model.index(indexOfSystem, 0), FlatpakPermissionModel::IsEffectiveEnabled).toBool());
-        QCOMPARE(model.data(model.index(indexOfSystem, 0), FlatpakPermissionModel::DefaultValue).toString(), i18n("None"));
-        QCOMPARE(model.data(model.index(indexOfSystem, 0), FlatpakPermissionModel::EffectiveValue).toString(), i18n("see"));
+        QCOMPARE(model.data(model.index(indexOfSystem, 0), FlatpakPermissionModel::DefaultValue).value<FlatpakPolicy>(), FlatpakPolicy::FLATPAK_POLICY_NONE);
+        QCOMPARE(model.data(model.index(indexOfSystem, 0), FlatpakPermissionModel::EffectiveValue).value<FlatpakPolicy>(), FlatpakPolicy::FLATPAK_POLICY_SEE);
     }
 
     void testMutable()
@@ -455,8 +457,9 @@ private Q_SLOTS:
         const auto envValue = QLatin1String("abc123");
 
         model.addUserEnteredPermission(FlatpakPermissionsSectionType::Filesystems, filesystem, i18n("create"));
-        model.addUserEnteredPermission(FlatpakPermissionsSectionType::SessionBus, session, i18n("talk"));
-        model.addUserEnteredPermission(FlatpakPermissionsSectionType::SystemBus, system, i18n("see"));
+        model.addUserEnteredPermission(FlatpakPermissionsSectionType::SessionBus, session, FlatpakPolicy::FLATPAK_POLICY_TALK);
+        // Try int cast to make sure QML/JS works fine too.
+        model.addUserEnteredPermission(FlatpakPermissionsSectionType::SystemBus, system, static_cast<int>(FlatpakPolicy::FLATPAK_POLICY_SEE));
         model.addUserEnteredPermission(FlatpakPermissionsSectionType::Environment, envName, envValue);
 
         for (auto i = 0; i <= model.rowCount(); ++i) {
@@ -473,7 +476,7 @@ private Q_SLOTS:
             }
 
             if (name == "org.kde.StatusNotifierWatcher") {
-                model.editPerm(i, i18n("own"));
+                model.editPerm(i, FlatpakPolicy::FLATPAK_POLICY_OWN);
             }
 
             if (name == "host-os") {
@@ -494,15 +497,15 @@ private Q_SLOTS:
             if (name == session) {
                 QVERIFY(!model.data(model.index(i, 0), FlatpakPermissionModel::IsDefaultEnabled).toBool());
                 QVERIFY(model.data(model.index(i, 0), FlatpakPermissionModel::IsEffectiveEnabled).toBool());
-                QCOMPARE(model.data(model.index(i, 0), FlatpakPermissionModel::DefaultValue).toString(), i18n("talk"));
-                QCOMPARE(model.data(model.index(i, 0), FlatpakPermissionModel::EffectiveValue).toString(), i18n("talk"));
+                QCOMPARE(model.data(model.index(i, 0), FlatpakPermissionModel::DefaultValue).value<FlatpakPolicy>(), FlatpakPolicy::FLATPAK_POLICY_TALK);
+                QCOMPARE(model.data(model.index(i, 0), FlatpakPermissionModel::EffectiveValue).value<FlatpakPolicy>(), FlatpakPolicy::FLATPAK_POLICY_TALK);
             }
 
             if (name == system) {
                 QVERIFY(!model.data(model.index(i, 0), FlatpakPermissionModel::IsDefaultEnabled).toBool());
                 QVERIFY(model.data(model.index(i, 0), FlatpakPermissionModel::IsEffectiveEnabled).toBool());
-                QCOMPARE(model.data(model.index(i, 0), FlatpakPermissionModel::DefaultValue).toString(), i18n("see"));
-                QCOMPARE(model.data(model.index(i, 0), FlatpakPermissionModel::EffectiveValue).toString(), i18n("see"));
+                QCOMPARE(model.data(model.index(i, 0), FlatpakPermissionModel::DefaultValue).value<FlatpakPolicy>(), FlatpakPolicy::FLATPAK_POLICY_SEE);
+                QCOMPARE(model.data(model.index(i, 0), FlatpakPermissionModel::EffectiveValue).value<FlatpakPolicy>(), FlatpakPolicy::FLATPAK_POLICY_SEE);
             }
 
             if (name == envName) {

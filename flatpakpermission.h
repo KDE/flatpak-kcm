@@ -5,6 +5,7 @@
 
 #pragma once
 
+#include "flatpakcommon.h"
 #include "flatpakreference.h"
 
 #include <QAbstractItemModel>
@@ -13,6 +14,7 @@
 #include <QString>
 
 #include <optional>
+#include <variant>
 
 class FlatpakReference;
 
@@ -258,6 +260,8 @@ public:
         Dummy
     };
 
+    using Variant = std::variant<QString, FlatpakPolicy>;
+
     // Default constructor is required for meta-type registration.
     /** Default constructor. Creates an invalid entry. */
     FlatpakPermission() = default;
@@ -274,7 +278,7 @@ public:
                                const QString &category,
                                const QString &description,
                                bool isDefaultEnabled,
-                               const QString &defaultValue = {});
+                               const Variant &defaultValue = QString());
 
     /** Section type for QtQuick/ListView. */
     FlatpakPermissionsSectionType::Type section() const;
@@ -351,13 +355,13 @@ public:
      *
      * Applicable for any permissions other than ValueType::Simple.
      */
-    const QString &defaultValue() const;
+    const Variant defaultValue() const;
 
     // TODO: Remove this method.
-    const QString &overrideValue() const;
+    const Variant overrideValue() const;
 
     /** Set user override */
-    void setOverrideValue(const QString &value);
+    void setOverrideValue(const Variant &value);
 
     /**
      * This property holds the current effective value of this permission in
@@ -365,8 +369,8 @@ public:
      *
      * See ValueType enum for more.
      */
-    const QString &effectiveValue() const;
-    void setEffectiveValue(const QString &value);
+    const Variant effectiveValue() const;
+    void setEffectiveValue(const Variant &value);
 
     /** Untranslate value of ValueType::Filesystems permission. */
     // TODO: Remove this method, store enum variants or otherwise raw untranslated data.
@@ -410,11 +414,11 @@ private:
     /* Applicable for any permissions other than ValueType::Simple. */
 
     /** System defaults */
-    QString m_defaultValue;
+    Variant m_defaultValue;
     /** User overrides */
-    QString m_overrideValue;
+    Variant m_overrideValue;
     /** Current value in KCM */
-    QString m_effectiveValue;
+    Variant m_effectiveValue;
 };
 
 class FlatpakPermissionModel : public QAbstractListModel
@@ -482,8 +486,8 @@ public:
 
 public Q_SLOTS:
     void togglePermissionAtIndex(int index);
-    void editPerm(int index, const QString &newValue);
-    void addUserEnteredPermission(int /*FlatpakPermissionsSectionType::Type*/ rawSection, const QString &name, const QString &value);
+    void editPerm(int index, const QVariant &newValue);
+    void addUserEnteredPermission(int /*FlatpakPermissionsSectionType::Type*/ rawSection, const QString &name, const QVariant &value);
 
 Q_SIGNALS:
     void referenceChanged();
@@ -495,7 +499,7 @@ private:
     void addBusPermissions(FlatpakPermission *perm);
     void removeBusPermission(FlatpakPermission *perm);
     void editFilesystemsPermissions(FlatpakPermission *perm, const QString &newValue);
-    void editBusPermissions(FlatpakPermission *perm, const QString &newValue);
+    void editBusPermissions(FlatpakPermission *perm, FlatpakPolicy newValue);
     void addEnvPermission(FlatpakPermission *perm);
     void removeEnvPermission(FlatpakPermission *perm);
     void editEnvPermission(FlatpakPermission *perm, const QString &newValue);
