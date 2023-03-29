@@ -167,12 +167,12 @@ KCM.ScrollViewKCM {
                         QQC2.ComboBox {
                             id: valueBox
 
-                            visible: sectionDelegate.sectionType !== FlatpakPermissionsSectionType.Environment
-                            Layout.fillWidth: true
-
                             model: permsModel.valuesModelForSectionType(sectionDelegate.sectionType)
                             textRole: "display"
                             valueRole: "value"
+
+                            visible: sectionDelegate.sectionType !== FlatpakPermissionsSectionType.Environment
+                            Layout.fillWidth: true
                         }
                         Kirigami.Heading {
                             text: "="
@@ -186,9 +186,26 @@ KCM.ScrollViewKCM {
                             Layout.fillWidth: true
                         }
                     }
-                    property string value: sectionDelegate.sectionType === FlatpakPermissionsSectionType.Environment ? valueField.text : valueBox.currentText
                     standardButtons: Kirigami.Dialog.Ok | Kirigami.Dialog.Cancel
-                    onAccepted: permsModel.addUserEnteredPermission(sectionDelegate.sectionType, nameField.text, textPromptDialog.value)
+
+                    function getValue(): var {
+                        switch (sectionDelegate.sectionType) {
+                        case FlatpakPermissionsSectionType.SessionBus:
+                        case FlatpakPermissionsSectionType.SystemBus:
+                            return valueBox.currentValue;
+                        case FlatpakPermissionsSectionType.Filesystems:
+                            return valueBox.currentText;
+                        case FlatpakPermissionsSectionType.Environment:
+                            return valueField.text;
+                        default:
+                            return undefined;
+                        }
+                    }
+
+                    onAccepted: {
+                        const value = getValue();
+                        permsModel.addUserEnteredPermission(sectionDelegate.sectionType, nameField.text, value);
+                    }
                 }
             }
         }
@@ -205,6 +222,7 @@ KCM.ScrollViewKCM {
             property string effectiveValue: model.effectiveValue
             property var valuesModel: model.valuesModel
             property int index: model.index
+            property int section: model.section
 
             // Default-provided custom entries are not meant to be unchecked:
             // it is a meaningless undefined operation.
@@ -247,10 +265,29 @@ KCM.ScrollViewKCM {
                     textRole: "display"
                     valueRole: "value"
 
-                    onActivated: index => permsModel.editPerm(permItem.index, textAt(index))
+                    onActivated: index => {
+                        switch (permItem.section) {
+                        case FlatpakPermissionsSectionType.SessionBus:
+                        case FlatpakPermissionsSectionType.SystemBus:
+                            permsModel.editPerm(permItem.index, currentValue);
+                            break;
+                        case FlatpakPermissionsSectionType.Filesystems:
+                            permsModel.editPerm(permItem.index, currentText);
+                            break;
+                        }
+                    }
                     Component.onCompleted: {
                         if (permItem.isComplex) {
-                            currentIndex = Qt.binding(() => find(permItem.effectiveValue));
+                            switch (permItem.section) {
+                            case FlatpakPermissionsSectionType.SessionBus:
+                            case FlatpakPermissionsSectionType.SystemBus:
+                                currentIndex = Qt.binding(() => indexOfValue(permItem.effectiveValue));
+                                break;
+                            case FlatpakPermissionsSectionType.Filesystems:
+                                currentIndex = Qt.binding(() => find(permItem.effectiveValue));
+                                break;
+                            }
+
                         }
                     }
                 }
@@ -258,7 +295,9 @@ KCM.ScrollViewKCM {
                     text: model.effectiveValue
                     visible: model.isEnvironment
                     enabled: checkBox.checked
-                    Keys.onReturnPressed: permsModel.editPerm(permItem.index, text)
+                    Keys.onReturnPressed: {
+                        permsModel.editPerm(permItem.index, text);
+                    }
                 }
             }
         }
