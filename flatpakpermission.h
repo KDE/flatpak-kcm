@@ -7,6 +7,7 @@
 
 #include "flatpakreference.h"
 
+#include <QAbstractItemModel>
 #include <QAbstractListModel>
 #include <QPointer>
 #include <QString>
@@ -141,6 +142,45 @@ private:
 };
 
 Q_DECLARE_METATYPE(FlatpakFilesystemsEntry)
+
+class PolicyChoicesModel : public QAbstractListModel
+{
+    Q_OBJECT
+public:
+    enum Roles {
+        // Uses standard Qt::DisplayRole for text
+        ValueRole = Qt::UserRole + 1,
+    };
+
+    QHash<int, QByteArray> roleNames() const override;
+    int rowCount(const QModelIndex &parent) const override;
+    QVariant data(const QModelIndex &index, int role) const override;
+
+protected:
+    struct Entry {
+        int value;
+        QString display;
+    };
+
+    PolicyChoicesModel(QVector<Entry> &&policies, QObject *parent = nullptr);
+
+private:
+    const QVector<Entry> m_policies;
+};
+
+class FilesystemChoicesModel : public PolicyChoicesModel
+{
+    Q_OBJECT
+public:
+    FilesystemChoicesModel(QObject *parent = nullptr);
+};
+
+class DBusPolicyChoicesModel : public PolicyChoicesModel
+{
+    Q_OBJECT
+public:
+    DBusPolicyChoicesModel(QObject *parent = nullptr);
+};
 
 /**
  * @class FlatpakPermission describes a single configurable entry in the list model of permissions.
@@ -400,7 +440,7 @@ public:
         DefaultValue,
         EffectiveValue,
         //
-        ValueList,
+        ValuesModel,
     };
     Q_ENUM(Roles)
 
@@ -433,9 +473,9 @@ public:
      */
     // TODO: It should be a model that also contains detailed description
     // (help text) and untranslated value identifier.
-    Q_INVOKABLE static QStringList valueListForSectionType(int /*FlatpakPermissionsSectionType::Type*/ rawSection);
-    Q_INVOKABLE static QStringList valueListForFilesystemsSection();
-    Q_INVOKABLE static QStringList valueListForBusSections();
+    Q_INVOKABLE static PolicyChoicesModel *valuesModelForSectionType(int /*FlatpakPermissionsSectionType::Type*/ rawSection);
+    Q_INVOKABLE static PolicyChoicesModel *valuesModelForFilesystemsSection();
+    Q_INVOKABLE static PolicyChoicesModel *valuesModelForBusSections();
 
     Q_INVOKABLE static QString sectionHeaderForSectionType(int /*FlatpakPermissionsSectionType::Type*/ rawSection);
     Q_INVOKABLE static QString sectionAddButtonToolTipTextForSectionType(int /*FlatpakPermissionsSectionType::Type*/ rawSection);

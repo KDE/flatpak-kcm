@@ -14,6 +14,7 @@
 #include <QDebug>
 #include <QFileInfo>
 #include <QMetaEnum>
+#include <QQmlEngine>
 #include <QTemporaryFile>
 #include <QUrl>
 
@@ -200,6 +201,74 @@ bool FlatpakFilesystemsEntry::operator!=(const FlatpakFilesystemsEntry &other) c
 {
     return !(*this == other);
 }
+
+PolicyChoicesModel::PolicyChoicesModel(QVector<Entry> &&policies, QObject *parent)
+    : QAbstractListModel(parent)
+    , m_policies(policies)
+{
+}
+
+QHash<int, QByteArray> PolicyChoicesModel::roleNames() const
+{
+    return {
+        {Qt::DisplayRole, "display"},
+        {Roles::ValueRole, "value"},
+    };
+}
+
+int PolicyChoicesModel::rowCount(const QModelIndex &parent) const
+{
+    if (parent.isValid()) {
+        return 0;
+    }
+    return m_policies.count();
+}
+
+QVariant PolicyChoicesModel::data(const QModelIndex &index, int role) const
+{
+    if (!index.isValid() || index.row() < 0 || index.row() >= m_policies.count()) {
+        return {};
+    }
+
+    const auto policy = m_policies.at(index.row());
+
+    switch (role) {
+    case Qt::DisplayRole:
+        return policy.display;
+    case Roles::ValueRole:
+        return policy.value;
+    }
+
+    return {};
+}
+
+FilesystemChoicesModel::FilesystemChoicesModel(QObject *parent)
+    : PolicyChoicesModel(
+        QVector<Entry>{
+            {static_cast<int>(FlatpakFilesystemsEntry::AccessMode::ReadOnly), i18n("read-only")},
+            {static_cast<int>(FlatpakFilesystemsEntry::AccessMode::ReadWrite), i18n("read/write")},
+            {static_cast<int>(FlatpakFilesystemsEntry::AccessMode::Create), i18n("create")},
+            // TODO: Model logic is not ready to process this value yet.
+            /* {static_cast<int>(FlatpakFilesystemsEntry::AccessMode::Deny), i18n("OFF")}, */
+        },
+        parent)
+{
+}
+
+DBusPolicyChoicesModel::DBusPolicyChoicesModel(QObject *parent)
+    : PolicyChoicesModel(
+        QVector<Entry>{
+            {FlatpakPolicy::FLATPAK_POLICY_NONE, i18n("None")},
+            {FlatpakPolicy::FLATPAK_POLICY_SEE, i18n("see")},
+            {FlatpakPolicy::FLATPAK_POLICY_TALK, i18n("talk")},
+            {FlatpakPolicy::FLATPAK_POLICY_OWN, i18n("own")},
+        },
+        parent)
+{
+}
+
+Q_GLOBAL_STATIC(FilesystemChoicesModel, s_FilesystemPolicies);
+Q_GLOBAL_STATIC(DBusPolicyChoicesModel, s_DBusPolicies);
 
 FlatpakPermission::ValueType FlatpakPermission::valueTypeFromSectionType(FlatpakPermissionsSectionType::Type section)
 {
@@ -465,8 +534,8 @@ QVariant FlatpakPermissionModel::data(const QModelIndex &index, int role) const
     case Roles::EffectiveValue:
         return permission.effectiveValue();
     //
-    case Roles::ValueList:
-        return FlatpakPermissionModel::valueListForSectionType(permission.section());
+    case Roles::ValuesModel:
+        return QVariant::fromValue(FlatpakPermissionModel::valuesModelForSectionType(permission.section()));
     }
 
     return QVariant();
@@ -489,7 +558,7 @@ QHash<int, QByteArray> FlatpakPermissionModel::roleNames() const
     roles[Roles::DefaultValue] = "defaultValue";
     roles[Roles::EffectiveValue] = "effectiveValue";
     //
-    roles[Roles::ValueList] = "valueList";
+    roles[Roles::ValuesModel] = "valuesModel";
     return roles;
 }
 
@@ -1067,7 +1136,7 @@ bool FlatpakPermissionModel::isSaveNeeded() const
     });
 }
 
-QStringList FlatpakPermissionModel::valueListForSectionType(int /*FlatpakPermissionsSectionType::Type*/ rawSection)
+PolicyChoicesModel *FlatpakPermissionModel::valuesModelForSectionType(int /*FlatpakPermissionsSectionType::Type*/ rawSection)
 {
     if (!QMetaEnum::fromType<FlatpakPermissionsSectionType::Type>().valueToKey(rawSection)) {
         return {};
@@ -1077,10 +1146,10 @@ QStringList FlatpakPermissionModel::valueListForSectionType(int /*FlatpakPermiss
 
     switch (section) {
     case FlatpakPermissionsSectionType::Filesystems:
-        return valueListForFilesystemsSection();
+        return valuesModelForFilesystemsSection();
     case FlatpakPermissionsSectionType::SessionBus:
     case FlatpakPermissionsSectionType::SystemBus:
-        return valueListForBusSections();
+        return valuesModelForBusSections();
     case FlatpakPermissionsSectionType::Basic:
     case FlatpakPermissionsSectionType::Advanced:
     case FlatpakPermissionsSectionType::SubsystemsShared:
@@ -1094,15 +1163,16 @@ QStringList FlatpakPermissionModel::valueListForSectionType(int /*FlatpakPermiss
     return {};
 }
 
-QStringList FlatpakPermissionModel::valueListForFilesystemsSection()
+PolicyChoicesModel *FlatpakPermissionModel::valuesModelForFilesystemsSection()
 {
-    // TODO: Add i18n("OFF") when model code is ready to process it.
-    return QStringList{i18n("read/write"), i18n("read-only"), i18n("create")};
+    QQmlEngine::setObjectOwnership(s_FilesystemPolicies, QQmlEngine::CppOwnership);
+    return s_FilesystemPolicies;
 }
 
-QStringList FlatpakPermissionModel::valueListForBusSections()
+PolicyChoicesModel *FlatpakPermissionModel::valuesModelForBusSections()
 {
-    return QStringList{i18n("None"), i18n("talk"), i18n("own"), i18n("see")};
+    QQmlEngine::setObjectOwnership(s_DBusPolicies, QQmlEngine::CppOwnership);
+    return s_DBusPolicies;
 }
 
 Q_INVOKABLE QString FlatpakPermissionModel::sectionHeaderForSectionType(int /*FlatpakPermissionsSectionType::Type*/ rawSection)
