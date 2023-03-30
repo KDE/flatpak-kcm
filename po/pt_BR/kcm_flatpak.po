@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-29 02:48+0000\n"
+"POT-Creation-Date: 2023-03-30 02:44+0000\n"
 "PO-Revision-Date: 2023-03-03 09:37-0300\n"
 "Last-Translator: Luiz Fernando Ranghetti <elchevive@opensuse.org>\n"
 "Language-Team: Portuguese <kde-i18n-pt_BR@kde.org>\n"
@@ -18,8 +18,8 @@ msgstr ""
 "X-Generator: Lokalize 21.12.3\n"
 
 #. i18n("OFF") when model code is ready to process it.
-#: autotests/flatpakpermissiontest.cpp:53
-#: autotests/flatpakpermissiontest.cpp:356 flatpakpermission.cpp:419
+#: autotests/flatpakpermissiontest.cpp:180
+#: autotests/flatpakpermissiontest.cpp:521 flatpakpermission.cpp:419
 #: flatpakpermission.cpp:686 flatpakpermission.cpp:697
 #: flatpakpermission.cpp:708 flatpakpermission.cpp:719
 #: flatpakpermission.cpp:834 flatpakpermission.cpp:842
@@ -28,76 +28,85 @@ msgstr ""
 msgid "read/write"
 msgstr "leitura/gravação"
 
-#: autotests/flatpakpermissiontest.cpp:156
-#: autotests/flatpakpermissiontest.cpp:157
-#: autotests/flatpakpermissiontest.cpp:180
-#: autotests/flatpakpermissiontest.cpp:187
-#: autotests/flatpakpermissiontest.cpp:278
-#: autotests/flatpakpermissiontest.cpp:279
+#: autotests/flatpakpermissiontest.cpp:283
 #: autotests/flatpakpermissiontest.cpp:284
-#: autotests/flatpakpermissiontest.cpp:288
-#: autotests/flatpakpermissiontest.cpp:365 flatpakpermission.cpp:393
+#: autotests/flatpakpermissiontest.cpp:307
+#: autotests/flatpakpermissiontest.cpp:314
+#: autotests/flatpakpermissiontest.cpp:405
+#: autotests/flatpakpermissiontest.cpp:406
+#: autotests/flatpakpermissiontest.cpp:411
+#: autotests/flatpakpermissiontest.cpp:415
+#: autotests/flatpakpermissiontest.cpp:530 flatpakpermission.cpp:393
 #: flatpakpermission.cpp:407 flatpakpermission.cpp:1105
 #, kde-format
 msgid "None"
 msgstr "Nenhum"
 
-#: autotests/flatpakpermissiontest.cpp:158
-#: autotests/flatpakpermissiontest.cpp:181
-#: autotests/flatpakpermissiontest.cpp:188
-#: autotests/flatpakpermissiontest.cpp:289
-#: autotests/flatpakpermissiontest.cpp:368 flatpakpermission.cpp:388
+#: autotests/flatpakpermissiontest.cpp:285
+#: autotests/flatpakpermissiontest.cpp:308
+#: autotests/flatpakpermissiontest.cpp:315
+#: autotests/flatpakpermissiontest.cpp:416
+#: autotests/flatpakpermissiontest.cpp:447
+#: autotests/flatpakpermissiontest.cpp:492
+#: autotests/flatpakpermissiontest.cpp:493
+#: autotests/flatpakpermissiontest.cpp:533 flatpakpermission.cpp:388
 #: flatpakpermission.cpp:404 flatpakpermission.cpp:1105
 #, kde-format
 msgid "see"
 msgstr ""
 
-#: autotests/flatpakpermissiontest.cpp:182
-#: autotests/flatpakpermissiontest.cpp:189
-#: autotests/flatpakpermissiontest.cpp:283
-#: autotests/flatpakpermissiontest.cpp:366 flatpakpermission.cpp:382
+#: autotests/flatpakpermissiontest.cpp:309
+#: autotests/flatpakpermissiontest.cpp:316
+#: autotests/flatpakpermissiontest.cpp:410
+#: autotests/flatpakpermissiontest.cpp:446
+#: autotests/flatpakpermissiontest.cpp:485
+#: autotests/flatpakpermissiontest.cpp:486
+#: autotests/flatpakpermissiontest.cpp:531 flatpakpermission.cpp:382
 #: flatpakpermission.cpp:398 flatpakpermission.cpp:1105
 #, kde-format
 msgid "talk"
 msgstr ""
 
-#: autotests/flatpakpermissiontest.cpp:183
-#: autotests/flatpakpermissiontest.cpp:190
-#: autotests/flatpakpermissiontest.cpp:325
-#: autotests/flatpakpermissiontest.cpp:367 flatpakpermission.cpp:385
+#: autotests/flatpakpermissiontest.cpp:310
+#: autotests/flatpakpermissiontest.cpp:317
+#: autotests/flatpakpermissiontest.cpp:464
+#: autotests/flatpakpermissiontest.cpp:532 flatpakpermission.cpp:385
 #: flatpakpermission.cpp:401 flatpakpermission.cpp:1105
 #, kde-format
 msgid "own"
 msgstr ""
 
-#: autotests/flatpakpermissiontest.cpp:330
-#: autotests/flatpakpermissiontest.cpp:333
-#: autotests/flatpakpermissiontest.cpp:357 flatpakpermission.cpp:342
-#: flatpakpermission.cpp:414 flatpakpermission.cpp:844
-#: flatpakpermission.cpp:892 flatpakpermission.cpp:1100
-#: flatpakpermission.cpp:1454
-#, kde-format
-msgid "read-only"
-msgstr "somente leitura"
-
-#: autotests/flatpakpermissiontest.cpp:331
-#, kde-format
-msgid "read-write"
-msgstr "leitura/gravação"
-
-#: autotests/flatpakpermissiontest.cpp:332
-#: autotests/flatpakpermissiontest.cpp:358 flatpakpermission.cpp:345
+#: autotests/flatpakpermissiontest.cpp:445
+#: autotests/flatpakpermissiontest.cpp:471
+#: autotests/flatpakpermissiontest.cpp:478
+#: autotests/flatpakpermissiontest.cpp:479
+#: autotests/flatpakpermissiontest.cpp:523 flatpakpermission.cpp:345
 #: flatpakpermission.cpp:417 flatpakpermission.cpp:847
 #: flatpakpermission.cpp:898 flatpakpermission.cpp:1100
-#: flatpakpermission.cpp:1456
+#: flatpakpermission.cpp:1460
 #, kde-format
 msgid "create"
 msgstr "criar"
 
+#: autotests/flatpakpermissiontest.cpp:469
+#: autotests/flatpakpermissiontest.cpp:472
+#: autotests/flatpakpermissiontest.cpp:522 flatpakpermission.cpp:342
+#: flatpakpermission.cpp:414 flatpakpermission.cpp:844
+#: flatpakpermission.cpp:892 flatpakpermission.cpp:1100
+#: flatpakpermission.cpp:1458
+#, kde-format
+msgid "read-only"
+msgstr "somente leitura"
+
+#: autotests/flatpakpermissiontest.cpp:470
+#, kde-format
+msgid "read-write"
+msgstr "leitura/gravação"
+
 #. i18n here is actually kind of wrong but at the time of writing fixing the mapping
 #. between ui and backend *here* is easier/safer than trying to reinvent the way the mapping works in a
 #. more reliable fashion.
-#: autotests/flatpakpermissiontest.cpp:355 flatpakpermission.cpp:339
+#: autotests/flatpakpermissiontest.cpp:520 flatpakpermission.cpp:339
 #: flatpakpermission.cpp:650 flatpakpermission.cpp:651
 #: flatpakpermission.cpp:652 flatpakpermission.cpp:653
 #: flatpakpermission.cpp:684 flatpakpermission.cpp:695
