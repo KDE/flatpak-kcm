@@ -166,9 +166,13 @@ KCM.ScrollViewKCM {
                         }
                         QQC2.ComboBox {
                             id: valueBox
-                            model: permsModel.valueListForSectionType(sectionDelegate.sectionType)
+
                             visible: sectionDelegate.sectionType !== FlatpakPermissionsSectionType.Environment
                             Layout.fillWidth: true
+
+                            model: permsModel.valuesModelForSectionType(sectionDelegate.sectionType)
+                            textRole: "display"
+                            valueRole: "value"
                         }
                         Kirigami.Heading {
                             text: "="
@@ -199,7 +203,7 @@ KCM.ScrollViewKCM {
 
             property bool isComplex: !(model.isSimple) && !(model.isEnvironment)
             property string effectiveValue: model.effectiveValue
-            property var comboVals: model.valueList
+            property var valuesModel: model.valuesModel
             property int index: model.index
 
             // Default-provided custom entries are not meant to be unchecked:
@@ -236,13 +240,17 @@ KCM.ScrollViewKCM {
 
             trailing: RowLayout {
                 QQC2.ComboBox {
-                    enabled: checkBox.checked
-                    model: permItem.comboVals
                     visible: permItem.isComplex
+                    enabled: checkBox.checked
+
+                    model: permItem.valuesModel
+                    textRole: "display"
+                    valueRole: "value"
+
                     onActivated: index => permsModel.editPerm(permItem.index, textAt(index))
                     Component.onCompleted: {
                         if (permItem.isComplex) {
-                            currentIndex = Qt.binding(() => indexOfValue(permItem.effectiveValue));
+                            currentIndex = Qt.binding(() => find(permItem.effectiveValue));
                         }
                     }
                 }

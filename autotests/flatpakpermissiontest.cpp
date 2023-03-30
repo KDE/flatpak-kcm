@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
 // SPDX-FileCopyrightText: 2023 Harald Sitter <sitter@kde.org>
 
+#include <QAbstractItemModel>
 #include <QDebug>
 #include <QMetaEnum>
 #include <QTest>
@@ -65,6 +66,17 @@ private:
             }
         }
         return true;
+    }
+
+    bool modelContains(const QAbstractItemModel *model, const QVariant &value, int role = Qt::DisplayRole)
+    {
+        for (int i = 0; i < model->rowCount(); i++) {
+            const auto &data = model->data(model->index(i, 0), role);
+            if (data == value) {
+                return true;
+            }
+        }
+        return false;
     }
 
 private Q_SLOTS:
@@ -310,11 +322,11 @@ private Q_SLOTS:
         setAndCheckBus(QLatin1String("own"), i18n("own"));
 
         const auto checkPossibleValues = [&](int row) {
-            const auto values = model.data(model.index(row, 0), FlatpakPermissionModel::ValueList).toStringList();
-            QVERIFY(values.contains(i18n("None")));
-            QVERIFY(values.contains(i18n("see")));
-            QVERIFY(values.contains(i18n("talk")));
-            QVERIFY(values.contains(i18n("own")));
+            const auto values = model.data(model.index(row, 0), FlatpakPermissionModel::ValuesModel).value<QAbstractListModel *>();
+            QVERIFY(modelContains(values, i18n("None")));
+            QVERIFY(modelContains(values, i18n("see")));
+            QVERIFY(modelContains(values, i18n("talk")));
+            QVERIFY(modelContains(values, i18n("own")));
         };
         checkPossibleValues(indexOfService0);
         checkPossibleValues(indexOfService1);
@@ -508,42 +520,42 @@ private Q_SLOTS:
 
     void testValuesModelForSectionsWithoutModels()
     {
-        const auto values = FlatpakPermissionModel::valueListForSectionType(FlatpakPermissionsSectionType::Features);
-        QCOMPARE(values.size(), 0);
+        const auto values = FlatpakPermissionModel::valuesModelForSectionType(FlatpakPermissionsSectionType::Features);
+        QCOMPARE(values, nullptr);
     }
 
     void testValuesModelForFilesystemsSection()
     {
-        const auto values = FlatpakPermissionModel::valueListForFilesystemsSection();
-        QCOMPARE(values.size(), 3);
+        const auto values = FlatpakPermissionModel::valuesModelForFilesystemsSection();
+        QCOMPARE(values->rowCount(QModelIndex()), 3);
         QEXPECT_FAIL("", "Filesystems logic is not ready to use 'OFF' value yet.", Continue);
-        QVERIFY(values.contains(i18n("OFF")));
-        QVERIFY(values.contains(i18n("read/write")));
-        QVERIFY(values.contains(i18n("read-only")));
-        QVERIFY(values.contains(i18n("create")));
+        QVERIFY(modelContains(values, i18n("OFF"))); // Filesystems logic is not ready to use this value yet.
+        QVERIFY(modelContains(values, i18n("read/write")));
+        QVERIFY(modelContains(values, i18n("read-only")));
+        QVERIFY(modelContains(values, i18n("create")));
     }
 
     void testValuesModelForBusSections()
     {
-        const auto values = FlatpakPermissionModel::valueListForBusSections();
-        QCOMPARE(values.size(), 4);
-        QVERIFY(values.contains(i18n("None")));
-        QVERIFY(values.contains(i18n("talk")));
-        QVERIFY(values.contains(i18n("own")));
-        QVERIFY(values.contains(i18n("see")));
+        const auto values = FlatpakPermissionModel::valuesModelForBusSections();
+        QCOMPARE(values->rowCount(QModelIndex()), 4);
+        QVERIFY(modelContains(values, i18n("None")));
+        QVERIFY(modelContains(values, i18n("talk")));
+        QVERIFY(modelContains(values, i18n("own")));
+        QVERIFY(modelContains(values, i18n("see")));
     }
 
     void testValuesModelMapping()
     {
-        auto expected = FlatpakPermissionModel::valueListForFilesystemsSection();
-        auto actual = FlatpakPermissionModel::valueListForSectionType(FlatpakPermissionsSectionType::Filesystems);
+        auto expected = FlatpakPermissionModel::valuesModelForFilesystemsSection();
+        auto actual = FlatpakPermissionModel::valuesModelForSectionType(FlatpakPermissionsSectionType::Filesystems);
         QCOMPARE(actual, expected);
 
-        expected = FlatpakPermissionModel::valueListForBusSections();
-        actual = FlatpakPermissionModel::valueListForSectionType(FlatpakPermissionsSectionType::SessionBus);
+        expected = FlatpakPermissionModel::valuesModelForBusSections();
+        actual = FlatpakPermissionModel::valuesModelForSectionType(FlatpakPermissionsSectionType::SessionBus);
         QCOMPARE(actual, expected);
 
-        actual = FlatpakPermissionModel::valueListForSectionType(FlatpakPermissionsSectionType::SystemBus);
+        actual = FlatpakPermissionModel::valuesModelForSectionType(FlatpakPermissionsSectionType::SystemBus);
         QCOMPARE(actual, expected);
     }
 };
