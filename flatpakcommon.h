@@ -5,6 +5,8 @@
 
 #pragma once
 
+#include <QMetaType>
+
 // This file contains helpers, constants and other minor nice things from flatpak internals.
 
 /* See flatpak-metadata(5) */
@@ -91,6 +93,8 @@ typedef enum {
     FLATPAK_POLICY_TALK,
     FLATPAK_POLICY_OWN
 } FlatpakPolicy;
+
+Q_DECLARE_METATYPE(FlatpakPolicy)
 
 typedef enum {
     FLATPAK_CONTEXT_SHARED_NETWORK   = 1 << 0,
