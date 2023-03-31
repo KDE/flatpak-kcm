@@ -50,6 +50,7 @@ public:
  */
 class FlatpakFilesystemsEntry
 {
+    Q_GADGET
 public:
     enum class AccessMode {
         /** Make the given directory available read-only. */
@@ -61,6 +62,7 @@ public:
         /** Don't expose filesystem to app. */
         Deny,
     };
+    Q_ENUM(AccessMode)
 
     enum class PathMode {
         Required,
@@ -123,6 +125,14 @@ public:
      */
     static std::optional<FlatpakFilesystemsEntry> parse(QStringView entry);
 
+    // TODO: Remove this method. This is a temporary hack to avoid too much porting at once.
+    static QString accessModeToSuffixString(AccessMode mode);
+
+    /**
+     *  Formatted prefix and path only, without access mode prefixes or suffixes. Suitable for comparison.
+     */
+    QString name() const;
+
     /**
      * Format this entry into string. Opposite of parse(). Omits default `:rw` suffix.
      */
@@ -142,8 +152,6 @@ private:
     // Depending on prefix type, path can be optional, required or illegal.
     QString m_path;
 };
-
-Q_DECLARE_METATYPE(FlatpakFilesystemsEntry)
 
 class PolicyChoicesModel : public QAbstractListModel
 {
@@ -260,7 +268,7 @@ public:
         Dummy
     };
 
-    using Variant = std::variant<QString, FlatpakPolicy>;
+    using Variant = std::variant<QString, FlatpakPolicy, FlatpakFilesystemsEntry::AccessMode>;
 
     // Default constructor is required for meta-type registration.
     /** Default constructor. Creates an invalid entry. */
@@ -371,10 +379,6 @@ public:
      */
     const Variant effectiveValue() const;
     void setEffectiveValue(const Variant &value);
-
-    /** Untranslate value of ValueType::Filesystems permission. */
-    // TODO: Remove this method, store enum variants or otherwise raw untranslated data.
-    QString fsCurrentValue() const;
 
     /** Integration with KCM. */
     bool isSaveNeeded() const;
@@ -497,7 +501,7 @@ private:
     void addPermission(const FlatpakPermission &permission, bool shouldBeOn);
     void removePermission(const FlatpakPermission &permission, bool isGranted);
 
-    void editFilesystemsPermissions(FlatpakPermission &permission, const QString &newValue);
+    void editFilesystemsPermissions(FlatpakPermission &permission, FlatpakFilesystemsEntry::AccessMode accessMode);
 
     void addBusPermissions(const FlatpakPermission &permission);
     void removeBusPermission(const FlatpakPermission &permission);

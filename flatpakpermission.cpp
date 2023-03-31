@@ -139,7 +139,22 @@ std::optional<FlatpakFilesystemsEntry> FlatpakFilesystemsEntry::parse(QStringVie
     return std::nullopt;
 }
 
-QString FlatpakFilesystemsEntry::format() const
+QString FlatpakFilesystemsEntry::accessModeToSuffixString(AccessMode mode)
+{
+    switch (mode) {
+    case AccessMode::ReadOnly:
+        return SUFFIX_RO;
+    case AccessMode::ReadWrite:
+        return {};
+    case AccessMode::Create:
+        return SUFFIX_CREATE;
+    case AccessMode::Deny:
+        break;
+    }
+    return {};
+}
+
+QString FlatpakFilesystemsEntry::name() const
 {
     const auto it = std::find_if(s_filesystems.begin(), s_filesystems.end(), [this](const TableEntry &filesystem) {
         if (filesystem.prefix != m_prefix) {
@@ -162,7 +177,15 @@ QString FlatpakFilesystemsEntry::format() const
         return {};
     }
 
-    const QString path = (m_path.isEmpty() ? QString(it->fixedString) : it->prefixString + m_path);
+    return m_path.isEmpty() ? QString(it->fixedString) : it->prefixString + m_path;
+}
+
+QString FlatpakFilesystemsEntry::format() const
+{
+    const QString path = name();
+    if (path.isEmpty()) {
+        return {};
+    }
 
     switch (m_mode) {
     case AccessMode::ReadOnly:
@@ -401,28 +424,6 @@ void FlatpakPermission::setEffectiveValue(const Variant &value)
     m_effectiveValue = value;
 }
 
-QString FlatpakPermission::fsCurrentValue() const
-{
-    // NB: the use of i18n here is actually kind of wrong but at the time of writing fixing the mapping
-    // between ui and backend *here* is easier/safer than trying to reinvent the way the mapping works in a
-    // more reliable fashion.
-    if (!std::holds_alternative<QString>(m_effectiveValue)) {
-        qWarning() << "Expected string, got alternative index" << m_effectiveValue.index();
-        return {};
-    }
-    const auto value = std::get<QString>(m_effectiveValue);
-    if (value == i18n("OFF")) {
-        return QString();
-    }
-    if (value == i18n("read-only")) {
-        return QLatin1String("ro");
-    }
-    if (value == i18n("create")) {
-        return QLatin1String("create");
-    }
-    return QLatin1String("rw");
-}
-
 bool FlatpakPermission::isSaveNeeded() const
 {
     if (m_originType == FlatpakPermission::OriginType::Dummy) {
@@ -481,17 +482,6 @@ static FlatpakPolicy mapDBusFlatpakPolicyConfigStringToEnumValue(const QString &
         qWarning() << "Unsupported Flatpak D-Bus policy:" << value;
     }
     return FlatpakPolicy::FLATPAK_POLICY_NONE;
-}
-
-static QString postfixToFrontendFileSystemValue(const QStringView &postfix)
-{
-    if (postfix == QLatin1String(":ro")) {
-        return i18n("read-only");
-    }
-    if (postfix == QLatin1String(":create")) {
-        return i18n("create");
-    }
-    return i18n("read/write");
 }
 
 FlatpakPermissionModel::FlatpakPermissionModel(QObject *parent)
@@ -566,6 +556,38 @@ QHash<int, QByteArray> FlatpakPermissionModel::roleNames() const
     //
     roles[Roles::ValuesModel] = "valuesModel";
     return roles;
+}
+
+namespace
+{
+
+/**
+ * Type of QList mapped with function f over its items.
+ */
+template<typename T, typename F>
+using MappedList = QList<typename std::invoke_result_t<F, const T &>::value_type>;
+
+/**
+ * Map QList with a function that returns optional values, but also returns a
+ * QList of original items that were failed to map.
+ */
+template<typename T, typename F>
+std::pair<QList<T>, MappedList<T, F>> try_filter_map(const QList<T> &iter, F func)
+{
+    QList<T> failed;
+    MappedList<T, F> succeeded;
+
+    for (const auto &item : iter) {
+        const auto optional = func(item);
+        if (optional.has_value()) {
+            succeeded.append(optional.value());
+        } else {
+            failed.append(item);
+        }
+    }
+
+    return {failed, succeeded};
+}
 }
 
 void FlatpakPermissionModel::loadDefaultValues()
@@ -721,43 +743,58 @@ void FlatpakPermissionModel::loadDefaultValues()
     /* FILESYSTEM category */
     category = QLatin1String(FLATPAK_METADATA_KEY_FILESYSTEMS);
     const auto rawFilesystems = contextGroup.readXdgListEntry(category);
+    const auto [unparsableFilesystems, filesystems] = try_filter_map(rawFilesystems, [](const QString &entry) {
+        return FlatpakFilesystemsEntry::parse(entry);
+    });
+    // We don't care about unparsable entries in any configuration file except
+    // the final user per-app overrides file which we gonna actually modify.
+    Q_UNUSED(unparsableFilesystems)
 
-    QString homeVal = i18n("OFF");
-    QString hostVal = i18n("OFF");
-    QString hostOsVal = i18n("OFF");
-    QString hostEtcVal = i18n("OFF");
+    FlatpakFilesystemsEntry::AccessMode homeVal = FlatpakFilesystemsEntry::AccessMode::Deny;
+    FlatpakFilesystemsEntry::AccessMode hostVal = FlatpakFilesystemsEntry::AccessMode::Deny;
+    FlatpakFilesystemsEntry::AccessMode hostOsVal = FlatpakFilesystemsEntry::AccessMode::Deny;
+    FlatpakFilesystemsEntry::AccessMode hostEtcVal = FlatpakFilesystemsEntry::AccessMode::Deny;
 
-    QVector<FlatpakPermission> filesysTemp;
+    QVector<FlatpakPermission> nonStandardFilesystems;
 
-    for (const auto &rawFilesystem : rawFilesystems) {
-        QString name = rawFilesystem;
+    static const auto ignoredFilesystems = QList<FlatpakFilesystemsEntry>{
+        FlatpakFilesystemsEntry(FlatpakFilesystemsEntry::FilesystemPrefix::XdgConfig,
+                                FlatpakFilesystemsEntry::AccessMode::ReadOnly,
+                                QLatin1String("kdeglobals")),
+    };
 
-        if (name == QLatin1String("xdg-config/kdeglobals:ro")) {
+    for (const auto &filesystem : filesystems) {
+        if (ignoredFilesystems.contains(filesystem)) {
             continue;
         }
-        const auto sep = name.lastIndexOf(QLatin1Char(':'));
-        const QStringView postfix = sep > 0 ? name.mid(sep) : QStringView();
-        name = name.left(sep);
 
-        if (name == QStringLiteral("home")) {
-            homeVal = postfixToFrontendFileSystemValue(postfix);
-        } else if (name == QStringLiteral("host")) {
-            hostVal = postfixToFrontendFileSystemValue(postfix);
-        } else if (name == QStringLiteral("host-os")) {
-            hostOsVal = postfixToFrontendFileSystemValue(postfix);
-        } else if (name == QStringLiteral("host-etc")) {
-            hostEtcVal = postfixToFrontendFileSystemValue(postfix);
-        } else {
-            const QString fileSystemValue = postfixToFrontendFileSystemValue(postfix);
-            filesysTemp.append(FlatpakPermission(FlatpakPermissionsSectionType::Filesystems, name, category, name, true, fileSystemValue));
+        switch (filesystem.prefix()) {
+        case FlatpakFilesystemsEntry::FilesystemPrefix::Home:
+            homeVal = filesystem.mode();
+            break;
+        case FlatpakFilesystemsEntry::FilesystemPrefix::Host:
+            hostVal = filesystem.mode();
+            break;
+        case FlatpakFilesystemsEntry::FilesystemPrefix::HostOs:
+            hostOsVal = filesystem.mode();
+            break;
+        case FlatpakFilesystemsEntry::FilesystemPrefix::HostEtc:
+            hostEtcVal = filesystem.mode();
+            break;
+        default: {
+            description = name = filesystem.name();
+            const auto accessMode = filesystem.mode();
+            nonStandardFilesystems.append(FlatpakPermission(FlatpakPermissionsSectionType::Filesystems, name, category, description, true, accessMode));
+            break;
+        }
         }
     }
 
     name = QStringLiteral("home");
     description = i18n("All User Files");
-    if (homeVal == i18n("OFF")) {
+    if (homeVal == FlatpakFilesystemsEntry::AccessMode::Deny) {
         isEnabledByDefault = false;
-        homeVal = i18n("read/write");
+        homeVal = FlatpakFilesystemsEntry::AccessMode::ReadWrite;
     } else {
         isEnabledByDefault = true;
     }
@@ -766,9 +803,9 @@ void FlatpakPermissionModel::loadDefaultValues()
 
     name = QStringLiteral("host");
     description = i18n("All System Files");
-    if (hostVal == i18n("OFF")) {
+    if (hostVal == FlatpakFilesystemsEntry::AccessMode::Deny) {
         isEnabledByDefault = false;
-        hostVal = i18n("read/write");
+        hostVal = FlatpakFilesystemsEntry::AccessMode::ReadWrite;
     } else {
         isEnabledByDefault = true;
     }
@@ -777,9 +814,9 @@ void FlatpakPermissionModel::loadDefaultValues()
 
     name = QStringLiteral("host-os");
     description = i18n("All System Libraries, Executables and Binaries");
-    if (hostOsVal == i18n("OFF")) {
+    if (hostOsVal == FlatpakFilesystemsEntry::AccessMode::Deny) {
         isEnabledByDefault = false;
-        hostOsVal = i18n("read/write");
+        hostOsVal = FlatpakFilesystemsEntry::AccessMode::ReadWrite;
     } else {
         isEnabledByDefault = true;
     }
@@ -788,9 +825,9 @@ void FlatpakPermissionModel::loadDefaultValues()
 
     name = QStringLiteral("host-etc");
     description = i18n("All System Configurations");
-    if (hostEtcVal == i18n("OFF")) {
+    if (hostEtcVal == FlatpakFilesystemsEntry::AccessMode::Deny) {
         isEnabledByDefault = false;
-        hostEtcVal = i18n("read/write");
+        hostEtcVal = FlatpakFilesystemsEntry::AccessMode::ReadWrite;
     } else {
         isEnabledByDefault = true;
     }
@@ -798,7 +835,7 @@ void FlatpakPermissionModel::loadDefaultValues()
                          FlatpakPermission(FlatpakPermissionsSectionType::Filesystems, name, category, description, isEnabledByDefault, hostEtcVal));
     basicIndex += 1;
 
-    for (const auto &filesystem : filesysTemp) {
+    for (const auto &filesystem : std::as_const(nonStandardFilesystems)) {
         m_permissions.insert(basicIndex, filesystem);
         basicIndex += 1;
     }
@@ -870,6 +907,14 @@ void FlatpakPermissionModel::loadCurrentValues()
     auto category = QLatin1String(FLATPAK_METADATA_GROUP_CONTEXT);
     const auto contextGroup = parser.group(category);
 
+    const auto rawFilesystems = contextGroup.readXdgListEntry(QLatin1String(FLATPAK_METADATA_KEY_FILESYSTEMS));
+    const auto [unparsableFilesystems, filesystems] = try_filter_map(rawFilesystems, [](const QString &entry) {
+        return FlatpakFilesystemsEntry::parse(entry);
+    });
+    // Normally, we'd store unparsable entries from override file in the
+    // model, but current architecture already loads them into m_overridesData.
+    Q_UNUSED(unparsableFilesystems)
+
     int fsIndex = -1;
 
     for (int i = 0; i < m_permissions.length(); ++i) {
@@ -886,36 +931,17 @@ void FlatpakPermissionModel::loadCurrentValues()
             break;
         }
         case FlatpakPermission::ValueType::Filesystems: {
-            const auto category = contextGroup.readEntry(permission.category(), QString());
-            if (category.contains(permission.name())) {
-                int permIndex = category.indexOf(permission.name());
+            const auto it = std::find_if(filesystems.constBegin(), filesystems.constEnd(), [=](const FlatpakFilesystemsEntry &filesystem) {
+                return filesystem.name() == permission.name();
+            });
+            if (it != filesystems.constEnd()) {
+                const auto &filesystem = *it;
 
-                /* the permission is just being set off, the access level isn't changed */
-                const auto isEnabled = permIndex > 0 ? category.at(permIndex - 1) != QLatin1Char('!') : true;
-                permission.setEffectiveEnabled(isEnabled);
-                permission.setOverrideEnabled(isEnabled);
+                permission.setOverrideEnabled(true);
+                permission.setEffectiveEnabled(true);
 
-                int valueIndex = permIndex + permission.name().length();
-                QString val;
-
-                if (valueIndex >= category.length() || category.at(valueIndex) != QLatin1Char(':')) {
-                    val = i18n("read/write");
-                    permission.setEffectiveValue(val);
-                    permission.setOverrideValue(val);
-                    continue;
-                }
-
-                if (category[valueIndex + 1] == QLatin1Char('r')) {
-                    if (category[valueIndex + 2] == QLatin1Char('w')) {
-                        val = i18n("read/write");
-                    } else {
-                        val = i18n("read-only");
-                    }
-                } else if (category[valueIndex + 1] == QLatin1Char('c')) {
-                    val = i18n("create");
-                }
-                permission.setEffectiveValue(val);
-                permission.setOverrideValue(val);
+                permission.setOverrideValue(filesystem.mode());
+                permission.setEffectiveValue(filesystem.mode());
             }
             fsIndex = i + 1;
             break;
@@ -943,38 +969,16 @@ void FlatpakPermissionModel::loadCurrentValues()
         } // end of switch
     }
 
-    category = QLatin1String(FLATPAK_METADATA_KEY_FILESYSTEMS);
-    const auto rawFilesystems = contextGroup.readXdgListEntry(category);
-    if (!rawFilesystems.isEmpty()) {
-        for (const auto &rawFilesystem : rawFilesystems) {
-            QString name = rawFilesystem;
-            QString value;
-            int len = 0;
-            bool enabled = false;
-            int valBeginIndex = name.indexOf(QLatin1Char(':'));
-            if (valBeginIndex != -1) {
-                if (name[valBeginIndex + 1] == QLatin1Char('r')) {
-                    len = 3;
-                    if (name[valBeginIndex + 2] == QLatin1Char('o')) {
-                        value = i18n("read-only");
-                    } else {
-                        value = i18n("read/write");
-                    }
-                } else {
-                    len = 7;
-                    value = i18n("create");
-                }
-                name.remove(valBeginIndex, len);
-                enabled = name[0] != QLatin1Char('!');
-                if (!enabled) {
-                    name.remove(0, 1);
-                }
-            }
+    if (!filesystems.isEmpty()) {
+        const auto section = FlatpakPermissionsSectionType::Filesystems;
+        const auto category = QLatin1String(FLATPAK_METADATA_KEY_FILESYSTEMS);
+        for (const auto &filesystem : filesystems) {
+            const auto name = filesystem.name();
+            const auto accessMode = filesystem.mode();
             if (!permExists(name)) {
-                m_permissions.insert(fsIndex, FlatpakPermission(FlatpakPermissionsSectionType::Filesystems, name, category, name, false, value));
-                m_permissions[fsIndex].setEffectiveEnabled(enabled);
-                m_permissions[fsIndex].setOverrideEnabled(enabled);
-                m_permissions[fsIndex].setOverrideValue(value);
+                m_permissions.insert(fsIndex, FlatpakPermission(section, name, category, name, false, accessMode));
+                m_permissions[fsIndex].setOverrideEnabled(true);
+                m_permissions[fsIndex].setEffectiveEnabled(true);
                 fsIndex++;
             }
         }
@@ -1333,7 +1337,11 @@ void FlatpakPermissionModel::editPerm(int index, const QVariant &newValue)
 
     switch (permission.section()) {
     case FlatpakPermissionsSectionType::Filesystems:
-        editFilesystemsPermissions(permission, newValue.toString());
+        if (!newValue.canConvert<FlatpakFilesystemsEntry::AccessMode>()) {
+            qWarning() << "Wrong data type assigned to Filesystem entry:" << newValue;
+            return;
+        }
+        editFilesystemsPermissions(permission, newValue.value<FlatpakFilesystemsEntry::AccessMode>());
         break;
     case FlatpakPermissionsSectionType::SessionBus:
     case FlatpakPermissionsSectionType::SystemBus:
@@ -1367,8 +1375,12 @@ void FlatpakPermissionModel::addUserEnteredPermission(int /*FlatpakPermissionsSe
 
     switch (section) {
     case FlatpakPermissionsSectionType::Filesystems:
+        if (!value.canConvert<FlatpakFilesystemsEntry::AccessMode>()) {
+            qWarning() << "Tried to add Filesystem entry with wrong data type:" << value;
+            return;
+        }
         category = QLatin1String(FLATPAK_METADATA_KEY_FILESYSTEMS);
-        variant = value.toString();
+        variant = value.value<FlatpakFilesystemsEntry::AccessMode>();
         break;
     case FlatpakPermissionsSectionType::SessionBus:
         category = QLatin1String(FLATPAK_METADATA_GROUP_SESSION_BUS_POLICY);
@@ -1441,7 +1453,8 @@ void FlatpakPermissionModel::addPermission(const FlatpakPermission &permission, 
     }
     QString name = permission.name(); /* the name of the permission we are about to set/unset */
     if (permission.valueType() == FlatpakPermission::ValueType::Filesystems) {
-        name.append(QLatin1Char(':') + permission.fsCurrentValue());
+        const auto mode = std::get<FlatpakFilesystemsEntry::AccessMode>(permission.effectiveValue());
+        name.append(FlatpakFilesystemsEntry::accessModeToSuffixString(mode));
     }
     const auto permIndex = catIndex + permission.category().length() + 1;
 
@@ -1477,7 +1490,8 @@ void FlatpakPermissionModel::removePermission(const FlatpakPermission &permissio
 
     if (permission.valueType() == FlatpakPermission::ValueType::Filesystems) {
         if (m_overridesData[permEndIndex] == QLatin1Char(':')) {
-            permEndIndex += permission.fsCurrentValue().length() + 1;
+            const auto mode = std::get<FlatpakFilesystemsEntry::AccessMode>(permission.effectiveValue());
+            permEndIndex += FlatpakFilesystemsEntry::accessModeToSuffixString(mode).length() + 1;
         }
     }
 
@@ -1525,16 +1539,9 @@ void FlatpakPermissionModel::removeBusPermission(const FlatpakPermission &permis
     m_overridesData.remove(permBeginIndex, permLen);
 }
 
-void FlatpakPermissionModel::editFilesystemsPermissions(FlatpakPermission &permission, const QString &newValue)
+void FlatpakPermissionModel::editFilesystemsPermissions(FlatpakPermission &permission, FlatpakFilesystemsEntry::AccessMode accessMode)
 {
-    QString value;
-    if (newValue == i18n("read-only")) {
-        value = QStringLiteral(":ro");
-    } else if (newValue == i18n("create")) {
-        value = QStringLiteral(":create");
-    } else {
-        value = QStringLiteral(":rw");
-    }
+    const auto value = FlatpakFilesystemsEntry::accessModeToSuffixString(accessMode);
 
     int permIndex = m_overridesData.indexOf(permission.name());
     if (permIndex == -1) {
@@ -1542,9 +1549,9 @@ void FlatpakPermissionModel::editFilesystemsPermissions(FlatpakPermission &permi
         permIndex = m_overridesData.indexOf(permission.name());
     }
 
-    if (permission.isDefaultEnabled() == permission.isEffectiveEnabled() && std::get<QString>(permission.defaultValue()) == newValue) {
+    if (permission.isDefaultEnabled() == permission.isEffectiveEnabled() && std::get<FlatpakFilesystemsEntry::AccessMode>(permission.defaultValue()) == accessMode) {
         removePermission(permission, true);
-        permission.setEffectiveValue(newValue);
+        permission.setEffectiveValue(accessMode);
         return;
     }
 
@@ -1559,7 +1566,7 @@ void FlatpakPermissionModel::editFilesystemsPermissions(FlatpakPermission &permi
             m_overridesData.remove(valueBeginIndex + value.length(), 7);
         }
     }
-    permission.setEffectiveValue(newValue);
+    permission.setEffectiveValue(accessMode);
 }
 
 void FlatpakPermissionModel::editBusPermissions(FlatpakPermission &permission, FlatpakPolicy newPolicyValue)

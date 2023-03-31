@@ -1,5 +1,5 @@
 [Context]
-filesystems=host-os:ro;host:rw;xdg-run/app/com.discordapp.Discord:create;home;~/path:create;
+filesystems=host-os:ro;host;xdg-run/app/com.discordapp.Discord:create;home;~/path:create;
 
 [Session Bus Policy]
 org.kde.StatusNotifierWatcher=own

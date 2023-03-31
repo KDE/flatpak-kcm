@@ -189,7 +189,8 @@ private Q_SLOTS:
             if (name == "xdg-download") {
                 containsXdgDownload = true;
                 QCOMPARE(model.data(model.index(i, 0), FlatpakPermissionModel::IsEffectiveEnabled), true);
-                QCOMPARE(model.data(model.index(i, 0), FlatpakPermissionModel::EffectiveValue), i18n("read/write"));
+                QCOMPARE(model.data(model.index(i, 0), FlatpakPermissionModel::EffectiveValue).value<FlatpakFilesystemsEntry::AccessMode>(),
+                         FlatpakFilesystemsEntry::AccessMode::ReadWrite);
             }
         }
 
@@ -456,7 +457,9 @@ private Q_SLOTS:
         const auto envName = QLatin1String("SOME_ENV");
         const auto envValue = QLatin1String("abc123");
 
-        model.addUserEnteredPermission(FlatpakPermissionsSectionType::Filesystems, filesystem, i18n("create"));
+        model.addUserEnteredPermission(FlatpakPermissionsSectionType::Filesystems,
+                                       filesystem,
+                                       QVariant::fromValue(FlatpakFilesystemsEntry::AccessMode::Create));
         model.addUserEnteredPermission(FlatpakPermissionsSectionType::SessionBus, session, FlatpakPolicy::FLATPAK_POLICY_TALK);
         // Try int cast to make sure QML/JS works fine too.
         model.addUserEnteredPermission(FlatpakPermissionsSectionType::SystemBus, system, static_cast<int>(FlatpakPolicy::FLATPAK_POLICY_SEE));
@@ -481,17 +484,19 @@ private Q_SLOTS:
 
             if (name == "host-os") {
                 // Make sure the config manipulation works across multiple changes
-                model.editPerm(i, i18n("read-only"));
-                model.editPerm(i, i18n("read-write"));
-                model.editPerm(i, i18n("create"));
-                model.editPerm(i, i18n("read-only"));
+                model.editPerm(i, QVariant::fromValue(FlatpakFilesystemsEntry::AccessMode::ReadOnly));
+                model.editPerm(i, QVariant::fromValue(FlatpakFilesystemsEntry::AccessMode::ReadWrite));
+                model.editPerm(i, QVariant::fromValue(FlatpakFilesystemsEntry::AccessMode::Create));
+                model.editPerm(i, QVariant::fromValue(FlatpakFilesystemsEntry::AccessMode::ReadOnly));
             }
 
             if (name == filesystem) {
                 QVERIFY(!model.data(model.index(i, 0), FlatpakPermissionModel::IsDefaultEnabled).toBool());
                 QVERIFY(model.data(model.index(i, 0), FlatpakPermissionModel::IsEffectiveEnabled).toBool());
-                QCOMPARE(model.data(model.index(i, 0), FlatpakPermissionModel::DefaultValue).toString(), i18n("create"));
-                QCOMPARE(model.data(model.index(i, 0), FlatpakPermissionModel::EffectiveValue).toString(), i18n("create"));
+                QCOMPARE(model.data(model.index(i, 0), FlatpakPermissionModel::DefaultValue).value<FlatpakFilesystemsEntry::AccessMode>(),
+                         FlatpakFilesystemsEntry::AccessMode::Create);
+                QCOMPARE(model.data(model.index(i, 0), FlatpakPermissionModel::EffectiveValue).value<FlatpakFilesystemsEntry::AccessMode>(),
+                         FlatpakFilesystemsEntry::AccessMode::Create);
             }
 
             if (name == session) {
@@ -560,6 +565,36 @@ private Q_SLOTS:
 
         actual = FlatpakPermissionModel::valuesModelForSectionType(FlatpakPermissionsSectionType::SystemBus);
         QCOMPARE(actual, expected);
+    }
+
+    void testUnparsableFilesystems()
+    {
+        FlatpakReferencesModel referencesModel;
+        QFile metadataFile(QFINDTESTDATA("fixtures/metadata/com.example.unparsable.filesystems"));
+        QVERIFY(metadataFile.open(QFile::ReadOnly));
+        FlatpakReference reference(&referencesModel,
+                                   "com.example.unparsable.filesystems",
+                                   "x86_64",
+                                   "stable",
+                                   "0.0.24",
+                                   "Unparsable Filesystems",
+                                   QFINDTESTDATA("fixtures/overrides/"),
+                                   QUrl(),
+                                   metadataFile.readAll());
+        FlatpakPermissionModel model;
+        model.setReference(&reference);
+        model.load();
+        model.setShowAdvanced(true);
+
+        const auto filesystem = QLatin1String("xdg-data/path");
+        model.addUserEnteredPermission(FlatpakPermissionsSectionType::Filesystems,
+                                       filesystem,
+                                       QVariant::fromValue(FlatpakFilesystemsEntry::AccessMode::ReadOnly));
+        model.save();
+
+        const KConfig actual(QFINDTESTDATA("fixtures/overrides/com.example.unparsable.filesystems"));
+        const KConfig expected(QFINDTESTDATA("fixtures/overrides.out/com.example.unparsable.filesystems"));
+        QVERIFY(operatorFlatpakConfigEquals(actual, expected));
     }
 };
 
