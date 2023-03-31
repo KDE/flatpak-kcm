@@ -192,9 +192,8 @@ KCM.ScrollViewKCM {
                         switch (sectionDelegate.sectionType) {
                         case FlatpakPermissionsSectionType.SessionBus:
                         case FlatpakPermissionsSectionType.SystemBus:
-                            return valueBox.currentValue;
                         case FlatpakPermissionsSectionType.Filesystems:
-                            return valueBox.currentText;
+                            return valueBox.currentValue;
                         case FlatpakPermissionsSectionType.Environment:
                             return valueField.text;
                         default:
@@ -219,7 +218,8 @@ KCM.ScrollViewKCM {
             id: permItem
 
             property bool isComplex: !(model.isSimple) && !(model.isEnvironment)
-            property string effectiveValue: model.effectiveValue
+            property bool isNotDummy: model.isNotDummy
+            property var effectiveValue: model.effectiveValue
             property var valuesModel: model.valuesModel
             property int index: model.index
             property int section: model.section
@@ -258,7 +258,12 @@ KCM.ScrollViewKCM {
 
             trailing: RowLayout {
                 QQC2.ComboBox {
-                    visible: permItem.isComplex
+                    visible: [
+                        FlatpakPermissionsSectionType.Filesystems,
+                        FlatpakPermissionsSectionType.SessionBus,
+                        FlatpakPermissionsSectionType.SystemBus,
+                    ].includes(permItem.section)
+
                     enabled: checkBox.checked
 
                     model: permItem.valuesModel
@@ -266,33 +271,22 @@ KCM.ScrollViewKCM {
                     valueRole: "value"
 
                     onActivated: index => {
-                        switch (permItem.section) {
-                        case FlatpakPermissionsSectionType.SessionBus:
-                        case FlatpakPermissionsSectionType.SystemBus:
-                            permsModel.editPerm(permItem.index, currentValue);
-                            break;
-                        case FlatpakPermissionsSectionType.Filesystems:
-                            permsModel.editPerm(permItem.index, currentText);
-                            break;
-                        }
+                        // Assuming this is only called for appropriate visible entries.
+                        permsModel.editPerm(permItem.index, currentValue);
                     }
                     Component.onCompleted: {
-                        if (permItem.isComplex) {
-                            switch (permItem.section) {
-                            case FlatpakPermissionsSectionType.SessionBus:
-                            case FlatpakPermissionsSectionType.SystemBus:
-                                currentIndex = Qt.binding(() => indexOfValue(permItem.effectiveValue));
-                                break;
-                            case FlatpakPermissionsSectionType.Filesystems:
-                                currentIndex = Qt.binding(() => find(permItem.effectiveValue));
-                                break;
-                            }
-
+                        // Still need to check section type, as this is called for every entry.
+                        if (permItem.isNotDummy && [
+                                FlatpakPermissionsSectionType.Filesystems,
+                                FlatpakPermissionsSectionType.SessionBus,
+                                FlatpakPermissionsSectionType.SystemBus,
+                            ].includes(permItem.section)) {
+                            currentIndex = Qt.binding(() => indexOfValue(permItem.effectiveValue));
                         }
                     }
                 }
                 QQC2.TextField {
-                    text: model.effectiveValue
+                    text: model.isEnvironment ? permItem.effectiveValue : ""
                     visible: model.isEnvironment
                     enabled: checkBox.checked
                     Keys.onReturnPressed: {
