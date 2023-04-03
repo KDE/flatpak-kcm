@@ -466,7 +466,7 @@ private Q_SLOTS:
             const QString name = model.data(model.index(i, 0), FlatpakPermissionModel::Name).toString();
             if (name == "host") {
                 const auto metaEnum = QMetaEnum::fromType<FlatpakPermissionModel::Roles>();
-                for (auto j = 0; j <= metaEnum.keyCount(); ++j) { // purely for debugging purposes
+                for (auto j = 0; j < metaEnum.keyCount(); ++j) { // purely for debugging purposes
                     qDebug() << metaEnum.key(j) << model.data(model.index(i, 0), metaEnum.value(j));
                 }
 
