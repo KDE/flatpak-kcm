@@ -586,7 +586,8 @@ void FlatpakPermissionModel::loadDefaultValues()
     f.close();
 
     KConfig parser(f.fileName());
-    const KConfigGroup contextGroup = parser.group(FLATPAK_METADATA_GROUP_CONTEXT);
+    category = QLatin1String(FLATPAK_METADATA_GROUP_CONTEXT);
+    const KConfigGroup contextGroup = parser.group(category);
 
     int basicIndex = 0;
 
@@ -608,7 +609,7 @@ void FlatpakPermissionModel::loadDefaultValues()
 
     /* SOCKETS category */
     category = QLatin1String(FLATPAK_METADATA_KEY_SOCKETS);
-    const QString socketPerms = contextGroup.readEntry(QLatin1String(FLATPAK_METADATA_KEY_SOCKETS), QString());
+    const auto socketPerms = contextGroup.readXdgListEntry(category);
 
     name = QStringLiteral("x11");
     description = i18n("X11 Windowing System");
@@ -662,7 +663,7 @@ void FlatpakPermissionModel::loadDefaultValues()
 
     /* DEVICES category */
     category = QLatin1String(FLATPAK_METADATA_KEY_DEVICES);
-    const QString devicesPerms = contextGroup.readEntry(QLatin1String(FLATPAK_METADATA_KEY_DEVICES), QString());
+    const auto devicesPerms = contextGroup.readXdgListEntry(category);
 
     name = QStringLiteral("kvm");
     description = i18n("Kernel-based Virtual Machine Access");
@@ -688,7 +689,7 @@ void FlatpakPermissionModel::loadDefaultValues()
 
     /* FEATURES category */
     category = QLatin1String(FLATPAK_METADATA_KEY_FEATURES);
-    const QString featuresPerms = contextGroup.readEntry(QLatin1String(FLATPAK_METADATA_KEY_FEATURES), QString());
+    const QString featuresPerms = contextGroup.readEntry(category, QString());
 
     name = QStringLiteral("devel");
     description = i18n("System Calls by Development Tools");
@@ -719,8 +720,7 @@ void FlatpakPermissionModel::loadDefaultValues()
 
     /* FILESYSTEM category */
     category = QLatin1String(FLATPAK_METADATA_KEY_FILESYSTEMS);
-    const QString fileSystemPerms = contextGroup.readEntry(QLatin1String(FLATPAK_METADATA_KEY_FILESYSTEMS), QString());
-    const auto dirs = QStringView(fileSystemPerms).split(QLatin1Char(';'), Qt::SkipEmptyParts);
+    const auto rawFilesystems = contextGroup.readXdgListEntry(category);
 
     QString homeVal = i18n("OFF");
     QString hostVal = i18n("OFF");
@@ -729,28 +729,27 @@ void FlatpakPermissionModel::loadDefaultValues()
 
     QVector<FlatpakPermission> filesysTemp;
 
-    for (const QStringView &dir : dirs) {
-        if (dir == QLatin1String("xdg-config/kdeglobals:ro")) {
+    for (const auto &rawFilesystem : rawFilesystems) {
+        QString name = rawFilesystem;
+
+        if (name == QLatin1String("xdg-config/kdeglobals:ro")) {
             continue;
         }
-        int sep = dir.lastIndexOf(QLatin1Char(':'));
-        const QStringView postfix = sep > 0 ? dir.mid(sep) : QStringView();
-        const QStringView symbolicName = dir.left(sep);
+        const auto sep = name.lastIndexOf(QLatin1Char(':'));
+        const QStringView postfix = sep > 0 ? name.mid(sep) : QStringView();
+        name = name.left(sep);
 
-        if (symbolicName == QStringLiteral("home")) {
+        if (name == QStringLiteral("home")) {
             homeVal = postfixToFrontendFileSystemValue(postfix);
-        } else if (symbolicName == QStringLiteral("host")) {
+        } else if (name == QStringLiteral("host")) {
             hostVal = postfixToFrontendFileSystemValue(postfix);
-        } else if (symbolicName == QStringLiteral("host-os")) {
+        } else if (name == QStringLiteral("host-os")) {
             hostOsVal = postfixToFrontendFileSystemValue(postfix);
-        } else if (symbolicName == QStringLiteral("host-etc")) {
+        } else if (name == QStringLiteral("host-etc")) {
             hostEtcVal = postfixToFrontendFileSystemValue(postfix);
         } else {
-            name = symbolicName.toString();
-            description = name;
             const QString fileSystemValue = postfixToFrontendFileSystemValue(postfix);
-            isEnabledByDefault = true;
-            filesysTemp.append(FlatpakPermission(FlatpakPermissionsSectionType::Filesystems, name, category, description, isEnabledByDefault, fileSystemValue));
+            filesysTemp.append(FlatpakPermission(FlatpakPermissionsSectionType::Filesystems, name, category, name, true, fileSystemValue));
         }
     }
 
@@ -799,8 +798,8 @@ void FlatpakPermissionModel::loadDefaultValues()
                          FlatpakPermission(FlatpakPermissionsSectionType::Filesystems, name, category, description, isEnabledByDefault, hostEtcVal));
     basicIndex += 1;
 
-    for (int i = 0; i < filesysTemp.length(); i++) {
-        m_permissions.insert(basicIndex, filesysTemp.at(i));
+    for (const auto &filesystem : filesysTemp) {
+        m_permissions.insert(basicIndex, filesystem);
         basicIndex += 1;
     }
     /* FILESYSTEM category */
@@ -812,15 +811,13 @@ void FlatpakPermissionModel::loadDefaultValues()
 
     /* SESSION BUS category */
     category = QLatin1String(FLATPAK_METADATA_GROUP_SESSION_BUS_POLICY);
-    const KConfigGroup sessionBusGroup = parser.group(QLatin1String(FLATPAK_METADATA_GROUP_SESSION_BUS_POLICY));
+    const KConfigGroup sessionBusGroup = parser.group(category);
     if (sessionBusGroup.exists() && !sessionBusGroup.entryMap().isEmpty()) {
-        const auto entries = sessionBusGroup.entryMap();
-        const auto keys = entries.keys();
-        for (int i = 0; i < keys.length(); ++i) {
-            name = description = keys.at(i);
-            const auto policyValue = mapDBusFlatpakPolicyConfigStringToEnumValue(entries.value(keys.at(i)));
-            isEnabledByDefault = true;
-            m_permissions.append(FlatpakPermission(FlatpakPermissionsSectionType::SessionBus, name, category, description, isEnabledByDefault, policyValue));
+        const auto keys = sessionBusGroup.keyList();
+        for (const auto &name : keys) {
+            defaultValue = sessionBusGroup.readEntry(name);
+            const auto policyValue = mapDBusFlatpakPolicyConfigStringToEnumValue(defaultValue);
+            m_permissions.append(FlatpakPermission(FlatpakPermissionsSectionType::SessionBus, name, category, description, true, policyValue));
         }
     } else {
         m_permissions.append(FlatpakPermission(FlatpakPermissionsSectionType::SessionBus));
@@ -829,15 +826,13 @@ void FlatpakPermissionModel::loadDefaultValues()
 
     /* SYSTEM BUS category */
     category = QLatin1String(FLATPAK_METADATA_GROUP_SYSTEM_BUS_POLICY);
-    const KConfigGroup systemBusGroup = parser.group(QLatin1String(FLATPAK_METADATA_GROUP_SYSTEM_BUS_POLICY));
+    const KConfigGroup systemBusGroup = parser.group(category);
     if (systemBusGroup.exists() && !systemBusGroup.entryMap().isEmpty()) {
-        const auto entries = systemBusGroup.entryMap();
-        const auto keys = entries.keys();
-        for (int i = 0; i < keys.length(); ++i) {
-            name = description = keys.at(i);
-            const auto policyValue = mapDBusFlatpakPolicyConfigStringToEnumValue(entries.value(keys.at(i)));
-            isEnabledByDefault = true;
-            m_permissions.append(FlatpakPermission(FlatpakPermissionsSectionType::SystemBus, name, category, description, isEnabledByDefault, policyValue));
+        const auto keys = systemBusGroup.keyList();
+        for (const auto &name : keys) {
+            defaultValue = systemBusGroup.readEntry(name);
+            const auto policyValue = mapDBusFlatpakPolicyConfigStringToEnumValue(defaultValue);
+            m_permissions.append(FlatpakPermission(FlatpakPermissionsSectionType::SystemBus, name, category, name, true, policyValue));
         }
     } else {
         m_permissions.append(FlatpakPermission(FlatpakPermissionsSectionType::SystemBus));
@@ -848,14 +843,12 @@ void FlatpakPermissionModel::loadDefaultValues()
     if (false) {
         /* ENVIRONMENT category */
         category = QLatin1String(FLATPAK_METADATA_GROUP_ENVIRONMENT);
-        const KConfigGroup environmentGroup = parser.group(QLatin1String(FLATPAK_METADATA_GROUP_ENVIRONMENT));
+        const auto environmentGroup = parser.group(category);
         if (environmentGroup.exists() && !environmentGroup.entryMap().isEmpty()) {
-            const auto entries = environmentGroup.entryMap();
-            const auto keys = entries.keys();
-            for (int i = 0; i < keys.length(); ++i) {
-                name = description = keys.at(i);
-                defaultValue = entries.value(keys.at(i));
-                m_permissions.append(FlatpakPermission(FlatpakPermissionsSectionType::Environment, name, category, description, true, defaultValue));
+            const auto keys = environmentGroup.keyList();
+            for (const auto &name : keys) {
+                defaultValue = environmentGroup.readEntry(name);
+                m_permissions.append(FlatpakPermission(FlatpakPermissionsSectionType::Environment, name, category, name, true, defaultValue));
             }
         } else {
             m_permissions.append(FlatpakPermission(FlatpakPermissionsSectionType::Environment));
@@ -874,7 +867,8 @@ void FlatpakPermissionModel::loadCurrentValues()
     }
 
     KConfig parser(path);
-    const KConfigGroup contextGroup = parser.group(FLATPAK_METADATA_GROUP_CONTEXT);
+    auto category = QLatin1String(FLATPAK_METADATA_GROUP_CONTEXT);
+    const auto contextGroup = parser.group(category);
 
     int fsIndex = -1;
 
@@ -883,9 +877,8 @@ void FlatpakPermissionModel::loadCurrentValues()
 
         switch (permission.valueType()) {
         case FlatpakPermission::ValueType::Simple: {
-            const QString cat = contextGroup.readEntry(permission.category(), QString());
-            if (cat.contains(permission.name())) {
-                // permission.setEnabled(!permission.enabledByDefault());
+            const auto category = contextGroup.readEntry(permission.category(), QString());
+            if (category.contains(permission.name())) {
                 bool isEnabled = !permission.isDefaultEnabled();
                 permission.setEffectiveEnabled(isEnabled);
                 permission.setOverrideEnabled(isEnabled);
@@ -893,32 +886,32 @@ void FlatpakPermissionModel::loadCurrentValues()
             break;
         }
         case FlatpakPermission::ValueType::Filesystems: {
-            const QString cat = contextGroup.readEntry(permission.category(), QString());
-            if (cat.contains(permission.name())) {
-                int permIndex = cat.indexOf(permission.name());
+            const auto category = contextGroup.readEntry(permission.category(), QString());
+            if (category.contains(permission.name())) {
+                int permIndex = category.indexOf(permission.name());
 
                 /* the permission is just being set off, the access level isn't changed */
-                bool isEnabled = permIndex > 0 ? cat.at(permIndex - 1) != QLatin1Char('!') : true;
+                const auto isEnabled = permIndex > 0 ? category.at(permIndex - 1) != QLatin1Char('!') : true;
                 permission.setEffectiveEnabled(isEnabled);
                 permission.setOverrideEnabled(isEnabled);
 
                 int valueIndex = permIndex + permission.name().length();
                 QString val;
 
-                if (valueIndex >= cat.length() || cat.at(valueIndex) != QLatin1Char(':')) {
+                if (valueIndex >= category.length() || category.at(valueIndex) != QLatin1Char(':')) {
                     val = i18n("read/write");
                     permission.setEffectiveValue(val);
                     permission.setOverrideValue(val);
                     continue;
                 }
 
-                if (cat[valueIndex + 1] == QLatin1Char('r')) {
-                    if (cat[valueIndex + 2] == QLatin1Char('w')) {
+                if (category[valueIndex + 1] == QLatin1Char('r')) {
+                    if (category[valueIndex + 2] == QLatin1Char('w')) {
                         val = i18n("read/write");
                     } else {
                         val = i18n("read-only");
                     }
-                } else if (cat[valueIndex + 1] == QLatin1Char('c')) {
+                } else if (category[valueIndex + 1] == QLatin1Char('c')) {
                     val = i18n("create");
                 }
                 permission.setEffectiveValue(val);
@@ -929,36 +922,32 @@ void FlatpakPermissionModel::loadCurrentValues()
         }
         case FlatpakPermission::ValueType::Bus:
         case FlatpakPermission::ValueType::Environment: {
-            const KConfigGroup group = parser.group(permission.category());
-            if (group.exists()) {
-                QMap<QString, QString> map = group.entryMap();
-                QList<QString> list = map.keys();
-                int index = list.indexOf(permission.name());
-                if (index != -1) {
-                    QString value = map.value(permission.name());
-                    if (permission.valueType() == FlatpakPermission::ValueType::Bus) {
-                        const auto policyValue = mapDBusFlatpakPolicyConfigStringToEnumValue(value);
-                        permission.setOverrideValue(policyValue);
-                        permission.setEffectiveValue(policyValue);
-                    } else {
-                        permission.setOverrideValue(value);
-                        permission.setEffectiveValue(value);
-                    }
+            const auto group = parser.group(permission.category());
+            if (group.hasKey(permission.name())) {
+                const auto value = group.readEntry(permission.name());
 
-                    permission.setOverrideEnabled(true);
-                    permission.setEffectiveEnabled(true);
+                if (permission.valueType() == FlatpakPermission::ValueType::Bus) {
+                    const auto policyValue = mapDBusFlatpakPolicyConfigStringToEnumValue(value);
+                    permission.setOverrideValue(policyValue);
+                    permission.setEffectiveValue(policyValue);
+                } else {
+                    permission.setOverrideValue(value);
+                    permission.setEffectiveValue(value);
                 }
+
+                permission.setOverrideEnabled(true);
+                permission.setEffectiveEnabled(true);
             }
             break;
         }
         } // end of switch
     }
 
-    const QString fsCat = contextGroup.readEntry(QLatin1String(FLATPAK_METADATA_KEY_FILESYSTEMS), QString());
-    if (!fsCat.isEmpty()) {
-        const QStringList fsPerms = fsCat.split(QLatin1Char(';'), Qt::SkipEmptyParts);
-        for (int j = 0; j < fsPerms.length(); ++j) {
-            QString name = fsPerms.at(j);
+    category = QLatin1String(FLATPAK_METADATA_KEY_FILESYSTEMS);
+    const auto rawFilesystems = contextGroup.readXdgListEntry(category);
+    if (!rawFilesystems.isEmpty()) {
+        for (const auto &rawFilesystem : rawFilesystems) {
+            QString name = rawFilesystem;
             QString value;
             int len = 0;
             bool enabled = false;
@@ -982,9 +971,7 @@ void FlatpakPermissionModel::loadCurrentValues()
                 }
             }
             if (!permExists(name)) {
-                m_permissions.insert(
-                    fsIndex,
-                    FlatpakPermission(FlatpakPermissionsSectionType::Filesystems, name, QLatin1String(FLATPAK_METADATA_KEY_FILESYSTEMS), name, false, value));
+                m_permissions.insert(fsIndex, FlatpakPermission(FlatpakPermissionsSectionType::Filesystems, name, category, name, false, value));
                 m_permissions[fsIndex].setEffectiveEnabled(enabled);
                 m_permissions[fsIndex].setOverrideEnabled(enabled);
                 m_permissions[fsIndex].setOverrideValue(value);
@@ -1003,25 +990,25 @@ void FlatpakPermissionModel::loadCurrentValues()
             // Disabled because BUG 465502
             continue;
         }
-        const KConfigGroup group = parser.group(category);
+        const auto group = parser.group(category);
         if (!group.exists()) {
             continue;
         }
         const auto valueType = FlatpakPermission::valueTypeFromSectionType(section);
         int insertIndex = permIndex(category);
 
-        QMap<QString, QString> map = group.entryMap();
-        QList<QString> list = map.keys();
-        for (int k = 0; k < list.length(); k++) {
-            if (!permExists(list.at(k))) {
-                QString name = list.at(k);
-                QString value = map.value(name);
+        const auto keys = group.keyList();
+        for (const auto &name : keys) {
+            if (!permExists(name)) {
+                const auto value = group.readEntry(name);
+
                 if (valueType == FlatpakPermission::ValueType::Bus) {
                     const auto policyValue = mapDBusFlatpakPolicyConfigStringToEnumValue(value);
                     m_permissions.insert(insertIndex, FlatpakPermission(section, name, category, name, false, policyValue));
                 } else {
                     m_permissions.insert(insertIndex, FlatpakPermission(section, name, category, name, false, value));
                 }
+
                 m_permissions[insertIndex].setOverrideEnabled(true);
                 m_permissions[insertIndex].setEffectiveEnabled(true);
                 insertIndex++;
@@ -1256,7 +1243,7 @@ void FlatpakPermissionModel::togglePermissionAtIndex(int index)
     }
 
     FlatpakPermission &permission = m_permissions[index];
-    bool wasEnabled = permission.isEffectiveEnabled();
+    const auto wasEnabled = permission.isEffectiveEnabled();
 
     if (permission.valueType() == FlatpakPermission::ValueType::Simple) {
         bool setToNonDefault = (permission.isDefaultEnabled() && wasEnabled) || (!permission.isDefaultEnabled() && !wasEnabled);
@@ -1456,7 +1443,7 @@ void FlatpakPermissionModel::addPermission(const FlatpakPermission &permission, 
     if (permission.valueType() == FlatpakPermission::ValueType::Filesystems) {
         name.append(QLatin1Char(':') + permission.fsCurrentValue());
     }
-    int permIndex = catIndex + permission.category().length() + 1;
+    const auto permIndex = catIndex + permission.category().length() + 1;
 
     /* if there are other permissions in this category, we must add a ';' to separate this from the other */
     if (m_overridesData[permIndex] != QLatin1Char('\n')) {
@@ -1526,7 +1513,7 @@ void FlatpakPermissionModel::addBusPermissions(const FlatpakPermission &permissi
 
 void FlatpakPermissionModel::removeBusPermission(const FlatpakPermission &permission)
 {
-    int permBeginIndex = m_overridesData.indexOf(permission.name() + QLatin1Char('='));
+    const auto permBeginIndex = m_overridesData.indexOf(permission.name() + QLatin1Char('='));
     if (permBeginIndex == -1) {
         return;
     }
@@ -1534,7 +1521,7 @@ void FlatpakPermissionModel::removeBusPermission(const FlatpakPermission &permis
     const auto policyValue = std::get<FlatpakPolicy>(permission.effectiveValue());
     const auto policyString = mapDBusFlatpakPolicyEnumValueToConfigString(policyValue);
 
-    int permLen = permission.name().length() + 1 + policyString.length() + 1;
+    const auto permLen = permission.name().length() + 1 + policyString.length() + 1;
     m_overridesData.remove(permBeginIndex, permLen);
 }
 
@@ -1561,7 +1548,7 @@ void FlatpakPermissionModel::editFilesystemsPermissions(FlatpakPermission &permi
         return;
     }
 
-    int valueBeginIndex = permIndex + permission.name().length();
+    const auto valueBeginIndex = permIndex + permission.name().length();
     if (m_overridesData[valueBeginIndex] != QLatin1Char(':')) {
         m_overridesData.insert(permIndex + permission.name().length(), value);
     } else {
@@ -1592,7 +1579,7 @@ void FlatpakPermissionModel::editBusPermissions(FlatpakPermission &permission, F
     const auto policyString = mapDBusFlatpakPolicyEnumValueToConfigString(newPolicyValue);
     m_overridesData.insert(valueBeginIndex, QLatin1Char('=') + policyString);
     valueBeginIndex = valueBeginIndex + 1 /* '=' character */ + policyString.length();
-    auto valueEndOfLine = m_overridesData.indexOf(QLatin1Char('\n'), valueBeginIndex);
+    const auto valueEndOfLine = m_overridesData.indexOf(QLatin1Char('\n'), valueBeginIndex);
     m_overridesData.remove(valueBeginIndex, valueEndOfLine - valueBeginIndex);
     permission.setEffectiveValue(newPolicyValue);
 }
@@ -1603,7 +1590,7 @@ void FlatpakPermissionModel::addEnvPermission(const FlatpakPermission &permissio
     if (!m_overridesData.contains(groupHeader)) {
         m_overridesData.insert(m_overridesData.length(), groupHeader + QLatin1Char('\n'));
     }
-    int permIndex = m_overridesData.indexOf(QLatin1Char('\n'), m_overridesData.indexOf(groupHeader)) + 1;
+    const auto permIndex = m_overridesData.indexOf(QLatin1Char('\n'), m_overridesData.indexOf(groupHeader)) + 1;
     const auto value = permission.isEffectiveEnabled() ? std::get<QString>(permission.effectiveValue()) : QString();
     m_overridesData.insert(permIndex, permission.name() + QLatin1Char('=') + value + QLatin1Char('\n'));
 }
@@ -1634,11 +1621,11 @@ void FlatpakPermissionModel::editEnvPermission(FlatpakPermission &permission, co
         addEnvPermission(permission);
         permIndex = m_overridesData.indexOf(permission.name());
     }
-    int valueBeginIndex = permIndex + permission.name().length();
+    const auto valueBeginIndex = permIndex + permission.name().length();
     m_overridesData.insert(valueBeginIndex, QLatin1Char('=') + value);
 
-    int oldValBeginIndex = valueBeginIndex + value.length() + 1;
-    int oldValEndIndex = m_overridesData.indexOf(QLatin1Char('\n'), oldValBeginIndex);
+    const auto oldValBeginIndex = valueBeginIndex + value.length() + 1;
+    const auto oldValEndIndex = m_overridesData.indexOf(QLatin1Char('\n'), oldValBeginIndex);
     m_overridesData.remove(oldValBeginIndex, oldValEndIndex - oldValBeginIndex);
 
     if (!value.isEmpty()) {
