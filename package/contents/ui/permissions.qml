@@ -136,7 +136,7 @@ KCM.ScrollViewKCM {
                     }
                     standardButtons: Kirigami.Dialog.Ok | Kirigami.Dialog.Cancel
 
-                    function getValue(): var {
+                    function getValue() {
                         switch (sectionDelegate.sectionType) {
                         case FlatpakPermissionsSectionType.SessionBus:
                         case FlatpakPermissionsSectionType.SystemBus:
