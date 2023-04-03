@@ -494,15 +494,15 @@ Q_SIGNALS:
     void showAdvancedChanged();
 
 private:
-    void addPermission(FlatpakPermission *perm, bool shouldBeOn);
-    void removePermission(FlatpakPermission *perm, bool isGranted);
-    void addBusPermissions(FlatpakPermission *perm);
-    void removeBusPermission(FlatpakPermission *perm);
-    void editFilesystemsPermissions(FlatpakPermission *perm, const QString &newValue);
-    void editBusPermissions(FlatpakPermission *perm, FlatpakPolicy newValue);
-    void addEnvPermission(FlatpakPermission *perm);
-    void removeEnvPermission(FlatpakPermission *perm);
-    void editEnvPermission(FlatpakPermission *perm, const QString &newValue);
+    void addPermission(FlatpakPermission &permission, bool shouldBeOn);
+    void removePermission(FlatpakPermission &permission, bool isGranted);
+    void addBusPermissions(FlatpakPermission &permission);
+    void removeBusPermission(FlatpakPermission &permission);
+    void editFilesystemsPermissions(FlatpakPermission &permission, const QString &newValue);
+    void editBusPermissions(FlatpakPermission &permission, FlatpakPolicy newValue);
+    void addEnvPermission(FlatpakPermission &permission);
+    void removeEnvPermission(FlatpakPermission &permission);
+    void editEnvPermission(FlatpakPermission &permission, const QString &newValue);
     bool permExists(const QString &name) const;
     int permIndex(const QString &category);
     void readFromFile();
