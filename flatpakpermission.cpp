@@ -1447,9 +1447,9 @@ void FlatpakPermissionModel::addPermission(FlatpakPermission *perm, bool shouldB
     if (catIndex == -1) {
         catIndex = m_overridesData.indexOf(QLatin1Char('\n'), m_overridesData.indexOf(QStringLiteral("[Context]"))) + 1;
         if (catIndex == m_overridesData.length()) {
-            m_overridesData.append(perm->category() + i18n("=\n"));
+            m_overridesData.append(perm->category() + QLatin1String("=\n"));
         } else {
-            m_overridesData.insert(catIndex, perm->category() + i18n("=\n"));
+            m_overridesData.insert(catIndex, perm->category() + QLatin1String("=\n"));
         }
     }
     QString name = perm->name(); /* the name of the permission we are about to set/unset */
