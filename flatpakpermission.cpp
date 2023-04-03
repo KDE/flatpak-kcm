@@ -1436,7 +1436,7 @@ void FlatpakPermissionModel::addUserEnteredPermission(int /*FlatpakPermissionsSe
     Q_EMIT dataChanged(idx, idx);
 }
 
-void FlatpakPermissionModel::addPermission(FlatpakPermission &permission, bool shouldBeOn)
+void FlatpakPermissionModel::addPermission(const FlatpakPermission &permission, bool shouldBeOn)
 {
     if (!m_overridesData.contains(QStringLiteral("[Context]"))) {
         m_overridesData.insert(m_overridesData.length(), QStringLiteral("[Context]\n"));
@@ -1474,7 +1474,7 @@ void FlatpakPermissionModel::addPermission(FlatpakPermission &permission, bool s
     }
 }
 
-void FlatpakPermissionModel::removePermission(FlatpakPermission &permission, bool isGranted)
+void FlatpakPermissionModel::removePermission(const FlatpakPermission &permission, bool isGranted)
 {
     int permStartIndex = m_overridesData.indexOf(permission.name());
     int permEndIndex = permStartIndex + permission.name().length();
@@ -1510,7 +1510,7 @@ void FlatpakPermissionModel::removePermission(FlatpakPermission &permission, boo
     }
 }
 
-void FlatpakPermissionModel::addBusPermissions(FlatpakPermission &permission)
+void FlatpakPermissionModel::addBusPermissions(const FlatpakPermission &permission)
 {
     QString groupHeader = QLatin1Char('[') + permission.category() + QLatin1Char(']');
     if (!m_overridesData.contains(groupHeader)) {
@@ -1524,7 +1524,7 @@ void FlatpakPermissionModel::addBusPermissions(FlatpakPermission &permission)
     m_overridesData.insert(permIndex, permission.name() + QLatin1Char('=') + policyString + QLatin1Char('\n'));
 }
 
-void FlatpakPermissionModel::removeBusPermission(FlatpakPermission &permission)
+void FlatpakPermissionModel::removeBusPermission(const FlatpakPermission &permission)
 {
     int permBeginIndex = m_overridesData.indexOf(permission.name() + QLatin1Char('='));
     if (permBeginIndex == -1) {
@@ -1597,7 +1597,7 @@ void FlatpakPermissionModel::editBusPermissions(FlatpakPermission &permission, F
     permission.setEffectiveValue(newPolicyValue);
 }
 
-void FlatpakPermissionModel::addEnvPermission(FlatpakPermission &permission)
+void FlatpakPermissionModel::addEnvPermission(const FlatpakPermission &permission)
 {
     QString groupHeader = QLatin1Char('[') + permission.category() + QLatin1Char(']');
     if (!m_overridesData.contains(groupHeader)) {
@@ -1608,7 +1608,7 @@ void FlatpakPermissionModel::addEnvPermission(FlatpakPermission &permission)
     m_overridesData.insert(permIndex, permission.name() + QLatin1Char('=') + value + QLatin1Char('\n'));
 }
 
-void FlatpakPermissionModel::removeEnvPermission(FlatpakPermission &permission)
+void FlatpakPermissionModel::removeEnvPermission(const FlatpakPermission &permission)
 {
     int permBeginIndex = m_overridesData.indexOf(permission.name());
     if (permBeginIndex == -1) {
