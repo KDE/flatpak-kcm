@@ -608,14 +608,13 @@ void FlatpakPermissionModel::loadDefaultValues()
     f.close();
 
     KConfig parser(f.fileName());
-    category = QLatin1String(FLATPAK_METADATA_GROUP_CONTEXT);
-    const KConfigGroup contextGroup = parser.group(category);
+    const auto contextGroup = parser.group(QLatin1String(FLATPAK_METADATA_GROUP_CONTEXT));
 
     int basicIndex = 0;
 
     /* SHARED category */
     category = QLatin1String(FLATPAK_METADATA_KEY_SHARED);
-    const QString sharedPerms = contextGroup.readEntry(QLatin1String(FLATPAK_METADATA_KEY_SHARED), QString());
+    const auto sharedPerms = contextGroup.readEntry(QLatin1String(FLATPAK_METADATA_KEY_SHARED), QString());
 
     name = QStringLiteral("network");
     description = i18n("Internet Connection");
@@ -711,7 +710,7 @@ void FlatpakPermissionModel::loadDefaultValues()
 
     /* FEATURES category */
     category = QLatin1String(FLATPAK_METADATA_KEY_FEATURES);
-    const QString featuresPerms = contextGroup.readEntry(category, QString());
+    const auto featuresPerms = contextGroup.readEntry(category, QString());
 
     name = QStringLiteral("devel");
     description = i18n("System Calls by Development Tools");
@@ -847,32 +846,34 @@ void FlatpakPermissionModel::loadDefaultValues()
     /* DUMMY ADVANCED category */
 
     /* SESSION BUS category */
-    category = QLatin1String(FLATPAK_METADATA_GROUP_SESSION_BUS_POLICY);
-    const KConfigGroup sessionBusGroup = parser.group(category);
-    if (sessionBusGroup.exists() && !sessionBusGroup.entryMap().isEmpty()) {
-        const auto keys = sessionBusGroup.keyList();
-        for (const auto &name : keys) {
-            defaultValue = sessionBusGroup.readEntry(name);
-            const auto policyValue = mapDBusFlatpakPolicyConfigStringToEnumValue(defaultValue);
-            m_permissions.append(FlatpakPermission(FlatpakPermissionsSectionType::SessionBus, name, category, description, true, policyValue));
+    {
+        category = QLatin1String(FLATPAK_METADATA_GROUP_SESSION_BUS_POLICY);
+        const auto group = parser.group(category);
+        if (const auto keys = group.keyList(); !keys.isEmpty()) {
+            for (const auto &name : keys) {
+                defaultValue = group.readEntry(name);
+                const auto policyValue = mapDBusFlatpakPolicyConfigStringToEnumValue(defaultValue);
+                m_permissions.append(FlatpakPermission(FlatpakPermissionsSectionType::SessionBus, name, category, description, true, policyValue));
+            }
+        } else {
+            m_permissions.append(FlatpakPermission(FlatpakPermissionsSectionType::SessionBus));
         }
-    } else {
-        m_permissions.append(FlatpakPermission(FlatpakPermissionsSectionType::SessionBus));
     }
     /* SESSION BUS category */
 
     /* SYSTEM BUS category */
-    category = QLatin1String(FLATPAK_METADATA_GROUP_SYSTEM_BUS_POLICY);
-    const KConfigGroup systemBusGroup = parser.group(category);
-    if (systemBusGroup.exists() && !systemBusGroup.entryMap().isEmpty()) {
-        const auto keys = systemBusGroup.keyList();
-        for (const auto &name : keys) {
-            defaultValue = systemBusGroup.readEntry(name);
-            const auto policyValue = mapDBusFlatpakPolicyConfigStringToEnumValue(defaultValue);
-            m_permissions.append(FlatpakPermission(FlatpakPermissionsSectionType::SystemBus, name, category, name, true, policyValue));
+    {
+        category = QLatin1String(FLATPAK_METADATA_GROUP_SYSTEM_BUS_POLICY);
+        const auto group = parser.group(category);
+        if (const auto keys = group.keyList(); !keys.isEmpty()) {
+            for (const auto &name : keys) {
+                defaultValue = group.readEntry(name);
+                const auto policyValue = mapDBusFlatpakPolicyConfigStringToEnumValue(defaultValue);
+                m_permissions.append(FlatpakPermission(FlatpakPermissionsSectionType::SystemBus, name, category, name, true, policyValue));
+            }
+        } else {
+            m_permissions.append(FlatpakPermission(FlatpakPermissionsSectionType::SystemBus));
         }
-    } else {
-        m_permissions.append(FlatpakPermission(FlatpakPermissionsSectionType::SystemBus));
     }
     /* SYSTEM BUS category */
 
@@ -880,11 +881,10 @@ void FlatpakPermissionModel::loadDefaultValues()
     if (false) {
         /* ENVIRONMENT category */
         category = QLatin1String(FLATPAK_METADATA_GROUP_ENVIRONMENT);
-        const auto environmentGroup = parser.group(category);
-        if (environmentGroup.exists() && !environmentGroup.entryMap().isEmpty()) {
-            const auto keys = environmentGroup.keyList();
+        const auto group = parser.group(category);
+        if (const auto keys = group.keyList(); !keys.isEmpty()) {
             for (const auto &name : keys) {
-                defaultValue = environmentGroup.readEntry(name);
+                defaultValue = group.readEntry(name);
                 m_permissions.append(FlatpakPermission(FlatpakPermissionsSectionType::Environment, name, category, name, true, defaultValue));
             }
         } else {

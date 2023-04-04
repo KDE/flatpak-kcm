@@ -129,7 +129,7 @@ public:
     static QString accessModeToSuffixString(AccessMode mode);
 
     /**
-     *  Formatted prefix and path only, without access mode prefixes or suffixes. Suitable for comparison.
+     * Formatted prefix and path only, without access mode prefixes or suffixes. Suitable for comparison.
      */
     QString name() const;
 
