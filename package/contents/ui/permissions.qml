@@ -174,10 +174,7 @@ KCM.ScrollViewKCM {
 
             // Default-provided custom entries are not meant to be unchecked:
             // it is a meaningless undefined operation.
-            checkable: [
-                FlatpakPermissionsSectionType.SessionBus,
-                FlatpakPermissionsSectionType.SystemBus,
-            ].includes(model.section) ? !model.isDefaultEnabled : true
+            checkable: model.canBeDisabled
 
             // default formula does not take leading/trailing into account
             implicitHeight: Math.max(iconSize, labelItem.implicitHeight, trailing.implicitHeight) + topPadding + bottomPadding

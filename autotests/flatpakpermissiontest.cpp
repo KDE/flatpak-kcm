@@ -188,6 +188,7 @@ private Q_SLOTS:
 
             if (name == "xdg-download") {
                 containsXdgDownload = true;
+                QVERIFY(!model.data(model.index(i, 0), FlatpakPermissionModel::CanBeDisabled).toBool());
                 QCOMPARE(model.data(model.index(i, 0), FlatpakPermissionModel::IsEffectiveEnabled), true);
                 QCOMPARE(model.data(model.index(i, 0), FlatpakPermissionModel::EffectiveValue).value<FlatpakFilesystemsEntry::AccessMode>(),
                          FlatpakFilesystemsEntry::AccessMode::ReadWrite);
@@ -296,12 +297,12 @@ private Q_SLOTS:
         QCOMPARE(name0, FlatpakPolicy::FLATPAK_POLICY_NONE);
         QCOMPARE(name1, FlatpakPolicy::FLATPAK_POLICY_NONE);
         QCOMPARE(name2, FlatpakPolicy::FLATPAK_POLICY_SEE);
-        const auto isDefaultEnabled0 = model.data(model.index(indexOfService0, 0), FlatpakPermissionModel::IsDefaultEnabled).toBool();
-        const auto isDefaultEnabled1 = model.data(model.index(indexOfService1, 0), FlatpakPermissionModel::IsDefaultEnabled).toBool();
-        const auto isDefaultEnabled2 = model.data(model.index(indexOfService2, 0), FlatpakPermissionModel::IsDefaultEnabled).toBool();
-        QVERIFY(isDefaultEnabled0);
-        QVERIFY(!isDefaultEnabled1);
-        QVERIFY(!isDefaultEnabled2);
+        QVERIFY(model.data(model.index(indexOfService0, 0), FlatpakPermissionModel::IsDefaultEnabled).toBool());
+        QVERIFY(!model.data(model.index(indexOfService1, 0), FlatpakPermissionModel::IsDefaultEnabled).toBool());
+        QVERIFY(!model.data(model.index(indexOfService2, 0), FlatpakPermissionModel::IsDefaultEnabled).toBool());
+        QVERIFY(!model.data(model.index(indexOfService0, 0), FlatpakPermissionModel::CanBeDisabled).toBool());
+        QVERIFY(model.data(model.index(indexOfService1, 0), FlatpakPermissionModel::CanBeDisabled).toBool());
+        QVERIFY(model.data(model.index(indexOfService2, 0), FlatpakPermissionModel::CanBeDisabled).toBool());
 
         const auto setAndCheckBus = [&](const QString &value, FlatpakPolicy newPolicy) {
             model.editPerm(indexOfService2, newPolicy);
@@ -474,6 +475,7 @@ private Q_SLOTS:
                 }
 
                 QCOMPARE(model.data(model.index(i, 0), FlatpakPermissionModel::IsEffectiveEnabled), false);
+                QVERIFY(model.data(model.index(i, 0), FlatpakPermissionModel::CanBeDisabled).toBool());
                 model.togglePermissionAtIndex(i);
                 QCOMPARE(model.data(model.index(i, 0), FlatpakPermissionModel::IsEffectiveEnabled), true);
             }
@@ -491,6 +493,7 @@ private Q_SLOTS:
             }
 
             if (name == filesystem) {
+                QVERIFY(model.data(model.index(i, 0), FlatpakPermissionModel::CanBeDisabled).toBool());
                 QVERIFY(!model.data(model.index(i, 0), FlatpakPermissionModel::IsDefaultEnabled).toBool());
                 QVERIFY(model.data(model.index(i, 0), FlatpakPermissionModel::IsEffectiveEnabled).toBool());
                 QCOMPARE(model.data(model.index(i, 0), FlatpakPermissionModel::DefaultValue).value<FlatpakFilesystemsEntry::AccessMode>(),
@@ -500,6 +503,7 @@ private Q_SLOTS:
             }
 
             if (name == session) {
+                QVERIFY(model.data(model.index(i, 0), FlatpakPermissionModel::CanBeDisabled).toBool());
                 QVERIFY(!model.data(model.index(i, 0), FlatpakPermissionModel::IsDefaultEnabled).toBool());
                 QVERIFY(model.data(model.index(i, 0), FlatpakPermissionModel::IsEffectiveEnabled).toBool());
                 QCOMPARE(model.data(model.index(i, 0), FlatpakPermissionModel::DefaultValue).value<FlatpakPolicy>(), FlatpakPolicy::FLATPAK_POLICY_TALK);
@@ -507,6 +511,7 @@ private Q_SLOTS:
             }
 
             if (name == system) {
+                QVERIFY(model.data(model.index(i, 0), FlatpakPermissionModel::CanBeDisabled).toBool());
                 QVERIFY(!model.data(model.index(i, 0), FlatpakPermissionModel::IsDefaultEnabled).toBool());
                 QVERIFY(model.data(model.index(i, 0), FlatpakPermissionModel::IsEffectiveEnabled).toBool());
                 QCOMPARE(model.data(model.index(i, 0), FlatpakPermissionModel::DefaultValue).value<FlatpakPolicy>(), FlatpakPolicy::FLATPAK_POLICY_SEE);
@@ -514,6 +519,7 @@ private Q_SLOTS:
             }
 
             if (name == envName) {
+                QVERIFY(model.data(model.index(i, 0), FlatpakPermissionModel::CanBeDisabled).toBool());
                 QVERIFY(!model.data(model.index(i, 0), FlatpakPermissionModel::IsDefaultEnabled).toBool());
                 QVERIFY(model.data(model.index(i, 0), FlatpakPermissionModel::IsEffectiveEnabled).toBool());
                 QCOMPARE(model.data(model.index(i, 0), FlatpakPermissionModel::DefaultValue).toString(), envValue);

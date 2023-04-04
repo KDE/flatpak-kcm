@@ -446,6 +446,11 @@ void FlatpakPermission::setOverrideEnabled(bool enabled)
     m_overrideEnable = enabled;
 }
 
+bool FlatpakPermission::canBeDisabled() const
+{
+    return valueType() == ValueType::Simple || !m_defaultEnable;
+}
+
 bool FlatpakPermission::isEffectiveEnabled() const
 {
     return m_effectiveEnable;
@@ -453,7 +458,9 @@ bool FlatpakPermission::isEffectiveEnabled() const
 
 void FlatpakPermission::setEffectiveEnabled(bool enabled)
 {
-    m_effectiveEnable = enabled;
+    if (canBeDisabled()) {
+        m_effectiveEnable = enabled;
+    }
 }
 
 const FlatpakPermission::Variant FlatpakPermission::defaultValue() const
@@ -578,6 +585,8 @@ QVariant FlatpakPermissionModel::data(const QModelIndex &index, int role) const
     case Roles::IsNotDummy:
         return permission.originType() != FlatpakPermission::OriginType::Dummy;
     //
+    case Roles::CanBeDisabled:
+        return permission.canBeDisabled();
     case Roles::IsDefaultEnabled:
         return permission.isDefaultEnabled();
     case Roles::IsEffectiveEnabled:
@@ -606,6 +615,7 @@ QHash<int, QByteArray> FlatpakPermissionModel::roleNames() const
     roles[Roles::IsEnvironment] = "isEnvironment";
     roles[Roles::IsNotDummy] = "isNotDummy";
     //
+    roles[Roles::CanBeDisabled] = "canBeDisabled";
     roles[Roles::IsDefaultEnabled] = "isDefaultEnabled";
     roles[Roles::IsEffectiveEnabled] = "isEffectiveEnabled";
     roles[Roles::DefaultValue] = "defaultValue";

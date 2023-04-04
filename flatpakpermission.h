@@ -396,10 +396,12 @@ public:
      * system defaults, it will be removed from user overrides.
      *
      * For user-defined permissions of other ValueType types, disabling them
-     * would mark them for removal.
+     * would mark them for removal but only if they are disabled (not present)
+     * in defaults.
      */
     // TODO: What should it do for built-in permissions of other ValueType
     // types? It doesn't make much sense.
+    bool canBeDisabled() const;
     bool isEffectiveEnabled() const;
     void setEffectiveEnabled(bool enabled);
 
@@ -488,6 +490,7 @@ public:
         IsEnvironment,
         IsNotDummy,
         //
+        CanBeDisabled,
         IsDefaultEnabled,
         IsEffectiveEnabled,
         DefaultValue,
