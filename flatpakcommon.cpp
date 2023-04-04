@@ -5,12 +5,6 @@
 
 #include "flatpakcommon.h"
 
-// Turning off clang-format, because it is very picky and annoying, but we
-// don't want to change these lines too much from upstream. It's enough that
-// we swapped NULL for nullptr and used different indentation.
-
-/* clang-format off */
-
 /* Same order as enum */
 namespace FlatpakStrings
 {
@@ -20,13 +14,13 @@ const char *flatpak_policy[] = {
     "see",
     "talk",
     "own",
-    nullptr
+    nullptr,
 };
 
 const char *flatpak_context_shares[] = {
     "network",
     "ipc",
-    nullptr
+    nullptr,
 };
 
 const char *flatpak_context_sockets[] = {
@@ -40,7 +34,7 @@ const char *flatpak_context_sockets[] = {
     "pcsc",
     "cups",
     "gpg-agent",
-    nullptr
+    nullptr,
 };
 
 const char *flatpak_context_devices[] = {
@@ -48,7 +42,7 @@ const char *flatpak_context_devices[] = {
     "all",
     "kvm",
     "shm",
-    nullptr
+    nullptr,
 };
 
 const char *flatpak_context_features[] = {
@@ -57,7 +51,7 @@ const char *flatpak_context_features[] = {
     "bluetooth",
     "canbus",
     "per-app-dev-shm",
-    nullptr
+    nullptr,
 };
 
 const char *flatpak_context_special_filesystems[] = {
@@ -66,9 +60,7 @@ const char *flatpak_context_special_filesystems[] = {
     "host-etc",
     "host-os",
     "host-reset",
-    nullptr
+    nullptr,
 };
 
-}
-
-/* clang-format on */
+} // namespace
