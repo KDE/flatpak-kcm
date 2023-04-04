@@ -635,6 +635,24 @@ template<typename T, typename F>
 using MappedList = QList<typename std::invoke_result_t<F, const T &>::value_type>;
 
 /**
+ * Map QList with a function that returns optional values.
+ */
+template<typename T, typename F>
+MappedList<T, F> filter_map(const QList<T> &iter, F func)
+{
+    MappedList<T, F> succeeded;
+
+    for (const auto &item : iter) {
+        const auto optional = func(item);
+        if (optional.has_value()) {
+            succeeded.append(optional.value());
+        }
+    }
+
+    return succeeded;
+}
+
+/**
  * Map QList with a function that returns optional values, but also returns a
  * QList of original items that were failed to map.
  */
@@ -971,8 +989,24 @@ void FlatpakPermissionModel::loadCurrentValues()
     }
 
     KConfig parser(path);
-    auto category = QLatin1String(FLATPAK_METADATA_GROUP_CONTEXT);
-    const auto contextGroup = parser.group(category);
+    const auto contextGroup = parser.group(QLatin1String(FLATPAK_METADATA_GROUP_CONTEXT));
+
+    QHash<QString, QList<FlatpakSimpleEntry>> entriesByCategory;
+
+    const std::array simpleCategories = {
+        QLatin1String(FLATPAK_METADATA_KEY_SHARED),
+        QLatin1String(FLATPAK_METADATA_KEY_SOCKETS),
+        QLatin1String(FLATPAK_METADATA_KEY_DEVICES),
+        QLatin1String(FLATPAK_METADATA_KEY_FEATURES),
+    };
+
+    for (const auto &category : simpleCategories) {
+        const auto rawEntries = contextGroup.readXdgListEntry(category);
+        const auto entries = filter_map(rawEntries, [](const QString &entry) {
+            return FlatpakSimpleEntry::parse(entry);
+        });
+        entriesByCategory.insert(category, entries);
+    }
 
     const auto rawFilesystems = contextGroup.readXdgListEntry(QLatin1String(FLATPAK_METADATA_KEY_FILESYSTEMS));
     const auto [unparsableFilesystems, filesystems] = try_filter_map(rawFilesystems, [](const QString &entry) {
@@ -989,11 +1023,17 @@ void FlatpakPermissionModel::loadCurrentValues()
 
         switch (permission.valueType()) {
         case FlatpakPermission::ValueType::Simple: {
-            const auto category = contextGroup.readEntry(permission.category(), QString());
-            if (category.contains(permission.name())) {
-                bool isEnabled = !permission.isDefaultEnabled();
-                permission.setEffectiveEnabled(isEnabled);
-                permission.setOverrideEnabled(isEnabled);
+            if (!entriesByCategory.contains(permission.category())) {
+                continue;
+            }
+            const auto &entries = entriesByCategory[permission.category()];
+            const auto it = std::find_if(entries.constBegin(), entries.constEnd(), [&](const auto &entry) {
+                return entry.name() == permission.name();
+            });
+            if (it != entries.constEnd()) {
+                const auto &entry = *it;
+                permission.setEffectiveEnabled(entry.isEnabled());
+                permission.setOverrideEnabled(entry.isEnabled());
             }
             break;
         }
