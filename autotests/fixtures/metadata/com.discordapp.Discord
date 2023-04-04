@@ -1,5 +1,5 @@
 [Application]
-name=com.example.unparsable.filesystems
+name=com.discordapp.Discord
 runtime=org.freedesktop.Platform/x86_64/22.08
 sdk=org.freedesktop.Sdk/x86_64/22.08
 base=app/org.electronjs.Electron2.BaseApp/x86_64/22.08
