@@ -699,7 +699,7 @@ void FlatpakPermissionModel::loadDefaultValues()
 
     /* SHARED category */
     category = QLatin1String(FLATPAK_METADATA_KEY_SHARED);
-    const auto sharedPerms = contextGroup.readEntry(QLatin1String(FLATPAK_METADATA_KEY_SHARED), QString());
+    const auto sharedPerms = contextGroup.readXdgListEntry(category);
 
     name = QStringLiteral("network");
     description = i18n("Internet Connection");
@@ -795,7 +795,7 @@ void FlatpakPermissionModel::loadDefaultValues()
 
     /* FEATURES category */
     category = QLatin1String(FLATPAK_METADATA_KEY_FEATURES);
-    const auto featuresPerms = contextGroup.readEntry(category, QString());
+    const auto featuresPerms = contextGroup.readXdgListEntry(category);
 
     name = QStringLiteral("devel");
     description = i18n("System Calls by Development Tools");
