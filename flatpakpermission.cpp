@@ -957,7 +957,7 @@ void FlatpakPermissionModel::loadDefaultValues()
             for (const auto &name : keys) {
                 defaultValue = group.readEntry(name);
                 const auto policyValue = mapDBusFlatpakPolicyConfigStringToEnumValue(defaultValue);
-                m_permissions.append(FlatpakPermission(FlatpakPermissionsSectionType::SessionBus, name, category, description, true, policyValue));
+                m_permissions.append(FlatpakPermission(FlatpakPermissionsSectionType::SessionBus, name, category, name, true, policyValue));
             }
         } else {
             m_permissions.append(FlatpakPermission(FlatpakPermissionsSectionType::SessionBus));
