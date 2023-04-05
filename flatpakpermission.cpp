@@ -149,6 +149,23 @@ std::optional<FlatpakSimpleEntry> FlatpakSimpleEntry::parse(QStringView entry)
     return std::optional(FlatpakSimpleEntry(name, enabled));
 }
 
+std::pair<QStringList, QList<FlatpakSimpleEntry>> FlatpakSimpleEntry::getCategory(const KConfigGroup &group, const QString &category)
+{
+    return try_filter_map(group.readXdgListEntry(category), [](const QString &entry) {
+        return FlatpakSimpleEntry::parse(entry);
+    });
+}
+
+std::optional<bool> FlatpakSimpleEntry::isEnabled(const QList<FlatpakSimpleEntry> &entries, const QString &name)
+{
+    for (const auto &entry : entries) {
+        if (entry.name() == name) {
+            return std::optional(entry.isEnabled());
+        }
+    }
+    return std::nullopt;
+}
+
 QString FlatpakSimpleEntry::format() const
 {
     if (m_enabled) {
@@ -695,70 +712,72 @@ void FlatpakPermissionModel::loadDefaultValues()
 
     /* SHARED category */
     category = QLatin1String(FLATPAK_METADATA_KEY_SHARED);
-    const auto sharedPerms = contextGroup.readXdgListEntry(category);
+    const auto [unparsableShares, shares] = FlatpakSimpleEntry::getCategory(contextGroup, category);
+    Q_UNUSED(unparsableShares);
 
     name = QStringLiteral("network");
     description = i18n("Internet Connection");
-    isEnabledByDefault = sharedPerms.contains(name);
+    isEnabledByDefault = FlatpakSimpleEntry::isEnabled(shares, name).value_or(false);
     m_permissions.insert(basicIndex, FlatpakPermission(FlatpakPermissionsSectionType::Basic, name, category, description, isEnabledByDefault));
     basicIndex += 1;
 
     name = QStringLiteral("ipc");
     description = i18n("Inter-process Communication");
-    isEnabledByDefault = sharedPerms.contains(name);
+    isEnabledByDefault = FlatpakSimpleEntry::isEnabled(shares, name).value_or(false);
     m_permissions.append(FlatpakPermission(FlatpakPermissionsSectionType::SubsystemsShared, name, category, description, isEnabledByDefault));
     /* SHARED category */
 
     /* SOCKETS category */
     category = QLatin1String(FLATPAK_METADATA_KEY_SOCKETS);
-    const auto socketPerms = contextGroup.readXdgListEntry(category);
+    const auto [unparsableSockets, sockets] = FlatpakSimpleEntry::getCategory(contextGroup, category);
+    Q_UNUSED(unparsableSockets);
 
     name = QStringLiteral("x11");
     description = i18n("X11 Windowing System");
-    isEnabledByDefault = socketPerms.contains(name);
+    isEnabledByDefault = FlatpakSimpleEntry::isEnabled(sockets, name).value_or(false);
     m_permissions.append(FlatpakPermission(FlatpakPermissionsSectionType::Sockets, name, category, description, isEnabledByDefault));
 
     name = QStringLiteral("wayland");
     description = i18n("Wayland Windowing System");
-    isEnabledByDefault = socketPerms.contains(name);
+    isEnabledByDefault = FlatpakSimpleEntry::isEnabled(sockets, name).value_or(false);
     m_permissions.append(FlatpakPermission(FlatpakPermissionsSectionType::Sockets, name, category, description, isEnabledByDefault));
 
     name = QStringLiteral("fallback-x11");
     description = i18n("Fallback to X11 Windowing System");
-    isEnabledByDefault = socketPerms.contains(name);
+    isEnabledByDefault = FlatpakSimpleEntry::isEnabled(sockets, name).value_or(false);
     m_permissions.append(FlatpakPermission(FlatpakPermissionsSectionType::Sockets, name, category, description, isEnabledByDefault));
 
     name = QStringLiteral("pulseaudio");
     description = i18n("Pulseaudio Sound Server");
-    isEnabledByDefault = socketPerms.contains(name);
+    isEnabledByDefault = FlatpakSimpleEntry::isEnabled(sockets, name).value_or(false);
     m_permissions.insert(basicIndex, FlatpakPermission(FlatpakPermissionsSectionType::Basic, name, category, description, isEnabledByDefault));
     basicIndex += 1;
 
     name = QStringLiteral("session-bus");
     description = i18n("Session Bus Access");
-    isEnabledByDefault = socketPerms.contains(name);
+    isEnabledByDefault = FlatpakSimpleEntry::isEnabled(sockets, name).value_or(false);
     m_permissions.append(FlatpakPermission(FlatpakPermissionsSectionType::Sockets, name, category, description, isEnabledByDefault));
 
     name = QStringLiteral("system-bus");
     description = i18n("System Bus Access");
-    isEnabledByDefault = socketPerms.contains(name);
+    isEnabledByDefault = FlatpakSimpleEntry::isEnabled(sockets, name).value_or(false);
     m_permissions.append(FlatpakPermission(FlatpakPermissionsSectionType::Sockets, name, category, description, isEnabledByDefault));
 
     name = QStringLiteral("ssh-auth");
     description = i18n("Remote Login Access");
-    isEnabledByDefault = socketPerms.contains(name);
+    isEnabledByDefault = FlatpakSimpleEntry::isEnabled(sockets, name).value_or(false);
     m_permissions.insert(basicIndex, FlatpakPermission(FlatpakPermissionsSectionType::Basic, name, category, description, isEnabledByDefault));
     basicIndex += 1;
 
     name = QStringLiteral("pcsc");
     description = i18n("Smart Card Access");
-    isEnabledByDefault = socketPerms.contains(name);
+    isEnabledByDefault = FlatpakSimpleEntry::isEnabled(sockets, name).value_or(false);
     m_permissions.insert(basicIndex, FlatpakPermission(FlatpakPermissionsSectionType::Basic, name, category, description, isEnabledByDefault));
     basicIndex += 1;
 
     name = QStringLiteral("cups");
     description = i18n("Print System Access");
-    isEnabledByDefault = socketPerms.contains(name);
+    isEnabledByDefault = FlatpakSimpleEntry::isEnabled(sockets, name).value_or(false);
     m_permissions.insert(basicIndex, FlatpakPermission(FlatpakPermissionsSectionType::Basic, name, category, description, isEnabledByDefault));
     basicIndex += 1;
     /* SOCKETS category */
@@ -767,56 +786,60 @@ void FlatpakPermissionModel::loadDefaultValues()
     category = QLatin1String(FLATPAK_METADATA_KEY_DEVICES);
     const auto devicesPerms = contextGroup.readXdgListEntry(category);
 
+    const auto [unparsableDevices, devices] = FlatpakSimpleEntry::getCategory(contextGroup, category);
+    Q_UNUSED(unparsableDevices);
+
     name = QStringLiteral("kvm");
     description = i18n("Kernel-based Virtual Machine Access");
-    isEnabledByDefault = devicesPerms.contains(name);
+    isEnabledByDefault = FlatpakSimpleEntry::isEnabled(devices, name).value_or(false);
     m_permissions.append(FlatpakPermission(FlatpakPermissionsSectionType::Devices, name, category, description, isEnabledByDefault));
 
     name = QStringLiteral("dri");
     description = i18n("Direct Graphic Rendering");
-    isEnabledByDefault = devicesPerms.contains(name);
+    isEnabledByDefault = FlatpakSimpleEntry::isEnabled(devices, name).value_or(false);
     m_permissions.append(FlatpakPermission(FlatpakPermissionsSectionType::Devices, name, category, description, isEnabledByDefault));
 
     name = QStringLiteral("shm");
     description = i18n("Host dev/shm");
-    isEnabledByDefault = devicesPerms.contains(name);
+    isEnabledByDefault = FlatpakSimpleEntry::isEnabled(devices, name).value_or(false);
     m_permissions.append(FlatpakPermission(FlatpakPermissionsSectionType::Devices, name, category, description, isEnabledByDefault));
 
     name = QStringLiteral("all");
     description = i18n("Device Access");
-    isEnabledByDefault = devicesPerms.contains(name);
+    isEnabledByDefault = FlatpakSimpleEntry::isEnabled(devices, name).value_or(false);
     m_permissions.insert(basicIndex, FlatpakPermission(FlatpakPermissionsSectionType::Basic, name, category, description, isEnabledByDefault));
     basicIndex += 1;
     /* DEVICES category */
 
     /* FEATURES category */
     category = QLatin1String(FLATPAK_METADATA_KEY_FEATURES);
-    const auto featuresPerms = contextGroup.readXdgListEntry(category);
+    const auto [unparsableFeatures, features] = FlatpakSimpleEntry::getCategory(contextGroup, category);
+    Q_UNUSED(unparsableFeatures);
 
     name = QStringLiteral("devel");
     description = i18n("System Calls by Development Tools");
-    isEnabledByDefault = featuresPerms.contains(name);
+    isEnabledByDefault = FlatpakSimpleEntry::isEnabled(features, name).value_or(false);
     m_permissions.append(FlatpakPermission(FlatpakPermissionsSectionType::Features, name, category, description, isEnabledByDefault));
 
     name = QStringLiteral("multiarch");
     description = i18n("Run Multiarch/Multilib Binaries");
-    isEnabledByDefault = featuresPerms.contains(name);
+    isEnabledByDefault = FlatpakSimpleEntry::isEnabled(features, name).value_or(false);
     m_permissions.append(FlatpakPermission(FlatpakPermissionsSectionType::Features, name, category, description, isEnabledByDefault));
 
     name = QStringLiteral("bluetooth");
     description = i18n("Bluetooth");
-    isEnabledByDefault = featuresPerms.contains(name);
+    isEnabledByDefault = FlatpakSimpleEntry::isEnabled(features, name).value_or(false);
     m_permissions.insert(basicIndex, FlatpakPermission(FlatpakPermissionsSectionType::Basic, name, category, description, isEnabledByDefault));
     basicIndex += 1;
 
     name = QStringLiteral("canbus");
     description = i18n("Canbus Socket Access");
-    isEnabledByDefault = featuresPerms.contains(name);
+    isEnabledByDefault = FlatpakSimpleEntry::isEnabled(features, name).value_or(false);
     m_permissions.append(FlatpakPermission(FlatpakPermissionsSectionType::Features, name, category, description, isEnabledByDefault));
 
     name = QStringLiteral("per-app-dev-shm");
     description = i18n("Share dev/shm across all instances of an app per user ID");
-    isEnabledByDefault = featuresPerms.contains(name);
+    isEnabledByDefault = FlatpakSimpleEntry::isEnabled(features, name).value_or(false);
     m_permissions.append(FlatpakPermission(FlatpakPermissionsSectionType::Features, name, category, description, isEnabledByDefault));
     /* FEATURES category */
 
@@ -987,7 +1010,8 @@ void FlatpakPermissionModel::loadCurrentValues()
     KConfig parser(path);
     const auto contextGroup = parser.group(QLatin1String(FLATPAK_METADATA_GROUP_CONTEXT));
 
-    QHash<QString, QList<FlatpakSimpleEntry>> entriesByCategory;
+    // Mapping to pairs of unparsable and valid entries. Unparsable ones are unused (for now).
+    QHash<QString, std::pair<QStringList, QList<FlatpakSimpleEntry>>> entriesByCategory;
 
     const std::array simpleCategories = {
         QLatin1String(FLATPAK_METADATA_KEY_SHARED),
@@ -997,10 +1021,7 @@ void FlatpakPermissionModel::loadCurrentValues()
     };
 
     for (const auto &category : simpleCategories) {
-        const auto rawEntries = contextGroup.readXdgListEntry(category);
-        const auto entries = filter_map(rawEntries, [](const QString &entry) {
-            return FlatpakSimpleEntry::parse(entry);
-        });
+        const auto entries = FlatpakSimpleEntry::getCategory(contextGroup, category);
         entriesByCategory.insert(category, entries);
     }
 
@@ -1022,14 +1043,11 @@ void FlatpakPermissionModel::loadCurrentValues()
             if (!entriesByCategory.contains(permission.category())) {
                 continue;
             }
-            const auto &entries = entriesByCategory[permission.category()];
-            const auto it = std::find_if(entries.constBegin(), entries.constEnd(), [&](const auto &entry) {
-                return entry.name() == permission.name();
-            });
-            if (it != entries.constEnd()) {
-                const auto &entry = *it;
-                permission.setEffectiveEnabled(entry.isEnabled());
-                permission.setOverrideEnabled(entry.isEnabled());
+            const auto &[unparsableEntries, entries] = entriesByCategory[permission.category()];
+            if (const auto entry = FlatpakSimpleEntry::isEnabled(entries, permission.name()); entry.has_value()) {
+                const auto isEnabled = entry.value();
+                permission.setEffectiveEnabled(isEnabled);
+                permission.setOverrideEnabled(isEnabled);
             }
             break;
         }
