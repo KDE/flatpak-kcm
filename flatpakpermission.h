@@ -40,6 +40,51 @@ public:
 };
 
 /**
+ * Boolean entry of one of the `shared=`, `sockets=`, `devices=` or `features=`
+ * lists of the `[Context]` group.
+ *
+ * Such entries are either ON or OFF. They are turned OFF if and only if their
+ * string representation is prefixed with a `!` bang character.
+ */
+class FlatpakSimpleEntry
+{
+    Q_GADGET
+public:
+    // Default constructor is required for meta-type registration.
+    /** Default constructor. Creates an invalid entry. */
+    FlatpakSimpleEntry() = default;
+
+    /**
+     * Construct new entry directly from raw unvalidated data.
+     */
+    explicit FlatpakSimpleEntry(const QString &name, bool enabled = true);
+
+    /**
+     * Parse list entry into data structure. Might fail for various reasons,
+     * such as ill-formed access mode, so returns an optional value.
+     */
+    static std::optional<FlatpakSimpleEntry> parse(QStringView entry);
+
+    /**
+     * Format this entry into string. Opposite of parse().
+     */
+    QString format() const;
+
+    bool isEnabled() const;
+    void setEnabled(bool enabled);
+
+    const QString &name() const;
+
+    // TODO C++20: use `= default` implementation.
+    bool operator==(const FlatpakSimpleEntry &other) const;
+    bool operator!=(const FlatpakSimpleEntry &other) const;
+
+private:
+    QString m_name;
+    bool m_enabled = true;
+};
+
+/**
  * Entry of the `filesystems=` list.
  *
  * "Deny" access mode represents an entry prefixes with a `!` bang character.

@@ -80,6 +80,63 @@ const auto s_filesystems = {
 
 } // namespace
 
+FlatpakSimpleEntry::FlatpakSimpleEntry(const QString &name, bool enabled)
+    : m_name(name)
+    , m_enabled(enabled)
+{
+}
+
+std::optional<FlatpakSimpleEntry> FlatpakSimpleEntry::parse(QStringView entry)
+{
+    bool enabled = true;
+    if (entry.startsWith(PREFIX_DENY)) {
+        entry = entry.mid(1);
+        enabled = false;
+    }
+
+    // For now we don't do any additional validation
+    if (entry.isEmpty()) {
+        return std::nullopt;
+    }
+
+    const auto name = entry.toString();
+    return std::optional(FlatpakSimpleEntry(name, enabled));
+}
+
+QString FlatpakSimpleEntry::format() const
+{
+    if (m_enabled) {
+        return m_name;
+    } else {
+        return PREFIX_DENY + m_name;
+    }
+}
+
+bool FlatpakSimpleEntry::isEnabled() const
+{
+    return m_enabled;
+}
+
+void FlatpakSimpleEntry::setEnabled(bool enabled)
+{
+    m_enabled = enabled;
+}
+
+const QString &FlatpakSimpleEntry::name() const
+{
+    return m_name;
+}
+
+bool FlatpakSimpleEntry::operator==(const FlatpakSimpleEntry &other) const
+{
+    return m_name == other.m_name && m_enabled == other.m_enabled;
+}
+
+bool FlatpakSimpleEntry::operator!=(const FlatpakSimpleEntry &other) const
+{
+    return !(*this == other);
+}
+
 FlatpakFilesystemsEntry::FlatpakFilesystemsEntry(FilesystemPrefix prefix, AccessMode mode, const QString &path)
     : m_prefix(prefix)
     , m_mode(mode)
