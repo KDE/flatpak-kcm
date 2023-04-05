@@ -180,7 +180,7 @@ private Q_SLOTS:
         model.load();
         bool containsNetwork = false;
         bool containsXdgDownload = false;
-        for (auto i = 0; i <= model.rowCount(); ++i) {
+        for (auto i = 0; i < model.rowCount(); ++i) {
             const QString name = model.data(model.index(i, 0), FlatpakPermissionModel::Name).toString();
             if (name == "network") {
                 containsNetwork = true;
@@ -222,7 +222,7 @@ private Q_SLOTS:
         model.setReference(&reference);
         model.load();
         QStringList filesystems;
-        for (auto i = 0; i <= model.rowCount(); ++i) {
+        for (auto i = 0; i < model.rowCount(); ++i) {
             const QString name = model.data(model.index(i, 0), FlatpakPermissionModel::Name).toString();
             // collect all filesystems
             const auto section = model.data(model.index(i, 0), FlatpakPermissionModel::Section).value<FlatpakPermissionsSectionType::Type>();
@@ -274,7 +274,7 @@ private Q_SLOTS:
         const auto service2 = QLatin1String("com.example.service2");
         int indexOfService2 = -1;
 
-        for (auto i = 0; i <= model.rowCount(); ++i) {
+        for (auto i = 0; i < model.rowCount(); ++i) {
             const QString name = model.data(model.index(i, 0), FlatpakPermissionModel::Name).toString();
             const auto section = model.data(model.index(i, 0), FlatpakPermissionModel::Section).value<FlatpakPermissionsSectionType::Type>();
             if (section == FlatpakPermissionsSectionType::SessionBus) {
@@ -395,7 +395,7 @@ private Q_SLOTS:
         const auto system = QLatin1String("org.freedesktop.timedate1");
         int indexOfSystem = -1;
 
-        for (auto i = 0; i <= model.rowCount(); ++i) {
+        for (auto i = 0; i < model.rowCount(); ++i) {
             const auto name = model.data(model.index(i, 0), FlatpakPermissionModel::Name).toString();
             const auto section = model.data(model.index(i, 0), FlatpakPermissionModel::Section).value<FlatpakPermissionsSectionType::Type>();
             if (section == FlatpakPermissionsSectionType::SessionBus) {
@@ -465,7 +465,7 @@ private Q_SLOTS:
         model.addUserEnteredPermission(FlatpakPermissionsSectionType::SystemBus, system, static_cast<int>(FlatpakPolicy::FLATPAK_POLICY_SEE));
         model.addUserEnteredPermission(FlatpakPermissionsSectionType::Environment, envName, envValue);
 
-        for (auto i = 0; i <= model.rowCount(); ++i) {
+        for (auto i = 0; i < model.rowCount(); ++i) {
             const QString name = model.data(model.index(i, 0), FlatpakPermissionModel::Name).toString();
             if (name == "host") {
                 const auto metaEnum = QMetaEnum::fromType<FlatpakPermissionModel::Roles>();
