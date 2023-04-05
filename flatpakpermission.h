@@ -8,6 +8,7 @@
 #include "flatpakcommon.h"
 #include "flatpakreference.h"
 
+#include <KConfigGroup>
 #include <QAbstractItemModel>
 #include <QAbstractListModel>
 #include <QPointer>
@@ -64,6 +65,14 @@ public:
      * such as ill-formed access mode, so returns an optional value.
      */
     static std::optional<FlatpakSimpleEntry> parse(QStringView entry);
+
+    /**
+     * Parse list of entries. Returns list of successfully parsed valid entries,
+     * as well as a list of the rest unparsable strings.
+     */
+    static std::pair<QStringList, QList<FlatpakSimpleEntry>> getCategory(const KConfigGroup &group, const QString &category);
+
+    static std::optional<bool> isEnabled(const QList<FlatpakSimpleEntry> &entries, const QString &name);
 
     /**
      * Format this entry into string. Opposite of parse().
