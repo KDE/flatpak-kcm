@@ -26,6 +26,52 @@
 namespace
 {
 
+/**
+ * Type of QList mapped with function f over its items.
+ */
+template<typename T, typename F>
+using MappedList = QList<typename std::invoke_result_t<F, const T &>::value_type>;
+
+/**
+ * Map QList with a function that returns optional values.
+ */
+template<typename T, typename F>
+MappedList<T, F> filter_map(const QList<T> &iter, F func)
+{
+    MappedList<T, F> succeeded;
+
+    for (const auto &item : iter) {
+        const auto optional = func(item);
+        if (optional.has_value()) {
+            succeeded.append(optional.value());
+        }
+    }
+
+    return succeeded;
+}
+
+/**
+ * Map QList with a function that returns optional values, but also returns a
+ * QList of original items that were failed to map.
+ */
+template<typename T, typename F>
+std::pair<QList<T>, MappedList<T, F>> try_filter_map(const QList<T> &iter, F func)
+{
+    QList<T> failed;
+    MappedList<T, F> succeeded;
+
+    for (const auto &item : iter) {
+        const auto optional = func(item);
+        if (optional.has_value()) {
+            succeeded.append(optional.value());
+        } else {
+            failed.append(item);
+        }
+    }
+
+    return {failed, succeeded};
+}
+
 const QLatin1String SUFFIX_RO = QLatin1String(":ro");
 const QLatin1String SUFFIX_RW = QLatin1String(":rw");
 const QLatin1String SUFFIX_CREATE = QLatin1String(":create");
@@ -623,56 +669,6 @@ QHash<int, QByteArray> FlatpakPermissionModel::roleNames() const
     //
     roles[Roles::ValuesModel] = "valuesModel";
     return roles;
-}
-
-namespace
-{
-
-/**
- * Type of QList mapped with function f over its items.
- */
-template<typename T, typename F>
-using MappedList = QList<typename std::invoke_result_t<F, const T &>::value_type>;
-
-/**
- * Map QList with a function that returns optional values.
- */
-template<typename T, typename F>
-MappedList<T, F> filter_map(const QList<T> &iter, F func)
-{
-    MappedList<T, F> succeeded;
-
-    for (const auto &item : iter) {
-        const auto optional = func(item);
-        if (optional.has_value()) {
-            succeeded.append(optional.value());
-        }
-    }
-
-    return succeeded;
-}
-
-/**
- * Map QList with a function that returns optional values, but also returns a
- * QList of original items that were failed to map.
- */
-template<typename T, typename F>
-std::pair<QList<T>, MappedList<T, F>> try_filter_map(const QList<T> &iter, F func)
-{
-    QList<T> failed;
-    MappedList<T, F> succeeded;
-
-    for (const auto &item : iter) {
-        const auto optional = func(item);
-        if (optional.has_value()) {
-            succeeded.append(optional.value());
-        } else {
-            failed.append(item);
-        }
-    }
-
-    return {failed, succeeded};
-}
 }
 
 void FlatpakPermissionModel::loadDefaultValues()
