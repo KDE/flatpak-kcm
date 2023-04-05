@@ -72,6 +72,11 @@ public:
      */
     static std::pair<QStringList, QList<FlatpakSimpleEntry>> getCategory(const KConfigGroup &group, const QString &category);
 
+    /**
+     * Parse list of entries. Returns only list of successfully parsed valid entries.
+     */
+    static QList<FlatpakSimpleEntry> getCategorySkippingInvalidEntries(const KConfigGroup &group, const QString &category);
+
     static std::optional<bool> isEnabled(const QList<FlatpakSimpleEntry> &entries, const QString &name);
 
     /**
@@ -179,11 +184,22 @@ public:
      */
     static std::optional<FlatpakFilesystemsEntry> parse(QStringView entry);
 
+    /**
+     * Parse name of a list entry into data structure. Access mode is passed
+     * separately and not expected to be a part of the name. Might fail for
+     * various reasons, so returns an optional value.
+     *
+     * See also: name()
+     */
+    static std::optional<FlatpakFilesystemsEntry> parse(QStringView name, AccessMode accessMode);
+
     // TODO: Remove this method. This is a temporary hack to avoid too much porting at once.
     static QString accessModeToSuffixString(AccessMode mode);
 
     /**
      * Formatted prefix and path only, without access mode prefixes or suffixes. Suitable for comparison.
+     *
+     * See also: parse(QStringView, AccessMode)
      */
     QString name() const;
 
@@ -546,8 +562,8 @@ public:
     Q_INVOKABLE static QString sectionAddButtonToolTipTextForSectionType(int /*FlatpakPermissionsSectionType::Type*/ rawSection);
 
 public Q_SLOTS:
-    void togglePermissionAtIndex(int index);
-    void editPerm(int index, const QVariant &newValue);
+    void togglePermissionAtRow(int row);
+    void setPermissionValueAtRow(int row, const QVariant &newValue);
     void addUserEnteredPermission(int /*FlatpakPermissionsSectionType::Type*/ rawSection, const QString &name, const QVariant &value);
 
 Q_SIGNALS:
@@ -555,28 +571,14 @@ Q_SIGNALS:
     void showAdvancedChanged();
 
 private:
-    void addPermission(const FlatpakPermission &permission, bool shouldBeOn);
-    void removePermission(const FlatpakPermission &permission, bool isGranted);
-
-    void editFilesystemsPermissions(FlatpakPermission &permission, FlatpakFilesystemsEntry::AccessMode accessMode);
-
-    void addBusPermissions(const FlatpakPermission &permission);
-    void removeBusPermission(const FlatpakPermission &permission);
-    void editBusPermissions(FlatpakPermission &permission, FlatpakPolicy newValue);
-
-    void addEnvPermission(const FlatpakPermission &permission);
-    void removeEnvPermission(const FlatpakPermission &permission);
-    void editEnvPermission(FlatpakPermission &permission, const QString &newValue);
-
     bool permissionExists(FlatpakPermissionsSectionType::Type section, const QString &name) const;
-
     int findIndexToInsertRowAndRemoveDummyRowIfNeeded(FlatpakPermissionsSectionType::Type section);
 
-    void readFromFile();
-    void writeToFile();
+    void writeToFile() const;
+    void writeToKConfig(KConfig &config) const;
 
     QVector<FlatpakPermission> m_permissions;
+    QHash<QString, QStringList> m_unparsableEntriesByCategory;
     QPointer<FlatpakReference> m_reference;
-    QString m_overridesData;
     bool m_showAdvanced;
 };

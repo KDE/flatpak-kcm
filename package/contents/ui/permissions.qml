@@ -238,7 +238,7 @@ KCM.ScrollViewKCM {
             visible: model.isNotDummy
             onClicked: {
                 if (checkable) {
-                    permsModel.togglePermissionAtIndex(permItem.index);
+                    permsModel.togglePermissionAtRow(permItem.index);
                 }
                 permsView.currentIndex = -1;
             }
@@ -248,7 +248,7 @@ KCM.ScrollViewKCM {
                 enabled: permItem.checkable
                 checked: model.isEffectiveEnabled
                 onToggled: {
-                    permsModel.togglePermissionAtIndex(permItem.index);
+                    permsModel.togglePermissionAtRow(permItem.index);
                     permsView.currentIndex = -1;
                 }
             }
@@ -269,7 +269,7 @@ KCM.ScrollViewKCM {
 
                     onActivated: index => {
                         // Assuming this is only called for appropriate visible entries.
-                        permsModel.editPerm(permItem.index, currentValue);
+                        permsModel.setPermissionValueAtRow(permItem.index, currentValue);
                     }
                     Component.onCompleted: {
                         // Still need to check section type, as this is called for every entry.
@@ -287,7 +287,7 @@ KCM.ScrollViewKCM {
                     visible: model.isEnvironment
                     enabled: checkBox.checked
                     Keys.onReturnPressed: {
-                        permsModel.editPerm(permItem.index, text);
+                        permsModel.setPermissionValueAtRow(permItem.index, text);
                     }
                 }
             }

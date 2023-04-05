@@ -363,7 +363,7 @@ private Q_SLOTS:
         QVERIFY(model.data(model.index(indexOfService2, 0), FlatpakPermissionModel::CanBeDisabled).toBool());
 
         const auto setAndCheckBus = [&](const QString &value, FlatpakPolicy newPolicy) {
-            model.editPerm(indexOfService2, newPolicy);
+            model.setPermissionValueAtRow(indexOfService2, newPolicy);
             const auto name2i18nValue = model.data(model.index(indexOfService2, 0), FlatpakPermissionModel::EffectiveValue).value<FlatpakPolicy>();
             QCOMPARE(name2i18nValue, newPolicy);
 
@@ -400,13 +400,13 @@ private Q_SLOTS:
         QVERIFY(isEffectiveEnabled(indexOfService2));
 
         // Toggling non-default bus entry should disable it (i.e. mark for deletion)
-        model.togglePermissionAtIndex(indexOfService2);
+        model.togglePermissionAtRow(indexOfService2);
         QVERIFY(!isEffectiveEnabled(indexOfService2));
         // Reloading data should re-enable it again.
         model.load();
         QVERIFY(isEffectiveEnabled(indexOfService2));
         // Disabling non-default bus entry and saving it should remove it from override file.
-        model.togglePermissionAtIndex(indexOfService2);
+        model.togglePermissionAtRow(indexOfService2);
         QVERIFY(!isEffectiveEnabled(indexOfService2));
         model.save();
         {
@@ -415,7 +415,7 @@ private Q_SLOTS:
             QVERIFY(!group.hasKey(service2));
         }
         // Re-enabling non-default bus entry and saving it should add it back to override file.
-        model.togglePermissionAtIndex(indexOfService2);
+        model.togglePermissionAtRow(indexOfService2);
         QVERIFY(isEffectiveEnabled(indexOfService2));
         model.save();
         {
@@ -521,7 +521,7 @@ private Q_SLOTS:
                                        QVariant::fromValue(FlatpakFilesystemsEntry::AccessMode::Create));
         model.addUserEnteredPermission(FlatpakPermissionsSectionType::SessionBus, session, FlatpakPolicy::FLATPAK_POLICY_TALK);
         // Try int cast to make sure QML/JS works fine too.
-        model.addUserEnteredPermission(FlatpakPermissionsSectionType::SystemBus, system, static_cast<int>(FlatpakPolicy::FLATPAK_POLICY_SEE));
+        model.addUserEnteredPermission(FlatpakPermissionsSectionType::SystemBus, system, FlatpakPolicy::FLATPAK_POLICY_SEE);
         model.addUserEnteredPermission(FlatpakPermissionsSectionType::Environment, envName, envValue);
 
         for (auto i = 0; i < model.rowCount(); ++i) {
@@ -534,20 +534,20 @@ private Q_SLOTS:
 
                 QCOMPARE(model.data(model.index(i, 0), FlatpakPermissionModel::IsEffectiveEnabled), false);
                 QVERIFY(model.data(model.index(i, 0), FlatpakPermissionModel::CanBeDisabled).toBool());
-                model.togglePermissionAtIndex(i);
+                model.togglePermissionAtRow(i);
                 QCOMPARE(model.data(model.index(i, 0), FlatpakPermissionModel::IsEffectiveEnabled), true);
             }
 
             if (name == "org.kde.StatusNotifierWatcher") {
-                model.editPerm(i, FlatpakPolicy::FLATPAK_POLICY_OWN);
+                model.setPermissionValueAtRow(i, FlatpakPolicy::FLATPAK_POLICY_OWN);
             }
 
             if (name == "host-os") {
                 // Make sure the config manipulation works across multiple changes
-                model.editPerm(i, QVariant::fromValue(FlatpakFilesystemsEntry::AccessMode::ReadOnly));
-                model.editPerm(i, QVariant::fromValue(FlatpakFilesystemsEntry::AccessMode::ReadWrite));
-                model.editPerm(i, QVariant::fromValue(FlatpakFilesystemsEntry::AccessMode::Create));
-                model.editPerm(i, QVariant::fromValue(FlatpakFilesystemsEntry::AccessMode::ReadOnly));
+                model.setPermissionValueAtRow(i, QVariant::fromValue(FlatpakFilesystemsEntry::AccessMode::ReadOnly));
+                model.setPermissionValueAtRow(i, QVariant::fromValue(FlatpakFilesystemsEntry::AccessMode::ReadWrite));
+                model.setPermissionValueAtRow(i, QVariant::fromValue(FlatpakFilesystemsEntry::AccessMode::Create));
+                model.setPermissionValueAtRow(i, QVariant::fromValue(FlatpakFilesystemsEntry::AccessMode::ReadOnly));
             }
 
             if (name == filesystem) {
@@ -599,8 +599,7 @@ private Q_SLOTS:
     void testValuesModelForFilesystemsSection()
     {
         const auto values = FlatpakPermissionModel::valuesModelForFilesystemsSection();
-        QCOMPARE(values->rowCount(QModelIndex()), 3);
-        QEXPECT_FAIL("", "Filesystems logic is not ready to use 'OFF' value yet.", Continue);
+        QCOMPARE(values->rowCount(QModelIndex()), 4);
         QVERIFY(modelContains(values, i18n("OFF"))); // Filesystems logic is not ready to use this value yet.
         QVERIFY(modelContains(values, i18n("read/write")));
         QVERIFY(modelContains(values, i18n("read-only")));
