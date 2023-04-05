@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-04 02:22+0000\n"
+"POT-Creation-Date: 2023-04-05 02:19+0000\n"
 "PO-Revision-Date: 2023-02-22 22:38+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -20,259 +20,233 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 22.12.2\n"
 
-#: autotests/flatpakpermissiontest.cpp:192
-#: autotests/flatpakpermissiontest.cpp:536 flatpakpermission.cpp:250
-#: flatpakpermission.cpp:494 flatpakpermission.cpp:760
-#: flatpakpermission.cpp:771 flatpakpermission.cpp:782
-#: flatpakpermission.cpp:793 flatpakpermission.cpp:902
-#: flatpakpermission.cpp:910 flatpakpermission.cpp:961
-#, kde-format
-msgid "read/write"
-msgstr "irakurri/idatzi"
-
-#: autotests/flatpakpermissiontest.cpp:326
-#: autotests/flatpakpermissiontest.cpp:545 flatpakpermission.cpp:262
+#: autotests/flatpakpermissiontest.cpp:327
+#: autotests/flatpakpermissiontest.cpp:550 flatpakpermission.cpp:285
 #, kde-format
 msgid "None"
 msgstr "Bat ere ez"
 
-#: autotests/flatpakpermissiontest.cpp:327
-#: autotests/flatpakpermissiontest.cpp:548 flatpakpermission.cpp:263
+#: autotests/flatpakpermissiontest.cpp:328
+#: autotests/flatpakpermissiontest.cpp:553 flatpakpermission.cpp:286
 #, kde-format
 msgid "see"
 msgstr "ikusi"
 
-#: autotests/flatpakpermissiontest.cpp:328
-#: autotests/flatpakpermissiontest.cpp:546 flatpakpermission.cpp:264
+#: autotests/flatpakpermissiontest.cpp:329
+#: autotests/flatpakpermissiontest.cpp:551 flatpakpermission.cpp:287
 #, kde-format
 msgid "talk"
 msgstr "mintzatu"
 
-#: autotests/flatpakpermissiontest.cpp:329
-#: autotests/flatpakpermissiontest.cpp:547 flatpakpermission.cpp:265
+#: autotests/flatpakpermissiontest.cpp:330
+#: autotests/flatpakpermissiontest.cpp:552 flatpakpermission.cpp:288
 #, kde-format
 msgid "own"
 msgstr "jabe"
 
-#: autotests/flatpakpermissiontest.cpp:459
-#: autotests/flatpakpermissiontest.cpp:486
-#: autotests/flatpakpermissiontest.cpp:493
-#: autotests/flatpakpermissiontest.cpp:494
-#: autotests/flatpakpermissiontest.cpp:538 flatpakpermission.cpp:251
-#: flatpakpermission.cpp:420 flatpakpermission.cpp:492
-#: flatpakpermission.cpp:915 flatpakpermission.cpp:965
-#: flatpakpermission.cpp:1533
-#, kde-format
-msgid "create"
-msgstr "sortu"
-
-#: autotests/flatpakpermissiontest.cpp:484
-#: autotests/flatpakpermissiontest.cpp:487
-#: autotests/flatpakpermissiontest.cpp:537 flatpakpermission.cpp:249
-#: flatpakpermission.cpp:417 flatpakpermission.cpp:489
-#: flatpakpermission.cpp:912 flatpakpermission.cpp:959
-#: flatpakpermission.cpp:1531
-#, kde-format
-msgid "read-only"
-msgstr "irakurtzeko soilik"
-
-#: autotests/flatpakpermissiontest.cpp:485
-#, kde-format
-msgid "read-write"
-msgstr "irakurri-idatzi"
-
-#: autotests/flatpakpermissiontest.cpp:535 flatpakpermission.cpp:414
-#: flatpakpermission.cpp:725 flatpakpermission.cpp:726
-#: flatpakpermission.cpp:727 flatpakpermission.cpp:728
-#: flatpakpermission.cpp:758 flatpakpermission.cpp:769
-#: flatpakpermission.cpp:780 flatpakpermission.cpp:791
+#: autotests/flatpakpermissiontest.cpp:540
 #, kde-format
 msgid "OFF"
 msgstr "ITZALITA"
 
-#: flatpakpermission.cpp:599
+#: autotests/flatpakpermissiontest.cpp:541 flatpakpermission.cpp:273
+#, kde-format
+msgid "read/write"
+msgstr "irakurri/idatzi"
+
+#: autotests/flatpakpermissiontest.cpp:542 flatpakpermission.cpp:272
+#, kde-format
+msgid "read-only"
+msgstr "irakurtzeko soilik"
+
+#: autotests/flatpakpermissiontest.cpp:543 flatpakpermission.cpp:274
+#, kde-format
+msgid "create"
+msgstr "sortu"
+
+#: flatpakpermission.cpp:621
 #, kde-format
 msgid "Internet Connection"
 msgstr "Internet konexioa"
 
-#: flatpakpermission.cpp:605
+#: flatpakpermission.cpp:627
 #, kde-format
 msgid "Inter-process Communication"
 msgstr "Prozesu arteko komunikazioa"
 
-#: flatpakpermission.cpp:615
+#: flatpakpermission.cpp:637
 #, kde-format
 msgid "X11 Windowing System"
 msgstr "X11 leiho-sistema"
 
-#: flatpakpermission.cpp:620
+#: flatpakpermission.cpp:642
 #, kde-format
 msgid "Wayland Windowing System"
 msgstr "Wayland leiho-sistema"
 
-#: flatpakpermission.cpp:625
+#: flatpakpermission.cpp:647
 #, kde-format
 msgid "Fallback to X11 Windowing System"
 msgstr "Atzera egin X11 leiho-sistemara"
 
-#: flatpakpermission.cpp:630
+#: flatpakpermission.cpp:652
 #, kde-format
 msgid "Pulseaudio Sound Server"
 msgstr "Pulseaudio soinu-zerbitzaria"
 
-#: flatpakpermission.cpp:636
+#: flatpakpermission.cpp:658
 #, kde-format
 msgid "Session Bus Access"
 msgstr "Saioko buserako sarbidea"
 
-#: flatpakpermission.cpp:641
+#: flatpakpermission.cpp:663
 #, kde-format
 msgid "System Bus Access"
 msgstr "Sistemako buserako sarbidea"
 
-#: flatpakpermission.cpp:646
+#: flatpakpermission.cpp:668
 #, kde-format
 msgid "Remote Login Access"
 msgstr "Urruneko saio-haste sarbidea"
 
-#: flatpakpermission.cpp:652
+#: flatpakpermission.cpp:674
 #, kde-format
 msgid "Smart Card Access"
 msgstr "Txartel adimendunetara sarbidea"
 
-#: flatpakpermission.cpp:658
+#: flatpakpermission.cpp:680
 #, kde-format
 msgid "Print System Access"
 msgstr "Inprimatzeko sistemara sarbidea"
 
-#: flatpakpermission.cpp:669
+#: flatpakpermission.cpp:691
 #, kde-format
 msgid "Kernel-based Virtual Machine Access"
 msgstr "Muina-oinarri duten alegiazko makinetara sarbidea"
 
-#: flatpakpermission.cpp:674
+#: flatpakpermission.cpp:696
 #, kde-format
 msgid "Direct Graphic Rendering"
 msgstr "Zuzeneko errendatze grafikoa"
 
-#: flatpakpermission.cpp:679
+#: flatpakpermission.cpp:701
 #, kde-format
 msgid "Host dev/shm"
 msgstr "Ostalari dev/shm"
 
-#: flatpakpermission.cpp:684 flatpakpermission.cpp:1194
+#: flatpakpermission.cpp:706 flatpakpermission.cpp:1198
 #, kde-format
 msgid "Device Access"
 msgstr "Gailuetara sarbidea"
 
-#: flatpakpermission.cpp:695
+#: flatpakpermission.cpp:717
 #, kde-format
 msgid "System Calls by Development Tools"
 msgstr "Garapen tresnek eginiko sistemako deiak"
 
-#: flatpakpermission.cpp:700
+#: flatpakpermission.cpp:722
 #, kde-format
 msgid "Run Multiarch/Multilib Binaries"
 msgstr "Ibili Multiarch/Multilib bitarrak"
 
-#: flatpakpermission.cpp:705
+#: flatpakpermission.cpp:727
 #, kde-format
 msgid "Bluetooth"
 msgstr "Bluetooth"
 
-#: flatpakpermission.cpp:711
+#: flatpakpermission.cpp:733
 #, kde-format
 msgid "Canbus Socket Access"
 msgstr "Canbus «Socket»era sarbidea"
 
-#: flatpakpermission.cpp:716
+#: flatpakpermission.cpp:738
 #, kde-format
 msgid "Share dev/shm across all instances of an app per user ID"
 msgstr ""
 "Partekatu dev/shm aplikazio baten instantzia guztien artean, erabiltzaile ID "
 "bakoitzeko"
 
-#: flatpakpermission.cpp:757
+#: flatpakpermission.cpp:794
 #, kde-format
 msgid "All User Files"
 msgstr "Erabiltzaile-fitxategi guztiak"
 
-#: flatpakpermission.cpp:768
+#: flatpakpermission.cpp:805
 #, kde-format
 msgid "All System Files"
 msgstr "Sistemako fitxategi guztiak"
 
-#: flatpakpermission.cpp:779
+#: flatpakpermission.cpp:816
 #, kde-format
 msgid "All System Libraries, Executables and Binaries"
 msgstr "Sistemako liburutegi, exekutagarri eta bitar guztiak"
 
-#: flatpakpermission.cpp:790
+#: flatpakpermission.cpp:827
 #, kde-format
 msgid "All System Configurations"
 msgstr "Sistemako konfigurazio guztiak"
 
-#: flatpakpermission.cpp:1184
+#: flatpakpermission.cpp:1188
 #, kde-format
 msgid "Basic Permissions"
 msgstr "Oinarrizko baimenak"
 
-#: flatpakpermission.cpp:1186
+#: flatpakpermission.cpp:1190
 #, kde-format
 msgid "Filesystem Access"
 msgstr "Fitxategi-sistemara sarbidea"
 
-#: flatpakpermission.cpp:1188
+#: flatpakpermission.cpp:1192
 #, kde-format
 msgid "Advanced Permissions"
 msgstr "Baimen aurreratuak"
 
-#: flatpakpermission.cpp:1190
+#: flatpakpermission.cpp:1194
 #, kde-format
 msgid "Subsystems Shared"
 msgstr "Partekatutako azpisistemak"
 
-#: flatpakpermission.cpp:1192
+#: flatpakpermission.cpp:1196
 #, kde-format
 msgid "Sockets"
 msgstr "«Socket»ak"
 
-#: flatpakpermission.cpp:1196
+#: flatpakpermission.cpp:1200
 #, kde-format
 msgid "Features Allowed"
 msgstr "Baimendutako ezaugarriak"
 
-#: flatpakpermission.cpp:1198
+#: flatpakpermission.cpp:1202
 #, kde-format
 msgid "Session Bus Policy"
 msgstr "Saioko bus-aren gidalerroa"
 
-#: flatpakpermission.cpp:1200
+#: flatpakpermission.cpp:1204
 #, kde-format
 msgid "System Bus Policy"
 msgstr "Sistemako bus-aren gidalerroa"
 
-#: flatpakpermission.cpp:1202
+#: flatpakpermission.cpp:1206
 #, kde-format
 msgid "Environment"
 msgstr "Ingurunea"
 
-#: flatpakpermission.cpp:1219
+#: flatpakpermission.cpp:1223
 #, kde-format
 msgid "Add a new filesystem path"
 msgstr "Gehitu fitxategi-sistemako bide-izen berri bat"
 
-#: flatpakpermission.cpp:1221
+#: flatpakpermission.cpp:1225
 #, kde-format
 msgid "Add a new session bus"
 msgstr "Gehitu saioko bus berri bat"
 
-#: flatpakpermission.cpp:1223
+#: flatpakpermission.cpp:1227
 #, kde-format
 msgid "Add a new system bus"
 msgstr "Gehitu sistemako bus berri bat"
 
-#: flatpakpermission.cpp:1225
+#: flatpakpermission.cpp:1229
 #, kde-format
 msgid "Add a new environment variable"
 msgstr "Gehitu ingurune-aldagai berri bat"
@@ -365,6 +339,9 @@ msgstr "Sartu aldagaia..."
 #, kde-format
 msgid "Enter value…"
 msgstr "Sartu balioa..."
+
+#~ msgid "read-write"
+#~ msgstr "irakurri-idatzi"
 
 #~ msgid "=\n"
 #~ msgstr "=\n"
