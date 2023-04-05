@@ -1096,7 +1096,7 @@ void FlatpakPermissionModel::loadCurrentValues()
         for (const auto &filesystem : filesystems) {
             const auto name = filesystem.name();
             const auto accessMode = filesystem.mode();
-            if (!permExists(name)) {
+            if (!permissionExists(section, name)) {
                 m_permissions.insert(fsIndex, FlatpakPermission(section, name, category, name, false, accessMode));
                 m_permissions[fsIndex].setOverrideEnabled(true);
                 m_permissions[fsIndex].setEffectiveEnabled(true);
@@ -1124,7 +1124,7 @@ void FlatpakPermissionModel::loadCurrentValues()
 
         const auto keys = group.keyList();
         for (const auto &name : keys) {
-            if (!permExists(name)) {
+            if (!permissionExists(section, name)) {
                 const auto value = group.readEntry(name);
 
                 if (valueType == FlatpakPermission::ValueType::Bus) {
@@ -1761,10 +1761,10 @@ void FlatpakPermissionModel::editEnvPermission(FlatpakPermission &permission, co
     }
 }
 
-bool FlatpakPermissionModel::permExists(const QString &name) const
+bool FlatpakPermissionModel::permissionExists(FlatpakPermissionsSectionType::Type section, const QString &name) const
 {
-    return std::any_of(m_permissions.cbegin(), m_permissions.cend(), [name](const FlatpakPermission &permission) {
-        return permission.name() == name;
+    return std::any_of(m_permissions.constBegin(), m_permissions.constEnd(), [&](const FlatpakPermission &permission) {
+        return permission.section() == section && permission.name() == name;
     });
 }
 

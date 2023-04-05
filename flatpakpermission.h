@@ -568,7 +568,7 @@ private:
     void removeEnvPermission(const FlatpakPermission &permission);
     void editEnvPermission(FlatpakPermission &permission, const QString &newValue);
 
-    bool permExists(const QString &name) const;
+    bool permissionExists(FlatpakPermissionsSectionType::Type section, const QString &name) const;
 
     int findIndexToInsertRowAndRemoveDummyRowIfNeeded(FlatpakPermissionsSectionType::Type section);
 
