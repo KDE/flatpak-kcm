@@ -201,6 +201,64 @@ private Q_SLOTS:
         QVERIFY(!model.permExists("yolo-foobar"));
     }
 
+    void testLoadSameSimpleOverride()
+    {
+        // Test that values that are for some reason enabled and present in
+        // both defaults and overrides are parsed correctly.
+        FlatpakReferencesModel referencesModel;
+        QFile metadataFile(QFINDTESTDATA("fixtures/metadata/com.example.same.override"));
+        QVERIFY(metadataFile.open(QFile::ReadOnly));
+        FlatpakReference reference(&referencesModel,
+                                   "com.example.same.override",
+                                   "x86_64",
+                                   "stable",
+                                   "0.0.24",
+                                   "Test Same Simple Override",
+                                   QFINDTESTDATA("fixtures/overrides/"),
+                                   QUrl(),
+                                   metadataFile.readAll());
+        FlatpakPermissionModel model;
+        model.setReference(&reference);
+        model.setShowAdvanced(true);
+        model.load();
+
+        QStringList found;
+
+        for (auto i = 0; i < model.rowCount(); ++i) {
+            const auto name = model.data(model.index(i, 0), FlatpakPermissionModel::Name).toString();
+
+            const auto isDefaultEnabled = model.data(model.index(i, 0), FlatpakPermissionModel::IsDefaultEnabled).toBool();
+            const auto isEffectiveEnabled = model.data(model.index(i, 0), FlatpakPermissionModel::IsEffectiveEnabled).toBool();
+
+            if (name == QLatin1String("ipc")) {
+                QVERIFY(isDefaultEnabled);
+                QVERIFY(isEffectiveEnabled);
+            } else if (name == QLatin1String("pulseaudio")) {
+                QVERIFY(isDefaultEnabled);
+                QVERIFY(isEffectiveEnabled);
+            } else if (name == QLatin1String("dri")) {
+                QVERIFY(!isDefaultEnabled);
+                QVERIFY(!isEffectiveEnabled);
+            } else if (name == QLatin1String("bluetooth")) {
+                QVERIFY(!isDefaultEnabled);
+                QVERIFY(isEffectiveEnabled);
+            } else if (name == QLatin1String("xdg-download")) {
+                QVERIFY(isDefaultEnabled);
+                QVERIFY(isEffectiveEnabled);
+            } else {
+                continue;
+            }
+
+            found.append(name);
+        }
+
+        QVERIFY(found.contains(QLatin1String("ipc")));
+        QVERIFY(found.contains(QLatin1String("pulseaudio")));
+        QVERIFY(found.contains(QLatin1String("dri")));
+        QVERIFY(found.contains(QLatin1String("bluetooth")));
+        QVERIFY(found.contains(QLatin1String("xdg-download")));
+    }
+
     void testDefaultFilesystemsGoFirst()
     {
         // If there are no custom filesystems specified in defaults, then all custom ones should go below it.
