@@ -197,8 +197,8 @@ private Q_SLOTS:
 
         QVERIFY(containsNetwork);
         QVERIFY(containsXdgDownload);
-        QVERIFY(model.permExists("network"));
-        QVERIFY(!model.permExists("yolo-foobar"));
+        QVERIFY(model.permissionExists(FlatpakPermissionsSectionType::Basic, QLatin1String("network")));
+        QVERIFY(!model.permissionExists(FlatpakPermissionsSectionType::Basic, QLatin1String("yolo-foobar")));
     }
 
     void testLoadSameSimpleOverride()
