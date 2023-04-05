@@ -226,7 +226,7 @@ protected:
         QString display;
     };
 
-    PolicyChoicesModel(QVector<Entry> &&policies, QObject *parent = nullptr);
+    explicit PolicyChoicesModel(QVector<Entry> &&policies, QObject *parent = nullptr);
 
 private:
     const QVector<Entry> m_policies;
@@ -236,14 +236,14 @@ class FilesystemChoicesModel : public PolicyChoicesModel
 {
     Q_OBJECT
 public:
-    FilesystemChoicesModel(QObject *parent = nullptr);
+    explicit FilesystemChoicesModel(QObject *parent = nullptr);
 };
 
 class DBusPolicyChoicesModel : public PolicyChoicesModel
 {
     Q_OBJECT
 public:
-    DBusPolicyChoicesModel(QObject *parent = nullptr);
+    explicit DBusPolicyChoicesModel(QObject *parent = nullptr);
 };
 
 /**
