@@ -165,12 +165,8 @@ KCM.ScrollViewKCM {
         delegate: Kirigami.BasicListItem {
             id: permItem
 
-            property bool isComplex: !(model.isSimple) && !(model.isEnvironment)
-            property bool isNotDummy: model.isNotDummy
-            property var effectiveValue: model.effectiveValue
-            property var valuesModel: model.valuesModel
-            property int index: model.index
-            property int section: model.section
+            required property var model
+            required property int index
 
             // Default-provided custom entries are not meant to be unchecked:
             // it is a meaningless undefined operation.
@@ -194,7 +190,7 @@ KCM.ScrollViewKCM {
             leading: QQC2.CheckBox {
                 id: checkBox
                 enabled: permItem.checkable
-                checked: model.isEffectiveEnabled
+                checked: permItem.model.isEffectiveEnabled
                 onToggled: {
                     permsModel.togglePermissionAtRow(permItem.index);
                     permsView.currentIndex = -1;
@@ -207,11 +203,11 @@ KCM.ScrollViewKCM {
                         FlatpakPermissionsSectionType.Filesystems,
                         FlatpakPermissionsSectionType.SessionBus,
                         FlatpakPermissionsSectionType.SystemBus,
-                    ].includes(permItem.section)
+                    ].includes(permItem.model.section)
 
                     enabled: checkBox.checked
 
-                    model: permItem.valuesModel
+                    model: permItem.model.valuesModel
                     textRole: "display"
                     valueRole: "value"
 
@@ -221,17 +217,17 @@ KCM.ScrollViewKCM {
                     }
                     Component.onCompleted: {
                         // Still need to check section type, as this is called for every entry.
-                        if (permItem.isNotDummy && [
+                        if (permItem.model.isNotDummy && [
                                 FlatpakPermissionsSectionType.Filesystems,
                                 FlatpakPermissionsSectionType.SessionBus,
                                 FlatpakPermissionsSectionType.SystemBus,
-                            ].includes(permItem.section)) {
-                            currentIndex = Qt.binding(() => indexOfValue(permItem.effectiveValue));
+                            ].includes(permItem.model.section)) {
+                            currentIndex = Qt.binding(() => indexOfValue(permItem.model.effectiveValue));
                         }
                     }
                 }
                 QQC2.TextField {
-                    text: model.isEnvironment ? permItem.effectiveValue : ""
+                    text: model.isEnvironment ? permItem.model.effectiveValue : ""
                     visible: model.isEnvironment
                     enabled: checkBox.checked
                     Keys.onReturnPressed: {
