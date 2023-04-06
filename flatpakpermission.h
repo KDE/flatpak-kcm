@@ -512,7 +512,6 @@ public:
         Description,
         //
         IsSimple,
-        IsEnvironment,
         IsNotDummy,
         //
         CanBeDisabled,

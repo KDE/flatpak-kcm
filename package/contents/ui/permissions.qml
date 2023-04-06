@@ -276,8 +276,9 @@ KCM.ScrollViewKCM {
                     }
                 }
                 QQC2.TextField {
-                    text: model.isEnvironment ? permItem.model.effectiveValue : ""
-                    visible: model.isEnvironment
+                    visible: permItem.model.isNotDummy && permItem.model.section === FlatpakPermissionsSectionType.Environment
+                    text: (permItem.model.isNotDummy && permItem.model.section === FlatpakPermissionsSectionType.Environment)
+                        ? permItem.model.effectiveValue : ""
                     enabled: checkBox.checked
                     Keys.onReturnPressed: {
                         permsModel.setPermissionValueAtRow(permItem.index, text);
