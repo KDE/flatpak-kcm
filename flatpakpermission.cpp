@@ -703,12 +703,6 @@ QHash<int, QByteArray> FlatpakPermissionModel::roleNames() const
 
 void FlatpakPermissionModel::loadDefaultValues()
 {
-    QString name;
-    QString category;
-    QString description;
-    QString defaultValue;
-    bool isEnabledByDefault = false;
-
     const QByteArray metadata = m_reference->metadata();
 
     QTemporaryFile f;
@@ -721,133 +715,61 @@ void FlatpakPermissionModel::loadDefaultValues()
     KConfig parser(f.fileName());
     const auto contextGroup = parser.group(QLatin1String(FLATPAK_METADATA_GROUP_CONTEXT));
 
+    QString category;
+    QList<FlatpakSimpleEntry> simpleEntries;
     int basicIndex = 0;
+
+    const auto insertSimpleEntry = [&](FlatpakPermissionsSectionType::Type section, const QString &name, const QString &description) {
+        const auto isEnabledByDefault = FlatpakSimpleEntry::isEnabled(simpleEntries, name).value_or(false);
+        const auto permission = FlatpakPermission(section, name, category, description, isEnabledByDefault);
+        if (section == FlatpakPermissionsSectionType::Basic) {
+            m_permissions.insert(basicIndex, permission);
+            basicIndex += 1;
+        } else {
+            m_permissions.append(permission);
+        }
+    };
 
     /* SHARED category */
     category = QLatin1String(FLATPAK_METADATA_KEY_SHARED);
-    const auto shares = FlatpakSimpleEntry::getCategorySkippingInvalidEntries(contextGroup, category);
-
-    name = QStringLiteral("network");
-    description = i18n("Internet Connection");
-    isEnabledByDefault = FlatpakSimpleEntry::isEnabled(shares, name).value_or(false);
-    m_permissions.insert(basicIndex, FlatpakPermission(FlatpakPermissionsSectionType::Basic, name, category, description, isEnabledByDefault));
-    basicIndex += 1;
-
-    name = QStringLiteral("ipc");
-    description = i18n("Inter-process Communication");
-    isEnabledByDefault = FlatpakSimpleEntry::isEnabled(shares, name).value_or(false);
-    m_permissions.append(FlatpakPermission(FlatpakPermissionsSectionType::SubsystemsShared, name, category, description, isEnabledByDefault));
+    simpleEntries = FlatpakSimpleEntry::getCategorySkippingInvalidEntries(contextGroup, category);
+    insertSimpleEntry(FlatpakPermissionsSectionType::Basic, QStringLiteral("network"), i18n("Internet Connection"));
+    insertSimpleEntry(FlatpakPermissionsSectionType::SubsystemsShared, QStringLiteral("ipc"), i18n("Inter-process Communication"));
     /* SHARED category */
 
     /* SOCKETS category */
     category = QLatin1String(FLATPAK_METADATA_KEY_SOCKETS);
-    const auto sockets = FlatpakSimpleEntry::getCategorySkippingInvalidEntries(contextGroup, category);
-
-    name = QStringLiteral("x11");
-    description = i18n("X11 Windowing System");
-    isEnabledByDefault = FlatpakSimpleEntry::isEnabled(sockets, name).value_or(false);
-    m_permissions.append(FlatpakPermission(FlatpakPermissionsSectionType::Sockets, name, category, description, isEnabledByDefault));
-
-    name = QStringLiteral("wayland");
-    description = i18n("Wayland Windowing System");
-    isEnabledByDefault = FlatpakSimpleEntry::isEnabled(sockets, name).value_or(false);
-    m_permissions.append(FlatpakPermission(FlatpakPermissionsSectionType::Sockets, name, category, description, isEnabledByDefault));
-
-    name = QStringLiteral("fallback-x11");
-    description = i18n("Fallback to X11 Windowing System");
-    isEnabledByDefault = FlatpakSimpleEntry::isEnabled(sockets, name).value_or(false);
-    m_permissions.append(FlatpakPermission(FlatpakPermissionsSectionType::Sockets, name, category, description, isEnabledByDefault));
-
-    name = QStringLiteral("pulseaudio");
-    description = i18n("Pulseaudio Sound Server");
-    isEnabledByDefault = FlatpakSimpleEntry::isEnabled(sockets, name).value_or(false);
-    m_permissions.insert(basicIndex, FlatpakPermission(FlatpakPermissionsSectionType::Basic, name, category, description, isEnabledByDefault));
-    basicIndex += 1;
-
-    name = QStringLiteral("session-bus");
-    description = i18n("Session Bus Access");
-    isEnabledByDefault = FlatpakSimpleEntry::isEnabled(sockets, name).value_or(false);
-    m_permissions.append(FlatpakPermission(FlatpakPermissionsSectionType::Sockets, name, category, description, isEnabledByDefault));
-
-    name = QStringLiteral("system-bus");
-    description = i18n("System Bus Access");
-    isEnabledByDefault = FlatpakSimpleEntry::isEnabled(sockets, name).value_or(false);
-    m_permissions.append(FlatpakPermission(FlatpakPermissionsSectionType::Sockets, name, category, description, isEnabledByDefault));
-
-    name = QStringLiteral("ssh-auth");
-    description = i18n("Remote Login Access");
-    isEnabledByDefault = FlatpakSimpleEntry::isEnabled(sockets, name).value_or(false);
-    m_permissions.insert(basicIndex, FlatpakPermission(FlatpakPermissionsSectionType::Basic, name, category, description, isEnabledByDefault));
-    basicIndex += 1;
-
-    name = QStringLiteral("pcsc");
-    description = i18n("Smart Card Access");
-    isEnabledByDefault = FlatpakSimpleEntry::isEnabled(sockets, name).value_or(false);
-    m_permissions.insert(basicIndex, FlatpakPermission(FlatpakPermissionsSectionType::Basic, name, category, description, isEnabledByDefault));
-    basicIndex += 1;
-
-    name = QStringLiteral("cups");
-    description = i18n("Print System Access");
-    isEnabledByDefault = FlatpakSimpleEntry::isEnabled(sockets, name).value_or(false);
-    m_permissions.insert(basicIndex, FlatpakPermission(FlatpakPermissionsSectionType::Basic, name, category, description, isEnabledByDefault));
-    basicIndex += 1;
+    simpleEntries = FlatpakSimpleEntry::getCategorySkippingInvalidEntries(contextGroup, category);
+    insertSimpleEntry(FlatpakPermissionsSectionType::Sockets, QStringLiteral("x11"), i18n("X11 Windowing System"));
+    insertSimpleEntry(FlatpakPermissionsSectionType::Sockets, QStringLiteral("wayland"), i18n("Wayland Windowing System"));
+    insertSimpleEntry(FlatpakPermissionsSectionType::Sockets, QStringLiteral("fallback-x11"), i18n("Fallback to X11 Windowing System"));
+    insertSimpleEntry(FlatpakPermissionsSectionType::Basic, QStringLiteral("pulseaudio"), i18n("Pulseaudio Sound Server"));
+    insertSimpleEntry(FlatpakPermissionsSectionType::Sockets, QStringLiteral("session-bus"), i18n("Session Bus Access"));
+    insertSimpleEntry(FlatpakPermissionsSectionType::Sockets, QStringLiteral("system-bus"), i18n("System Bus Access"));
+    insertSimpleEntry(FlatpakPermissionsSectionType::Basic, QStringLiteral("ssh-auth"), i18n("Remote Login Access"));
+    insertSimpleEntry(FlatpakPermissionsSectionType::Basic, QStringLiteral("pcsc"), i18n("Smart Card Access"));
+    insertSimpleEntry(FlatpakPermissionsSectionType::Basic, QStringLiteral("cups"), i18n("Print System Access"));
     /* SOCKETS category */
 
     /* DEVICES category */
     category = QLatin1String(FLATPAK_METADATA_KEY_DEVICES);
-    const auto devices = FlatpakSimpleEntry::getCategorySkippingInvalidEntries(contextGroup, category);
-
-    name = QStringLiteral("kvm");
-    description = i18n("Kernel-based Virtual Machine Access");
-    isEnabledByDefault = FlatpakSimpleEntry::isEnabled(devices, name).value_or(false);
-    m_permissions.append(FlatpakPermission(FlatpakPermissionsSectionType::Devices, name, category, description, isEnabledByDefault));
-
-    name = QStringLiteral("dri");
-    description = i18n("Direct Graphic Rendering");
-    isEnabledByDefault = FlatpakSimpleEntry::isEnabled(devices, name).value_or(false);
-    m_permissions.append(FlatpakPermission(FlatpakPermissionsSectionType::Devices, name, category, description, isEnabledByDefault));
-
-    name = QStringLiteral("shm");
-    description = i18n("Host dev/shm");
-    isEnabledByDefault = FlatpakSimpleEntry::isEnabled(devices, name).value_or(false);
-    m_permissions.append(FlatpakPermission(FlatpakPermissionsSectionType::Devices, name, category, description, isEnabledByDefault));
-
-    name = QStringLiteral("all");
-    description = i18n("Device Access");
-    isEnabledByDefault = FlatpakSimpleEntry::isEnabled(devices, name).value_or(false);
-    m_permissions.insert(basicIndex, FlatpakPermission(FlatpakPermissionsSectionType::Basic, name, category, description, isEnabledByDefault));
-    basicIndex += 1;
+    simpleEntries = FlatpakSimpleEntry::getCategorySkippingInvalidEntries(contextGroup, category);
+    insertSimpleEntry(FlatpakPermissionsSectionType::Devices, QStringLiteral("kvm"), i18n("Kernel-based Virtual Machine Access"));
+    insertSimpleEntry(FlatpakPermissionsSectionType::Devices, QStringLiteral("dri"), i18n("Direct Graphic Rendering"));
+    insertSimpleEntry(FlatpakPermissionsSectionType::Devices, QStringLiteral("shm"), i18n("Host dev/shm"));
+    insertSimpleEntry(FlatpakPermissionsSectionType::Basic, QStringLiteral("all"), i18n("Device Access"));
     /* DEVICES category */
 
     /* FEATURES category */
     category = QLatin1String(FLATPAK_METADATA_KEY_FEATURES);
-    const auto features = FlatpakSimpleEntry::getCategorySkippingInvalidEntries(contextGroup, category);
-
-    name = QStringLiteral("devel");
-    description = i18n("System Calls by Development Tools");
-    isEnabledByDefault = FlatpakSimpleEntry::isEnabled(features, name).value_or(false);
-    m_permissions.append(FlatpakPermission(FlatpakPermissionsSectionType::Features, name, category, description, isEnabledByDefault));
-
-    name = QStringLiteral("multiarch");
-    description = i18n("Run Multiarch/Multilib Binaries");
-    isEnabledByDefault = FlatpakSimpleEntry::isEnabled(features, name).value_or(false);
-    m_permissions.append(FlatpakPermission(FlatpakPermissionsSectionType::Features, name, category, description, isEnabledByDefault));
-
-    name = QStringLiteral("bluetooth");
-    description = i18n("Bluetooth");
-    isEnabledByDefault = FlatpakSimpleEntry::isEnabled(features, name).value_or(false);
-    m_permissions.insert(basicIndex, FlatpakPermission(FlatpakPermissionsSectionType::Basic, name, category, description, isEnabledByDefault));
-    basicIndex += 1;
-
-    name = QStringLiteral("canbus");
-    description = i18n("Canbus Socket Access");
-    isEnabledByDefault = FlatpakSimpleEntry::isEnabled(features, name).value_or(false);
-    m_permissions.append(FlatpakPermission(FlatpakPermissionsSectionType::Features, name, category, description, isEnabledByDefault));
-
-    name = QStringLiteral("per-app-dev-shm");
-    description = i18n("Share dev/shm across all instances of an app per user ID");
-    isEnabledByDefault = FlatpakSimpleEntry::isEnabled(features, name).value_or(false);
-    m_permissions.append(FlatpakPermission(FlatpakPermissionsSectionType::Features, name, category, description, isEnabledByDefault));
+    simpleEntries = FlatpakSimpleEntry::getCategorySkippingInvalidEntries(contextGroup, category);
+    insertSimpleEntry(FlatpakPermissionsSectionType::Features, QStringLiteral("devel"), i18n("System Calls by Development Tools"));
+    insertSimpleEntry(FlatpakPermissionsSectionType::Features, QStringLiteral("multiarch"), i18n("Run Multiarch/Multilib Binaries"));
+    insertSimpleEntry(FlatpakPermissionsSectionType::Basic, QStringLiteral("bluetooth"), i18n("Bluetooth"));
+    insertSimpleEntry(FlatpakPermissionsSectionType::Features, QStringLiteral("canbus"), i18n("Canbus Socket Access"));
+    insertSimpleEntry(FlatpakPermissionsSectionType::Features,
+                      QStringLiteral("per-app-dev-shm"),
+                      i18n("Share dev/shm across all instances of an app per user ID"));
     /* FEATURES category */
 
     /* FILESYSTEM category */
@@ -889,7 +811,7 @@ void FlatpakPermissionModel::loadDefaultValues()
             hostEtcVal = filesystem.mode();
             break;
         default: {
-            name = filesystem.name();
+            const auto name = filesystem.name();
             const auto accessMode = filesystem.mode();
             nonStandardFilesystems.append(FlatpakPermission(FlatpakPermissionsSectionType::Filesystems, name, category, name, true, accessMode));
             break;
@@ -928,8 +850,8 @@ void FlatpakPermissionModel::loadDefaultValues()
         const auto group = parser.group(category);
         if (const auto keys = group.keyList(); !keys.isEmpty()) {
             for (const auto &name : keys) {
-                defaultValue = group.readEntry(name);
-                const auto policyValue = mapDBusFlatpakPolicyConfigStringToEnumValue(defaultValue);
+                const auto policyString = group.readEntry(name);
+                const auto policyValue = mapDBusFlatpakPolicyConfigStringToEnumValue(policyString);
                 m_permissions.append(FlatpakPermission(FlatpakPermissionsSectionType::SessionBus, name, category, name, true, policyValue));
             }
         } else {
@@ -944,8 +866,8 @@ void FlatpakPermissionModel::loadDefaultValues()
         const auto group = parser.group(category);
         if (const auto keys = group.keyList(); !keys.isEmpty()) {
             for (const auto &name : keys) {
-                defaultValue = group.readEntry(name);
-                const auto policyValue = mapDBusFlatpakPolicyConfigStringToEnumValue(defaultValue);
+                const auto policyString = group.readEntry(name);
+                const auto policyValue = mapDBusFlatpakPolicyConfigStringToEnumValue(policyString);
                 m_permissions.append(FlatpakPermission(FlatpakPermissionsSectionType::SystemBus, name, category, name, true, policyValue));
             }
         } else {
@@ -961,8 +883,8 @@ void FlatpakPermissionModel::loadDefaultValues()
         const auto group = parser.group(category);
         if (const auto keys = group.keyList(); !keys.isEmpty()) {
             for (const auto &name : keys) {
-                defaultValue = group.readEntry(name);
-                m_permissions.append(FlatpakPermission(FlatpakPermissionsSectionType::Environment, name, category, name, true, defaultValue));
+                const auto value = group.readEntry(name);
+                m_permissions.append(FlatpakPermission(FlatpakPermissionsSectionType::Environment, name, category, name, true, value));
             }
         } else {
             m_permissions.append(FlatpakPermission(FlatpakPermissionsSectionType::Environment));
