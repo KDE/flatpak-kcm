@@ -569,7 +569,8 @@ private:
     void editEnvPermission(FlatpakPermission &permission, const QString &newValue);
 
     bool permExists(const QString &name) const;
-    int permIndex(const QString &category);
+
+    int findIndexToInsertRowAndRemoveDummyRowIfNeeded(FlatpakPermissionsSectionType::Type section);
 
     void readFromFile();
     void writeToFile();
