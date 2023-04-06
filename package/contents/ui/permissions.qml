@@ -32,7 +32,6 @@ KCM.ScrollViewKCM {
     }
 
     view: ListView {
-        id: permsView
         model: FlatpakPermissionModel {
             id: permsModel
             reference: root.ref
@@ -182,7 +181,7 @@ KCM.ScrollViewKCM {
                 if (checkable) {
                     permsModel.togglePermissionAtRow(permItem.index);
                 }
-                permsView.currentIndex = -1;
+                permItem.ListView.view.currentIndex = -1;
             }
 
             leading: QQC2.CheckBox {
@@ -191,7 +190,7 @@ KCM.ScrollViewKCM {
                 checked: permItem.model.isEffectiveEnabled
                 onToggled: {
                     permsModel.togglePermissionAtRow(permItem.index);
-                    permsView.currentIndex = -1;
+                    permItem.ListView.view.currentIndex = -1;
                 }
             }
 
