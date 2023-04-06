@@ -110,7 +110,6 @@ KCM.ScrollViewKCM {
             width: ListView.view.width - ListView.view.leftMargin - ListView.view.rightMargin
             label: permsModel.sectionHeaderForSectionType(sectionType)
             QQC2.ToolButton {
-                id: buttonToggleAdvanced
                 text: permsModel.showAdvanced ? i18n("Hide advanced permissions") : i18n("Show advanced permissions")
                 display: QQC2.AbstractButton.IconOnly
                 icon.name: permsModel.showAdvanced ? "collapse" : "expand"
@@ -119,11 +118,10 @@ KCM.ScrollViewKCM {
                 Layout.alignment: Qt.AlignRight
 
                 QQC2.ToolTip.text: text
-                QQC2.ToolTip.visible: Kirigami.Settings.tabletMode ? buttonToggleAdvanced.pressed : buttonToggleAdvanced.hovered
+                QQC2.ToolTip.visible: Kirigami.Settings.tabletMode ? pressed : hovered
                 QQC2.ToolTip.delay: Kirigami.Settings.tabletMode ? Qt.styleHints.mousePressAndHoldInterval : Kirigami.Units.toolTipDelay
             }
             QQC2.ToolButton {
-                id: buttonAddNew
                 text: i18n("Add New")
                 icon.name: "bqm-add"
                 visible: [
@@ -138,7 +136,7 @@ KCM.ScrollViewKCM {
                 Layout.alignment: Qt.AlignRight
 
                 QQC2.ToolTip.text: permsModel.sectionAddButtonToolTipTextForSectionType(sectionDelegate.sectionType)
-                QQC2.ToolTip.visible: Kirigami.Settings.tabletMode ? buttonAddNew.pressed : buttonAddNew.hovered
+                QQC2.ToolTip.visible: Kirigami.Settings.tabletMode ? pressed : hovered
                 QQC2.ToolTip.delay: Kirigami.Settings.tabletMode ? Qt.styleHints.mousePressAndHoldInterval : Kirigami.Units.toolTipDelay
 
                 Kirigami.PromptDialog {
