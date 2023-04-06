@@ -1120,7 +1120,7 @@ void FlatpakPermissionModel::loadCurrentValues()
             continue;
         }
         const auto valueType = FlatpakPermission::valueTypeFromSectionType(section);
-        int insertIndex = permIndex(category);
+        int insertIndex = findIndexToInsertRowAndRemoveDummyRowIfNeeded(section);
 
         const auto keys = group.keyList();
         for (const auto &name : keys) {
@@ -1529,7 +1529,7 @@ void FlatpakPermissionModel::addUserEnteredPermission(int /*FlatpakPermissionsSe
     permission.setEffectiveEnabled(true);
     permission.setEffectiveValue(variant);
 
-    int index = permIndex(category);
+    int index = findIndexToInsertRowAndRemoveDummyRowIfNeeded(section);
     m_permissions.insert(index, permission);
 
     switch (section) {
@@ -1768,26 +1768,28 @@ bool FlatpakPermissionModel::permExists(const QString &name) const
     });
 }
 
-int FlatpakPermissionModel::permIndex(const QString &category)
+int FlatpakPermissionModel::findIndexToInsertRowAndRemoveDummyRowIfNeeded(FlatpakPermissionsSectionType::Type section)
 {
     int i = 0;
     while (i < m_permissions.length()) {
-        if (m_permissions.at(i).category() == category) {
+        const auto *permission = &m_permissions.at(i);
+        if (permission->section() == section) {
+            if (permission->originType() == FlatpakPermission::OriginType::Dummy) {
+                beginRemoveRows(QModelIndex(), i, i);
+                permission = nullptr;
+                m_permissions.remove(i, 1);
+                endRemoveRows();
+            }
             break;
         }
         i++;
     }
-    if (i < m_permissions.length()) {
-        while (i < m_permissions.length()) {
-            if (m_permissions.at(i).category() != category) {
-                break;
-            }
-            i++;
+    while (i < m_permissions.length()) {
+        const auto &permission = m_permissions.at(i);
+        if (permission.section() != section) {
+            break;
         }
-    }
-    if (m_permissions.at(i - 1).originType() == FlatpakPermission::OriginType::Dummy) {
-        m_permissions.remove(i - 1, 1);
-        i--;
+        i++;
     }
     return i;
 }
