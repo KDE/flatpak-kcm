@@ -8,7 +8,7 @@ import QtQuick 2.15
 import QtQuick.Layouts 1.15
 import QtQuick.Controls 2.15 as QQC2
 import org.kde.kirigami 2.20 as Kirigami
-import org.kde.kcm 1.2 as KCM
+import org.kde.kcm 1.6 as KCM
 import org.kde.kcmutils 1.0 as KcmUtils
 import org.kde.kitemmodels 1.0 as KItemModels
 import org.kde.plasma.kcm.flatpakpermissions 1.0
