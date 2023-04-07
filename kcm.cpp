@@ -33,7 +33,7 @@ KCMFlatpak::KCMFlatpak(QObject *parent, const KPluginMetaData &data, const QVari
     qmlRegisterUncreatableType<FlatpakPermissionsSectionType>(uri, 1, 0, "FlatpakPermissionsSectionType", QStringLiteral("For enum access only"));
 
     connect(m_refsModel, &FlatpakReferencesModel::needsLoad, this, &KCMFlatpak::load);
-    connect(m_refsModel, &FlatpakReferencesModel::needsSaveChanged, this, &KCMFlatpak::settingsChanged);
+    connect(m_refsModel, &FlatpakReferencesModel::settingsChanged, this, &KCMFlatpak::settingsChanged);
 
     if (!requestedReference.isEmpty()) {
         const auto &refs = m_refsModel->references();

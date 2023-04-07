@@ -61,7 +61,7 @@ public:
 
 Q_SIGNALS:
     void needsLoad();
-    void needsSaveChanged();
+    void settingsChanged();
 
 private:
     // ID of a ref constitutes of these three members:
@@ -104,7 +104,7 @@ public:
 
 Q_SIGNALS:
     void needsLoad();
-    void needsSaveChanged();
+    void settingsChanged();
 
 private:
     QVector<FlatpakReference *> m_references;
