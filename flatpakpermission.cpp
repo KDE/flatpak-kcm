@@ -1017,7 +1017,8 @@ void FlatpakPermissionModel::loadCurrentValues()
             continue;
         }
         const auto valueType = FlatpakPermission::valueTypeFromSectionType(section);
-        int insertIndex = findIndexToInsertRowAndRemoveDummyRowIfNeeded(section);
+        // Model signals are not needed during load/reset.
+        int insertIndex = findIndexToInsertRowAndRemoveDummyRowIfNeeded(section, false);
 
         const auto keys = group.keyList();
         for (const auto &name : keys) {
@@ -1375,7 +1376,7 @@ void FlatpakPermissionModel::addUserEnteredPermission(int /*FlatpakPermissionsSe
     permission.setOriginType(FlatpakPermission::OriginType::UserDefined);
     permission.setEffectiveEnabled(true);
 
-    int index = findIndexToInsertRowAndRemoveDummyRowIfNeeded(section);
+    int index = findIndexToInsertRowAndRemoveDummyRowIfNeeded(section, true);
     beginInsertRows(QModelIndex(), index, index);
     {
         m_permissions.insert(index, permission);
@@ -1390,17 +1391,21 @@ bool FlatpakPermissionModel::permissionExists(FlatpakPermissionsSectionType::Typ
     });
 }
 
-int FlatpakPermissionModel::findIndexToInsertRowAndRemoveDummyRowIfNeeded(FlatpakPermissionsSectionType::Type section)
+int FlatpakPermissionModel::findIndexToInsertRowAndRemoveDummyRowIfNeeded(FlatpakPermissionsSectionType::Type section, bool emitModelSignals)
 {
     int i = 0;
     while (i < m_permissions.length()) {
         const auto *permission = &m_permissions.at(i);
         if (permission->section() == section) {
             if (permission->originType() == FlatpakPermission::OriginType::Dummy) {
-                beginRemoveRows(QModelIndex(), i, i);
+                if (emitModelSignals) {
+                    beginRemoveRows(QModelIndex(), i, i);
+                }
                 permission = nullptr;
                 m_permissions.remove(i, 1);
-                endRemoveRows();
+                if (emitModelSignals) {
+                    endRemoveRows();
+                }
             }
             break;
         }

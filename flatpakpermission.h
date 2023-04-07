@@ -571,7 +571,7 @@ Q_SIGNALS:
 
 private:
     bool permissionExists(FlatpakPermissionsSectionType::Type section, const QString &name) const;
-    int findIndexToInsertRowAndRemoveDummyRowIfNeeded(FlatpakPermissionsSectionType::Type section);
+    int findIndexToInsertRowAndRemoveDummyRowIfNeeded(FlatpakPermissionsSectionType::Type section, bool emitModelSignals);
 
     void writeToFile() const;
     void writeToKConfig(KConfig &config) const;
