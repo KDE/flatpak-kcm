@@ -118,19 +118,19 @@ KCM.ScrollViewKCM {
             }
 
             onApplied: {
-                KcmUtils.ConfigModule.save()
+                root.KcmUtils.ConfigModule.save()
                 root.changeApp(toAppAtSourceRowIndex)
                 dialog.close()
             }
 
             onDiscarded: {
-                KcmUtils.ConfigModule.load()
+                root.KcmUtils.ConfigModule.load()
                 root.changeApp(fromAppAtSourceRowIndex)
                 dialog.close()
             }
 
             onRejected: {
-                appsListView.currentIndex = KcmUtils.ConfigModule.currentIndex()
+                appsListView.currentIndex = root.KcmUtils.ConfigModule.currentIndex()
             }
 
             onClosed: destroy()
