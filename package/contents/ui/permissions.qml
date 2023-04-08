@@ -229,6 +229,7 @@ KCM.ScrollViewKCM {
 
             text: model.description
             visible: model.isNotDummy
+
             onClicked: {
                 if (checkable) {
                     permsModel.togglePermissionAtRow(permItem.index);
@@ -240,6 +241,7 @@ KCM.ScrollViewKCM {
                 id: checkBox
                 enabled: permItem.checkable
                 checked: permItem.model.isEffectiveEnabled
+
                 onToggled: {
                     permsModel.togglePermissionAtRow(permItem.index);
                     permItem.ListView.view.currentIndex = -1;
@@ -264,6 +266,7 @@ KCM.ScrollViewKCM {
                         // Assuming this is only called for appropriate visible entries.
                         permsModel.setPermissionValueAtRow(permItem.index, currentValue);
                     }
+
                     Component.onCompleted: {
                         // Still need to check section type, as this is called for every entry.
                         if (permItem.model.isNotDummy && [
@@ -275,11 +278,13 @@ KCM.ScrollViewKCM {
                         }
                     }
                 }
+
                 QQC2.TextField {
                     visible: permItem.model.isNotDummy && permItem.model.section === FlatpakPermissionsSectionType.Environment
                     text: (permItem.model.isNotDummy && permItem.model.section === FlatpakPermissionsSectionType.Environment)
                         ? permItem.model.effectiveValue : ""
                     enabled: checkBox.checked
+
                     Keys.onReturnPressed: {
                         permsModel.setPermissionValueAtRow(permItem.index, text);
                     }
