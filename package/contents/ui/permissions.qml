@@ -246,6 +246,10 @@ KCM.ScrollViewKCM {
                     permsModel.togglePermissionAtRow(permItem.index);
                     permItem.ListView.view.currentIndex = -1;
                 }
+
+                KCM.SettingHighlighter {
+                    highlight: permItem.model.isEffectiveEnabled !== permItem.model.isDefaultEnabled
+                }
             }
 
             trailing: RowLayout {
@@ -261,6 +265,10 @@ KCM.ScrollViewKCM {
                     model: permItem.model.valuesModel
                     textRole: "display"
                     valueRole: "value"
+
+                    KCM.SettingHighlighter {
+                        highlight: permItem.model.effectiveValue !== permItem.model.defaultValue
+                    }
 
                     onActivated: index => {
                         // Assuming this is only called for appropriate visible entries.
@@ -287,6 +295,10 @@ KCM.ScrollViewKCM {
 
                     Keys.onReturnPressed: {
                         permsModel.setPermissionValueAtRow(permItem.index, text);
+                    }
+
+                    KCM.SettingHighlighter {
+                        highlight: permItem.model.effectiveValue !== permItem.model.defaultValue
                     }
                 }
             }
