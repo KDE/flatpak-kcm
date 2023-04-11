@@ -1050,11 +1050,11 @@ void FlatpakPermissionModel::setReference(FlatpakReference *reference)
     if (reference != m_reference) {
         beginResetModel();
         if (m_reference) {
-            m_reference->setPermsModel(nullptr);
+            m_reference->setPermissionsModel(nullptr);
         }
         m_reference = reference;
         if (m_reference) {
-            m_reference->setPermsModel(this);
+            m_reference->setPermissionsModel(this);
         }
         endResetModel();
         Q_EMIT referenceChanged();

@@ -50,8 +50,8 @@ public:
     QString flatpakName() const;
     QString ref() const;
 
-    FlatpakPermissionModel *permsModel();
-    void setPermsModel(FlatpakPermissionModel *permsModel);
+    FlatpakPermissionModel *permissionsModel();
+    void setPermissionsModel(FlatpakPermissionModel *model);
 
     void load();
     void save();
@@ -78,7 +78,7 @@ private:
     QString m_permissionsFilename;
     QByteArray m_metadata;
 
-    QPointer<FlatpakPermissionModel> m_permsModel;
+    QPointer<FlatpakPermissionModel> m_permissionsModel;
 };
 
 class FlatpakReferencesModel : public QAbstractListModel

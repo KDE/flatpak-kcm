@@ -36,7 +36,7 @@ FlatpakReference::FlatpakReference(FlatpakReferencesModel *parent,
     , m_iconSource(iconSource)
     , m_permissionsFilename(permissionsDirectory)
     , m_metadata(metadata)
-    , m_permsModel(nullptr)
+    , m_permissionsModel(nullptr)
 {
     m_permissionsFilename.append(m_flatpakName);
 
@@ -98,59 +98,59 @@ QString FlatpakReference::ref() const
     return QStringLiteral("app/%1/%2/%3").arg(flatpakName(), arch(), branch());
 }
 
-FlatpakPermissionModel *FlatpakReference::permsModel()
+FlatpakPermissionModel *FlatpakReference::permissionsModel()
 {
-    return m_permsModel;
+    return m_permissionsModel;
 }
 
-void FlatpakReference::setPermsModel(FlatpakPermissionModel *permsModel)
+void FlatpakReference::setPermissionsModel(FlatpakPermissionModel *model)
 {
-    if (permsModel != m_permsModel) {
-        if (m_permsModel) {
-            disconnect(m_permsModel, &FlatpakPermissionModel::referenceChanged, this, &FlatpakReference::needsLoad);
-            disconnect(m_permsModel, &FlatpakPermissionModel::dataChanged, this, &FlatpakReference::settingsChanged);
+    if (model != m_permissionsModel) {
+        if (m_permissionsModel) {
+            disconnect(m_permissionsModel, &FlatpakPermissionModel::referenceChanged, this, &FlatpakReference::needsLoad);
+            disconnect(m_permissionsModel, &FlatpakPermissionModel::dataChanged, this, &FlatpakReference::settingsChanged);
         }
-        m_permsModel = permsModel;
-        if (m_permsModel) {
-            connect(m_permsModel, &FlatpakPermissionModel::referenceChanged, this, &FlatpakReference::needsLoad);
-            connect(m_permsModel, &FlatpakPermissionModel::dataChanged, this, &FlatpakReference::settingsChanged);
+        m_permissionsModel = model;
+        if (m_permissionsModel) {
+            connect(m_permissionsModel, &FlatpakPermissionModel::referenceChanged, this, &FlatpakReference::needsLoad);
+            connect(m_permissionsModel, &FlatpakPermissionModel::dataChanged, this, &FlatpakReference::settingsChanged);
         }
     }
 }
 
 void FlatpakReference::load()
 {
-    if (m_permsModel) {
-        m_permsModel->load();
+    if (m_permissionsModel) {
+        m_permissionsModel->load();
     }
 }
 
 void FlatpakReference::save()
 {
-    if (m_permsModel) {
-        m_permsModel->save();
+    if (m_permissionsModel) {
+        m_permissionsModel->save();
     }
 }
 
 void FlatpakReference::defaults()
 {
-    if (m_permsModel) {
-        m_permsModel->defaults();
+    if (m_permissionsModel) {
+        m_permissionsModel->defaults();
     }
 }
 
 bool FlatpakReference::isSaveNeeded() const
 {
-    if (m_permsModel) {
-        return m_permsModel->isSaveNeeded();
+    if (m_permissionsModel) {
+        return m_permissionsModel->isSaveNeeded();
     }
     return false;
 }
 
 bool FlatpakReference::isDefaults() const
 {
-    if (m_permsModel) {
-        return m_permsModel->isDefaults();
+    if (m_permissionsModel) {
+        return m_permissionsModel->isDefaults();
     }
     return true;
 }
@@ -233,7 +233,7 @@ QHash<int, QByteArray> FlatpakReferencesModel::roleNames() const
     roles[Roles::Name] = "name";
     roles[Roles::Version] = "version";
     roles[Roles::Icon] = "icon";
-    roles[Roles::Ref] = "reference";
+    roles[Roles::Ref] = "ref";
     return roles;
 }
 
