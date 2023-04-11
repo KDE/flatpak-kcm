@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This file is copyright:
 # This file is distributed under the same license as the flatpak-kcm package.
 #
-# Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>, 2022.
+# Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-07 02:03+0000\n"
-"PO-Revision-Date: 2022-09-23 10:12+0200\n"
+"PO-Revision-Date: 2023-04-10 10:54+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
 "Language: pl\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
-"X-Generator: Lokalize 22.04.1\n"
+"X-Generator: Lokalize 22.12.3\n"
 
 #: autotests/flatpakpermissiontest.cpp:386
 #: autotests/flatpakpermissiontest.cpp:613 flatpakpermission.cpp:416
@@ -260,15 +260,12 @@ msgid "Apply Permissions"
 msgstr "Zastosuj uprawnienia"
 
 #: package/contents/ui/main.qml:89
-#, fuzzy, kde-format
-#| msgid ""
-#| "The permissions of this application have been changed. Do you want to "
-#| "apply these changes or discard them?"
+#, kde-format
 msgid ""
 "The permissions of application %1 have been changed. Do you want to apply "
 "these changes or discard them?"
 msgstr ""
-"Uprawnienia tej aplikacji uległy zmianie. Zastosować, czy porzucić te zmiany?"
+"Uprawnienia aplikacji %1 uległy zmianie. Zastosować, czy porzucić te zmiany?"
 
 #: package/contents/ui/permissions.qml:17
 #, kde-format
@@ -316,34 +313,29 @@ msgid "Set Environment Variable"
 msgstr "Ustaw zmienną środowiskową"
 
 #: package/contents/ui/permissions.qml:156
-#, fuzzy, kde-format
-#| msgid "Enter filesystem path..."
+#, kde-format
 msgid "Enter filesystem path…"
-msgstr "Wpisz ścieżkę systemu plików..."
+msgstr "Wpisz ścieżkę systemu plików…"
 
 #: package/contents/ui/permissions.qml:157
-#, fuzzy, kde-format
-#| msgid "Enter session bus name..."
+#, kde-format
 msgid "Enter session bus name…"
-msgstr "Wpisz nazwę szyny sesji..."
+msgstr "Wpisz nazwę szyny sesji…"
 
 #: package/contents/ui/permissions.qml:158
-#, fuzzy, kde-format
-#| msgid "Enter system bus name..."
+#, kde-format
 msgid "Enter system bus name…"
-msgstr "Wpisz nazwę szyny systemu..."
+msgstr "Wpisz nazwę szyny systemu…"
 
 #: package/contents/ui/permissions.qml:159
-#, fuzzy, kde-format
-#| msgid "Enter variable..."
+#, kde-format
 msgid "Enter variable…"
 msgstr "Wpisz zmienną..."
 
 #: package/contents/ui/permissions.qml:182
-#, fuzzy, kde-format
-#| msgid "Enter value..."
+#, kde-format
 msgid "Enter value…"
-msgstr "Wpisz wartość..."
+msgstr "Wprowadź wartość…"
 
 #, fuzzy
 #~| msgid "read/write"
