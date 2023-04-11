@@ -57,7 +57,7 @@ public:
 
 Q_SIGNALS:
     void needsLoad();
-    void needsSaveChanged();
+    void settingsChanged();
 
 private:
     QString m_name;
@@ -92,7 +92,7 @@ public:
 
 Q_SIGNALS:
     void needsLoad();
-    void needsSaveChanged();
+    void settingsChanged();
 
 private:
     QVector<FlatpakReference *> m_references;
