@@ -46,8 +46,8 @@ public:
     QString path() const;
     QByteArray metadata() const;
 
-    FlatpakPermissionModel *permsModel();
-    void setPermsModel(FlatpakPermissionModel *permsModel);
+    FlatpakPermissionModel *permissionsModel();
+    void setPermissionsModel(FlatpakPermissionModel *model);
 
     void load();
     void save();
@@ -67,7 +67,7 @@ private:
     QString m_path;
     QByteArray m_metadata;
 
-    QPointer<FlatpakPermissionModel> m_permsModel;
+    QPointer<FlatpakPermissionModel> m_permissionsModel;
     QPointer<FlatpakReferencesModel> m_refsModel;
 };
 
