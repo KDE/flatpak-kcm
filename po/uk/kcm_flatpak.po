@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-07 02:03+0000\n"
+"POT-Creation-Date: 2023-04-12 02:13+0000\n"
 "PO-Revision-Date: 2023-02-22 08:50+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
@@ -132,7 +132,7 @@ msgstr "Безпосереднє відтворення графіки"
 msgid "Host dev/shm"
 msgstr "dev/shm основної системи"
 
-#: flatpakpermission.cpp:757 flatpakpermission.cpp:1218
+#: flatpakpermission.cpp:757 flatpakpermission.cpp:1219
 #, kde-format
 msgid "Device Access"
 msgstr "Доступ до пристроїв"
@@ -184,67 +184,67 @@ msgstr "Усі бібліотеки, виконувані та двійкові 
 msgid "All System Configurations"
 msgstr "Усі налаштування системи"
 
-#: flatpakpermission.cpp:1208
+#: flatpakpermission.cpp:1209
 #, kde-format
 msgid "Basic Permissions"
 msgstr "Основні права доступу"
 
-#: flatpakpermission.cpp:1210
+#: flatpakpermission.cpp:1211
 #, kde-format
 msgid "Filesystem Access"
 msgstr "Доступ до файлової системи"
 
-#: flatpakpermission.cpp:1212
+#: flatpakpermission.cpp:1213
 #, kde-format
 msgid "Advanced Permissions"
 msgstr "Розширені права доступу"
 
-#: flatpakpermission.cpp:1214
+#: flatpakpermission.cpp:1215
 #, kde-format
 msgid "Subsystems Shared"
 msgstr "Спільні підсистеми"
 
-#: flatpakpermission.cpp:1216
+#: flatpakpermission.cpp:1217
 #, kde-format
 msgid "Sockets"
 msgstr "Сокети"
 
-#: flatpakpermission.cpp:1220
+#: flatpakpermission.cpp:1221
 #, kde-format
 msgid "Features Allowed"
 msgstr "Дозволені можливості"
 
-#: flatpakpermission.cpp:1222
+#: flatpakpermission.cpp:1223
 #, kde-format
 msgid "Session Bus Policy"
 msgstr "Правила доступу до шини сеансу"
 
-#: flatpakpermission.cpp:1224
+#: flatpakpermission.cpp:1225
 #, kde-format
 msgid "System Bus Policy"
 msgstr "Правила доступу до шини системи"
 
-#: flatpakpermission.cpp:1226
+#: flatpakpermission.cpp:1227
 #, kde-format
 msgid "Environment"
 msgstr "Середовище"
 
-#: flatpakpermission.cpp:1243
+#: flatpakpermission.cpp:1244
 #, kde-format
 msgid "Add a new filesystem path"
 msgstr "Додати новий шлях у файловій системі"
 
-#: flatpakpermission.cpp:1245
+#: flatpakpermission.cpp:1246
 #, kde-format
 msgid "Add a new session bus"
 msgstr "Додати нову шину сеансу"
 
-#: flatpakpermission.cpp:1247
+#: flatpakpermission.cpp:1248
 #, kde-format
 msgid "Add a new system bus"
 msgstr "Додати нову шину системи"
 
-#: flatpakpermission.cpp:1249
+#: flatpakpermission.cpp:1250
 #, kde-format
 msgid "Add a new environment variable"
 msgstr "Додати нову змінну середовища"
