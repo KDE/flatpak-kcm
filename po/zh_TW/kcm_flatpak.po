@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-07 02:38+0000\n"
+"POT-Creation-Date: 2023-04-12 02:48+0000\n"
 "PO-Revision-Date: 2023-03-05 15:21+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Chinese <zh-l10n@linux.org.tw>\n"
@@ -131,7 +131,7 @@ msgstr "直接的圖形算繪 (Direct Graphic Rendering)"
 msgid "Host dev/shm"
 msgstr "主機 dev/shm"
 
-#: flatpakpermission.cpp:757 flatpakpermission.cpp:1218
+#: flatpakpermission.cpp:757 flatpakpermission.cpp:1219
 #, kde-format
 msgid "Device Access"
 msgstr "裝置存取權"
@@ -181,67 +181,67 @@ msgstr "所有系統函式庫、執行檔和二進制檔案"
 msgid "All System Configurations"
 msgstr "所有系統組態"
 
-#: flatpakpermission.cpp:1208
+#: flatpakpermission.cpp:1209
 #, kde-format
 msgid "Basic Permissions"
 msgstr "基本權限"
 
-#: flatpakpermission.cpp:1210
+#: flatpakpermission.cpp:1211
 #, kde-format
 msgid "Filesystem Access"
 msgstr "檔案系統存取權"
 
-#: flatpakpermission.cpp:1212
+#: flatpakpermission.cpp:1213
 #, kde-format
 msgid "Advanced Permissions"
 msgstr "進階權限"
 
-#: flatpakpermission.cpp:1214
+#: flatpakpermission.cpp:1215
 #, kde-format
 msgid "Subsystems Shared"
 msgstr "分享的子系統"
 
-#: flatpakpermission.cpp:1216
+#: flatpakpermission.cpp:1217
 #, kde-format
 msgid "Sockets"
 msgstr "Socket"
 
-#: flatpakpermission.cpp:1220
+#: flatpakpermission.cpp:1221
 #, kde-format
 msgid "Features Allowed"
 msgstr "允許的功能"
 
-#: flatpakpermission.cpp:1222
+#: flatpakpermission.cpp:1223
 #, kde-format
 msgid "Session Bus Policy"
 msgstr "工作階段匯流排政策"
 
-#: flatpakpermission.cpp:1224
+#: flatpakpermission.cpp:1225
 #, kde-format
 msgid "System Bus Policy"
 msgstr "系統匯流排政策"
 
-#: flatpakpermission.cpp:1226
+#: flatpakpermission.cpp:1227
 #, kde-format
 msgid "Environment"
 msgstr "環境"
 
-#: flatpakpermission.cpp:1243
+#: flatpakpermission.cpp:1244
 #, kde-format
 msgid "Add a new filesystem path"
 msgstr "新增檔案系統路徑"
 
-#: flatpakpermission.cpp:1245
+#: flatpakpermission.cpp:1246
 #, kde-format
 msgid "Add a new session bus"
 msgstr "新增工作階段匯流排"
 
-#: flatpakpermission.cpp:1247
+#: flatpakpermission.cpp:1248
 #, kde-format
 msgid "Add a new system bus"
 msgstr "新增系統匯流排"
 
-#: flatpakpermission.cpp:1249
+#: flatpakpermission.cpp:1250
 #, kde-format
 msgid "Add a new environment variable"
 msgstr "新增環境變數"

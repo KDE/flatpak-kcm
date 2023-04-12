@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-07 02:38+0000\n"
+"POT-Creation-Date: 2023-04-12 02:48+0000\n"
 "PO-Revision-Date: 2023-02-21 08:50+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -133,7 +133,7 @@ msgstr "Renderització directa dels gràfics"
 msgid "Host dev/shm"
 msgstr "«dev/shm» de l'amfitrió"
 
-#: flatpakpermission.cpp:757 flatpakpermission.cpp:1218
+#: flatpakpermission.cpp:757 flatpakpermission.cpp:1219
 #, kde-format
 msgid "Device Access"
 msgstr "Accés a dispositius"
@@ -185,67 +185,67 @@ msgstr "Totes les biblioteques, executables i binaris del sistema"
 msgid "All System Configurations"
 msgstr "Totes les configuracions del sistema"
 
-#: flatpakpermission.cpp:1208
+#: flatpakpermission.cpp:1209
 #, kde-format
 msgid "Basic Permissions"
 msgstr "Permisos bàsics"
 
-#: flatpakpermission.cpp:1210
+#: flatpakpermission.cpp:1211
 #, kde-format
 msgid "Filesystem Access"
 msgstr "Accés al sistema de fitxers"
 
-#: flatpakpermission.cpp:1212
+#: flatpakpermission.cpp:1213
 #, kde-format
 msgid "Advanced Permissions"
 msgstr "Permisos avançats"
 
-#: flatpakpermission.cpp:1214
+#: flatpakpermission.cpp:1215
 #, kde-format
 msgid "Subsystems Shared"
 msgstr "Subsistemes compartits"
 
-#: flatpakpermission.cpp:1216
+#: flatpakpermission.cpp:1217
 #, kde-format
 msgid "Sockets"
 msgstr "Sòcols"
 
-#: flatpakpermission.cpp:1220
+#: flatpakpermission.cpp:1221
 #, kde-format
 msgid "Features Allowed"
 msgstr "Característiques permeses"
 
-#: flatpakpermission.cpp:1222
+#: flatpakpermission.cpp:1223
 #, kde-format
 msgid "Session Bus Policy"
 msgstr "Política del bus de sessió"
 
-#: flatpakpermission.cpp:1224
+#: flatpakpermission.cpp:1225
 #, kde-format
 msgid "System Bus Policy"
 msgstr "Política del bus de sistema"
 
-#: flatpakpermission.cpp:1226
+#: flatpakpermission.cpp:1227
 #, kde-format
 msgid "Environment"
 msgstr "Entorn"
 
-#: flatpakpermission.cpp:1243
+#: flatpakpermission.cpp:1244
 #, kde-format
 msgid "Add a new filesystem path"
 msgstr "Afegeix un camí nou del sistema de fitxers"
 
-#: flatpakpermission.cpp:1245
+#: flatpakpermission.cpp:1246
 #, kde-format
 msgid "Add a new session bus"
 msgstr "Afegeix un bus nou de sessió"
 
-#: flatpakpermission.cpp:1247
+#: flatpakpermission.cpp:1248
 #, kde-format
 msgid "Add a new system bus"
 msgstr "Afegeix un bus nou de sistema"
 
-#: flatpakpermission.cpp:1249
+#: flatpakpermission.cpp:1250
 #, kde-format
 msgid "Add a new environment variable"
 msgstr "Afegeix una variable d'entorn nova"
