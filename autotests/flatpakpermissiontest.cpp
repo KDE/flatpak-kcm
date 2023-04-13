@@ -740,7 +740,6 @@ private Q_SLOTS:
 
         QVERIFY(!model.isEnvironmentVariableNameValid(QString()));
         QVERIFY(!model.isEnvironmentVariableNameValid(QLatin1String("ABC=DEF")));
-        QEXPECT_FAIL("", "Environment variables are not loaded yet.", Continue);
         QVERIFY(model.permissionExists(FlatpakPermissionsSectionType::Environment, QLatin1String("EXAMPLE_NAME")));
         QVERIFY(model.isEnvironmentVariableNameValid(QLatin1String("EXAMPLE_NAME")));
         QVERIFY(model.isEnvironmentVariableNameValid(QLatin1String("whatever")));
