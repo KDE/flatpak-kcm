@@ -194,9 +194,6 @@ public:
      */
     static std::optional<FlatpakFilesystemsEntry> parse(QStringView name, AccessMode accessMode);
 
-    // TODO: Remove this method. This is a temporary hack to avoid too much porting at once.
-    static QString accessModeToSuffixString(AccessMode mode);
-
     /**
      * Formatted prefix and path only, without access mode prefixes or suffixes. Suitable for comparison.
      *
@@ -320,10 +317,8 @@ public:
          * Predefined resources come with translated description.
          */
         // TODO: Instead of unchecking there should be more obvious UI. For Bus
-        // type, there's a "none" value. For environment we should implement
-        // "unset-environment" category. For filesystem paths it is not
-        // specified, so we probably should remove the ability to "uncheck"
-        // them, and show a "Remove" button instead.
+        // type, there's a "none" policy. For environment we should implement
+        // "unset-environment" category.
         BuiltIn,
         /**
          * User-defined permissions are resources that user has manually added
@@ -425,8 +420,6 @@ public:
      * would mark them for removal but only if they are disabled (not present)
      * in defaults.
      */
-    // TODO: What should it do for built-in permissions of other ValueType
-    // types? It doesn't make much sense.
     bool canBeDisabled() const;
     bool isEffectiveEnabled() const;
     void setEffectiveEnabled(bool enabled);
@@ -438,10 +431,7 @@ public:
      */
     const Variant defaultValue() const;
 
-    // TODO: Remove this method.
-    const Variant overrideValue() const;
-
-    /** Set user override */
+    /** Set user override. Affects isSaveNeeded() state. */
     void setOverrideValue(const Variant &value);
 
     /**
@@ -512,7 +502,6 @@ public:
         Name,
         Description,
         //
-        IsSimple,
         IsNotDummy,
         //
         CanBeDisabled,
@@ -552,8 +541,6 @@ public:
      *
      * Applicable for ValueType::Filesystems and ValueType::Bus only.
      */
-    // TODO: It should be a model that also contains detailed description
-    // (help text) and untranslated value identifier.
     Q_INVOKABLE static PolicyChoicesModel *valuesModelForSectionType(int /*FlatpakPermissionsSectionType::Type*/ rawSection);
     Q_INVOKABLE static PolicyChoicesModel *valuesModelForFilesystemsSection();
     Q_INVOKABLE static PolicyChoicesModel *valuesModelForBusSections();
