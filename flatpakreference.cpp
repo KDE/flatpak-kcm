@@ -109,11 +109,15 @@ void FlatpakReference::setPermissionsModel(FlatpakPermissionModel *model)
         if (m_permissionsModel) {
             disconnect(m_permissionsModel, &FlatpakPermissionModel::referenceChanged, this, &FlatpakReference::needsLoad);
             disconnect(m_permissionsModel, &FlatpakPermissionModel::dataChanged, this, &FlatpakReference::settingsChanged);
+            disconnect(m_permissionsModel, &FlatpakPermissionModel::rowsInserted, this, &FlatpakReference::settingsChanged);
+            disconnect(m_permissionsModel, &FlatpakPermissionModel::rowsRemoved, this, &FlatpakReference::settingsChanged);
         }
         m_permissionsModel = model;
         if (m_permissionsModel) {
             connect(m_permissionsModel, &FlatpakPermissionModel::referenceChanged, this, &FlatpakReference::needsLoad);
             connect(m_permissionsModel, &FlatpakPermissionModel::dataChanged, this, &FlatpakReference::settingsChanged);
+            connect(m_permissionsModel, &FlatpakPermissionModel::rowsInserted, this, &FlatpakReference::settingsChanged);
+            connect(m_permissionsModel, &FlatpakPermissionModel::rowsRemoved, this, &FlatpakReference::settingsChanged);
         }
     }
 }
