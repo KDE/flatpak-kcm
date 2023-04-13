@@ -1,4 +1,5 @@
 # SPDX-FileCopyrightText: 2022 Suhaas Joshi <joshiesuhaas0@gmail.com>
+# SPDX-FileCopyrightText: 2023 ivan tkachenko <me@ratijas.tk>
 #
 # SPDX-License-Identifier: BSD-2-Clause
 
