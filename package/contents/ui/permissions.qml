@@ -275,7 +275,7 @@ KCM.ScrollViewKCM {
                         ? permItem.model.effectiveValue : ""
                     enabled: checkBox.checked
 
-                    Keys.onReturnPressed: {
+                    onTextEdited: {
                         permsModel.setPermissionValueAtRow(permItem.index, text);
                     }
 

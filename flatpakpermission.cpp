@@ -853,9 +853,8 @@ void FlatpakPermissionModel::loadDefaultValues()
     }
     /* SYSTEM BUS category */
 
-    // Disabled because BUG 465502
-    if (false) {
-        /* ENVIRONMENT category */
+    /* ENVIRONMENT category */
+    {
         category = QLatin1String(FLATPAK_METADATA_GROUP_ENVIRONMENT);
         const auto group = parser.group(category);
         if (const auto keys = group.keyList(); !keys.isEmpty()) {
@@ -866,8 +865,8 @@ void FlatpakPermissionModel::loadDefaultValues()
         } else {
             m_permissions.append(FlatpakPermission(FlatpakPermissionsSectionType::Environment));
         }
-        /* ENVIRONMENT category */
-    } // end of if (false)
+    }
+    /* ENVIRONMENT category */
 }
 
 void FlatpakPermissionModel::loadCurrentValues()
@@ -988,10 +987,6 @@ void FlatpakPermissionModel::loadCurrentValues()
         std::make_tuple(FlatpakPermissionsSectionType::Environment, QLatin1String(FLATPAK_METADATA_GROUP_ENVIRONMENT)),
     };
     for (const auto &[section, category] : categories) {
-        if (section == FlatpakPermissionsSectionType::Environment) {
-            // Disabled because BUG 465502
-            continue;
-        }
         const auto group = parser.group(category);
         if (!group.exists()) {
             continue;
