@@ -272,21 +272,6 @@ std::optional<FlatpakFilesystemsEntry> FlatpakFilesystemsEntry::parse(QStringVie
     return std::nullopt;
 }
 
-QString FlatpakFilesystemsEntry::accessModeToSuffixString(AccessMode mode)
-{
-    switch (mode) {
-    case AccessMode::ReadOnly:
-        return SUFFIX_RO;
-    case AccessMode::ReadWrite:
-        return {};
-    case AccessMode::Create:
-        return SUFFIX_CREATE;
-    case AccessMode::Deny:
-        break;
-    }
-    return {};
-}
-
 QString FlatpakFilesystemsEntry::name() const
 {
     const auto it = std::find_if(s_filesystems.begin(), s_filesystems.end(), [this](const TableEntry &filesystem) {
@@ -543,11 +528,6 @@ const FlatpakPermission::Variant FlatpakPermission::defaultValue() const
     return m_defaultValue;
 }
 
-const FlatpakPermission::Variant FlatpakPermission::overrideValue() const
-{
-    return m_overrideValue;
-}
-
 void FlatpakPermission::setOverrideValue(const Variant &value)
 {
     m_overrideValue = value;
@@ -655,8 +635,6 @@ QVariant FlatpakPermissionModel::data(const QModelIndex &index, int role) const
     case Roles::Description:
         return permission.description();
     //
-    case Roles::IsSimple:
-        return permission.valueType() == FlatpakPermission::ValueType::Simple;
     case Roles::IsNotDummy:
         return permission.originType() != FlatpakPermission::OriginType::Dummy;
     //
@@ -686,7 +664,6 @@ QHash<int, QByteArray> FlatpakPermissionModel::roleNames() const
     roles[Roles::Name] = "name";
     roles[Roles::Description] = "description";
     //
-    roles[Roles::IsSimple] = "isSimple";
     roles[Roles::IsNotDummy] = "isNotDummy";
     //
     roles[Roles::CanBeDisabled] = "canBeDisabled";
