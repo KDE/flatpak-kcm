@@ -759,7 +759,7 @@ void FlatpakPermissionModel::loadDefaultValues()
     std::optional<FlatpakFilesystemsEntry::AccessMode> hostOsVal = std::nullopt;
     std::optional<FlatpakFilesystemsEntry::AccessMode> hostEtcVal = std::nullopt;
 
-    QVector<FlatpakPermission> nonStandardFilesystems;
+    QVector<FlatpakFilesystemsEntry> nonStandardFilesystems;
 
     static const auto ignoredFilesystems = QList<FlatpakFilesystemsEntry>{
         FlatpakFilesystemsEntry(FlatpakFilesystemsEntry::FilesystemPrefix::XdgConfig,
@@ -786,9 +786,7 @@ void FlatpakPermissionModel::loadDefaultValues()
             hostEtcVal = filesystem.mode();
             break;
         default: {
-            const auto name = filesystem.name();
-            const auto accessMode = filesystem.mode();
-            nonStandardFilesystems.append(FlatpakPermission(FlatpakPermissionsSectionType::Filesystems, name, category, name, true, accessMode));
+            nonStandardFilesystems.append(filesystem);
             break;
         }
         }
@@ -809,7 +807,9 @@ void FlatpakPermissionModel::loadDefaultValues()
     insertStandardFilesystemsEntry(QStringLiteral("host-etc"), i18n("All System Configurations"), hostEtcVal);
 
     for (const auto &filesystem : std::as_const(nonStandardFilesystems)) {
-        m_permissions.insert(basicIndex, filesystem);
+        const auto name = filesystem.name();
+        const auto accessMode = filesystem.mode();
+        m_permissions.insert(basicIndex, FlatpakPermission(FlatpakPermissionsSectionType::Filesystems, name, category, name, true, accessMode));
         basicIndex += 1;
     }
     /* FILESYSTEM category */
