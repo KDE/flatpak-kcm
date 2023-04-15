@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-12 02:13+0000\n"
+"POT-Creation-Date: 2023-04-15 02:18+0000\n"
 "PO-Revision-Date: 2023-02-22 08:50+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
@@ -18,233 +18,233 @@ msgstr ""
 "%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Lokalize 20.12.0\n"
 
-#: autotests/flatpakpermissiontest.cpp:386
-#: autotests/flatpakpermissiontest.cpp:613 flatpakpermission.cpp:416
+#: autotests/flatpakpermissiontest.cpp:387
+#: autotests/flatpakpermissiontest.cpp:614 flatpakpermission.cpp:402
 #, kde-format
 msgid "None"
 msgstr "Немає"
 
-#: autotests/flatpakpermissiontest.cpp:387
-#: autotests/flatpakpermissiontest.cpp:616 flatpakpermission.cpp:417
+#: autotests/flatpakpermissiontest.cpp:388
+#: autotests/flatpakpermissiontest.cpp:617 flatpakpermission.cpp:403
 #, kde-format
 msgid "see"
 msgstr "перегляд"
 
-#: autotests/flatpakpermissiontest.cpp:388
-#: autotests/flatpakpermissiontest.cpp:614 flatpakpermission.cpp:418
+#: autotests/flatpakpermissiontest.cpp:389
+#: autotests/flatpakpermissiontest.cpp:615 flatpakpermission.cpp:404
 #, kde-format
 msgid "talk"
 msgstr "talk"
 
-#: autotests/flatpakpermissiontest.cpp:389
-#: autotests/flatpakpermissiontest.cpp:615 flatpakpermission.cpp:419
+#: autotests/flatpakpermissiontest.cpp:390
+#: autotests/flatpakpermissiontest.cpp:616 flatpakpermission.cpp:405
 #, kde-format
 msgid "own"
 msgstr "власність"
 
-#: autotests/flatpakpermissiontest.cpp:603 flatpakpermission.cpp:407
+#: autotests/flatpakpermissiontest.cpp:604 flatpakpermission.cpp:393
 #, kde-format
 msgid "OFF"
 msgstr "Вимкнено"
 
-#: autotests/flatpakpermissiontest.cpp:604 flatpakpermission.cpp:405
+#: autotests/flatpakpermissiontest.cpp:605 flatpakpermission.cpp:391
 #, kde-format
 msgid "read/write"
 msgstr "читання-запис"
 
-#: autotests/flatpakpermissiontest.cpp:605 flatpakpermission.cpp:404
+#: autotests/flatpakpermissiontest.cpp:606 flatpakpermission.cpp:390
 #, kde-format
 msgid "read-only"
 msgstr "лише читання"
 
-#: autotests/flatpakpermissiontest.cpp:606 flatpakpermission.cpp:406
+#: autotests/flatpakpermissiontest.cpp:607 flatpakpermission.cpp:392
 #, kde-format
 msgid "create"
 msgstr "створити"
 
-#: flatpakpermission.cpp:733
+#: flatpakpermission.cpp:711
 #, kde-format
 msgid "Internet Connection"
 msgstr "інтернет-з'єднання"
 
-#: flatpakpermission.cpp:734
+#: flatpakpermission.cpp:712
 #, kde-format
 msgid "Inter-process Communication"
 msgstr "Обмін даними між процесами"
 
-#: flatpakpermission.cpp:740
+#: flatpakpermission.cpp:718
 #, kde-format
 msgid "X11 Windowing System"
 msgstr "Керування вікнами X11"
 
-#: flatpakpermission.cpp:741
+#: flatpakpermission.cpp:719
 #, kde-format
 msgid "Wayland Windowing System"
 msgstr "Керування вікнами Wayland"
 
-#: flatpakpermission.cpp:742
+#: flatpakpermission.cpp:720
 #, kde-format
 msgid "Fallback to X11 Windowing System"
 msgstr "Резервне керування вікнами X11"
 
-#: flatpakpermission.cpp:743
+#: flatpakpermission.cpp:721
 #, kde-format
 msgid "Pulseaudio Sound Server"
 msgstr "Звуковий сервер PulseAudio"
 
-#: flatpakpermission.cpp:744
+#: flatpakpermission.cpp:722
 #, kde-format
 msgid "Session Bus Access"
 msgstr "Доступ до шини сеансу"
 
-#: flatpakpermission.cpp:745
+#: flatpakpermission.cpp:723
 #, kde-format
 msgid "System Bus Access"
 msgstr "Доступ до шини системи"
 
-#: flatpakpermission.cpp:746
+#: flatpakpermission.cpp:724
 #, kde-format
 msgid "Remote Login Access"
 msgstr "Доступ до віддаленого входу"
 
-#: flatpakpermission.cpp:747
+#: flatpakpermission.cpp:725
 #, kde-format
 msgid "Smart Card Access"
 msgstr "Доступ до карток пам'яті"
 
-#: flatpakpermission.cpp:748
+#: flatpakpermission.cpp:726
 #, kde-format
 msgid "Print System Access"
 msgstr "Доступ до системи друку"
 
-#: flatpakpermission.cpp:754
+#: flatpakpermission.cpp:732
 #, kde-format
 msgid "Kernel-based Virtual Machine Access"
 msgstr "Доступ до віртуальних машин на основі ядра"
 
-#: flatpakpermission.cpp:755
+#: flatpakpermission.cpp:733
 #, kde-format
 msgid "Direct Graphic Rendering"
 msgstr "Безпосереднє відтворення графіки"
 
-#: flatpakpermission.cpp:756
+#: flatpakpermission.cpp:734
 #, kde-format
 msgid "Host dev/shm"
 msgstr "dev/shm основної системи"
 
-#: flatpakpermission.cpp:757 flatpakpermission.cpp:1219
+#: flatpakpermission.cpp:735 flatpakpermission.cpp:1197
 #, kde-format
 msgid "Device Access"
 msgstr "Доступ до пристроїв"
 
-#: flatpakpermission.cpp:763
+#: flatpakpermission.cpp:741
 #, kde-format
 msgid "System Calls by Development Tools"
 msgstr "Системні виклики інструментів розробника"
 
-#: flatpakpermission.cpp:764
+#: flatpakpermission.cpp:742
 #, kde-format
 msgid "Run Multiarch/Multilib Binaries"
 msgstr "Виконання мультиархітектурних/мультибібліотечних бінарних файлів"
 
-#: flatpakpermission.cpp:765
+#: flatpakpermission.cpp:743
 #, kde-format
 msgid "Bluetooth"
 msgstr "Bluetooth"
 
-#: flatpakpermission.cpp:766
+#: flatpakpermission.cpp:744
 #, kde-format
 msgid "Canbus Socket Access"
 msgstr "Доступ до сокета canbus"
 
-#: flatpakpermission.cpp:769
+#: flatpakpermission.cpp:747
 #, kde-format
 msgid "Share dev/shm across all instances of an app per user ID"
 msgstr ""
 "Спільне використання dev/shm усіма екземплярами програми з одним "
 "ідентифікатором користувача"
 
-#: flatpakpermission.cpp:828
+#: flatpakpermission.cpp:806
 #, kde-format
 msgid "All User Files"
 msgstr "Усі файли користувача"
 
-#: flatpakpermission.cpp:829
+#: flatpakpermission.cpp:807
 #, kde-format
 msgid "All System Files"
 msgstr "Усі файли системи"
 
-#: flatpakpermission.cpp:830
+#: flatpakpermission.cpp:808
 #, kde-format
 msgid "All System Libraries, Executables and Binaries"
 msgstr "Усі бібліотеки, виконувані та двійкові файли системи"
 
-#: flatpakpermission.cpp:831
+#: flatpakpermission.cpp:809
 #, kde-format
 msgid "All System Configurations"
 msgstr "Усі налаштування системи"
 
-#: flatpakpermission.cpp:1209
+#: flatpakpermission.cpp:1187
 #, kde-format
 msgid "Basic Permissions"
 msgstr "Основні права доступу"
 
-#: flatpakpermission.cpp:1211
+#: flatpakpermission.cpp:1189
 #, kde-format
 msgid "Filesystem Access"
 msgstr "Доступ до файлової системи"
 
-#: flatpakpermission.cpp:1213
+#: flatpakpermission.cpp:1191
 #, kde-format
 msgid "Advanced Permissions"
 msgstr "Розширені права доступу"
 
-#: flatpakpermission.cpp:1215
+#: flatpakpermission.cpp:1193
 #, kde-format
 msgid "Subsystems Shared"
 msgstr "Спільні підсистеми"
 
-#: flatpakpermission.cpp:1217
+#: flatpakpermission.cpp:1195
 #, kde-format
 msgid "Sockets"
 msgstr "Сокети"
 
-#: flatpakpermission.cpp:1221
+#: flatpakpermission.cpp:1199
 #, kde-format
 msgid "Features Allowed"
 msgstr "Дозволені можливості"
 
-#: flatpakpermission.cpp:1223
+#: flatpakpermission.cpp:1201
 #, kde-format
 msgid "Session Bus Policy"
 msgstr "Правила доступу до шини сеансу"
 
-#: flatpakpermission.cpp:1225
+#: flatpakpermission.cpp:1203
 #, kde-format
 msgid "System Bus Policy"
 msgstr "Правила доступу до шини системи"
 
-#: flatpakpermission.cpp:1227
+#: flatpakpermission.cpp:1205
 #, kde-format
 msgid "Environment"
 msgstr "Середовище"
 
-#: flatpakpermission.cpp:1244
+#: flatpakpermission.cpp:1222
 #, kde-format
 msgid "Add a new filesystem path"
 msgstr "Додати новий шлях у файловій системі"
 
-#: flatpakpermission.cpp:1246
+#: flatpakpermission.cpp:1224
 #, kde-format
 msgid "Add a new session bus"
 msgstr "Додати нову шину сеансу"
 
-#: flatpakpermission.cpp:1248
+#: flatpakpermission.cpp:1226
 #, kde-format
 msgid "Add a new system bus"
 msgstr "Додати нову шину системи"
 
-#: flatpakpermission.cpp:1250
+#: flatpakpermission.cpp:1228
 #, kde-format
 msgid "Add a new environment variable"
 msgstr "Додати нову змінну середовища"
