@@ -272,7 +272,9 @@ msgstr "Права доступа"
 #: package/contents/ui/permissions.qml:23
 #, kde-format
 msgid "Select an application from the list to view its permissions here"
-msgstr "Для просмотра прав выберите приложение из списка"
+msgstr ""
+"Для просмотра прав выберите приложение из спискаВыберите приложение из "
+"списка для просмотра предоставленных ему разрешений"
 
 #: package/contents/ui/permissions.qml:60
 #, kde-format
