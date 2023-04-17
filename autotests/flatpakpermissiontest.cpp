@@ -660,6 +660,48 @@ private Q_SLOTS:
         const KConfig expected(QFINDTESTDATA("fixtures/overrides.out/com.example.unparsable.filesystems"));
         QVERIFY(operatorFlatpakConfigEquals(actual, expected));
     }
+
+    void testDefaultHomeFilesystem()
+    {
+        FlatpakReferencesModel referencesModel;
+        QFile metadataFile(QFINDTESTDATA("fixtures/metadata/com.example.home.filesystems"));
+        QVERIFY(metadataFile.open(QFile::ReadOnly));
+        FlatpakReference reference(&referencesModel,
+                                   "com.example.home.filesystems",
+                                   "x86_64",
+                                   "stable",
+                                   "0.0.24",
+                                   "Default Home Filesystems",
+                                   QFINDTESTDATA("fixtures/overrides/"),
+                                   QUrl(),
+                                   metadataFile.readAll());
+        FlatpakPermissionModel model;
+        model.setReference(&reference);
+        model.load();
+
+        int dConfIndex = -1;
+        int homeIndex = -1;
+
+        for (int i = 0; i < model.rowCount(); i++) {
+            const auto section = model.data(model.index(i), FlatpakPermissionModel::Section).value<FlatpakPermissionsSectionType::Type>();
+            const auto name = model.data(model.index(i), FlatpakPermissionModel::Name).toString();
+
+            if (section == FlatpakPermissionsSectionType::Filesystems) {
+                const auto value = model.data(model.index(i), FlatpakPermissionModel::DefaultValue).value<FlatpakFilesystemsEntry::AccessMode>();
+
+                if (name.contains(QLatin1String("dconf"))) {
+                    dConfIndex = i;
+                    QCOMPARE(value, FlatpakFilesystemsEntry::AccessMode::ReadWrite);
+                } else if (name == QLatin1String("home")) {
+                    homeIndex = i;
+                    QCOMPARE(value, FlatpakFilesystemsEntry::AccessMode::ReadOnly);
+                }
+            }
+        }
+
+        QVERIFY(dConfIndex != -1);
+        QVERIFY(homeIndex != -1);
+    }
 };
 
 QTEST_MAIN(FlatpakPermissionModelTest)

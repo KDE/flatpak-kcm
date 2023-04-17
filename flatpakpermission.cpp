@@ -772,24 +772,25 @@ void FlatpakPermissionModel::loadDefaultValues()
             continue;
         }
 
-        switch (filesystem.prefix()) {
-        case FlatpakFilesystemsEntry::FilesystemPrefix::Home:
-            homeVal = filesystem.mode();
-            break;
-        case FlatpakFilesystemsEntry::FilesystemPrefix::Host:
-            hostVal = filesystem.mode();
-            break;
-        case FlatpakFilesystemsEntry::FilesystemPrefix::HostOs:
-            hostOsVal = filesystem.mode();
-            break;
-        case FlatpakFilesystemsEntry::FilesystemPrefix::HostEtc:
-            hostEtcVal = filesystem.mode();
-            break;
-        default: {
-            nonStandardFilesystems.append(filesystem);
-            break;
+        if (filesystem.path().isEmpty()) {
+            switch (filesystem.prefix()) {
+            case FlatpakFilesystemsEntry::FilesystemPrefix::Home:
+                homeVal = filesystem.mode();
+                continue;
+            case FlatpakFilesystemsEntry::FilesystemPrefix::Host:
+                hostVal = filesystem.mode();
+                continue;
+            case FlatpakFilesystemsEntry::FilesystemPrefix::HostOs:
+                hostOsVal = filesystem.mode();
+                continue;
+            case FlatpakFilesystemsEntry::FilesystemPrefix::HostEtc:
+                hostEtcVal = filesystem.mode();
+                continue;
+            default:
+                break;
+            }
         }
-        }
+        nonStandardFilesystems.append(filesystem);
     }
 
     const auto insertStandardFilesystemsEntry =
