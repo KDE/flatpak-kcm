@@ -341,9 +341,3 @@ msgstr "Skriv inn variabel …"
 #, kde-format
 msgid "Enter value…"
 msgstr "Skriv inn verdi …"
-
-#~ msgid "read-write"
-#~ msgstr "lesa/skriva"
-
-#~ msgid "=\n"
-#~ msgstr "=\n"
