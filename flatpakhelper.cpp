@@ -10,8 +10,11 @@
 #include <QFileInfo>
 #include <QStandardPaths>
 
+#include <gio/gio.h>
+
 namespace FlatpakHelper
 {
+
 QString permDataFilePath()
 {
     QString userPath = QString::fromStdString(qgetenv("FLATPAK_USER_DIR").toStdString());
@@ -60,4 +63,17 @@ QString iconPath(const QString &name, const QString &id, const QString &appBaseP
     return dir.absoluteFilePath(file);
 }
 
+bool verifyDBusName(QStringView name)
+{
+    if (name.endsWith(QLatin1String(".*"))) {
+        name.chop(2);
+        name = name.mid(-2);
+    }
+
+    const auto ownedName = name.toString();
+    const auto arrayName = ownedName.toUtf8();
+    const auto cName = arrayName.constData();
+
+    return g_dbus_is_name(cName) && !g_dbus_is_unique_name(cName);
+}
 }

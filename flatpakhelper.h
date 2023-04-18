@@ -13,6 +13,11 @@
 
 namespace FlatpakHelper
 {
+
 QString permDataFilePath();
+
 QString iconPath(const QString &name, const QString &id, const QString &appBasePath);
+
+// Port of flatpak_verify_dbus_name static/internal function.
+bool verifyDBusName(QStringView name);
 }

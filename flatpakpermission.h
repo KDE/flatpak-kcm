@@ -548,6 +548,15 @@ public:
     Q_INVOKABLE static QString sectionHeaderForSectionType(int /*FlatpakPermissionsSectionType::Type*/ rawSection);
     Q_INVOKABLE static QString sectionAddButtonToolTipTextForSectionType(int /*FlatpakPermissionsSectionType::Type*/ rawSection);
 
+    Q_INVOKABLE bool permissionExists(FlatpakPermissionsSectionType::Type section, const QString &name) const;
+
+    /**
+     * Validators to check that names comply with section-specific rules.
+     */
+    Q_INVOKABLE static bool isFilesystemNameValid(const QString &name);
+    Q_INVOKABLE static bool isDBusServiceNameValid(const QString &name);
+    Q_INVOKABLE static bool isEnvironmentVariableNameValid(const QString &name);
+
 public Q_SLOTS:
     void togglePermissionAtRow(int row);
     void setPermissionValueAtRow(int row, const QVariant &newValue);
@@ -558,7 +567,6 @@ Q_SIGNALS:
     void showAdvancedChanged();
 
 private:
-    bool permissionExists(FlatpakPermissionsSectionType::Type section, const QString &name) const;
     int findIndexToInsertRowAndRemoveDummyRowIfNeeded(FlatpakPermissionsSectionType::Type section, bool emitModelSignals);
 
     void writeToFile() const;
@@ -568,4 +576,6 @@ private:
     QHash<QString, QStringList> m_unparsableEntriesByCategory;
     QPointer<FlatpakReference> m_reference;
     bool m_showAdvanced;
+
+    friend class FlatpakPermissionModelTest;
 };
