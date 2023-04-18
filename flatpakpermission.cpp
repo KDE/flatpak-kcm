@@ -529,6 +529,11 @@ const FlatpakPermission::Variant FlatpakPermission::defaultValue() const
     return m_defaultValue;
 }
 
+void FlatpakPermission::setDefaultValue(const Variant &value)
+{
+    m_defaultValue = value;
+}
+
 void FlatpakPermission::setOverrideValue(const Variant &value)
 {
     m_overrideValue = value;
@@ -1102,8 +1107,12 @@ void FlatpakPermissionModel::save()
         permission.setOverrideEnabled(permission.isEffectiveEnabled());
         if (permission.valueType() != FlatpakPermission::ValueType::Simple) {
             permission.setOverrideValue(permission.effectiveValue());
+            if (!permission.isDefaultEnabled()) {
+                permission.setDefaultValue(permission.effectiveValue());
+            }
         }
     }
+    Q_EMIT dataChanged(index(0), index(rowCount() - 1), {Roles::DefaultValue});
     writeToFile();
 }
 

@@ -425,11 +425,14 @@ public:
     void setEffectiveEnabled(bool enabled);
 
     /**
-     * System default value for this permission. It can not be modified.
+     * System default value for this permission. It can only be modified for
+     * entries which are disabled (not present) by default.
      *
      * Applicable for any permissions other than ValueType::Simple.
      */
     const Variant defaultValue() const;
+
+    void setDefaultValue(const Variant &value);
 
     /** Set user override. Affects isSaveNeeded() state. */
     void setOverrideValue(const Variant &value);
