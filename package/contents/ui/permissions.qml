@@ -198,9 +198,43 @@ KCM.ScrollViewKCM {
                         }
                     }
 
+                    function acceptableInput() {
+                        const section = sectionDelegate.sectionType;
+                        const name = nameField.text;
+
+                        if (permsModel.permissionExists(section, name)) {
+                            return false;
+                        }
+
+                        switch (section) {
+                        case FlatpakPermissionsSectionType.Filesystems:
+                            return permsModel.isFilesystemNameValid(name);
+                        case FlatpakPermissionsSectionType.SessionBus:
+                        case FlatpakPermissionsSectionType.SystemBus:
+                            return permsModel.isDBusServiceNameValid(name);
+                        case FlatpakPermissionsSectionType.Environment:
+                            return permsModel.isEnvironmentVariableNameValid(name);
+                        default:
+                            return false;
+                        }
+                    }
+
+                    onAboutToShow: {
+                        nameField.text = "";
+                        if (sectionDelegate.sectionType !== FlatpakPermissionsSectionType.Environment) {
+                            valueBox.currentIndex = 0;
+                        }
+                        valueField.text = "";
+                    }
+
                     onAccepted: {
                         const value = getValue();
                         permsModel.addUserEnteredPermission(sectionDelegate.sectionType, nameField.text, value);
+                    }
+
+                    Component.onCompleted: {
+                        const ok = standardButton(QQC2.Dialog.Ok);
+                        ok.enabled = Qt.binding(() => acceptableInput());
                     }
                 }
             }

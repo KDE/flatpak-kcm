@@ -1338,8 +1338,17 @@ void FlatpakPermissionModel::addUserEnteredPermission(int /*FlatpakPermissionsSe
     QString category;
     FlatpakPermission::Variant variant;
 
+    if (permissionExists(section, name)) {
+        qWarning() << "Tried to add duplicate entry" << section << name;
+        return;
+    }
+
     switch (section) {
     case FlatpakPermissionsSectionType::Filesystems:
+        if (!isFilesystemNameValid(name)) {
+            qWarning() << "Tried to add Filesystem entry with invalid name:" << name;
+            return;
+        }
         if (!value.canConvert<FlatpakFilesystemsEntry::AccessMode>()) {
             qWarning() << "Tried to add Filesystem entry with wrong data type:" << value;
             return;
@@ -1349,6 +1358,10 @@ void FlatpakPermissionModel::addUserEnteredPermission(int /*FlatpakPermissionsSe
         break;
     case FlatpakPermissionsSectionType::SessionBus:
     case FlatpakPermissionsSectionType::SystemBus:
+        if (!isDBusServiceNameValid(name)) {
+            qWarning() << "Tried to add D-Bus entry with invalid service name or prefix:" << name;
+            return;
+        }
         if (!value.canConvert<FlatpakPolicy>()) {
             qWarning() << "Wrong data type assigned to D-Bus entry:" << value;
             return;
@@ -1359,6 +1372,10 @@ void FlatpakPermissionModel::addUserEnteredPermission(int /*FlatpakPermissionsSe
         variant = value.value<FlatpakPolicy>();
         break;
     case FlatpakPermissionsSectionType::Environment:
+        if (!isEnvironmentVariableNameValid(name)) {
+            qWarning() << "Tried to add Environment entry with invalid name:" << name;
+            return;
+        }
         if (!value.canConvert<QString>()) {
             qWarning() << "Wrong data type assigned to Environment entry:" << value;
             return;
