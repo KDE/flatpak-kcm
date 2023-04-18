@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-15 02:18+0000\n"
+"POT-Creation-Date: 2023-04-18 02:16+0000\n"
 "PO-Revision-Date: 2023-02-25 23:51+0100\n"
 "Last-Translator: Jannick Kuhr <opensource@kuhr.org>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Lokalize 22.12.2\n"
 
 #: autotests/flatpakpermissiontest.cpp:387
@@ -165,22 +165,22 @@ msgstr ""
 "dev/shm über alle Instanzen einer Anwendung per Benutzerkennung gemeinsam "
 "nutzen"
 
-#: flatpakpermission.cpp:806
+#: flatpakpermission.cpp:804
 #, kde-format
 msgid "All User Files"
 msgstr "Alle Benutzerdateien"
 
-#: flatpakpermission.cpp:807
+#: flatpakpermission.cpp:805
 #, kde-format
 msgid "All System Files"
 msgstr "Alle Systemdateien"
 
-#: flatpakpermission.cpp:808
+#: flatpakpermission.cpp:806
 #, kde-format
 msgid "All System Libraries, Executables and Binaries"
 msgstr "Alle Systembibliotheken, ausführbare Dateien und Anwendungen"
 
-#: flatpakpermission.cpp:809
+#: flatpakpermission.cpp:807
 #, kde-format
 msgid "All System Configurations"
 msgstr "Alle Systemeinstellungen"

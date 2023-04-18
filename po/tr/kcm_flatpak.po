@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-15 02:18+0000\n"
+"POT-Creation-Date: 2023-04-18 02:16+0000\n"
 "PO-Revision-Date: 2023-04-04 00:53+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -163,22 +163,22 @@ msgstr ""
 "Kullanıcı kimliği başına bir uygulamanın tüm örnekleri arasında dev/shm "
 "erişimini paylaş"
 
-#: flatpakpermission.cpp:806
+#: flatpakpermission.cpp:804
 #, kde-format
 msgid "All User Files"
 msgstr "Tüm Kullanıcı Dosyaları"
 
-#: flatpakpermission.cpp:807
+#: flatpakpermission.cpp:805
 #, kde-format
 msgid "All System Files"
 msgstr "Tüm Sistem Dosyaları"
 
-#: flatpakpermission.cpp:808
+#: flatpakpermission.cpp:806
 #, kde-format
 msgid "All System Libraries, Executables and Binaries"
 msgstr "Tüm Sistem Kitaplıkları, Yürütülebilirleri ve İkilileri"
 
-#: flatpakpermission.cpp:809
+#: flatpakpermission.cpp:807
 #, kde-format
 msgid "All System Configurations"
 msgstr "Tüm Sistem Yapılandırmaları"

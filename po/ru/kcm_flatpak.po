@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-15 02:18+0000\n"
+"POT-Creation-Date: 2023-04-18 02:16+0000\n"
 "PO-Revision-Date: 2023-02-17 13:19+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -162,22 +162,22 @@ msgstr ""
 msgid "Share dev/shm across all instances of an app per user ID"
 msgstr ""
 
-#: flatpakpermission.cpp:806
+#: flatpakpermission.cpp:804
 #, kde-format
 msgid "All User Files"
 msgstr "Все файлы пользователя"
 
-#: flatpakpermission.cpp:807
+#: flatpakpermission.cpp:805
 #, kde-format
 msgid "All System Files"
 msgstr "Все системные файлы"
 
-#: flatpakpermission.cpp:808
+#: flatpakpermission.cpp:806
 #, kde-format
 msgid "All System Libraries, Executables and Binaries"
 msgstr "Все системные библиотеки, исполняемые файлы и двоичные данные"
 
-#: flatpakpermission.cpp:809
+#: flatpakpermission.cpp:807
 #, kde-format
 msgid "All System Configurations"
 msgstr "Все системные файлы конфигурации"

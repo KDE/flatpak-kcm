@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-15 02:18+0000\n"
+"POT-Creation-Date: 2023-04-18 02:16+0000\n"
 "PO-Revision-Date: 2023-04-09 21:44+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -161,22 +161,22 @@ msgstr ""
 msgid "Share dev/shm across all instances of an app per user ID"
 msgstr ""
 
-#: flatpakpermission.cpp:806
+#: flatpakpermission.cpp:804
 #, kde-format
 msgid "All User Files"
 msgstr "பயனரின் அனைத்து கோப்புகள்"
 
-#: flatpakpermission.cpp:807
+#: flatpakpermission.cpp:805
 #, kde-format
 msgid "All System Files"
 msgstr "அனைத்து இயங்குதள கோப்புகள்"
 
-#: flatpakpermission.cpp:808
+#: flatpakpermission.cpp:806
 #, kde-format
 msgid "All System Libraries, Executables and Binaries"
 msgstr "அனைத்து இயங்குதள நிரலகங்களும் நிரல்களும்"
 
-#: flatpakpermission.cpp:809
+#: flatpakpermission.cpp:807
 #, kde-format
 msgid "All System Configurations"
 msgstr "கணினியின் அனைத்து அமைப்புகள்"

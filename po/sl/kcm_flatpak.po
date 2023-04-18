@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-15 02:18+0000\n"
+"POT-Creation-Date: 2023-04-18 02:16+0000\n"
 "PO-Revision-Date: 2023-02-22 08:51+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -164,22 +164,22 @@ msgstr "Dostop do vtičnic Canbus"
 msgid "Share dev/shm across all instances of an app per user ID"
 msgstr "Skupna raba dev/shm v vseh primerih aplikacije na ID uporabnika"
 
-#: flatpakpermission.cpp:806
+#: flatpakpermission.cpp:804
 #, kde-format
 msgid "All User Files"
 msgstr "Vse uporabniške datoteke"
 
-#: flatpakpermission.cpp:807
+#: flatpakpermission.cpp:805
 #, kde-format
 msgid "All System Files"
 msgstr "Vse sistemske datoteke"
 
-#: flatpakpermission.cpp:808
+#: flatpakpermission.cpp:806
 #, kde-format
 msgid "All System Libraries, Executables and Binaries"
 msgstr "Vse sistemske knjižnice, izvršilne in binarne datoteke"
 
-#: flatpakpermission.cpp:809
+#: flatpakpermission.cpp:807
 #, kde-format
 msgid "All System Configurations"
 msgstr "Vse sistemske konfiguracije"
