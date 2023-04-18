@@ -702,6 +702,49 @@ private Q_SLOTS:
         QVERIFY(dConfIndex != -1);
         QVERIFY(homeIndex != -1);
     }
+
+    void testValidNames()
+    {
+        FlatpakReferencesModel referencesModel;
+        QFile metadataFile(QFINDTESTDATA("fixtures/metadata/com.example.valid.names"));
+        QVERIFY(metadataFile.open(QFile::ReadOnly));
+        FlatpakReference reference(&referencesModel,
+                                   "com.example.valid.names",
+                                   "x86_64",
+                                   "stable",
+                                   "1.0",
+                                   "Valid Names",
+                                   QFINDTESTDATA("fixtures/overrides/"),
+                                   QUrl(),
+                                   metadataFile.readAll());
+        FlatpakPermissionModel model;
+        model.setReference(&reference);
+        model.load();
+        model.setShowAdvanced(true);
+
+        QVERIFY(!model.isFilesystemNameValid(QString()));
+        QVERIFY(model.permissionExists(FlatpakPermissionsSectionType::Filesystems, QLatin1String("~/path")));
+        QVERIFY(model.isFilesystemNameValid(QLatin1String("~/valid/path")));
+        QVERIFY(model.isFilesystemNameValid(QLatin1String("~/other")));
+
+        QVERIFY(!model.isDBusServiceNameValid(QString()));
+        QVERIFY(!model.isDBusServiceNameValid(QLatin1String("com")));
+        QVERIFY(!model.isDBusServiceNameValid(QLatin1String("#$%")));
+        QVERIFY(model.permissionExists(FlatpakPermissionsSectionType::SessionBus, QLatin1String("com.example.session")));
+        QVERIFY(model.permissionExists(FlatpakPermissionsSectionType::SystemBus, QLatin1String("com.example.system")));
+        QVERIFY(model.isDBusServiceNameValid(QLatin1String("com.example.session")));
+        QVERIFY(model.isDBusServiceNameValid(QLatin1String("com.example.system")));
+        QVERIFY(model.isDBusServiceNameValid(QLatin1String("com.example.session2")));
+        QVERIFY(model.isDBusServiceNameValid(QLatin1String("com.example.*")));
+        QVERIFY(!model.isDBusServiceNameValid(QLatin1String("com.example.")));
+
+        QVERIFY(!model.isEnvironmentVariableNameValid(QString()));
+        QVERIFY(!model.isEnvironmentVariableNameValid(QLatin1String("ABC=DEF")));
+        QEXPECT_FAIL("", "Environment variables are not loaded yet.", Continue);
+        QVERIFY(model.permissionExists(FlatpakPermissionsSectionType::Environment, QLatin1String("EXAMPLE_NAME")));
+        QVERIFY(model.isEnvironmentVariableNameValid(QLatin1String("EXAMPLE_NAME")));
+        QVERIFY(model.isEnvironmentVariableNameValid(QLatin1String("whatever")));
+    }
 };
 
 QTEST_MAIN(FlatpakPermissionModelTest)

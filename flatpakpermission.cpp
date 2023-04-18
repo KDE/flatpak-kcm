@@ -7,6 +7,7 @@
 
 #include "flatpakpermission.h"
 #include "flatpakcommon.h"
+#include "flatpakhelper.h"
 
 #include <KConfig>
 #include <KConfigGroup>
@@ -1239,6 +1240,29 @@ Q_INVOKABLE QString FlatpakPermissionModel::sectionAddButtonToolTipTextForSectio
     return {};
 }
 
+bool FlatpakPermissionModel::permissionExists(FlatpakPermissionsSectionType::Type section, const QString &name) const
+{
+    return std::any_of(m_permissions.constBegin(), m_permissions.constEnd(), [&](const FlatpakPermission &permission) {
+        return permission.section() == section && permission.name() == name;
+    });
+}
+
+bool FlatpakPermissionModel::isFilesystemNameValid(const QString &name)
+{
+    // Force parsing the name part only, pass dummy access mode.
+    return FlatpakFilesystemsEntry::parse(name, FlatpakFilesystemsEntry::AccessMode::ReadWrite).has_value();
+}
+
+bool FlatpakPermissionModel::isDBusServiceNameValid(const QString &name)
+{
+    return FlatpakHelper::verifyDBusName(name);
+}
+
+bool FlatpakPermissionModel::isEnvironmentVariableNameValid(const QString &name)
+{
+    return !name.isEmpty() && !name.contains(QLatin1Char('='));
+}
+
 void FlatpakPermissionModel::togglePermissionAtRow(int row)
 {
     if (row < 0 || row >= m_permissions.length()) {
@@ -1361,13 +1385,6 @@ void FlatpakPermissionModel::addUserEnteredPermission(int /*FlatpakPermissionsSe
         m_permissions.insert(index, permission);
     }
     endInsertRows();
-}
-
-bool FlatpakPermissionModel::permissionExists(FlatpakPermissionsSectionType::Type section, const QString &name) const
-{
-    return std::any_of(m_permissions.constBegin(), m_permissions.constEnd(), [&](const FlatpakPermission &permission) {
-        return permission.section() == section && permission.name() == name;
-    });
 }
 
 int FlatpakPermissionModel::findIndexToInsertRowAndRemoveDummyRowIfNeeded(FlatpakPermissionsSectionType::Type section, bool emitModelSignals)
