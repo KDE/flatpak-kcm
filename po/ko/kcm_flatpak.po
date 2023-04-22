@@ -1,267 +1,260 @@
-# Translation of kcm_flatpak to Norwegian Nynorsk
+# Copyright (C) YEAR This file is copyright:
+# This file is distributed under the same license as the flatpak-kcm package.
+# Shinjo Park <kde@peremen.name>, 2023.
 #
-# Karl Ove Hufthammer <karl@huftis.org>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-19 02:55+0000\n"
-"PO-Revision-Date: 2023-03-05 12:18+0100\n"
-"Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
-"Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
-"Language: nn\n"
+"PO-Revision-Date: 2023-04-21 23:39+0200\n"
+"Last-Translator: Shinjo Park <kde@peremen.name>\n"
+"Language-Team: Korean <kde-kr@kde.org>\n"
+"Language: ko\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Lokalize 22.12.3\n"
-"X-Environment: kde\n"
-"X-Accelerator-Marker: &\n"
-"X-Text-Markup: kde4\n"
 
 #: autotests/flatpakpermissiontest.cpp:387
 #: autotests/flatpakpermissiontest.cpp:614 flatpakpermission.cpp:403
 #, kde-format
 msgid "None"
-msgstr "Ingen"
+msgstr "없음"
 
 #: autotests/flatpakpermissiontest.cpp:388
 #: autotests/flatpakpermissiontest.cpp:617 flatpakpermission.cpp:404
 #, kde-format
 msgid "see"
-msgstr "sjå"
+msgstr "보기"
 
 #: autotests/flatpakpermissiontest.cpp:389
 #: autotests/flatpakpermissiontest.cpp:615 flatpakpermission.cpp:405
 #, kde-format
 msgid "talk"
-msgstr "snakka"
+msgstr "전송"
 
 #: autotests/flatpakpermissiontest.cpp:390
 #: autotests/flatpakpermissiontest.cpp:616 flatpakpermission.cpp:406
 #, kde-format
 msgid "own"
-msgstr "eiga"
+msgstr "소유"
 
 #: autotests/flatpakpermissiontest.cpp:604 flatpakpermission.cpp:394
 #, kde-format
 msgid "OFF"
-msgstr "AV"
+msgstr "끄기"
 
 #: autotests/flatpakpermissiontest.cpp:605 flatpakpermission.cpp:392
 #, kde-format
 msgid "read/write"
-msgstr "lesa/skriva"
+msgstr "읽기/쓰기"
 
 #: autotests/flatpakpermissiontest.cpp:606 flatpakpermission.cpp:391
 #, kde-format
 msgid "read-only"
-msgstr "berre lesa"
+msgstr "읽기 전용"
 
 #: autotests/flatpakpermissiontest.cpp:607 flatpakpermission.cpp:393
 #, kde-format
 msgid "create"
-msgstr "oppretta"
+msgstr "만들기"
 
 #: flatpakpermission.cpp:717
 #, kde-format
 msgid "Internet Connection"
-msgstr "Internett-tilgang"
+msgstr "인터넷 연결"
 
 #: flatpakpermission.cpp:718
 #, kde-format
 msgid "Inter-process Communication"
-msgstr "Kommunikasjon mellom prosessar"
+msgstr "프로세스간 통신"
 
 #: flatpakpermission.cpp:724
 #, kde-format
 msgid "X11 Windowing System"
-msgstr "Vindaugssystemet X11"
+msgstr "X11 창 시스템"
 
 #: flatpakpermission.cpp:725
 #, kde-format
 msgid "Wayland Windowing System"
-msgstr "Vindaugssystemet Wayland"
+msgstr "Wayland 창 시스템"
 
 #: flatpakpermission.cpp:726
 #, kde-format
 msgid "Fallback to X11 Windowing System"
-msgstr "Vindaugssystemet X11 som reserve"
+msgstr "X11 창 시스템으로 폴백"
 
 #: flatpakpermission.cpp:727
 #, kde-format
 msgid "Pulseaudio Sound Server"
-msgstr "Lydtenaren PulseAudio"
+msgstr "PulseAudio 소리 서버"
 
 #: flatpakpermission.cpp:728
 #, kde-format
 msgid "Session Bus Access"
-msgstr "Tilgang til øktbussen"
+msgstr "세션 버스 접근"
 
 #: flatpakpermission.cpp:729
 #, kde-format
 msgid "System Bus Access"
-msgstr "Tilgang til systembussen"
+msgstr "시스템 버스 접근"
 
-# Unødvendig å gjenta ordet «tilgang» her (er uansett inkonsekvent formulert på engelsk).
 #: flatpakpermission.cpp:730
 #, kde-format
 msgid "Remote Login Access"
-msgstr "Fjerninnlogging"
+msgstr "원격 로그인 접근"
 
 #: flatpakpermission.cpp:731
 #, kde-format
 msgid "Smart Card Access"
-msgstr "Smartkort"
+msgstr "스마트카드 접근"
 
-# Unødvendig å gjenta ordet «tilgang» her (er uansett inkonsekvent formulert på engelsk).
 #: flatpakpermission.cpp:732
 #, kde-format
 msgid "Print System Access"
-msgstr "Utskriftssystemet"
+msgstr "인쇄 시스템 접근"
 
 #: flatpakpermission.cpp:738
 #, kde-format
 msgid "Kernel-based Virtual Machine Access"
-msgstr "Kjernebasert tilgang til virtuelle maskiner"
+msgstr "KVM(커널 기반 가상 머신) 접근"
 
 #: flatpakpermission.cpp:739
 #, kde-format
 msgid "Direct Graphic Rendering"
-msgstr "Direkte grafikkoppteikning"
+msgstr "직접 그래픽 렌더링"
 
-# https://docs.flatpak.org/en/latest/flatpak-command-reference.html
 #: flatpakpermission.cpp:740
 #, kde-format
 msgid "Host dev/shm"
-msgstr "Delt minne (/dev/shm) på vert"
+msgstr "호스트 dev/shm"
 
-# Unødvendig å gjenta ordet «tilgang» her (er uansett inkonsekvent formulert på engelsk).
 #: flatpakpermission.cpp:741 flatpakpermission.cpp:1203
 #, kde-format
 msgid "Device Access"
-msgstr "Maskinvareeiningar"
+msgstr "장치 접근"
 
-# Rettare med «for» enn «frå» her. Eksempel er perf, strace og gdb.
 #: flatpakpermission.cpp:747
 #, kde-format
 msgid "System Calls by Development Tools"
-msgstr "Systemkall for utviklingsverktøy"
+msgstr "개발 도구의 시스템 콜"
 
 #: flatpakpermission.cpp:748
 #, kde-format
 msgid "Run Multiarch/Multilib Binaries"
-msgstr "Køyra fleirarkitektur/-bibliotek-programfiler"
+msgstr "Multiarch/Multilib 바이너리 실행"
 
 #: flatpakpermission.cpp:749
 #, kde-format
 msgid "Bluetooth"
-msgstr "Bluetooth"
+msgstr "블루투스"
 
 #: flatpakpermission.cpp:750
 #, kde-format
 msgid "Canbus Socket Access"
-msgstr "Tilgang til CAN-buss"
+msgstr "Canbus 소켓 접근"
 
 #: flatpakpermission.cpp:753
 #, kde-format
 msgid "Share dev/shm across all instances of an app per user ID"
-msgstr "Dela /dev/shm på tvers av alle instansar av ein app per brukar-ID"
+msgstr "사용자 ID별로 모든 앱 인스턴스에 dev/shm 공유"
 
 #: flatpakpermission.cpp:811
 #, kde-format
 msgid "All User Files"
-msgstr "Alle brukarfilene"
+msgstr "모든 사용자 파일"
 
 #: flatpakpermission.cpp:812
 #, kde-format
 msgid "All System Files"
-msgstr "Alle systemfilene"
+msgstr "모든 시스템 파일"
 
 #: flatpakpermission.cpp:813
 #, kde-format
 msgid "All System Libraries, Executables and Binaries"
-msgstr "Alle systembiblioteka og alle køyrbare filer"
+msgstr "모든 시스템 라이브러리, 실행 파일, 바이너리"
 
 #: flatpakpermission.cpp:814
 #, kde-format
 msgid "All System Configurations"
-msgstr "Alle systeminnstillingane"
+msgstr "모든 시스템 설정"
 
 #: flatpakpermission.cpp:1193
 #, kde-format
 msgid "Basic Permissions"
-msgstr "Grunnleggjande tilgangsløyve"
+msgstr "기본 권한"
 
 #: flatpakpermission.cpp:1195
 #, kde-format
 msgid "Filesystem Access"
-msgstr "Filsystem-tilgang"
+msgstr "파일 시스템 접근"
 
 #: flatpakpermission.cpp:1197
 #, kde-format
 msgid "Advanced Permissions"
-msgstr "Avanserte tilgangsløyve"
+msgstr "고급 권한"
 
 #: flatpakpermission.cpp:1199
 #, kde-format
 msgid "Subsystems Shared"
-msgstr "Delte undersystem"
+msgstr "공유하는 하위 시스템"
 
 #: flatpakpermission.cpp:1201
 #, kde-format
 msgid "Sockets"
-msgstr "Socket-ar"
+msgstr "소켓"
 
 #: flatpakpermission.cpp:1205
 #, kde-format
 msgid "Features Allowed"
-msgstr "Tillatne funksjonar"
+msgstr "허용된 기능"
 
 #: flatpakpermission.cpp:1207
 #, kde-format
 msgid "Session Bus Policy"
-msgstr "Reglar for øktbuss"
+msgstr "세션 버스 정책"
 
 #: flatpakpermission.cpp:1209
 #, kde-format
 msgid "System Bus Policy"
-msgstr "Reglar for systembuss"
+msgstr "시스템 버스 정책"
 
 #: flatpakpermission.cpp:1211
 #, kde-format
 msgid "Environment"
-msgstr "Omgjevnad"
+msgstr "환경"
 
 #: flatpakpermission.cpp:1228
 #, kde-format
 msgid "Add a new filesystem path"
-msgstr "Legg til ny adresse på filsystemet"
+msgstr "새 파일 시스템 경로 추가"
 
 #: flatpakpermission.cpp:1230
 #, kde-format
 msgid "Add a new session bus"
-msgstr "Legg til ny øktbuss"
+msgstr "새 세션 버스 추가"
 
 #: flatpakpermission.cpp:1232
 #, kde-format
 msgid "Add a new system bus"
-msgstr "Legg til ny systembuss"
+msgstr "새 시스템 버스 추가"
 
 #: flatpakpermission.cpp:1234
 #, kde-format
 msgid "Add a new environment variable"
-msgstr "Legg til ny miljøvariabel"
+msgstr "새 환경 변수 추가"
 
 #: package/contents/ui/main.qml:16
 #, kde-format
 msgid "Flatpak Applications"
-msgstr "Flatpak-program"
+msgstr "Flatpak 프로그램"
 
 #: package/contents/ui/main.qml:54
 #, kde-format
 msgid "Apply Permissions"
-msgstr "Ta i bruk løyve"
+msgstr "권한 적용"
 
 #: package/contents/ui/main.qml:55
 #, kde-format
@@ -269,75 +262,74 @@ msgid ""
 "The permissions of this application have been changed. Do you want to apply "
 "these changes or discard them?"
 msgstr ""
-"Tilgangsløyva til dette programmet er endra. Vil du ta i bruk eller forkasta "
-"dei nye løyva?"
+"이 프로그램의 권한이 변경되었습니다. 변경 사항을 적용하거나 무시하시겠습니까?"
 
 #: package/contents/ui/permissions.qml:17
 #, kde-format
 msgid "Permissions"
-msgstr "Tilgangsløyve"
+msgstr "권한"
 
 #: package/contents/ui/permissions.qml:23
 #, kde-format
 msgid "Select an application from the list to view its permissions here"
-msgstr "Vel eit program i lista som du vil sjå tilgangsløyve for"
+msgstr "권한을 볼 프로그램 선택"
 
 #: package/contents/ui/permissions.qml:60
 #, kde-format
 msgid "Hide advanced permissions"
-msgstr "Gøym avanserte tilgangsløyve"
+msgstr "고급 권한 숨기기"
 
 #: package/contents/ui/permissions.qml:60
 #, kde-format
 msgid "Show advanced permissions"
-msgstr "Vis avanserte tilgangsløyve"
+msgstr "고급 권한 표시"
 
 #: package/contents/ui/permissions.qml:72
 #, kde-format
 msgid "Add New"
-msgstr "Legg til ny"
+msgstr "새로 추가"
 
 #: package/contents/ui/permissions.qml:93
 #, kde-format
 msgid "Add Filesystem Path Permission"
-msgstr "Legg til løyve for adresse på filsystemet"
+msgstr "파일 시스템 경로 권한 추가"
 
 #: package/contents/ui/permissions.qml:94
 #, kde-format
 msgid "Add Session Bus Permission"
-msgstr "Legg til løyve for øktbuss"
+msgstr "세션 버스 권한 추가"
 
 #: package/contents/ui/permissions.qml:95
 #, kde-format
 msgid "Add System Bus Permission"
-msgstr "Legg til løyve for systembuss"
+msgstr "시스템 버스 권한 추가"
 
 #: package/contents/ui/permissions.qml:96
 #, kde-format
 msgid "Set Environment Variable"
-msgstr "Registrer miljøvariabel"
+msgstr "환경 변수 설정"
 
 #: package/contents/ui/permissions.qml:104
 #, kde-format
 msgid "Enter filesystem path..."
-msgstr "Skriv inn adresse på filsystemet …"
+msgstr "파일 시스템 경로 입력..."
 
 #: package/contents/ui/permissions.qml:105
 #, kde-format
 msgid "Enter session bus name..."
-msgstr "Skriv inn namn på øktbuss …"
+msgstr "세션 버스 이름 입력..."
 
 #: package/contents/ui/permissions.qml:106
 #, kde-format
 msgid "Enter system bus name..."
-msgstr "Skriv inn namn på systembuss …"
+msgstr "시스템 버스 이름 입력..."
 
 #: package/contents/ui/permissions.qml:107
 #, kde-format
 msgid "Enter variable..."
-msgstr "Skriv inn variabel ..."
+msgstr "변수 입력..."
 
 #: package/contents/ui/permissions.qml:130
 #, kde-format
 msgid "Enter value..."
-msgstr "Skriv inn verdi …"
+msgstr "값 입력..."
