@@ -1,264 +1,260 @@
-# German translations for flatpak-kcm package.
-# Copyright (C) 2022 This file is copyright:
+# Copyright (C) YEAR This file is copyright:
 # This file is distributed under the same license as the flatpak-kcm package.
-# Jannick Kuhr <opensource@kuhr.org>, 2023.
+# Shinjo Park <kde@peremen.name>, 2023.
 #
-# Automatically generated, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-19 02:23+0000\n"
-"PO-Revision-Date: 2023-02-25 23:51+0100\n"
-"Last-Translator: Jannick Kuhr <opensource@kuhr.org>\n"
-"Language-Team: German <kde-i18n-de@kde.org>\n"
-"Language: de\n"
+"PO-Revision-Date: 2023-04-21 23:39+0200\n"
+"Last-Translator: Shinjo Park <kde@peremen.name>\n"
+"Language-Team: Korean <kde-kr@kde.org>\n"
+"Language: ko\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 22.12.2\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Lokalize 22.12.3\n"
 
 #: autotests/flatpakpermissiontest.cpp:387
 #: autotests/flatpakpermissiontest.cpp:614 flatpakpermission.cpp:403
 #, kde-format
 msgid "None"
-msgstr "Keine"
+msgstr "없음"
 
 #: autotests/flatpakpermissiontest.cpp:388
 #: autotests/flatpakpermissiontest.cpp:617 flatpakpermission.cpp:404
 #, kde-format
 msgid "see"
-msgstr "sehen"
+msgstr "보기"
 
 #: autotests/flatpakpermissiontest.cpp:389
 #: autotests/flatpakpermissiontest.cpp:615 flatpakpermission.cpp:405
 #, kde-format
 msgid "talk"
-msgstr "kommunizieren"
+msgstr "전송"
 
 #: autotests/flatpakpermissiontest.cpp:390
 #: autotests/flatpakpermissiontest.cpp:616 flatpakpermission.cpp:406
 #, kde-format
 msgid "own"
-msgstr "besitzen"
+msgstr "소유"
 
 #: autotests/flatpakpermissiontest.cpp:604 flatpakpermission.cpp:394
 #, kde-format
 msgid "OFF"
-msgstr "AUS"
+msgstr "끄기"
 
 #: autotests/flatpakpermissiontest.cpp:605 flatpakpermission.cpp:392
 #, kde-format
 msgid "read/write"
-msgstr "lesen/schreiben"
+msgstr "읽기/쓰기"
 
 #: autotests/flatpakpermissiontest.cpp:606 flatpakpermission.cpp:391
 #, kde-format
 msgid "read-only"
-msgstr "nur lesen"
+msgstr "읽기 전용"
 
 #: autotests/flatpakpermissiontest.cpp:607 flatpakpermission.cpp:393
 #, kde-format
 msgid "create"
-msgstr "erstellen"
+msgstr "만들기"
 
 #: flatpakpermission.cpp:717
 #, kde-format
 msgid "Internet Connection"
-msgstr "Internetverbindung"
+msgstr "인터넷 연결"
 
 #: flatpakpermission.cpp:718
 #, kde-format
 msgid "Inter-process Communication"
-msgstr "Interprozesskommunikation"
+msgstr "프로세스간 통신"
 
 #: flatpakpermission.cpp:724
 #, kde-format
 msgid "X11 Windowing System"
-msgstr "X11-Fenstersystem"
+msgstr "X11 창 시스템"
 
 #: flatpakpermission.cpp:725
 #, kde-format
 msgid "Wayland Windowing System"
-msgstr "Wayland-Fenstersystem"
+msgstr "Wayland 창 시스템"
 
 #: flatpakpermission.cpp:726
 #, kde-format
 msgid "Fallback to X11 Windowing System"
-msgstr "Ausweichen auf X11-Fenstersystem"
+msgstr "X11 창 시스템으로 폴백"
 
 #: flatpakpermission.cpp:727
 #, kde-format
 msgid "Pulseaudio Sound Server"
-msgstr "PulseAudio-Soundserver"
+msgstr "PulseAudio 소리 서버"
 
 #: flatpakpermission.cpp:728
 #, kde-format
 msgid "Session Bus Access"
-msgstr "Session-Bus-Zugriff"
+msgstr "세션 버스 접근"
 
 #: flatpakpermission.cpp:729
 #, kde-format
 msgid "System Bus Access"
-msgstr "System-Bus-Zugriff"
+msgstr "시스템 버스 접근"
 
 #: flatpakpermission.cpp:730
 #, kde-format
 msgid "Remote Login Access"
-msgstr "Fernzugriff"
+msgstr "원격 로그인 접근"
 
 #: flatpakpermission.cpp:731
 #, kde-format
 msgid "Smart Card Access"
-msgstr "Smartcard-Zugriff"
+msgstr "스마트카드 접근"
 
 #: flatpakpermission.cpp:732
 #, kde-format
 msgid "Print System Access"
-msgstr "Drucksystem-Zugriff"
+msgstr "인쇄 시스템 접근"
 
 #: flatpakpermission.cpp:738
 #, kde-format
 msgid "Kernel-based Virtual Machine Access"
-msgstr "KVM-Zugriff"
+msgstr "KVM(커널 기반 가상 머신) 접근"
 
 #: flatpakpermission.cpp:739
 #, kde-format
 msgid "Direct Graphic Rendering"
-msgstr "Direktes Grafik-Rendering"
+msgstr "직접 그래픽 렌더링"
 
 #: flatpakpermission.cpp:740
 #, kde-format
 msgid "Host dev/shm"
-msgstr "Host dev/shm"
+msgstr "호스트 dev/shm"
 
 #: flatpakpermission.cpp:741 flatpakpermission.cpp:1203
 #, kde-format
 msgid "Device Access"
-msgstr "Gerätezugriff"
+msgstr "장치 접근"
 
 #: flatpakpermission.cpp:747
 #, kde-format
 msgid "System Calls by Development Tools"
-msgstr "Systemaufrufe durch Entwicklerwerkzeuge"
+msgstr "개발 도구의 시스템 콜"
 
 #: flatpakpermission.cpp:748
 #, kde-format
 msgid "Run Multiarch/Multilib Binaries"
-msgstr "Multiarch-/Multilib-Anwendungen aufrufen"
+msgstr "Multiarch/Multilib 바이너리 실행"
 
 #: flatpakpermission.cpp:749
 #, kde-format
 msgid "Bluetooth"
-msgstr "Bluetooth"
+msgstr "블루투스"
 
 #: flatpakpermission.cpp:750
 #, kde-format
 msgid "Canbus Socket Access"
-msgstr "CAN-Bus-Socket-Zugriff"
+msgstr "Canbus 소켓 접근"
 
 #: flatpakpermission.cpp:753
 #, kde-format
 msgid "Share dev/shm across all instances of an app per user ID"
-msgstr ""
-"dev/shm über alle Instanzen einer Anwendung per Benutzerkennung gemeinsam "
-"nutzen"
+msgstr "사용자 ID별로 모든 앱 인스턴스에 dev/shm 공유"
 
 #: flatpakpermission.cpp:811
 #, kde-format
 msgid "All User Files"
-msgstr "Alle Benutzerdateien"
+msgstr "모든 사용자 파일"
 
 #: flatpakpermission.cpp:812
 #, kde-format
 msgid "All System Files"
-msgstr "Alle Systemdateien"
+msgstr "모든 시스템 파일"
 
 #: flatpakpermission.cpp:813
 #, kde-format
 msgid "All System Libraries, Executables and Binaries"
-msgstr "Alle Systembibliotheken, ausführbare Dateien und Anwendungen"
+msgstr "모든 시스템 라이브러리, 실행 파일, 바이너리"
 
 #: flatpakpermission.cpp:814
 #, kde-format
 msgid "All System Configurations"
-msgstr "Alle Systemeinstellungen"
+msgstr "모든 시스템 설정"
 
 #: flatpakpermission.cpp:1193
 #, kde-format
 msgid "Basic Permissions"
-msgstr "Einfache Berechtigungen"
+msgstr "기본 권한"
 
 #: flatpakpermission.cpp:1195
 #, kde-format
 msgid "Filesystem Access"
-msgstr "Dateisystem-Zugriff"
+msgstr "파일 시스템 접근"
 
 #: flatpakpermission.cpp:1197
 #, kde-format
 msgid "Advanced Permissions"
-msgstr "Erweiterte Berechtigungen"
+msgstr "고급 권한"
 
 #: flatpakpermission.cpp:1199
 #, kde-format
 msgid "Subsystems Shared"
-msgstr "Freigegebene Subsysteme"
+msgstr "공유하는 하위 시스템"
 
 #: flatpakpermission.cpp:1201
 #, kde-format
 msgid "Sockets"
-msgstr "Sockets"
+msgstr "소켓"
 
 #: flatpakpermission.cpp:1205
 #, kde-format
 msgid "Features Allowed"
-msgstr "Erlaubte Funktionen"
+msgstr "허용된 기능"
 
 #: flatpakpermission.cpp:1207
 #, kde-format
 msgid "Session Bus Policy"
-msgstr "Session-Bus-Regelungen"
+msgstr "세션 버스 정책"
 
 #: flatpakpermission.cpp:1209
 #, kde-format
 msgid "System Bus Policy"
-msgstr "System-Bus-Regelungen"
+msgstr "시스템 버스 정책"
 
 #: flatpakpermission.cpp:1211
 #, kde-format
 msgid "Environment"
-msgstr "Umgebung"
+msgstr "환경"
 
 #: flatpakpermission.cpp:1228
 #, kde-format
 msgid "Add a new filesystem path"
-msgstr "Neuen Dateisystempfad hinzufügen"
+msgstr "새 파일 시스템 경로 추가"
 
 #: flatpakpermission.cpp:1230
 #, kde-format
 msgid "Add a new session bus"
-msgstr "Neuen Session-Bus hinzufügen"
+msgstr "새 세션 버스 추가"
 
 #: flatpakpermission.cpp:1232
 #, kde-format
 msgid "Add a new system bus"
-msgstr "Neuen System-Bus hinzufügen"
+msgstr "새 시스템 버스 추가"
 
 #: flatpakpermission.cpp:1234
 #, kde-format
 msgid "Add a new environment variable"
-msgstr "Neue Umgebungsvariable hinzufügen"
+msgstr "새 환경 변수 추가"
 
 #: package/contents/ui/main.qml:18
 #, kde-format
 msgid "Flatpak Applications"
-msgstr "Flatpak-Anwendungen"
+msgstr "Flatpak 프로그램"
 
 #: package/contents/ui/main.qml:88
 #, kde-format
 msgid "Apply Permissions"
-msgstr "Berechtigungen anwenden"
+msgstr "권한 적용"
 
 #: package/contents/ui/main.qml:89
 #, kde-format
@@ -266,83 +262,74 @@ msgid ""
 "The permissions of application %1 have been changed. Do you want to apply "
 "these changes or discard them?"
 msgstr ""
-"Die Berechtigungen der Anwendung %1 wurden geändert. Möchten Sie die "
-"Änderungen anwenden oder verwerfen?"
+"%1 프로그램의 권한이 변경되었습니다. 변경 사항을 적용하거나 무시하시겠습니까?"
 
 #: package/contents/ui/permissions.qml:17
 #, kde-format
 msgid "Permissions"
-msgstr "Berechtigungen"
+msgstr "권한"
 
 #: package/contents/ui/permissions.qml:23
 #, kde-format
 msgid "Select an application from the list to view its permissions here"
-msgstr ""
-"Wählen Sie eine Anwendung aus der Liste, um ihre Berechtigungen hier "
-"anzuzeigen"
+msgstr "권한을 볼 프로그램 선택"
 
 #: package/contents/ui/permissions.qml:112
 #, kde-format
 msgid "Hide advanced permissions"
-msgstr "Erweiterte Berechtigungen ausblenden"
+msgstr "고급 권한 숨기기"
 
 #: package/contents/ui/permissions.qml:112
 #, kde-format
 msgid "Show advanced permissions"
-msgstr "Erweiterte Berechtigungen anzeigen"
+msgstr "고급 권한 표시"
 
 #: package/contents/ui/permissions.qml:124
 #, kde-format
 msgid "Add New"
-msgstr "Hinzufügen"
+msgstr "새로 추가"
 
 #: package/contents/ui/permissions.qml:145
 #, kde-format
 msgid "Add Filesystem Path Permission"
-msgstr "Dateisystempfad-Berechtigung hinzufügen"
+msgstr "파일 시스템 경로 권한 추가"
 
 #: package/contents/ui/permissions.qml:146
 #, kde-format
 msgid "Add Session Bus Permission"
-msgstr "Session-Bus-Berechtigung hinzufügen"
+msgstr "세션 버스 권한 추가"
 
 #: package/contents/ui/permissions.qml:147
 #, kde-format
 msgid "Add System Bus Permission"
-msgstr "System-Bus-Berechtigung hinzufügen"
+msgstr "시스템 버스 권한 추가"
 
 #: package/contents/ui/permissions.qml:148
 #, kde-format
 msgid "Set Environment Variable"
-msgstr "Umgebungsvariable festlegen"
+msgstr "환경 변수 설정"
 
 #: package/contents/ui/permissions.qml:156
 #, kde-format
 msgid "Enter filesystem path…"
-msgstr "Dateisystempfad eingeben ..."
+msgstr "파일 시스템 경로 입력…"
 
 #: package/contents/ui/permissions.qml:157
 #, kde-format
 msgid "Enter session bus name…"
-msgstr "Session-Bus-Namen eingeben ..."
+msgstr "세션 버스 이름 입력…"
 
 #: package/contents/ui/permissions.qml:158
 #, kde-format
 msgid "Enter system bus name…"
-msgstr "System-Bus-Namen eingeben ..."
+msgstr "시스템 버스 이름 입력…"
 
 #: package/contents/ui/permissions.qml:159
 #, kde-format
 msgid "Enter variable…"
-msgstr "Variable eingeben ..."
+msgstr "변수 입력..."
 
 #: package/contents/ui/permissions.qml:182
 #, kde-format
 msgid "Enter value…"
-msgstr "Wert eingeben ..."
-
-#~ msgid "read-write"
-#~ msgstr "lesen/schreiben"
-
-#~ msgid "=\n"
-#~ msgstr "=\n"
+msgstr "값 입력…"
