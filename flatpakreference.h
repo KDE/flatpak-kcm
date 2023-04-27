@@ -1,5 +1,6 @@
 /**
  * SPDX-FileCopyrightText: 2022 Suhaas Joshi <joshiesuhaas0@gmail.com>
+ * SPDX-FileCopyrightText: 2023 ivan tkachenko <me@ratijas.tk>
  * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
@@ -10,25 +11,21 @@
 #include <QAbstractListModel>
 #include <QPointer>
 #include <QString>
+#include <QUrl>
 #include <QVector>
 
 class FlatpakReferencesModel;
 class FlatpakPermissionModel;
 
+// Slightly similar to FlatpakResource from libdiscover
 class FlatpakReference : public QObject
 {
     Q_OBJECT
-public:
-    explicit FlatpakReference(FlatpakReferencesModel *parent,
-                              QString name,
-                              QString id,
-                              const QString &path,
-                              QString version,
-                              QString icon = QString(),
-                              QByteArray metadata = QByteArray(),
-                              FlatpakReferencesModel *refsModel = nullptr);
+    Q_PROPERTY(QString version READ version CONSTANT FINAL)
+    Q_PROPERTY(QString displayName READ displayName CONSTANT FINAL)
+    Q_PROPERTY(QUrl iconSource READ iconSource CONSTANT FINAL)
 
-    // This constructor is cherry-picked from master branch for usage in tests.
+public:
     explicit FlatpakReference(FlatpakReferencesModel *parent,
                               const QString &flatpakName,
                               const QString &arch,
@@ -39,12 +36,19 @@ public:
                               const QUrl &iconSource,
                               const QByteArray &metadata);
 
-    QString name() const;
-    QString displayName() const;
+    FlatpakReferencesModel *parent() const;
+
+    QString arch() const;
+    QString branch() const;
     QString version() const;
-    QString icon() const;
-    QString path() const;
+
+    QUrl iconSource() const;
+    QString permissionsFilename() const;
     QByteArray metadata() const;
+
+    QString displayName() const;
+    QString flatpakName() const;
+    QString ref() const;
 
     FlatpakPermissionModel *permissionsModel();
     void setPermissionsModel(FlatpakPermissionModel *model);
@@ -60,15 +64,21 @@ Q_SIGNALS:
     void settingsChanged();
 
 private:
-    QString m_name;
-    QString m_id;
+    // ID of a ref constitutes of these three members:
+    QString m_flatpakName;
+    QString m_arch;
+    QString m_branch;
+    // Human-readable version string.
     QString m_version;
-    QString m_icon;
-    QString m_path;
+    // Human-readable app name, only exists for installed apps.
+    // Might be empty, in which case code should fallback to flatpakName.
+    QString m_displayName;
+
+    QUrl m_iconSource;
+    QString m_permissionsFilename;
     QByteArray m_metadata;
 
     QPointer<FlatpakPermissionModel> m_permissionsModel;
-    QPointer<FlatpakReferencesModel> m_refsModel;
 };
 
 class FlatpakReferencesModel : public QAbstractListModel
@@ -89,6 +99,8 @@ public:
     void defaults(int index);
     bool isSaveNeeded(int index) const;
     bool isDefaults(int index) const;
+
+    const QVector<FlatpakReference *> &references() const;
 
 Q_SIGNALS:
     void needsLoad();

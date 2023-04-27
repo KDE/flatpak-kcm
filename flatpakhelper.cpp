@@ -9,17 +9,18 @@
 #include <QDir>
 #include <QFileInfo>
 #include <QStandardPaths>
+#include <QUrl>
 
 #include <gio/gio.h>
 
 namespace FlatpakHelper
 {
 
-QString permDataFilePath()
+QString permissionsDataDirectory()
 {
-    QString userPath = QString::fromStdString(qgetenv("FLATPAK_USER_DIR").toStdString());
+    QString userPath = qEnvironmentVariable("FLATPAK_USER_DIR");
     if (userPath.isEmpty()) {
-        userPath = QString::fromStdString(qgetenv("HOST_XDG_DATA_HOME").toStdString());
+        userPath = qEnvironmentVariable("HOST_XDG_DATA_HOME");
         if (userPath.isEmpty()) {
             userPath = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation);
         }
@@ -29,7 +30,7 @@ QString permDataFilePath()
     return userPath;
 }
 
-QString iconPath(const QString &name, const QString &id, const QString &appBasePath)
+QUrl iconSourceUrl(const QString &displayName, const QString &flatpakName, const QString &appBasePath)
 {
     QString dirPath = appBasePath + QStringLiteral("/files/share/icons/hicolor/");
     QDir dir(dirPath);
@@ -43,24 +44,24 @@ QString iconPath(const QString &name, const QString &id, const QString &appBaseP
     } else if (!dir.isEmpty()) {
         nextDir = dir.entryList().at(0);
     } else {
-        return QString();
+        return QUrl();
     }
     dir.cd(nextDir + QStringLiteral("/apps"));
 
-    QString file = id + QStringLiteral(".png");
+    QString file = flatpakName + QStringLiteral(".png");
     if (!dir.exists(file)) {
-        file = id + QStringLiteral(".svg");
+        file = flatpakName + QStringLiteral(".svg");
         if (!dir.exists(file)) {
-            file = name.toLower() + QStringLiteral(".png");
+            file = displayName.toLower() + QStringLiteral(".png");
             if (!dir.exists(file)) {
-                file = name.toLower() + QStringLiteral(".svg");
+                file = displayName.toLower() + QStringLiteral(".svg");
                 if (!dir.exists(file)) {
-                    return id + QStringLiteral(".png");
+                    return QUrl::fromLocalFile(flatpakName + QStringLiteral(".png"));
                 }
             }
         }
     }
-    return dir.absoluteFilePath(file);
+    return QUrl::fromLocalFile(dir.absoluteFilePath(file));
 }
 
 bool verifyDBusName(QStringView name)

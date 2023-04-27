@@ -6,17 +6,16 @@
 
 #pragma once
 
-#include "flatpakpermission.h"
-
 #include <QString>
+#include <QUrl>
 #include <QVector>
 
 namespace FlatpakHelper
 {
 
-QString permDataFilePath();
+QString permissionsDataDirectory();
 
-QString iconPath(const QString &name, const QString &id, const QString &appBasePath);
+QUrl iconSourceUrl(const QString &displayName, const QString &flatpakName, const QString &appBasePath);
 
 // Port of flatpak_verify_dbus_name static/internal function.
 bool verifyDBusName(QStringView name);

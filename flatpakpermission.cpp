@@ -876,7 +876,7 @@ void FlatpakPermissionModel::loadDefaultValues()
 
 void FlatpakPermissionModel::loadCurrentValues()
 {
-    const QString path = m_reference->path();
+    const QString path = m_reference->permissionsFilename();
 
     /* all permissions are at default, so nothing to load */
     if (!QFileInfo::exists(path)) {
@@ -1452,9 +1452,9 @@ int FlatpakPermissionModel::findIndexToInsertRowAndRemoveDummyRowIfNeeded(Flatpa
 void FlatpakPermissionModel::writeToFile() const
 {
     if (isDefaults()) {
-        QFile::remove(m_reference->path());
+        QFile::remove(m_reference->permissionsFilename());
     } else {
-        KConfig config(m_reference->path(), KConfig::SimpleConfig);
+        KConfig config(m_reference->permissionsFilename(), KConfig::SimpleConfig);
         if (!config.isConfigWritable(true)) {
             return;
         }
