@@ -1244,6 +1244,17 @@ Q_INVOKABLE QString FlatpakPermissionModel::sectionAddButtonToolTipTextForSectio
     return {};
 }
 
+bool FlatpakPermissionModel::permissionExists(int /*FlatpakPermissionsSectionType::Type*/ rawSection, const QString &name) const
+{
+    if (!QMetaEnum::fromType<FlatpakPermissionsSectionType::Type>().valueToKey(rawSection)) {
+        return false;
+    }
+    // SAFETY: QMetaEnum above ensures that coercion is valid.
+    const auto section = static_cast<FlatpakPermissionsSectionType::Type>(rawSection);
+
+    return permissionExists(section, name);
+}
+
 bool FlatpakPermissionModel::permissionExists(FlatpakPermissionsSectionType::Type section, const QString &name) const
 {
     return std::any_of(m_permissions.constBegin(), m_permissions.constEnd(), [&](const FlatpakPermission &permission) {
