@@ -551,7 +551,8 @@ public:
     Q_INVOKABLE static QString sectionHeaderForSectionType(int /*FlatpakPermissionsSectionType::Type*/ rawSection);
     Q_INVOKABLE static QString sectionAddButtonToolTipTextForSectionType(int /*FlatpakPermissionsSectionType::Type*/ rawSection);
 
-    Q_INVOKABLE bool permissionExists(FlatpakPermissionsSectionType::Type section, const QString &name) const;
+    Q_INVOKABLE bool permissionExists(int /*FlatpakPermissionsSectionType::Type*/ rawSection, const QString &name) const;
+    bool permissionExists(FlatpakPermissionsSectionType::Type section, const QString &name) const;
 
     /**
      * Validators to check that names comply with section-specific rules.
