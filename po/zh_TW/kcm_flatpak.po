@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-19 02:23+0000\n"
+"POT-Creation-Date: 2023-04-28 02:09+0000\n"
 "PO-Revision-Date: 2023-02-27 22:25+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Chinese <zh-l10n@linux.org.tw>\n"
@@ -246,6 +246,21 @@ msgstr "新增系統匯流排"
 msgid "Add a new environment variable"
 msgstr "新增環境變數"
 
+#: package/contents/ui/AddEnvironmentVariableDialog.qml:18
+#, kde-format
+msgid "Set Environment Variable"
+msgstr "設定環境變數"
+
+#: package/contents/ui/AddEnvironmentVariableDialog.qml:35
+#, kde-format
+msgid "Enter variable…"
+msgstr "輸入變數…"
+
+#: package/contents/ui/AddEnvironmentVariableDialog.qml:46
+#, kde-format
+msgid "Enter value…"
+msgstr "輸入值…"
+
 #: package/contents/ui/main.qml:18
 #, kde-format
 msgid "Flatpak Applications"
@@ -273,65 +288,50 @@ msgstr "權限"
 msgid "Select an application from the list to view its permissions here"
 msgstr "從列表選取應用程式以在此檢視它的權限"
 
-#: package/contents/ui/permissions.qml:112
+#: package/contents/ui/permissions.qml:134
 #, kde-format
 msgid "Hide advanced permissions"
 msgstr "隱藏進階權限"
 
-#: package/contents/ui/permissions.qml:112
+#: package/contents/ui/permissions.qml:134
 #, kde-format
 msgid "Show advanced permissions"
 msgstr "顯示進階權限"
 
-#: package/contents/ui/permissions.qml:124
+#: package/contents/ui/permissions.qml:146
 #, kde-format
 msgid "Add New"
 msgstr "新增"
 
-#: package/contents/ui/permissions.qml:145
+#: package/contents/ui/TextPromptDialog.qml:21
 #, kde-format
 msgid "Add Filesystem Path Permission"
 msgstr "新增檔案系統路徑權限"
 
-#: package/contents/ui/permissions.qml:146
+#: package/contents/ui/TextPromptDialog.qml:22
 #, kde-format
 msgid "Add Session Bus Permission"
 msgstr "新增工作階段匯流排權限"
 
-#: package/contents/ui/permissions.qml:147
+#: package/contents/ui/TextPromptDialog.qml:23
 #, kde-format
 msgid "Add System Bus Permission"
 msgstr "新增系統匯流排權限"
 
-#: package/contents/ui/permissions.qml:148
-#, kde-format
-msgid "Set Environment Variable"
-msgstr "設定環境變數"
-
-#: package/contents/ui/permissions.qml:156
+#: package/contents/ui/TextPromptDialog.qml:38
 #, kde-format
 msgid "Enter filesystem path…"
 msgstr "輸入檔案系統路徑…"
 
-#: package/contents/ui/permissions.qml:157
+#: package/contents/ui/TextPromptDialog.qml:39
 #, kde-format
 msgid "Enter session bus name…"
 msgstr "輸入工作階段匯流排名稱…"
 
-#: package/contents/ui/permissions.qml:158
+#: package/contents/ui/TextPromptDialog.qml:40
 #, kde-format
 msgid "Enter system bus name…"
 msgstr "輸入系統匯流排名稱…"
-
-#: package/contents/ui/permissions.qml:159
-#, kde-format
-msgid "Enter variable…"
-msgstr "輸入變數…"
-
-#: package/contents/ui/permissions.qml:182
-#, kde-format
-msgid "Enter value…"
-msgstr "輸入值…"
 
 #~ msgid "read-write"
 #~ msgstr "read-write"

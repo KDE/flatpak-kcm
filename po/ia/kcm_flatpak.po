@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-19 02:23+0000\n"
+"POT-Creation-Date: 2023-04-28 02:09+0000\n"
 "PO-Revision-Date: 2023-03-17 22:37+0100\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
@@ -246,6 +246,21 @@ msgstr "Adde un nove bus de systema"
 msgid "Add a new environment variable"
 msgstr "Adde un nove variabile de ambiente"
 
+#: package/contents/ui/AddEnvironmentVariableDialog.qml:18
+#, kde-format
+msgid "Set Environment Variable"
+msgstr "Fixa Variabile de ambiente"
+
+#: package/contents/ui/AddEnvironmentVariableDialog.qml:35
+#, kde-format
+msgid "Enter variable…"
+msgstr "Inserta variabile..."
+
+#: package/contents/ui/AddEnvironmentVariableDialog.qml:46
+#, kde-format
+msgid "Enter value…"
+msgstr "Inserta valor..."
+
 #: package/contents/ui/main.qml:18
 #, kde-format
 msgid "Flatpak Applications"
@@ -275,65 +290,50 @@ msgstr "Permissiones"
 msgid "Select an application from the list to view its permissions here"
 msgstr "Selige un application ex le lista per vider su permissiones hic"
 
-#: package/contents/ui/permissions.qml:112
+#: package/contents/ui/permissions.qml:134
 #, kde-format
 msgid "Hide advanced permissions"
 msgstr "Cela permissiones avantiate"
 
-#: package/contents/ui/permissions.qml:112
+#: package/contents/ui/permissions.qml:134
 #, kde-format
 msgid "Show advanced permissions"
 msgstr "Monstra permissiones avantiate"
 
-#: package/contents/ui/permissions.qml:124
+#: package/contents/ui/permissions.qml:146
 #, kde-format
 msgid "Add New"
 msgstr "Adde nove"
 
-#: package/contents/ui/permissions.qml:145
+#: package/contents/ui/TextPromptDialog.qml:21
 #, kde-format
 msgid "Add Filesystem Path Permission"
 msgstr "Adde Permission de Percurso de Systema de File"
 
-#: package/contents/ui/permissions.qml:146
+#: package/contents/ui/TextPromptDialog.qml:22
 #, kde-format
 msgid "Add Session Bus Permission"
 msgstr "Adde Permission de Bus de Session"
 
-#: package/contents/ui/permissions.qml:147
+#: package/contents/ui/TextPromptDialog.qml:23
 #, kde-format
 msgid "Add System Bus Permission"
 msgstr "Adde Permission de Bus de Systema"
 
-#: package/contents/ui/permissions.qml:148
-#, kde-format
-msgid "Set Environment Variable"
-msgstr "Fixa Variabile de ambiente"
-
-#: package/contents/ui/permissions.qml:156
+#: package/contents/ui/TextPromptDialog.qml:38
 #, kde-format
 msgid "Enter filesystem path…"
 msgstr "Inserta percurso de systema de file ..."
 
-#: package/contents/ui/permissions.qml:157
+#: package/contents/ui/TextPromptDialog.qml:39
 #, kde-format
 msgid "Enter session bus name…"
 msgstr "Inserta nomine de bus de session..."
 
-#: package/contents/ui/permissions.qml:158
+#: package/contents/ui/TextPromptDialog.qml:40
 #, kde-format
 msgid "Enter system bus name…"
 msgstr "Inserta nomine de bus de systema..."
-
-#: package/contents/ui/permissions.qml:159
-#, kde-format
-msgid "Enter variable…"
-msgstr "Inserta variabile..."
-
-#: package/contents/ui/permissions.qml:182
-#, kde-format
-msgid "Enter value…"
-msgstr "Inserta valor..."
 
 #~ msgid "read-write"
 #~ msgstr "Lectura-Scriptura"

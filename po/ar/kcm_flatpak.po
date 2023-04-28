@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-19 02:23+0000\n"
+"POT-Creation-Date: 2023-04-28 02:09+0000\n"
 "PO-Revision-Date: 2023-02-27 19:22+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -247,6 +247,21 @@ msgstr "أضف ناقل نظام جديداً"
 msgid "Add a new environment variable"
 msgstr "أضف متغير بيئة جديداً"
 
+#: package/contents/ui/AddEnvironmentVariableDialog.qml:18
+#, kde-format
+msgid "Set Environment Variable"
+msgstr "أضف متغير بيئة"
+
+#: package/contents/ui/AddEnvironmentVariableDialog.qml:35
+#, kde-format
+msgid "Enter variable…"
+msgstr "أدخل متغير…"
+
+#: package/contents/ui/AddEnvironmentVariableDialog.qml:46
+#, kde-format
+msgid "Enter value…"
+msgstr "أدخل قيمة..."
+
 #: package/contents/ui/main.qml:18
 #, kde-format
 msgid "Flatpak Applications"
@@ -274,65 +289,50 @@ msgstr "التصاريح"
 msgid "Select an application from the list to view its permissions here"
 msgstr "اختر تطبيق من القائمة لعرض تصاريحه هنا"
 
-#: package/contents/ui/permissions.qml:112
+#: package/contents/ui/permissions.qml:134
 #, kde-format
 msgid "Hide advanced permissions"
 msgstr "أخف التصاريح المتقدمة"
 
-#: package/contents/ui/permissions.qml:112
+#: package/contents/ui/permissions.qml:134
 #, kde-format
 msgid "Show advanced permissions"
 msgstr "اعرض التصاريح المتقدمة"
 
-#: package/contents/ui/permissions.qml:124
+#: package/contents/ui/permissions.qml:146
 #, kde-format
 msgid "Add New"
 msgstr "أضف أيضاً"
 
-#: package/contents/ui/permissions.qml:145
+#: package/contents/ui/TextPromptDialog.qml:21
 #, kde-format
 msgid "Add Filesystem Path Permission"
 msgstr "أضف تصريح مسار نظام ملفات"
 
-#: package/contents/ui/permissions.qml:146
+#: package/contents/ui/TextPromptDialog.qml:22
 #, kde-format
 msgid "Add Session Bus Permission"
 msgstr "أضف تصريح ناقل جلسة"
 
-#: package/contents/ui/permissions.qml:147
+#: package/contents/ui/TextPromptDialog.qml:23
 #, kde-format
 msgid "Add System Bus Permission"
 msgstr "أضف تصريح ناقل نظام"
 
-#: package/contents/ui/permissions.qml:148
-#, kde-format
-msgid "Set Environment Variable"
-msgstr "أضف متغير بيئة"
-
-#: package/contents/ui/permissions.qml:156
+#: package/contents/ui/TextPromptDialog.qml:38
 #, kde-format
 msgid "Enter filesystem path…"
 msgstr "أدخل مسار نظام الملفات…"
 
-#: package/contents/ui/permissions.qml:157
+#: package/contents/ui/TextPromptDialog.qml:39
 #, kde-format
 msgid "Enter session bus name…"
 msgstr "أدخل اسم جلسة ناقل…"
 
-#: package/contents/ui/permissions.qml:158
+#: package/contents/ui/TextPromptDialog.qml:40
 #, kde-format
 msgid "Enter system bus name…"
 msgstr "أدخل اسم ناقل النظام…"
-
-#: package/contents/ui/permissions.qml:159
-#, kde-format
-msgid "Enter variable…"
-msgstr "أدخل متغير…"
-
-#: package/contents/ui/permissions.qml:182
-#, kde-format
-msgid "Enter value…"
-msgstr "أدخل قيمة..."
 
 #~ msgid "read-write"
 #~ msgstr "القراءة والكتابة"
