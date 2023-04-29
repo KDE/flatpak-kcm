@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-19 02:55+0000\n"
+"POT-Creation-Date: 2023-04-29 02:54+0000\n"
 "PO-Revision-Date: 2023-02-22 22:37+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -251,6 +251,21 @@ msgstr "Gehitu sistemako bus berri bat"
 msgid "Add a new environment variable"
 msgstr "Gehitu ingurune-aldagai berri bat"
 
+#: package/contents/ui/AddEnvironmentVariableDialog.qml:18
+#, kde-format
+msgid "Set Environment Variable"
+msgstr "Ezarri ingurune aldagaia"
+
+#: package/contents/ui/AddEnvironmentVariableDialog.qml:35
+#, kde-format
+msgid "Enter variable..."
+msgstr "Sartu aldagaia..."
+
+#: package/contents/ui/AddEnvironmentVariableDialog.qml:46
+#, kde-format
+msgid "Enter value..."
+msgstr "Sartu balioa..."
+
 #: package/contents/ui/main.qml:16
 #, kde-format
 msgid "Flatpak Applications"
@@ -280,65 +295,50 @@ msgstr "Baimenak"
 msgid "Select an application from the list to view its permissions here"
 msgstr "Hautatu zerendako aplikazio bat haren baimenak hemen ikusteko"
 
-#: package/contents/ui/permissions.qml:60
+#: package/contents/ui/permissions.qml:82
 #, kde-format
 msgid "Hide advanced permissions"
 msgstr "Ezkutatu baimen aurreratuak"
 
-#: package/contents/ui/permissions.qml:60
+#: package/contents/ui/permissions.qml:82
 #, kde-format
 msgid "Show advanced permissions"
 msgstr "Erakutsi baimen aurreratuak"
 
-#: package/contents/ui/permissions.qml:72
+#: package/contents/ui/permissions.qml:94
 #, kde-format
 msgid "Add New"
 msgstr "Gehitu berria"
 
-#: package/contents/ui/permissions.qml:93
+#: package/contents/ui/TextPromptDialog.qml:21
 #, kde-format
 msgid "Add Filesystem Path Permission"
 msgstr "Gehitu fitxategi-sistemako bide-izenerako baimena"
 
-#: package/contents/ui/permissions.qml:94
+#: package/contents/ui/TextPromptDialog.qml:22
 #, kde-format
 msgid "Add Session Bus Permission"
 msgstr "Gehitu saioko bus-erako baimena"
 
-#: package/contents/ui/permissions.qml:95
+#: package/contents/ui/TextPromptDialog.qml:23
 #, kde-format
 msgid "Add System Bus Permission"
 msgstr "Gehitu sistemako bus-erako baimena"
 
-#: package/contents/ui/permissions.qml:96
-#, kde-format
-msgid "Set Environment Variable"
-msgstr "Ezarri ingurune aldagaia"
-
-#: package/contents/ui/permissions.qml:104
+#: package/contents/ui/TextPromptDialog.qml:38
 #, kde-format
 msgid "Enter filesystem path..."
 msgstr "Sartu fitxategi-sistemako bide-izenera..."
 
-#: package/contents/ui/permissions.qml:105
+#: package/contents/ui/TextPromptDialog.qml:39
 #, kde-format
 msgid "Enter session bus name..."
 msgstr "Sartu saioko bus-aren izena..."
 
-#: package/contents/ui/permissions.qml:106
+#: package/contents/ui/TextPromptDialog.qml:40
 #, kde-format
 msgid "Enter system bus name..."
 msgstr "Sartu sistemako bus-aren izena..."
-
-#: package/contents/ui/permissions.qml:107
-#, kde-format
-msgid "Enter variable..."
-msgstr "Sartu aldagaia..."
-
-#: package/contents/ui/permissions.qml:130
-#, kde-format
-msgid "Enter value..."
-msgstr "Sartu balioa..."
 
 #~ msgid "read-write"
 #~ msgstr "irakurri-idatzi"

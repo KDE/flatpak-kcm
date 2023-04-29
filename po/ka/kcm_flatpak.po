@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-19 02:55+0000\n"
+"POT-Creation-Date: 2023-04-29 02:54+0000\n"
 "PO-Revision-Date: 2023-02-22 06:57+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -248,6 +248,21 @@ msgstr "ახალი სისტემის მატარებლის 
 msgid "Add a new environment variable"
 msgstr "ახალი გარემოს ცვლადის დამატება"
 
+#: package/contents/ui/AddEnvironmentVariableDialog.qml:18
+#, kde-format
+msgid "Set Environment Variable"
+msgstr "გარემოს ცვლადის დამატება"
+
+#: package/contents/ui/AddEnvironmentVariableDialog.qml:35
+#, kde-format
+msgid "Enter variable..."
+msgstr "შეიყვანეთ ცვლადი..."
+
+#: package/contents/ui/AddEnvironmentVariableDialog.qml:46
+#, kde-format
+msgid "Enter value..."
+msgstr "შეიყვანეთ მნიშვნელობა..."
+
 #: package/contents/ui/main.qml:16
 #, kde-format
 msgid "Flatpak Applications"
@@ -277,65 +292,50 @@ msgstr "წვდომები"
 msgid "Select an application from the list to view its permissions here"
 msgstr "აირჩიეთ აპლიკაცია, რომლის წვდომების ნახვაც აქ გსურთ"
 
-#: package/contents/ui/permissions.qml:60
+#: package/contents/ui/permissions.qml:82
 #, kde-format
 msgid "Hide advanced permissions"
 msgstr "დამატებითი წვდომების დამალვა"
 
-#: package/contents/ui/permissions.qml:60
+#: package/contents/ui/permissions.qml:82
 #, kde-format
 msgid "Show advanced permissions"
 msgstr "დამატებითი წვდომების ჩვენება"
 
-#: package/contents/ui/permissions.qml:72
+#: package/contents/ui/permissions.qml:94
 #, kde-format
 msgid "Add New"
 msgstr "ახლის დამატება"
 
-#: package/contents/ui/permissions.qml:93
+#: package/contents/ui/TextPromptDialog.qml:21
 #, kde-format
 msgid "Add Filesystem Path Permission"
 msgstr "ფაილური სისტემის ბილიკის წვდომის დამატება"
 
-#: package/contents/ui/permissions.qml:94
+#: package/contents/ui/TextPromptDialog.qml:22
 #, kde-format
 msgid "Add Session Bus Permission"
 msgstr "სესიის მატარებლის წვდომის დამატება"
 
-#: package/contents/ui/permissions.qml:95
+#: package/contents/ui/TextPromptDialog.qml:23
 #, kde-format
 msgid "Add System Bus Permission"
 msgstr "სისტემის მატარებლის წვდომის დამატება"
 
-#: package/contents/ui/permissions.qml:96
-#, kde-format
-msgid "Set Environment Variable"
-msgstr "გარემოს ცვლადის დამატება"
-
-#: package/contents/ui/permissions.qml:104
+#: package/contents/ui/TextPromptDialog.qml:38
 #, kde-format
 msgid "Enter filesystem path..."
 msgstr "შეიყვანეთ ფაილური სისტემის ბილიკი..."
 
-#: package/contents/ui/permissions.qml:105
+#: package/contents/ui/TextPromptDialog.qml:39
 #, kde-format
 msgid "Enter session bus name..."
 msgstr "შეიყვანეთ სესიის მატარებლის სახელი..."
 
-#: package/contents/ui/permissions.qml:106
+#: package/contents/ui/TextPromptDialog.qml:40
 #, kde-format
 msgid "Enter system bus name..."
 msgstr "შეიყვანეთ სისტემის მატარებლის სახელი..."
-
-#: package/contents/ui/permissions.qml:107
-#, kde-format
-msgid "Enter variable..."
-msgstr "შეიყვანეთ ცვლადი..."
-
-#: package/contents/ui/permissions.qml:130
-#, kde-format
-msgid "Enter value..."
-msgstr "შეიყვანეთ მნიშვნელობა..."
 
 #~ msgid "read-write"
 #~ msgstr "ჩაწერადი-წაკითხვადი"

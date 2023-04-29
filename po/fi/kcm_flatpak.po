@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-19 02:55+0000\n"
+"POT-Creation-Date: 2023-04-29 02:54+0000\n"
 "PO-Revision-Date: 2023-03-04 18:47+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -248,6 +248,21 @@ msgstr "Lisää uusi järjestelmäväylä"
 msgid "Add a new environment variable"
 msgstr "Lisää uusi ympäristömuuttuja"
 
+#: package/contents/ui/AddEnvironmentVariableDialog.qml:18
+#, kde-format
+msgid "Set Environment Variable"
+msgstr "Aseta ympäristömuuttuja"
+
+#: package/contents/ui/AddEnvironmentVariableDialog.qml:35
+#, kde-format
+msgid "Enter variable..."
+msgstr "Anna muuttuja…"
+
+#: package/contents/ui/AddEnvironmentVariableDialog.qml:46
+#, kde-format
+msgid "Enter value..."
+msgstr "Anna arvo…"
+
 #: package/contents/ui/main.qml:16
 #, kde-format
 msgid "Flatpak Applications"
@@ -277,65 +292,50 @@ msgstr "Käyttöoikeudet"
 msgid "Select an application from the list to view its permissions here"
 msgstr "Näytä sovelluksen käyttöoikeudet valitsemalla se luettelosta"
 
-#: package/contents/ui/permissions.qml:60
+#: package/contents/ui/permissions.qml:82
 #, kde-format
 msgid "Hide advanced permissions"
 msgstr "Piilota lisäkäyttöoikeudet"
 
-#: package/contents/ui/permissions.qml:60
+#: package/contents/ui/permissions.qml:82
 #, kde-format
 msgid "Show advanced permissions"
 msgstr "Näytä lisäkäyttöoikeudet"
 
-#: package/contents/ui/permissions.qml:72
+#: package/contents/ui/permissions.qml:94
 #, kde-format
 msgid "Add New"
 msgstr "Lisää uusi"
 
-#: package/contents/ui/permissions.qml:93
+#: package/contents/ui/TextPromptDialog.qml:21
 #, kde-format
 msgid "Add Filesystem Path Permission"
 msgstr "Lisää tiedostojärjestelmäpolun käyttöoikeus"
 
-#: package/contents/ui/permissions.qml:94
+#: package/contents/ui/TextPromptDialog.qml:22
 #, kde-format
 msgid "Add Session Bus Permission"
 msgstr "Lisää istuntoväylän käyttöoikeus"
 
-#: package/contents/ui/permissions.qml:95
+#: package/contents/ui/TextPromptDialog.qml:23
 #, kde-format
 msgid "Add System Bus Permission"
 msgstr "Lisää järjestelmäväylän käyttöoikeus"
 
-#: package/contents/ui/permissions.qml:96
-#, kde-format
-msgid "Set Environment Variable"
-msgstr "Aseta ympäristömuuttuja"
-
-#: package/contents/ui/permissions.qml:104
+#: package/contents/ui/TextPromptDialog.qml:38
 #, kde-format
 msgid "Enter filesystem path..."
 msgstr "Anna tiedostojärjestelmäpolku…"
 
-#: package/contents/ui/permissions.qml:105
+#: package/contents/ui/TextPromptDialog.qml:39
 #, kde-format
 msgid "Enter session bus name..."
 msgstr "Anna istuntoväylän nimi…"
 
-#: package/contents/ui/permissions.qml:106
+#: package/contents/ui/TextPromptDialog.qml:40
 #, kde-format
 msgid "Enter system bus name..."
 msgstr "Anna järjestelmäväylän nimi…"
-
-#: package/contents/ui/permissions.qml:107
-#, kde-format
-msgid "Enter variable..."
-msgstr "Anna muuttuja…"
-
-#: package/contents/ui/permissions.qml:130
-#, kde-format
-msgid "Enter value..."
-msgstr "Anna arvo…"
 
 #~ msgid "read-write"
 #~ msgstr "luku/kirjoitus"

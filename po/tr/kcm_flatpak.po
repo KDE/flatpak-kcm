@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-19 02:55+0000\n"
+"POT-Creation-Date: 2023-04-29 02:54+0000\n"
 "PO-Revision-Date: 2023-02-21 22:53+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -248,6 +248,21 @@ msgstr "Yeni bir sistem veriyolu ekle"
 msgid "Add a new environment variable"
 msgstr "Yeni bir çevre değişkeni ekle"
 
+#: package/contents/ui/AddEnvironmentVariableDialog.qml:18
+#, kde-format
+msgid "Set Environment Variable"
+msgstr "Çevre Değişkeni Ayarla"
+
+#: package/contents/ui/AddEnvironmentVariableDialog.qml:35
+#, kde-format
+msgid "Enter variable..."
+msgstr "Değişken gir..."
+
+#: package/contents/ui/AddEnvironmentVariableDialog.qml:46
+#, kde-format
+msgid "Enter value..."
+msgstr "Değer gir..."
+
 #: package/contents/ui/main.qml:16
 #, kde-format
 msgid "Flatpak Applications"
@@ -277,65 +292,50 @@ msgstr "İzinler"
 msgid "Select an application from the list to view its permissions here"
 msgstr "İzinlerini görmek için listeden bir uygulama seçin"
 
-#: package/contents/ui/permissions.qml:60
+#: package/contents/ui/permissions.qml:82
 #, kde-format
 msgid "Hide advanced permissions"
 msgstr "Gelişmiş izinleri gizle"
 
-#: package/contents/ui/permissions.qml:60
+#: package/contents/ui/permissions.qml:82
 #, kde-format
 msgid "Show advanced permissions"
 msgstr "Gelişmiş izinleri göster"
 
-#: package/contents/ui/permissions.qml:72
+#: package/contents/ui/permissions.qml:94
 #, kde-format
 msgid "Add New"
 msgstr "Yeni Ekle"
 
-#: package/contents/ui/permissions.qml:93
+#: package/contents/ui/TextPromptDialog.qml:21
 #, kde-format
 msgid "Add Filesystem Path Permission"
 msgstr "Dosya Sistemi Yolu İzini Ekle"
 
-#: package/contents/ui/permissions.qml:94
+#: package/contents/ui/TextPromptDialog.qml:22
 #, kde-format
 msgid "Add Session Bus Permission"
 msgstr "Oturum Veriyolu İzini Ekle"
 
-#: package/contents/ui/permissions.qml:95
+#: package/contents/ui/TextPromptDialog.qml:23
 #, kde-format
 msgid "Add System Bus Permission"
 msgstr "Sistem Veriyolu İzini Ekle"
 
-#: package/contents/ui/permissions.qml:96
-#, kde-format
-msgid "Set Environment Variable"
-msgstr "Çevre Değişkeni Ayarla"
-
-#: package/contents/ui/permissions.qml:104
+#: package/contents/ui/TextPromptDialog.qml:38
 #, kde-format
 msgid "Enter filesystem path..."
 msgstr "Dosya sistemi yolu gir..."
 
-#: package/contents/ui/permissions.qml:105
+#: package/contents/ui/TextPromptDialog.qml:39
 #, kde-format
 msgid "Enter session bus name..."
 msgstr "Oturum veriyolu adı gir..."
 
-#: package/contents/ui/permissions.qml:106
+#: package/contents/ui/TextPromptDialog.qml:40
 #, kde-format
 msgid "Enter system bus name..."
 msgstr "Sistem veriyolu adı gir..."
-
-#: package/contents/ui/permissions.qml:107
-#, kde-format
-msgid "Enter variable..."
-msgstr "Değişken gir..."
-
-#: package/contents/ui/permissions.qml:130
-#, kde-format
-msgid "Enter value..."
-msgstr "Değer gir..."
 
 #~ msgid "read-write"
 #~ msgstr "oku-yaz"
