@@ -57,16 +57,9 @@ target_link_libraries(kcm_flatpak_static
     Qt::Core
 )
 
-add_library(kcm_flatpak MODULE
-    kcm.cpp kcm.h
-)
+kcmutils_add_qml_kcm(kcm_flatpak SOURCES kcm.cpp kcm.h)
+
 target_link_libraries(kcm_flatpak kcm_flatpak_static)
-
-install(TARGETS kcm_flatpak DESTINATION ${KDE_INSTALL_PLUGINDIR}/plasma/kcms/systemsettings)
-
-kpackage_install_package(package kcm_flatpak kcms)
-
-kcmutils_generate_desktop_file(kcm_flatpak)
 
 ki18n_install(po)
 
