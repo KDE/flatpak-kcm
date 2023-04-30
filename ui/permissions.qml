@@ -66,6 +66,8 @@ KCM.ScrollViewKCM {
 
             spacing: 0
 
+            width: ListView.view.width - ListView.view.leftMargin - ListView.view.rightMargin
+
             Kirigami.Icon {
                 source: header.icon
 
