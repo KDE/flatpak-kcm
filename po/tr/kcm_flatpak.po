@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-28 02:09+0000\n"
-"PO-Revision-Date: 2023-04-04 00:53+0300\n"
+"PO-Revision-Date: 2023-04-30 01:43+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 23.03.70\n"
 
 #: autotests/flatpakpermissiontest.cpp:387
 #: autotests/flatpakpermissiontest.cpp:614 flatpakpermission.cpp:403
@@ -94,12 +94,12 @@ msgstr "Pulseaudio Ses Sunucusu"
 #: flatpakpermission.cpp:728
 #, kde-format
 msgid "Session Bus Access"
-msgstr "Oturum Veriyolu Erişimi"
+msgstr "Oturum Veri Yolu Erişimi"
 
 #: flatpakpermission.cpp:729
 #, kde-format
 msgid "System Bus Access"
-msgstr "Sistem Veriyolu Erişimi"
+msgstr "Sistem Veri Yolu Erişimi"
 
 #: flatpakpermission.cpp:730
 #, kde-format
@@ -216,12 +216,12 @@ msgstr "İzin Verilen Özellikler"
 #: flatpakpermission.cpp:1207
 #, kde-format
 msgid "Session Bus Policy"
-msgstr "Oturum Veriyolu Politikası"
+msgstr "Oturum Veri Yolu Politikası"
 
 #: flatpakpermission.cpp:1209
 #, kde-format
 msgid "System Bus Policy"
-msgstr "Sistem Veriyolu Politikası"
+msgstr "Sistem Veri Yolu Politikası"
 
 #: flatpakpermission.cpp:1211
 #, kde-format
@@ -236,12 +236,12 @@ msgstr "Yeni bir dosya sistemi yolu ekle"
 #: flatpakpermission.cpp:1230
 #, kde-format
 msgid "Add a new session bus"
-msgstr "Yeni bir oturum veriyolu ekle"
+msgstr "Yeni bir oturum veri yolu ekle"
 
 #: flatpakpermission.cpp:1232
 #, kde-format
 msgid "Add a new system bus"
-msgstr "Yeni bir sistem veriyolu ekle"
+msgstr "Yeni bir sistem veri yolu ekle"
 
 #: flatpakpermission.cpp:1234
 #, kde-format
@@ -315,12 +315,12 @@ msgstr "Dosya Sistemi Yolu İzini Ekle"
 #: package/contents/ui/TextPromptDialog.qml:22
 #, kde-format
 msgid "Add Session Bus Permission"
-msgstr "Oturum Veriyolu İzini Ekle"
+msgstr "Oturum Veri Yolu İzni Ekle"
 
 #: package/contents/ui/TextPromptDialog.qml:23
 #, kde-format
 msgid "Add System Bus Permission"
-msgstr "Sistem Veriyolu İzini Ekle"
+msgstr "Sistem Veri Yolu İzni Ekle"
 
 #: package/contents/ui/TextPromptDialog.qml:38
 #, kde-format
@@ -330,12 +330,12 @@ msgstr "Dosya sistemi yolu gir…"
 #: package/contents/ui/TextPromptDialog.qml:39
 #, kde-format
 msgid "Enter session bus name…"
-msgstr "Oturum veriyolu adı gir…"
+msgstr "Oturum veri yolu adı gir…"
 
 #: package/contents/ui/TextPromptDialog.qml:40
 #, kde-format
 msgid "Enter system bus name…"
-msgstr "Sistem veriyolu adı gir…"
+msgstr "Sistem veri yolu adı gir…"
 
 #~ msgid "read-write"
 #~ msgstr "oku-yaz"
