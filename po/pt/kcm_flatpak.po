@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-28 02:09+0000\n"
+"POT-Creation-Date: 2023-05-01 02:33+0000\n"
 "PO-Revision-Date: 2023-02-17 12:39+0000\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
@@ -251,32 +251,32 @@ msgstr "Adicionar um novo barramento de sistema"
 msgid "Add a new environment variable"
 msgstr "Adicionar uma nova variável de ambiente"
 
-#: package/contents/ui/AddEnvironmentVariableDialog.qml:18
+#: ui/AddEnvironmentVariableDialog.qml:18
 #, kde-format
 msgid "Set Environment Variable"
 msgstr "Definir uma Variável de Ambiente"
 
-#: package/contents/ui/AddEnvironmentVariableDialog.qml:35
+#: ui/AddEnvironmentVariableDialog.qml:35
 #, kde-format
 msgid "Enter variable…"
 msgstr "Indique a variável…"
 
-#: package/contents/ui/AddEnvironmentVariableDialog.qml:46
+#: ui/AddEnvironmentVariableDialog.qml:46
 #, kde-format
 msgid "Enter value…"
 msgstr "Indique o valor…"
 
-#: package/contents/ui/main.qml:18
+#: ui/main.qml:18
 #, kde-format
 msgid "Flatpak Applications"
 msgstr "Aplicações do Flatpak"
 
-#: package/contents/ui/main.qml:88
+#: ui/main.qml:88
 #, kde-format
 msgid "Apply Permissions"
 msgstr "Aplicar as Permissões"
 
-#: package/contents/ui/main.qml:89
+#: ui/main.qml:89
 #, fuzzy, kde-format
 #| msgid ""
 #| "The permissions of this application have been changed. Do you want to "
@@ -288,57 +288,57 @@ msgstr ""
 "As permissões desta aplicação foram modificadas. Deseja aplicar essas "
 "modificações ou esquecê-las?"
 
-#: package/contents/ui/permissions.qml:17
+#: ui/permissions.qml:17
 #, kde-format
 msgid "Permissions"
 msgstr "Permissões"
 
-#: package/contents/ui/permissions.qml:23
+#: ui/permissions.qml:23
 #, kde-format
 msgid "Select an application from the list to view its permissions here"
 msgstr "Seleccione una aplicação aqui para ver as suas permissões"
 
-#: package/contents/ui/permissions.qml:134
+#: ui/permissions.qml:134
 #, kde-format
 msgid "Hide advanced permissions"
 msgstr "Esconder as permissões avançadas"
 
-#: package/contents/ui/permissions.qml:134
+#: ui/permissions.qml:134
 #, kde-format
 msgid "Show advanced permissions"
 msgstr "Mostrar as permissões avançadas"
 
-#: package/contents/ui/permissions.qml:146
+#: ui/permissions.qml:146
 #, kde-format
 msgid "Add New"
 msgstr "Adicionar uma Nova"
 
-#: package/contents/ui/TextPromptDialog.qml:21
+#: ui/TextPromptDialog.qml:21
 #, kde-format
 msgid "Add Filesystem Path Permission"
 msgstr "Adicionar uma Permissão de Local do Sistema de Ficheiros"
 
-#: package/contents/ui/TextPromptDialog.qml:22
+#: ui/TextPromptDialog.qml:22
 #, kde-format
 msgid "Add Session Bus Permission"
 msgstr "Adicionar uma Permissão do Barramento da Sessão"
 
-#: package/contents/ui/TextPromptDialog.qml:23
+#: ui/TextPromptDialog.qml:23
 #, kde-format
 msgid "Add System Bus Permission"
 msgstr "Adicionar uma Permissão do Barramento do Sistema..."
 
-#: package/contents/ui/TextPromptDialog.qml:38
+#: ui/TextPromptDialog.qml:38
 #, kde-format
 msgid "Enter filesystem path…"
 msgstr "Indique o local no sistema de ficheiros…"
 
-#: package/contents/ui/TextPromptDialog.qml:39
+#: ui/TextPromptDialog.qml:39
 #, kde-format
 msgid "Enter session bus name…"
 msgstr "Indique o nome do barramento da sessão…"
 
-#: package/contents/ui/TextPromptDialog.qml:40
+#: ui/TextPromptDialog.qml:40
 #, kde-format
 msgid "Enter system bus name…"
 msgstr "Indique o nome do barramento do sistema…"

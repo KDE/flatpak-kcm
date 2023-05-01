@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-28 02:09+0000\n"
+"POT-Creation-Date: 2023-05-01 02:33+0000\n"
 "PO-Revision-Date: 2023-02-23 07:04+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -248,32 +248,32 @@ msgstr "ახალი სისტემის მატარებლის 
 msgid "Add a new environment variable"
 msgstr "ახალი გარემოს ცვლადის დამატება"
 
-#: package/contents/ui/AddEnvironmentVariableDialog.qml:18
+#: ui/AddEnvironmentVariableDialog.qml:18
 #, kde-format
 msgid "Set Environment Variable"
 msgstr "გარემოს ცვლადის დამატება"
 
-#: package/contents/ui/AddEnvironmentVariableDialog.qml:35
+#: ui/AddEnvironmentVariableDialog.qml:35
 #, kde-format
 msgid "Enter variable…"
 msgstr "შეიყვანეთ ცვლადი…"
 
-#: package/contents/ui/AddEnvironmentVariableDialog.qml:46
+#: ui/AddEnvironmentVariableDialog.qml:46
 #, kde-format
 msgid "Enter value…"
 msgstr "შეიყვანეთ მნიშვნელობა…"
 
-#: package/contents/ui/main.qml:18
+#: ui/main.qml:18
 #, kde-format
 msgid "Flatpak Applications"
 msgstr "Flatpak -ის აპლიკაციები"
 
-#: package/contents/ui/main.qml:88
+#: ui/main.qml:88
 #, kde-format
 msgid "Apply Permissions"
 msgstr "წვდომების გადატარება"
 
-#: package/contents/ui/main.qml:89
+#: ui/main.qml:89
 #, kde-format
 msgid ""
 "The permissions of application %1 have been changed. Do you want to apply "
@@ -282,57 +282,57 @@ msgstr ""
 "აპლიკაციის (%1) წვდომები შეიცვალა. გნებავთ ამ ცვლილებების გადატარება, თუ "
 "გნებავთ, გააუქმოთ ისინი?"
 
-#: package/contents/ui/permissions.qml:17
+#: ui/permissions.qml:17
 #, kde-format
 msgid "Permissions"
 msgstr "წვდომები"
 
-#: package/contents/ui/permissions.qml:23
+#: ui/permissions.qml:23
 #, kde-format
 msgid "Select an application from the list to view its permissions here"
 msgstr "აირჩიეთ აპლიკაცია, რომლის წვდომების ნახვაც აქ გსურთ"
 
-#: package/contents/ui/permissions.qml:134
+#: ui/permissions.qml:134
 #, kde-format
 msgid "Hide advanced permissions"
 msgstr "დამატებითი წვდომების დამალვა"
 
-#: package/contents/ui/permissions.qml:134
+#: ui/permissions.qml:134
 #, kde-format
 msgid "Show advanced permissions"
 msgstr "დამატებითი წვდომების ჩვენება"
 
-#: package/contents/ui/permissions.qml:146
+#: ui/permissions.qml:146
 #, kde-format
 msgid "Add New"
 msgstr "ახლის დამატება"
 
-#: package/contents/ui/TextPromptDialog.qml:21
+#: ui/TextPromptDialog.qml:21
 #, kde-format
 msgid "Add Filesystem Path Permission"
 msgstr "ფაილური სისტემის ბილიკის წვდომის დამატება"
 
-#: package/contents/ui/TextPromptDialog.qml:22
+#: ui/TextPromptDialog.qml:22
 #, kde-format
 msgid "Add Session Bus Permission"
 msgstr "სესიის მატარებლის წვდომის დამატება"
 
-#: package/contents/ui/TextPromptDialog.qml:23
+#: ui/TextPromptDialog.qml:23
 #, kde-format
 msgid "Add System Bus Permission"
 msgstr "სისტემის მატარებლის წვდომის დამატება"
 
-#: package/contents/ui/TextPromptDialog.qml:38
+#: ui/TextPromptDialog.qml:38
 #, kde-format
 msgid "Enter filesystem path…"
 msgstr "შეიყვანეთ ფაილური სისტემის ბილიკი…"
 
-#: package/contents/ui/TextPromptDialog.qml:39
+#: ui/TextPromptDialog.qml:39
 #, kde-format
 msgid "Enter session bus name…"
 msgstr "შეიყვანეთ სესიის მატარებლის სახელი…"
 
-#: package/contents/ui/TextPromptDialog.qml:40
+#: ui/TextPromptDialog.qml:40
 #, kde-format
 msgid "Enter system bus name…"
 msgstr "შეიყვანეთ სისტემის მატარებლის სახელი…"
