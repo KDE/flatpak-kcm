@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-05-01 02:33+0000\n"
+"POT-Creation-Date: 2023-05-02 02:19+0000\n"
 "PO-Revision-Date: 2023-02-27 22:25+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Chinese <zh-l10n@linux.org.tw>\n"
@@ -288,17 +288,17 @@ msgstr "權限"
 msgid "Select an application from the list to view its permissions here"
 msgstr "從列表選取應用程式以在此檢視它的權限"
 
-#: ui/permissions.qml:134
+#: ui/permissions.qml:136
 #, kde-format
 msgid "Hide advanced permissions"
 msgstr "隱藏進階權限"
 
-#: ui/permissions.qml:134
+#: ui/permissions.qml:136
 #, kde-format
 msgid "Show advanced permissions"
 msgstr "顯示進階權限"
 
-#: ui/permissions.qml:146
+#: ui/permissions.qml:148
 #, kde-format
 msgid "Add New"
 msgstr "新增"

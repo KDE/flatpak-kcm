@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-05-01 02:33+0000\n"
+"POT-Creation-Date: 2023-05-02 02:19+0000\n"
 "PO-Revision-Date: 2023-02-22 08:50+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
@@ -293,17 +293,17 @@ msgstr "Права доступу"
 msgid "Select an application from the list to view its permissions here"
 msgstr "Виберіть програму зі списку, щоб переглянути її права доступу"
 
-#: ui/permissions.qml:134
+#: ui/permissions.qml:136
 #, kde-format
 msgid "Hide advanced permissions"
 msgstr "Приховати розширені права доступу"
 
-#: ui/permissions.qml:134
+#: ui/permissions.qml:136
 #, kde-format
 msgid "Show advanced permissions"
 msgstr "Показати розширені права доступу"
 
-#: ui/permissions.qml:146
+#: ui/permissions.qml:148
 #, kde-format
 msgid "Add New"
 msgstr "Додати"
