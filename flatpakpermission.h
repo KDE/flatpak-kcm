@@ -491,6 +491,16 @@ private:
     Variant m_effectiveValue;
 };
 
+namespace FlatpakOverrides
+{
+
+using KConfigPtr = std::unique_ptr<KConfig>;
+
+KConfigPtr loadAndMerge(const QStringList &filenames);
+void merge(KConfig &target, const QString &filename);
+void merge(KConfig &target, const KConfig &source);
+};
+
 class FlatpakPermissionModel : public QAbstractListModel
 {
     friend class FlatpakPermissionModelTest;
@@ -553,6 +563,9 @@ public:
 
     Q_INVOKABLE bool permissionExists(int /*FlatpakPermissionsSectionType::Type*/ rawSection, const QString &name) const;
     bool permissionExists(FlatpakPermissionsSectionType::Type section, const QString &name) const;
+
+    std::optional<int> findPermissionRow(FlatpakPermissionsSectionType::Type section, const QString &name) const;
+    QModelIndex findPermissionIndex(FlatpakPermissionsSectionType::Type section, const QString &name) const;
 
     /**
      * Validators to check that names comply with section-specific rules.

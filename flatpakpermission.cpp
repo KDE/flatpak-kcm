@@ -612,6 +612,114 @@ static FlatpakPolicy mapDBusFlatpakPolicyConfigStringToEnumValue(const QString &
     return FlatpakPolicy::FLATPAK_POLICY_NONE;
 }
 
+namespace FlatpakOverrides
+{
+
+KConfigPtr loadAndMerge(const QStringList &filenames)
+{
+    auto config = std::make_unique<KConfig>(QString(), KConfig::SimpleConfig);
+    for (const auto &filename : filenames) {
+        merge(*config, filename);
+    }
+    return config;
+}
+
+void merge(KConfig &target, const QString &filename)
+{
+    if (!QFileInfo::exists(filename)) {
+        return;
+    }
+    const KConfig config(filename, KConfig::SimpleConfig);
+    merge(target, config);
+}
+
+void merge(KConfig &target, const KConfig &source)
+{
+    /***/ auto targetContextGroup = target.group(QLatin1String(FLATPAK_METADATA_GROUP_CONTEXT));
+    const auto sourceContextGroup = source.group(QLatin1String(FLATPAK_METADATA_GROUP_CONTEXT));
+
+    const std::array simpleCategories = {
+        QLatin1String(FLATPAK_METADATA_KEY_SHARED),
+        QLatin1String(FLATPAK_METADATA_KEY_SOCKETS),
+        QLatin1String(FLATPAK_METADATA_KEY_DEVICES),
+        QLatin1String(FLATPAK_METADATA_KEY_FEATURES),
+    };
+
+    for (const auto &category : simpleCategories) {
+        const auto targetEntries = FlatpakSimpleEntry::getCategorySkippingInvalidEntries(targetContextGroup, category);
+        const auto sourceEntries = FlatpakSimpleEntry::getCategorySkippingInvalidEntries(sourceContextGroup, category);
+
+        QMap<QString, bool> entriesMap;
+
+        for (const auto &entries : {targetEntries, sourceEntries}) {
+            for (const auto &entry : entries) {
+                entriesMap.insert(entry.name(), entry.isEnabled());
+            }
+        }
+
+        QStringList entriesList;
+
+        for (auto it = entriesMap.constKeyValueBegin(); it != entriesMap.constKeyValueEnd(); it++) {
+            const auto [name, enabled] = *it;
+            entriesList.append(FlatpakSimpleEntry(name, enabled).format());
+        }
+
+        targetContextGroup.writeXdgListEntry(category, entriesList, KConfig::WriteConfigFlags{});
+    }
+
+    /* Filesystems */
+    {
+        const auto category = QLatin1String(FLATPAK_METADATA_KEY_FILESYSTEMS);
+
+        const auto targetRawFilesystems = targetContextGroup.readXdgListEntry(category);
+        const auto sourceRawFilesystems = sourceContextGroup.readXdgListEntry(category);
+
+        QMap<QString, FlatpakFilesystemsEntry::AccessMode> entriesMap;
+
+        for (const auto &rawFilesystems : {targetRawFilesystems, sourceRawFilesystems}) {
+            const auto entries = filter_map(rawFilesystems, [](const QString &entry) {
+                return FlatpakFilesystemsEntry::parse(entry);
+            });
+            for (const auto &entry : entries) {
+                entriesMap.insert(entry.name(), entry.mode());
+            }
+        }
+
+        QStringList entriesList;
+
+        for (auto it = entriesMap.constKeyValueBegin(); it != entriesMap.constKeyValueEnd(); it++) {
+            const auto [name, accessMode] = *it;
+            if (const auto entry = FlatpakFilesystemsEntry::parse(name, accessMode); entry.has_value()) {
+                entriesList.append(entry.value().format());
+            }
+        }
+
+        targetContextGroup.writeXdgListEntry(category, entriesList, KConfig::WriteConfigFlags());
+    }
+
+    const std::array categories = {
+        QLatin1String(FLATPAK_METADATA_GROUP_SESSION_BUS_POLICY),
+        QLatin1String(FLATPAK_METADATA_GROUP_SYSTEM_BUS_POLICY),
+        QLatin1String(FLATPAK_METADATA_GROUP_ENVIRONMENT),
+    };
+    for (const auto &category : categories) {
+        /***/ auto targetGroup = target.group(category);
+        const auto sourceGroup = source.group(category);
+
+        QMap<QString, QString> entriesMap;
+
+        entriesMap.insert(targetGroup.entryMap());
+        entriesMap.insert(sourceGroup.entryMap());
+
+        for (auto it = entriesMap.constKeyValueBegin(); it != entriesMap.constKeyValueEnd(); it++) {
+            const auto &[key, value] = *it;
+            targetGroup.writeEntry(key, value, KConfig::WriteConfigFlags());
+        }
+    }
+}
+
+};
+
 FlatpakPermissionModel::FlatpakPermissionModel(QObject *parent)
     : QAbstractListModel(parent)
     , m_showAdvanced(false)
@@ -685,9 +793,10 @@ QHash<int, QByteArray> FlatpakPermissionModel::roleNames() const
 
 void FlatpakPermissionModel::loadDefaultValues()
 {
-    const auto &metadataFilepath = m_reference->metadataAndOverridesFiles().first();
-    KConfig parser(metadataFilepath);
-    const auto contextGroup = parser.group(QLatin1String(FLATPAK_METADATA_GROUP_CONTEXT));
+    const auto defaults = m_reference->defaultsFiles();
+    auto parser = FlatpakOverrides::loadAndMerge(defaults);
+
+    const auto contextGroup = parser->group(QLatin1String(FLATPAK_METADATA_GROUP_CONTEXT));
 
     QString category;
     QList<FlatpakSimpleEntry> simpleEntries;
@@ -822,7 +931,7 @@ void FlatpakPermissionModel::loadDefaultValues()
     /* SESSION BUS category */
     {
         category = QLatin1String(FLATPAK_METADATA_GROUP_SESSION_BUS_POLICY);
-        const auto group = parser.group(category);
+        const auto group = parser->group(category);
         if (const auto keys = group.keyList(); !keys.isEmpty()) {
             for (const auto &name : keys) {
                 const auto policyString = group.readEntry(name);
@@ -838,7 +947,7 @@ void FlatpakPermissionModel::loadDefaultValues()
     /* SYSTEM BUS category */
     {
         category = QLatin1String(FLATPAK_METADATA_GROUP_SYSTEM_BUS_POLICY);
-        const auto group = parser.group(category);
+        const auto group = parser->group(category);
         if (const auto keys = group.keyList(); !keys.isEmpty()) {
             for (const auto &name : keys) {
                 const auto policyString = group.readEntry(name);
@@ -854,7 +963,7 @@ void FlatpakPermissionModel::loadDefaultValues()
     /* ENVIRONMENT category */
     {
         category = QLatin1String(FLATPAK_METADATA_GROUP_ENVIRONMENT);
-        const auto group = parser.group(category);
+        const auto group = parser->group(category);
         if (const auto keys = group.keyList(); !keys.isEmpty()) {
             for (const auto &name : keys) {
                 const auto value = group.readEntry(name);
@@ -869,14 +978,14 @@ void FlatpakPermissionModel::loadDefaultValues()
 
 void FlatpakPermissionModel::loadCurrentValues()
 {
-    const auto &userAppOverrides = m_reference->metadataAndOverridesFiles().last();
+    const auto &userAppOverrides = m_reference->userLevelPerAppOverrideFile();
 
     /* all permissions are at default, so nothing to load */
     if (!QFileInfo::exists(userAppOverrides)) {
         return;
     }
 
-    KConfig parser(userAppOverrides);
+    const KConfig parser(userAppOverrides, KConfig::SimpleConfig);
     const auto contextGroup = parser.group(QLatin1String(FLATPAK_METADATA_GROUP_CONTEXT));
 
     // Mapping to valid entries. Invalid ones go into m_unparsableEntriesByCategory.
@@ -1088,7 +1197,6 @@ void FlatpakPermissionModel::load()
         m_permissions.clear();
         m_unparsableEntriesByCategory.clear();
         loadDefaultValues();
-        // TODO: load system per-app and user global overrides too.
         loadCurrentValues();
     }
     endResetModel();
@@ -1250,9 +1358,27 @@ bool FlatpakPermissionModel::permissionExists(int /*FlatpakPermissionsSectionTyp
 
 bool FlatpakPermissionModel::permissionExists(FlatpakPermissionsSectionType::Type section, const QString &name) const
 {
-    return std::any_of(m_permissions.constBegin(), m_permissions.constEnd(), [&](const FlatpakPermission &permission) {
-        return permission.section() == section && permission.name() == name;
-    });
+    return findPermissionRow(section, name).has_value();
+}
+
+std::optional<int> FlatpakPermissionModel::findPermissionRow(FlatpakPermissionsSectionType::Type section, const QString &name) const
+{
+    for (int i = 0; i < m_permissions.length(); i++) {
+        const auto &permission = m_permissions[i];
+        if (permission.section() == section && permission.name() == name) {
+            return std::optional(i);
+        }
+    }
+    return std::nullopt;
+}
+
+QModelIndex FlatpakPermissionModel::findPermissionIndex(FlatpakPermissionsSectionType::Type section, const QString &name) const
+{
+    auto row = findPermissionRow(section, name);
+    if (row.has_value()) {
+        return index(row.value());
+    }
+    return QModelIndex();
 }
 
 bool FlatpakPermissionModel::isFilesystemNameValid(const QString &name)
@@ -1444,7 +1570,7 @@ int FlatpakPermissionModel::findIndexToInsertRowAndRemoveDummyRowIfNeeded(Flatpa
 
 void FlatpakPermissionModel::writeToFile() const
 {
-    const auto &userAppOverrides = m_reference->metadataAndOverridesFiles().last();
+    const auto &userAppOverrides = m_reference->userLevelPerAppOverrideFile();
     if (isDefaults()) {
         QFile::remove(userAppOverrides);
     } else {

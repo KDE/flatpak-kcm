@@ -89,6 +89,20 @@ private:
         return {metadata, override};
     }
 
+    // These are little helpers to avoid writing out default-constructed flags
+    // every time. These flags are for pure in-memory configs to avoid any
+    // possible surprizes from KConfig infrastructure.
+
+    static void write(KConfigGroup &group, const QString &key, const QString &value)
+    {
+        group.writeEntry(key, value, KConfig::WriteConfigFlags());
+    };
+
+    static void write(KConfigGroup &group, const QString &key, const QStringList &values)
+    {
+        group.writeXdgListEntry(key, values, KConfig::WriteConfigFlags());
+    };
+
 private Q_SLOTS:
     void init()
     {
@@ -105,18 +119,18 @@ private Q_SLOTS:
             auto group1 = config->group(QLatin1String(FLATPAK_METADATA_GROUP_ENVIRONMENT));
             auto group2 = config->group(QLatin1String(FLATPAK_METADATA_GROUP_CONTEXT));
 
-            group1.writeEntry(QStringLiteral("key1"), QStringLiteral("value1"));
-            group1.writeEntry(QStringLiteral("key2"), QStringLiteral("value2"));
+            write(group1, QStringLiteral("key1"), QStringLiteral("value1"));
+            write(group1, QStringLiteral("key2"), QStringLiteral("value2"));
 
             auto values = QStringList{QStringLiteral("itemA"), QStringLiteral("itemB")};
-            group2.writeEntry(QStringLiteral("key3"), values);
+            write(group2, QStringLiteral("key3"), values);
             // Reorder list entries
             if (config == &configB) {
                 values = QStringList{QStringLiteral("itemC"), QStringLiteral("itemD")};
             } else {
                 values = QStringList{QStringLiteral("itemD"), QStringLiteral("itemC")};
             }
-            group2.writeXdgListEntry(QStringLiteral("key4"), values);
+            write(group2, QStringLiteral("key4"), values);
         }
 
         QVERIFY(operatorFlatpakConfigEquals(configA, configB));
@@ -131,9 +145,9 @@ private Q_SLOTS:
         auto groupB = configB.group(QLatin1String(FLATPAK_METADATA_GROUP_CONTEXT));
 
         QStringList values = QStringList{QStringLiteral("itemA"), QStringLiteral("itemB")};
-        groupA.writeXdgListEntry(QStringLiteral("key4"), values);
+        write(groupA, QStringLiteral("key4"), values);
         values.append(QStringLiteral("itemC"));
-        groupB.writeXdgListEntry(QStringLiteral("key4"), values);
+        write(groupB, QStringLiteral("key4"), values);
 
         QVERIFY(!operatorFlatpakConfigEquals(configA, configB));
     }
@@ -148,14 +162,14 @@ private Q_SLOTS:
             const std::array groupNames = {QLatin1String("G1"), QLatin1String("G2")};
             for (const auto &groupName : groupNames) {
                 auto group = config->group(groupName);
-                group.writeEntry(QStringLiteral("key1"), QStringLiteral("value1"));
+                write(group, QStringLiteral("key1"), QStringLiteral("value1"));
             }
         }
         QVERIFY(operatorFlatpakConfigEquals(configA, configB));
         const auto extraGroupName = QLatin1String("GExtra");
         {
             auto groupA3 = configA.group(extraGroupName);
-            groupA3.writeEntry(QStringLiteral("key1"), QStringLiteral("value1"));
+            write(groupA3, QStringLiteral("key1"), QStringLiteral("value1"));
         }
         QVERIFY(!operatorFlatpakConfigEquals(configA, configB));
         configA.deleteGroup(extraGroupName);
@@ -163,11 +177,254 @@ private Q_SLOTS:
         {
             // Test the other way around too
             auto groupB3 = configB.group(extraGroupName);
-            groupB3.writeEntry(QStringLiteral("key1"), QStringLiteral("value1"));
+            write(groupB3, QStringLiteral("key1"), QStringLiteral("value1"));
         }
         QVERIFY(!operatorFlatpakConfigEquals(configA, configB));
         configB.deleteGroup(extraGroupName);
         QVERIFY(operatorFlatpakConfigEquals(configA, configB));
+    }
+
+    void testMergeConfigObjectsWithBareTarget()
+    {
+        KConfig target(QString(), KConfig::SimpleConfig);
+        KConfig source(QString(), KConfig::SimpleConfig);
+        KConfig expected(QString(), KConfig::SimpleConfig);
+
+        for (const auto config : {&source, &expected}) {
+            auto group = config->group(QLatin1String(FLATPAK_METADATA_GROUP_CONTEXT));
+            write(group, QLatin1String(FLATPAK_METADATA_KEY_SHARED), {QStringLiteral("network")});
+            write(group, QLatin1String(FLATPAK_METADATA_KEY_SOCKETS), {QStringLiteral("x11"), QStringLiteral("wayland"), QStringLiteral("fallback-x11")});
+            write(group, QLatin1String(FLATPAK_METADATA_KEY_DEVICES), {QStringLiteral("dri"), QStringLiteral("kvm")});
+            write(group, QLatin1String(FLATPAK_METADATA_KEY_FEATURES), {QStringLiteral("bluetooth"), QStringLiteral("devel")});
+            write(group, QLatin1String(FLATPAK_METADATA_KEY_FILESYSTEMS), {QStringLiteral("xdg-download"), QStringLiteral("~/path")});
+
+            for (const auto &groupName : {
+                     QLatin1String(FLATPAK_METADATA_GROUP_SESSION_BUS_POLICY),
+                     QLatin1String(FLATPAK_METADATA_GROUP_SYSTEM_BUS_POLICY),
+                     QLatin1String(FLATPAK_METADATA_GROUP_ENVIRONMENT),
+                 }) {
+                auto group = config->group(groupName);
+                write(group, QStringLiteral("abc.def"), QStringLiteral("talk"));
+                write(group, QStringLiteral("xyz.xyz"), QStringLiteral("see"));
+            }
+        }
+
+        FlatpakOverrides::merge(target, source);
+        QVERIFY(operatorFlatpakConfigEquals(target, expected));
+    }
+
+    void testMergeConfigObjectsNonOverlapping()
+    {
+        // In this test case entries are not overlapping, i.e. they are unique to source and target.
+
+        KConfig target(QString(), KConfig::SimpleConfig);
+        KConfig source(QString(), KConfig::SimpleConfig);
+        KConfig expected(QString(), KConfig::SimpleConfig);
+
+        // put some stuff in target, some in source, and both in the expected config.
+        {
+            auto group = target.group(QLatin1String(FLATPAK_METADATA_GROUP_CONTEXT));
+            write(group, QLatin1String(FLATPAK_METADATA_KEY_SHARED), {QStringLiteral("network")});
+            write(group, QLatin1String(FLATPAK_METADATA_KEY_SOCKETS), {QStringLiteral("fallback-x11")});
+            write(group, QLatin1String(FLATPAK_METADATA_KEY_DEVICES), {QStringLiteral("dri")});
+            write(group, QLatin1String(FLATPAK_METADATA_KEY_FEATURES), {QStringLiteral("devel")});
+            write(group, QLatin1String(FLATPAK_METADATA_KEY_FILESYSTEMS), {QStringLiteral("~/path")});
+
+            for (const auto &groupName : {
+                     QLatin1String(FLATPAK_METADATA_GROUP_SESSION_BUS_POLICY),
+                     QLatin1String(FLATPAK_METADATA_GROUP_SYSTEM_BUS_POLICY),
+                     QLatin1String(FLATPAK_METADATA_GROUP_ENVIRONMENT),
+                 }) {
+                auto group = target.group(groupName);
+                write(group, QStringLiteral("abc.def"), QStringLiteral("talk"));
+            }
+        }
+        {
+            auto group = source.group(QLatin1String(FLATPAK_METADATA_GROUP_CONTEXT));
+            write(group, QLatin1String(FLATPAK_METADATA_KEY_SHARED), {QStringLiteral("ipc")});
+            write(group, QLatin1String(FLATPAK_METADATA_KEY_SOCKETS), {QStringLiteral("x11"), QStringLiteral("wayland")});
+            write(group, QLatin1String(FLATPAK_METADATA_KEY_DEVICES), {QStringLiteral("kvm")});
+            write(group, QLatin1String(FLATPAK_METADATA_KEY_FEATURES), {QStringLiteral("bluetooth")});
+            write(group, QLatin1String(FLATPAK_METADATA_KEY_FILESYSTEMS), {QStringLiteral("xdg-download")});
+
+            for (const auto &groupName : {
+                     QLatin1String(FLATPAK_METADATA_GROUP_SESSION_BUS_POLICY),
+                     QLatin1String(FLATPAK_METADATA_GROUP_SYSTEM_BUS_POLICY),
+                     QLatin1String(FLATPAK_METADATA_GROUP_ENVIRONMENT),
+                 }) {
+                auto group = source.group(groupName);
+                write(group, QStringLiteral("xyz.xyz"), QStringLiteral("see"));
+            }
+        }
+        {
+            auto group = expected.group(QLatin1String(FLATPAK_METADATA_GROUP_CONTEXT));
+            write(group, QLatin1String(FLATPAK_METADATA_KEY_SHARED), {QStringLiteral("network"), QStringLiteral("ipc")});
+            write(group, QLatin1String(FLATPAK_METADATA_KEY_SOCKETS), {QStringLiteral("x11"), QStringLiteral("wayland"), QStringLiteral("fallback-x11")});
+            write(group, QLatin1String(FLATPAK_METADATA_KEY_DEVICES), {QStringLiteral("dri"), QStringLiteral("kvm")});
+            write(group, QLatin1String(FLATPAK_METADATA_KEY_FEATURES), {QStringLiteral("bluetooth"), QStringLiteral("devel")});
+            write(group, QLatin1String(FLATPAK_METADATA_KEY_FILESYSTEMS), {QStringLiteral("xdg-download"), QStringLiteral("~/path")});
+
+            for (const auto &groupName : {
+                     QLatin1String(FLATPAK_METADATA_GROUP_SESSION_BUS_POLICY),
+                     QLatin1String(FLATPAK_METADATA_GROUP_SYSTEM_BUS_POLICY),
+                     QLatin1String(FLATPAK_METADATA_GROUP_ENVIRONMENT),
+                 }) {
+                auto group = expected.group(groupName);
+                write(group, QStringLiteral("abc.def"), QStringLiteral("talk"));
+                write(group, QStringLiteral("xyz.xyz"), QStringLiteral("see"));
+            }
+        }
+
+        FlatpakOverrides::merge(target, source);
+        QVERIFY(operatorFlatpakConfigEquals(target, expected));
+    }
+
+    void testMergeConfigObjectsOverlapping()
+    {
+        // In this test some entries in target are overridden by source.
+
+        KConfig target(QString(), KConfig::SimpleConfig);
+        KConfig source(QString(), KConfig::SimpleConfig);
+        KConfig expected(QString(), KConfig::SimpleConfig);
+
+        {
+            auto group = target.group(QLatin1String(FLATPAK_METADATA_GROUP_CONTEXT));
+            write(group, QLatin1String(FLATPAK_METADATA_KEY_SHARED), {QStringLiteral("!network"), QStringLiteral("ipc")});
+            write(group, QLatin1String(FLATPAK_METADATA_KEY_SOCKETS), {QStringLiteral("x11"), QStringLiteral("wayland"), QStringLiteral("fallback-x11")});
+            write(group, QLatin1String(FLATPAK_METADATA_KEY_DEVICES), {QStringLiteral("dri"), QStringLiteral("kvm")});
+            write(group, QLatin1String(FLATPAK_METADATA_KEY_FEATURES), {QStringLiteral("bluetooth"), QStringLiteral("!devel")});
+            write(group, QLatin1String(FLATPAK_METADATA_KEY_FILESYSTEMS), {QStringLiteral("xdg-download"), QStringLiteral("~/path")});
+
+            for (const auto &groupName : {
+                     QLatin1String(FLATPAK_METADATA_GROUP_SESSION_BUS_POLICY),
+                     QLatin1String(FLATPAK_METADATA_GROUP_SYSTEM_BUS_POLICY),
+                     QLatin1String(FLATPAK_METADATA_GROUP_ENVIRONMENT),
+                 }) {
+                auto group = target.group(groupName);
+                write(group, QStringLiteral("abc.def"), QStringLiteral("talk"));
+                write(group, QStringLiteral("xyz.xyz"), QStringLiteral("own"));
+            }
+        }
+        {
+            auto group = source.group(QLatin1String(FLATPAK_METADATA_GROUP_CONTEXT));
+            write(group, QLatin1String(FLATPAK_METADATA_KEY_SHARED), {QStringLiteral("network"), QStringLiteral("!ipc")});
+            write(group, QLatin1String(FLATPAK_METADATA_KEY_SOCKETS), {QStringLiteral("!fallback-x11"), QStringLiteral("pulseaudio")});
+            write(group, QLatin1String(FLATPAK_METADATA_KEY_DEVICES), {QStringLiteral("!dri")});
+            write(group, QLatin1String(FLATPAK_METADATA_KEY_FEATURES), {QStringLiteral("devel")});
+            write(group, QLatin1String(FLATPAK_METADATA_KEY_FILESYSTEMS), {QStringLiteral("!xdg-download"), QStringLiteral("host-etc")});
+
+            for (const auto &groupName : {
+                     QLatin1String(FLATPAK_METADATA_GROUP_SESSION_BUS_POLICY),
+                     QLatin1String(FLATPAK_METADATA_GROUP_SYSTEM_BUS_POLICY),
+                     QLatin1String(FLATPAK_METADATA_GROUP_ENVIRONMENT),
+                 }) {
+                auto group = source.group(groupName);
+                write(group, QStringLiteral("xyz.xyz"), QStringLiteral("none"));
+                write(group, QStringLiteral("org.kde.*"), QStringLiteral("see"));
+            }
+        }
+        {
+            auto group = expected.group(QLatin1String(FLATPAK_METADATA_GROUP_CONTEXT));
+            write(group, QLatin1String(FLATPAK_METADATA_KEY_SHARED), {QStringLiteral("network"), QStringLiteral("!ipc")});
+            write(group,
+                  QLatin1String(FLATPAK_METADATA_KEY_SOCKETS),
+                  {QStringLiteral("x11"), QStringLiteral("wayland"), QStringLiteral("!fallback-x11"), QStringLiteral("pulseaudio")});
+            write(group, QLatin1String(FLATPAK_METADATA_KEY_DEVICES), {QStringLiteral("!dri"), QStringLiteral("kvm")});
+            write(group, QLatin1String(FLATPAK_METADATA_KEY_FEATURES), {QStringLiteral("bluetooth"), QStringLiteral("devel")});
+            write(group,
+                  QLatin1String(FLATPAK_METADATA_KEY_FILESYSTEMS),
+                  {QStringLiteral("!xdg-download"), QStringLiteral("~/path"), QStringLiteral("host-etc")});
+
+            for (const auto &groupName : {
+                     QLatin1String(FLATPAK_METADATA_GROUP_SESSION_BUS_POLICY),
+                     QLatin1String(FLATPAK_METADATA_GROUP_SYSTEM_BUS_POLICY),
+                     QLatin1String(FLATPAK_METADATA_GROUP_ENVIRONMENT),
+                 }) {
+                auto group = expected.group(groupName);
+                write(group, QStringLiteral("abc.def"), QStringLiteral("talk"));
+                write(group, QStringLiteral("xyz.xyz"), QStringLiteral("none"));
+                write(group, QStringLiteral("org.kde.*"), QStringLiteral("see"));
+            }
+        }
+
+        FlatpakOverrides::merge(target, source);
+        QVERIFY(operatorFlatpakConfigEquals(target, expected));
+    }
+
+    void testMergeConfigFiles()
+    {
+        const QStringList overridesFiles = {
+            QFINDTESTDATA(QStringLiteral("fixtures/metadata/com.example.cascade.metadata")),
+            QFINDTESTDATA(QStringLiteral("fixtures/overrides.in/com.example.cascade.system-global")),
+            QFINDTESTDATA(QStringLiteral("fixtures/overrides.in/com.example.cascade.user-global")),
+            QFINDTESTDATA(QStringLiteral("fixtures/overrides.in/com.example.cascade.user-app")),
+        };
+        const auto expectedFilepath = QFINDTESTDATA(QStringLiteral("fixtures/overrides.out/com.example.cascade.final"));
+
+        const auto actual = FlatpakOverrides::loadAndMerge(overridesFiles);
+        const KConfig expected(expectedFilepath, KConfig::SimpleConfig);
+
+        QVERIFY(operatorFlatpakConfigEquals(*actual, expected));
+    }
+
+    void testReadMergedMultiLevelOverrides()
+    {
+        const QStringList overrideFiles = {
+            QFINDTESTDATA(QStringLiteral("fixtures/metadata/com.example.cascade.metadata")),
+            QFINDTESTDATA(QStringLiteral("fixtures/overrides.in/com.example.cascade.system-global")),
+            QFINDTESTDATA(QStringLiteral("fixtures/overrides.in/com.example.cascade.user-global")),
+            QFINDTESTDATA(QStringLiteral("fixtures/overrides.in/com.example.cascade.user-app")),
+        };
+        FlatpakPermissionModel model;
+        FlatpakReferencesModel referencesModel;
+        FlatpakReference
+            reference(&referencesModel, "com.example.cascade.metadata", "x86_64", "stable", "1.0.0", "com.example.cascade.metadata", QUrl(), overrideFiles);
+        model.setReference(&reference);
+        model.setShowAdvanced(true);
+        model.load();
+
+        {
+            const auto index = model.findPermissionIndex(FlatpakPermissionsSectionType::Sockets, QLatin1String("x11"));
+            QVERIFY(index.isValid());
+            QVERIFY(!model.data(index, FlatpakPermissionModel::IsDefaultEnabled).toBool());
+            QVERIFY(model.data(index, FlatpakPermissionModel::IsEffectiveEnabled).toBool());
+        }
+        {
+            const auto index = model.findPermissionIndex(FlatpakPermissionsSectionType::Filesystems, QLatin1String("xdg-pictures"));
+            QVERIFY(index.isValid());
+            QVERIFY(model.data(index, FlatpakPermissionModel::IsDefaultEnabled).toBool());
+            QVERIFY(model.data(index, FlatpakPermissionModel::IsEffectiveEnabled).toBool());
+            QCOMPARE(model.data(index, FlatpakPermissionModel::DefaultValue).value<FlatpakFilesystemsEntry::AccessMode>(),
+                     FlatpakFilesystemsEntry::AccessMode::ReadOnly);
+            QCOMPARE(model.data(index, FlatpakPermissionModel::EffectiveValue).value<FlatpakFilesystemsEntry::AccessMode>(),
+                     FlatpakFilesystemsEntry::AccessMode::Create);
+        }
+        {
+            const auto index = model.findPermissionIndex(FlatpakPermissionsSectionType::SystemBus, QLatin1String("com.example.system1"));
+            QVERIFY(index.isValid());
+            QCOMPARE(model.data(index, FlatpakPermissionModel::DefaultValue).value<FlatpakPolicy>(), FlatpakPolicy::FLATPAK_POLICY_TALK);
+            QCOMPARE(model.data(index, FlatpakPermissionModel::EffectiveValue).value<FlatpakPolicy>(), FlatpakPolicy::FLATPAK_POLICY_SEE);
+        }
+        {
+            const auto index = model.findPermissionIndex(FlatpakPermissionsSectionType::SystemBus, QLatin1String("com.example.system2"));
+            QVERIFY(index.isValid());
+            QVERIFY(!model.data(index, FlatpakPermissionModel::IsDefaultEnabled).toBool());
+            QVERIFY(model.data(index, FlatpakPermissionModel::IsEffectiveEnabled).toBool());
+            QCOMPARE(model.data(index, FlatpakPermissionModel::DefaultValue).value<FlatpakPolicy>(), FlatpakPolicy::FLATPAK_POLICY_OWN);
+            QCOMPARE(model.data(index, FlatpakPermissionModel::EffectiveValue).value<FlatpakPolicy>(), FlatpakPolicy::FLATPAK_POLICY_OWN);
+        }
+        {
+            const auto index = model.findPermissionIndex(FlatpakPermissionsSectionType::SessionBus, QLatin1String("com.example.session1"));
+            QVERIFY(index.isValid());
+            QCOMPARE(model.data(index, FlatpakPermissionModel::DefaultValue).value<FlatpakPolicy>(), FlatpakPolicy::FLATPAK_POLICY_TALK);
+            QCOMPARE(model.data(index, FlatpakPermissionModel::EffectiveValue).value<FlatpakPolicy>(), FlatpakPolicy::FLATPAK_POLICY_NONE);
+        }
+        {
+            const auto index = model.findPermissionIndex(FlatpakPermissionsSectionType::Environment, QLatin1String("EXAMPLE_NAME"));
+            QVERIFY(index.isValid());
+            QCOMPARE(model.data(index, FlatpakPermissionModel::DefaultValue).toString(), QLatin1String("user"));
+            QCOMPARE(model.data(index, FlatpakPermissionModel::EffectiveValue).toString(), QLatin1String("user-app"));
+        }
     }
 
     void testRead()
