@@ -80,6 +80,15 @@ private:
         return false;
     }
 
+    QStringList mockMetadataAndOverridesFiles(const QString &flatpakName) const
+    {
+        const auto metadata = QFINDTESTDATA(QStringLiteral("fixtures/metadata/%1").arg(flatpakName));
+        // Metadata should exist, but overrides file might be created on the fly.
+        static const auto overridesDirectory = QFINDTESTDATA(QStringLiteral("fixtures/overrides"));
+        const auto override = QStringLiteral("%1/%2").arg(overridesDirectory, flatpakName);
+        return {metadata, override};
+    }
+
 private Q_SLOTS:
     void init()
     {
@@ -164,19 +173,16 @@ private Q_SLOTS:
     void testRead()
     {
         // The primary motivation behind this test is to make sure that translations aren't being pulled in for the raw names.
+        FlatpakPermissionModel model;
         FlatpakReferencesModel referencesModel;
-        QFile metadataFile(QFINDTESTDATA("fixtures/metadata/com.discordapp.Discord"));
-        QVERIFY(metadataFile.open(QFile::ReadOnly));
         FlatpakReference reference(&referencesModel,
                                    "com.discordapp.Discord",
                                    "x86_64",
                                    "stable",
                                    "0.0.24",
                                    "Discord",
-                                   QFINDTESTDATA("fixtures/overrides/"),
                                    QUrl(),
-                                   metadataFile.readAll());
-        FlatpakPermissionModel model;
+                                   mockMetadataAndOverridesFiles("com.discordapp.Discord"));
         model.setReference(&reference);
         model.load();
         bool containsNetwork = false;
@@ -206,19 +212,16 @@ private Q_SLOTS:
     {
         // Test that values that are for some reason enabled and present in
         // both defaults and overrides are parsed correctly.
+        FlatpakPermissionModel model;
         FlatpakReferencesModel referencesModel;
-        QFile metadataFile(QFINDTESTDATA("fixtures/metadata/com.example.same.override"));
-        QVERIFY(metadataFile.open(QFile::ReadOnly));
         FlatpakReference reference(&referencesModel,
                                    "com.example.same.override",
                                    "x86_64",
                                    "stable",
                                    "0.0.24",
                                    "Test Same Simple Override",
-                                   QFINDTESTDATA("fixtures/overrides/"),
                                    QUrl(),
-                                   metadataFile.readAll());
-        FlatpakPermissionModel model;
+                                   mockMetadataAndOverridesFiles("com.example.same.override"));
         model.setReference(&reference);
         model.setShowAdvanced(true);
         model.load();
@@ -266,19 +269,16 @@ private Q_SLOTS:
         // The Discord test above can't be reused, because it has custom filesystems in base metadata, so
         // the well-known "host-etc" filesystem would not be the last one. But we want to test for the last
         // default index too.
+        FlatpakPermissionModel model;
         FlatpakReferencesModel referencesModel;
-        QFile metadataFile(QFINDTESTDATA("fixtures/metadata/org.gnome.dfeet"));
-        QVERIFY(metadataFile.open(QFile::ReadOnly));
-        FlatpakReference reference(&referencesModel,
+        FlatpakReference reference(&referencesModel, //
                                    "org.gnome.dfeet",
                                    "x86_64",
                                    "stable",
                                    "0.3.16",
                                    "D-Feet",
-                                   QFINDTESTDATA("fixtures/overrides/"),
                                    QUrl(),
-                                   metadataFile.readAll());
-        FlatpakPermissionModel model;
+                                   mockMetadataAndOverridesFiles("org.gnome.dfeet"));
         model.setReference(&reference);
         model.load();
         QStringList filesystems;
@@ -307,19 +307,17 @@ private Q_SLOTS:
         // This test verifies that "none" policy for D-Bus services works just
         // like other regular policies. It can be loaded, changed to, changed
         // from, and saved.
+        const auto metadataAndOverridesFiles = mockMetadataAndOverridesFiles("org.gnome.dfeet");
+        FlatpakPermissionModel model;
         FlatpakReferencesModel referencesModel;
-        QFile metadataFile(QFINDTESTDATA("fixtures/metadata/org.gnome.dfeet"));
-        QVERIFY(metadataFile.open(QFile::ReadOnly));
-        FlatpakReference reference(&referencesModel,
+        FlatpakReference reference(&referencesModel, //
                                    "org.gnome.dfeet",
                                    "x86_64",
                                    "stable",
                                    "0.3.16",
                                    "D-Feet",
-                                   QFINDTESTDATA("fixtures/overrides/"),
                                    QUrl(),
-                                   metadataFile.readAll());
-        FlatpakPermissionModel model;
+                                   metadataAndOverridesFiles);
         model.setReference(&reference);
         model.load();
         model.setShowAdvanced(true);
@@ -371,7 +369,7 @@ private Q_SLOTS:
             QVERIFY(model.isSaveNeeded());
             model.save();
 
-            const KConfig expectedDesktopFile(QFINDTESTDATA("fixtures/overrides/org.gnome.dfeet"));
+            const KConfig expectedDesktopFile(metadataAndOverridesFiles.last());
             const auto group = expectedDesktopFile.group(QLatin1String(FLATPAK_METADATA_GROUP_SESSION_BUS_POLICY));
             const auto name2value = group.readEntry(service2);
             QCOMPARE(name2value, value);
@@ -411,7 +409,7 @@ private Q_SLOTS:
         QVERIFY(!isEffectiveEnabled(indexOfService2));
         model.save();
         {
-            const KConfig expectedDesktopFile(QFINDTESTDATA("fixtures/overrides/org.gnome.dfeet"));
+            const KConfig expectedDesktopFile(metadataAndOverridesFiles.last());
             const auto group = expectedDesktopFile.group(QLatin1String(FLATPAK_METADATA_GROUP_SESSION_BUS_POLICY));
             QVERIFY(!group.hasKey(service2));
         }
@@ -420,7 +418,7 @@ private Q_SLOTS:
         QVERIFY(isEffectiveEnabled(indexOfService2));
         model.save();
         {
-            const KConfig expectedDesktopFile(QFINDTESTDATA("fixtures/overrides/org.gnome.dfeet"));
+            const KConfig expectedDesktopFile(metadataAndOverridesFiles.last());
             const auto group = expectedDesktopFile.group(QLatin1String(FLATPAK_METADATA_GROUP_SESSION_BUS_POLICY));
             QVERIFY(group.hasKey(service2));
         }
@@ -428,19 +426,16 @@ private Q_SLOTS:
 
     void testDBusBrokenPolicies()
     {
+        FlatpakPermissionModel model;
         FlatpakReferencesModel referencesModel;
-        QFile metadataFile(QFINDTESTDATA("fixtures/metadata/org.gnome.Boxes"));
-        QVERIFY(metadataFile.open(QFile::ReadOnly));
-        FlatpakReference reference(&referencesModel,
+        FlatpakReference reference(&referencesModel, //
                                    "org.gnome.Boxes",
                                    "x86_64",
                                    "stable",
                                    "43.1",
                                    "Boxes",
-                                   QFINDTESTDATA("fixtures/overrides/"),
                                    QUrl(),
-                                   metadataFile.readAll());
-        FlatpakPermissionModel model;
+                                   mockMetadataAndOverridesFiles("org.gnome.Boxes"));
         model.setReference(&reference);
         model.load();
         model.setShowAdvanced(true);
@@ -494,19 +489,17 @@ private Q_SLOTS:
     void testMutable()
     {
         // Ensure override files mutate properly
+        const auto metadataAndOverridesFiles = mockMetadataAndOverridesFiles("com.discordapp.Discord");
+        FlatpakPermissionModel model;
         FlatpakReferencesModel referencesModel;
-        QFile metadataFile(QFINDTESTDATA("fixtures/metadata/com.discordapp.Discord"));
-        QVERIFY(metadataFile.open(QFile::ReadOnly));
-        FlatpakReference reference(&referencesModel,
+        FlatpakReference reference(&referencesModel, //
                                    "com.discordapp.Discord",
                                    "x86_64",
                                    "stable",
                                    "0.0.24",
                                    "Discord",
-                                   QFINDTESTDATA("fixtures/overrides/"),
                                    QUrl(),
-                                   metadataFile.readAll());
-        FlatpakPermissionModel model;
+                                   metadataAndOverridesFiles);
         model.setReference(&reference);
         model.load();
         model.setShowAdvanced(true);
@@ -586,7 +579,7 @@ private Q_SLOTS:
             }
         }
         model.save();
-        const KConfig actual(QFINDTESTDATA("fixtures/overrides/com.discordapp.Discord"));
+        const KConfig actual(metadataAndOverridesFiles.last());
         const KConfig expected(QFINDTESTDATA("fixtures/overrides.out/com.discordapp.Discord"));
         QVERIFY(operatorFlatpakConfigEquals(actual, expected));
     }
@@ -633,19 +626,17 @@ private Q_SLOTS:
 
     void testUnparsableFilesystems()
     {
+        const auto metadataAndOverridesFiles = mockMetadataAndOverridesFiles("com.example.unparsable.filesystems");
+        FlatpakPermissionModel model;
         FlatpakReferencesModel referencesModel;
-        QFile metadataFile(QFINDTESTDATA("fixtures/metadata/com.example.unparsable.filesystems"));
-        QVERIFY(metadataFile.open(QFile::ReadOnly));
         FlatpakReference reference(&referencesModel,
                                    "com.example.unparsable.filesystems",
                                    "x86_64",
                                    "stable",
                                    "0.0.24",
                                    "Unparsable Filesystems",
-                                   QFINDTESTDATA("fixtures/overrides/"),
                                    QUrl(),
-                                   metadataFile.readAll());
-        FlatpakPermissionModel model;
+                                   metadataAndOverridesFiles);
         model.setReference(&reference);
         model.load();
         model.setShowAdvanced(true);
@@ -656,7 +647,7 @@ private Q_SLOTS:
                                        QVariant::fromValue(FlatpakFilesystemsEntry::AccessMode::ReadOnly));
         model.save();
 
-        const KConfig actual(QFINDTESTDATA("fixtures/overrides/com.example.unparsable.filesystems"));
+        const KConfig actual(metadataAndOverridesFiles.last());
         const KConfig expected(QFINDTESTDATA("fixtures/overrides.out/com.example.unparsable.filesystems"));
         QVERIFY(operatorFlatpakConfigEquals(actual, expected));
     }
@@ -664,17 +655,14 @@ private Q_SLOTS:
     void testDefaultHomeFilesystem()
     {
         FlatpakReferencesModel referencesModel;
-        QFile metadataFile(QFINDTESTDATA("fixtures/metadata/com.example.home.filesystems"));
-        QVERIFY(metadataFile.open(QFile::ReadOnly));
         FlatpakReference reference(&referencesModel,
                                    "com.example.home.filesystems",
                                    "x86_64",
                                    "stable",
                                    "0.0.24",
                                    "Default Home Filesystems",
-                                   QFINDTESTDATA("fixtures/overrides/"),
                                    QUrl(),
-                                   metadataFile.readAll());
+                                   mockMetadataAndOverridesFiles("com.example.home.filesystems"));
         FlatpakPermissionModel model;
         model.setReference(&reference);
         model.load();
@@ -705,19 +693,16 @@ private Q_SLOTS:
 
     void testValidNames()
     {
+        FlatpakPermissionModel model;
         FlatpakReferencesModel referencesModel;
-        QFile metadataFile(QFINDTESTDATA("fixtures/metadata/com.example.valid.names"));
-        QVERIFY(metadataFile.open(QFile::ReadOnly));
         FlatpakReference reference(&referencesModel,
                                    "com.example.valid.names",
                                    "x86_64",
                                    "stable",
                                    "1.0",
                                    "Valid Names",
-                                   QFINDTESTDATA("fixtures/overrides/"),
                                    QUrl(),
-                                   metadataFile.readAll());
-        FlatpakPermissionModel model;
+                                   mockMetadataAndOverridesFiles("com.example.valid.names"));
         model.setReference(&reference);
         model.load();
         model.setShowAdvanced(true);

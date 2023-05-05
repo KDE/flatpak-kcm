@@ -38,6 +38,11 @@ find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
     Config
 )
 
+# Can't use regular KDE_INSTALL_FULL_LOCALSTATEDIR because it is wrong in developer setup.
+# This variable has to point at a directory which Flapak itself was configured with.
+set(LOCALSTATEDIR "/var")
+configure_file(config.h.in ${CMAKE_BINARY_DIR}/config.h)
+
 add_library(kcm_flatpak_static STATIC
     flatpakreference.cpp flatpakreference.h
     flatpakpermission.cpp flatpakpermission.h

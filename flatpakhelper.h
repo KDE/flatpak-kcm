@@ -13,9 +13,16 @@
 namespace FlatpakHelper
 {
 
-QString permissionsDataDirectory();
+QString userBaseDirectory();
+QString systemBaseDirectory();
 
-QUrl iconSourceUrl(const QString &displayName, const QString &flatpakName, const QString &appBasePath);
+QString userOverridesDirectory();
+QString systemOverridesDirectory();
+
+QString metadataPathForUserInstallation(const QString &flatpakName);
+QString metadataPathForSystemInstallation(const QString &flatpakName);
+
+QUrl iconSourceUrl(const QString &displayName, const QString &flatpakName, const QString &appBaseDirectory);
 
 // Port of flatpak_verify_dbus_name static/internal function.
 bool verifyDBusName(QStringView name);

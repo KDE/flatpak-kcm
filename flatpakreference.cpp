@@ -24,9 +24,8 @@ FlatpakReference::FlatpakReference(FlatpakReferencesModel *parent,
                                    const QString &branch,
                                    const QString &version,
                                    const QString &displayName,
-                                   const QString &permissionsDirectory,
                                    const QUrl &iconSource,
-                                   const QByteArray &metadata)
+                                   const QStringList &metadataAndOverridesFiles)
     : QObject(parent)
     , m_flatpakName(flatpakName)
     , m_arch(arch)
@@ -34,12 +33,9 @@ FlatpakReference::FlatpakReference(FlatpakReferencesModel *parent,
     , m_version(version)
     , m_displayName(displayName)
     , m_iconSource(iconSource)
-    , m_permissionsFilename(permissionsDirectory)
-    , m_metadata(metadata)
+    , m_metadataAndOverridesFiles(metadataAndOverridesFiles)
     , m_permissionsModel(nullptr)
 {
-    m_permissionsFilename.append(m_flatpakName);
-
     connect(this, &FlatpakReference::needsLoad, parent, &FlatpakReferencesModel::needsLoad);
     connect(this, &FlatpakReference::settingsChanged, parent, &FlatpakReferencesModel::settingsChanged);
 }
@@ -70,14 +66,21 @@ QUrl FlatpakReference::iconSource() const
     return m_iconSource;
 }
 
-QString FlatpakReference::permissionsFilename() const
+const QStringList &FlatpakReference::metadataAndOverridesFiles() const
 {
-    return m_permissionsFilename;
+    return m_metadataAndOverridesFiles;
 }
 
-QByteArray FlatpakReference::metadata() const
+QStringList FlatpakReference::defaultsFiles() const
 {
-    return m_metadata;
+    QStringList defaults = m_metadataAndOverridesFiles;
+    defaults.removeLast();
+    return defaults;
+}
+
+const QString &FlatpakReference::userLevelPerAppOverrideFile() const
+{
+    return m_metadataAndOverridesFiles.last();
 }
 
 QString FlatpakReference::displayName() const
@@ -159,46 +162,68 @@ bool FlatpakReference::isDefaults() const
     return true;
 }
 
-static QByteArray qByteArrayFromGBytes(GBytes *data)
+static GPtrArray *getSystemInstalledFlatpakAppRefs()
 {
-    gsize len = 0;
-    auto buff = g_bytes_get_data(data, &len);
-    return QByteArray((const char *)buff, len);
+    g_autoptr(FlatpakInstallation) installation = flatpak_installation_new_system(nullptr, nullptr);
+    GPtrArray *refs = flatpak_installation_list_installed_refs_by_kind(installation, FLATPAK_REF_KIND_APP, nullptr, nullptr);
+    return refs;
+}
+
+static GPtrArray *getUserInstalledFlatpakAppRefs()
+{
+    g_autoptr(FlatpakInstallation) installation = flatpak_installation_new_user(nullptr, nullptr);
+    GPtrArray *refs = flatpak_installation_list_installed_refs_by_kind(installation, FLATPAK_REF_KIND_APP, nullptr, nullptr);
+    return refs;
 }
 
 FlatpakReferencesModel::FlatpakReferencesModel(QObject *parent)
     : QAbstractListModel(parent)
 {
-    g_autoptr(FlatpakInstallation) systemInstallation = flatpak_installation_new_system(nullptr, nullptr);
-    g_autoptr(GPtrArray) installedApps = flatpak_installation_list_installed_refs_by_kind(systemInstallation, FLATPAK_REF_KIND_APP, nullptr, nullptr);
-    g_autoptr(FlatpakInstallation) userInstallation = flatpak_installation_new_user(nullptr, nullptr);
-    // it's the only pointer, so extend_and_steal will destroy it.
-    GPtrArray *installedUserApps = flatpak_installation_list_installed_refs_by_kind(userInstallation, FLATPAK_REF_KIND_APP, nullptr, nullptr);
-    g_ptr_array_extend_and_steal(installedApps, installedUserApps);
-    installedUserApps = nullptr;
-    QString permissionsDirectory = FlatpakHelper::permissionsDataDirectory();
+    g_autoptr(GPtrArray) systemInstalledRefs = getSystemInstalledFlatpakAppRefs();
+    g_autoptr(GPtrArray) userInstalledRefs = getUserInstalledFlatpakAppRefs();
 
-    for (uint i = 0; i < installedApps->len; ++i) {
-        auto *ref = FLATPAK_REF(g_ptr_array_index(installedApps, i));
-        auto *iRef = FLATPAK_INSTALLED_REF(g_ptr_array_index(installedApps, i));
+    const auto systemOverridesDirectory = FlatpakHelper::systemOverridesDirectory();
+    const auto userOverridesDirectory = FlatpakHelper::userOverridesDirectory();
 
-        const QString flatpakName = QString::fromUtf8(flatpak_ref_get_name(ref));
-        if (flatpakName.endsWith(QStringLiteral(".BaseApp"))) {
-            continue;
+    const std::array installedRefs = std::array{systemInstalledRefs, userInstalledRefs};
+    for (const auto &refs : installedRefs) {
+        for (uint i = 0; i < refs->len; ++i) {
+            auto *ref = FLATPAK_REF(g_ptr_array_index(refs, i));
+            auto *iRef = FLATPAK_INSTALLED_REF(g_ptr_array_index(refs, i));
+
+            const auto flatpakName = QString::fromUtf8(flatpak_ref_get_name(ref));
+            if (flatpakName.endsWith(QStringLiteral(".BaseApp"))) {
+                continue;
+            }
+
+            const auto arch = QString::fromUtf8(flatpak_ref_get_arch(ref));
+            const auto branch = QString::fromUtf8(flatpak_ref_get_branch(ref));
+            const auto version = QString::fromUtf8(flatpak_installed_ref_get_appdata_version(iRef));
+            const auto displayName = QString::fromUtf8(flatpak_installed_ref_get_appdata_name(iRef));
+            const auto appBaseDirectory = QString::fromUtf8(flatpak_installed_ref_get_deploy_dir(iRef));
+            const auto iconSource = FlatpakHelper::iconSourceUrl(displayName, flatpakName, appBaseDirectory);
+
+            const auto metadataPath = (refs == systemInstalledRefs) ? FlatpakHelper::metadataPathForSystemInstallation(flatpakName)
+                                                                    : FlatpakHelper::metadataPathForUserInstallation(flatpakName);
+
+            const auto systemGlobalOverrides = QStringLiteral("%1/global").arg(systemOverridesDirectory);
+            const auto systemAppOverrides = QStringLiteral("%1/%2").arg(systemOverridesDirectory, flatpakName);
+
+            const auto userGlobalOverrides = QStringLiteral("%1/global").arg(userOverridesDirectory);
+            const auto userAppOverrides = QStringLiteral("%1/%2").arg(userOverridesDirectory, flatpakName);
+
+            const auto metadataAndOverridesFiles = QStringList({
+                metadataPath,
+                systemGlobalOverrides,
+                systemAppOverrides,
+                userGlobalOverrides,
+                userAppOverrides,
+            });
+
+            m_references.push_back(new FlatpakReference(this, flatpakName, arch, branch, version, displayName, iconSource, metadataAndOverridesFiles));
         }
-
-        const QString arch = QString::fromUtf8(flatpak_ref_get_arch(ref));
-        const QString branch = QString::fromUtf8(flatpak_ref_get_branch(ref));
-        const QString version = QString::fromUtf8(flatpak_installed_ref_get_appdata_version(iRef));
-        const QString displayName = QString::fromUtf8(flatpak_installed_ref_get_appdata_name(iRef));
-        const QString appBasePath = QString::fromUtf8(flatpak_installed_ref_get_deploy_dir(iRef));
-        const QUrl iconSource = FlatpakHelper::iconSourceUrl(displayName, flatpakName, appBasePath);
-
-        g_autoptr(GBytes) data = flatpak_installed_ref_load_metadata(iRef, nullptr, nullptr);
-        const QByteArray metadata = qByteArrayFromGBytes(data);
-
-        m_references.push_back(new FlatpakReference(this, flatpakName, arch, branch, version, displayName, permissionsDirectory, iconSource, metadata));
     }
+
     std::sort(m_references.begin(), m_references.end(), [](const FlatpakReference *r1, const FlatpakReference *r2) {
         return r1->displayName() < r2->displayName();
     });

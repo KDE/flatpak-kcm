@@ -32,9 +32,8 @@ public:
                               const QString &branch,
                               const QString &version,
                               const QString &displayName,
-                              const QString &permissionsDirectory,
                               const QUrl &iconSource,
-                              const QByteArray &metadata);
+                              const QStringList &metadataAndOverridesFiles);
 
     FlatpakReferencesModel *parent() const;
 
@@ -43,8 +42,10 @@ public:
     QString version() const;
 
     QUrl iconSource() const;
-    QString permissionsFilename() const;
-    QByteArray metadata() const;
+
+    const QStringList &metadataAndOverridesFiles() const;
+    QStringList defaultsFiles() const;
+    const QString &userLevelPerAppOverrideFile() const;
 
     QString displayName() const;
     QString flatpakName() const;
@@ -75,8 +76,10 @@ private:
     QString m_displayName;
 
     QUrl m_iconSource;
-    QString m_permissionsFilename;
-    QByteArray m_metadata;
+    // List of metadata and overrides files, in the order they should be
+    // loaded and merged, starting from base app metadata and ending with
+    // per-app user-level override.
+    QStringList m_metadataAndOverridesFiles;
 
     QPointer<FlatpakPermissionModel> m_permissionsModel;
 };

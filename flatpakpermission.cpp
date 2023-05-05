@@ -14,6 +14,7 @@
 #include <KLocalizedString>
 #include <QChar>
 #include <QDebug>
+#include <QDir>
 #include <QFileInfo>
 #include <QMetaEnum>
 #include <QQmlEngine>
@@ -684,16 +685,8 @@ QHash<int, QByteArray> FlatpakPermissionModel::roleNames() const
 
 void FlatpakPermissionModel::loadDefaultValues()
 {
-    const QByteArray metadata = m_reference->metadata();
-
-    QTemporaryFile f;
-    if (!f.open()) {
-        return;
-    }
-    f.write(metadata);
-    f.close();
-
-    KConfig parser(f.fileName());
+    const auto &metadataFilepath = m_reference->metadataAndOverridesFiles().first();
+    KConfig parser(metadataFilepath);
     const auto contextGroup = parser.group(QLatin1String(FLATPAK_METADATA_GROUP_CONTEXT));
 
     QString category;
@@ -876,14 +869,14 @@ void FlatpakPermissionModel::loadDefaultValues()
 
 void FlatpakPermissionModel::loadCurrentValues()
 {
-    const QString path = m_reference->permissionsFilename();
+    const auto &userAppOverrides = m_reference->metadataAndOverridesFiles().last();
 
     /* all permissions are at default, so nothing to load */
-    if (!QFileInfo::exists(path)) {
+    if (!QFileInfo::exists(userAppOverrides)) {
         return;
     }
 
-    KConfig parser(path);
+    KConfig parser(userAppOverrides);
     const auto contextGroup = parser.group(QLatin1String(FLATPAK_METADATA_GROUP_CONTEXT));
 
     // Mapping to valid entries. Invalid ones go into m_unparsableEntriesByCategory.
@@ -1451,10 +1444,15 @@ int FlatpakPermissionModel::findIndexToInsertRowAndRemoveDummyRowIfNeeded(Flatpa
 
 void FlatpakPermissionModel::writeToFile() const
 {
+    const auto &userAppOverrides = m_reference->metadataAndOverridesFiles().last();
     if (isDefaults()) {
-        QFile::remove(m_reference->permissionsFilename());
+        QFile::remove(userAppOverrides);
     } else {
-        KConfig config(m_reference->permissionsFilename(), KConfig::SimpleConfig);
+        // Ensure directory exists before creating a config in it.
+        const auto dir = QFileInfo(userAppOverrides).dir();
+        QDir().mkpath(dir.path());
+
+        KConfig config(userAppOverrides, KConfig::SimpleConfig);
         if (!config.isConfigWritable(true)) {
             return;
         }
