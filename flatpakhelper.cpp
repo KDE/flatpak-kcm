@@ -5,6 +5,7 @@
  */
 
 #include "flatpakhelper.h"
+#include "config.h"
 
 #include <QDir>
 #include <QFileInfo>
@@ -16,23 +17,75 @@
 namespace FlatpakHelper
 {
 
-QString permissionsDataDirectory()
+QString userBaseDirectory()
 {
-    QString userPath = qEnvironmentVariable("FLATPAK_USER_DIR");
-    if (userPath.isEmpty()) {
-        userPath = qEnvironmentVariable("HOST_XDG_DATA_HOME");
-        if (userPath.isEmpty()) {
-            userPath = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation);
+    static const QString dir = []() {
+        QString dir;
+        const auto env = qEnvironmentVariable("FLATPAK_USER_DIR");
+        if (!env.isEmpty()) {
+            dir = QStringLiteral("%1").arg(env);
+        } else {
+            // Takes care of XDG_DATA_HOME
+            const auto userDataDir = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation);
+            dir = QStringLiteral("%1/flatpak").arg(userDataDir);
         }
-    }
-    userPath.append(QStringLiteral("/flatpak/overrides/"));
-    QDir().mkpath(userPath);
-    return userPath;
+        return dir;
+    }();
+    return dir;
 }
 
-QUrl iconSourceUrl(const QString &displayName, const QString &flatpakName, const QString &appBasePath)
+QString systemBaseDirectory()
 {
-    QString dirPath = appBasePath + QStringLiteral("/files/share/icons/hicolor/");
+    static const QString dir = []() {
+        const auto env = qEnvironmentVariable("FLATPAK_SYSTEM_DIR");
+        if (!env.isEmpty()) {
+            return env;
+        }
+        return QStringLiteral(FLATPAK_SYSTEMDIR);
+    }();
+    return dir;
+}
+
+QString userOverridesDirectory()
+{
+    static const QString dir = []() {
+        const auto base = userBaseDirectory();
+        const auto dir = QStringLiteral("%1/overrides").arg(base);
+        return dir;
+    }();
+    return dir;
+}
+
+QString systemOverridesDirectory()
+{
+    static const QString dir = []() {
+        const auto base = systemBaseDirectory();
+        const auto dir = QStringLiteral("%1/overrides").arg(base);
+        return dir;
+    }();
+    return dir;
+}
+
+static QString metadataPathForInstallation(const QString &flatpakBaseDirectory, const QString &flatpakName)
+{
+    return QStringLiteral("%1/app/%2/current/active/metadata").arg(flatpakBaseDirectory, flatpakName);
+}
+
+QString metadataPathForUserInstallation(const QString &flatpakName)
+{
+    const auto base = userBaseDirectory();
+    return metadataPathForInstallation(base, flatpakName);
+}
+
+QString metadataPathForSystemInstallation(const QString &flatpakName)
+{
+    const auto base = systemBaseDirectory();
+    return metadataPathForInstallation(base, flatpakName);
+}
+
+QUrl iconSourceUrl(const QString &displayName, const QString &flatpakName, const QString &appBaseDirectory)
+{
+    QString dirPath = appBaseDirectory + QStringLiteral("/files/share/icons/hicolor/");
     QDir dir(dirPath);
     dir.setFilter(QDir::NoDotAndDotDot | QDir::AllDirs);
 
