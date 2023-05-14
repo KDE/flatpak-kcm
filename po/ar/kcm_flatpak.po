@@ -75,7 +75,7 @@ msgstr "التواصل بين العمليات"
 #: flatpakpermission.cpp:724
 #, kde-format
 msgid "X11 Windowing System"
-msgstr "نظام النوافذ اكس١١"
+msgstr "نظام النوافذ اكس11"
 
 #: flatpakpermission.cpp:725
 #, kde-format
@@ -85,7 +85,7 @@ msgstr "نظام نوافذ ويلاند"
 #: flatpakpermission.cpp:726
 #, kde-format
 msgid "Fallback to X11 Windowing System"
-msgstr "نظام النوافذ اكس١١ الاحتياطي"
+msgstr "نظام النوافذ اكس11 الاحتياطي"
 
 #: flatpakpermission.cpp:727
 #, kde-format
@@ -356,13 +356,13 @@ msgstr "أدخل اسم ناقل النظام…"
 #~ msgstr "المقابس"
 
 #~ msgid "x11"
-#~ msgstr "اكس ١١"
+#~ msgstr "اكس 11"
 
 #~ msgid "wayland"
 #~ msgstr "ويلاند"
 
 #~ msgid "fallback-x11"
-#~ msgstr "اكس١١-الاحتياطي"
+#~ msgstr "اكس11-الاحتياطي"
 
 #~ msgid "pulseaudio"
 #~ msgstr "بلس أوديو"
