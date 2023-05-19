@@ -1,0 +1,337 @@
+# Copyright (C) YEAR This file is copyright:
+# This file is distributed under the same license as the flatpak-kcm package.
+# Wantoyèk <wantoyek@gmail.com>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: flatpak-kcm\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2023-05-02 02:19+0000\n"
+"PO-Revision-Date: 2023-05-18 23:21+0700\n"
+"Last-Translator: Wantoyèk <wantoyek@gmail.com>\n"
+"Language-Team: Indonesian <kde-i18n-doc@kde.org>\n"
+"Language: id\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 23.04.0\n"
+
+#: autotests/flatpakpermissiontest.cpp:387
+#: autotests/flatpakpermissiontest.cpp:614 flatpakpermission.cpp:403
+#, kde-format
+msgid "None"
+msgstr "Nihil"
+
+#: autotests/flatpakpermissiontest.cpp:388
+#: autotests/flatpakpermissiontest.cpp:617 flatpakpermission.cpp:404
+#, kde-format
+msgid "see"
+msgstr "lihat"
+
+#: autotests/flatpakpermissiontest.cpp:389
+#: autotests/flatpakpermissiontest.cpp:615 flatpakpermission.cpp:405
+#, kde-format
+msgid "talk"
+msgstr "ngomong"
+
+#: autotests/flatpakpermissiontest.cpp:390
+#: autotests/flatpakpermissiontest.cpp:616 flatpakpermission.cpp:406
+#, kde-format
+msgid "own"
+msgstr "milik"
+
+#: autotests/flatpakpermissiontest.cpp:604 flatpakpermission.cpp:394
+#, kde-format
+msgid "OFF"
+msgstr ""
+
+#: autotests/flatpakpermissiontest.cpp:605 flatpakpermission.cpp:392
+#, kde-format
+msgid "read/write"
+msgstr "baca/tulis"
+
+#: autotests/flatpakpermissiontest.cpp:606 flatpakpermission.cpp:391
+#, kde-format
+msgid "read-only"
+msgstr "hanya baca"
+
+#: autotests/flatpakpermissiontest.cpp:607 flatpakpermission.cpp:393
+#, kde-format
+msgid "create"
+msgstr "buat"
+
+#: flatpakpermission.cpp:717
+#, kde-format
+msgid "Internet Connection"
+msgstr "Koneksi Internet"
+
+#: flatpakpermission.cpp:718
+#, kde-format
+msgid "Inter-process Communication"
+msgstr "Komunikasi Antar Proses"
+
+#: flatpakpermission.cpp:724
+#, kde-format
+msgid "X11 Windowing System"
+msgstr "Sistem Perjendelaan X11"
+
+#: flatpakpermission.cpp:725
+#, kde-format
+msgid "Wayland Windowing System"
+msgstr "Sistem Perjendelaan Wayland"
+
+#: flatpakpermission.cpp:726
+#, kde-format
+msgid "Fallback to X11 Windowing System"
+msgstr "Kembalikan ke Sistem Perjendelaan X11"
+
+#: flatpakpermission.cpp:727
+#, kde-format
+msgid "Pulseaudio Sound Server"
+msgstr "Peladen Suara Pulseaudio"
+
+#: flatpakpermission.cpp:728
+#, kde-format
+msgid "Session Bus Access"
+msgstr "Akses Bus Sesi"
+
+#: flatpakpermission.cpp:729
+#, kde-format
+msgid "System Bus Access"
+msgstr "Akses Bus Sistem"
+
+#: flatpakpermission.cpp:730
+#, kde-format
+msgid "Remote Login Access"
+msgstr "Akses Login Jarak Jauh"
+
+#: flatpakpermission.cpp:731
+#, kde-format
+msgid "Smart Card Access"
+msgstr "Akses Kartu Pintar"
+
+#: flatpakpermission.cpp:732
+#, kde-format
+msgid "Print System Access"
+msgstr "Akses Sistem Cetak"
+
+#: flatpakpermission.cpp:738
+#, kde-format
+msgid "Kernel-based Virtual Machine Access"
+msgstr "Akses Mesin Virtual Berbasis Kernel"
+
+#: flatpakpermission.cpp:739
+#, kde-format
+msgid "Direct Graphic Rendering"
+msgstr "Prenderan Grafik Langsung"
+
+#: flatpakpermission.cpp:740
+#, kde-format
+msgid "Host dev/shm"
+msgstr ""
+
+#: flatpakpermission.cpp:741 flatpakpermission.cpp:1203
+#, kde-format
+msgid "Device Access"
+msgstr "Akses Peranti"
+
+#: flatpakpermission.cpp:747
+#, kde-format
+msgid "System Calls by Development Tools"
+msgstr "Pangilan Sistem berdasarkan Peralatan Pengembang"
+
+#: flatpakpermission.cpp:748
+#, kde-format
+msgid "Run Multiarch/Multilib Binaries"
+msgstr "Jalankan Multiarch/Multilib"
+
+#: flatpakpermission.cpp:749
+#, kde-format
+msgid "Bluetooth"
+msgstr "Bluetooth"
+
+#: flatpakpermission.cpp:750
+#, kde-format
+msgid "Canbus Socket Access"
+msgstr "Akses Soket Canbus"
+
+#: flatpakpermission.cpp:753
+#, kde-format
+msgid "Share dev/shm across all instances of an app per user ID"
+msgstr "Berbagi lintas dev/shm semua instansi dari sebuah app per  ID pengguna"
+
+#: flatpakpermission.cpp:811
+#, kde-format
+msgid "All User Files"
+msgstr "Semua File Pengguna"
+
+#: flatpakpermission.cpp:812
+#, kde-format
+msgid "All System Files"
+msgstr "Semua File Sistem"
+
+#: flatpakpermission.cpp:813
+#, kde-format
+msgid "All System Libraries, Executables and Binaries"
+msgstr "Semua Eksekutabel, Biner, dan Pustaka Lib Sistem"
+
+#: flatpakpermission.cpp:814
+#, kde-format
+msgid "All System Configurations"
+msgstr "Semua Konfigurasi Sistem"
+
+#: flatpakpermission.cpp:1193
+#, kde-format
+msgid "Basic Permissions"
+msgstr "Perizinan Dasar"
+
+#: flatpakpermission.cpp:1195
+#, kde-format
+msgid "Filesystem Access"
+msgstr "Akses Sistem File"
+
+#: flatpakpermission.cpp:1197
+#, kde-format
+msgid "Advanced Permissions"
+msgstr "Perizinan Tingkat Lanjut"
+
+#: flatpakpermission.cpp:1199
+#, kde-format
+msgid "Subsystems Shared"
+msgstr "Berbagi Subsistem"
+
+#: flatpakpermission.cpp:1201
+#, kde-format
+msgid "Sockets"
+msgstr "Soket"
+
+#: flatpakpermission.cpp:1205
+#, kde-format
+msgid "Features Allowed"
+msgstr "Fitur Yang Diperbolehkan"
+
+#: flatpakpermission.cpp:1207
+#, kde-format
+msgid "Session Bus Policy"
+msgstr "Kebijakan Bus Sesi"
+
+#: flatpakpermission.cpp:1209
+#, kde-format
+msgid "System Bus Policy"
+msgstr "Kebijakan Bus Sistem"
+
+#: flatpakpermission.cpp:1211
+#, kde-format
+msgid "Environment"
+msgstr "Lingkungan"
+
+#: flatpakpermission.cpp:1228
+#, kde-format
+msgid "Add a new filesystem path"
+msgstr "Tambahkan sebuah alur sistem-file baru"
+
+#: flatpakpermission.cpp:1230
+#, kde-format
+msgid "Add a new session bus"
+msgstr "Tambahkan sebuah bus sesi baru"
+
+#: flatpakpermission.cpp:1232
+#, kde-format
+msgid "Add a new system bus"
+msgstr "Tambahkan sebuah bus sistem baru"
+
+#: flatpakpermission.cpp:1234
+#, kde-format
+msgid "Add a new environment variable"
+msgstr "Tambahkan sebuah variabel lingkungan baru"
+
+#: ui/AddEnvironmentVariableDialog.qml:18
+#, kde-format
+msgid "Set Environment Variable"
+msgstr "Atur Variabel Lingkungan"
+
+#: ui/AddEnvironmentVariableDialog.qml:35
+#, kde-format
+msgid "Enter variable…"
+msgstr "Masukkan variabel…"
+
+#: ui/AddEnvironmentVariableDialog.qml:46
+#, kde-format
+msgid "Enter value…"
+msgstr "Masukkan nilai…"
+
+#: ui/main.qml:18
+#, kde-format
+msgid "Flatpak Applications"
+msgstr "Aplikasi Flatpak"
+
+#: ui/main.qml:88
+#, kde-format
+msgid "Apply Permissions"
+msgstr "Terapkan Perizinan"
+
+#: ui/main.qml:89
+#, kde-format
+msgid ""
+"The permissions of application %1 have been changed. Do you want to apply "
+"these changes or discard them?"
+msgstr ""
+"Perizinan pada aplikasi %1 telah diubah. Apakah Anda ingin menerapkan "
+"perubahan tersebut atau membuangnya?"
+
+#: ui/permissions.qml:17
+#, kde-format
+msgid "Permissions"
+msgstr "Perizinan"
+
+#: ui/permissions.qml:23
+#, kde-format
+msgid "Select an application from the list to view its permissions here"
+msgstr ""
+"Pilih sebuah aplikasi dari daftar untuk menampilkan perizinannya di sini"
+
+#: ui/permissions.qml:136
+#, kde-format
+msgid "Hide advanced permissions"
+msgstr "Sembunyikan perizinan tingkat lanjut"
+
+#: ui/permissions.qml:136
+#, kde-format
+msgid "Show advanced permissions"
+msgstr "Tampilkan perizinan tingkat lanjut"
+
+#: ui/permissions.qml:148
+#, kde-format
+msgid "Add New"
+msgstr "Tambahkan Baru"
+
+#: ui/TextPromptDialog.qml:21
+#, kde-format
+msgid "Add Filesystem Path Permission"
+msgstr "Tambahkan Perizinan Alur Sistem File"
+
+#: ui/TextPromptDialog.qml:22
+#, kde-format
+msgid "Add Session Bus Permission"
+msgstr "Tambahkan Perizinan Bus Sesi"
+
+#: ui/TextPromptDialog.qml:23
+#, kde-format
+msgid "Add System Bus Permission"
+msgstr "Tambahkan Perizinan Bus Sistem"
+
+#: ui/TextPromptDialog.qml:38
+#, kde-format
+msgid "Enter filesystem path…"
+msgstr "Masukkan alur sistem file…"
+
+#: ui/TextPromptDialog.qml:39
+#, kde-format
+msgid "Enter session bus name…"
+msgstr "Masukkan nama bus sesi…"
+
+#: ui/TextPromptDialog.qml:40
+#, kde-format
+msgid "Enter system bus name…"
+msgstr "Masukkan nama bus sistem…"
