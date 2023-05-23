@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-05-02 02:19+0000\n"
-"PO-Revision-Date: 2023-02-24 12:44\n"
+"PO-Revision-Date: 2023-05-22 13:58\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -14,8 +14,8 @@ msgstr ""
 "X-Crowdin-Project: kdeorg\n"
 "X-Crowdin-Project-ID: 269464\n"
 "X-Crowdin-Language: zh-CN\n"
-"X-Crowdin-File: /kf5-trunk/messages/flatpak-kcm/kcm_flatpak.pot\n"
-"X-Crowdin-File-ID: 40846\n"
+"X-Crowdin-File: /kf6-trunk/messages/flatpak-kcm/kcm_flatpak.pot\n"
+"X-Crowdin-File-ID: 42445\n"
 
 #: autotests/flatpakpermissiontest.cpp:387
 #: autotests/flatpakpermissiontest.cpp:614 flatpakpermission.cpp:403
@@ -276,7 +276,7 @@ msgstr "应用权限"
 msgid ""
 "The permissions of application %1 have been changed. Do you want to apply "
 "these changes or discard them?"
-msgstr ""
+msgstr "应用程序 %1 的权限已被修改。您想要应用这些更改，还是丢弃更改？"
 
 #: ui/permissions.qml:17
 #, kde-format
@@ -332,12 +332,3 @@ msgstr "输入会话总线名称…"
 #, kde-format
 msgid "Enter system bus name…"
 msgstr "输入系统总线名称…"
-
-#~ msgid "read-write"
-#~ msgstr "read-write"
-
-#~ msgid "=\n"
-#~ msgstr "=\n"
-
-#~ msgid "per-app-dev-shm"
-#~ msgstr "per-app-dev-shm"
