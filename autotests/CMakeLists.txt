@@ -5,7 +5,7 @@ if(NOT BUILD_TESTING)
     return()
 endif()
 
-find_package(Qt${QT_MAJOR_VERSION} ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS Test)
+find_package(Qt6 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS Test)
 include(ECMAddTests)
 remove_definitions(-DQT_NO_CAST_FROM_ASCII)
 
@@ -15,14 +15,14 @@ add_custom_target(generate_overrides
 
 ecm_add_test(flatpakpermissiontest.cpp
     TEST_NAME flatpakpermissiontest
-    LINK_LIBRARIES Qt${QT_MAJOR_VERSION}::Test kcm_flatpak_static)
+    LINK_LIBRARIES Qt6::Test kcm_flatpak_static)
 set_tests_properties(flatpakpermissiontest PROPERTIES ENVIRONMENT "LANGUAGE=fr")
 add_dependencies(flatpakpermissiontest generate_overrides)
 
 ecm_add_test(FlatpakSimpleEntryTest.cpp
     TEST_NAME FlatpakSimpleEntryTest
-    LINK_LIBRARIES Qt${QT_MAJOR_VERSION}::Test kcm_flatpak_static)
+    LINK_LIBRARIES Qt6::Test kcm_flatpak_static)
 
 ecm_add_test(flatpakfilesystemstest.cpp
     TEST_NAME flatpakfilesystemstest
-    LINK_LIBRARIES Qt${QT_MAJOR_VERSION}::Test kcm_flatpak_static)
+    LINK_LIBRARIES Qt6::Test kcm_flatpak_static)
