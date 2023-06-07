@@ -38,7 +38,6 @@ find_package(KF6 ${KF6_MIN_VERSION} REQUIRED COMPONENTS
     CoreAddons
     I18n
     KCMUtils
-    Package
 )
 
 add_library(kcm_flatpak_static STATIC
