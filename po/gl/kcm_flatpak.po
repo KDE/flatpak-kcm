@@ -1,0 +1,338 @@
+# Copyright (C) YEAR This file is copyright:
+# This file is distributed under the same license as the flatpak-kcm package.
+# Adrián Chaves (Gallaecio) <adrian@chaves.io>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: flatpak-kcm\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2023-04-29 02:54+0000\n"
+"PO-Revision-Date: 2023-06-11 13:13+0200\n"
+"Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
+"Language-Team: Galician <proxecto@trasno.gal>\n"
+"Language: gl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Lokalize 23.04.2\n"
+
+#: autotests/flatpakpermissiontest.cpp:387
+#: autotests/flatpakpermissiontest.cpp:614 flatpakpermission.cpp:403
+#, kde-format
+msgid "None"
+msgstr "Ningún"
+
+#: autotests/flatpakpermissiontest.cpp:388
+#: autotests/flatpakpermissiontest.cpp:617 flatpakpermission.cpp:404
+#, kde-format
+msgid "see"
+msgstr "ver"
+
+#: autotests/flatpakpermissiontest.cpp:389
+#: autotests/flatpakpermissiontest.cpp:615 flatpakpermission.cpp:405
+#, kde-format
+msgid "talk"
+msgstr "falar"
+
+#: autotests/flatpakpermissiontest.cpp:390
+#: autotests/flatpakpermissiontest.cpp:616 flatpakpermission.cpp:406
+#, kde-format
+msgid "own"
+msgstr "posuír"
+
+#: autotests/flatpakpermissiontest.cpp:604 flatpakpermission.cpp:394
+#, kde-format
+msgid "OFF"
+msgstr "Desactivado"
+
+#: autotests/flatpakpermissiontest.cpp:605 flatpakpermission.cpp:392
+#, kde-format
+msgid "read/write"
+msgstr "lectura e escritura"
+
+#: autotests/flatpakpermissiontest.cpp:606 flatpakpermission.cpp:391
+#, kde-format
+msgid "read-only"
+msgstr "lectura"
+
+#: autotests/flatpakpermissiontest.cpp:607 flatpakpermission.cpp:393
+#, kde-format
+msgid "create"
+msgstr "crear"
+
+#: flatpakpermission.cpp:717
+#, kde-format
+msgid "Internet Connection"
+msgstr "Conexión a Internet"
+
+#: flatpakpermission.cpp:718
+#, kde-format
+msgid "Inter-process Communication"
+msgstr "Comunicación entre procesos"
+
+#: flatpakpermission.cpp:724
+#, kde-format
+msgid "X11 Windowing System"
+msgstr "Sistema de xanelas X11"
+
+#: flatpakpermission.cpp:725
+#, kde-format
+msgid "Wayland Windowing System"
+msgstr "Sistema de xanelas Wayland"
+
+#: flatpakpermission.cpp:726
+#, kde-format
+msgid "Fallback to X11 Windowing System"
+msgstr "Usar de reserva o sistema de xanelas de X11"
+
+#: flatpakpermission.cpp:727
+#, kde-format
+msgid "Pulseaudio Sound Server"
+msgstr "Servidor de son PulseAudio"
+
+#: flatpakpermission.cpp:728
+#, kde-format
+msgid "Session Bus Access"
+msgstr "Acceso aos buses de sesión"
+
+#: flatpakpermission.cpp:729
+#, kde-format
+msgid "System Bus Access"
+msgstr "Acceso aos buses de sistema"
+
+#: flatpakpermission.cpp:730
+#, kde-format
+msgid "Remote Login Access"
+msgstr "Permisos de acceso remoto"
+
+#: flatpakpermission.cpp:731
+#, kde-format
+msgid "Smart Card Access"
+msgstr "Acceso a tarxetas intelixentes"
+
+#: flatpakpermission.cpp:732
+#, kde-format
+msgid "Print System Access"
+msgstr "Acceso ao sistema de impresión"
+
+#: flatpakpermission.cpp:738
+#, kde-format
+msgid "Kernel-based Virtual Machine Access"
+msgstr "Acceso a máquinas virtuais baseadas no núcleo"
+
+#: flatpakpermission.cpp:739
+#, kde-format
+msgid "Direct Graphic Rendering"
+msgstr "Renderización directo"
+
+#: flatpakpermission.cpp:740
+#, kde-format
+msgid "Host dev/shm"
+msgstr "dev/shm da máquina"
+
+#: flatpakpermission.cpp:741 flatpakpermission.cpp:1203
+#, kde-format
+msgid "Device Access"
+msgstr "Acceso a dispositivos"
+
+#: flatpakpermission.cpp:747
+#, kde-format
+msgid "System Calls by Development Tools"
+msgstr "Chamadas do sistema por parte de ferramentas de desenvolvemento"
+
+#: flatpakpermission.cpp:748
+#, kde-format
+msgid "Run Multiarch/Multilib Binaries"
+msgstr "Executar binarios de varias arquitecturas ou bibliotecas"
+
+#: flatpakpermission.cpp:749
+#, kde-format
+msgid "Bluetooth"
+msgstr "Bluetooth"
+
+#: flatpakpermission.cpp:750
+#, kde-format
+msgid "Canbus Socket Access"
+msgstr "Acceso a sockets de Canbus"
+
+#: flatpakpermission.cpp:753
+#, kde-format
+msgid "Share dev/shm across all instances of an app per user ID"
+msgstr ""
+"Compartir dev/shm entre todas as instancias dunha aplicación e identificador "
+"de persoa usuaria."
+
+#: flatpakpermission.cpp:811
+#, kde-format
+msgid "All User Files"
+msgstr "Todos os ficheiros persoais."
+
+#: flatpakpermission.cpp:812
+#, kde-format
+msgid "All System Files"
+msgstr "Todos os ficheiros do sistema."
+
+#: flatpakpermission.cpp:813
+#, kde-format
+msgid "All System Libraries, Executables and Binaries"
+msgstr "Todas as bibliotecas, executábeis e binarios do sistema."
+
+#: flatpakpermission.cpp:814
+#, kde-format
+msgid "All System Configurations"
+msgstr "Todas as configuracións do sistema"
+
+#: flatpakpermission.cpp:1193
+#, kde-format
+msgid "Basic Permissions"
+msgstr "Permisos básicos"
+
+#: flatpakpermission.cpp:1195
+#, kde-format
+msgid "Filesystem Access"
+msgstr "Acceso ao sistema de ficheiros"
+
+#: flatpakpermission.cpp:1197
+#, kde-format
+msgid "Advanced Permissions"
+msgstr "Permisos avanzados"
+
+#: flatpakpermission.cpp:1199
+#, kde-format
+msgid "Subsystems Shared"
+msgstr "Subsistemas compartidos"
+
+#: flatpakpermission.cpp:1201
+#, kde-format
+msgid "Sockets"
+msgstr "Sockets"
+
+#: flatpakpermission.cpp:1205
+#, kde-format
+msgid "Features Allowed"
+msgstr "Funcionalidades permitidas"
+
+#: flatpakpermission.cpp:1207
+#, kde-format
+msgid "Session Bus Policy"
+msgstr "Políticas dos buses de sesión"
+
+#: flatpakpermission.cpp:1209
+#, kde-format
+msgid "System Bus Policy"
+msgstr "Políticas dos buses de sistema"
+
+#: flatpakpermission.cpp:1211
+#, kde-format
+msgid "Environment"
+msgstr "Ambiente"
+
+#: flatpakpermission.cpp:1228
+#, kde-format
+msgid "Add a new filesystem path"
+msgstr "Engadir unha nova ruta do sistema de ficheiros."
+
+#: flatpakpermission.cpp:1230
+#, kde-format
+msgid "Add a new session bus"
+msgstr "Engadir un novo bus de sesión"
+
+#: flatpakpermission.cpp:1232
+#, kde-format
+msgid "Add a new system bus"
+msgstr "Engadir un novo bus de sistema"
+
+#: flatpakpermission.cpp:1234
+#, kde-format
+msgid "Add a new environment variable"
+msgstr "Engadir unha nova variábel de ambiente"
+
+#: package/contents/ui/AddEnvironmentVariableDialog.qml:18
+#, kde-format
+msgid "Set Environment Variable"
+msgstr "Definir unha variábel del ambiente"
+
+#: package/contents/ui/AddEnvironmentVariableDialog.qml:35
+#, kde-format
+msgid "Enter variable..."
+msgstr "Introduza a variábel…"
+
+#: package/contents/ui/AddEnvironmentVariableDialog.qml:46
+#, kde-format
+msgid "Enter value..."
+msgstr "Escriba o valor…"
+
+#: package/contents/ui/main.qml:16
+#, kde-format
+msgid "Flatpak Applications"
+msgstr "Aplicacións de Flatpak"
+
+#: package/contents/ui/main.qml:54
+#, kde-format
+msgid "Apply Permissions"
+msgstr "Aplicar os permisos"
+
+#: package/contents/ui/main.qml:55
+#, kde-format
+msgid ""
+"The permissions of this application have been changed. Do you want to apply "
+"these changes or discard them?"
+msgstr ""
+"Cambiáronse os permisos da aplicación. Quere aplicar os cambios ou "
+"descartalos?"
+
+#: package/contents/ui/permissions.qml:17
+#, kde-format
+msgid "Permissions"
+msgstr "Permisos"
+
+#: package/contents/ui/permissions.qml:23
+#, kde-format
+msgid "Select an application from the list to view its permissions here"
+msgstr "Seleccione unha aplicación da lista para ver aquí os seus permisos."
+
+#: package/contents/ui/permissions.qml:82
+#, kde-format
+msgid "Hide advanced permissions"
+msgstr "Agochar os permisos avanzados"
+
+#: package/contents/ui/permissions.qml:82
+#, kde-format
+msgid "Show advanced permissions"
+msgstr "Amosar os permisos avanzados"
+
+#: package/contents/ui/permissions.qml:94
+#, kde-format
+msgid "Add New"
+msgstr "Engadir un novo"
+
+#: package/contents/ui/TextPromptDialog.qml:21
+#, kde-format
+msgid "Add Filesystem Path Permission"
+msgstr "Engadir un permiso de ruta do sistema de ficheiros"
+
+#: package/contents/ui/TextPromptDialog.qml:22
+#, kde-format
+msgid "Add Session Bus Permission"
+msgstr "Engadir un permiso de bus de sesión"
+
+#: package/contents/ui/TextPromptDialog.qml:23
+#, kde-format
+msgid "Add System Bus Permission"
+msgstr "Engadir un permiso de bus de sistema"
+
+#: package/contents/ui/TextPromptDialog.qml:38
+#, kde-format
+msgid "Enter filesystem path..."
+msgstr "Escriba unha ruta do sistema de ficheiros…"
+
+#: package/contents/ui/TextPromptDialog.qml:39
+#, kde-format
+msgid "Enter session bus name..."
+msgstr "Escriba o nome do bus de sesión…"
+
+#: package/contents/ui/TextPromptDialog.qml:40
+#, kde-format
+msgid "Enter system bus name..."
+msgstr "Escriba o nome do bus de sistema…"
