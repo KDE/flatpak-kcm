@@ -27,6 +27,7 @@ include(KDECompilerSettings NO_POLICY_SCOPE)
 include(KDEClangFormat)
 include(KDEGitCommitHooks)
 include(FeatureSummary)
+include(ECMDeprecationSettings)
 
 find_package(Qt6 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS
     Quick
@@ -39,6 +40,11 @@ find_package(KF6 ${KF6_MIN_VERSION} REQUIRED COMPONENTS
     I18n
     KCMUtils
 )
+
+ecm_set_disabled_deprecation_versions(QT 6.5
+    KF 5.240
+)
+
 
 add_library(kcm_flatpak_static STATIC
     flatpakreference.cpp flatpakreference.h
