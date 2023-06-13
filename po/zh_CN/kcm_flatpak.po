@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-29 02:54+0000\n"
+"POT-Creation-Date: 2023-06-13 02:42+0000\n"
 "PO-Revision-Date: 2023-05-22 14:04\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -17,231 +17,231 @@ msgstr ""
 "X-Crowdin-File: /kf5-stable/messages/flatpak-kcm/kcm_flatpak.pot\n"
 "X-Crowdin-File-ID: 41665\n"
 
-#: autotests/flatpakpermissiontest.cpp:387
-#: autotests/flatpakpermissiontest.cpp:614 flatpakpermission.cpp:403
+#: autotests/flatpakpermissiontest.cpp:642
+#: autotests/flatpakpermissiontest.cpp:864 flatpakpermission.cpp:404
 #, kde-format
 msgid "None"
 msgstr "无"
 
-#: autotests/flatpakpermissiontest.cpp:388
-#: autotests/flatpakpermissiontest.cpp:617 flatpakpermission.cpp:404
+#: autotests/flatpakpermissiontest.cpp:643
+#: autotests/flatpakpermissiontest.cpp:867 flatpakpermission.cpp:405
 #, kde-format
 msgid "see"
 msgstr "see"
 
-#: autotests/flatpakpermissiontest.cpp:389
-#: autotests/flatpakpermissiontest.cpp:615 flatpakpermission.cpp:405
+#: autotests/flatpakpermissiontest.cpp:644
+#: autotests/flatpakpermissiontest.cpp:865 flatpakpermission.cpp:406
 #, kde-format
 msgid "talk"
 msgstr "talk"
 
-#: autotests/flatpakpermissiontest.cpp:390
-#: autotests/flatpakpermissiontest.cpp:616 flatpakpermission.cpp:406
+#: autotests/flatpakpermissiontest.cpp:645
+#: autotests/flatpakpermissiontest.cpp:866 flatpakpermission.cpp:407
 #, kde-format
 msgid "own"
 msgstr "own"
 
-#: autotests/flatpakpermissiontest.cpp:604 flatpakpermission.cpp:394
+#: autotests/flatpakpermissiontest.cpp:854 flatpakpermission.cpp:395
 #, kde-format
 msgid "OFF"
 msgstr "关"
 
-#: autotests/flatpakpermissiontest.cpp:605 flatpakpermission.cpp:392
+#: autotests/flatpakpermissiontest.cpp:855 flatpakpermission.cpp:393
 #, kde-format
 msgid "read/write"
 msgstr "read/write"
 
-#: autotests/flatpakpermissiontest.cpp:606 flatpakpermission.cpp:391
+#: autotests/flatpakpermissiontest.cpp:856 flatpakpermission.cpp:392
 #, kde-format
 msgid "read-only"
 msgstr "read-only"
 
-#: autotests/flatpakpermissiontest.cpp:607 flatpakpermission.cpp:393
+#: autotests/flatpakpermissiontest.cpp:857 flatpakpermission.cpp:394
 #, kde-format
 msgid "create"
 msgstr "create"
 
-#: flatpakpermission.cpp:717
+#: flatpakpermission.cpp:819
 #, kde-format
 msgid "Internet Connection"
 msgstr "互联网连接"
 
-#: flatpakpermission.cpp:718
+#: flatpakpermission.cpp:820
 #, kde-format
 msgid "Inter-process Communication"
 msgstr "进程间通信"
 
-#: flatpakpermission.cpp:724
+#: flatpakpermission.cpp:826
 #, kde-format
 msgid "X11 Windowing System"
 msgstr "X11 窗口系统"
 
-#: flatpakpermission.cpp:725
+#: flatpakpermission.cpp:827
 #, kde-format
 msgid "Wayland Windowing System"
 msgstr "Wayland 窗口系统"
 
-#: flatpakpermission.cpp:726
+#: flatpakpermission.cpp:828
 #, kde-format
 msgid "Fallback to X11 Windowing System"
 msgstr "回退到 X11 窗口系统"
 
-#: flatpakpermission.cpp:727
+#: flatpakpermission.cpp:829
 #, kde-format
 msgid "Pulseaudio Sound Server"
 msgstr "PulseAudio 声音服务"
 
-#: flatpakpermission.cpp:728
+#: flatpakpermission.cpp:830
 #, kde-format
 msgid "Session Bus Access"
 msgstr "会话总线访问"
 
-#: flatpakpermission.cpp:729
+#: flatpakpermission.cpp:831
 #, kde-format
 msgid "System Bus Access"
 msgstr "系统总线访问"
 
-#: flatpakpermission.cpp:730
+#: flatpakpermission.cpp:832
 #, kde-format
 msgid "Remote Login Access"
 msgstr "远程登录访问"
 
-#: flatpakpermission.cpp:731
+#: flatpakpermission.cpp:833
 #, kde-format
 msgid "Smart Card Access"
 msgstr "智能卡访问"
 
-#: flatpakpermission.cpp:732
+#: flatpakpermission.cpp:834
 #, kde-format
 msgid "Print System Access"
 msgstr "打印系统访问"
 
-#: flatpakpermission.cpp:738
+#: flatpakpermission.cpp:840
 #, kde-format
 msgid "Kernel-based Virtual Machine Access"
 msgstr "基于内核的虚拟机访问"
 
-#: flatpakpermission.cpp:739
+#: flatpakpermission.cpp:841
 #, kde-format
 msgid "Direct Graphic Rendering"
 msgstr "直接图形渲染"
 
-#: flatpakpermission.cpp:740
+#: flatpakpermission.cpp:842
 #, kde-format
 msgid "Host dev/shm"
 msgstr "主机 dev/shm"
 
-#: flatpakpermission.cpp:741 flatpakpermission.cpp:1203
+#: flatpakpermission.cpp:843 flatpakpermission.cpp:1304
 #, kde-format
 msgid "Device Access"
 msgstr "设备访问"
 
-#: flatpakpermission.cpp:747
+#: flatpakpermission.cpp:849
 #, kde-format
 msgid "System Calls by Development Tools"
 msgstr "开发工具的系统调用"
 
-#: flatpakpermission.cpp:748
+#: flatpakpermission.cpp:850
 #, kde-format
 msgid "Run Multiarch/Multilib Binaries"
 msgstr "运行 Multiarch/Multilib 程序库"
 
-#: flatpakpermission.cpp:749
+#: flatpakpermission.cpp:851
 #, kde-format
 msgid "Bluetooth"
 msgstr "蓝牙"
 
-#: flatpakpermission.cpp:750
+#: flatpakpermission.cpp:852
 #, kde-format
 msgid "Canbus Socket Access"
 msgstr "Canbus 套接字访问"
 
-#: flatpakpermission.cpp:753
+#: flatpakpermission.cpp:855
 #, kde-format
 msgid "Share dev/shm across all instances of an app per user ID"
 msgstr "跨用户 ID 共享一款应用程序的所有实例的 dev/shm"
 
-#: flatpakpermission.cpp:811
+#: flatpakpermission.cpp:913
 #, kde-format
 msgid "All User Files"
 msgstr "所有用户文件"
 
-#: flatpakpermission.cpp:812
+#: flatpakpermission.cpp:914
 #, kde-format
 msgid "All System Files"
 msgstr "所有系统文件"
 
-#: flatpakpermission.cpp:813
+#: flatpakpermission.cpp:915
 #, kde-format
 msgid "All System Libraries, Executables and Binaries"
 msgstr "所有系统程序库、可执行文件和二进制文件"
 
-#: flatpakpermission.cpp:814
+#: flatpakpermission.cpp:916
 #, kde-format
 msgid "All System Configurations"
 msgstr "所有系统配置"
 
-#: flatpakpermission.cpp:1193
+#: flatpakpermission.cpp:1294
 #, kde-format
 msgid "Basic Permissions"
 msgstr "基本权限"
 
-#: flatpakpermission.cpp:1195
+#: flatpakpermission.cpp:1296
 #, kde-format
 msgid "Filesystem Access"
 msgstr "文件系统访问"
 
-#: flatpakpermission.cpp:1197
+#: flatpakpermission.cpp:1298
 #, kde-format
 msgid "Advanced Permissions"
 msgstr "高级权限"
 
-#: flatpakpermission.cpp:1199
+#: flatpakpermission.cpp:1300
 #, kde-format
 msgid "Subsystems Shared"
 msgstr "子系统共享"
 
-#: flatpakpermission.cpp:1201
+#: flatpakpermission.cpp:1302
 #, kde-format
 msgid "Sockets"
 msgstr "套接字"
 
-#: flatpakpermission.cpp:1205
+#: flatpakpermission.cpp:1306
 #, kde-format
 msgid "Features Allowed"
 msgstr "允许的功能"
 
-#: flatpakpermission.cpp:1207
+#: flatpakpermission.cpp:1308
 #, kde-format
 msgid "Session Bus Policy"
 msgstr "会话总线策略"
 
-#: flatpakpermission.cpp:1209
+#: flatpakpermission.cpp:1310
 #, kde-format
 msgid "System Bus Policy"
 msgstr "系统总线策略"
 
-#: flatpakpermission.cpp:1211
+#: flatpakpermission.cpp:1312
 #, kde-format
 msgid "Environment"
 msgstr "环境"
 
-#: flatpakpermission.cpp:1228
+#: flatpakpermission.cpp:1329
 #, kde-format
 msgid "Add a new filesystem path"
 msgstr "添加新的文件系统路径"
 
-#: flatpakpermission.cpp:1230
+#: flatpakpermission.cpp:1331
 #, kde-format
 msgid "Add a new session bus"
 msgstr "添加新的会话总线"
 
-#: flatpakpermission.cpp:1232
+#: flatpakpermission.cpp:1333
 #, kde-format
 msgid "Add a new system bus"
 msgstr "添加新的系统总线"
 
-#: flatpakpermission.cpp:1234
+#: flatpakpermission.cpp:1335
 #, kde-format
 msgid "Add a new environment variable"
 msgstr "添加新的环境变量"
