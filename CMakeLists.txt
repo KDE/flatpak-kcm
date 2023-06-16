@@ -39,6 +39,7 @@ find_package(KF6 ${KF6_MIN_VERSION} REQUIRED COMPONENTS
     CoreAddons
     I18n
     KCMUtils
+    ItemModels
 )
 
 ecm_set_disabled_deprecation_versions(QT 6.5
