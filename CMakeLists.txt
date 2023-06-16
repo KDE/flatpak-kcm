@@ -36,6 +36,7 @@ find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
     KCMUtils
     Declarative
     Config
+    ItemModels
 )
 
 # Can't use regular KDE_INSTALL_FULL_LOCALSTATEDIR because it is wrong in developer setup.
