@@ -246,7 +246,7 @@ msgstr "Engadir un novo bus de sistema"
 #: flatpakpermission.cpp:1335
 #, kde-format
 msgid "Add a new environment variable"
-msgstr "Engadir unha nova variábel de ambiente"
+msgstr "Engadir unha nova variábel de contorno"
 
 #: ui/AddEnvironmentVariableDialog.qml:18
 #, kde-format
