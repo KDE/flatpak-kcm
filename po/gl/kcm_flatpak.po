@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-06-13 02:42+0000\n"
-"PO-Revision-Date: 2023-06-11 13:13+0200\n"
+"PO-Revision-Date: 2023-06-24 11:41+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Galician <proxecto@trasno.gal>\n"
 "Language: gl\n"
@@ -154,7 +154,7 @@ msgstr "Bluetooth"
 #: flatpakpermission.cpp:852
 #, kde-format
 msgid "Canbus Socket Access"
-msgstr "Acceso a sockets de Canbus"
+msgstr "Acceso a tomas de Canbus"
 
 #: flatpakpermission.cpp:855
 #, kde-format
@@ -206,7 +206,7 @@ msgstr "Subsistemas compartidos"
 #: flatpakpermission.cpp:1302
 #, kde-format
 msgid "Sockets"
-msgstr "Sockets"
+msgstr "Tomas"
 
 #: flatpakpermission.cpp:1306
 #, kde-format
@@ -226,7 +226,7 @@ msgstr "Políticas dos buses de sistema"
 #: flatpakpermission.cpp:1312
 #, kde-format
 msgid "Environment"
-msgstr "Ambiente"
+msgstr "Contorno"
 
 #: flatpakpermission.cpp:1329
 #, kde-format
@@ -251,7 +251,7 @@ msgstr "Engadir unha nova variábel de contorno"
 #: package/contents/ui/AddEnvironmentVariableDialog.qml:18
 #, kde-format
 msgid "Set Environment Variable"
-msgstr "Definir unha variábel del ambiente"
+msgstr "Definir unha variábel do contorno"
 
 #: package/contents/ui/AddEnvironmentVariableDialog.qml:35
 #, kde-format
