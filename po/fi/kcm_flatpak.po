@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-13 02:10+0000\n"
+"POT-Creation-Date: 2023-07-05 02:51+0000\n"
 "PO-Revision-Date: 2023-03-04 18:47+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -292,17 +292,17 @@ msgstr "Käyttöoikeudet"
 msgid "Select an application from the list to view its permissions here"
 msgstr "Näytä sovelluksen käyttöoikeudet valitsemalla se luettelosta"
 
-#: ui/permissions.qml:136
+#: ui/permissions.qml:137
 #, kde-format
 msgid "Hide advanced permissions"
 msgstr "Piilota lisäkäyttöoikeudet"
 
-#: ui/permissions.qml:136
+#: ui/permissions.qml:137
 #, kde-format
 msgid "Show advanced permissions"
 msgstr "Näytä lisäkäyttöoikeudet"
 
-#: ui/permissions.qml:148
+#: ui/permissions.qml:149
 #, kde-format
 msgid "Add New"
 msgstr "Lisää uusi"

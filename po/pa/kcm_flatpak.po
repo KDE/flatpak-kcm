@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-13 02:10+0000\n"
+"POT-Creation-Date: 2023-07-05 02:51+0000\n"
 "PO-Revision-Date: 2023-05-19 20:16-0700\n"
 "Last-Translator: A S Alam <aalam@satluj.org>\n"
 "Language-Team: Punjabi <kde-i18n-doc@kde.org>\n"
@@ -288,17 +288,17 @@ msgstr "ਇਜਾਜ਼ਤਾਂ"
 msgid "Select an application from the list to view its permissions here"
 msgstr ""
 
-#: ui/permissions.qml:136
+#: ui/permissions.qml:137
 #, kde-format
 msgid "Hide advanced permissions"
 msgstr "ਤਕਨੀਕੀ ਇਜਾਜ਼ਤਾਂ ਓਹਲੇ ਕਰੋ"
 
-#: ui/permissions.qml:136
+#: ui/permissions.qml:137
 #, kde-format
 msgid "Show advanced permissions"
 msgstr ""
 
-#: ui/permissions.qml:148
+#: ui/permissions.qml:149
 #, kde-format
 msgid "Add New"
 msgstr "ਨਵੀ ਜੋੜੋ"
