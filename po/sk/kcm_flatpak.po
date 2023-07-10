@@ -1,18 +1,19 @@
 # translation of kcm_flatpak.po to Slovak
 # Roman Paholik <wizzardsk@gmail.com>, 2022.
+# Ferdinand Galko <galko.ferdinand@gmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: kcm_flatpak\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-07-05 02:51+0000\n"
-"PO-Revision-Date: 2022-09-21 19:04+0200\n"
-"Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
-"Language-Team: Slovak <kde-sk@linux.sk>\n"
+"PO-Revision-Date: 2023-07-09 16:20+0200\n"
+"Last-Translator: Ferdinand Galko <galko.ferdinand@gmail.com>\n"
+"Language-Team: Slovak <opensuse-translation@opensuse.org>\n"
 "Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 22.04.3\n"
+"X-Generator: Lokalize 21.12.3\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
 #: autotests/flatpakpermissiontest.cpp:642
@@ -37,7 +38,7 @@ msgstr "rozhovor"
 #: autotests/flatpakpermissiontest.cpp:866 flatpakpermission.cpp:407
 #, kde-format
 msgid "own"
-msgstr ""
+msgstr "vlastné"
 
 #: autotests/flatpakpermissiontest.cpp:854 flatpakpermission.cpp:395
 #, kde-format
@@ -62,27 +63,27 @@ msgstr "vytvoriť"
 #: flatpakpermission.cpp:819
 #, kde-format
 msgid "Internet Connection"
-msgstr ""
+msgstr "Pripojenie do internetu"
 
 #: flatpakpermission.cpp:820
 #, kde-format
 msgid "Inter-process Communication"
-msgstr ""
+msgstr "Komunikácia medzi procesmi"
 
 #: flatpakpermission.cpp:826
 #, kde-format
 msgid "X11 Windowing System"
-msgstr ""
+msgstr "Systém okien X11"
 
 #: flatpakpermission.cpp:827
 #, kde-format
 msgid "Wayland Windowing System"
-msgstr ""
+msgstr "Systém okien Wayland"
 
 #: flatpakpermission.cpp:828
 #, kde-format
 msgid "Fallback to X11 Windowing System"
-msgstr ""
+msgstr "Spätný prechod na systém okien X11"
 
 #: flatpakpermission.cpp:829
 #, kde-format
@@ -92,57 +93,58 @@ msgstr "Zvukový server PulseAudio"
 #: flatpakpermission.cpp:830
 #, kde-format
 msgid "Session Bus Access"
-msgstr ""
+msgstr "Prístup k zbernici sedení"
 
 #: flatpakpermission.cpp:831
 #, kde-format
 msgid "System Bus Access"
-msgstr ""
+msgstr "Prístup k systémovej zbernici"
 
 #: flatpakpermission.cpp:832
 #, kde-format
 msgid "Remote Login Access"
-msgstr ""
+msgstr "Prístup k vzdialenému prihláseniu"
 
 #: flatpakpermission.cpp:833
 #, kde-format
 msgid "Smart Card Access"
-msgstr ""
+msgstr "Prístup k čipovým kartám"
 
 #: flatpakpermission.cpp:834
 #, kde-format
 msgid "Print System Access"
-msgstr ""
+msgstr "Prístup k tlačovému systému"
 
 #: flatpakpermission.cpp:840
 #, kde-format
 msgid "Kernel-based Virtual Machine Access"
-msgstr ""
+msgstr "Prístup k virtuálnym strojom založeným na jadre"
 
 #: flatpakpermission.cpp:841
 #, kde-format
 msgid "Direct Graphic Rendering"
-msgstr ""
+msgstr "Priame grafické vykresľovanie"
 
 #: flatpakpermission.cpp:842
 #, kde-format
 msgid "Host dev/shm"
-msgstr ""
+msgstr "dev/shm hostiteľa"
 
 #: flatpakpermission.cpp:843 flatpakpermission.cpp:1304
 #, kde-format
 msgid "Device Access"
-msgstr ""
+msgstr "Prístup k zariadeniam"
 
 #: flatpakpermission.cpp:849
 #, kde-format
 msgid "System Calls by Development Tools"
-msgstr ""
+msgstr "Systémové volania vývojárskych nástrojov"
 
 #: flatpakpermission.cpp:850
 #, kde-format
 msgid "Run Multiarch/Multilib Binaries"
 msgstr ""
+"Spustiť binárne súbory s viacerými architektúrami a viacerými knižnicami"
 
 #: flatpakpermission.cpp:851
 #, kde-format
@@ -152,42 +154,42 @@ msgstr "Bluetooth"
 #: flatpakpermission.cpp:852
 #, kde-format
 msgid "Canbus Socket Access"
-msgstr ""
+msgstr "Prístup k soketu canbus"
 
 #: flatpakpermission.cpp:855
 #, kde-format
 msgid "Share dev/shm across all instances of an app per user ID"
-msgstr ""
+msgstr "Zdieľať dev/shm medzi všetkými inštanciami aplikácie na ID používateľa"
 
 #: flatpakpermission.cpp:913
 #, kde-format
 msgid "All User Files"
-msgstr ""
+msgstr "Všetky používateľské súbory"
 
 #: flatpakpermission.cpp:914
 #, kde-format
 msgid "All System Files"
-msgstr ""
+msgstr "Všetky systémové súbory"
 
 #: flatpakpermission.cpp:915
 #, kde-format
 msgid "All System Libraries, Executables and Binaries"
-msgstr ""
+msgstr "Všetky systémové knižnice, spustiteľné a binárne súbory"
 
 #: flatpakpermission.cpp:916
 #, kde-format
 msgid "All System Configurations"
-msgstr ""
+msgstr "Všetky systémové konfigurácie"
 
 #: flatpakpermission.cpp:1294
 #, kde-format
 msgid "Basic Permissions"
-msgstr ""
+msgstr "Základné oprávnenia"
 
 #: flatpakpermission.cpp:1296
 #, kde-format
 msgid "Filesystem Access"
-msgstr ""
+msgstr "Prístup k súborovému systému"
 
 #: flatpakpermission.cpp:1298
 #, kde-format
@@ -197,7 +199,7 @@ msgstr "Pokročilé práva"
 #: flatpakpermission.cpp:1300
 #, kde-format
 msgid "Subsystems Shared"
-msgstr ""
+msgstr "Zdieľané subsystémy"
 
 #: flatpakpermission.cpp:1302
 #, kde-format
@@ -207,17 +209,17 @@ msgstr "Sokety"
 #: flatpakpermission.cpp:1306
 #, kde-format
 msgid "Features Allowed"
-msgstr ""
+msgstr "Povolené funkcie"
 
 #: flatpakpermission.cpp:1308
 #, kde-format
 msgid "Session Bus Policy"
-msgstr ""
+msgstr "Politika zbernice sedení"
 
 #: flatpakpermission.cpp:1310
 #, kde-format
 msgid "System Bus Policy"
-msgstr ""
+msgstr "Politika systémovej zbernice"
 
 #: flatpakpermission.cpp:1312
 #, kde-format
@@ -227,44 +229,42 @@ msgstr "Prostredie"
 #: flatpakpermission.cpp:1329
 #, kde-format
 msgid "Add a new filesystem path"
-msgstr ""
+msgstr "Pridať novú cestu súborového systému"
 
 #: flatpakpermission.cpp:1331
 #, kde-format
 msgid "Add a new session bus"
-msgstr ""
+msgstr "Pridať novú zbernicu sedení"
 
 #: flatpakpermission.cpp:1333
 #, kde-format
 msgid "Add a new system bus"
-msgstr ""
+msgstr "Pridať novú systémovú zbernicu"
 
 #: flatpakpermission.cpp:1335
 #, kde-format
 msgid "Add a new environment variable"
-msgstr ""
+msgstr "Pridať novú premennú prostredia"
 
 #: ui/AddEnvironmentVariableDialog.qml:18
 #, kde-format
 msgid "Set Environment Variable"
-msgstr ""
+msgstr "Nastaviť premennú prostredia"
 
 #: ui/AddEnvironmentVariableDialog.qml:35
-#, fuzzy, kde-format
-#| msgid "Enter value..."
+#, kde-format
 msgid "Enter variable…"
-msgstr "Zadajte hodnotu..."
+msgstr "Zadať premennú..."
 
 #: ui/AddEnvironmentVariableDialog.qml:46
-#, fuzzy, kde-format
-#| msgid "Enter value..."
+#, kde-format
 msgid "Enter value…"
-msgstr "Zadajte hodnotu..."
+msgstr "Zadať hodnotu..."
 
 #: ui/main.qml:17
 #, kde-format
 msgid "Flatpak Applications"
-msgstr ""
+msgstr "Aplikácie Flatpak"
 
 #: ui/main.qml:87
 #, kde-format
@@ -277,6 +277,8 @@ msgid ""
 "The permissions of application %1 have been changed. Do you want to apply "
 "these changes or discard them?"
 msgstr ""
+"Oprávnenia aplikácie %1 boli zmenené. Chcete tieto zmeny použiť alebo ich "
+"zahodiť?"
 
 #: ui/permissions.qml:17
 #, kde-format
@@ -286,17 +288,17 @@ msgstr "Práva"
 #: ui/permissions.qml:23
 #, kde-format
 msgid "Select an application from the list to view its permissions here"
-msgstr ""
+msgstr "Vybrať aplikáciu zo zoznamu a zobraziť tu jej oprávnenia"
 
 #: ui/permissions.qml:137
 #, kde-format
 msgid "Hide advanced permissions"
-msgstr ""
+msgstr "Skryť pokročilé oprávnenia"
 
 #: ui/permissions.qml:137
 #, kde-format
 msgid "Show advanced permissions"
-msgstr ""
+msgstr "Zobraziť pokročilé oprávnenia"
 
 #: ui/permissions.qml:149
 #, kde-format
@@ -306,32 +308,32 @@ msgstr "Pridať nový"
 #: ui/TextPromptDialog.qml:21
 #, kde-format
 msgid "Add Filesystem Path Permission"
-msgstr ""
+msgstr "Pridať oprávnenie cesty súborového systému"
 
 #: ui/TextPromptDialog.qml:22
 #, kde-format
 msgid "Add Session Bus Permission"
-msgstr ""
+msgstr "Pridať oprávnenie zbernice sedení"
 
 #: ui/TextPromptDialog.qml:23
 #, kde-format
 msgid "Add System Bus Permission"
-msgstr ""
+msgstr "Pridať oprávnenie systémovej zbernice"
 
 #: ui/TextPromptDialog.qml:38
 #, kde-format
 msgid "Enter filesystem path…"
-msgstr ""
+msgstr "Zadať cestu súborového systému…"
 
 #: ui/TextPromptDialog.qml:39
 #, kde-format
 msgid "Enter session bus name…"
-msgstr ""
+msgstr "Zadať názov zbernice sedení…"
 
 #: ui/TextPromptDialog.qml:40
 #, kde-format
 msgid "Enter system bus name…"
-msgstr ""
+msgstr "Zadať názov systémovej zbernice…"
 
 #, fuzzy
 #~| msgid "read/write"
