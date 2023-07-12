@@ -189,6 +189,7 @@ KCM.ScrollViewKCM {
             id: filteredRefsModel
             sourceModel: root.KCM.ConfigModule.refsModel
             sortOrder: Qt.AscendingOrder
+            sortCaseSensitivity: Qt.CaseInsensitive
             sortRole: FlatpakReferencesModel.Name
             filterRole: FlatpakReferencesModel.Name
             filterString: filterField.text
