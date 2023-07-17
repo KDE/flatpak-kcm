@@ -88,3 +88,5 @@ int KCMFlatpak::currentIndex() const
 }
 
 #include "kcm.moc"
+
+#include "moc_kcm.cpp"

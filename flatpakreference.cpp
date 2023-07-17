@@ -307,3 +307,5 @@ const QVector<FlatpakReference *> &FlatpakReferencesModel::references() const
 {
     return m_references;
 }
+
+#include "moc_flatpakreference.cpp"

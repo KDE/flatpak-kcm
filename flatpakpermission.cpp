@@ -1638,3 +1638,5 @@ void FlatpakPermissionModel::writeToKConfig(KConfig &config) const
         contextGroup.writeXdgListEntry(category, entries);
     }
 }
+
+#include "moc_flatpakpermission.cpp"
