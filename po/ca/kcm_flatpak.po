@@ -339,12 +339,3 @@ msgstr "Introduïu un nom de bus de sessió..."
 #, kde-format
 msgid "Enter system bus name..."
 msgstr "Introduïu un nom de bus de sistema..."
-
-#~ msgid "read-write"
-#~ msgstr "lectura-escriptura"
-
-#~ msgid "=\n"
-#~ msgstr "=\n"
-
-#~ msgid "per-app-dev-shm"
-#~ msgstr "per-app-dev-shm"
