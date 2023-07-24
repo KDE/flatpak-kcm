@@ -264,7 +264,7 @@ msgstr "값 입력…"
 #: ui/main.qml:17
 #, kde-format
 msgid "Flatpak Applications"
-msgstr "Flatpak 프로그램"
+msgstr "Flatpak 앱"
 
 #: ui/main.qml:87
 #, kde-format
@@ -277,7 +277,7 @@ msgid ""
 "The permissions of application %1 have been changed. Do you want to apply "
 "these changes or discard them?"
 msgstr ""
-"%1 프로그램의 권한이 변경되었습니다. 변경 사항을 적용하거나 무시하시겠습니까?"
+"%1 앱의 권한이 변경되었습니다. 변경 사항을 적용하거나 무시하시겠습니까?"
 
 #: ui/permissions.qml:17
 #, kde-format
@@ -287,7 +287,7 @@ msgstr "권한"
 #: ui/permissions.qml:23
 #, kde-format
 msgid "Select an application from the list to view its permissions here"
-msgstr "권한을 볼 프로그램 선택"
+msgstr "권한을 볼 앱 선택"
 
 #: ui/permissions.qml:137
 #, kde-format
