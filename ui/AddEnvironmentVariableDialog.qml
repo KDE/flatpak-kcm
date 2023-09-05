@@ -22,7 +22,6 @@ Kirigami.PromptDialog {
     QQC2.Overlay.modal: KcmPopupModal {}
 
     Kirigami.FormLayout {
-        // TODO: This looks bad. Change to Kirigami.FormData.label before next string freeze.
         QQC2.TextField {
             id: nameField
 
@@ -32,7 +31,7 @@ Kirigami.PromptDialog {
             Keys.onReturnPressed: valueField.forceActiveFocus(Qt.TabFocusReason)
             KeyNavigation.down: valueField
 
-            placeholderText: i18n("Enter variable…")
+            Kirigami.FormData.label: i18nc("@label:textbox name of environment variable", "Name:")
         }
 
         QQC2.TextField {
@@ -43,7 +42,7 @@ Kirigami.PromptDialog {
             Keys.onEnterPressed: root.accepted()
             Keys.onReturnPressed: root.accepted()
 
-            placeholderText: i18n("Enter value…")
+            Kirigami.FormData.label: i18nc("@label:textbox value of environment variable", "Value:")
             // No validation needed, empty value is also acceptable.
         }
     }
