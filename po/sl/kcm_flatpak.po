@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-05 02:51+0000\n"
+"POT-Creation-Date: 2023-09-06 01:55+0000\n"
 "PO-Revision-Date: 2023-02-22 08:51+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -254,15 +254,17 @@ msgstr "Dodaj novo okoljsko spremenljivko"
 msgid "Set Environment Variable"
 msgstr "Nastavi spremenljivko okolja"
 
-#: ui/AddEnvironmentVariableDialog.qml:35
+#: ui/AddEnvironmentVariableDialog.qml:34
 #, kde-format
-msgid "Enter variable…"
-msgstr "Vnesitespremenljivko…"
+msgctxt "@label:textbox name of environment variable"
+msgid "Name:"
+msgstr ""
 
-#: ui/AddEnvironmentVariableDialog.qml:46
+#: ui/AddEnvironmentVariableDialog.qml:45
 #, kde-format
-msgid "Enter value…"
-msgstr "Vnesite vrednost…"
+msgctxt "@label:textbox value of environment variable"
+msgid "Value:"
+msgstr ""
 
 #: ui/main.qml:17
 #, kde-format
@@ -338,6 +340,12 @@ msgstr "Vnesite ime sejnega vodila…"
 #, kde-format
 msgid "Enter system bus name…"
 msgstr "Vnesite ime sistemskega vodila…"
+
+#~ msgid "Enter variable…"
+#~ msgstr "Vnesitespremenljivko…"
+
+#~ msgid "Enter value…"
+#~ msgstr "Vnesite vrednost…"
 
 #~ msgid "read-write"
 #~ msgstr "branje-pisanje"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-05 02:51+0000\n"
+"POT-Creation-Date: 2023-09-06 01:55+0000\n"
 "PO-Revision-Date: 2023-02-27 22:25+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Chinese <zh-l10n@linux.org.tw>\n"
@@ -251,15 +251,17 @@ msgstr "新增環境變數"
 msgid "Set Environment Variable"
 msgstr "設定環境變數"
 
-#: ui/AddEnvironmentVariableDialog.qml:35
+#: ui/AddEnvironmentVariableDialog.qml:34
 #, kde-format
-msgid "Enter variable…"
-msgstr "輸入變數…"
+msgctxt "@label:textbox name of environment variable"
+msgid "Name:"
+msgstr ""
 
-#: ui/AddEnvironmentVariableDialog.qml:46
+#: ui/AddEnvironmentVariableDialog.qml:45
 #, kde-format
-msgid "Enter value…"
-msgstr "輸入值…"
+msgctxt "@label:textbox value of environment variable"
+msgid "Value:"
+msgstr ""
 
 #: ui/main.qml:17
 #, kde-format
@@ -332,6 +334,12 @@ msgstr "輸入工作階段匯流排名稱…"
 #, kde-format
 msgid "Enter system bus name…"
 msgstr "輸入系統匯流排名稱…"
+
+#~ msgid "Enter variable…"
+#~ msgstr "輸入變數…"
+
+#~ msgid "Enter value…"
+#~ msgstr "輸入值…"
 
 #~ msgid "read-write"
 #~ msgstr "read-write"

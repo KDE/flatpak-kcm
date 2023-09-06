@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-05 02:51+0000\n"
+"POT-Creation-Date: 2023-09-06 01:55+0000\n"
 "PO-Revision-Date: 2022-09-13 21:42-0700\n"
 "Last-Translator: Japanese KDE translation team <kde-jp@kde.org>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -248,14 +248,16 @@ msgstr ""
 msgid "Set Environment Variable"
 msgstr ""
 
-#: ui/AddEnvironmentVariableDialog.qml:35
+#: ui/AddEnvironmentVariableDialog.qml:34
 #, kde-format
-msgid "Enter variable…"
+msgctxt "@label:textbox name of environment variable"
+msgid "Name:"
 msgstr ""
 
-#: ui/AddEnvironmentVariableDialog.qml:46
+#: ui/AddEnvironmentVariableDialog.qml:45
 #, kde-format
-msgid "Enter value…"
+msgctxt "@label:textbox value of environment variable"
+msgid "Value:"
 msgstr ""
 
 #: ui/main.qml:17

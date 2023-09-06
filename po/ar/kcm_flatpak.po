@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-05 02:51+0000\n"
+"POT-Creation-Date: 2023-09-06 01:55+0000\n"
 "PO-Revision-Date: 2023-02-27 19:22+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -252,15 +252,17 @@ msgstr "أضف متغير بيئة جديداً"
 msgid "Set Environment Variable"
 msgstr "أضف متغير بيئة"
 
-#: ui/AddEnvironmentVariableDialog.qml:35
+#: ui/AddEnvironmentVariableDialog.qml:34
 #, kde-format
-msgid "Enter variable…"
-msgstr "أدخل متغير…"
+msgctxt "@label:textbox name of environment variable"
+msgid "Name:"
+msgstr ""
 
-#: ui/AddEnvironmentVariableDialog.qml:46
+#: ui/AddEnvironmentVariableDialog.qml:45
 #, kde-format
-msgid "Enter value…"
-msgstr "أدخل قيمة..."
+msgctxt "@label:textbox value of environment variable"
+msgid "Value:"
+msgstr ""
 
 #: ui/main.qml:17
 #, kde-format
@@ -333,6 +335,12 @@ msgstr "أدخل اسم جلسة ناقل…"
 #, kde-format
 msgid "Enter system bus name…"
 msgstr "أدخل اسم ناقل النظام…"
+
+#~ msgid "Enter variable…"
+#~ msgstr "أدخل متغير…"
+
+#~ msgid "Enter value…"
+#~ msgstr "أدخل قيمة..."
 
 #~ msgid "read-write"
 #~ msgstr "القراءة والكتابة"

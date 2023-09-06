@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-05 02:51+0000\n"
+"POT-Creation-Date: 2023-09-06 01:55+0000\n"
 "PO-Revision-Date: 2023-04-30 01:43+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -253,15 +253,17 @@ msgstr "Yeni bir çevre değişkeni ekle"
 msgid "Set Environment Variable"
 msgstr "Çevre Değişkeni Ayarla"
 
-#: ui/AddEnvironmentVariableDialog.qml:35
+#: ui/AddEnvironmentVariableDialog.qml:34
 #, kde-format
-msgid "Enter variable…"
-msgstr "Değişken gir…"
+msgctxt "@label:textbox name of environment variable"
+msgid "Name:"
+msgstr ""
 
-#: ui/AddEnvironmentVariableDialog.qml:46
+#: ui/AddEnvironmentVariableDialog.qml:45
 #, kde-format
-msgid "Enter value…"
-msgstr "Değer gir…"
+msgctxt "@label:textbox value of environment variable"
+msgid "Value:"
+msgstr ""
 
 #: ui/main.qml:17
 #, kde-format
@@ -336,6 +338,12 @@ msgstr "Oturum veri yolu adı gir…"
 #, kde-format
 msgid "Enter system bus name…"
 msgstr "Sistem veri yolu adı gir…"
+
+#~ msgid "Enter variable…"
+#~ msgstr "Değişken gir…"
+
+#~ msgid "Enter value…"
+#~ msgstr "Değer gir…"
 
 #~ msgid "read-write"
 #~ msgstr "oku-yaz"

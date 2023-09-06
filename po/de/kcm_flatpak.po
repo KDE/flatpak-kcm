@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-05 02:51+0000\n"
+"POT-Creation-Date: 2023-09-06 01:55+0000\n"
 "PO-Revision-Date: 2023-02-25 23:51+0100\n"
 "Last-Translator: Jannick Kuhr <opensource@kuhr.org>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -255,15 +255,17 @@ msgstr "Neue Umgebungsvariable hinzufügen"
 msgid "Set Environment Variable"
 msgstr "Umgebungsvariable festlegen"
 
-#: ui/AddEnvironmentVariableDialog.qml:35
+#: ui/AddEnvironmentVariableDialog.qml:34
 #, kde-format
-msgid "Enter variable…"
-msgstr "Variable eingeben ..."
+msgctxt "@label:textbox name of environment variable"
+msgid "Name:"
+msgstr ""
 
-#: ui/AddEnvironmentVariableDialog.qml:46
+#: ui/AddEnvironmentVariableDialog.qml:45
 #, kde-format
-msgid "Enter value…"
-msgstr "Wert eingeben ..."
+msgctxt "@label:textbox value of environment variable"
+msgid "Value:"
+msgstr ""
 
 #: ui/main.qml:17
 #, kde-format
@@ -340,6 +342,12 @@ msgstr "Session-Bus-Namen eingeben ..."
 #, kde-format
 msgid "Enter system bus name…"
 msgstr "System-Bus-Namen eingeben ..."
+
+#~ msgid "Enter variable…"
+#~ msgstr "Variable eingeben ..."
+
+#~ msgid "Enter value…"
+#~ msgstr "Wert eingeben ..."
 
 #~ msgid "read-write"
 #~ msgstr "lesen/schreiben"

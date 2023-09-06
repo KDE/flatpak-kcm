@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-05 02:51+0000\n"
+"POT-Creation-Date: 2023-09-06 01:55+0000\n"
 "PO-Revision-Date: 2023-05-08 19:10+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
@@ -252,15 +252,17 @@ msgstr "Aldoni novan mediovariablon"
 msgid "Set Environment Variable"
 msgstr "Agordi Mediovariablon"
 
-#: ui/AddEnvironmentVariableDialog.qml:35
+#: ui/AddEnvironmentVariableDialog.qml:34
 #, kde-format
-msgid "Enter variable…"
-msgstr "Enigu variablon…"
+msgctxt "@label:textbox name of environment variable"
+msgid "Name:"
+msgstr ""
 
-#: ui/AddEnvironmentVariableDialog.qml:46
+#: ui/AddEnvironmentVariableDialog.qml:45
 #, kde-format
-msgid "Enter value…"
-msgstr "Enigu valoron…"
+msgctxt "@label:textbox value of environment variable"
+msgid "Value:"
+msgstr ""
 
 #: ui/main.qml:17
 #, kde-format
@@ -335,3 +337,9 @@ msgstr "Enigu seancan busnomon…"
 #, kde-format
 msgid "Enter system bus name…"
 msgstr "Enigu nomon de sistembuso…"
+
+#~ msgid "Enter variable…"
+#~ msgstr "Enigu variablon…"
+
+#~ msgid "Enter value…"
+#~ msgstr "Enigu valoron…"

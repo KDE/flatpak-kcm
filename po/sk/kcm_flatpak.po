@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcm_flatpak\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-05 02:51+0000\n"
+"POT-Creation-Date: 2023-09-06 01:55+0000\n"
 "PO-Revision-Date: 2023-07-09 16:20+0200\n"
 "Last-Translator: Ferdinand Galko <galko.ferdinand@gmail.com>\n"
 "Language-Team: Slovak <opensuse-translation@opensuse.org>\n"
@@ -251,15 +251,17 @@ msgstr "Pridať novú premennú prostredia"
 msgid "Set Environment Variable"
 msgstr "Nastaviť premennú prostredia"
 
-#: ui/AddEnvironmentVariableDialog.qml:35
+#: ui/AddEnvironmentVariableDialog.qml:34
 #, kde-format
-msgid "Enter variable…"
-msgstr "Zadať premennú..."
+msgctxt "@label:textbox name of environment variable"
+msgid "Name:"
+msgstr ""
 
-#: ui/AddEnvironmentVariableDialog.qml:46
+#: ui/AddEnvironmentVariableDialog.qml:45
 #, kde-format
-msgid "Enter value…"
-msgstr "Zadať hodnotu..."
+msgctxt "@label:textbox value of environment variable"
+msgid "Value:"
+msgstr ""
 
 #: ui/main.qml:17
 #, kde-format
@@ -334,6 +336,12 @@ msgstr "Zadať názov zbernice sedení…"
 #, kde-format
 msgid "Enter system bus name…"
 msgstr "Zadať názov systémovej zbernice…"
+
+#~ msgid "Enter variable…"
+#~ msgstr "Zadať premennú..."
+
+#~ msgid "Enter value…"
+#~ msgstr "Zadať hodnotu..."
 
 #, fuzzy
 #~| msgid "read/write"

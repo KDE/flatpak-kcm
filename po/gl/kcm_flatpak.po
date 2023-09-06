@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-05 02:51+0000\n"
+"POT-Creation-Date: 2023-09-06 01:55+0000\n"
 "PO-Revision-Date: 2023-06-24 11:41+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Galician <proxecto@trasno.gal>\n"
@@ -253,15 +253,17 @@ msgstr "Engadir unha nova variábel de contorno"
 msgid "Set Environment Variable"
 msgstr "Definir unha variábel do contorno"
 
-#: ui/AddEnvironmentVariableDialog.qml:35
+#: ui/AddEnvironmentVariableDialog.qml:34
 #, kde-format
-msgid "Enter variable…"
-msgstr "Escriba a variábel…"
+msgctxt "@label:textbox name of environment variable"
+msgid "Name:"
+msgstr ""
 
-#: ui/AddEnvironmentVariableDialog.qml:46
+#: ui/AddEnvironmentVariableDialog.qml:45
 #, kde-format
-msgid "Enter value…"
-msgstr "Escriba o valor…"
+msgctxt "@label:textbox value of environment variable"
+msgid "Value:"
+msgstr ""
 
 #: ui/main.qml:17
 #, kde-format
@@ -336,3 +338,9 @@ msgstr "Escriba o nome do bus de sesión…"
 #, kde-format
 msgid "Enter system bus name…"
 msgstr "Escriba o nome do bus de sistema…"
+
+#~ msgid "Enter variable…"
+#~ msgstr "Escriba a variábel…"
+
+#~ msgid "Enter value…"
+#~ msgstr "Escriba o valor…"

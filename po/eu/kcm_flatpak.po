@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-05 02:51+0000\n"
+"POT-Creation-Date: 2023-09-06 01:55+0000\n"
 "PO-Revision-Date: 2023-02-22 22:38+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -256,15 +256,17 @@ msgstr "Gehitu ingurune-aldagai berri bat"
 msgid "Set Environment Variable"
 msgstr "Ezarri ingurune aldagaia"
 
-#: ui/AddEnvironmentVariableDialog.qml:35
+#: ui/AddEnvironmentVariableDialog.qml:34
 #, kde-format
-msgid "Enter variable…"
-msgstr "Sartu aldagaia..."
+msgctxt "@label:textbox name of environment variable"
+msgid "Name:"
+msgstr ""
 
-#: ui/AddEnvironmentVariableDialog.qml:46
+#: ui/AddEnvironmentVariableDialog.qml:45
 #, kde-format
-msgid "Enter value…"
-msgstr "Sartu balioa..."
+msgctxt "@label:textbox value of environment variable"
+msgid "Value:"
+msgstr ""
 
 #: ui/main.qml:17
 #, kde-format
@@ -339,6 +341,12 @@ msgstr "Sartu saioko bus-aren izena..."
 #, kde-format
 msgid "Enter system bus name…"
 msgstr "Sartu sistemako bus-aren izena..."
+
+#~ msgid "Enter variable…"
+#~ msgstr "Sartu aldagaia..."
+
+#~ msgid "Enter value…"
+#~ msgstr "Sartu balioa..."
 
 #~ msgid "read-write"
 #~ msgstr "irakurri-idatzi"

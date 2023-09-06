@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-05 02:51+0000\n"
+"POT-Creation-Date: 2023-09-06 01:55+0000\n"
 "PO-Revision-Date: 2023-05-18 23:21+0700\n"
 "Last-Translator: Wantoyèk <wantoyek@gmail.com>\n"
 "Language-Team: Indonesian <kde-i18n-doc@kde.org>\n"
@@ -251,15 +251,17 @@ msgstr "Tambahkan sebuah variabel lingkungan baru"
 msgid "Set Environment Variable"
 msgstr "Atur Variabel Lingkungan"
 
-#: ui/AddEnvironmentVariableDialog.qml:35
+#: ui/AddEnvironmentVariableDialog.qml:34
 #, kde-format
-msgid "Enter variable…"
-msgstr "Masukkan variabel…"
+msgctxt "@label:textbox name of environment variable"
+msgid "Name:"
+msgstr ""
 
-#: ui/AddEnvironmentVariableDialog.qml:46
+#: ui/AddEnvironmentVariableDialog.qml:45
 #, kde-format
-msgid "Enter value…"
-msgstr "Masukkan nilai…"
+msgctxt "@label:textbox value of environment variable"
+msgid "Value:"
+msgstr ""
 
 #: ui/main.qml:17
 #, kde-format
@@ -335,3 +337,9 @@ msgstr "Masukkan nama bus sesi…"
 #, kde-format
 msgid "Enter system bus name…"
 msgstr "Masukkan nama bus sistem…"
+
+#~ msgid "Enter variable…"
+#~ msgstr "Masukkan variabel…"
+
+#~ msgid "Enter value…"
+#~ msgstr "Masukkan nilai…"
