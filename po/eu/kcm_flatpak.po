@@ -1,7 +1,7 @@
 # Translation for kcm_flatpak.po to Euskara/Basque (eu).
 # Copyright (C) 2022-2023 This file is copyright:
 # This file is distributed under the same license as the flatpak-kcm package.
-# KDE euskaratzeko proiektuko arduraduna <xalba@ni.eus>.
+# SPDX-FileCopyrightText: 2023 KDE euskaratzeko proiektuko arduraduna <xalba@ni.eus>
 #
 # Translators:
 # Iñigo Salvador Azurmendi <xalba@ni.eus>, 2022, 2023.
@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-06 01:55+0000\n"
-"PO-Revision-Date: 2023-02-22 22:38+0100\n"
+"PO-Revision-Date: 2023-09-06 07:36+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 22.12.2\n"
+"X-Generator: Lokalize 23.08.0\n"
 
 #: autotests/flatpakpermissiontest.cpp:642
 #: autotests/flatpakpermissiontest.cpp:864 flatpakpermission.cpp:404
@@ -260,13 +260,13 @@ msgstr "Ezarri ingurune aldagaia"
 #, kde-format
 msgctxt "@label:textbox name of environment variable"
 msgid "Name:"
-msgstr ""
+msgstr "Izena:"
 
 #: ui/AddEnvironmentVariableDialog.qml:45
 #, kde-format
 msgctxt "@label:textbox value of environment variable"
 msgid "Value:"
-msgstr ""
+msgstr "Balioa:"
 
 #: ui/main.qml:17
 #, kde-format

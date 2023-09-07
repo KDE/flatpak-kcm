@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-06 01:55+0000\n"
-"PO-Revision-Date: 2023-02-23 07:04+0100\n"
+"PO-Revision-Date: 2023-09-07 03:26+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.3.2\n"
 
 #: autotests/flatpakpermissiontest.cpp:642
 #: autotests/flatpakpermissiontest.cpp:864 flatpakpermission.cpp:404
@@ -257,13 +257,13 @@ msgstr "გარემოს ცვლადის დამატება"
 #, kde-format
 msgctxt "@label:textbox name of environment variable"
 msgid "Name:"
-msgstr ""
+msgstr "სახელი:"
 
 #: ui/AddEnvironmentVariableDialog.qml:45
 #, kde-format
 msgctxt "@label:textbox value of environment variable"
 msgid "Value:"
-msgstr ""
+msgstr "მნიშვნელობა:"
 
 #: ui/main.qml:17
 #, kde-format

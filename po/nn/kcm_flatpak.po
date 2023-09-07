@@ -343,9 +343,3 @@ msgstr "Skriv inn namn på øktbuss …"
 #, kde-format
 msgid "Enter system bus name…"
 msgstr "Skriv inn namn på systembuss …"
-
-#~ msgid "Enter variable…"
-#~ msgstr "Skriv inn variabel …"
-
-#~ msgid "Enter value…"
-#~ msgstr "Skriv inn verdi …"
