@@ -69,7 +69,7 @@ target_link_libraries(kcm_flatpak_static
 
 kcmutils_add_qml_kcm(kcm_flatpak SOURCES kcm.cpp kcm.h)
 
-target_link_libraries(kcm_flatpak kcm_flatpak_static)
+target_link_libraries(kcm_flatpak PRIVATE kcm_flatpak_static)
 
 ki18n_install(po)
 
