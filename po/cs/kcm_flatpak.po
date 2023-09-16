@@ -336,9 +336,3 @@ msgstr ""
 #, kde-format
 msgid "Enter system bus name…"
 msgstr ""
-
-#~ msgid "Enter variable…"
-#~ msgstr "Zadejte proměnnou…"
-
-#~ msgid "Enter value…"
-#~ msgstr "Zadejte hodnotu…"
