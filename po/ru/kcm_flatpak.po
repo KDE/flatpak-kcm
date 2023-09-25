@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-06-13 02:42+0000\n"
-"PO-Revision-Date: 2023-04-02 09:53+0300\n"
+"PO-Revision-Date: 2023-09-24 13:50+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
 "Language: ru\n"
@@ -288,8 +288,7 @@ msgstr "Права доступа"
 #, kde-format
 msgid "Select an application from the list to view its permissions here"
 msgstr ""
-"Для просмотра прав выберите приложение из спискаВыберите приложение из "
-"списка для просмотра предоставленных ему разрешений"
+"Выберите приложение из списка для просмотра предоставленных ему разрешений"
 
 #: package/contents/ui/permissions.qml:82
 #, kde-format
