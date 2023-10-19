@@ -9,10 +9,10 @@
 #include "flatpakpermission.h"
 
 #include <QAbstractListModel>
+#include <QList>
 #include <QPointer>
 #include <QString>
 #include <QUrl>
-#include <QVector>
 
 class FlatpakReferencesModel;
 class FlatpakPermissionModel;
@@ -103,12 +103,12 @@ public:
     bool isSaveNeeded(int index) const;
     bool isDefaults(int index) const;
 
-    const QVector<FlatpakReference *> &references() const;
+    const QList<FlatpakReference *> &references() const;
 
 Q_SIGNALS:
     void needsLoad();
     void settingsChanged();
 
 private:
-    QVector<FlatpakReference *> m_references;
+    QList<FlatpakReference *> m_references;
 };

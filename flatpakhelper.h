@@ -6,9 +6,9 @@
 
 #pragma once
 
+#include <QList>
 #include <QString>
 #include <QUrl>
-#include <QVector>
 
 namespace FlatpakHelper
 {

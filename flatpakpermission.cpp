@@ -346,7 +346,7 @@ bool FlatpakFilesystemsEntry::operator!=(const FlatpakFilesystemsEntry &other) c
     return !(*this == other);
 }
 
-PolicyChoicesModel::PolicyChoicesModel(QVector<Entry> &&policies, QObject *parent)
+PolicyChoicesModel::PolicyChoicesModel(QList<Entry> &&policies, QObject *parent)
     : QAbstractListModel(parent)
     , m_policies(policies)
 {
@@ -388,7 +388,7 @@ QVariant PolicyChoicesModel::data(const QModelIndex &index, int role) const
 
 FilesystemChoicesModel::FilesystemChoicesModel(QObject *parent)
     : PolicyChoicesModel(
-        QVector<Entry>{
+        QList<Entry>{
             {static_cast<int>(FlatpakFilesystemsEntry::AccessMode::ReadOnly), i18n("read-only")},
             {static_cast<int>(FlatpakFilesystemsEntry::AccessMode::ReadWrite), i18n("read/write")},
             {static_cast<int>(FlatpakFilesystemsEntry::AccessMode::Create), i18n("create")},
@@ -400,7 +400,7 @@ FilesystemChoicesModel::FilesystemChoicesModel(QObject *parent)
 
 DBusPolicyChoicesModel::DBusPolicyChoicesModel(QObject *parent)
     : PolicyChoicesModel(
-        QVector<Entry>{
+        QList<Entry>{
             {FlatpakPolicy::FLATPAK_POLICY_NONE, i18n("None")},
             {FlatpakPolicy::FLATPAK_POLICY_SEE, i18n("see")},
             {FlatpakPolicy::FLATPAK_POLICY_TALK, i18n("talk")},
@@ -867,7 +867,7 @@ void FlatpakPermissionModel::loadDefaultValues()
     std::optional<FlatpakFilesystemsEntry::AccessMode> hostOsVal = std::nullopt;
     std::optional<FlatpakFilesystemsEntry::AccessMode> hostEtcVal = std::nullopt;
 
-    QVector<FlatpakFilesystemsEntry> nonStandardFilesystems;
+    QList<FlatpakFilesystemsEntry> nonStandardFilesystems;
 
     static const auto ignoredFilesystems = QList<FlatpakFilesystemsEntry>{
         FlatpakFilesystemsEntry(FlatpakFilesystemsEntry::FilesystemPrefix::XdgConfig,

@@ -240,10 +240,10 @@ protected:
         QString display;
     };
 
-    explicit PolicyChoicesModel(QVector<Entry> &&policies, QObject *parent = nullptr);
+    explicit PolicyChoicesModel(QList<Entry> &&policies, QObject *parent = nullptr);
 
 private:
-    const QVector<Entry> m_policies;
+    const QList<Entry> m_policies;
 };
 
 class FilesystemChoicesModel : public PolicyChoicesModel
@@ -589,7 +589,7 @@ private:
     void writeToFile() const;
     void writeToKConfig(KConfig &config) const;
 
-    QVector<FlatpakPermission> m_permissions;
+    QList<FlatpakPermission> m_permissions;
     QHash<QString, QStringList> m_unparsableEntriesByCategory;
     QPointer<FlatpakReference> m_reference;
     bool m_showAdvanced;
