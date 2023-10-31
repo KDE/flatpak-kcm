@@ -205,6 +205,8 @@ KCM.ScrollViewKCM {
         delegate: QQC2.ItemDelegate {
             width: appsListView.width
 
+            highlighted: index === appsListView.currentIndex
+
             text: model.name
             // Prefer source, fallback to name. This is unusual for QtQuick.Controls.
             icon.name: model.icon.toString() !== "" ? "" : "application-vnd.flatpak.ref"
