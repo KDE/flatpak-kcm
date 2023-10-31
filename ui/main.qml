@@ -202,7 +202,8 @@ KCM.ScrollViewKCM {
             }
         }
         currentIndex: -1
-        delegate: Kirigami.BasicListItem {
+        delegate: QQC2.ItemDelegate {
+            width: appsListView.width
 
             text: model.name
             // Prefer source, fallback to name. This is unusual for QtQuick.Controls.

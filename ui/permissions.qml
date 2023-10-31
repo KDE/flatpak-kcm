@@ -176,28 +176,21 @@ KCM.ScrollViewKCM {
             }
         }
 
-        /* FIXME: use Kirigami.CheckableListItem here. Currently it uses BasicListItem, because
-         * clicking the checkbox in CheckableListItem does not call the associated slot, and by implication
-         * does not enable the "apply" and "reset" buttons. Once a solution for this has been found,
-         * the delegate below must be ported to CheckableListItem.
-         */
-        delegate: Kirigami.BasicListItem {
+        // Can't use a CheckDelegate or one of its subclasses since we need the checkbox
+        // to highlight when it's in a non-default state and none of the pre-made delegates
+        // can do that
+        delegate: QQC2.ItemDelegate {
             id: permItem
 
             required property var model
             required property int index
 
+            width: ListView.view.width - ListView.view.leftMargin - ListView.view.rightMargin
+
             // Default-provided custom entries are not meant to be unchecked:
             // it is a meaningless undefined operation.
             checkable: model.canBeDisabled
 
-            // default formula does not take leading/trailing into account
-            implicitHeight: Math.max(iconSize, labelItem.implicitHeight, trailing.implicitHeight) + topPadding + bottomPadding
-            width: ListView.view.width - ListView.view.leftMargin - ListView.view.rightMargin
-            height: implicitHeight
-            trailingFillVertically: false
-
-            text: model.description
             visible: model.isNotDummy
 
             onClicked: {
@@ -207,23 +200,30 @@ KCM.ScrollViewKCM {
                 permItem.ListView.view.currentIndex = -1;
             }
 
-            leading: QQC2.CheckBox {
-                id: checkBox
-                enabled: permItem.checkable
-                checked: permItem.model.isEffectiveEnabled
+            contentItem: RowLayout {
+                spacing: Kirigami.Units.smallSpacing
 
-                onToggled: {
-                    permsModel.togglePermissionAtRow(permItem.index);
-                    permItem.ListView.view.currentIndex = -1;
+                QQC2.CheckBox {
+                    id: checkBox
+                    enabled: permItem.checkable
+                    checked: permItem.model.isEffectiveEnabled
+
+                    onToggled: {
+                        permsModel.togglePermissionAtRow(permItem.index);
+                        permItem.ListView.view.currentIndex = -1;
+                    }
+
+                    KCM.SettingHighlighter {
+                        highlight: permItem.model.isEffectiveEnabled !== permItem.model.isDefaultEnabled
+                    }
                 }
 
-                KCM.SettingHighlighter {
-                    highlight: permItem.model.isEffectiveEnabled !== permItem.model.isDefaultEnabled
+                QQC2.Label {
+                    Layout.fillWidth: true
+                    text: model.description
+                    elide: Text.ElideRight
                 }
-            }
 
-            trailing: RowLayout {
-                enabled: checkBox.checked
                 QQC2.ComboBox {
                     visible: [
                         FlatpakPermissionsSectionType.Filesystems,
