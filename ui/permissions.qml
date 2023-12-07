@@ -17,7 +17,7 @@ import org.kde.plasma.kcm.flatpakpermissions
 KCM.ScrollViewKCM {
     id: root
 
-    property FlatpakReference ref
+    required property FlatpakReference ref
 
     title: i18n("Permissions")
     implicitWidth: Kirigami.Units.gridUnit * 15
