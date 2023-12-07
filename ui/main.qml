@@ -203,9 +203,9 @@ KCM.ScrollViewKCM {
         }
         currentIndex: -1
         delegate: QQC2.ItemDelegate {
-            width: appsListView.width
+            width: ListView.view.width - ListView.view.leftMargin - ListView.view.rightMargin
 
-            highlighted: index === appsListView.currentIndex
+            highlighted: ListView.isCurrentItem
 
             text: model.name
             // Prefer source, fallback to name. This is unusual for QtQuick.Controls.
