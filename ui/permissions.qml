@@ -191,6 +191,13 @@ KCM.ScrollViewKCM {
             required property var model
             required property int index
 
+            function toggleAndUncheck() {
+                if (checkable) {
+                    permsModel.togglePermissionAtRow(index);
+                }
+                ListView.view.currentIndex = -1;
+            }
+
             width: ListView.view.width - ListView.view.leftMargin - ListView.view.rightMargin
 
             // Default-provided custom entries are not meant to be unchecked:
@@ -199,12 +206,7 @@ KCM.ScrollViewKCM {
 
             visible: model.isNotDummy
 
-            onClicked: {
-                if (checkable) {
-                    permsModel.togglePermissionAtRow(permItem.index);
-                }
-                permItem.ListView.view.currentIndex = -1;
-            }
+            onClicked: toggleAndUncheck()
 
             contentItem: RowLayout {
                 spacing: Kirigami.Units.smallSpacing
@@ -214,10 +216,7 @@ KCM.ScrollViewKCM {
                     enabled: permItem.checkable
                     checked: permItem.model.isEffectiveEnabled
 
-                    onToggled: {
-                        permsModel.togglePermissionAtRow(permItem.index);
-                        permItem.ListView.view.currentIndex = -1;
-                    }
+                    onToggled: permItem.toggleAndUncheck()
 
                     KCM.SettingHighlighter {
                         highlight: permItem.model.isEffectiveEnabled !== permItem.model.isDefaultEnabled
