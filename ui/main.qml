@@ -13,6 +13,7 @@ import org.kde.kirigami as Kirigami
 import org.kde.kcmutils as KCM
 import org.kde.kitemmodels as KItemModels
 import org.kde.plasma.kcm.flatpakpermissions
+import org.kde.desktop.private as Private
 
 KCM.ScrollViewKCM {
     id: root
@@ -205,6 +206,8 @@ KCM.ScrollViewKCM {
         }
         currentIndex: -1
         delegate: QQC2.ItemDelegate {
+            id: controlRoot
+
             required property int index
             required property var model
 
@@ -218,6 +221,45 @@ KCM.ScrollViewKCM {
             icon.source: model.icon.toString() === "" ? "" : model.icon
 
             onClicked: root.shouldChange(index)
+
+            contentItem: RowLayout {
+                LayoutMirroring.enabled: controlRoot.mirrored
+                spacing: controlRoot.spacing
+
+                property alias truncated: textLabel.truncated
+
+                Kirigami.Icon {
+                    // selected: controlRoot.highlighted || controlRoot.down
+                    Layout.alignment: Qt.AlignVCenter
+                    visible: controlRoot.icon.name.length > 0 || controlRoot.icon.source.toString().length > 0
+                    source: controlRoot.icon.name.length > 0 ? controlRoot.icon.name : controlRoot.icon.source
+                    Layout.preferredHeight: controlRoot.icon.height
+                    Layout.preferredWidth: controlRoot.icon.width
+                }
+
+                QQC2.Label {
+                    id: textLabel
+
+                    text: controlRoot.text
+                    font: controlRoot.font
+                    color: controlRoot.highlighted || controlRoot.down
+                        ? Kirigami.Theme.highlightedTextColor
+                        : (controlRoot.enabled ? Kirigami.Theme.textColor : Kirigami.Theme.disabledTextColor)
+
+                    elide: Text.ElideRight
+                    visible: controlRoot.text
+                    horizontalAlignment: Text.AlignLeft
+                    verticalAlignment: Text.AlignVCenter
+                    Layout.alignment: Qt.AlignLeft
+                    Layout.fillWidth: true
+                }
+            }
+
+            leftInset: leftPadding + icon.width - spacing / 2
+
+            background: Private.DefaultListItemBackground {
+                control: controlRoot
+            }
         }
     }
 }
