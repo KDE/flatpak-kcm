@@ -29,6 +29,7 @@ KCMFlatpak::KCMFlatpak(QObject *parent, const KPluginMetaData &data, const QVari
     constexpr const char *uri = "org.kde.plasma.kcm.flatpakpermissions";
 
     qmlRegisterUncreatableType<KCMFlatpak>(uri, 1, 0, "KCMFlatpak", QString());
+    qmlRegisterUncreatableType<FlatpakReference>(uri, 1, 0, "FlatpakReference", QStringLiteral("Should be obtained from a FlatpakReferencesModel"));
     qmlRegisterType<FlatpakPermissionModel>(uri, 1, 0, "FlatpakPermissionModel");
     qmlRegisterUncreatableType<FlatpakReferencesModel>(uri, 1, 0, "FlatpakReferencesModel", QStringLiteral("For enum access only"));
     qmlRegisterUncreatableType<FlatpakPermissionsSectionType>(uri, 1, 0, "FlatpakPermissionsSectionType", QStringLiteral("For enum access only"));

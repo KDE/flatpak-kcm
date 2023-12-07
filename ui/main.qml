@@ -55,7 +55,7 @@ KCM.ScrollViewKCM {
         let ref = null;
         if (toAppAtSourceRowIndex !== -1) {
             const sourceIndex = KCM.ConfigModule.refsModel.index(toAppAtSourceRowIndex, 0);
-            ref = KCM.ConfigModule.refsModel.data(sourceIndex, FlatpakReferencesModel.Ref);
+            ref = KCM.ConfigModule.refsModel.data(sourceIndex, FlatpakReferencesModel.Ref) as FlatpakReference;
             appsListView.setCurrentIndexLater(toAppAtSourceRowIndex);
         }
         KCM.ConfigModule.pop();
