@@ -4,6 +4,8 @@
  * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
+pragma ComponentBehavior: Bound
+
 import QtQuick
 import QtQuick.Layouts
 import QtQuick.Controls as QQC2
@@ -203,6 +205,9 @@ KCM.ScrollViewKCM {
         }
         currentIndex: -1
         delegate: QQC2.ItemDelegate {
+            required property int index
+            required property var model
+
             width: ListView.view.width - ListView.view.leftMargin - ListView.view.rightMargin
 
             highlighted: ListView.isCurrentItem

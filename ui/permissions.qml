@@ -4,6 +4,8 @@
  * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
+pragma ComponentBehavior: Bound
+
 import QtQuick
 import QtQuick.Controls as QQC2
 import QtQuick.Layouts
@@ -125,11 +127,13 @@ KCM.ScrollViewKCM {
         section.delegate: Kirigami.ListSectionHeader {
             id: sectionDelegate
 
+            required property string section
+
             /**
              * Sorry about this mess. ListView automatically converts data of
              * section role to string, so we parse it back into enum.
              */
-            property /*FlatpakPermissionsSectionType::Type*/ int sectionType: parseInt(section)
+            readonly property /*FlatpakPermissionsSectionType::Type*/ int sectionType: parseInt(section)
 
             width: ListView.view.width - ListView.view.leftMargin - ListView.view.rightMargin
             label: permsModel.sectionHeaderForSectionType(sectionType)
