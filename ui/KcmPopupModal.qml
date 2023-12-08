@@ -11,7 +11,7 @@ Item {
     id: background
 
     // to account for extra margin in KCM footer
-    property int bottomMargin: 6
+    property int bottomMargin: 8
 
     Kirigami.Separator {
         id: separator
