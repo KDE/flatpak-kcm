@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-06 01:55+0000\n"
+"POT-Creation-Date: 2023-12-08 01:35+0000\n"
 "PO-Revision-Date: 2023-10-20 03:04+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -263,44 +263,44 @@ msgctxt "@label:textbox value of environment variable"
 msgid "Value:"
 msgstr "值："
 
-#: ui/main.qml:17
+#: ui/main.qml:19
 #, kde-format
 msgid "Flatpak Applications"
 msgstr "Flatpak 應用程式"
 
-#: ui/main.qml:87
+#: ui/main.qml:89
 #, kde-format
 msgid "Apply Permissions"
 msgstr "套用權限"
 
-#: ui/main.qml:88
+#: ui/main.qml:90
 #, kde-format
 msgid ""
 "The permissions of application %1 have been changed. Do you want to apply "
 "these changes or discard them?"
 msgstr "應用程式 %1 的權限已修改過。您要套用還是捨棄這些變更？"
 
-#: ui/permissions.qml:17
+#: ui/permissions.qml:22
 #, kde-format
 msgid "Permissions"
 msgstr "權限"
 
-#: ui/permissions.qml:23
+#: ui/permissions.qml:27
 #, kde-format
 msgid "Select an application from the list to view its permissions here"
 msgstr "從列表選取應用程式以在此檢視它的權限"
 
-#: ui/permissions.qml:137
+#: ui/permissions.qml:143
 #, kde-format
 msgid "Hide advanced permissions"
 msgstr "隱藏進階權限"
 
-#: ui/permissions.qml:137
+#: ui/permissions.qml:143
 #, kde-format
 msgid "Show advanced permissions"
 msgstr "顯示進階權限"
 
-#: ui/permissions.qml:149
+#: ui/permissions.qml:155
 #, kde-format
 msgid "Add New"
 msgstr "新增"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-06 01:55+0000\n"
+"POT-Creation-Date: 2023-12-08 01:35+0000\n"
 "PO-Revision-Date: 2023-09-06 11:40+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
@@ -263,17 +263,17 @@ msgctxt "@label:textbox value of environment variable"
 msgid "Value:"
 msgstr "Waarde:"
 
-#: ui/main.qml:17
+#: ui/main.qml:19
 #, kde-format
 msgid "Flatpak Applications"
 msgstr "Flatpak-toepassingen"
 
-#: ui/main.qml:87
+#: ui/main.qml:89
 #, kde-format
 msgid "Apply Permissions"
 msgstr "Toegangsrechten toepassen"
 
-#: ui/main.qml:88
+#: ui/main.qml:90
 #, kde-format
 msgid ""
 "The permissions of application %1 have been changed. Do you want to apply "
@@ -282,29 +282,29 @@ msgstr ""
 "De toegangsrechten van toepassing %1 zijn gewijzigd. Wilt u deze wijzigingen "
 "toepassen of ze verwerpen?"
 
-#: ui/permissions.qml:17
+#: ui/permissions.qml:22
 #, kde-format
 msgid "Permissions"
 msgstr "Toegangsrechten"
 
-#: ui/permissions.qml:23
+#: ui/permissions.qml:27
 #, kde-format
 msgid "Select an application from the list to view its permissions here"
 msgstr ""
 "Een toepassing uit de lijst selecteren om hier zijn toegangsrechten te "
 "bekijken"
 
-#: ui/permissions.qml:137
+#: ui/permissions.qml:143
 #, kde-format
 msgid "Hide advanced permissions"
 msgstr "Geavanceerde toegangsrechten verbergen"
 
-#: ui/permissions.qml:137
+#: ui/permissions.qml:143
 #, kde-format
 msgid "Show advanced permissions"
 msgstr "Geavanceerde toegangsrechten tonen"
 
-#: ui/permissions.qml:149
+#: ui/permissions.qml:155
 #, kde-format
 msgid "Add New"
 msgstr "Nieuwe toevoegen"
