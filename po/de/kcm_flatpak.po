@@ -2,9 +2,9 @@
 # Copyright (C) 2022 This file is copyright:
 # This file is distributed under the same license as the flatpak-kcm package.
 # Jannick Kuhr <opensource@kuhr.org>, 2023.
+# SPDX-FileCopyrightText: 2023 Johannes Obermayr <johannesobermayr@gmx.de>
 #
 # Automatically generated, 2022.
-# Johannes Obermayr <johannesobermayr@gmx.de>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
