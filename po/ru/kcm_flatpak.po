@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This file is copyright:
 # This file is distributed under the same license as the flatpak-kcm package.
 #
-# Alexander Yavorsky <kekcuha@gmail.com>, 2022, 2023.
+# Alexander Yavorsky <kekcuha@gmail.com>, 2022, 2023, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-08 01:35+0000\n"
-"PO-Revision-Date: 2023-02-17 13:19+0300\n"
+"PO-Revision-Date: 2024-01-04 21:20+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
 "Language: ru\n"
@@ -225,7 +225,7 @@ msgstr "Политика доступа к шине на уровне систе
 #: flatpakpermission.cpp:1312
 #, kde-format
 msgid "Environment"
-msgstr ""
+msgstr "Окружение"
 
 #: flatpakpermission.cpp:1329
 #, kde-format
@@ -245,24 +245,24 @@ msgstr ""
 #: flatpakpermission.cpp:1335
 #, kde-format
 msgid "Add a new environment variable"
-msgstr ""
+msgstr "Создать переменную окружения"
 
 #: ui/AddEnvironmentVariableDialog.qml:18
 #, kde-format
 msgid "Set Environment Variable"
-msgstr ""
+msgstr "Создание переменной окружения"
 
 #: ui/AddEnvironmentVariableDialog.qml:34
 #, kde-format
 msgctxt "@label:textbox name of environment variable"
 msgid "Name:"
-msgstr ""
+msgstr "Название:"
 
 #: ui/AddEnvironmentVariableDialog.qml:45
 #, kde-format
 msgctxt "@label:textbox value of environment variable"
 msgid "Value:"
-msgstr ""
+msgstr "Значение:"
 
 #: ui/main.qml:19
 #, kde-format
@@ -280,6 +280,8 @@ msgid ""
 "The permissions of application %1 have been changed. Do you want to apply "
 "these changes or discard them?"
 msgstr ""
+"Права доступа приложения «%1» были изменены. Применить изменения или "
+"отклонить их?"
 
 #: ui/permissions.qml:22
 #, kde-format
@@ -290,11 +292,12 @@ msgstr "Права доступа"
 #, kde-format
 msgid "Select an application from the list to view its permissions here"
 msgstr ""
+"Выберите приложение из списка для просмотра предоставленных ему разрешений"
 
 #: ui/permissions.qml:143
 #, kde-format
 msgid "Hide advanced permissions"
-msgstr ""
+msgstr "Скрыть дополнительные права"
 
 #: ui/permissions.qml:143
 #, kde-format
@@ -304,37 +307,37 @@ msgstr "Показать дополнительные права"
 #: ui/permissions.qml:155
 #, kde-format
 msgid "Add New"
-msgstr ""
+msgstr "Создать"
 
 #: ui/TextPromptDialog.qml:21
 #, kde-format
 msgid "Add Filesystem Path Permission"
-msgstr ""
+msgstr "Назначение прав доступа к папке"
 
 #: ui/TextPromptDialog.qml:22
 #, kde-format
 msgid "Add Session Bus Permission"
-msgstr ""
+msgstr "Назначение прав доступа к шине сеанса"
 
 #: ui/TextPromptDialog.qml:23
 #, kde-format
 msgid "Add System Bus Permission"
-msgstr ""
+msgstr "Назначение прав доступа к системной шине"
 
 #: ui/TextPromptDialog.qml:38
 #, kde-format
 msgid "Enter filesystem path…"
-msgstr ""
+msgstr "Введите путь…"
 
 #: ui/TextPromptDialog.qml:39
 #, kde-format
 msgid "Enter session bus name…"
-msgstr ""
+msgstr "Введите имя шины сеанса…"
 
 #: ui/TextPromptDialog.qml:40
 #, kde-format
 msgid "Enter system bus name…"
-msgstr ""
+msgstr "Введите имя системной шины…"
 
 #, fuzzy
 #~| msgid "read/write"
