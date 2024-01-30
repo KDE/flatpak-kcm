@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-08 01:35+0000\n"
-"PO-Revision-Date: 2024-01-17 02:39+0200\n"
+"PO-Revision-Date: 2024-01-30 01:34+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: lt\n"
@@ -136,7 +136,7 @@ msgstr "Globoti dev/shm"
 #: flatpakpermission.cpp:843 flatpakpermission.cpp:1304
 #, kde-format
 msgid "Device Access"
-msgstr "Prieiga prie įrenginio"
+msgstr "Prieiga prie įrenginių"
 
 #: flatpakpermission.cpp:849
 #, kde-format
