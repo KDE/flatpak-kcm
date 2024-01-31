@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This file is copyright:
 # This file is distributed under the same license as the flatpak-kcm package.
-# Tommi Nieminen <translator@legisign.org>, 2022, 2023.
+# Tommi Nieminen <translator@legisign.org>, 2022, 2023, 2024.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-08 01:35+0000\n"
-"PO-Revision-Date: 2023-09-27 17:53+0300\n"
+"PO-Revision-Date: 2024-01-29 17:48+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -160,8 +160,7 @@ msgstr "Canbus-pistokkeen käyttö"
 #, kde-format
 msgid "Share dev/shm across all instances of an app per user ID"
 msgstr ""
-"Jaa dev/shm sovelluksen kaikkien instanssien kesken "
-"käyttäjätunnistekohtaisesti"
+"Jaa dev/shm käyttäjätunnisteittain sovelluksen kaikkien ilmentymien välillä"
 
 #: flatpakpermission.cpp:913
 #, kde-format
