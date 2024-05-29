@@ -17,7 +17,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
-"X-Generator: Lokalize 23.08.1\n"
 
 #: autotests/flatpakpermissiontest.cpp:642
 #: autotests/flatpakpermissiontest.cpp:864 flatpakpermission.cpp:404
@@ -56,7 +55,7 @@ msgstr "odczyt/zapis"
 #: autotests/flatpakpermissiontest.cpp:856 flatpakpermission.cpp:392
 #, kde-format
 msgid "read-only"
-msgstr "tylko do odczytu"
+msgstr "tylko-do-odczytu"
 
 #: autotests/flatpakpermissiontest.cpp:857 flatpakpermission.cpp:394
 #, kde-format
@@ -116,7 +115,7 @@ msgstr "Dostęp do kart inteligentnych"
 #: flatpakpermission.cpp:834
 #, kde-format
 msgid "Print System Access"
-msgstr "Dostęp do systemu drukowania"
+msgstr "Wyświetl dostęp do systemu"
 
 #: flatpakpermission.cpp:840
 #, kde-format
