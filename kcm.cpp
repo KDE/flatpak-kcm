@@ -18,7 +18,7 @@ KCMFlatpak::KCMFlatpak(QObject *parent, const KPluginMetaData &data, const QVari
     , m_refsModel(new FlatpakReferencesModel(this))
 {
     QString requestedReference;
-    if (args.count() > 0) {
+    if (!args.isEmpty()) {
         const QVariant &arg0 = args.at(0);
         if (arg0.canConvert<QString>()) {
             const QString arg0str = arg0.toString();
