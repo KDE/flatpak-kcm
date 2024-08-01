@@ -33,6 +33,6 @@ public Q_SLOTS:
     void setIndex(int index);
 
 private:
-    FlatpakReferencesModel *m_refsModel;
+    FlatpakReferencesModel *const m_refsModel;
     int m_index = -1;
 };
