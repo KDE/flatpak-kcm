@@ -816,40 +816,40 @@ void FlatpakPermissionModel::loadDefaultValues()
     /* SHARED category */
     category = QLatin1String(FLATPAK_METADATA_KEY_SHARED);
     simpleEntries = FlatpakSimpleEntry::getCategorySkippingInvalidEntries(contextGroup, category);
-    insertSimpleEntry(FlatpakPermissionsSectionType::Basic, QStringLiteral("network"), i18n("Internet Connection"));
-    insertSimpleEntry(FlatpakPermissionsSectionType::SubsystemsShared, QStringLiteral("ipc"), i18n("Inter-process Communication"));
+    insertSimpleEntry(FlatpakPermissionsSectionType::Basic, QStringLiteral("network"), i18n("Internet connection"));
+    insertSimpleEntry(FlatpakPermissionsSectionType::SubsystemsShared, QStringLiteral("ipc"), i18n("Inter-process communication"));
     /* SHARED category */
 
     /* SOCKETS category */
     category = QLatin1String(FLATPAK_METADATA_KEY_SOCKETS);
     simpleEntries = FlatpakSimpleEntry::getCategorySkippingInvalidEntries(contextGroup, category);
-    insertSimpleEntry(FlatpakPermissionsSectionType::Sockets, QStringLiteral("x11"), i18n("X11 Windowing System"));
-    insertSimpleEntry(FlatpakPermissionsSectionType::Sockets, QStringLiteral("wayland"), i18n("Wayland Windowing System"));
-    insertSimpleEntry(FlatpakPermissionsSectionType::Sockets, QStringLiteral("fallback-x11"), i18n("Fallback to X11 Windowing System"));
-    insertSimpleEntry(FlatpakPermissionsSectionType::Basic, QStringLiteral("pulseaudio"), i18n("Pulseaudio Sound Server"));
-    insertSimpleEntry(FlatpakPermissionsSectionType::Sockets, QStringLiteral("session-bus"), i18n("Session Bus Access"));
-    insertSimpleEntry(FlatpakPermissionsSectionType::Sockets, QStringLiteral("system-bus"), i18n("System Bus Access"));
-    insertSimpleEntry(FlatpakPermissionsSectionType::Basic, QStringLiteral("ssh-auth"), i18n("Remote Login Access"));
-    insertSimpleEntry(FlatpakPermissionsSectionType::Basic, QStringLiteral("pcsc"), i18n("Smart Card Access"));
-    insertSimpleEntry(FlatpakPermissionsSectionType::Basic, QStringLiteral("cups"), i18n("Print System Access"));
+    insertSimpleEntry(FlatpakPermissionsSectionType::Sockets, QStringLiteral("x11"), i18n("X11 windowing system"));
+    insertSimpleEntry(FlatpakPermissionsSectionType::Sockets, QStringLiteral("wayland"), i18n("Wayland windowing system"));
+    insertSimpleEntry(FlatpakPermissionsSectionType::Sockets, QStringLiteral("fallback-x11"), i18n("Fallback to X11 windowing system"));
+    insertSimpleEntry(FlatpakPermissionsSectionType::Basic, QStringLiteral("pulseaudio"), i18n("Pulseaudio sound server"));
+    insertSimpleEntry(FlatpakPermissionsSectionType::Sockets, QStringLiteral("session-bus"), i18n("Session bus access"));
+    insertSimpleEntry(FlatpakPermissionsSectionType::Sockets, QStringLiteral("system-bus"), i18n("System bus access"));
+    insertSimpleEntry(FlatpakPermissionsSectionType::Basic, QStringLiteral("ssh-auth"), i18n("Remote login access"));
+    insertSimpleEntry(FlatpakPermissionsSectionType::Basic, QStringLiteral("pcsc"), i18n("Smart card access"));
+    insertSimpleEntry(FlatpakPermissionsSectionType::Basic, QStringLiteral("cups"), i18n("Print system access"));
     /* SOCKETS category */
 
     /* DEVICES category */
     category = QLatin1String(FLATPAK_METADATA_KEY_DEVICES);
     simpleEntries = FlatpakSimpleEntry::getCategorySkippingInvalidEntries(contextGroup, category);
-    insertSimpleEntry(FlatpakPermissionsSectionType::Devices, QStringLiteral("kvm"), i18n("Kernel-based Virtual Machine Access"));
-    insertSimpleEntry(FlatpakPermissionsSectionType::Devices, QStringLiteral("dri"), i18n("Direct Graphic Rendering"));
+    insertSimpleEntry(FlatpakPermissionsSectionType::Devices, QStringLiteral("kvm"), i18n("Kernel-based Virtual Machine access"));
+    insertSimpleEntry(FlatpakPermissionsSectionType::Devices, QStringLiteral("dri"), i18n("Direct graphic rendering"));
     insertSimpleEntry(FlatpakPermissionsSectionType::Devices, QStringLiteral("shm"), i18n("Host dev/shm"));
-    insertSimpleEntry(FlatpakPermissionsSectionType::Basic, QStringLiteral("all"), i18n("Device Access"));
+    insertSimpleEntry(FlatpakPermissionsSectionType::Basic, QStringLiteral("all"), i18n("Device access"));
     /* DEVICES category */
 
     /* FEATURES category */
     category = QLatin1String(FLATPAK_METADATA_KEY_FEATURES);
     simpleEntries = FlatpakSimpleEntry::getCategorySkippingInvalidEntries(contextGroup, category);
-    insertSimpleEntry(FlatpakPermissionsSectionType::Features, QStringLiteral("devel"), i18n("System Calls by Development Tools"));
-    insertSimpleEntry(FlatpakPermissionsSectionType::Features, QStringLiteral("multiarch"), i18n("Run Multiarch/Multilib Binaries"));
+    insertSimpleEntry(FlatpakPermissionsSectionType::Features, QStringLiteral("devel"), i18n("System calls by development tools"));
+    insertSimpleEntry(FlatpakPermissionsSectionType::Features, QStringLiteral("multiarch"), i18n("Run multiarch/multilib binaries"));
     insertSimpleEntry(FlatpakPermissionsSectionType::Basic, QStringLiteral("bluetooth"), i18n("Bluetooth"));
-    insertSimpleEntry(FlatpakPermissionsSectionType::Features, QStringLiteral("canbus"), i18n("Canbus Socket Access"));
+    insertSimpleEntry(FlatpakPermissionsSectionType::Features, QStringLiteral("canbus"), i18n("Canbus socket access"));
     insertSimpleEntry(FlatpakPermissionsSectionType::Features,
                       QStringLiteral("per-app-dev-shm"),
                       i18n("Share dev/shm across all instances of an app per user ID"));
@@ -910,10 +910,10 @@ void FlatpakPermissionModel::loadDefaultValues()
             basicIndex += 1;
         };
 
-    insertStandardFilesystemsEntry(QStringLiteral("home"), i18n("All User Files"), homeVal);
-    insertStandardFilesystemsEntry(QStringLiteral("host"), i18n("All System Files"), hostVal);
-    insertStandardFilesystemsEntry(QStringLiteral("host-os"), i18n("All System Libraries, Executables and Binaries"), hostOsVal);
-    insertStandardFilesystemsEntry(QStringLiteral("host-etc"), i18n("All System Configurations"), hostEtcVal);
+    insertStandardFilesystemsEntry(QStringLiteral("home"), i18n("All user files"), homeVal);
+    insertStandardFilesystemsEntry(QStringLiteral("host"), i18n("All system files"), hostVal);
+    insertStandardFilesystemsEntry(QStringLiteral("host-os"), i18n("All system libraries, executables and binaries"), hostOsVal);
+    insertStandardFilesystemsEntry(QStringLiteral("host-etc"), i18n("All system configurations"), hostEtcVal);
 
     for (const auto &filesystem : std::as_const(nonStandardFilesystems)) {
         const auto name = filesystem.name();
