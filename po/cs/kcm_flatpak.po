@@ -1,13 +1,13 @@
 # Copyright (C) 2023 This file is copyright:
 # This file is distributed under the same license as the flatpak-kcm package.
-# SPDX-FileCopyrightText: 2023 Vit Pelcak <vit@pelcak.org>
+# SPDX-FileCopyrightText: 2023, 2024 Vit Pelcak <vit@pelcak.org>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-06-13 02:42+0000\n"
-"PO-Revision-Date: 2023-02-22 14:13+0100\n"
+"PO-Revision-Date: 2024-08-28 10:33+0200\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Lokalize 23.08.2\n"
+"X-Generator: Lokalize 24.08.0\n"
 
 # žádné parametry funkce v inspektoru funkcí
 #: autotests/flatpakpermissiontest.cpp:642
@@ -28,19 +28,19 @@ msgstr "Nic"
 #: autotests/flatpakpermissiontest.cpp:867 flatpakpermission.cpp:405
 #, kde-format
 msgid "see"
-msgstr ""
+msgstr "vidět"
 
 #: autotests/flatpakpermissiontest.cpp:644
 #: autotests/flatpakpermissiontest.cpp:865 flatpakpermission.cpp:406
 #, kde-format
 msgid "talk"
-msgstr ""
+msgstr "mluvit"
 
 #: autotests/flatpakpermissiontest.cpp:645
 #: autotests/flatpakpermissiontest.cpp:866 flatpakpermission.cpp:407
 #, kde-format
 msgid "own"
-msgstr ""
+msgstr "vlastnit"
 
 #: autotests/flatpakpermissiontest.cpp:854 flatpakpermission.cpp:395
 #, kde-format
@@ -65,12 +65,12 @@ msgstr "vytvořit"
 #: flatpakpermission.cpp:819
 #, kde-format
 msgid "Internet Connection"
-msgstr ""
+msgstr "Internetové spojení"
 
 #: flatpakpermission.cpp:820
 #, kde-format
 msgid "Inter-process Communication"
-msgstr ""
+msgstr "Meziprocesová komunikace"
 
 #: flatpakpermission.cpp:826
 #, kde-format
@@ -85,7 +85,7 @@ msgstr "Okenní systém Wayland"
 #: flatpakpermission.cpp:828
 #, kde-format
 msgid "Fallback to X11 Windowing System"
-msgstr ""
+msgstr "Záložní přístup k Okennímu systému X11"
 
 #: flatpakpermission.cpp:829
 #, kde-format
@@ -95,42 +95,42 @@ msgstr "Zvukový server PulseAudio"
 #: flatpakpermission.cpp:830
 #, kde-format
 msgid "Session Bus Access"
-msgstr ""
+msgstr "Přístup ke sběrnici sezení"
 
 #: flatpakpermission.cpp:831
 #, kde-format
 msgid "System Bus Access"
-msgstr ""
+msgstr "Přístup k systémové sběrnici"
 
 #: flatpakpermission.cpp:832
 #, kde-format
 msgid "Remote Login Access"
-msgstr ""
+msgstr "Přístup ke vzdálenému přihlášení"
 
 #: flatpakpermission.cpp:833
 #, kde-format
 msgid "Smart Card Access"
-msgstr ""
+msgstr "Přístup k čipové kartě"
 
 #: flatpakpermission.cpp:834
 #, kde-format
 msgid "Print System Access"
-msgstr ""
+msgstr "Přístup k systému pro tisk"
 
 #: flatpakpermission.cpp:840
 #, kde-format
 msgid "Kernel-based Virtual Machine Access"
-msgstr ""
+msgstr "Přístup ke KVM"
 
 #: flatpakpermission.cpp:841
 #, kde-format
 msgid "Direct Graphic Rendering"
-msgstr ""
+msgstr "Přímé grafické vykreslování"
 
 #: flatpakpermission.cpp:842
 #, kde-format
 msgid "Host dev/shm"
-msgstr ""
+msgstr "dev/shm hostitele"
 
 #: flatpakpermission.cpp:843 flatpakpermission.cpp:1304
 #, kde-format
@@ -140,12 +140,12 @@ msgstr "Přístup k zařízení"
 #: flatpakpermission.cpp:849
 #, kde-format
 msgid "System Calls by Development Tools"
-msgstr ""
+msgstr "Systémová volní pro vývojářské nástroje"
 
 #: flatpakpermission.cpp:850
 #, kde-format
 msgid "Run Multiarch/Multilib Binaries"
-msgstr ""
+msgstr "Spustit "
 
 #: flatpakpermission.cpp:851
 #, kde-format
@@ -155,7 +155,7 @@ msgstr "Bluetooth"
 #: flatpakpermission.cpp:852
 #, kde-format
 msgid "Canbus Socket Access"
-msgstr ""
+msgstr "Přístup k socketu Canbus"
 
 #: flatpakpermission.cpp:855
 #, kde-format
@@ -175,12 +175,12 @@ msgstr "Všechny systémové soubory"
 #: flatpakpermission.cpp:915
 #, kde-format
 msgid "All System Libraries, Executables and Binaries"
-msgstr ""
+msgstr "Veškeré knihovny sytému, spustitelné a binární soubory"
 
 #: flatpakpermission.cpp:916
 #, kde-format
 msgid "All System Configurations"
-msgstr ""
+msgstr "Veškerá nastavení systému"
 
 #: flatpakpermission.cpp:1294
 #, kde-format
@@ -200,7 +200,7 @@ msgstr "Pokročilá oprávnění"
 #: flatpakpermission.cpp:1300
 #, kde-format
 msgid "Subsystems Shared"
-msgstr ""
+msgstr "Sdílené podsystémy"
 
 #: flatpakpermission.cpp:1302
 #, kde-format
@@ -210,17 +210,17 @@ msgstr "Sokety"
 #: flatpakpermission.cpp:1306
 #, kde-format
 msgid "Features Allowed"
-msgstr ""
+msgstr "Povolené vlastnosti"
 
 #: flatpakpermission.cpp:1308
 #, kde-format
 msgid "Session Bus Policy"
-msgstr ""
+msgstr "Pravidla sběrnice sezení"
 
 #: flatpakpermission.cpp:1310
 #, kde-format
 msgid "System Bus Policy"
-msgstr ""
+msgstr "Pravidla systémové sběrnice"
 
 #: flatpakpermission.cpp:1312
 #, kde-format
@@ -230,27 +230,27 @@ msgstr "Prostředí"
 #: flatpakpermission.cpp:1329
 #, kde-format
 msgid "Add a new filesystem path"
-msgstr ""
+msgstr "Přidat novou cestu v souborovém systému"
 
 #: flatpakpermission.cpp:1331
 #, kde-format
 msgid "Add a new session bus"
-msgstr ""
+msgstr "Přidat novou sběrnici sezení"
 
 #: flatpakpermission.cpp:1333
 #, kde-format
 msgid "Add a new system bus"
-msgstr ""
+msgstr "Přidat novou systémovou sběrnici"
 
 #: flatpakpermission.cpp:1335
 #, kde-format
 msgid "Add a new environment variable"
-msgstr ""
+msgstr "Přidat novou proměnnou prostředí"
 
 #: package/contents/ui/AddEnvironmentVariableDialog.qml:18
 #, kde-format
 msgid "Set Environment Variable"
-msgstr ""
+msgstr "Nastavit proměnnou prostředí"
 
 #: package/contents/ui/AddEnvironmentVariableDialog.qml:35
 #, kde-format
@@ -278,6 +278,8 @@ msgid ""
 "The permissions of this application have been changed. Do you want to apply "
 "these changes or discard them?"
 msgstr ""
+"Oprávnění této aplikace byla změněna. Přejete si změny provést nebo je "
+"zahodit?"
 
 #: package/contents/ui/permissions.qml:17
 #, kde-format
@@ -307,29 +309,29 @@ msgstr "Přidat nové"
 #: package/contents/ui/TextPromptDialog.qml:21
 #, kde-format
 msgid "Add Filesystem Path Permission"
-msgstr ""
+msgstr "Přidat oprávnění k cestě v souborovém systému"
 
 #: package/contents/ui/TextPromptDialog.qml:22
 #, kde-format
 msgid "Add Session Bus Permission"
-msgstr ""
+msgstr "Přidat oprávnění sběrnice sezení"
 
 #: package/contents/ui/TextPromptDialog.qml:23
 #, kde-format
 msgid "Add System Bus Permission"
-msgstr ""
+msgstr "Přidat oprávnění systémové sběrnice"
 
 #: package/contents/ui/TextPromptDialog.qml:38
 #, kde-format
 msgid "Enter filesystem path..."
-msgstr ""
+msgstr "Zadejte cestu v souborovém systému..."
 
 #: package/contents/ui/TextPromptDialog.qml:39
 #, kde-format
 msgid "Enter session bus name..."
-msgstr ""
+msgstr "Zadejte název sběrnice sezení..."
 
 #: package/contents/ui/TextPromptDialog.qml:40
 #, kde-format
 msgid "Enter system bus name..."
-msgstr ""
+msgstr "Zadejte název systémové sběrnice..."
