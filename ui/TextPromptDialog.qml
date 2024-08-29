@@ -35,9 +35,9 @@ Kirigami.PromptDialog {
             Layout.fillWidth: true
 
             Kirigami.FormData.label: switch (root.sectionType) {
-                case FlatpakPermissionsSectionType.Filesystems: return i18n("Enter filesystem path…");
-                case FlatpakPermissionsSectionType.SessionBus: return i18n("Enter session bus name…");
-                case FlatpakPermissionsSectionType.SystemBus: return i18n("Enter system bus name…");
+                case FlatpakPermissionsSectionType.Filesystems: return i18n("Enter filesystem path:");
+                case FlatpakPermissionsSectionType.SessionBus: return i18n("Enter session bus name:");
+                case FlatpakPermissionsSectionType.SystemBus: return i18n("Enter system bus name:");
                 default: return ""
             }
 
