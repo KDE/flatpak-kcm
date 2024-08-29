@@ -152,8 +152,8 @@ KCM.ScrollViewKCM {
                 QQC2.ToolTip.delay: Kirigami.Settings.tabletMode ? Qt.styleHints.mousePressAndHoldInterval : Kirigami.Units.toolTipDelay
             }
             QQC2.ToolButton {
-                text: i18n("Add New")
-                icon.name: "bqm-add"
+                text: i18n("Add New…")
+                icon.name: "list-add"
                 visible: [
                     FlatpakPermissionsSectionType.Filesystems,
                     FlatpakPermissionsSectionType.SessionBus,
