@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-08 01:35+0000\n"
+"POT-Creation-Date: 2024-08-30 00:40+0000\n"
 "PO-Revision-Date: 2024-01-07 18:07+0000\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
@@ -63,68 +63,81 @@ msgid "create"
 msgstr "creează"
 
 #: flatpakpermission.cpp:819
-#, kde-format
-msgid "Internet Connection"
+#, fuzzy, kde-format
+#| msgid "Internet Connection"
+msgid "Internet connection"
 msgstr "Conexiune la internet"
 
 #: flatpakpermission.cpp:820
-#, kde-format
-msgid "Inter-process Communication"
+#, fuzzy, kde-format
+#| msgid "Inter-process Communication"
+msgid "Inter-process communication"
 msgstr "Comunicare între procese"
 
 #: flatpakpermission.cpp:826
-#, kde-format
-msgid "X11 Windowing System"
+#, fuzzy, kde-format
+#| msgid "X11 Windowing System"
+msgid "X11 windowing system"
 msgstr "Sistem de ferestre X11"
 
 #: flatpakpermission.cpp:827
-#, kde-format
-msgid "Wayland Windowing System"
+#, fuzzy, kde-format
+#| msgid "Wayland Windowing System"
+msgid "Wayland windowing system"
 msgstr "Sistem de ferestre Wayland"
 
 #: flatpakpermission.cpp:828
-#, kde-format
-msgid "Fallback to X11 Windowing System"
+#, fuzzy, kde-format
+#| msgid "Fallback to X11 Windowing System"
+msgid "Fallback to X11 windowing system"
 msgstr "Trecere de rezervă la sistemul de ferestre X11"
 
 #: flatpakpermission.cpp:829
-#, kde-format
-msgid "Pulseaudio Sound Server"
+#, fuzzy, kde-format
+#| msgid "Pulseaudio Sound Server"
+msgid "Pulseaudio sound server"
 msgstr "Server de sunet PulseAudio"
 
 #: flatpakpermission.cpp:830
-#, kde-format
-msgid "Session Bus Access"
+#, fuzzy, kde-format
+#| msgid "Session Bus Access"
+msgid "Session bus access"
 msgstr "Acces la magistrala sesiunii"
 
 #: flatpakpermission.cpp:831
-#, kde-format
-msgid "System Bus Access"
+#, fuzzy, kde-format
+#| msgid "System Bus Access"
+msgid "System bus access"
 msgstr "Acces la magistrala sistemului"
 
 #: flatpakpermission.cpp:832
-#, kde-format
-msgid "Remote Login Access"
+#, fuzzy, kde-format
+#| msgid "Remote Login Access"
+msgid "Remote login access"
 msgstr "Acces la autentificare distantă"
 
 #: flatpakpermission.cpp:833
-#, kde-format
-msgid "Smart Card Access"
+#, fuzzy, kde-format
+#| msgid "Smart Card Access"
+msgid "Smart card access"
 msgstr "Acces la Smart Card"
 
 #: flatpakpermission.cpp:834
-#, kde-format
-msgid "Print System Access"
+#, fuzzy, kde-format
+#| msgid "Print System Access"
+msgid "Print system access"
 msgstr "Acces la sistemul de tipărire"
 
 #: flatpakpermission.cpp:840
-#, kde-format
-msgid "Kernel-based Virtual Machine Access"
+#, fuzzy, kde-format
+#| msgid "Kernel-based Virtual Machine Access"
+msgid "Kernel-based Virtual Machine access"
 msgstr "Acces la mașina virtuală bazată în nucleu"
 
 #: flatpakpermission.cpp:841
-#, kde-format
-msgid "Direct Graphic Rendering"
+#, fuzzy, kde-format
+#| msgid "Direct Graphic Rendering"
+msgid "Direct graphic rendering"
 msgstr "Randare grafică directă"
 
 #: flatpakpermission.cpp:842
@@ -132,19 +145,22 @@ msgstr "Randare grafică directă"
 msgid "Host dev/shm"
 msgstr "dev/shm pe gazdă"
 
-#: flatpakpermission.cpp:843 flatpakpermission.cpp:1304
-#, kde-format
-msgid "Device Access"
+#: flatpakpermission.cpp:843
+#, fuzzy, kde-format
+#| msgid "Device Access"
+msgid "Device access"
 msgstr "Acces la dispozitive"
 
 #: flatpakpermission.cpp:849
-#, kde-format
-msgid "System Calls by Development Tools"
+#, fuzzy, kde-format
+#| msgid "System Calls by Development Tools"
+msgid "System calls by development tools"
 msgstr "Apeluri de sistem de la instrumente de dezvoltare"
 
 #: flatpakpermission.cpp:850
-#, kde-format
-msgid "Run Multiarch/Multilib Binaries"
+#, fuzzy, kde-format
+#| msgid "Run Multiarch/Multilib Binaries"
+msgid "Run multiarch/multilib binaries"
 msgstr "Rulează binare Multiarch/Multilib"
 
 #: flatpakpermission.cpp:851
@@ -153,8 +169,9 @@ msgid "Bluetooth"
 msgstr "Bluetooth"
 
 #: flatpakpermission.cpp:852
-#, kde-format
-msgid "Canbus Socket Access"
+#, fuzzy, kde-format
+#| msgid "Canbus Socket Access"
+msgid "Canbus socket access"
 msgstr "Acces la soclu Canbus"
 
 #: flatpakpermission.cpp:855
@@ -165,23 +182,27 @@ msgstr ""
 "identificatorul utilizatorului"
 
 #: flatpakpermission.cpp:913
-#, kde-format
-msgid "All User Files"
+#, fuzzy, kde-format
+#| msgid "All User Files"
+msgid "All user files"
 msgstr "Toate fișierele utilizatorului"
 
 #: flatpakpermission.cpp:914
-#, kde-format
-msgid "All System Files"
+#, fuzzy, kde-format
+#| msgid "All System Files"
+msgid "All system files"
 msgstr "Toate fișierele sistemului"
 
 #: flatpakpermission.cpp:915
-#, kde-format
-msgid "All System Libraries, Executables and Binaries"
+#, fuzzy, kde-format
+#| msgid "All System Libraries, Executables and Binaries"
+msgid "All system libraries, executables and binaries"
 msgstr "Toate bibliotecile, executabilele și binarele sistemului"
 
 #: flatpakpermission.cpp:916
-#, kde-format
-msgid "All System Configurations"
+#, fuzzy, kde-format
+#| msgid "All System Configurations"
+msgid "All system configurations"
 msgstr "Toate configurările sistemului"
 
 #: flatpakpermission.cpp:1294
@@ -208,6 +229,11 @@ msgstr "Subsisteme partajate"
 #, kde-format
 msgid "Sockets"
 msgstr "Socluri"
+
+#: flatpakpermission.cpp:1304
+#, kde-format
+msgid "Device Access"
+msgstr "Acces la dispozitive"
 
 #: flatpakpermission.cpp:1306
 #, kde-format
@@ -306,8 +332,9 @@ msgid "Show advanced permissions"
 msgstr "Arată permisiunile avansate"
 
 #: ui/permissions.qml:155
-#, kde-format
-msgid "Add New"
+#, fuzzy, kde-format
+#| msgid "Add New"
+msgid "Add New…"
 msgstr "Adaugă nouă"
 
 #: ui/TextPromptDialog.qml:21
@@ -326,16 +353,19 @@ msgid "Add System Bus Permission"
 msgstr "Adaugă permisiune pentru magistrala de sistem"
 
 #: ui/TextPromptDialog.qml:38
-#, kde-format
-msgid "Enter filesystem path…"
+#, fuzzy, kde-format
+#| msgid "Enter filesystem path…"
+msgid "Enter filesystem path:"
 msgstr "Introduceți calea din sistemul de fișiere…"
 
 #: ui/TextPromptDialog.qml:39
-#, kde-format
-msgid "Enter session bus name…"
+#, fuzzy, kde-format
+#| msgid "Enter session bus name…"
+msgid "Enter session bus name:"
 msgstr "Introduceți denumirea magistralei de sesiune…"
 
 #: ui/TextPromptDialog.qml:40
-#, kde-format
-msgid "Enter system bus name…"
+#, fuzzy, kde-format
+#| msgid "Enter system bus name…"
+msgid "Enter system bus name:"
 msgstr "Introduceți denumirea magistralei de sistem…"

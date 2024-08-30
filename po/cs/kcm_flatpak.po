@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-08 01:35+0000\n"
+"POT-Creation-Date: 2024-08-30 00:40+0000\n"
 "PO-Revision-Date: 2024-08-28 10:33+0200\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -63,68 +63,81 @@ msgid "create"
 msgstr "vytvořit"
 
 #: flatpakpermission.cpp:819
-#, kde-format
-msgid "Internet Connection"
+#, fuzzy, kde-format
+#| msgid "Internet Connection"
+msgid "Internet connection"
 msgstr "Internetové spojení"
 
 #: flatpakpermission.cpp:820
-#, kde-format
-msgid "Inter-process Communication"
+#, fuzzy, kde-format
+#| msgid "Inter-process Communication"
+msgid "Inter-process communication"
 msgstr "Meziprocesová komunikace"
 
 #: flatpakpermission.cpp:826
-#, kde-format
-msgid "X11 Windowing System"
+#, fuzzy, kde-format
+#| msgid "X11 Windowing System"
+msgid "X11 windowing system"
 msgstr "Okenní systém X11"
 
 #: flatpakpermission.cpp:827
-#, kde-format
-msgid "Wayland Windowing System"
+#, fuzzy, kde-format
+#| msgid "Wayland Windowing System"
+msgid "Wayland windowing system"
 msgstr "Okenní systém Wayland"
 
 #: flatpakpermission.cpp:828
-#, kde-format
-msgid "Fallback to X11 Windowing System"
+#, fuzzy, kde-format
+#| msgid "Fallback to X11 Windowing System"
+msgid "Fallback to X11 windowing system"
 msgstr "Záložní přístup k Okennímu systému X11"
 
 #: flatpakpermission.cpp:829
-#, kde-format
-msgid "Pulseaudio Sound Server"
+#, fuzzy, kde-format
+#| msgid "Pulseaudio Sound Server"
+msgid "Pulseaudio sound server"
 msgstr "Zvukový server PulseAudio"
 
 #: flatpakpermission.cpp:830
-#, kde-format
-msgid "Session Bus Access"
+#, fuzzy, kde-format
+#| msgid "Session Bus Access"
+msgid "Session bus access"
 msgstr "Přístup ke sběrnici sezení"
 
 #: flatpakpermission.cpp:831
-#, kde-format
-msgid "System Bus Access"
+#, fuzzy, kde-format
+#| msgid "System Bus Access"
+msgid "System bus access"
 msgstr "Přístup k systémové sběrnici"
 
 #: flatpakpermission.cpp:832
-#, kde-format
-msgid "Remote Login Access"
+#, fuzzy, kde-format
+#| msgid "Remote Login Access"
+msgid "Remote login access"
 msgstr "Přístup ke vzdálenému přihlášení"
 
 #: flatpakpermission.cpp:833
-#, kde-format
-msgid "Smart Card Access"
+#, fuzzy, kde-format
+#| msgid "Smart Card Access"
+msgid "Smart card access"
 msgstr "Přístup k čipové kartě"
 
 #: flatpakpermission.cpp:834
-#, kde-format
-msgid "Print System Access"
+#, fuzzy, kde-format
+#| msgid "Print System Access"
+msgid "Print system access"
 msgstr "Přístup k systému pro tisk"
 
 #: flatpakpermission.cpp:840
-#, kde-format
-msgid "Kernel-based Virtual Machine Access"
+#, fuzzy, kde-format
+#| msgid "Kernel-based Virtual Machine Access"
+msgid "Kernel-based Virtual Machine access"
 msgstr "Přístup ke KVM"
 
 #: flatpakpermission.cpp:841
-#, kde-format
-msgid "Direct Graphic Rendering"
+#, fuzzy, kde-format
+#| msgid "Direct Graphic Rendering"
+msgid "Direct graphic rendering"
 msgstr "Přímé grafické vykreslování"
 
 #: flatpakpermission.cpp:842
@@ -132,19 +145,22 @@ msgstr "Přímé grafické vykreslování"
 msgid "Host dev/shm"
 msgstr "dev/shm hostitele"
 
-#: flatpakpermission.cpp:843 flatpakpermission.cpp:1304
-#, kde-format
-msgid "Device Access"
+#: flatpakpermission.cpp:843
+#, fuzzy, kde-format
+#| msgid "Device Access"
+msgid "Device access"
 msgstr "Přístup k zařízení"
 
 #: flatpakpermission.cpp:849
-#, kde-format
-msgid "System Calls by Development Tools"
+#, fuzzy, kde-format
+#| msgid "System Calls by Development Tools"
+msgid "System calls by development tools"
 msgstr "Systémová volní pro vývojářské nástroje"
 
 #: flatpakpermission.cpp:850
-#, kde-format
-msgid "Run Multiarch/Multilib Binaries"
+#, fuzzy, kde-format
+#| msgid "Run Multiarch/Multilib Binaries"
+msgid "Run multiarch/multilib binaries"
 msgstr "Spustit "
 
 #: flatpakpermission.cpp:851
@@ -153,8 +169,9 @@ msgid "Bluetooth"
 msgstr "Bluetooth"
 
 #: flatpakpermission.cpp:852
-#, kde-format
-msgid "Canbus Socket Access"
+#, fuzzy, kde-format
+#| msgid "Canbus Socket Access"
+msgid "Canbus socket access"
 msgstr "Přístup k socketu Canbus"
 
 #: flatpakpermission.cpp:855
@@ -163,23 +180,27 @@ msgid "Share dev/shm across all instances of an app per user ID"
 msgstr ""
 
 #: flatpakpermission.cpp:913
-#, kde-format
-msgid "All User Files"
+#, fuzzy, kde-format
+#| msgid "All User Files"
+msgid "All user files"
 msgstr "Všechny uživatelské soubory"
 
 #: flatpakpermission.cpp:914
-#, kde-format
-msgid "All System Files"
+#, fuzzy, kde-format
+#| msgid "All System Files"
+msgid "All system files"
 msgstr "Všechny systémové soubory"
 
 #: flatpakpermission.cpp:915
-#, kde-format
-msgid "All System Libraries, Executables and Binaries"
+#, fuzzy, kde-format
+#| msgid "All System Libraries, Executables and Binaries"
+msgid "All system libraries, executables and binaries"
 msgstr "Veškeré knihovny sytému, spustitelné a binární soubory"
 
 #: flatpakpermission.cpp:916
-#, kde-format
-msgid "All System Configurations"
+#, fuzzy, kde-format
+#| msgid "All System Configurations"
+msgid "All system configurations"
 msgstr "Veškerá nastavení systému"
 
 #: flatpakpermission.cpp:1294
@@ -206,6 +227,11 @@ msgstr "Sdílené podsystémy"
 #, kde-format
 msgid "Sockets"
 msgstr "Sokety"
+
+#: flatpakpermission.cpp:1304
+#, kde-format
+msgid "Device Access"
+msgstr "Přístup k zařízení"
 
 #: flatpakpermission.cpp:1306
 #, kde-format
@@ -303,8 +329,9 @@ msgid "Show advanced permissions"
 msgstr "Zobrazit pokročilá oprávnění"
 
 #: ui/permissions.qml:155
-#, kde-format
-msgid "Add New"
+#, fuzzy, kde-format
+#| msgid "Add New"
+msgid "Add New…"
 msgstr "Přidat nové"
 
 #: ui/TextPromptDialog.qml:21
@@ -323,16 +350,19 @@ msgid "Add System Bus Permission"
 msgstr "Přidat oprávnění systémové sběrnice"
 
 #: ui/TextPromptDialog.qml:38
-#, kde-format
-msgid "Enter filesystem path…"
+#, fuzzy, kde-format
+#| msgid "Enter filesystem path…"
+msgid "Enter filesystem path:"
 msgstr "Zadejte cestu v souborovém systému…"
 
 #: ui/TextPromptDialog.qml:39
-#, kde-format
-msgid "Enter session bus name…"
+#, fuzzy, kde-format
+#| msgid "Enter session bus name…"
+msgid "Enter session bus name:"
 msgstr "Zadejte název sběrnice sezení…"
 
 #: ui/TextPromptDialog.qml:40
-#, kde-format
-msgid "Enter system bus name…"
+#, fuzzy, kde-format
+#| msgid "Enter system bus name…"
+msgid "Enter system bus name:"
 msgstr "Zadejte název systémové sběrnice…"

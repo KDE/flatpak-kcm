@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-08 01:35+0000\n"
+"POT-Creation-Date: 2024-08-30 00:40+0000\n"
 "PO-Revision-Date: 2024-01-30 01:34+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -64,68 +64,81 @@ msgid "create"
 msgstr "kurti"
 
 #: flatpakpermission.cpp:819
-#, kde-format
-msgid "Internet Connection"
+#, fuzzy, kde-format
+#| msgid "Internet Connection"
+msgid "Internet connection"
 msgstr "Interneto ryšys"
 
 #: flatpakpermission.cpp:820
-#, kde-format
-msgid "Inter-process Communication"
+#, fuzzy, kde-format
+#| msgid "Inter-process Communication"
+msgid "Inter-process communication"
 msgstr "Tarpprocesinis ryšys"
 
 #: flatpakpermission.cpp:826
-#, kde-format
-msgid "X11 Windowing System"
+#, fuzzy, kde-format
+#| msgid "X11 Windowing System"
+msgid "X11 windowing system"
 msgstr "X11 langų sistema"
 
 #: flatpakpermission.cpp:827
-#, kde-format
-msgid "Wayland Windowing System"
+#, fuzzy, kde-format
+#| msgid "Wayland Windowing System"
+msgid "Wayland windowing system"
 msgstr "Wayland langų sistema"
 
 #: flatpakpermission.cpp:828
-#, kde-format
-msgid "Fallback to X11 Windowing System"
+#, fuzzy, kde-format
+#| msgid "Fallback to X11 Windowing System"
+msgid "Fallback to X11 windowing system"
 msgstr "Atsarginiu atveju naudoti X11 langų sistemą"
 
 #: flatpakpermission.cpp:829
-#, kde-format
-msgid "Pulseaudio Sound Server"
+#, fuzzy, kde-format
+#| msgid "Pulseaudio Sound Server"
+msgid "Pulseaudio sound server"
 msgstr "Pulseaudio garso serveris"
 
 #: flatpakpermission.cpp:830
-#, kde-format
-msgid "Session Bus Access"
+#, fuzzy, kde-format
+#| msgid "Session Bus Access"
+msgid "Session bus access"
 msgstr "Prieiga prie seanso magistralės"
 
 #: flatpakpermission.cpp:831
-#, kde-format
-msgid "System Bus Access"
+#, fuzzy, kde-format
+#| msgid "System Bus Access"
+msgid "System bus access"
 msgstr "Prieiga prie sistemos magistralės"
 
 #: flatpakpermission.cpp:832
-#, kde-format
-msgid "Remote Login Access"
+#, fuzzy, kde-format
+#| msgid "Remote Login Access"
+msgid "Remote login access"
 msgstr "Prieiga prie nuotolinio prisijungimo"
 
 #: flatpakpermission.cpp:833
-#, kde-format
-msgid "Smart Card Access"
+#, fuzzy, kde-format
+#| msgid "Smart Card Access"
+msgid "Smart card access"
 msgstr "Prieiga prie lustinės kortelės"
 
 #: flatpakpermission.cpp:834
-#, kde-format
-msgid "Print System Access"
+#, fuzzy, kde-format
+#| msgid "Print System Access"
+msgid "Print system access"
 msgstr "Prieiga prie spausdinimo sistemos"
 
 #: flatpakpermission.cpp:840
-#, kde-format
-msgid "Kernel-based Virtual Machine Access"
+#, fuzzy, kde-format
+#| msgid "Kernel-based Virtual Machine Access"
+msgid "Kernel-based Virtual Machine access"
 msgstr "Prieiga prie branduoliu grįstos virtualios mašinos"
 
 #: flatpakpermission.cpp:841
-#, kde-format
-msgid "Direct Graphic Rendering"
+#, fuzzy, kde-format
+#| msgid "Direct Graphic Rendering"
+msgid "Direct graphic rendering"
 msgstr "Tiesioginis grafinis atvaizdavimas"
 
 #: flatpakpermission.cpp:842
@@ -133,19 +146,22 @@ msgstr "Tiesioginis grafinis atvaizdavimas"
 msgid "Host dev/shm"
 msgstr "Globoti dev/shm"
 
-#: flatpakpermission.cpp:843 flatpakpermission.cpp:1304
-#, kde-format
-msgid "Device Access"
+#: flatpakpermission.cpp:843
+#, fuzzy, kde-format
+#| msgid "Device Access"
+msgid "Device access"
 msgstr "Prieiga prie įrenginių"
 
 #: flatpakpermission.cpp:849
-#, kde-format
-msgid "System Calls by Development Tools"
+#, fuzzy, kde-format
+#| msgid "System Calls by Development Tools"
+msgid "System calls by development tools"
 msgstr "Plėtojimo įrankių sistemos iškvietos"
 
 #: flatpakpermission.cpp:850
-#, kde-format
-msgid "Run Multiarch/Multilib Binaries"
+#, fuzzy, kde-format
+#| msgid "Run Multiarch/Multilib Binaries"
+msgid "Run multiarch/multilib binaries"
 msgstr "Vykdyti daugiaarchitektūrinius/daugiabibliotekinius dvejetainius"
 
 #: flatpakpermission.cpp:851
@@ -154,8 +170,9 @@ msgid "Bluetooth"
 msgstr "Bluetooth"
 
 #: flatpakpermission.cpp:852
-#, kde-format
-msgid "Canbus Socket Access"
+#, fuzzy, kde-format
+#| msgid "Canbus Socket Access"
+msgid "Canbus socket access"
 msgstr "Prieiga prie Canbus lizdo"
 
 #: flatpakpermission.cpp:855
@@ -165,23 +182,27 @@ msgstr ""
 "Bendrinti dev/shm tarp visų programos egzempliorių kiekvienam naudotojo ID"
 
 #: flatpakpermission.cpp:913
-#, kde-format
-msgid "All User Files"
+#, fuzzy, kde-format
+#| msgid "All User Files"
+msgid "All user files"
 msgstr "Visi naudotojo failai"
 
 #: flatpakpermission.cpp:914
-#, kde-format
-msgid "All System Files"
+#, fuzzy, kde-format
+#| msgid "All System Files"
+msgid "All system files"
 msgstr "Visi sistemos failai"
 
 #: flatpakpermission.cpp:915
-#, kde-format
-msgid "All System Libraries, Executables and Binaries"
+#, fuzzy, kde-format
+#| msgid "All System Libraries, Executables and Binaries"
+msgid "All system libraries, executables and binaries"
 msgstr "Visi sistemos vykdomieji, dvejetainiai ir bibliotekos"
 
 #: flatpakpermission.cpp:916
-#, kde-format
-msgid "All System Configurations"
+#, fuzzy, kde-format
+#| msgid "All System Configurations"
+msgid "All system configurations"
 msgstr "Visos sisteminės konfigūracijos"
 
 #: flatpakpermission.cpp:1294
@@ -208,6 +229,11 @@ msgstr "Bendrinami posistemiai"
 #, kde-format
 msgid "Sockets"
 msgstr "Lizdai"
+
+#: flatpakpermission.cpp:1304
+#, kde-format
+msgid "Device Access"
+msgstr "Prieiga prie įrenginių"
 
 #: flatpakpermission.cpp:1306
 #, kde-format
@@ -306,8 +332,9 @@ msgid "Show advanced permissions"
 msgstr "Rodyti išplėstinius leidimus"
 
 #: ui/permissions.qml:155
-#, kde-format
-msgid "Add New"
+#, fuzzy, kde-format
+#| msgid "Add New"
+msgid "Add New…"
 msgstr "Pridėti naują"
 
 #: ui/TextPromptDialog.qml:21
@@ -326,16 +353,19 @@ msgid "Add System Bus Permission"
 msgstr "Pridėti sistemos magistralės leidimą"
 
 #: ui/TextPromptDialog.qml:38
-#, kde-format
-msgid "Enter filesystem path…"
+#, fuzzy, kde-format
+#| msgid "Enter filesystem path…"
+msgid "Enter filesystem path:"
 msgstr "Įveskite failų sistemos kelią…"
 
 #: ui/TextPromptDialog.qml:39
-#, kde-format
-msgid "Enter session bus name…"
+#, fuzzy, kde-format
+#| msgid "Enter session bus name…"
+msgid "Enter session bus name:"
 msgstr "Įveskite seanso magistralės pavadinimą…"
 
 #: ui/TextPromptDialog.qml:40
-#, kde-format
-msgid "Enter system bus name…"
+#, fuzzy, kde-format
+#| msgid "Enter system bus name…"
+msgid "Enter system bus name:"
 msgstr "Įveskite sistemos magistralės pavadinimą…"
