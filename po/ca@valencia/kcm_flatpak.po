@@ -1,15 +1,15 @@
 # Translation of kcm_flatpak.po to Catalan (Valencian)
-# Copyright (C) 2022-2023 This_file_is_part_of_KDE
+# Copyright (C) 2022-2024 This_file_is_part_of_KDE
 # This file is distributed under the license LGPL version 2.1 or
 # version 3 or later versions approved by the membership of KDE e.V.
 #
-# Josep M. Ferrer <txemaq@gmail.com>, 2022, 2023.
+# SPDX-FileCopyrightText: 2022, 2023, 2024 Josep M. Ferrer <txemaq@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-30 00:40+0000\n"
-"PO-Revision-Date: 2023-09-19 19:12+0200\n"
+"PO-Revision-Date: 2024-08-30 10:18+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 24.08.0\n"
 
 #: autotests/flatpakpermissiontest.cpp:642
 #: autotests/flatpakpermissiontest.cpp:864 flatpakpermission.cpp:404
@@ -64,80 +64,67 @@ msgid "create"
 msgstr "creació"
 
 #: flatpakpermission.cpp:819
-#, fuzzy, kde-format
-#| msgid "Internet Connection"
+#, kde-format
 msgid "Internet connection"
 msgstr "Connexió amb Internet"
 
 #: flatpakpermission.cpp:820
-#, fuzzy, kde-format
-#| msgid "Inter-process Communication"
+#, kde-format
 msgid "Inter-process communication"
 msgstr "Comunicació interprocés"
 
 #: flatpakpermission.cpp:826
-#, fuzzy, kde-format
-#| msgid "X11 Windowing System"
+#, kde-format
 msgid "X11 windowing system"
 msgstr "Sistema de finestres X11"
 
 #: flatpakpermission.cpp:827
-#, fuzzy, kde-format
-#| msgid "Wayland Windowing System"
+#, kde-format
 msgid "Wayland windowing system"
 msgstr "Sistema de finestres Wayland"
 
 #: flatpakpermission.cpp:828
-#, fuzzy, kde-format
-#| msgid "Fallback to X11 Windowing System"
+#, kde-format
 msgid "Fallback to X11 windowing system"
 msgstr "Alternativa de reserva: sistema de finestres X11"
 
 #: flatpakpermission.cpp:829
-#, fuzzy, kde-format
-#| msgid "Pulseaudio Sound Server"
+#, kde-format
 msgid "Pulseaudio sound server"
 msgstr "Servidor de so PulseAudio"
 
 #: flatpakpermission.cpp:830
-#, fuzzy, kde-format
-#| msgid "Session Bus Access"
+#, kde-format
 msgid "Session bus access"
 msgstr "Accés al bus de la sessió"
 
 #: flatpakpermission.cpp:831
-#, fuzzy, kde-format
-#| msgid "System Bus Access"
+#, kde-format
 msgid "System bus access"
 msgstr "Accés al bus del sistema"
 
 #: flatpakpermission.cpp:832
-#, fuzzy, kde-format
-#| msgid "Remote Login Access"
+#, kde-format
 msgid "Remote login access"
 msgstr "Accés a inici remot de sessió"
 
 #: flatpakpermission.cpp:833
-#, fuzzy, kde-format
-#| msgid "Smart Card Access"
+#, kde-format
 msgid "Smart card access"
 msgstr "Accés a targeta intel·ligent"
 
 #: flatpakpermission.cpp:834
-#, fuzzy, kde-format
-#| msgid "Print System Access"
+#, kde-format
 msgid "Print system access"
 msgstr "Accés al sistema d'impressió"
 
 #: flatpakpermission.cpp:840
-#, fuzzy, kde-format
-#| msgid "Kernel-based Virtual Machine Access"
+#, kde-format
 msgid "Kernel-based Virtual Machine access"
 msgstr "Accés a màquina virtual basada en el nucli"
 
 #: flatpakpermission.cpp:841
-#, fuzzy, kde-format
-#| msgid "Direct Graphic Rendering"
+#, kde-format
 msgid "Direct graphic rendering"
 msgstr "Renderització directa dels gràfics"
 
@@ -147,20 +134,17 @@ msgid "Host dev/shm"
 msgstr "«dev/shm» de l'amfitrió"
 
 #: flatpakpermission.cpp:843
-#, fuzzy, kde-format
-#| msgid "Device Access"
+#, kde-format
 msgid "Device access"
 msgstr "Accés a dispositius"
 
 #: flatpakpermission.cpp:849
-#, fuzzy, kde-format
-#| msgid "System Calls by Development Tools"
+#, kde-format
 msgid "System calls by development tools"
 msgstr "Crides del sistema d'eines de desenvolupament"
 
 #: flatpakpermission.cpp:850
-#, fuzzy, kde-format
-#| msgid "Run Multiarch/Multilib Binaries"
+#, kde-format
 msgid "Run multiarch/multilib binaries"
 msgstr "Execució de binaris Multiarch/Multilib"
 
@@ -170,8 +154,7 @@ msgid "Bluetooth"
 msgstr "Bluetooth"
 
 #: flatpakpermission.cpp:852
-#, fuzzy, kde-format
-#| msgid "Canbus Socket Access"
+#, kde-format
 msgid "Canbus socket access"
 msgstr "Accés al sòcol del bus CAN"
 
@@ -183,26 +166,22 @@ msgstr ""
 "d'usuari"
 
 #: flatpakpermission.cpp:913
-#, fuzzy, kde-format
-#| msgid "All User Files"
+#, kde-format
 msgid "All user files"
 msgstr "Tots els fitxers d'usuari"
 
 #: flatpakpermission.cpp:914
-#, fuzzy, kde-format
-#| msgid "All System Files"
+#, kde-format
 msgid "All system files"
 msgstr "Tots els fitxers del sistema"
 
 #: flatpakpermission.cpp:915
-#, fuzzy, kde-format
-#| msgid "All System Libraries, Executables and Binaries"
+#, kde-format
 msgid "All system libraries, executables and binaries"
 msgstr "Totes les biblioteques, executables i binaris del sistema"
 
 #: flatpakpermission.cpp:916
-#, fuzzy, kde-format
-#| msgid "All System Configurations"
+#, kde-format
 msgid "All system configurations"
 msgstr "Totes les configuracions del sistema"
 
@@ -334,10 +313,9 @@ msgid "Show advanced permissions"
 msgstr "Mostra els permisos avançats"
 
 #: ui/permissions.qml:155
-#, fuzzy, kde-format
-#| msgid "Add New"
+#, kde-format
 msgid "Add New…"
-msgstr "Afig un nou"
+msgstr "Afig nou…"
 
 #: ui/TextPromptDialog.qml:21
 #, kde-format
@@ -355,19 +333,16 @@ msgid "Add System Bus Permission"
 msgstr "Afig un permís del bus de sistema"
 
 #: ui/TextPromptDialog.qml:38
-#, fuzzy, kde-format
-#| msgid "Enter filesystem path…"
+#, kde-format
 msgid "Enter filesystem path:"
-msgstr "Introduïu el camí del sistema de fitxers…"
+msgstr "Introduïu el camí del sistema de fitxers:"
 
 #: ui/TextPromptDialog.qml:39
-#, fuzzy, kde-format
-#| msgid "Enter session bus name…"
+#, kde-format
 msgid "Enter session bus name:"
-msgstr "Introduïu un nom de bus de sessió…"
+msgstr "Introduïu el nom de bus de sessió:"
 
 #: ui/TextPromptDialog.qml:40
-#, fuzzy, kde-format
-#| msgid "Enter system bus name…"
+#, kde-format
 msgid "Enter system bus name:"
-msgstr "Introduïu un nom de bus de sistema…"
+msgstr "Introduïu el nom de bus de sistema:"

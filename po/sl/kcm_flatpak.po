@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-30 00:40+0000\n"
-"PO-Revision-Date: 2023-09-06 07:01+0200\n"
+"PO-Revision-Date: 2024-08-30 06:39+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
 "%100==4 ? 3 : 0);\n"
-"X-Generator: Poedit 3.3.2\n"
+"X-Generator: Poedit 3.4.4\n"
 
 #: autotests/flatpakpermissiontest.cpp:642
 #: autotests/flatpakpermissiontest.cpp:864 flatpakpermission.cpp:404
@@ -65,80 +65,67 @@ msgid "create"
 msgstr "ustvari"
 
 #: flatpakpermission.cpp:819
-#, fuzzy, kde-format
-#| msgid "Internet Connection"
+#, kde-format
 msgid "Internet connection"
 msgstr "Internetna povezava"
 
 #: flatpakpermission.cpp:820
-#, fuzzy, kde-format
-#| msgid "Inter-process Communication"
+#, kde-format
 msgid "Inter-process communication"
 msgstr "Medprocesna komunikacija"
 
 #: flatpakpermission.cpp:826
-#, fuzzy, kde-format
-#| msgid "X11 Windowing System"
+#, kde-format
 msgid "X11 windowing system"
 msgstr "Okenski sistem X11"
 
 #: flatpakpermission.cpp:827
-#, fuzzy, kde-format
-#| msgid "Wayland Windowing System"
+#, kde-format
 msgid "Wayland windowing system"
 msgstr "Okenski sistem Wayland"
 
 #: flatpakpermission.cpp:828
-#, fuzzy, kde-format
-#| msgid "Fallback to X11 Windowing System"
+#, kde-format
 msgid "Fallback to X11 windowing system"
 msgstr "Povratek na okenski sistem X11"
 
 #: flatpakpermission.cpp:829
-#, fuzzy, kde-format
-#| msgid "Pulseaudio Sound Server"
+#, kde-format
 msgid "Pulseaudio sound server"
 msgstr "Zvočni strežnik PulseAudio"
 
 #: flatpakpermission.cpp:830
-#, fuzzy, kde-format
-#| msgid "Session Bus Access"
+#, kde-format
 msgid "Session bus access"
 msgstr "Dostop do sejnega vodila"
 
 #: flatpakpermission.cpp:831
-#, fuzzy, kde-format
-#| msgid "System Bus Access"
+#, kde-format
 msgid "System bus access"
 msgstr "Dostop do sistemskega vodila"
 
 #: flatpakpermission.cpp:832
-#, fuzzy, kde-format
-#| msgid "Remote Login Access"
+#, kde-format
 msgid "Remote login access"
 msgstr "Dostop z oddaljeno prijavo"
 
 #: flatpakpermission.cpp:833
-#, fuzzy, kde-format
-#| msgid "Smart Card Access"
+#, kde-format
 msgid "Smart card access"
 msgstr "Dostop s pametno kartico"
 
 #: flatpakpermission.cpp:834
-#, fuzzy, kde-format
-#| msgid "Print System Access"
+#, kde-format
 msgid "Print system access"
 msgstr "Dostop do sistema tiskanja"
 
 #: flatpakpermission.cpp:840
-#, fuzzy, kde-format
-#| msgid "Kernel-based Virtual Machine Access"
+#, kde-format
 msgid "Kernel-based Virtual Machine access"
 msgstr "Dostop do navideznega stroja na ravni jedra"
 
 #: flatpakpermission.cpp:841
-#, fuzzy, kde-format
-#| msgid "Direct Graphic Rendering"
+#, kde-format
 msgid "Direct graphic rendering"
 msgstr "Neposredno grafično upodabljanje"
 
@@ -148,20 +135,17 @@ msgid "Host dev/shm"
 msgstr "Gostiteljev dev/shm"
 
 #: flatpakpermission.cpp:843
-#, fuzzy, kde-format
-#| msgid "Device Access"
+#, kde-format
 msgid "Device access"
 msgstr "Dostop do naprave"
 
 #: flatpakpermission.cpp:849
-#, fuzzy, kde-format
-#| msgid "System Calls by Development Tools"
+#, kde-format
 msgid "System calls by development tools"
 msgstr "Sistemski klici iz razvojnih orodij"
 
 #: flatpakpermission.cpp:850
-#, fuzzy, kde-format
-#| msgid "Run Multiarch/Multilib Binaries"
+#, kde-format
 msgid "Run multiarch/multilib binaries"
 msgstr "Zaženi večarhitekturne/večknjižnične izvršilne datoteke"
 
@@ -171,8 +155,7 @@ msgid "Bluetooth"
 msgstr "Bluetooth"
 
 #: flatpakpermission.cpp:852
-#, fuzzy, kde-format
-#| msgid "Canbus Socket Access"
+#, kde-format
 msgid "Canbus socket access"
 msgstr "Dostop do vtičnic Canbus"
 
@@ -182,26 +165,22 @@ msgid "Share dev/shm across all instances of an app per user ID"
 msgstr "Skupna raba dev/shm v vseh primerih aplikacije na ID uporabnika"
 
 #: flatpakpermission.cpp:913
-#, fuzzy, kde-format
-#| msgid "All User Files"
+#, kde-format
 msgid "All user files"
 msgstr "Vse uporabniške datoteke"
 
 #: flatpakpermission.cpp:914
-#, fuzzy, kde-format
-#| msgid "All System Files"
+#, kde-format
 msgid "All system files"
 msgstr "Vse sistemske datoteke"
 
 #: flatpakpermission.cpp:915
-#, fuzzy, kde-format
-#| msgid "All System Libraries, Executables and Binaries"
+#, kde-format
 msgid "All system libraries, executables and binaries"
 msgstr "Vse sistemske knjižnice, izvršilne in binarne datoteke"
 
 #: flatpakpermission.cpp:916
-#, fuzzy, kde-format
-#| msgid "All System Configurations"
+#, kde-format
 msgid "All system configurations"
 msgstr "Vse sistemske konfiguracije"
 
@@ -333,10 +312,9 @@ msgid "Show advanced permissions"
 msgstr "Pokaži napredna dovoljenja"
 
 #: ui/permissions.qml:155
-#, fuzzy, kde-format
-#| msgid "Add New"
+#, kde-format
 msgid "Add New…"
-msgstr "Dodaj novega"
+msgstr "Dodaj novega…"
 
 #: ui/TextPromptDialog.qml:21
 #, kde-format
@@ -354,22 +332,19 @@ msgid "Add System Bus Permission"
 msgstr "Dodaj dovoljenja za sistemsko vodilo"
 
 #: ui/TextPromptDialog.qml:38
-#, fuzzy, kde-format
-#| msgid "Enter filesystem path…"
+#, kde-format
 msgid "Enter filesystem path:"
-msgstr "Vnesite pot datotečnega sistema…"
+msgstr "Vnesite pot datotečnega sistema:"
 
 #: ui/TextPromptDialog.qml:39
-#, fuzzy, kde-format
-#| msgid "Enter session bus name…"
+#, kde-format
 msgid "Enter session bus name:"
-msgstr "Vnesite ime sejnega vodila…"
+msgstr "Vnesite ime sejnega vodila:"
 
 #: ui/TextPromptDialog.qml:40
-#, fuzzy, kde-format
-#| msgid "Enter system bus name…"
+#, kde-format
 msgid "Enter system bus name:"
-msgstr "Vnesite ime sistemskega vodila…"
+msgstr "Vnesite ime sistemskega vodila:"
 
 #~ msgid "Enter variable…"
 #~ msgstr "Vnesitespremenljivko…"

@@ -3,13 +3,13 @@
 # This file is distributed under the same license as the flatpak-kcm package.
 #
 # Automatically generated, 2022.
-# SPDX-FileCopyrightText: 2022, 2023 Eloy Cuadra <ecuadra@eloihr.net>
+# SPDX-FileCopyrightText: 2022, 2023, 2024 Eloy Cuadra <ecuadra@eloihr.net>
 msgid ""
 msgstr ""
 "Project-Id-Version: kcm_flatpak\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-30 00:40+0000\n"
-"PO-Revision-Date: 2023-09-07 12:12+0200\n"
+"PO-Revision-Date: 2024-08-31 01:59+0200\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.08.0\n"
+"X-Generator: Lokalize 24.08.0\n"
 
 #: autotests/flatpakpermissiontest.cpp:642
 #: autotests/flatpakpermissiontest.cpp:864 flatpakpermission.cpp:404
@@ -64,80 +64,67 @@ msgid "create"
 msgstr "crear"
 
 #: flatpakpermission.cpp:819
-#, fuzzy, kde-format
-#| msgid "Internet Connection"
+#, kde-format
 msgid "Internet connection"
 msgstr "Conexión a Internet"
 
 #: flatpakpermission.cpp:820
-#, fuzzy, kde-format
-#| msgid "Inter-process Communication"
+#, kde-format
 msgid "Inter-process communication"
 msgstr "Comunicación entre procesos"
 
 #: flatpakpermission.cpp:826
-#, fuzzy, kde-format
-#| msgid "X11 Windowing System"
+#, kde-format
 msgid "X11 windowing system"
 msgstr "Sistema de ventanas X11"
 
 #: flatpakpermission.cpp:827
-#, fuzzy, kde-format
-#| msgid "Wayland Windowing System"
+#, kde-format
 msgid "Wayland windowing system"
 msgstr "Sistema de ventanas Wayland"
 
 #: flatpakpermission.cpp:828
-#, fuzzy, kde-format
-#| msgid "Fallback to X11 Windowing System"
+#, kde-format
 msgid "Fallback to X11 windowing system"
 msgstr "Recurrir al sistema de ventanas X11"
 
 #: flatpakpermission.cpp:829
-#, fuzzy, kde-format
-#| msgid "Pulseaudio Sound Server"
+#, kde-format
 msgid "Pulseaudio sound server"
 msgstr "Servidor de sonido PulseAudio"
 
 #: flatpakpermission.cpp:830
-#, fuzzy, kde-format
-#| msgid "Session Bus Access"
+#, kde-format
 msgid "Session bus access"
 msgstr "Acceso al bus de la sesión"
 
 #: flatpakpermission.cpp:831
-#, fuzzy, kde-format
-#| msgid "System Bus Access"
+#, kde-format
 msgid "System bus access"
 msgstr "Acceso al bus del sistema"
 
 #: flatpakpermission.cpp:832
-#, fuzzy, kde-format
-#| msgid "Remote Login Access"
+#, kde-format
 msgid "Remote login access"
 msgstr "Acceso de sesión remota"
 
 #: flatpakpermission.cpp:833
-#, fuzzy, kde-format
-#| msgid "Smart Card Access"
+#, kde-format
 msgid "Smart card access"
 msgstr "Acceso de tarjetas inteligentes"
 
 #: flatpakpermission.cpp:834
-#, fuzzy, kde-format
-#| msgid "Print System Access"
+#, kde-format
 msgid "Print system access"
 msgstr "Acceso al sistema de impresión"
 
 #: flatpakpermission.cpp:840
-#, fuzzy, kde-format
-#| msgid "Kernel-based Virtual Machine Access"
+#, kde-format
 msgid "Kernel-based Virtual Machine access"
 msgstr "Acceso a máquinas virtuales basado en kernel"
 
 #: flatpakpermission.cpp:841
-#, fuzzy, kde-format
-#| msgid "Direct Graphic Rendering"
+#, kde-format
 msgid "Direct graphic rendering"
 msgstr "Renderizado de gráficos directo"
 
@@ -147,20 +134,17 @@ msgid "Host dev/shm"
 msgstr "dev/shm de la máquina"
 
 #: flatpakpermission.cpp:843
-#, fuzzy, kde-format
-#| msgid "Device Access"
+#, kde-format
 msgid "Device access"
 msgstr "Acceso a dispositivos"
 
 #: flatpakpermission.cpp:849
-#, fuzzy, kde-format
-#| msgid "System Calls by Development Tools"
+#, kde-format
 msgid "System calls by development tools"
 msgstr "Llamadas del sistema por herramientas de desarrollo"
 
 #: flatpakpermission.cpp:850
-#, fuzzy, kde-format
-#| msgid "Run Multiarch/Multilib Binaries"
+#, kde-format
 msgid "Run multiarch/multilib binaries"
 msgstr "Ejecutar binarios multiarquitectura/multibiblioteca"
 
@@ -170,8 +154,7 @@ msgid "Bluetooth"
 msgstr "Bluetooth"
 
 #: flatpakpermission.cpp:852
-#, fuzzy, kde-format
-#| msgid "Canbus Socket Access"
+#, kde-format
 msgid "Canbus socket access"
 msgstr "Acceso al conector Canbus"
 
@@ -183,26 +166,22 @@ msgstr ""
 "usuario"
 
 #: flatpakpermission.cpp:913
-#, fuzzy, kde-format
-#| msgid "All User Files"
+#, kde-format
 msgid "All user files"
 msgstr "Todos los archivos de usuario"
 
 #: flatpakpermission.cpp:914
-#, fuzzy, kde-format
-#| msgid "All System Files"
+#, kde-format
 msgid "All system files"
 msgstr "Todos los archivos del sistema"
 
 #: flatpakpermission.cpp:915
-#, fuzzy, kde-format
-#| msgid "All System Libraries, Executables and Binaries"
+#, kde-format
 msgid "All system libraries, executables and binaries"
 msgstr "Todas las bibliotecas, ejecutables y binarios del sistema"
 
 #: flatpakpermission.cpp:916
-#, fuzzy, kde-format
-#| msgid "All System Configurations"
+#, kde-format
 msgid "All system configurations"
 msgstr "Todas las configuraciones del sistema"
 
@@ -333,10 +312,9 @@ msgid "Show advanced permissions"
 msgstr "Mostrar permisos avanzados"
 
 #: ui/permissions.qml:155
-#, fuzzy, kde-format
-#| msgid "Add New"
+#, kde-format
 msgid "Add New…"
-msgstr "Añadir nuevo"
+msgstr "Añadir nuevo..."
 
 #: ui/TextPromptDialog.qml:21
 #, kde-format
@@ -354,22 +332,19 @@ msgid "Add System Bus Permission"
 msgstr "Añadir permiso de bus del sistema"
 
 #: ui/TextPromptDialog.qml:38
-#, fuzzy, kde-format
-#| msgid "Enter filesystem path…"
+#, kde-format
 msgid "Enter filesystem path:"
-msgstr "Introduzca ruta del sistema de archivos..."
+msgstr "Introduzca ruta del sistema de archivos:"
 
 #: ui/TextPromptDialog.qml:39
-#, fuzzy, kde-format
-#| msgid "Enter session bus name…"
+#, kde-format
 msgid "Enter session bus name:"
-msgstr "Introduzca nombre del bus de sesión..."
+msgstr "Introduzca nombre del bus de sesión:"
 
 #: ui/TextPromptDialog.qml:40
-#, fuzzy, kde-format
-#| msgid "Enter system bus name…"
+#, kde-format
 msgid "Enter system bus name:"
-msgstr "Introduzca nombre del bus del sistema..."
+msgstr "Introduzca nombre del bus del sistema:"
 
 #~ msgid "Enter variable…"
 #~ msgstr "Introduzca variable..."

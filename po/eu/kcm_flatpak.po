@@ -1,16 +1,16 @@
 # Translation for kcm_flatpak.po to Euskara/Basque (eu).
-# Copyright (C) 2022-2023 This file is copyright:
+# Copyright (C) 2022-2024 This file is copyright:
 # This file is distributed under the same license as the flatpak-kcm package.
-# SPDX-FileCopyrightText: 2023 KDE euskaratzeko proiektuko arduraduna <xalba@ni.eus>
+# SPDX-FileCopyrightText: 2023, 2024 KDE euskaratzeko proiektuko arduraduna <xalba@ni.eus>
 #
 # Translators:
-# Iñigo Salvador Azurmendi <xalba@ni.eus>, 2022, 2023.
+# Iñigo Salvador Azurmendi <xalba@ni.eus>, 2022, 2023, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-30 00:40+0000\n"
-"PO-Revision-Date: 2023-09-06 07:36+0200\n"
+"PO-Revision-Date: 2024-08-30 12:50+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 23.08.0\n"
+"X-Generator: Lokalize 24.08.0\n"
 
 #: autotests/flatpakpermissiontest.cpp:642
 #: autotests/flatpakpermissiontest.cpp:864 flatpakpermission.cpp:404
@@ -65,80 +65,67 @@ msgid "create"
 msgstr "sortu"
 
 #: flatpakpermission.cpp:819
-#, fuzzy, kde-format
-#| msgid "Internet Connection"
+#, kde-format
 msgid "Internet connection"
-msgstr "Internet konexioa"
+msgstr "Interneterako konexioa"
 
 #: flatpakpermission.cpp:820
-#, fuzzy, kde-format
-#| msgid "Inter-process Communication"
+#, kde-format
 msgid "Inter-process communication"
-msgstr "Prozesu arteko komunikazioa"
+msgstr "Prozesuen arteko komunikazioa"
 
 #: flatpakpermission.cpp:826
-#, fuzzy, kde-format
-#| msgid "X11 Windowing System"
+#, kde-format
 msgid "X11 windowing system"
 msgstr "X11 leiho-sistema"
 
 #: flatpakpermission.cpp:827
-#, fuzzy, kde-format
-#| msgid "Wayland Windowing System"
+#, kde-format
 msgid "Wayland windowing system"
 msgstr "Wayland leiho-sistema"
 
 #: flatpakpermission.cpp:828
-#, fuzzy, kde-format
-#| msgid "Fallback to X11 Windowing System"
+#, kde-format
 msgid "Fallback to X11 windowing system"
 msgstr "Atzera egin X11 leiho-sistemara"
 
 #: flatpakpermission.cpp:829
-#, fuzzy, kde-format
-#| msgid "Pulseaudio Sound Server"
+#, kde-format
 msgid "Pulseaudio sound server"
 msgstr "Pulseaudio soinu-zerbitzaria"
 
 #: flatpakpermission.cpp:830
-#, fuzzy, kde-format
-#| msgid "Session Bus Access"
+#, kde-format
 msgid "Session bus access"
 msgstr "Saioko buserako sarbidea"
 
 #: flatpakpermission.cpp:831
-#, fuzzy, kde-format
-#| msgid "System Bus Access"
+#, kde-format
 msgid "System bus access"
 msgstr "Sistemako buserako sarbidea"
 
 #: flatpakpermission.cpp:832
-#, fuzzy, kde-format
-#| msgid "Remote Login Access"
+#, kde-format
 msgid "Remote login access"
-msgstr "Urruneko saio-haste sarbidea"
+msgstr "Urrunetik saio-hasteko sarbidea"
 
 #: flatpakpermission.cpp:833
-#, fuzzy, kde-format
-#| msgid "Smart Card Access"
+#, kde-format
 msgid "Smart card access"
 msgstr "Txartel adimendunetara sarbidea"
 
 #: flatpakpermission.cpp:834
-#, fuzzy, kde-format
-#| msgid "Print System Access"
+#, kde-format
 msgid "Print system access"
 msgstr "Inprimatzeko sistemara sarbidea"
 
 #: flatpakpermission.cpp:840
-#, fuzzy, kde-format
-#| msgid "Kernel-based Virtual Machine Access"
+#, kde-format
 msgid "Kernel-based Virtual Machine access"
-msgstr "Muina-oinarri duten alegiazko makinetara sarbidea"
+msgstr "Muinen oinarritutako alegiazko makinetara sarbidea"
 
 #: flatpakpermission.cpp:841
-#, fuzzy, kde-format
-#| msgid "Direct Graphic Rendering"
+#, kde-format
 msgid "Direct graphic rendering"
 msgstr "Zuzeneko errendatze grafikoa"
 
@@ -148,22 +135,19 @@ msgid "Host dev/shm"
 msgstr "Ostalari dev/shm"
 
 #: flatpakpermission.cpp:843
-#, fuzzy, kde-format
-#| msgid "Device Access"
+#, kde-format
 msgid "Device access"
 msgstr "Gailuetara sarbidea"
 
 #: flatpakpermission.cpp:849
-#, fuzzy, kde-format
-#| msgid "System Calls by Development Tools"
+#, kde-format
 msgid "System calls by development tools"
 msgstr "Garapen tresnek eginiko sistemako deiak"
 
 #: flatpakpermission.cpp:850
-#, fuzzy, kde-format
-#| msgid "Run Multiarch/Multilib Binaries"
+#, kde-format
 msgid "Run multiarch/multilib binaries"
-msgstr "Ibili Multiarch/Multilib bitarrak"
+msgstr "Exekutatu arkitektura-/liburutegi-anizkoitzeko bitarrak"
 
 #: flatpakpermission.cpp:851
 #, kde-format
@@ -171,10 +155,9 @@ msgid "Bluetooth"
 msgstr "Bluetooth"
 
 #: flatpakpermission.cpp:852
-#, fuzzy, kde-format
-#| msgid "Canbus Socket Access"
+#, kde-format
 msgid "Canbus socket access"
-msgstr "Canbus «Socket»era sarbidea"
+msgstr "CAN bus hartunera sarbidea"
 
 #: flatpakpermission.cpp:855
 #, kde-format
@@ -184,26 +167,22 @@ msgstr ""
 "bakoitzeko"
 
 #: flatpakpermission.cpp:913
-#, fuzzy, kde-format
-#| msgid "All User Files"
+#, kde-format
 msgid "All user files"
-msgstr "Erabiltzaile-fitxategi guztiak"
+msgstr "Erabiltzaileen fitxategi guztiak"
 
 #: flatpakpermission.cpp:914
-#, fuzzy, kde-format
-#| msgid "All System Files"
+#, kde-format
 msgid "All system files"
 msgstr "Sistemako fitxategi guztiak"
 
 #: flatpakpermission.cpp:915
-#, fuzzy, kde-format
-#| msgid "All System Libraries, Executables and Binaries"
+#, kde-format
 msgid "All system libraries, executables and binaries"
 msgstr "Sistemako liburutegi, exekutagarri eta bitar guztiak"
 
 #: flatpakpermission.cpp:916
-#, fuzzy, kde-format
-#| msgid "All System Configurations"
+#, kde-format
 msgid "All system configurations"
 msgstr "Sistemako konfigurazio guztiak"
 
@@ -334,10 +313,9 @@ msgid "Show advanced permissions"
 msgstr "Erakutsi baimen aurreratuak"
 
 #: ui/permissions.qml:155
-#, fuzzy, kde-format
-#| msgid "Add New"
+#, kde-format
 msgid "Add New…"
-msgstr "Gehitu berria"
+msgstr "Gehitu ...berria"
 
 #: ui/TextPromptDialog.qml:21
 #, kde-format
@@ -355,22 +333,19 @@ msgid "Add System Bus Permission"
 msgstr "Gehitu sistemako bus-erako baimena"
 
 #: ui/TextPromptDialog.qml:38
-#, fuzzy, kde-format
-#| msgid "Enter filesystem path…"
+#, kde-format
 msgid "Enter filesystem path:"
-msgstr "Sartu fitxategi-sistemako bide-izena..."
+msgstr "Sartu fitxategi-sistemaren bide-izena:"
 
 #: ui/TextPromptDialog.qml:39
-#, fuzzy, kde-format
-#| msgid "Enter session bus name…"
+#, kde-format
 msgid "Enter session bus name:"
-msgstr "Sartu saioko bus-aren izena..."
+msgstr "Sartu saio-busaren izena:"
 
 #: ui/TextPromptDialog.qml:40
-#, fuzzy, kde-format
-#| msgid "Enter system bus name…"
+#, kde-format
 msgid "Enter system bus name:"
-msgstr "Sartu sistemako bus-aren izena..."
+msgstr "Sartu sistema-busaren izena:"
 
 #~ msgid "Enter variable…"
 #~ msgstr "Sartu aldagaia..."
