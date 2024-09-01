@@ -89,7 +89,7 @@ msgstr "回退到 X11 窗口系统"
 #: flatpakpermission.cpp:829
 #, kde-format
 msgid "Pulseaudio Sound Server"
-msgstr "PulseAudio 声音服务"
+msgstr "PulseAudio 声音服务器"
 
 #: flatpakpermission.cpp:830
 #, kde-format
