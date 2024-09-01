@@ -1,6 +1,6 @@
 # Copyright (C) 2023 This file is copyright:
 # This file is distributed under the same license as the flatpak-kcm package.
-# Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>, 2022, 2023.
+# SPDX-FileCopyrightText: 2022, 2023, 2024 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
 # SPDX-FileCopyrightText: 2023 Marcin Mikołajczak <me@mkljczk.pl>
 #
 msgid ""
@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-06-13 02:42+0000\n"
-"PO-Revision-Date: 2023-03-04 08:29+0100\n"
+"PO-Revision-Date: 2024-08-31 06:25+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
 "Language: pl\n"
@@ -17,6 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 #: autotests/flatpakpermissiontest.cpp:642
 #: autotests/flatpakpermissiontest.cpp:864 flatpakpermission.cpp:404
@@ -95,7 +96,7 @@ msgstr "Serwer dźwięku PulseAudio"
 #: flatpakpermission.cpp:830
 #, kde-format
 msgid "Session Bus Access"
-msgstr "Dostęp do szyny sesji"
+msgstr "Dostęp do szyny posiedzenia"
 
 #: flatpakpermission.cpp:831
 #, kde-format
@@ -217,7 +218,7 @@ msgstr "Dozwolone możliwości"
 #: flatpakpermission.cpp:1308
 #, kde-format
 msgid "Session Bus Policy"
-msgstr "Zasady szyny sesji"
+msgstr "Zasady szyny posiedzenia"
 
 #: flatpakpermission.cpp:1310
 #, kde-format
@@ -237,7 +238,7 @@ msgstr "Dodaj nową ścieżkę systemu plików"
 #: flatpakpermission.cpp:1331
 #, kde-format
 msgid "Add a new session bus"
-msgstr "Dodaj nową szynę sesji"
+msgstr "Dodaj nową szynę posiedzenia"
 
 #: flatpakpermission.cpp:1333
 #, kde-format
@@ -315,7 +316,7 @@ msgstr "Dodaj uprawnienia do ścieżki systemu plików"
 #: package/contents/ui/TextPromptDialog.qml:22
 #, kde-format
 msgid "Add Session Bus Permission"
-msgstr "Dodaj uprawienia szyny sesji"
+msgstr "Dodaj uprawienia szyny posiedzenia"
 
 #: package/contents/ui/TextPromptDialog.qml:23
 #, kde-format
@@ -330,7 +331,7 @@ msgstr "Wpisz ścieżkę systemu plików..."
 #: package/contents/ui/TextPromptDialog.qml:39
 #, kde-format
 msgid "Enter session bus name..."
-msgstr "Wpisz nazwę szyny sesji..."
+msgstr "Wpisz nazwę szyny posiedzenia..."
 
 #: package/contents/ui/TextPromptDialog.qml:40
 #, kde-format
