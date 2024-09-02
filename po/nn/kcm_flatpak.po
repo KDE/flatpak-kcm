@@ -5,15 +5,15 @@ msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-06-13 02:42+0000\n"
-"PO-Revision-Date: 2023-03-05 12:18+0100\n"
+"PO-Revision-Date: 2024-09-01 15:18+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
 "Language: nn\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.02.0\n"
+"X-Generator: Lokalize 24.08.0\n"
 "X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
@@ -100,7 +100,7 @@ msgstr "Tilgang til øktbussen"
 #: flatpakpermission.cpp:831
 #, kde-format
 msgid "System Bus Access"
-msgstr "Tilgang til systembussen"
+msgstr "Fjerinnlogging"
 
 # Unødvendig å gjenta ordet «tilgang» her (er uansett inkonsekvent formulert på engelsk).
 #: flatpakpermission.cpp:832
