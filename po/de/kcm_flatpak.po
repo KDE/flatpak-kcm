@@ -2,7 +2,7 @@
 # Copyright (C) 2022 This file is copyright:
 # This file is distributed under the same license as the flatpak-kcm package.
 # Jannick Kuhr <opensource@kuhr.org>, 2023.
-# SPDX-FileCopyrightText: 2023 Johannes Obermayr <johannesobermayr@gmx.de>
+# SPDX-FileCopyrightText: 2023, 2024 Johannes Obermayr <johannesobermayr@gmx.de>
 #
 # Automatically generated, 2022.
 msgid ""
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 23.08.4\n"
+"X-Generator: Lokalize 24.11.70\n"
 
 #: autotests/flatpakpermissiontest.cpp:642
 #: autotests/flatpakpermissiontest.cpp:864 flatpakpermission.cpp:404
