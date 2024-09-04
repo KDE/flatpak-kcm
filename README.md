@@ -20,4 +20,4 @@ The KCM allows changing what permissions have been granted to installed Flatpak 
 - cmake .. -DCMAKE_INSTALL_PREFIX=~/.local/kde
 - make install
 - source prefix.sh
-- kcmshell5 kcm_flatpak
+- kcmshell6 kcm_flatpak
