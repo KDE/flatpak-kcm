@@ -7,7 +7,7 @@
 # Automatically generated, 2022.
 msgid ""
 msgstr ""
-"Project-Id-Version: flatpak-kcm\n"
+"Project-Id-Version: kcm_flatpak\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-08 01:35+0000\n"
 "PO-Revision-Date: 2023-12-18 02:42+0100\n"
