@@ -78,5 +78,6 @@
         "Name[zh_TW]": "Flatpak 權限設定"
     },
     "X-KDE-Keywords": "Flatpak,permission,permissions,access,sandbox,sandboxed,filesystem,file,files,folder,folders,network,networks,networking,bluetooth,print,printer,printing,audio,sound,login,remote login,ssh,smart card,kvm,device,session,session bus,system,system bus,environment,environment variable",
+    "X-KDE-Keywords[x-test]": "xxFlatpakxx,xxpermissionxx,xxpermissionsxx,xxaccessxx,xxsandboxxx,xxsandboxedxx,xxfilesystemxx,xxfilexx,xxfilesxx,xxfolderxx,xxfoldersxx,xxnetworkxx,xxnetworksxx,xxnetworkingxx,xxbluetoothxx,xxprintxx,xxprinterxx,xxprintingxx,xxaudioxx,xxsoundxx,xxloginxx,xxremote loginxx,xxsshxx,xxsmart cardxx,xxkvmxx,xxdevicexx,xxsessionxx,xxsession busxx,xxsystemxx,xxsystem busxx,xxenvironmentxx,xxenvironment variablexx",
     "X-KDE-System-Settings-Parent-Category": "applications"
 }
