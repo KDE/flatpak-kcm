@@ -26,6 +26,9 @@ public:
     Q_INVOKABLE bool isDefaults() const override;
     Q_INVOKABLE int currentIndex() const;
 
+Q_SIGNALS:
+    void indexChanged(int index);
+
 public Q_SLOTS:
     void load() override;
     void save() override;
@@ -33,6 +36,8 @@ public Q_SLOTS:
     void setIndex(int index);
 
 private:
+    std::optional<int> indexFromArgs(const QVariantList &args) const;
+
     FlatpakReferencesModel *const m_refsModel;
     int m_index = -1;
 };

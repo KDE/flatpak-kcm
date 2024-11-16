@@ -68,6 +68,14 @@ KCM.ScrollViewKCM {
         changeApp(KCM.ConfigModule.currentIndex());
     }
 
+    Connections {
+        target: kcm
+
+        function onIndexChanged(index: int) {
+            root.changeApp(index)
+        }
+    }
+
     KCM.ConfigModule.buttons: KCM.ConfigModule.Apply | KCM.ConfigModule.Default
 
     Component {

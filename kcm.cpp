@@ -17,15 +17,6 @@ KCMFlatpak::KCMFlatpak(QObject *parent, const KPluginMetaData &data, const QVari
     : KQuickManagedConfigModule(parent, data)
     , m_refsModel(new FlatpakReferencesModel(this))
 {
-    QString requestedReference;
-    if (!args.isEmpty()) {
-        const QVariant &arg0 = args.at(0);
-        if (arg0.canConvert<QString>()) {
-            const QString arg0str = arg0.toString();
-            requestedReference = arg0str;
-        }
-    }
-
     constexpr const char *uri = "org.kde.plasma.kcm.flatpakpermissions";
 
     qmlRegisterUncreatableType<KCMFlatpak>(uri, 1, 0, "KCMFlatpak", QString());
@@ -37,18 +28,49 @@ KCMFlatpak::KCMFlatpak(QObject *parent, const KPluginMetaData &data, const QVari
     connect(m_refsModel, &FlatpakReferencesModel::needsLoad, this, &KCMFlatpak::load);
     connect(m_refsModel, &FlatpakReferencesModel::settingsChanged, this, &KCMFlatpak::settingsChanged);
 
-    if (!requestedReference.isEmpty()) {
-        const auto &refs = m_refsModel->references();
-        const auto it = std::find_if(refs.constBegin(), refs.constEnd(), [&](FlatpakReference *ref) {
-            return ref->ref() == requestedReference;
-        });
-        if (it != refs.constEnd()) {
-            const auto index = std::distance(refs.constBegin(), it);
-            m_index = index;
-        }
+    const auto maybeRequestedIndex = indexFromArgs(args);
+
+    if (maybeRequestedIndex) {
+        m_index = *maybeRequestedIndex;
     }
 
+    connect(this, &KQuickConfigModule::activationRequested, this, [this](const QVariantList &args) {
+        const auto maybeRequestedIndex = indexFromArgs(args);
+
+        if (maybeRequestedIndex) {
+            m_index = *maybeRequestedIndex;
+            Q_EMIT indexChanged(m_index);
+        }
+    });
+
     settingsChanged(); // Initialize Reset & Defaults buttons
+}
+
+std::optional<int> KCMFlatpak::indexFromArgs(const QVariantList &args) const
+{
+    if (args.isEmpty()) {
+        return std::nullopt;
+    }
+
+    QString requestedReference;
+
+    const QVariant &arg0 = args.at(0);
+    if (arg0.canConvert<QString>()) {
+        requestedReference = arg0.toString();
+    } else {
+        return std::nullopt;
+    }
+
+    const auto &refs = m_refsModel->references();
+    const auto it = std::find_if(refs.constBegin(), refs.constEnd(), [&](FlatpakReference *ref) {
+        return ref->ref() == requestedReference;
+    });
+    if (it != refs.constEnd()) {
+        const auto index = std::distance(refs.constBegin(), it);
+        return index;
+    } else {
+        return std::nullopt;
+    }
 }
 
 void KCMFlatpak::load()
