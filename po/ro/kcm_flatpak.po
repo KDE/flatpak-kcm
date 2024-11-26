@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-30 00:40+0000\n"
+"POT-Creation-Date: 2024-11-26 00:41+0000\n"
 "PO-Revision-Date: 2024-01-07 18:07+0000\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
@@ -297,12 +297,12 @@ msgstr "Valoare:"
 msgid "Flatpak Applications"
 msgstr "Aplicații Flatpak"
 
-#: ui/main.qml:89
+#: ui/main.qml:97
 #, kde-format
 msgid "Apply Permissions"
 msgstr "Aplică permisiunile"
 
-#: ui/main.qml:90
+#: ui/main.qml:98
 #, kde-format
 msgid ""
 "The permissions of application %1 have been changed. Do you want to apply "
