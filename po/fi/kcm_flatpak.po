@@ -1,13 +1,13 @@
-# Copyright (C) YEAR This file is copyright:
+# Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the flatpak-kcm package.
-# Tommi Nieminen <translator@legisign.org>, 2022, 2023, 2024.
+# SPDX-FileCopyrightText: 2022, 2023, 2024 Tommi Nieminen <translator@legisign.org>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-11-26 02:31+0000\n"
-"PO-Revision-Date: 2024-01-29 17:48+0200\n"
+"PO-Revision-Date: 2024-10-19 10:32+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 #: autotests/flatpakpermissiontest.cpp:642
 #: autotests/flatpakpermissiontest.cpp:864 flatpakpermission.cpp:404
@@ -62,80 +62,67 @@ msgid "create"
 msgstr "luonti"
 
 #: flatpakpermission.cpp:819
-#, fuzzy, kde-format
-#| msgid "Internet Connection"
+#, kde-format
 msgid "Internet connection"
 msgstr "Internetyhteys"
 
 #: flatpakpermission.cpp:820
-#, fuzzy, kde-format
-#| msgid "Inter-process Communication"
+#, kde-format
 msgid "Inter-process communication"
 msgstr "Prosessienvälinen viestintä"
 
 #: flatpakpermission.cpp:826
-#, fuzzy, kde-format
-#| msgid "X11 Windowing System"
+#, kde-format
 msgid "X11 windowing system"
 msgstr "X11-ikkunointijärjestelmä"
 
 #: flatpakpermission.cpp:827
-#, fuzzy, kde-format
-#| msgid "Wayland Windowing System"
+#, kde-format
 msgid "Wayland windowing system"
 msgstr "Wayland-ikkunointijärjestelmä"
 
 #: flatpakpermission.cpp:828
-#, fuzzy, kde-format
-#| msgid "Fallback to X11 Windowing System"
+#, kde-format
 msgid "Fallback to X11 windowing system"
-msgstr "Vara-X11-ikkunointijärjestelmä"
+msgstr "Varapaluu X11-ikkunointijärjestelmään"
 
 #: flatpakpermission.cpp:829
-#, fuzzy, kde-format
-#| msgid "Pulseaudio Sound Server"
+#, kde-format
 msgid "Pulseaudio sound server"
 msgstr "Pulseaudio-äänipalvelin"
 
 #: flatpakpermission.cpp:830
-#, fuzzy, kde-format
-#| msgid "Session Bus Access"
+#, kde-format
 msgid "Session bus access"
 msgstr "Istuntoväylän käyttö"
 
 #: flatpakpermission.cpp:831
-#, fuzzy, kde-format
-#| msgid "System Bus Access"
+#, kde-format
 msgid "System bus access"
 msgstr "Järjestelmäväylän käyttö"
 
 #: flatpakpermission.cpp:832
-#, fuzzy, kde-format
-#| msgid "Remote Login Access"
+#, kde-format
 msgid "Remote login access"
 msgstr "Etäkirjautumiskäyttö"
 
 #: flatpakpermission.cpp:833
-#, fuzzy, kde-format
-#| msgid "Smart Card Access"
+#, kde-format
 msgid "Smart card access"
 msgstr "Älykorttien käyttö"
 
 #: flatpakpermission.cpp:834
-#, fuzzy, kde-format
-#| msgid "Print System Access"
+#, kde-format
 msgid "Print system access"
 msgstr "Tulostusjärjestelmän käyttö"
 
 #: flatpakpermission.cpp:840
-#, fuzzy, kde-format
-#| msgid "Kernel-based Virtual Machine Access"
+#, kde-format
 msgid "Kernel-based Virtual Machine access"
 msgstr "Ydinpohjaisen virtuaalikoneen käyttö"
 
 #: flatpakpermission.cpp:841
-#, fuzzy, kde-format
-#| msgid "Direct Graphic Rendering"
+#, kde-format
 msgid "Direct graphic rendering"
 msgstr "Suora grafiikkahahmonnus"
 
@@ -145,22 +132,19 @@ msgid "Host dev/shm"
 msgstr "Koneen dev/shm"
 
 #: flatpakpermission.cpp:843
-#, fuzzy, kde-format
-#| msgid "Device Access"
+#, kde-format
 msgid "Device access"
-msgstr "Laitesaanti"
+msgstr "Laitekäyttö"
 
 #: flatpakpermission.cpp:849
-#, fuzzy, kde-format
-#| msgid "System Calls by Development Tools"
+#, kde-format
 msgid "System calls by development tools"
 msgstr "Kehitystyökalujen järjestelmäkutsut"
 
 #: flatpakpermission.cpp:850
-#, fuzzy, kde-format
-#| msgid "Run Multiarch/Multilib Binaries"
+#, kde-format
 msgid "Run multiarch/multilib binaries"
-msgstr "Suorita useamman arkkitehtuurin ohjelmatiedostoja"
+msgstr "Moniarkkitehtuuristen ohjelmatiedostojen suorittaminen"
 
 #: flatpakpermission.cpp:851
 #, kde-format
@@ -168,8 +152,7 @@ msgid "Bluetooth"
 msgstr "Bluetooth"
 
 #: flatpakpermission.cpp:852
-#, fuzzy, kde-format
-#| msgid "Canbus Socket Access"
+#, kde-format
 msgid "Canbus socket access"
 msgstr "Canbus-pistokkeen käyttö"
 
@@ -180,26 +163,22 @@ msgstr ""
 "Jaa dev/shm käyttäjätunnisteittain sovelluksen kaikkien ilmentymien välillä"
 
 #: flatpakpermission.cpp:913
-#, fuzzy, kde-format
-#| msgid "All User Files"
+#, kde-format
 msgid "All user files"
 msgstr "Kaikki käyttäjän tiedostot"
 
 #: flatpakpermission.cpp:914
-#, fuzzy, kde-format
-#| msgid "All System Files"
+#, kde-format
 msgid "All system files"
 msgstr "Kaikki järjestelmätiedostot"
 
 #: flatpakpermission.cpp:915
-#, fuzzy, kde-format
-#| msgid "All System Libraries, Executables and Binaries"
+#, kde-format
 msgid "All system libraries, executables and binaries"
-msgstr "Kaikki järjestelmäkirjastot ja -ohjelmatiedostot"
+msgstr "Kaikki järjestelmäkirjastot, -ohjelmatiedostot ja -binaarit"
 
 #: flatpakpermission.cpp:916
-#, fuzzy, kde-format
-#| msgid "All System Configurations"
+#, kde-format
 msgid "All system configurations"
 msgstr "Kaikki järjestelmäasetukset"
 
@@ -330,10 +309,9 @@ msgid "Show advanced permissions"
 msgstr "Näytä lisäkäyttöoikeudet"
 
 #: ui/permissions.qml:155
-#, fuzzy, kde-format
-#| msgid "Add New"
+#, kde-format
 msgid "Add New…"
-msgstr "Lisää uusi"
+msgstr "Lisää uusi…"
 
 #: ui/TextPromptDialog.qml:21
 #, kde-format
@@ -351,22 +329,19 @@ msgid "Add System Bus Permission"
 msgstr "Lisää järjestelmäväylän käyttöoikeus"
 
 #: ui/TextPromptDialog.qml:38
-#, fuzzy, kde-format
-#| msgid "Enter filesystem path…"
+#, kde-format
 msgid "Enter filesystem path:"
-msgstr "Anna tiedostojärjestelmäsijainti…"
+msgstr "Anna tiedostojärjestelmäsijainti:"
 
 #: ui/TextPromptDialog.qml:39
-#, fuzzy, kde-format
-#| msgid "Enter session bus name…"
+#, kde-format
 msgid "Enter session bus name:"
-msgstr "Syötä istuntoväylän nimi…"
+msgstr "Syötä istuntoväylän nimi:"
 
 #: ui/TextPromptDialog.qml:40
-#, fuzzy, kde-format
-#| msgid "Enter system bus name…"
+#, kde-format
 msgid "Enter system bus name:"
-msgstr "Syötä järjestelmäväylän nimi…"
+msgstr "Syötä järjestelmäväylän nimi:"
 
 #~ msgid "Enter variable…"
 #~ msgstr "Syötä muuttuja…"
