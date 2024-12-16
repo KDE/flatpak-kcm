@@ -1,152 +1,149 @@
-# Sanskrit translations for flatpak-kcm package.
+# Hindi translations for flatpak-kcm package.
 # Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the flatpak-kcm package.
 # Kali <EMAIL@ADDRESS>, 2024.
 #
-# SPDX-FileCopyrightText: 2024 kali <skkalwar999@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-11-26 00:41+0000\n"
-"PO-Revision-Date: 2024-12-14 01:48+0530\n"
-"Last-Translator: kali <skkalwar999@gmail.com>\n"
-"Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
-"Language: sa\n"
+"PO-Revision-Date: 2024-12-15 17:36+0530\n"
+"Last-Translator: Kali <EMAIL@ADDRESS>\n"
+"Language-Team: Hindi <fedora-trans-hi@redhat.com>\n"
+"Language: hi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n>2);\n"
-"X-Generator: Lokalize 24.08.2\n"
 
 #: autotests/flatpakpermissiontest.cpp:642
 #: autotests/flatpakpermissiontest.cpp:864 flatpakpermission.cpp:404
 #, kde-format
 msgid "None"
-msgstr "न कश्चित्"
+msgstr "कोई नहीं"
 
 #: autotests/flatpakpermissiontest.cpp:643
 #: autotests/flatpakpermissiontest.cpp:867 flatpakpermission.cpp:405
 #, kde-format
 msgid "see"
-msgstr "पश्यतु"
+msgstr "देखना"
 
 #: autotests/flatpakpermissiontest.cpp:644
 #: autotests/flatpakpermissiontest.cpp:865 flatpakpermission.cpp:406
 #, kde-format
 msgid "talk"
-msgstr "प्रलपतु"
+msgstr "बात करना"
 
 #: autotests/flatpakpermissiontest.cpp:645
 #: autotests/flatpakpermissiontest.cpp:866 flatpakpermission.cpp:407
 #, kde-format
 msgid "own"
-msgstr "स्वकीयम्‌"
+msgstr "अपना"
 
 #: autotests/flatpakpermissiontest.cpp:854 flatpakpermission.cpp:395
 #, kde-format
 msgid "OFF"
-msgstr "दूरे"
+msgstr "बंद"
 
 #: autotests/flatpakpermissiontest.cpp:855 flatpakpermission.cpp:393
 #, kde-format
 msgid "read/write"
-msgstr "पठन्तु/लिखन्तु"
+msgstr "पढ़ना/लिखना"
 
 #: autotests/flatpakpermissiontest.cpp:856 flatpakpermission.cpp:392
 #, kde-format
 msgid "read-only"
-msgstr "पठनीय एव"
+msgstr "केवल पढ़ने के लिए"
 
 #: autotests/flatpakpermissiontest.cpp:857 flatpakpermission.cpp:394
 #, kde-format
 msgid "create"
-msgstr "निर्मियताम्"
+msgstr "बनाएं"
 
 #: flatpakpermission.cpp:819
 #, kde-format
 msgid "Internet connection"
-msgstr "अन्तर्जालसम्पर्कः"
+msgstr "इंटरनेट कनेक्शन"
 
 #: flatpakpermission.cpp:820
 #, kde-format
 msgid "Inter-process communication"
-msgstr "अन्तरप्रक्रियासञ्चारः"
+msgstr "अंतर-प्रक्रिया संचार"
 
 #: flatpakpermission.cpp:826
 #, kde-format
 msgid "X11 windowing system"
-msgstr "X11 विण्डोइंग प्रणाली"
+msgstr "X11 विंडोइंग सिस्टम"
 
 #: flatpakpermission.cpp:827
 #, kde-format
 msgid "Wayland windowing system"
-msgstr "वेलैण्ड् खिडकी प्रणाली"
+msgstr "वेलैंड विंडोइंग सिस्टम"
 
 #: flatpakpermission.cpp:828
 #, kde-format
 msgid "Fallback to X11 windowing system"
-msgstr "X11 विण्डोइंग सिस्टम् प्रति Fallback"
+msgstr "X11 विंडोइंग सिस्टम पर वापसी"
 
 #: flatpakpermission.cpp:829
 #, kde-format
 msgid "Pulseaudio sound server"
-msgstr "Pulseaudio ध्वनि सर्वर"
+msgstr "पल्सऑडियो ध्वनि सर्वर"
 
 #: flatpakpermission.cpp:830
 #, kde-format
 msgid "Session bus access"
-msgstr "सत्रबसप्रवेशः"
+msgstr "सत्र बस पहुंच"
 
 #: flatpakpermission.cpp:831
 #, kde-format
 msgid "System bus access"
-msgstr "सिस्टम् बस अभिगमः"
+msgstr "सिस्टम बस एक्सेस"
 
 #: flatpakpermission.cpp:832
 #, kde-format
 msgid "Remote login access"
-msgstr "दूरस्थप्रवेशप्रवेशः"
+msgstr "दूरस्थ लॉगिन पहुँच"
 
 #: flatpakpermission.cpp:833
 #, kde-format
 msgid "Smart card access"
-msgstr "स्मार्टकार्डस्य प्रवेशः"
+msgstr "स्मार्ट कार्ड का उपयोग"
 
 #: flatpakpermission.cpp:834
 #, kde-format
 msgid "Print system access"
-msgstr "मुद्रणप्रणालीप्रवेशः"
+msgstr "प्रिंट सिस्टम एक्सेस"
 
 #: flatpakpermission.cpp:840
 #, kde-format
 msgid "Kernel-based Virtual Machine access"
-msgstr "कर्नेल्-आधारितः वर्चुअल् मशीन् अभिगमः"
+msgstr "कर्नेल-आधारित वर्चुअल मशीन एक्सेस"
 
 #: flatpakpermission.cpp:841
 #, kde-format
 msgid "Direct graphic rendering"
-msgstr "प्रत्यक्षं चित्रात्मकं प्रतिपादनम्"
+msgstr "प्रत्यक्ष ग्राफिक रेंडरिंग"
 
 #: flatpakpermission.cpp:842
 #, kde-format
 msgid "Host dev/shm"
-msgstr "होस्ट देव/श्म्"
+msgstr "होस्ट देव/shm"
 
 #: flatpakpermission.cpp:843
 #, kde-format
 msgid "Device access"
-msgstr "यन्त्रप्रवेशः"
+msgstr "डिवाइस एक्सेस"
 
 #: flatpakpermission.cpp:849
 #, kde-format
 msgid "System calls by development tools"
-msgstr "विकाससाधनद्वारा प्रणाली आह्वानम्"
+msgstr "विकास उपकरणों द्वारा सिस्टम कॉल"
 
 #: flatpakpermission.cpp:850
 #, kde-format
 msgid "Run multiarch/multilib binaries"
-msgstr "multiarch/multilib द्विचक्रिकाः चालयन्तु"
+msgstr "मल्टीआर्क/मल्टीलिब बाइनरी चलाएं"
 
 #: flatpakpermission.cpp:851
 #, kde-format
@@ -156,42 +153,42 @@ msgstr "ब्लूटूथ"
 #: flatpakpermission.cpp:852
 #, kde-format
 msgid "Canbus socket access"
-msgstr "कैनबस सॉकेट अभिगमः"
+msgstr "कैनबस सॉकेट एक्सेस"
 
 #: flatpakpermission.cpp:855
 #, kde-format
 msgid "Share dev/shm across all instances of an app per user ID"
-msgstr "प्रति उपयोक्तृ-ID एकस्य एप्-इत्यस्य सर्वेषु उदाहरणेषु dev/shm साझां कुर्वन्तु"
+msgstr "प्रति उपयोगकर्ता आईडी के आधार पर ऐप के सभी इंस्टैंस में dev/shm साझा करें"
 
 #: flatpakpermission.cpp:913
 #, kde-format
 msgid "All user files"
-msgstr "सर्वाणि उपयोक्तृसञ्चिकाः"
+msgstr "सभी उपयोगकर्ता फ़ाइलें"
 
 #: flatpakpermission.cpp:914
 #, kde-format
 msgid "All system files"
-msgstr "सर्वाणि प्रणालीसञ्चिकाः"
+msgstr "सभी सिस्टम फ़ाइलें"
 
 #: flatpakpermission.cpp:915
 #, kde-format
 msgid "All system libraries, executables and binaries"
-msgstr "सर्वाणि प्रणालीपुस्तकालयानि, कार्यान्वयनीयानि, द्विचक्रिकाः च"
+msgstr "सभी सिस्टम लाइब्रेरीज़, निष्पादनयोग्य और बाइनरीज़"
 
 #: flatpakpermission.cpp:916
 #, kde-format
 msgid "All system configurations"
-msgstr "सर्वे प्रणालीविन्यासाः"
+msgstr "सभी सिस्टम कॉन्फ़िगरेशन"
 
 #: flatpakpermission.cpp:1294
 #, kde-format
 msgid "Basic Permissions"
-msgstr "मूलभूत अनुमतियाँ"
+msgstr "मूल अनुमतियाँ"
 
 #: flatpakpermission.cpp:1296
 #, kde-format
 msgid "Filesystem Access"
-msgstr "सञ्चिकातन्त्रप्रवेशः"
+msgstr "फ़ाइल सिस्टम एक्सेस"
 
 #: flatpakpermission.cpp:1298
 #, kde-format
@@ -201,22 +198,22 @@ msgstr "उन्नत अनुमतियाँ"
 #: flatpakpermission.cpp:1300
 #, kde-format
 msgid "Subsystems Shared"
-msgstr "उपतन्त्राणि साझा"
+msgstr "सबसिस्टम साझा"
 
 #: flatpakpermission.cpp:1302
 #, kde-format
 msgid "Sockets"
-msgstr "सॉकेट्"
+msgstr "कुर्सियां"
 
 #: flatpakpermission.cpp:1304
 #, kde-format
 msgid "Device Access"
-msgstr "उपकरण अभिगमः"
+msgstr "डिवाइस एक्सेस"
 
 #: flatpakpermission.cpp:1306
 #, kde-format
 msgid "Features Allowed"
-msgstr "विशेषताः अनुमताः"
+msgstr "अनुमत सुविधाएँ"
 
 #: flatpakpermission.cpp:1308
 #, kde-format
@@ -231,44 +228,44 @@ msgstr "सिस्टम बस नीति"
 #: flatpakpermission.cpp:1312
 #, kde-format
 msgid "Environment"
-msgstr "पर्यावरणम्‌"
+msgstr "पर्यावरण"
 
 #: flatpakpermission.cpp:1329
 #, kde-format
 msgid "Add a new filesystem path"
-msgstr "नूतनं सञ्चिकातन्त्रमार्गं योजयन्तु"
+msgstr "नया फ़ाइल सिस्टम पथ जोड़ें"
 
 #: flatpakpermission.cpp:1331
 #, kde-format
 msgid "Add a new session bus"
-msgstr "नूतनं सत्रबस् योजयन्तु"
+msgstr "नया सत्र बस जोड़ें"
 
 #: flatpakpermission.cpp:1333
 #, kde-format
 msgid "Add a new system bus"
-msgstr "नूतनं सिस्टम् बसं योजयन्तु"
+msgstr "नया सिस्टम बस जोड़ें"
 
 #: flatpakpermission.cpp:1335
 #, kde-format
 msgid "Add a new environment variable"
-msgstr "नूतनं वातावरणचरं योजयन्तु"
+msgstr "एक नया पर्यावरण चर जोड़ें"
 
 #: ui/AddEnvironmentVariableDialog.qml:18
 #, kde-format
 msgid "Set Environment Variable"
-msgstr "पर्यावरण चर सेट् करें"
+msgstr "पर्यावरण चर सेट करें"
 
 #: ui/AddEnvironmentVariableDialog.qml:34
 #, kde-format
 msgctxt "@label:textbox name of environment variable"
 msgid "Name:"
-msgstr "नामः:"
+msgstr "नाम:"
 
 #: ui/AddEnvironmentVariableDialog.qml:45
 #, kde-format
 msgctxt "@label:textbox value of environment variable"
 msgid "Value:"
-msgstr "मूल्यम्‌:"
+msgstr "कीमत:"
 
 #: ui/main.qml:19
 #, kde-format
@@ -278,7 +275,7 @@ msgstr "फ्लैटपैक अनुप्रयोग"
 #: ui/main.qml:97
 #, kde-format
 msgid "Apply Permissions"
-msgstr "अनुमतिः प्रयोजयन्तु"
+msgstr "अनुमतियाँ लागू करें"
 
 #: ui/main.qml:98
 #, kde-format
@@ -286,60 +283,60 @@ msgid ""
 "The permissions of application %1 have been changed. Do you want to apply "
 "these changes or discard them?"
 msgstr ""
-"अनुप्रयोगस्य %1 इत्यस्य अनुमतिः परिवर्तिता अस्ति । किं भवन्तः एतान् परिवर्तनान् प्रयोक्तुं "
-"इच्छन्ति वा परित्यक्तुं इच्छन्ति वा?"
+"एप्लिकेशन %1 की अनुमतियाँ बदल दी गई हैं। क्या आप इन परिवर्तनों को लागू करना चाहते हैं या "
+"उन्हें त्यागना चाहते हैं?"
 
 #: ui/permissions.qml:22
 #, kde-format
 msgid "Permissions"
-msgstr "अनुमतिः"
+msgstr "अनुमतियां"
 
 #: ui/permissions.qml:27
 #, kde-format
 msgid "Select an application from the list to view its permissions here"
-msgstr "अत्र तस्य अनुमतिः द्रष्टुं सूचीतः एकं अनुप्रयोगं चिनोतु"
+msgstr "यहां इसकी अनुमतियां देखने के लिए सूची से एक एप्लिकेशन का चयन करें"
 
 #: ui/permissions.qml:143
 #, kde-format
 msgid "Hide advanced permissions"
-msgstr "उन्नत अनुमतिः गोपयन्तु"
+msgstr "उन्नत अनुमतियाँ छिपाएँ"
 
 #: ui/permissions.qml:143
 #, kde-format
 msgid "Show advanced permissions"
-msgstr "उन्नतानुमतिः दर्शयतु"
+msgstr "उन्नत अनुमतियाँ दिखाएँ"
 
 #: ui/permissions.qml:155
 #, kde-format
 msgid "Add New…"
-msgstr "Add New…"
+msgstr "नया जोड़ो…"
 
 #: ui/TextPromptDialog.qml:21
 #, kde-format
 msgid "Add Filesystem Path Permission"
-msgstr "सञ्चिकातन्त्रमार्गानुमतिः योजयतु"
+msgstr "फ़ाइल सिस्टम पथ अनुमति जोड़ें"
 
 #: ui/TextPromptDialog.qml:22
 #, kde-format
 msgid "Add Session Bus Permission"
-msgstr "सत्रबस अनुमतिं योजयन्तु"
+msgstr "सत्र बस अनुमति जोड़ें"
 
 #: ui/TextPromptDialog.qml:23
 #, kde-format
 msgid "Add System Bus Permission"
-msgstr "सिस्टम् बस अनुमतिं योजयन्तु"
+msgstr "सिस्टम बस अनुमति जोड़ें"
 
 #: ui/TextPromptDialog.qml:38
 #, kde-format
 msgid "Enter filesystem path:"
-msgstr "सञ्चिकातन्त्रमार्गं प्रविष्टं कुर्वन्तु:"
+msgstr "फ़ाइल सिस्टम पथ दर्ज करें:"
 
 #: ui/TextPromptDialog.qml:39
 #, kde-format
 msgid "Enter session bus name:"
-msgstr "सत्रबसनाम प्रविष्टं कुर्वन्तु:"
+msgstr "सत्र बस नाम दर्ज करें:"
 
 #: ui/TextPromptDialog.qml:40
 #, kde-format
 msgid "Enter system bus name:"
-msgstr "सिस्टम् बसनाम प्रविष्टं कुर्वन्तु:"
+msgstr "सिस्टम बस नाम दर्ज करें:"
