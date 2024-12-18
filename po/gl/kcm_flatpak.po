@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-06-13 02:42+0000\n"
-"PO-Revision-Date: 2024-12-08 14:07+0100\n"
+"PO-Revision-Date: 2024-12-17 19:31+0100\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
 "Language: gl\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.08.3\n"
+"X-Generator: Lokalize 24.12.0\n"
 
 #: autotests/flatpakpermissiontest.cpp:642
 #: autotests/flatpakpermissiontest.cpp:864 flatpakpermission.cpp:404
@@ -141,6 +141,7 @@ msgstr "Acceso a dispositivos"
 msgid "System Calls by Development Tools"
 msgstr "Chamadas do sistema por parte de ferramentas de desenvolvemento"
 
+# skip-rule: trasno-library_reverse
 #: flatpakpermission.cpp:850
 #, kde-format
 msgid "Run Multiarch/Multilib Binaries"
