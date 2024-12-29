@@ -372,13 +372,6 @@ public:
     const QString &category() const;
 
     /**
-     * Untranslate section heading back into category identifier. It's a hack
-     * until the model is refactored to only operate on identifiers, and all
-     * i18n stuff is moved elsewhere.
-     */
-    static QString categoryHeadingToRawCategory(const QString &section);
-
-    /**
      * User-facing translated description of the resource managed by this permission entry.
      *
      * See ValueType enum for more.
