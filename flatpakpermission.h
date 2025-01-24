@@ -504,8 +504,8 @@ public:
     FlatpakPermissionModel(QObject *parent = nullptr);
 
     enum Roles {
+        Name = Qt::DisplayRole,
         Section = Qt::UserRole + 1,
-        Name,
         Description,
         //
         IsNotDummy,

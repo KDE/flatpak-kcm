@@ -90,7 +90,12 @@ class FlatpakReferencesModel : public QAbstractListModel
 public:
     explicit FlatpakReferencesModel(QObject *parent = nullptr);
 
-    enum Roles { Name = Qt::UserRole + 1, Version, Icon, Ref };
+    enum Roles {
+        Name = Qt::DisplayRole,
+        Icon = Qt::DecorationRole,
+        Version = Qt::UserRole + 1,
+        Ref,
+    };
     Q_ENUM(Roles)
 
     int rowCount(const QModelIndex &parent = QModelIndex()) const override;
