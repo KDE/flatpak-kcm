@@ -2,20 +2,21 @@
 # This file is distributed under the same license as the flatpak-kcm package.
 #
 # SPDX-FileCopyrightText: 2024, 2025 Geraldo Simiao <geraldosimiao@fedoraproject.org>
+# SPDX-FileCopyrightText: 2025 Guilherme Marçal Silva <guimarcalsilva@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-11-26 00:41+0000\n"
-"PO-Revision-Date: 2025-02-04 14:36-0300\n"
-"Last-Translator: Geraldo Simiao <geraldosimiao@fedoraproject.org>\n"
+"PO-Revision-Date: 2025-02-28 23:42-0300\n"
+"Last-Translator: Guilherme Marçal Silva <guimarcalsilva@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 24.12.1\n"
+"X-Generator: Lokalize 24.12.2\n"
 
 #: autotests/flatpakpermissiontest.cpp:642
 #: autotests/flatpakpermissiontest.cpp:864 flatpakpermission.cpp:404
@@ -27,19 +28,19 @@ msgstr "Nenhum"
 #: autotests/flatpakpermissiontest.cpp:867 flatpakpermission.cpp:405
 #, kde-format
 msgid "see"
-msgstr "Veja"
+msgstr "Ver"
 
 #: autotests/flatpakpermissiontest.cpp:644
 #: autotests/flatpakpermissiontest.cpp:865 flatpakpermission.cpp:406
 #, kde-format
 msgid "talk"
-msgstr "Fale"
+msgstr "Comunicar"
 
 #: autotests/flatpakpermissiontest.cpp:645
 #: autotests/flatpakpermissiontest.cpp:866 flatpakpermission.cpp:407
 #, kde-format
 msgid "own"
-msgstr "Próprio"
+msgstr "Dono"
 
 #: autotests/flatpakpermissiontest.cpp:854 flatpakpermission.cpp:395
 #, kde-format
@@ -54,7 +55,7 @@ msgstr "Leitura e escrita"
 #: autotests/flatpakpermissiontest.cpp:856 flatpakpermission.cpp:392
 #, kde-format
 msgid "read-only"
-msgstr " Somente leitura"
+msgstr "Somente leitura"
 
 #: autotests/flatpakpermissiontest.cpp:857 flatpakpermission.cpp:394
 #, kde-format
@@ -79,17 +80,17 @@ msgstr "Sistema de janelas X11"
 #: flatpakpermission.cpp:827
 #, kde-format
 msgid "Wayland windowing system"
-msgstr "Sistema de janelas wayland"
+msgstr "Sistema de janelas Wayland"
 
 #: flatpakpermission.cpp:828
 #, kde-format
 msgid "Fallback to X11 windowing system"
-msgstr "Utilizar como alternativa o sistema de janelas X11"
+msgstr "Utilizar o sistema de janelas X11 como alternativa"
 
 #: flatpakpermission.cpp:829
 #, kde-format
 msgid "Pulseaudio sound server"
-msgstr "Servidor de som pulseaudio"
+msgstr "Servidor de som Pulseaudio"
 
 #: flatpakpermission.cpp:830
 #, kde-format
@@ -109,7 +110,7 @@ msgstr "Login de acesso remoto"
 #: flatpakpermission.cpp:833
 #, kde-format
 msgid "Smart card access"
-msgstr "Acesso por smart card"
+msgstr "Acesso por Smart Card"
 
 #: flatpakpermission.cpp:834
 #, kde-format
@@ -119,7 +120,7 @@ msgstr "Acesso ao sistema de impressão"
 #: flatpakpermission.cpp:840
 #, kde-format
 msgid "Kernel-based Virtual Machine access"
-msgstr "Acesso à máquina virtual baseada em kernel"
+msgstr "Acesso à máquina virtual baseada em Kernel"
 
 #: flatpakpermission.cpp:841
 #, kde-format
@@ -134,7 +135,7 @@ msgstr "dev/shm do hospedeiro"
 #: flatpakpermission.cpp:843
 #, kde-format
 msgid "Device access"
-msgstr "Acesso ao dispositivo"
+msgstr "Acesso a dispositivos"
 
 #: flatpakpermission.cpp:849
 #, kde-format
@@ -154,13 +155,14 @@ msgstr "Bluetooth"
 #: flatpakpermission.cpp:852
 #, kde-format
 msgid "Canbus socket access"
-msgstr "Acesso ao soquete canbus"
+msgstr "Acesso ao soquete Canbus"
 
 #: flatpakpermission.cpp:855
 #, kde-format
 msgid "Share dev/shm across all instances of an app per user ID"
 msgstr ""
-"Compartilhe dev/shm em todas as instâncias de um aplicativo por ID de usuário"
+"Compartilhar dev/shm em todas as instâncias de um aplicativo por ID de "
+"usuário"
 
 #: flatpakpermission.cpp:913
 #, kde-format
@@ -210,7 +212,7 @@ msgstr "Soquetes"
 #: flatpakpermission.cpp:1304
 #, kde-format
 msgid "Device Access"
-msgstr "Acesso ao dispositivo"
+msgstr "Acesso a dispositivos"
 
 #: flatpakpermission.cpp:1306
 #, kde-format
@@ -272,7 +274,7 @@ msgstr "Valor:"
 #: ui/main.qml:19
 #, kde-format
 msgid "Flatpak Applications"
-msgstr "Aplicativos flatpak"
+msgstr "Aplicativos Flatpak"
 
 #: ui/main.qml:97
 #, kde-format
@@ -311,7 +313,7 @@ msgstr "Exibir permissões avançadas"
 #: ui/permissions.qml:155
 #, kde-format
 msgid "Add New…"
-msgstr "Adicionar novo..."
+msgstr "Adicionar novo…"
 
 #: ui/TextPromptDialog.qml:21
 #, kde-format
