@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-11-26 00:41+0000\n"
-"PO-Revision-Date: 2025-02-28 21:39-0300\n"
+"PO-Revision-Date: 2025-02-28 23:42-0300\n"
 "Last-Translator: Guilherme Marçal Silva <guimarcalsilva@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
@@ -40,7 +40,7 @@ msgstr "Comunicar"
 #: autotests/flatpakpermissiontest.cpp:866 flatpakpermission.cpp:407
 #, kde-format
 msgid "own"
-msgstr "Apropriar"
+msgstr "Dono"
 
 #: autotests/flatpakpermissiontest.cpp:854 flatpakpermission.cpp:395
 #, kde-format
