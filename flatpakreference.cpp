@@ -196,8 +196,7 @@ FlatpakReferencesModel::FlatpakReferencesModel(QObject *parent)
     const auto systemOverridesDirectory = FlatpakHelper::systemOverridesDirectory();
     const auto userOverridesDirectory = FlatpakHelper::userOverridesDirectory();
 
-    const std::array installedRefs = std::array{systemInstalledRefs, userInstalledRefs};
-    for (const auto &refs : installedRefs) {
+    for (const auto &refs : {systemInstalledRefs, userInstalledRefs}) {
         for (uint i = 0; i < refs->len; ++i) {
             auto *ref = FLATPAK_REF(g_ptr_array_index(refs, i));
             auto *iRef = FLATPAK_INSTALLED_REF(g_ptr_array_index(refs, i));
