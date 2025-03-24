@@ -253,7 +253,7 @@ QVariant FlatpakReferencesModel::data(const QModelIndex &index, int role) const
         return QVariant();
     }
 
-    switch (role) {
+    switch (Roles(role)) {
     case Roles::Name:
         return m_references.at(index.row())->displayName();
     case Roles::Version:
