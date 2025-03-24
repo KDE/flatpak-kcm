@@ -250,7 +250,7 @@ int FlatpakReferencesModel::rowCount(const QModelIndex &parent) const
 QVariant FlatpakReferencesModel::data(const QModelIndex &index, int role) const
 {
     if (!index.isValid()) {
-        return QVariant();
+        return {};
     }
 
     switch (Roles(role)) {
@@ -263,7 +263,7 @@ QVariant FlatpakReferencesModel::data(const QModelIndex &index, int role) const
     case Roles::Ref:
         return QVariant::fromValue<FlatpakReference *>(m_references.at(index.row()));
     }
-    return QVariant();
+    return {};
 }
 
 QHash<int, QByteArray> FlatpakReferencesModel::roleNames() const
