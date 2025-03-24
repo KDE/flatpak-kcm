@@ -234,7 +234,7 @@ FlatpakReferencesModel::FlatpakReferencesModel(QObject *parent)
         }
     }
 
-    std::sort(m_references.begin(), m_references.end(), [](const FlatpakReference *r1, const FlatpakReference *r2) {
+    std::ranges::sort(m_references, [](const FlatpakReference *r1, const FlatpakReference *r2) {
         return r1->displayName() < r2->displayName();
     });
 }
