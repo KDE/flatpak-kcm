@@ -14,6 +14,7 @@ class KCMFlatpak : public KQuickManagedConfigModule
 {
     Q_OBJECT
     Q_PROPERTY(FlatpakReferencesModel *refsModel MEMBER m_refsModel CONSTANT)
+    Q_PROPERTY(int appIndex READ currentIndex() WRITE setIndex() NOTIFY appIndexChanged)
 public:
     /**
      * This KCM manages permissions for Flatpak application. It can open any
@@ -28,6 +29,7 @@ public:
 
 Q_SIGNALS:
     void indexChanged(int index);
+    void appIndexChanged();
 
 public Q_SLOTS:
     void load() override;
