@@ -189,6 +189,13 @@ KCM.ScrollViewKCM {
             }
         }
 
+        Keys.onTabPressed: event => {
+            if (kcm.appIndex !== -1) {
+                KCM.ConfigModule.currentIndex = 1;
+            }
+            event.accepted = false
+        }
+
         // Using Timer object instead of Qt.callLater to get deduplication for free.
         Timer {
             id: delayedCurrentIndexSetter

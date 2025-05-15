@@ -23,6 +23,8 @@ KCM.ScrollViewKCM {
     implicitWidth: Kirigami.Units.gridUnit * 15
     framedView: false
 
+    activeFocusOnTab: true
+
     Kirigami.PlaceholderMessage {
         text: i18n("Select an application from the list to view its permissions here")
         width: parent.width - (Kirigami.Units.largeSpacing * 4)
@@ -33,6 +35,14 @@ KCM.ScrollViewKCM {
     Kirigami.Separator {
         anchors.left: parent.left
         height: parent.height
+    }
+
+    onActiveFocusChanged: {
+        if (activeFocus && ref !== null) {
+            view.forceActiveFocus(Qt.TabFocusReason)
+        } else {
+            KCM.ConfigModule.currentIndex = 0
+        }
     }
 
     Component {
@@ -118,6 +128,23 @@ KCM.ScrollViewKCM {
         reuseItems: false
         cacheBuffer: 10000
 
+        activeFocusOnTab: true
+        Keys.onBacktabPressed: {
+            KCM.ConfigModule.currentIndex = 0
+            nextItemInFocusChain(false).forceActiveFocus(Qt.BacktabFocusReason)
+        }
+        Keys.onTabPressed: event => {
+            if (currentIndex === -1) {
+                currentIndex = 0
+            } else {
+                event.accepted = false
+            }
+        }
+        onActiveFocusChanged: if (activeFocus && currentIndex > -1) currentItem.forceActiveFocus(Qt.TabFocusReason)
+        KeyNavigation.tab: currentItem?.permComboBox?.activeFocusOnTab ? permComboBox
+                         : currentItem?.permTextField?.activeFocusOnTab ? permTextField
+                         : nextItemInFocusChain(true)
+
         // Ref is assumed to remain constant for the lifetime of this page. If
         // it's not null, then it would remain so, and no further checks are
         // needed inside the component.
@@ -175,6 +202,13 @@ KCM.ScrollViewKCM {
                     }
                 }
                 Layout.alignment: Qt.AlignRight
+                Keys.onBacktabPressed: {
+                    console.log(root.view.currentItem)
+                    root.view.forceActiveFocus(Qt.BacktabFocusReason)
+                    root.view.currentItem?.forceActiveFocus(Qt.BacktabFocusReason)
+
+                }
+
 
                 QQC2.ToolTip.text: permsModel.sectionAddButtonToolTipTextForSectionType(sectionDelegate.sectionType)
                 QQC2.ToolTip.visible: Kirigami.Settings.tabletMode ? pressed : hovered
@@ -198,6 +232,7 @@ KCM.ScrollViewKCM {
                 ListView.view.currentIndex = -1;
             }
 
+            focus: ListView.isCurrentItem
             width: ListView.view.width - ListView.view.leftMargin - ListView.view.rightMargin
 
             // Default-provided custom entries are not meant to be unchecked:
@@ -207,6 +242,11 @@ KCM.ScrollViewKCM {
             visible: model.isNotDummy
 
             onClicked: toggleAndUncheck()
+            Keys.onSpacePressed: {
+                if (checkable) {
+                    permsModel.togglePermissionAtRow(index);
+                }
+            }
 
             contentItem: RowLayout {
                 spacing: Kirigami.Units.smallSpacing
@@ -215,6 +255,7 @@ KCM.ScrollViewKCM {
                     id: checkBox
                     enabled: permItem.checkable
                     checked: permItem.model.isEffectiveEnabled
+                    activeFocusOnTab: false
 
                     onToggled: permItem.toggleAndUncheck()
 
@@ -230,6 +271,7 @@ KCM.ScrollViewKCM {
                 }
 
                 QQC2.ComboBox {
+                    id: permComboBox
                     visible: [
                         FlatpakPermissionsSectionType.Filesystems,
                         FlatpakPermissionsSectionType.SessionBus,
@@ -237,6 +279,7 @@ KCM.ScrollViewKCM {
                     ].includes(permItem.model.section)
 
                     enabled: checkBox.checked
+                    activeFocusOnTab: enabled && permItem.ListView.isCurrentItem
 
                     model: permItem.model.valuesModel
                     textRole: "display"
@@ -264,10 +307,12 @@ KCM.ScrollViewKCM {
                 }
 
                 QQC2.TextField {
+                    id: permTextField
                     visible: permItem.model.isNotDummy && permItem.model.section === FlatpakPermissionsSectionType.Environment
                     text: (permItem.model.isNotDummy && permItem.model.section === FlatpakPermissionsSectionType.Environment)
                         ? permItem.model.effectiveValue : ""
                     enabled: checkBox.checked
+                    activeFocusOnTab: enabled && permItem.ListView.isCurrentItem
 
                     onTextEdited: {
                         permsModel.setPermissionValueAtRow(permItem.index, text);
