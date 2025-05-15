@@ -19,14 +19,14 @@ KCM.ScrollViewKCM {
 
     required property FlatpakReference ref
 
-    title: i18n("Permissions")
+    title: i18nc("@title:window", "Permissions")
     implicitWidth: Kirigami.Units.gridUnit * 15
     framedView: false
 
     activeFocusOnTab: true
 
     Kirigami.PlaceholderMessage {
-        text: i18n("Select an application from the list to view its permissions here")
+        text: i18nc("@info:placeholder", "Select an application from the list to view its permissions here")
         width: parent.width - (Kirigami.Units.largeSpacing * 4)
         anchors.centerIn: parent
         visible: ref === null
@@ -128,6 +128,10 @@ KCM.ScrollViewKCM {
         reuseItems: false
         cacheBuffer: 10000
 
+        Accessible.name: root.ref.displayName
+        Accessible.description: i18nc("@info accessible.description for list", "Version %1", root.ref.version)
+        Accessible.role: Accessible.List
+
         activeFocusOnTab: true
         Keys.onBacktabPressed: {
             KCM.ConfigModule.currentIndex = 0
@@ -167,7 +171,7 @@ KCM.ScrollViewKCM {
             width: ListView.view.width - ListView.view.leftMargin - ListView.view.rightMargin
             label: permsModel.sectionHeaderForSectionType(sectionType)
             QQC2.ToolButton {
-                text: permsModel.showAdvanced ? i18n("Hide advanced permissions") : i18n("Show advanced permissions")
+                text: permsModel.showAdvanced ? i18nc("@action:button in section header", "Hide advanced permissions") : i18nc("@action:button in section header", "Show advanced permissions")
                 display: QQC2.AbstractButton.IconOnly
                 icon.name: permsModel.showAdvanced ? "collapse" : "expand"
                 visible: sectionDelegate.sectionType === FlatpakPermissionsSectionType.Advanced
@@ -179,7 +183,8 @@ KCM.ScrollViewKCM {
                 QQC2.ToolTip.delay: Kirigami.Settings.tabletMode ? Qt.styleHints.mousePressAndHoldInterval : Kirigami.Units.toolTipDelay
             }
             QQC2.ToolButton {
-                text: i18n("Add New…")
+                text: i18nc("@action:button in section header", "Add New…")
+                Accessible.name: i18nc("action:button accessible", "Add New File System Permission")
                 icon.name: "list-add"
                 visible: [
                     FlatpakPermissionsSectionType.Filesystems,
@@ -238,6 +243,9 @@ KCM.ScrollViewKCM {
             // Default-provided custom entries are not meant to be unchecked:
             // it is a meaningless undefined operation.
             checkable: model.canBeDisabled
+            checked: checkBox.checked
+
+            Accessible.name: model-description
 
             visible: model.isNotDummy
 

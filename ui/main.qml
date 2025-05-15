@@ -16,7 +16,7 @@ import org.kde.plasma.kcm.flatpakpermissions
 
 KCM.ScrollViewKCM {
     id: root
-    title: i18n("Flatpak Applications")
+    title: i18nc("@window:title", "Flatpak Applications")
     Kirigami.ColumnView.fillWidth: false
     implicitWidth: Kirigami.Units.gridUnit * 40
     implicitHeight: Kirigami.Units.gridUnit * 20
@@ -94,8 +94,8 @@ KCM.ScrollViewKCM {
             readonly property bool narrow: (parent.width - leftMargin - rightMargin) < Kirigami.Units.gridUnit * 20
 
             parent: root.Kirigami.ColumnView.view
-            title: i18n("Apply Permissions")
-            subtitle: i18n("The permissions of application %1 have been changed. Do you want to apply these changes or discard them?", applicationName)
+            title: i18nc("@title:window", "Apply Permissions")
+            subtitle: i18nc("@info dialog main text", "The permissions of application %1 have been changed. Do you want to apply these changes or discard them?", applicationName)
             standardButtons: QQC2.Dialog.Apply | QQC2.Dialog.Discard
 
             GridLayout {
@@ -166,6 +166,8 @@ KCM.ScrollViewKCM {
 
     view: ListView {
         id: appsListView
+
+        Accessible.role: Accessible.List
 
         function setCurrentIndexLater(sourceRowIndex) {
             // View has not updated yet, and alas -- we don't have suitable
