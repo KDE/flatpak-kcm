@@ -102,7 +102,6 @@ bool KCMFlatpak::isDefaults() const
 void KCMFlatpak::setIndex(int index)
 {
     m_index = index;
-    appIndexChanged();
     settingsChanged(); // Because Apply, Reset & Defaults buttons depend on m_index.
 }
 
