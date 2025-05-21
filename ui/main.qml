@@ -181,6 +181,14 @@ KCM.ScrollViewKCM {
             delayedCurrentIndexSetter.start();
         }
 
+        onActiveFocusChanged: {
+            if (!focus) {
+                currentIndex = -1
+            } else if (currentIndex === -1) {
+                currentIndex = 0
+            }
+        }
+
         // Using Timer object instead of Qt.callLater to get deduplication for free.
         Timer {
             id: delayedCurrentIndexSetter
@@ -218,7 +226,7 @@ KCM.ScrollViewKCM {
 
             width: ListView.view.width - ListView.view.leftMargin - ListView.view.rightMargin
 
-            highlighted: ListView.isCurrentItem
+            highlighted: filteredRefsModel.mapToSource(filteredRefsModel.index(index, 0)).row === kcm.appIndex //isCurrentItem
 
             text: model.name
             // Prefer source, fallback to name. This is unusual for QtQuick.Controls.
