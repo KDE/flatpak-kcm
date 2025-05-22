@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-26 00:41+0000\n"
+"POT-Creation-Date: 2025-05-22 00:43+0000\n"
 "PO-Revision-Date: 2024-08-31 09:38+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: French <French <kde-francophone@kde.org>>\n"
@@ -294,24 +294,24 @@ msgstr ""
 msgid "Permissions"
 msgstr "Droits d'accès"
 
-#: ui/permissions.qml:27
+#: ui/permissions.qml:29
 #, kde-format
 msgid "Select an application from the list to view its permissions here"
 msgstr ""
 "Sélectionner une application à partir de la liste pour afficher ici ses "
 "droits d'accès"
 
-#: ui/permissions.qml:143
+#: ui/permissions.qml:170
 #, kde-format
 msgid "Hide advanced permissions"
 msgstr "Masquer les droits d'accès avancés"
 
-#: ui/permissions.qml:143
+#: ui/permissions.qml:170
 #, kde-format
 msgid "Show advanced permissions"
 msgstr "Afficher les droits d'accès avancés"
 
-#: ui/permissions.qml:155
+#: ui/permissions.qml:182
 #, kde-format
 msgid "Add New…"
 msgstr "Ajouter un nouveau..."

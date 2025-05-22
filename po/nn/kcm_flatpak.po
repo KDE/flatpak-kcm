@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-26 00:41+0000\n"
+"POT-Creation-Date: 2025-05-22 00:43+0000\n"
 "PO-Revision-Date: 2024-09-01 15:18+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
@@ -297,22 +297,22 @@ msgstr ""
 msgid "Permissions"
 msgstr "Tilgangsløyve"
 
-#: ui/permissions.qml:27
+#: ui/permissions.qml:29
 #, kde-format
 msgid "Select an application from the list to view its permissions here"
 msgstr "Vel eit program i lista som du vil sjå tilgangsløyve for"
 
-#: ui/permissions.qml:143
+#: ui/permissions.qml:170
 #, kde-format
 msgid "Hide advanced permissions"
 msgstr "Gøym avanserte tilgangsløyve"
 
-#: ui/permissions.qml:143
+#: ui/permissions.qml:170
 #, kde-format
 msgid "Show advanced permissions"
 msgstr "Vis avanserte tilgangsløyve"
 
-#: ui/permissions.qml:155
+#: ui/permissions.qml:182
 #, kde-format
 msgid "Add New…"
 msgstr "Legg til ny …"

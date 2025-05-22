@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-26 00:41+0000\n"
+"POT-Creation-Date: 2025-05-22 00:43+0000\n"
 "PO-Revision-Date: 2024-12-15 17:36+0530\n"
 "Last-Translator: Kali <EMAIL@ADDRESS>\n"
 "Language-Team: Hindi <fedora-trans-hi@redhat.com>\n"
@@ -292,22 +292,22 @@ msgstr ""
 msgid "Permissions"
 msgstr "अनुमतियां"
 
-#: ui/permissions.qml:27
+#: ui/permissions.qml:29
 #, kde-format
 msgid "Select an application from the list to view its permissions here"
 msgstr "यहां इसकी अनुमतियां देखने के लिए सूची से एक एप्लिकेशन का चयन करें"
 
-#: ui/permissions.qml:143
+#: ui/permissions.qml:170
 #, kde-format
 msgid "Hide advanced permissions"
 msgstr "उन्नत अनुमतियाँ छिपाएँ"
 
-#: ui/permissions.qml:143
+#: ui/permissions.qml:170
 #, kde-format
 msgid "Show advanced permissions"
 msgstr "उन्नत अनुमतियाँ दिखाएँ"
 
-#: ui/permissions.qml:155
+#: ui/permissions.qml:182
 #, kde-format
 msgid "Add New…"
 msgstr "नया जोड़ो…"
