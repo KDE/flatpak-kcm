@@ -1,0 +1,347 @@
+# Translation of kcm_flatpak to Norwegian Bokmål
+#
+# SPDX-FileCopyrightText: 2025 Martin Hansen <mh306602@gmail.com>
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: flatpak-kcm\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2023-06-13 02:42+0000\n"
+"PO-Revision-Date: 2025-05-31 19:53+0200\n"
+"Last-Translator: Martin Hansen <mh306602@gmail.com>\n"
+"Language-Team: Norwegian Bokmål <l10n-no@lister.huftis.org>\n"
+"Language: nb\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Lokalize 25.04.1\n"
+"X-Environment: kde\n"
+"X-Accelerator-Marker: &\n"
+"X-Text-Markup: kde4\n"
+
+#: autotests/flatpakpermissiontest.cpp:642
+#: autotests/flatpakpermissiontest.cpp:864
+#: flatpakpermission.cpp:404
+#, kde-format
+msgid "None"
+msgstr "Ingen"
+
+#: autotests/flatpakpermissiontest.cpp:643
+#: autotests/flatpakpermissiontest.cpp:867
+#: flatpakpermission.cpp:405
+#, kde-format
+msgid "see"
+msgstr "se"
+
+#: autotests/flatpakpermissiontest.cpp:644
+#: autotests/flatpakpermissiontest.cpp:865
+#: flatpakpermission.cpp:406
+#, kde-format
+msgid "talk"
+msgstr "snakke"
+
+#: autotests/flatpakpermissiontest.cpp:645
+#: autotests/flatpakpermissiontest.cpp:866
+#: flatpakpermission.cpp:407
+#, kde-format
+msgid "own"
+msgstr "eie"
+
+#: autotests/flatpakpermissiontest.cpp:854
+#: flatpakpermission.cpp:395
+#, kde-format
+msgid "OFF"
+msgstr "AV"
+
+#: autotests/flatpakpermissiontest.cpp:855
+#: flatpakpermission.cpp:393
+#, kde-format
+msgid "read/write"
+msgstr "lese/skrive"
+
+#: autotests/flatpakpermissiontest.cpp:856
+#: flatpakpermission.cpp:392
+#, kde-format
+msgid "read-only"
+msgstr "bare lese"
+
+#: autotests/flatpakpermissiontest.cpp:857
+#: flatpakpermission.cpp:394
+#, kde-format
+msgid "create"
+msgstr "opprette"
+
+#: flatpakpermission.cpp:819
+#, kde-format
+msgid "Internet Connection"
+msgstr "Internett-tilgang"
+
+#: flatpakpermission.cpp:820
+#, kde-format
+msgid "Inter-process Communication"
+msgstr "Kommunikasjon mellom prosesser"
+
+#: flatpakpermission.cpp:826
+#, kde-format
+msgid "X11 Windowing System"
+msgstr "Vindussystemet X11"
+
+#: flatpakpermission.cpp:827
+#, kde-format
+msgid "Wayland Windowing System"
+msgstr "Vindussystemet Wayland"
+
+#: flatpakpermission.cpp:828
+#, kde-format
+msgid "Fallback to X11 Windowing System"
+msgstr "Vindussystemet X11 som reserve"
+
+#: flatpakpermission.cpp:829
+#, kde-format
+msgid "Pulseaudio Sound Server"
+msgstr "Lydtjeneren PulseAudio"
+
+#: flatpakpermission.cpp:830
+#, kde-format
+msgid "Session Bus Access"
+msgstr "Tilgang til øktbussen"
+
+#: flatpakpermission.cpp:831
+#, kde-format
+msgid "System Bus Access"
+msgstr "Tilgang til systembussen"
+
+#: flatpakpermission.cpp:832
+#, kde-format
+msgid "Remote Login Access"
+msgstr "Tilgang til fjerninnlogging"
+
+#: flatpakpermission.cpp:833
+#, kde-format
+msgid "Smart Card Access"
+msgstr "Smartkort-tilgang"
+
+#: flatpakpermission.cpp:834
+#, kde-format
+msgid "Print System Access"
+msgstr "Skrivertilgang"
+
+#: flatpakpermission.cpp:840
+#, kde-format
+msgid "Kernel-based Virtual Machine Access"
+msgstr "Kjernebasert tilgang til virtuelle maskiner"
+
+#: flatpakpermission.cpp:841
+#, kde-format
+msgid "Direct Graphic Rendering"
+msgstr "Direkte grafikkopptegning"
+
+#: flatpakpermission.cpp:842
+#, kde-format
+msgid "Host dev/shm"
+msgstr "Delt minne (/dev/shm) på vert"
+
+#: flatpakpermission.cpp:843 flatpakpermission.cpp:1304
+#, kde-format
+msgid "Device Access"
+msgstr "Enhetstilgang"
+
+#: flatpakpermission.cpp:849
+#, kde-format
+msgid "System Calls by Development Tools"
+msgstr "Systemkall for utviklingsverktøy"
+
+#: flatpakpermission.cpp:850
+#, kde-format
+msgid "Run Multiarch/Multilib Binaries"
+msgstr "Kjør flerarkitektur/-bibliotek-programfiler"
+
+#: flatpakpermission.cpp:851
+#, kde-format
+msgid "Bluetooth"
+msgstr "Bluetooth"
+
+#: flatpakpermission.cpp:852
+#, kde-format
+msgid "Canbus Socket Access"
+msgstr "Tilgang til CAN-buss"
+
+#: flatpakpermission.cpp:855
+#, kde-format
+msgid "Share dev/shm across all instances of an app per user ID"
+msgstr "Del /dev/shm på tvers av alle instanser av en app per bruker-ID"
+
+#: flatpakpermission.cpp:913
+#, kde-format
+msgid "All User Files"
+msgstr "Alle brukerfilene"
+
+#: flatpakpermission.cpp:914
+#, kde-format
+msgid "All System Files"
+msgstr "Alle systemfilene"
+
+#: flatpakpermission.cpp:915
+#, kde-format
+msgid "All System Libraries, Executables and Binaries"
+msgstr "Alle systembiblioteker og alle kjørbare filer"
+
+#: flatpakpermission.cpp:916
+#, kde-format
+msgid "All System Configurations"
+msgstr "Alle systeminnstillingene"
+
+#: flatpakpermission.cpp:1294
+#, kde-format
+msgid "Basic Permissions"
+msgstr "Grunnleggende tilgangstillatelser"
+
+#: flatpakpermission.cpp:1296
+#, kde-format
+msgid "Filesystem Access"
+msgstr "Filsystem-tilgang"
+
+#: flatpakpermission.cpp:1298
+#, kde-format
+msgid "Advanced Permissions"
+msgstr "Avanserte tilgangstillatelser"
+
+#: flatpakpermission.cpp:1300
+#, kde-format
+msgid "Subsystems Shared"
+msgstr "Delte undersystem"
+
+#: flatpakpermission.cpp:1302
+#, kde-format
+msgid "Sockets"
+msgstr "Sokler"
+
+#: flatpakpermission.cpp:1306
+#, kde-format
+msgid "Features Allowed"
+msgstr "Tillatte funksjoner"
+
+#: flatpakpermission.cpp:1308
+#, kde-format
+msgid "Session Bus Policy"
+msgstr "Regler for øktbuss"
+
+#: flatpakpermission.cpp:1310
+#, kde-format
+msgid "System Bus Policy"
+msgstr "Regler for systembuss"
+
+#: flatpakpermission.cpp:1312
+#, kde-format
+msgid "Environment"
+msgstr "Miljø"
+
+#: flatpakpermission.cpp:1329
+#, kde-format
+msgid "Add a new filesystem path"
+msgstr "Legg til ny adresse på filsystemet"
+
+#: flatpakpermission.cpp:1331
+#, kde-format
+msgid "Add a new session bus"
+msgstr "Legg til ny øktbuss"
+
+#: flatpakpermission.cpp:1333
+#, kde-format
+msgid "Add a new system bus"
+msgstr "Legg til ny systembuss"
+
+#: flatpakpermission.cpp:1335
+#, kde-format
+msgid "Add a new environment variable"
+msgstr "Legg til ny miljøvariabel"
+
+#: package/contents/ui/AddEnvironmentVariableDialog.qml:18
+#, kde-format
+msgid "Set Environment Variable"
+msgstr "Registrer miljøvariabel"
+
+#: package/contents/ui/AddEnvironmentVariableDialog.qml:35
+#, kde-format
+msgid "Enter variable..."
+msgstr "Skriv inn variabel …"
+
+#: package/contents/ui/AddEnvironmentVariableDialog.qml:46
+#, kde-format
+msgid "Enter value..."
+msgstr "Skriv inn verdi …"
+
+#: package/contents/ui/main.qml:16
+#, kde-format
+msgid "Flatpak Applications"
+msgstr "Flatpak-programmer"
+
+#: package/contents/ui/main.qml:54
+#, kde-format
+msgid "Apply Permissions"
+msgstr "Bruk tillatelser"
+
+#: package/contents/ui/main.qml:55
+#, kde-format
+msgid ""
+"The permissions of this application have been changed. Do you want to apply "
+"these changes or discard them?"
+msgstr ""
+"Tilgangstillatelser til dette programmet ble endret. Vil du ta i bruk eller "
+"forkaste de nye tillatelsene?"
+
+#: package/contents/ui/permissions.qml:17
+#, kde-format
+msgid "Permissions"
+msgstr "Tilgangstillatelser"
+
+#: package/contents/ui/permissions.qml:23
+#, kde-format
+msgid "Select an application from the list to view its permissions here"
+msgstr "Velg et program i lista som du vil se tilgangstillatelser for"
+
+#: package/contents/ui/permissions.qml:82
+#, kde-format
+msgid "Hide advanced permissions"
+msgstr "Skjul avanserte tilgangstillatelser"
+
+#: package/contents/ui/permissions.qml:82
+#, kde-format
+msgid "Show advanced permissions"
+msgstr "Vis avanserte tilgangstillatelser"
+
+#: package/contents/ui/permissions.qml:94
+#, kde-format
+msgid "Add New"
+msgstr "Legg til ny"
+
+#: package/contents/ui/TextPromptDialog.qml:21
+#, kde-format
+msgid "Add Filesystem Path Permission"
+msgstr "Legg til tillatelse på filsystemet"
+
+#: package/contents/ui/TextPromptDialog.qml:22
+#, kde-format
+msgid "Add Session Bus Permission"
+msgstr "Legg til tillatelse for øktbuss"
+
+#: package/contents/ui/TextPromptDialog.qml:23
+#, kde-format
+msgid "Add System Bus Permission"
+msgstr "Legg til tillatelse for systembuss"
+
+#: package/contents/ui/TextPromptDialog.qml:38
+#, kde-format
+msgid "Enter filesystem path..."
+msgstr "Skriv inn adresse på filsystemet …"
+
+#: package/contents/ui/TextPromptDialog.qml:39
+#, kde-format
+msgid "Enter session bus name..."
+msgstr "Skriv inn navn på øktbuss …"
+
+#: package/contents/ui/TextPromptDialog.qml:40
+#, kde-format
+msgid "Enter system bus name..."
+msgstr "Skriv inn navn på systembuss …"
