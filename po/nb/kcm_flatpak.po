@@ -1,6 +1,5 @@
 # Translation of kcm_flatpak to Norwegian Bokmål
 #
-#
 msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
