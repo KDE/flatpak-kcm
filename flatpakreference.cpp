@@ -172,7 +172,7 @@ static GPtrArray *getSystemInstalledFlatpakAppRefs()
         [](gpointer data, gpointer user_data) {
             auto installation = FLATPAK_INSTALLATION(data);
             auto ret = static_cast<GPtrArray *>(user_data);
-            g_autoptr(GPtrArray) refs = flatpak_installation_list_installed_refs_by_kind(installation, FLATPAK_REF_KIND_APP, nullptr, nullptr);
+            auto refs = flatpak_installation_list_installed_refs_by_kind(installation, FLATPAK_REF_KIND_APP, nullptr, nullptr);
             g_ptr_array_extend_and_steal(ret, refs);
         },
         ret);
