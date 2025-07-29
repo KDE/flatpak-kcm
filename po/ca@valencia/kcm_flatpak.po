@@ -1,15 +1,15 @@
 # Translation of kcm_flatpak.po to Catalan (Valencian)
-# Copyright (C) 2022-2023 This_file_is_part_of_KDE
+# Copyright (C) 2022-2025 This_file_is_part_of_KDE
 # This file is distributed under the license LGPL version 2.1 or
 # version 3 or later versions approved by the membership of KDE e.V.
 #
-# Josep M. Ferrer <txemaq@gmail.com>, 2022, 2023.
+# SPDX-FileCopyrightText: 2022, 2023, 2025 Josep M. Ferrer <txemaq@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-06-13 02:42+0000\n"
-"PO-Revision-Date: 2023-02-21 08:50+0100\n"
+"PO-Revision-Date: 2025-07-27 23:43+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 20.12.0\n"
+"X-Generator: Lokalize 25.04.3\n"
 
 #: autotests/flatpakpermissiontest.cpp:642
 #: autotests/flatpakpermissiontest.cpp:864 flatpakpermission.cpp:404
@@ -258,17 +258,17 @@ msgstr "Establix la variable d'entorn"
 #: package/contents/ui/AddEnvironmentVariableDialog.qml:35
 #, kde-format
 msgid "Enter variable..."
-msgstr "Introduïu una variable..."
+msgstr "Introduïu una variable…"
 
 #: package/contents/ui/AddEnvironmentVariableDialog.qml:46
 #, kde-format
 msgid "Enter value..."
-msgstr "Introduïu un valor..."
+msgstr "Introduïu un valor…"
 
 #: package/contents/ui/main.qml:16
 #, kde-format
 msgid "Flatpak Applications"
-msgstr "Aplicacions de Flatpak"
+msgstr "Aplicacions Flatpak"
 
 #: package/contents/ui/main.qml:54
 #, kde-format
@@ -328,14 +328,14 @@ msgstr "Afig un permís del bus de sistema"
 #: package/contents/ui/TextPromptDialog.qml:38
 #, kde-format
 msgid "Enter filesystem path..."
-msgstr "Introduïu el camí del sistema de fitxers..."
+msgstr "Introduïu el camí del sistema de fitxers…"
 
 #: package/contents/ui/TextPromptDialog.qml:39
 #, kde-format
 msgid "Enter session bus name..."
-msgstr "Introduïu un nom de bus de sessió..."
+msgstr "Introduïu un nom de bus de sessió…"
 
 #: package/contents/ui/TextPromptDialog.qml:40
 #, kde-format
 msgid "Enter system bus name..."
-msgstr "Introduïu un nom de bus de sistema..."
+msgstr "Introduïu un nom de bus de sistema…"
