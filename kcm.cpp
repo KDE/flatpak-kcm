@@ -6,6 +6,10 @@
 
 #include "kcm.h"
 
+#include "permissionitem.h"
+#include "permissionstore.h"
+#include "restoredatamodel.h"
+
 #include <KLocalizedString>
 #include <KPluginFactory>
 #include <QFile>
@@ -13,9 +17,13 @@
 
 K_PLUGIN_CLASS_WITH_JSON(KCMFlatpak, "kcm_flatpak.json")
 
+using namespace Qt::StringLiterals;
+
 KCMFlatpak::KCMFlatpak(QObject *parent, const KPluginMetaData &data, const QVariantList &args)
     : KQuickManagedConfigModule(parent, data)
     , m_refsModel(new FlatpakReferencesModel(this))
+    , m_permissionStore(PermissionStore::instance())
+
 {
     constexpr const char *uri = "org.kde.plasma.kcm.flatpakpermissions";
 
@@ -24,6 +32,19 @@ KCMFlatpak::KCMFlatpak(QObject *parent, const KPluginMetaData &data, const QVari
     qmlRegisterType<FlatpakPermissionModel>(uri, 1, 0, "FlatpakPermissionModel");
     qmlRegisterUncreatableType<FlatpakReferencesModel>(uri, 1, 0, "FlatpakReferencesModel", QStringLiteral("For enum access only"));
     qmlRegisterUncreatableType<FlatpakPermissionsSectionType>(uri, 1, 0, "FlatpakPermissionsSectionType", QStringLiteral("For enum access only"));
+
+    qmlRegisterType<PermissionItem>(uri, 1, 0, "PermissionItem");
+    qmlRegisterType<RemoteDesktopSessionsModel>(uri, 1, 0, "RemoteDesktopSessionsModel");
+    qmlRegisterType<ScreencastSessionsModel>(uri, 1, 0, "ScreencastSessionsModel");
+    m_permissionStore->loadTable("screenshot"_L1);
+    m_permissionStore->loadTable("location"_L1);
+    m_permissionStore->loadTable("notifications"_L1);
+    m_permissionStore->loadTable("gamemode"_L1);
+    m_permissionStore->loadTable("realtime"_L1);
+    m_permissionStore->loadTable("devices"_L1); // For camera
+    m_permissionStore->loadTable("remote-desktop"_L1);
+    m_permissionStore->loadTable("screencast"_L1);
+    m_permissionStore->loadTable("kde-authorized"_L1);
 
     connect(m_refsModel, &FlatpakReferencesModel::needsLoad, this, &KCMFlatpak::load);
     connect(m_refsModel, &FlatpakReferencesModel::settingsChanged, this, &KCMFlatpak::settingsChanged);
@@ -109,9 +130,14 @@ void KCMFlatpak::setIndex(int index)
     settingsChanged(); // Because Apply, Reset & Defaults buttons depend on m_index.
 }
 
-int KCMFlatpak::currentIndex() const
+int KCMFlatpak::appIndex() const
 {
     return m_index;
+}
+
+const AppsModel *KCMFlatpak::appsModel() const
+{
+    return &m_appsModel;
 }
 
 #include "kcm.moc"

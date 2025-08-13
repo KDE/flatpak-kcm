@@ -40,6 +40,7 @@ find_package(KF6 ${KF6_MIN_VERSION} REQUIRED COMPONENTS
     I18n
     KCMUtils
     ItemModels
+    Service
 )
 
 ecm_set_disabled_deprecation_versions(QT 6.9.0
@@ -69,7 +70,11 @@ target_link_libraries(kcm_flatpak_static
 
 kcmutils_add_qml_kcm(kcm_flatpak SOURCES kcm.cpp kcm.h)
 
-target_link_libraries(kcm_flatpak PRIVATE kcm_flatpak_static)
+target_sources(kcm_flatpak PRIVATE appsmodel.cpp permissionitem.cpp permissionstore.cpp restoredatamodel.cpp)
+qt_add_dbus_interfaces(DBusInterfaces ${CMAKE_CURRENT_SOURCE_DIR}/org.freedesktop.impl.portal.PermissionStore.xml)
+target_sources(kcm_flatpak PRIVATE ${DBusInterfaces})
+
+target_link_libraries(kcm_flatpak PRIVATE kcm_flatpak_static Qt6::DBus Qt6::Gui KF6::Service)
 
 ki18n_install(po)
 

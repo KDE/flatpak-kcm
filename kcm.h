@@ -1,20 +1,25 @@
 /**
  * SPDX-FileCopyrightText: 2022 Suhaas Joshi <joshiesuhaas0@gmail.com>
  * SPDX-FileCopyrightText: 2023 ivan tkachenko <me@ratijas.tk>
+ * SPDX-FileCopyrightText: 2025 David Redondo <kde@david-redondo.de>
  * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
 #pragma once
 
+#include "appsmodel.h"
 #include "flatpakreference.h"
 
 #include <KQuickManagedConfigModule>
+
+class PermissionStore;
 
 class KCMFlatpak : public KQuickManagedConfigModule
 {
     Q_OBJECT
     Q_PROPERTY(FlatpakReferencesModel *refsModel MEMBER m_refsModel CONSTANT)
-    Q_PROPERTY(int appIndex READ currentIndex() WRITE setIndex() NOTIFY appIndexChanged)
+    Q_PROPERTY(const AppsModel *appsModel READ appsModel CONSTANT)
+    Q_PROPERTY(int appIndex READ appIndex WRITE setIndex() NOTIFY appIndexChanged)
 public:
     /**
      * This KCM manages permissions for Flatpak application. It can open any
@@ -25,7 +30,9 @@ public:
 
     Q_INVOKABLE bool isSaveNeeded() const override;
     Q_INVOKABLE bool isDefaults() const override;
-    Q_INVOKABLE int currentIndex() const;
+    Q_INVOKABLE int appIndex() const;
+
+    const AppsModel *appsModel() const;
 
 Q_SIGNALS:
     void indexChanged(int index);
@@ -40,6 +47,9 @@ public Q_SLOTS:
 private:
     std::optional<int> indexFromArgs(const QVariantList &args) const;
 
+    AppsModel m_appsModel;
+
     FlatpakReferencesModel *const m_refsModel;
     int m_index = -1;
+    std::shared_ptr<PermissionStore> m_permissionStore;
 };
