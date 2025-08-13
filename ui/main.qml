@@ -1,248 +1,64 @@
-/**
- * SPDX-FileCopyrightText: 2022 Suhaas Joshi <joshiesuhaas0@gmail.com>
- * SPDX-FileCopyrightText: 2023 ivan tkachenko <me@ratijas.tk>
- * SPDX-License-Identifier: GPL-2.0-or-later
- */
-
-pragma ComponentBehavior: Bound
+/*
+    SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
+    SPDX-FileCopyrightText: 2025 David Redondo <kde@david-redondo.de>
+*/
 
 import QtQuick
-import QtQuick.Layouts
-import QtQuick.Controls as QQC2
-import org.kde.kirigami as Kirigami
-import org.kde.kcmutils as KCM
+import QtQuick.Controls as QQC
+import org.kde.kcmutils as KCMUtils
 import org.kde.kitemmodels as KItemModels
-import org.kde.plasma.kcm.flatpakpermissions
+import org.kde.kirigami as Kirigami
 
-KCM.ScrollViewKCM {
-    id: root
-    title: i18nc("@window:title", "Flatpak Applications")
-    Kirigami.ColumnView.fillWidth: false
-    implicitWidth: Kirigami.Units.gridUnit * 40
-    implicitHeight: Kirigami.Units.gridUnit * 20
-    framedView: false
-
-    function shouldChange(toAppAtFilteredRowIndex: int) {
-        const fromAppAtSourceRowIndex = KCM.ConfigModule.currentIndex();
-
-        const toAppAtSourceRowIndex = (toAppAtFilteredRowIndex === -1)
-            ? toAppAtFilteredRowIndex
-            : filteredRefsModel.mapToSource(filteredRefsModel.index(toAppAtFilteredRowIndex, 0)).row;
-
-        if (toAppAtSourceRowIndex === KCM.ConfigModule.currentIndex()) {
-            // Don't reload if it's current anyway.
-            return;
-        }
-
-        if (fromAppAtSourceRowIndex !== -1 && KCM.ConfigModule.isSaveNeeded()) {
-            const m = KCM.ConfigModule.refsModel;
-            const fromAppAtSourceIndex = m.index(fromAppAtSourceRowIndex, 0);
-            const applicationName = m.data(fromAppAtSourceIndex, FlatpakReferencesModel.Name);
-            const applicationIcon = m.data(fromAppAtSourceIndex, FlatpakReferencesModel.Icon);
-            const dialog = applyOrDiscardDialogComponent.createObject(this, {
-                applicationName,
-                applicationIcon,
-                fromAppAtSourceRowIndex,
-                toAppAtSourceRowIndex,
-            });
-            dialog.open();
-        } else {
-            changeApp(toAppAtSourceRowIndex)
-        }
-    }
-
-    function changeApp(toAppAtSourceRowIndex) {
-        let ref = null;
-        if (toAppAtSourceRowIndex !== -1) {
-            const sourceIndex = KCM.ConfigModule.refsModel.index(toAppAtSourceRowIndex, 0);
-            ref = KCM.ConfigModule.refsModel.data(sourceIndex, FlatpakReferencesModel.Ref) as FlatpakReference;
-            appsListView.setCurrentIndexLater(toAppAtSourceRowIndex);
-        }
-        KCM.ConfigModule.pop();
-        KCM.ConfigModule.setIndex(toAppAtSourceRowIndex);
-        KCM.ConfigModule.push("permissions.qml", { ref });
-    }
-
-    Component.onCompleted: {
-        KCM.ConfigModule.columnWidth = Kirigami.Units.gridUnit * 15
-        changeApp(KCM.ConfigModule.currentIndex());
-    }
-
-    Connections {
-        target: kcm
-
-        function onIndexChanged(index: int) {
-            root.changeApp(index)
-        }
-    }
-
-    KCM.ConfigModule.buttons: KCM.ConfigModule.Apply | KCM.ConfigModule.Default
-
-    Component {
-        id: applyOrDiscardDialogComponent
-
-        Kirigami.PromptDialog {
-            id: dialog
-
-            required property string applicationName
-            required property url applicationIcon
-
-            // source model indices
-            required property int fromAppAtSourceRowIndex
-            required property int toAppAtSourceRowIndex
-
-            readonly property bool narrow: (parent.width - leftMargin - rightMargin) < Kirigami.Units.gridUnit * 20
-
-            parent: root.Kirigami.ColumnView.view
-            title: i18nc("@title:window", "Apply Permissions")
-            subtitle: i18nc("@info dialog main text", "The permissions of application %1 have been changed. Do you want to apply these changes or discard them?", applicationName)
-            standardButtons: QQC2.Dialog.Apply | QQC2.Dialog.Discard
-
-            GridLayout {
-                columns: dialog.narrow ? 1 : 2
-                columnSpacing: Kirigami.Units.largeSpacing
-                rowSpacing: Kirigami.Units.largeSpacing
-
-                Kirigami.Icon {
-                    source: dialog.applicationIcon.toString() !== "" ? dialog.applicationIcon : "application-vnd.flatpak.ref"
-
-                    Layout.alignment: Qt.AlignCenter
-                    Layout.preferredWidth: Kirigami.Units.iconSizes.large
-                    Layout.preferredHeight: Kirigami.Units.iconSizes.large
-                }
-                Kirigami.SelectableLabel {
-                    text: dialog.subtitle
-                    wrapMode: Text.Wrap
-
-                    Layout.fillWidth: true
-                    Layout.fillHeight: true
-                }
-            }
-
-            QQC2.Overlay.modal: KcmPopupModal {}
-
-            onOpened: {
-                const button = standardButton(QQC2.Dialog.Apply);
-                button.forceActiveFocus(Qt.TabFocusReason);
-            }
-
-            onApplied: {
-                root.KCM.ConfigModule.save()
-                root.changeApp(toAppAtSourceRowIndex)
-                dialog.close()
-            }
-
-            onDiscarded: {
-                root.KCM.ConfigModule.load()
-                root.changeApp(fromAppAtSourceRowIndex)
-                dialog.close()
-            }
-
-            onRejected: {
-                appsListView.currentIndex = root.KCM.ConfigModule.currentIndex()
-            }
-
-            onClosed: destroy()
-        }
-    }
+KCMUtils.ScrollViewKCM
+{
+    sidebarMode: !Kirigami.Settings.isMobile
+    Kirigami.ColumnView.pinned: true
 
     header: Kirigami.SearchField {
-        id: filterField
-        KeyNavigation.tab: appsListView
-        KeyNavigation.down: appsListView
-        autoAccept: false
-        onAccepted: {
-            if (text === "") {
-                // The signal also fires when user clicks the "Clear" action/icon/button.
-                // In this case don't treat it as a command to open first app.
-                return;
-            }
-            if (filteredRefsModel.count >= 0) {
-                appsListView.setCurrentIndexLater(0);
-                root.shouldChange(0);
-            }
-        }
+        id: search
+        KeyNavigation.tab: view
+        KeyNavigation.down: view
     }
 
     view: ListView {
-        id: appsListView
 
         Accessible.role: Accessible.List
 
-        function setCurrentIndexLater(sourceRowIndex) {
-            // View has not updated yet, and alas -- we don't have suitable
-            // hooks here. Note that ListView::onCountChanged WON'T WORK, as
-            // unlike KSortFilterProxyModel it won't trigger when changing
-            // from e.g. 2 rows [a, b] to another 2 rows [d, c].
-
-            const sourceIndex = filteredRefsModel.sourceModel.index(sourceRowIndex, 0);
-            const filteredIndex = filteredRefsModel.mapFromSource(sourceIndex);
-            const filteredRowIndex = filteredIndex.valid ? filteredIndex.row : -1;
-
-            delayedCurrentIndexSetter.index = filteredRowIndex;
-            delayedCurrentIndexSetter.start();
-        }
-
-        onActiveFocusChanged: {
-            if (!focus) {
-                currentIndex = -1
-            } else if (currentIndex === -1) {
-                currentIndex = 0
-            }
-        }
-
-        Keys.onTabPressed: event => {
-            if (kcm.appIndex !== -1) {
-                KCM.ConfigModule.currentIndex = 1;
-            }
-            event.accepted = false
-        }
-
-        // Using Timer object instead of Qt.callLater to get deduplication for free.
-        Timer {
-            id: delayedCurrentIndexSetter
-
-            property int index: -1
-
-            interval: 0
-            running: false
-
-            onTriggered: {
-                appsListView.currentIndex = index;
-            }
-        }
-
-        model: KItemModels.KSortFilterProxyModel {
-            id: filteredRefsModel
-            sourceModel: root.KCM.ConfigModule.refsModel
-            sortOrder: Qt.AscendingOrder
-            sortCaseSensitivity: Qt.CaseInsensitive
-            sortRole: FlatpakReferencesModel.Name
-            filterRole: FlatpakReferencesModel.Name
-            filterString: filterField.text
-            filterCaseSensitivity: Qt.CaseInsensitive
-            onCountChanged: {
-                if (count >= 0) {
-                    const sourceRowIndex = root.KCM.ConfigModule.currentIndex();
-                    appsListView.setCurrentIndexLater(sourceRowIndex);
-                }
-            }
-        }
         currentIndex: -1
-        delegate: QQC2.ItemDelegate {
-            required property int index
+        model: KItemModels.KSortFilterProxyModel {
+            sourceModel: kcm.appsModel
+            sortRole: Qt.DisplayRole
+            sortCaseSensitivity: Qt.CaseInsensitive
+            sortColumn: 0
+            filterString: search.text
+            filterRoleName: "display"
+            filterCaseSensitivity: Qt.CaseInsensitive
+        }
+        delegate: QQC.ItemDelegate {
             required property var model
-
-            width: ListView.view.width - ListView.view.leftMargin - ListView.view.rightMargin
-
-            highlighted: filteredRefsModel.mapToSource(filteredRefsModel.index(index, 0)).row === kcm.appIndex //isCurrentItem
-
-            text: model.name
-            // Prefer source, fallback to name. This is unusual for QtQuick.Controls.
-            icon.name: model.icon.toString() !== "" ? "" : "application-vnd.flatpak.ref"
-            icon.source: model.icon.toString() === "" ? "" : model.icon
-
-            onClicked: root.shouldChange(index)
+            required property int index
+            width: view.width
+            text: model.display
+            icon.source: model.decoration
+            highlighted: view.currentIndex == index
+            onClicked: {
+                KCMUtils.ConfigModule.currentIndex = 0;
+                KCMUtils.ConfigModule.push("Permissions.qml", {"appId": model.appId, "title": model.display, "isHostApp": model.isHost});
+                view.currentIndex = index;
+            }
+            Keys.onEnterPressed: click()
+            Keys.onReturnPressed: click()
         }
     }
+
+   KCMUtils.SimpleKCM {
+        id: placeholder
+        Kirigami.PlaceholderMessage {
+            text: i18nc("@info:placeholder", "Select an application from the list to view its permissions here")
+            anchors.fill: parent
+            anchors.margins: Kirigami.Units.largeSpacing * 2
+        }
+   }
+
+    Component.onCompleted: KCMUtils.ConfigModule.push(placeholder)
 }
