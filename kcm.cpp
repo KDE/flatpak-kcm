@@ -12,7 +12,9 @@
 
 #include <KLocalizedString>
 #include <KPluginFactory>
-#include <QFile>
+
+#include <QQmlEngine>
+
 #include <algorithm>
 
 K_PLUGIN_CLASS_WITH_JSON(KCMFlatpak, "kcm_flatpak.json")
@@ -21,16 +23,15 @@ using namespace Qt::StringLiterals;
 
 KCMFlatpak::KCMFlatpak(QObject *parent, const KPluginMetaData &data, const QVariantList &args)
     : KQuickManagedConfigModule(parent, data)
-    , m_refsModel(new FlatpakReferencesModel(this))
+    , m_references(FlatpakReference::allFlatpakReferences())
     , m_permissionStore(PermissionStore::instance())
 
 {
     constexpr const char *uri = "org.kde.plasma.kcm.flatpakpermissions";
 
     qmlRegisterUncreatableType<KCMFlatpak>(uri, 1, 0, "KCMFlatpak", QString());
-    qmlRegisterUncreatableType<FlatpakReference>(uri, 1, 0, "FlatpakReference", QStringLiteral("Should be obtained from a FlatpakReferencesModel"));
+    qmlRegisterUncreatableType<FlatpakReference>(uri, 1, 0, "FlatpakReference", QStringLiteral("Should be obtained from the KCM"));
     qmlRegisterType<FlatpakPermissionModel>(uri, 1, 0, "FlatpakPermissionModel");
-    qmlRegisterUncreatableType<FlatpakReferencesModel>(uri, 1, 0, "FlatpakReferencesModel", QStringLiteral("For enum access only"));
     qmlRegisterUncreatableType<FlatpakPermissionsSectionType>(uri, 1, 0, "FlatpakPermissionsSectionType", QStringLiteral("For enum access only"));
 
     qmlRegisterType<PermissionItem>(uri, 1, 0, "PermissionItem");
@@ -46,31 +47,29 @@ KCMFlatpak::KCMFlatpak(QObject *parent, const KPluginMetaData &data, const QVari
     m_permissionStore->loadTable("screencast"_L1);
     m_permissionStore->loadTable("kde-authorized"_L1);
 
-    connect(m_refsModel, &FlatpakReferencesModel::needsLoad, this, &KCMFlatpak::load);
-    connect(m_refsModel, &FlatpakReferencesModel::settingsChanged, this, &KCMFlatpak::settingsChanged);
-
-    const auto maybeRequestedIndex = indexFromArgs(args);
-
-    if (maybeRequestedIndex) {
-        m_index = *maybeRequestedIndex;
+    auto reference = indexFromArgs(args);
+    if (reference) {
+        connect(
+            this,
+            &KQuickConfigModule::mainUiReady,
+            this,
+            [this, reference] {
+                push("FlatpakPermissions.qml"_L1, {{u"ref"_s, QVariant::fromValue(reference)}});
+            },
+            Qt::SingleShotConnection);
     }
-
     connect(this, &KQuickConfigModule::activationRequested, this, [this](const QVariantList &args) {
-        const auto maybeRequestedIndex = indexFromArgs(args);
-
-        if (maybeRequestedIndex) {
-            m_index = *maybeRequestedIndex;
-            Q_EMIT indexChanged(m_index);
+        auto reference = indexFromArgs(args);
+        if (reference) {
+            push("FlatpakPermissions.qml"_L1, {{u"ref"_s, QVariant::fromValue(reference)}});
         }
     });
-
-    settingsChanged(); // Initialize Reset & Defaults buttons
 }
 
-std::optional<int> KCMFlatpak::indexFromArgs(const QVariantList &args) const
+FlatpakReference *KCMFlatpak::indexFromArgs(const QVariantList &args) const
 {
     if (args.isEmpty()) {
-        return std::nullopt;
+        return nullptr;
     }
 
     QString requestedReference;
@@ -79,65 +78,47 @@ std::optional<int> KCMFlatpak::indexFromArgs(const QVariantList &args) const
     if (arg0.canConvert<QString>()) {
         requestedReference = arg0.toString();
     } else {
-        return std::nullopt;
+        return nullptr;
     }
 
-    const auto &refs = m_refsModel->references();
-    const auto it = std::find_if(refs.constBegin(), refs.constEnd(), [&](FlatpakReference *ref) {
+    const auto it = std::ranges::find_if(m_references.cbegin(), m_references.cend(), [&](const auto &ref) {
         return ref->ref() == requestedReference;
     });
-    if (it != refs.constEnd()) {
-        const auto index = std::distance(refs.constBegin(), it);
-        return index;
+    if (it != m_references.cend()) {
+        return it->get();
     } else {
-        return std::nullopt;
+        return nullptr;
     }
 }
 
 void KCMFlatpak::load()
 {
-    m_refsModel->load(m_index);
-    setNeedsSave(false);
+    std::ranges::for_each(m_references, &FlatpakReference::load);
 }
 
 void KCMFlatpak::save()
 {
-    m_refsModel->save(m_index);
+    std::ranges::for_each(m_references, &FlatpakReference::save);
 }
 
 void KCMFlatpak::defaults()
 {
-    m_refsModel->defaults(m_index);
-}
-
-bool KCMFlatpak::isSaveNeeded() const
-{
-    return m_refsModel->isSaveNeeded(m_index);
-}
-
-bool KCMFlatpak::isDefaults() const
-{
-    return m_refsModel->isDefaults(m_index);
-}
-
-void KCMFlatpak::setIndex(int index)
-{
-    if (m_index == index) {
-        return;
-    }
-    m_index = index;
-    Q_EMIT appIndexChanged();
-    settingsChanged(); // Because Apply, Reset & Defaults buttons depend on m_index.
-}
-
-int KCMFlatpak::appIndex() const
-{
-    return m_index;
+    std::ranges::for_each(m_references, &FlatpakReference::defaults);
 }
 
 const AppsModel *KCMFlatpak::appsModel() const
 {
     return &m_appsModel;
+}
+
+FlatpakReference *KCMFlatpak::flatpakRefForApp(const QString &appId)
+{
+    auto it = std::ranges::find(m_references, appId, &FlatpakReference::flatpakName);
+    if (it == std::ranges::end(m_references)) {
+        return nullptr;
+    }
+    QQmlEngine::setObjectOwnership(it->get(), QQmlEngine::CppOwnership);
+    return it->get();
 }
 
 #include "kcm.moc"

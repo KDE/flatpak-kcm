@@ -17,9 +17,7 @@ class PermissionStore;
 class KCMFlatpak : public KQuickManagedConfigModule
 {
     Q_OBJECT
-    Q_PROPERTY(FlatpakReferencesModel *refsModel MEMBER m_refsModel CONSTANT)
     Q_PROPERTY(const AppsModel *appsModel READ appsModel CONSTANT)
-    Q_PROPERTY(int appIndex READ appIndex WRITE setIndex() NOTIFY appIndexChanged)
 public:
     /**
      * This KCM manages permissions for Flatpak application. It can open any
@@ -28,28 +26,19 @@ public:
      */
     explicit KCMFlatpak(QObject *parent, const KPluginMetaData &data, const QVariantList &args);
 
-    Q_INVOKABLE bool isSaveNeeded() const override;
-    Q_INVOKABLE bool isDefaults() const override;
-    Q_INVOKABLE int appIndex() const;
-
     const AppsModel *appsModel() const;
 
-Q_SIGNALS:
-    void indexChanged(int index);
-    void appIndexChanged();
+    Q_INVOKABLE FlatpakReference *flatpakRefForApp(const QString &appId);
 
 public Q_SLOTS:
     void load() override;
     void save() override;
     void defaults() override;
-    void setIndex(int index);
 
 private:
-    std::optional<int> indexFromArgs(const QVariantList &args) const;
+    FlatpakReference *indexFromArgs(const QVariantList &args) const;
 
     AppsModel m_appsModel;
-
-    FlatpakReferencesModel *const m_refsModel;
-    int m_index = -1;
+    std::vector<std::unique_ptr<FlatpakReference>> m_references;
     std::shared_ptr<PermissionStore> m_permissionStore;
 };
