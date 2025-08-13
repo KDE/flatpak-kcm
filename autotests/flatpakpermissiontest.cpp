@@ -106,7 +106,10 @@ private:
 private Q_SLOTS:
     void cleanupTestCase()
     {
-        QDir(QFINDTESTDATA("fixtures/overrides/")).removeRecursively();
+        // Be extra careful with deleting. An empty string would lead to deleting the working directory.
+        const QString overridesDirectory = QFINDTESTDATA("fixtures/overrides/");
+        QVERIFY(!overridesDirectory.isEmpty());
+        QDir(overridesDirectory).removeRecursively();
     }
 
     void testCompareFlatpakConfigsEqual()
