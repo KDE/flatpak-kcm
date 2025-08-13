@@ -1,0 +1,67 @@
+<!DOCTYPE node PUBLIC "-//freedesktop//DTD D-BUS Object Introspection 1.0//EN"
+                      "http://www.freedesktop.org/standards/dbus/1.0/introspect.dtd">
+<!--
+  SPDX-License-Identifier: CC0-1.0
+  SPDX-FileCopyrightText: none
+-->
+<node>
+  <interface name="org.freedesktop.impl.portal.PermissionStore">
+    <method name="Lookup">
+      <annotation name="org.qtproject.QtDBus.QtTypeName.Out0" value="QMap&lt;QString,QStringList&gt;"/>
+      <arg type="s" name="table" direction="in"/>
+      <arg type="s" name="id" direction="in"/>
+      <arg type="a{sas}" name="permissions" direction="out"/>
+      <arg type="v" name="data" direction="out"/>
+    </method>
+    <method name="Set">
+      <annotation name="org.qtproject.QtDBus.QtTypeName.In3" value="QMap&lt;QString,QStringList&gt;"/>
+      <arg type="s" name="table" direction="in"/>
+      <arg type="b" name="create" direction="in"/>
+      <arg type="s" name="id" direction="in"/>
+      <arg type="a{sas}" name="app_permissions" direction="in"/>
+      <arg type="v" name="data" direction="in"/>
+    </method>
+    <method name="Delete">
+      <arg type="s" name="table" direction="in"/>
+      <arg type="s" name="id" direction="in"/>
+    </method>
+    <method name="SetValue">
+      <arg type="s" name="table" direction="in"/>
+      <arg type="b" name="create" direction="in"/>
+      <arg type="s" name="id" direction="in"/>
+      <arg type="v" name="data" direction="in"/>
+    </method>
+    <method name="SetPermission">
+      <arg type="s" name="table" direction="in"/>
+      <arg type="b" name="create" direction="in"/>
+      <arg type="s" name="id" direction="in"/>
+      <arg type="s" name="app" direction="in"/>
+      <arg type="as" name="permissions" direction="in"/>
+    </method>
+    <method name="DeletePermission">
+      <arg type="s" name="table" direction="in"/>
+      <arg type="s" name="id" direction="in"/>
+      <arg type="s" name="app" direction="in"/>
+    </method>
+    <method name="GetPermission">
+      <arg type="s" name="table" direction="in"/>
+      <arg type="s" name="id" direction="in"/>
+      <arg type="s" name="app" direction="in"/>
+      <arg type="as" name="permissions" direction="out"/>
+    </method>
+    <method name="List">
+      <arg type="s" name="table" direction="in"/>
+      <arg type="as" name="ids" direction="out"/>
+    </method>
+    <signal name="Changed">
+      <annotation name="org.qtproject.QtDBus.QtTypeName.Out4" value="QMap&lt;QString,QStringList&gt;"/>
+      <arg type="s" name="table"/>
+      <arg type="s" name="id"/>
+      <arg type="b" name="deleted"/>
+      <arg type="v" name="data"/>
+      <arg type="a{sas}" name="permissions"/>
+    </signal>
+    <property type="u" name="version" access="read"/>
+  </interface>
+</node>
+
