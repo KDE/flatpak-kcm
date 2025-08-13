@@ -15,10 +15,6 @@ Kirigami.PromptDialog {
     required property string applicationName
     required property url applicationIcon
 
-    // source model indices
-    required property int fromAppAtSourceRowIndex
-    required property int toAppAtSourceRowIndex
-
     readonly property bool narrow: (parent.width - leftMargin - rightMargin) < Kirigami.Units.gridUnit * 20
 
     parent: root.Kirigami.ColumnView.view
@@ -53,23 +49,4 @@ Kirigami.PromptDialog {
         const button = standardButton(QQC2.Dialog.Apply);
         button.forceActiveFocus(Qt.TabFocusReason);
     }
-
-    onApplied: {
-        root.KCM.ConfigModule.save()
-        root.changeApp(toAppAtSourceRowIndex)
-        dialog.close()
-    }
-
-    onDiscarded: {
-        root.KCM.ConfigModule.load()
-        root.changeApp(fromAppAtSourceRowIndex)
-        dialog.close()
-    }
-
-    onRejected: {
-        appsListView.currentIndex = root.KCM.ConfigModule.currentIndex()
-    }
-
-    onClosed: destroy()
 }
-

@@ -18,6 +18,18 @@ KCMUtils.SimpleKCM {
     required property string appId
     required property bool isHostApp
 
+    actions: [
+        Kirigami.Action {
+            readonly property var ref: kcm.flatpakRefForApp(root.appId)
+            visible: ref
+            text: i18nc("@action:intoolbar", "Manage Flatpak Settings")
+            icon.name: "flatpak-discover"
+            onTriggered: {
+                kcm.push("FlatpakPermissions.qml", {"ref": ref})
+            }
+        }
+    ]
+
     component PermissionItem : KCM.PermissionItem {
         appId: root.appId
     }
