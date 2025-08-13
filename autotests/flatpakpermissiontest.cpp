@@ -104,9 +104,9 @@ private:
     };
 
 private Q_SLOTS:
-    void init()
+    void cleanupTestCase()
     {
-        QDir().rmdir(QFINDTESTDATA("fixtures/overrides/"));
+        QDir(QFINDTESTDATA("fixtures/overrides/")).removeRecursively();
     }
 
     void testCompareFlatpakConfigsEqual()
