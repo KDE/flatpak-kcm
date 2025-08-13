@@ -14,7 +14,6 @@
 #include <QString>
 #include <QUrl>
 
-class FlatpakReferencesModel;
 class FlatpakPermissionModel;
 
 // Slightly similar to FlatpakResource from libdiscover
@@ -26,8 +25,7 @@ class FlatpakReference : public QObject
     Q_PROPERTY(QUrl iconSource READ iconSource CONSTANT FINAL)
 
 public:
-    explicit FlatpakReference(FlatpakReferencesModel *parent,
-                              const QString &flatpakName,
+    explicit FlatpakReference(const QString &flatpakName,
                               const QString &arch,
                               const QString &branch,
                               const QString &version,
@@ -35,7 +33,7 @@ public:
                               const QUrl &iconSource,
                               const QStringList &metadataAndOverridesFiles);
 
-    FlatpakReferencesModel *parent() const;
+    static std::vector<std::unique_ptr<FlatpakReference>> allFlatpakReferences();
 
     QString arch() const;
     QString branch() const;
@@ -60,10 +58,6 @@ public:
     bool isSaveNeeded() const;
     bool isDefaults() const;
 
-Q_SIGNALS:
-    void needsLoad();
-    void settingsChanged();
-
 private:
     // ID of a ref constitutes of these three members:
     QString m_flatpakName;
@@ -82,38 +76,4 @@ private:
     QStringList m_metadataAndOverridesFiles;
 
     QPointer<FlatpakPermissionModel> m_permissionsModel;
-};
-
-class FlatpakReferencesModel : public QAbstractListModel
-{
-    Q_OBJECT
-public:
-    explicit FlatpakReferencesModel(QObject *parent = nullptr);
-
-    enum Roles {
-        Name = Qt::DisplayRole,
-        Icon = Qt::DecorationRole,
-        Version = Qt::UserRole + 1,
-        Ref,
-    };
-    Q_ENUM(Roles)
-
-    int rowCount(const QModelIndex &parent = QModelIndex()) const override;
-    QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
-    QHash<int, QByteArray> roleNames() const override;
-
-    void load(int index);
-    void save(int index);
-    void defaults(int index);
-    bool isSaveNeeded(int index) const;
-    bool isDefaults(int index) const;
-
-    const QList<FlatpakReference *> &references() const;
-
-Q_SIGNALS:
-    void needsLoad();
-    void settingsChanged();
-
-private:
-    QList<FlatpakReference *> m_references;
 };

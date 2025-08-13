@@ -17,20 +17,30 @@ import org.kde.plasma.kcm.flatpakpermissions
 KCM.ScrollViewKCM {
     id: root
 
-    required property FlatpakReference ref
+    required property var ref
 
-    title: i18nc("@title:window", "Permissions")
+    title: i18nc("@title:window %1 is the name of the application" ,"%1 – Flatpak Settings", ref.displayName)
     implicitWidth: Kirigami.Units.gridUnit * 15
     framedView: false
 
-    activeFocusOnTab: true
+    readonly property bool isCurrentPage: Kirigami.ColumnView.inViewport
 
-    Kirigami.PlaceholderMessage {
-        text: i18nc("@info:placeholder", "Select an application from the list to view its permissions here")
-        width: parent.width - (Kirigami.Units.largeSpacing * 4)
-        anchors.centerIn: parent
-        visible: ref === null
+    Binding {
+        target: kcm
+        property: "needsSave"
+        value: permsModel.isSaveNeeded
+        when: root.isCurrentPage
     }
+    Binding {
+        target: kcm
+        property: "representsDefaults" 
+        value: permsModel.isDefaults
+        when: root.isCurrentPage
+    }
+
+
+
+    activeFocusOnTab: true
 
     Kirigami.Separator {
         anchors.left: parent.left
@@ -40,8 +50,6 @@ KCM.ScrollViewKCM {
     onActiveFocusChanged: {
         if (activeFocus && ref !== null) {
             view.forceActiveFocus(Qt.TabFocusReason)
-        } else {
-            KCM.ConfigModule.currentIndex = 0
         }
     }
 
@@ -245,7 +253,7 @@ KCM.ScrollViewKCM {
             checkable: model.canBeDisabled
             checked: checkBox.checked
 
-            Accessible.name: model-description
+            Accessible.name: model.description
 
             visible: model.isNotDummy
 

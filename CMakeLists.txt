@@ -10,7 +10,7 @@ project(flatpakkcm)
 set(QT_MIN_VERSION "6.8.0")
 set(KF6_MIN_VERSION "6.14.0")
 
-set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 add_definitions(-DTRANSLATION_DOMAIN="kcm_flatpak")

@@ -724,6 +724,10 @@ FlatpakPermissionModel::FlatpakPermissionModel(QObject *parent)
     : QAbstractListModel(parent)
     , m_showAdvanced(false)
 {
+    connect(this, &QAbstractItemModel::rowsRemoved, this, &FlatpakPermissionModel::settingsChanged);
+    connect(this, &QAbstractItemModel::rowsInserted, this, &FlatpakPermissionModel::settingsChanged);
+    connect(this, &QAbstractItemModel::dataChanged, this, &FlatpakPermissionModel::settingsChanged);
+    connect(this, &QAbstractItemModel::modelReset, this, &FlatpakPermissionModel::settingsChanged);
 }
 
 int FlatpakPermissionModel::rowCount(const QModelIndex &parent) const
@@ -1140,6 +1144,7 @@ void FlatpakPermissionModel::setReference(FlatpakReference *reference)
         }
         endResetModel();
         Q_EMIT referenceChanged();
+        load();
     }
 }
 

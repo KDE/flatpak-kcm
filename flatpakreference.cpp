@@ -18,16 +18,14 @@ extern "C" {
 
 #include <QDebug>
 
-FlatpakReference::FlatpakReference(FlatpakReferencesModel *parent,
-                                   const QString &flatpakName,
+FlatpakReference::FlatpakReference(const QString &flatpakName,
                                    const QString &arch,
                                    const QString &branch,
                                    const QString &version,
                                    const QString &displayName,
                                    const QUrl &iconSource,
                                    const QStringList &metadataAndOverridesFiles)
-    : QObject(parent)
-    , m_flatpakName(flatpakName)
+    : m_flatpakName(flatpakName)
     , m_arch(arch)
     , m_branch(branch)
     , m_version(version)
@@ -36,14 +34,6 @@ FlatpakReference::FlatpakReference(FlatpakReferencesModel *parent,
     , m_metadataAndOverridesFiles(metadataAndOverridesFiles)
     , m_permissionsModel(nullptr)
 {
-    connect(this, &FlatpakReference::needsLoad, parent, &FlatpakReferencesModel::needsLoad);
-    connect(this, &FlatpakReference::settingsChanged, parent, &FlatpakReferencesModel::settingsChanged);
-}
-
-FlatpakReferencesModel *FlatpakReference::parent() const
-{
-    // SAFETY: There's only one constructor, and it always initializes parent with a model object
-    return qobject_cast<FlatpakReferencesModel *>(QObject::parent());
 }
 
 QString FlatpakReference::arch() const
@@ -109,19 +99,7 @@ FlatpakPermissionModel *FlatpakReference::permissionsModel()
 void FlatpakReference::setPermissionsModel(FlatpakPermissionModel *model)
 {
     if (model != m_permissionsModel) {
-        if (m_permissionsModel) {
-            disconnect(m_permissionsModel, &FlatpakPermissionModel::referenceChanged, this, &FlatpakReference::needsLoad);
-            disconnect(m_permissionsModel, &FlatpakPermissionModel::dataChanged, this, &FlatpakReference::settingsChanged);
-            disconnect(m_permissionsModel, &FlatpakPermissionModel::rowsInserted, this, &FlatpakReference::settingsChanged);
-            disconnect(m_permissionsModel, &FlatpakPermissionModel::rowsRemoved, this, &FlatpakReference::settingsChanged);
-        }
         m_permissionsModel = model;
-        if (m_permissionsModel) {
-            connect(m_permissionsModel, &FlatpakPermissionModel::referenceChanged, this, &FlatpakReference::needsLoad);
-            connect(m_permissionsModel, &FlatpakPermissionModel::dataChanged, this, &FlatpakReference::settingsChanged);
-            connect(m_permissionsModel, &FlatpakPermissionModel::rowsInserted, this, &FlatpakReference::settingsChanged);
-            connect(m_permissionsModel, &FlatpakPermissionModel::rowsRemoved, this, &FlatpakReference::settingsChanged);
-        }
     }
 }
 
@@ -187,14 +165,15 @@ static GPtrArray *getUserInstalledFlatpakAppRefs()
     return refs;
 }
 
-FlatpakReferencesModel::FlatpakReferencesModel(QObject *parent)
-    : QAbstractListModel(parent)
+std::vector<std::unique_ptr<FlatpakReference>> FlatpakReference::allFlatpakReferences()
 {
     g_autoptr(GPtrArray) systemInstalledRefs = getSystemInstalledFlatpakAppRefs();
     g_autoptr(GPtrArray) userInstalledRefs = getUserInstalledFlatpakAppRefs();
 
     const auto systemOverridesDirectory = FlatpakHelper::systemOverridesDirectory();
     const auto userOverridesDirectory = FlatpakHelper::userOverridesDirectory();
+
+    std::vector<std::unique_ptr<FlatpakReference>> references;
 
     for (const auto &refs : {systemInstalledRefs, userInstalledRefs}) {
         for (uint i = 0; i < refs->len; ++i) {
@@ -230,92 +209,10 @@ FlatpakReferencesModel::FlatpakReferencesModel(QObject *parent)
                 userAppOverrides,
             });
 
-            m_references.push_back(new FlatpakReference(this, flatpakName, arch, branch, version, displayName, iconSource, metadataAndOverridesFiles));
+            references.push_back(std::make_unique<FlatpakReference>(flatpakName, arch, branch, version, displayName, iconSource, metadataAndOverridesFiles));
         }
     }
-
-    std::ranges::sort(m_references, [](const FlatpakReference *r1, const FlatpakReference *r2) {
-        return r1->displayName() < r2->displayName();
-    });
-}
-
-int FlatpakReferencesModel::rowCount(const QModelIndex &parent) const
-{
-    if (parent.isValid()) {
-        return 0;
-    }
-    return m_references.count();
-}
-
-QVariant FlatpakReferencesModel::data(const QModelIndex &index, int role) const
-{
-    if (!index.isValid()) {
-        return {};
-    }
-
-    switch (Roles(role)) {
-    case Roles::Name:
-        return m_references.at(index.row())->displayName();
-    case Roles::Version:
-        return m_references.at(index.row())->version();
-    case Roles::Icon:
-        return m_references.at(index.row())->iconSource();
-    case Roles::Ref:
-        return QVariant::fromValue<FlatpakReference *>(m_references.at(index.row()));
-    }
-    return {};
-}
-
-QHash<int, QByteArray> FlatpakReferencesModel::roleNames() const
-{
-    QHash<int, QByteArray> roles;
-    roles[Roles::Name] = "name";
-    roles[Roles::Version] = "version";
-    roles[Roles::Icon] = "icon";
-    roles[Roles::Ref] = "ref";
-    return roles;
-}
-
-void FlatpakReferencesModel::load(int index)
-{
-    if (index >= 0 && index < m_references.length()) {
-        m_references.at(index)->load();
-    }
-}
-
-void FlatpakReferencesModel::save(int index)
-{
-    if (index >= 0 && index < m_references.length()) {
-        m_references.at(index)->save();
-    }
-}
-
-void FlatpakReferencesModel::defaults(int index)
-{
-    if (index >= 0 && index < m_references.length()) {
-        m_references.at(index)->defaults();
-    }
-}
-
-bool FlatpakReferencesModel::isSaveNeeded(int index) const
-{
-    if (index >= 0 && index < m_references.length()) {
-        return m_references.at(index)->isSaveNeeded();
-    }
-    return false;
-}
-
-bool FlatpakReferencesModel::isDefaults(int index) const
-{
-    if (index >= 0 && index < m_references.length()) {
-        return m_references.at(index)->isDefaults();
-    }
-    return true;
-}
-
-const QList<FlatpakReference *> &FlatpakReferencesModel::references() const
-{
-    return m_references;
+    return references;
 }
 
 #include "moc_flatpakreference.cpp"

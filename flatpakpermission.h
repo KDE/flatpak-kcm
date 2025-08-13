@@ -500,6 +500,8 @@ class FlatpakPermissionModel : public QAbstractListModel
     Q_OBJECT
     Q_PROPERTY(FlatpakReference *reference READ reference WRITE setReference NOTIFY referenceChanged)
     Q_PROPERTY(bool showAdvanced READ showAdvanced WRITE setShowAdvanced NOTIFY showAdvancedChanged)
+    Q_PROPERTY(bool isDefaults READ isDefaults NOTIFY settingsChanged)
+    Q_PROPERTY(bool isSaveNeeded READ isSaveNeeded NOTIFY settingsChanged)
 public:
     FlatpakPermissionModel(QObject *parent = nullptr);
 
@@ -575,6 +577,7 @@ public Q_SLOTS:
 Q_SIGNALS:
     void referenceChanged();
     void showAdvancedChanged();
+    void settingsChanged();
 
 private:
     int findIndexToInsertRowAndRemoveDummyRowIfNeeded(FlatpakPermissionsSectionType::Type section, bool emitModelSignals);
@@ -584,7 +587,7 @@ private:
 
     QList<FlatpakPermission> m_permissions;
     QHash<QString, QStringList> m_unparsableEntriesByCategory;
-    QPointer<FlatpakReference> m_reference;
+    FlatpakReference *m_reference = nullptr;
     bool m_showAdvanced;
 
     friend class FlatpakPermissionModelTest;
