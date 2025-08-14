@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-06-13 02:42+0000\n"
-"PO-Revision-Date: 2023-02-27 19:22+0400\n"
+"PO-Revision-Date: 2025-08-04 20:58+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -185,7 +185,7 @@ msgstr "إعدادات كامل النظام"
 #: flatpakpermission.cpp:1294
 #, kde-format
 msgid "Basic Permissions"
-msgstr "تصاريح أساسية"
+msgstr "أذونات أساسية"
 
 #: flatpakpermission.cpp:1296
 #, kde-format
@@ -195,7 +195,7 @@ msgstr "الوصول إلى نظام الملفات"
 #: flatpakpermission.cpp:1298
 #, kde-format
 msgid "Advanced Permissions"
-msgstr "تصاريح متقدّمة"
+msgstr "أذونات متقدّمة"
 
 #: flatpakpermission.cpp:1300
 #, kde-format
@@ -277,27 +277,27 @@ msgstr "طبّق التّصاريح"
 msgid ""
 "The permissions of this application have been changed. Do you want to apply "
 "these changes or discard them?"
-msgstr "تغيرت تصاريح التطبيق. هل تريد تطبيق هذه التغيرات أم لا؟"
+msgstr "تغيرت أذونات التطبيق. هل تريد تطبيق هذه التغيرات أم لا؟"
 
 #: package/contents/ui/permissions.qml:17
 #, kde-format
 msgid "Permissions"
-msgstr "التصاريح"
+msgstr "الأذونات"
 
 #: package/contents/ui/permissions.qml:23
 #, kde-format
 msgid "Select an application from the list to view its permissions here"
-msgstr "اختر تطبيق من القائمة لعرض تصاريحه هنا"
+msgstr "اختر تطبيق من القائمة لعرض أذوناته هنا"
 
 #: package/contents/ui/permissions.qml:82
 #, kde-format
 msgid "Hide advanced permissions"
-msgstr "أخف التصاريح المتقدمة"
+msgstr "أخف الأذونات المتقدمة"
 
 #: package/contents/ui/permissions.qml:82
 #, kde-format
 msgid "Show advanced permissions"
-msgstr "اعرض التصاريح المتقدمة"
+msgstr "اعرض الأذونات المتقدمة"
 
 #: package/contents/ui/permissions.qml:94
 #, kde-format
@@ -307,17 +307,17 @@ msgstr "أضف أيضاً"
 #: package/contents/ui/TextPromptDialog.qml:21
 #, kde-format
 msgid "Add Filesystem Path Permission"
-msgstr "أضف تصريح مسار نظام ملفات"
+msgstr "أضف إذْن مسار نظام ملفات"
 
 #: package/contents/ui/TextPromptDialog.qml:22
 #, kde-format
 msgid "Add Session Bus Permission"
-msgstr "أضف تصريح ناقل جلسة"
+msgstr "أضف إذْن ناقل جلسة"
 
 #: package/contents/ui/TextPromptDialog.qml:23
 #, kde-format
 msgid "Add System Bus Permission"
-msgstr "أضف تصريح ناقل نظام"
+msgstr "أضف إذْن ناقل نظام"
 
 #: package/contents/ui/TextPromptDialog.qml:38
 #, kde-format
