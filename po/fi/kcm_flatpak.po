@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-22 00:43+0000\n"
+"POT-Creation-Date: 2025-08-14 00:43+0000\n"
 "PO-Revision-Date: 2024-10-19 10:32+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -17,46 +17,46 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 23.08.5\n"
 
-#: autotests/flatpakpermissiontest.cpp:642
-#: autotests/flatpakpermissiontest.cpp:864 flatpakpermission.cpp:404
+#: autotests/flatpakpermissiontest.cpp:645
+#: autotests/flatpakpermissiontest.cpp:867 flatpakpermission.cpp:404
 #, kde-format
 msgid "None"
 msgstr "Ei mitään"
 
-#: autotests/flatpakpermissiontest.cpp:643
-#: autotests/flatpakpermissiontest.cpp:867 flatpakpermission.cpp:405
+#: autotests/flatpakpermissiontest.cpp:646
+#: autotests/flatpakpermissiontest.cpp:870 flatpakpermission.cpp:405
 #, kde-format
 msgid "see"
 msgstr "katso"
 
-#: autotests/flatpakpermissiontest.cpp:644
-#: autotests/flatpakpermissiontest.cpp:865 flatpakpermission.cpp:406
+#: autotests/flatpakpermissiontest.cpp:647
+#: autotests/flatpakpermissiontest.cpp:868 flatpakpermission.cpp:406
 #, kde-format
 msgid "talk"
 msgstr "viesti"
 
-#: autotests/flatpakpermissiontest.cpp:645
-#: autotests/flatpakpermissiontest.cpp:866 flatpakpermission.cpp:407
+#: autotests/flatpakpermissiontest.cpp:648
+#: autotests/flatpakpermissiontest.cpp:869 flatpakpermission.cpp:407
 #, kde-format
 msgid "own"
 msgstr "oma"
 
-#: autotests/flatpakpermissiontest.cpp:854 flatpakpermission.cpp:395
+#: autotests/flatpakpermissiontest.cpp:857 flatpakpermission.cpp:395
 #, kde-format
 msgid "OFF"
 msgstr "EI KÄYTÖSSÄ"
 
-#: autotests/flatpakpermissiontest.cpp:855 flatpakpermission.cpp:393
+#: autotests/flatpakpermissiontest.cpp:858 flatpakpermission.cpp:393
 #, kde-format
 msgid "read/write"
 msgstr "luku/kirjoitus"
 
-#: autotests/flatpakpermissiontest.cpp:856 flatpakpermission.cpp:392
+#: autotests/flatpakpermissiontest.cpp:859 flatpakpermission.cpp:392
 #, kde-format
 msgid "read-only"
 msgstr "vain luku"
 
-#: autotests/flatpakpermissiontest.cpp:857 flatpakpermission.cpp:394
+#: autotests/flatpakpermissiontest.cpp:860 flatpakpermission.cpp:394
 #, kde-format
 msgid "create"
 msgstr "luonti"
@@ -270,17 +270,25 @@ msgid "Value:"
 msgstr "Arvo:"
 
 #: ui/main.qml:19
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Flatpak Applications"
+msgctxt "@window:title"
 msgid "Flatpak Applications"
 msgstr "Flatpak-sovellukset"
 
 #: ui/main.qml:97
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Apply Permissions"
+msgctxt "@title:window"
 msgid "Apply Permissions"
 msgstr "Ota käyttöoikeudet käyttöön"
 
 #: ui/main.qml:98
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "The permissions of application %1 have been changed. Do you want to apply "
+#| "these changes or discard them?"
+msgctxt "@info dialog main text"
 msgid ""
 "The permissions of application %1 have been changed. Do you want to apply "
 "these changes or discard them?"
@@ -289,29 +297,52 @@ msgstr ""
 "käyttöön vai hylätä ne?"
 
 #: ui/permissions.qml:22
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Permissions"
+msgctxt "@title:window"
 msgid "Permissions"
 msgstr "Käyttöoikeudet"
 
 #: ui/permissions.qml:29
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Select an application from the list to view its permissions here"
+msgctxt "@info:placeholder"
 msgid "Select an application from the list to view its permissions here"
 msgstr "Näytä sovelluksen käyttöoikeudet valitsemalla se luettelosta"
 
-#: ui/permissions.qml:170
+#: ui/permissions.qml:132
 #, kde-format
+msgctxt "@info accessible.description for list"
+msgid "Version %1"
+msgstr ""
+
+#: ui/permissions.qml:174
+#, fuzzy, kde-format
+#| msgid "Hide advanced permissions"
+msgctxt "@action:button in section header"
 msgid "Hide advanced permissions"
 msgstr "Piilota lisäkäyttöoikeudet"
 
-#: ui/permissions.qml:170
-#, kde-format
+#: ui/permissions.qml:174
+#, fuzzy, kde-format
+#| msgid "Show advanced permissions"
+msgctxt "@action:button in section header"
 msgid "Show advanced permissions"
 msgstr "Näytä lisäkäyttöoikeudet"
 
-#: ui/permissions.qml:182
-#, kde-format
+#: ui/permissions.qml:186
+#, fuzzy, kde-format
+#| msgid "Add New…"
+msgctxt "@action:button in section header"
 msgid "Add New…"
 msgstr "Lisää uusi…"
+
+#: ui/permissions.qml:187
+#, fuzzy, kde-format
+#| msgid "Add Filesystem Path Permission"
+msgctxt "action:button accessible"
+msgid "Add New File System Permission"
+msgstr "Lisää tiedostojärjestelmäpolun käyttöoikeus"
 
 #: ui/TextPromptDialog.qml:21
 #, kde-format
