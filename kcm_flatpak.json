@@ -2,7 +2,7 @@
     "KPlugin": {
         "BugReportUrl": "https://bugs.kde.org/enter_bug.cgi?product=systemsettings&component=kcm_flatpak",
         "Description": "Configure Flatpak Permissions",
-        "Description[ar]": "اضبط تصاريح فلاتباك",
+        "Description[ar]": "اضبط أذونات فلاتباك",
         "Description[ca@valencia]": "Configura els permisos de Flatpak",
         "Description[ca]": "Configura els permisos del Flatpak",
         "Description[cs]": "Nastavte oprávnění Flatpak",
@@ -54,7 +54,7 @@
         ],
         "Icon": "flatpak-discover",
         "Name": "Flatpak Permissions",
-        "Name[ar]": "تصاريح فلاتباك",
+        "Name[ar]": "أذونات فلاتباك",
         "Name[ca@valencia]": "Permisos de Flatpak",
         "Name[ca]": "Permisos del Flatpak",
         "Name[cs]": "Oprávnění Flatpak",
