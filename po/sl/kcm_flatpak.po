@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-08-14 00:43+0000\n"
-"PO-Revision-Date: 2024-08-30 06:39+0200\n"
+"PO-Revision-Date: 2025-08-14 07:24+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
 "%100==4 ? 3 : 0);\n"
-"X-Generator: Poedit 3.4.4\n"
+"X-Generator: Poedit 3.6\n"
 
 #: autotests/flatpakpermissiontest.cpp:645
 #: autotests/flatpakpermissiontest.cpp:867 flatpakpermission.cpp:404
@@ -272,80 +272,68 @@ msgid "Value:"
 msgstr "Vrednost:"
 
 #: ui/main.qml:19
-#, fuzzy, kde-format
-#| msgid "Flatpak Applications"
+#, kde-format
 msgctxt "@window:title"
 msgid "Flatpak Applications"
 msgstr "Aplikacije Flatpak"
 
 #: ui/main.qml:97
-#, fuzzy, kde-format
-#| msgid "Apply Permissions"
+#, kde-format
 msgctxt "@title:window"
 msgid "Apply Permissions"
 msgstr "Uveljavi dovoljenja"
 
 #: ui/main.qml:98
-#, fuzzy, kde-format
-#| msgid ""
-#| "The permissions of application %1 have been changed. Do you want to apply "
-#| "these changes or discard them?"
+#, kde-format
 msgctxt "@info dialog main text"
 msgid ""
 "The permissions of application %1 have been changed. Do you want to apply "
 "these changes or discard them?"
 msgstr ""
-"Dovoljenja aplikacije %1 so bila spremenjena. Ali želite uporabiti te "
+"Dovoljenja aplikacije %1 so bila spremenjena. Ali želite uveljaviti te "
 "spremembe ali jih zavreči?"
 
 #: ui/permissions.qml:22
-#, fuzzy, kde-format
-#| msgid "Permissions"
+#, kde-format
 msgctxt "@title:window"
 msgid "Permissions"
 msgstr "Dovoljenja"
 
 #: ui/permissions.qml:29
-#, fuzzy, kde-format
-#| msgid "Select an application from the list to view its permissions here"
+#, kde-format
 msgctxt "@info:placeholder"
 msgid "Select an application from the list to view its permissions here"
-msgstr ""
-"Izberite aplikacijo s seznama, če si želite ogledati njena dovoljenja tukaj"
+msgstr "Izberite aplikacijo s seznama, da si ogledate njena dovoljenja tukaj"
 
 #: ui/permissions.qml:132
 #, kde-format
 msgctxt "@info accessible.description for list"
 msgid "Version %1"
-msgstr ""
+msgstr "Različica %1"
 
 #: ui/permissions.qml:174
-#, fuzzy, kde-format
-#| msgid "Hide advanced permissions"
+#, kde-format
 msgctxt "@action:button in section header"
 msgid "Hide advanced permissions"
 msgstr "Skrij napredna dovoljenja"
 
 #: ui/permissions.qml:174
-#, fuzzy, kde-format
-#| msgid "Show advanced permissions"
+#, kde-format
 msgctxt "@action:button in section header"
 msgid "Show advanced permissions"
 msgstr "Pokaži napredna dovoljenja"
 
 #: ui/permissions.qml:186
-#, fuzzy, kde-format
-#| msgid "Add New…"
+#, kde-format
 msgctxt "@action:button in section header"
 msgid "Add New…"
-msgstr "Dodaj novega…"
+msgstr "Dodaj novo…"
 
 #: ui/permissions.qml:187
-#, fuzzy, kde-format
-#| msgid "Add Filesystem Path Permission"
+#, kde-format
 msgctxt "action:button accessible"
 msgid "Add New File System Permission"
-msgstr "Dodaj dovoljenje za pot datotečnega sistema"
+msgstr "Dodaj novo dovoljenje datotečnega sistema"
 
 #: ui/TextPromptDialog.qml:21
 #, kde-format
