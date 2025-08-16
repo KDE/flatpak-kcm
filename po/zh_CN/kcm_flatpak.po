@@ -269,24 +269,19 @@ msgid "Value:"
 msgstr "值："
 
 #: ui/main.qml:19
-#, fuzzy, kde-format
-#| msgid "Flatpak Applications"
+#, kde-format
 msgctxt "@window:title"
 msgid "Flatpak Applications"
 msgstr "Flatpak 应用程序"
 
 #: ui/main.qml:97
-#, fuzzy, kde-format
-#| msgid "Apply Permissions"
+#, kde-format
 msgctxt "@title:window"
 msgid "Apply Permissions"
 msgstr "应用权限"
 
 #: ui/main.qml:98
-#, fuzzy, kde-format
-#| msgid ""
-#| "The permissions of application %1 have been changed. Do you want to apply "
-#| "these changes or discard them?"
+#, kde-format
 msgctxt "@info dialog main text"
 msgid ""
 "The permissions of application %1 have been changed. Do you want to apply "
@@ -294,15 +289,13 @@ msgid ""
 msgstr "应用程序 %1 的权限已被修改。您想要应用这些更改，还是丢弃更改？"
 
 #: ui/permissions.qml:22
-#, fuzzy, kde-format
-#| msgid "Permissions"
+#, kde-format
 msgctxt "@title:window"
 msgid "Permissions"
 msgstr "权限"
 
 #: ui/permissions.qml:29
-#, fuzzy, kde-format
-#| msgid "Select an application from the list to view its permissions here"
+#, kde-format
 msgctxt "@info:placeholder"
 msgid "Select an application from the list to view its permissions here"
 msgstr "在列表中选择一个应用程序以查看其权限"
@@ -314,32 +307,28 @@ msgid "Version %1"
 msgstr ""
 
 #: ui/permissions.qml:174
-#, fuzzy, kde-format
-#| msgid "Hide advanced permissions"
+#, kde-format
 msgctxt "@action:button in section header"
 msgid "Hide advanced permissions"
 msgstr "隐藏高级权限"
 
 #: ui/permissions.qml:174
-#, fuzzy, kde-format
-#| msgid "Show advanced permissions"
+#, kde-format
 msgctxt "@action:button in section header"
 msgid "Show advanced permissions"
 msgstr "显示高级权限"
 
 #: ui/permissions.qml:186
-#, fuzzy, kde-format
-#| msgid "Add New…"
+#, kde-format
 msgctxt "@action:button in section header"
 msgid "Add New…"
-msgstr "添加…"
+msgstr ""
 
 #: ui/permissions.qml:187
-#, fuzzy, kde-format
-#| msgid "Add Filesystem Path Permission"
+#, kde-format
 msgctxt "action:button accessible"
 msgid "Add New File System Permission"
-msgstr "添加文件系统路径权限"
+msgstr ""
 
 #: ui/TextPromptDialog.qml:21
 #, kde-format
