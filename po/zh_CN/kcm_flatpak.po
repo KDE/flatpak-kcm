@@ -308,7 +308,7 @@ msgstr "显示高级权限"
 #: ui/permissions.qml:182
 #, kde-format
 msgid "Add New…"
-msgstr "添加…"
+msgstr ""
 
 #: ui/TextPromptDialog.qml:21
 #, kde-format
