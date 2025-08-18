@@ -1,6 +1,6 @@
 # Copyright (C) 2023 This file is copyright:
 # This file is distributed under the same license as the flatpak-kcm package.
-# SPDX-FileCopyrightText: 2022, 2023, 2024 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
+# SPDX-FileCopyrightText: 2022, 2023, 2024, 2025 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
 # SPDX-FileCopyrightText: 2023 Marcin Mikołajczak <me@mkljczk.pl>
 #
 msgid ""
@@ -8,15 +8,16 @@ msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-08-14 00:43+0000\n"
-"PO-Revision-Date: 2024-08-31 06:25+0200\n"
+"PO-Revision-Date: 2025-08-17 12:54+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
-"Language-Team: Polish <kde-i18n-doc@kde.org>\n"
+"Language-Team: pl\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
+"X-Generator: Lokalize 25.08.0\n"
 
 #: autotests/flatpakpermissiontest.cpp:645
 #: autotests/flatpakpermissiontest.cpp:867 flatpakpermission.cpp:404
@@ -272,24 +273,19 @@ msgid "Value:"
 msgstr "Wartość:"
 
 #: ui/main.qml:19
-#, fuzzy, kde-format
-#| msgid "Flatpak Applications"
+#, kde-format
 msgctxt "@window:title"
 msgid "Flatpak Applications"
 msgstr "Aplikacje Flatpak"
 
 #: ui/main.qml:97
-#, fuzzy, kde-format
-#| msgid "Apply Permissions"
+#, kde-format
 msgctxt "@title:window"
 msgid "Apply Permissions"
 msgstr "Zastosuj uprawnienia"
 
 #: ui/main.qml:98
-#, fuzzy, kde-format
-#| msgid ""
-#| "The permissions of application %1 have been changed. Do you want to apply "
-#| "these changes or discard them?"
+#, kde-format
 msgctxt "@info dialog main text"
 msgid ""
 "The permissions of application %1 have been changed. Do you want to apply "
@@ -298,15 +294,13 @@ msgstr ""
 "Uprawnienia aplikacji %1 uległy zmianie. Zastosować, czy porzucić te zmiany?"
 
 #: ui/permissions.qml:22
-#, fuzzy, kde-format
-#| msgid "Permissions"
+#, kde-format
 msgctxt "@title:window"
 msgid "Permissions"
 msgstr "Uprawnienia"
 
 #: ui/permissions.qml:29
-#, fuzzy, kde-format
-#| msgid "Select an application from the list to view its permissions here"
+#, kde-format
 msgctxt "@info:placeholder"
 msgid "Select an application from the list to view its permissions here"
 msgstr "Wybierz aplikację ze spisu, aby zobaczyć tutaj jej uprawnienia"
@@ -315,35 +309,31 @@ msgstr "Wybierz aplikację ze spisu, aby zobaczyć tutaj jej uprawnienia"
 #, kde-format
 msgctxt "@info accessible.description for list"
 msgid "Version %1"
-msgstr ""
+msgstr "Wersja %1"
 
 #: ui/permissions.qml:174
-#, fuzzy, kde-format
-#| msgid "Hide advanced permissions"
+#, kde-format
 msgctxt "@action:button in section header"
 msgid "Hide advanced permissions"
 msgstr "Ukryj rozszerzone uprawnienia"
 
 #: ui/permissions.qml:174
-#, fuzzy, kde-format
-#| msgid "Show advanced permissions"
+#, kde-format
 msgctxt "@action:button in section header"
 msgid "Show advanced permissions"
 msgstr "Pokaż rozszerzone uprawnienia"
 
 #: ui/permissions.qml:186
-#, fuzzy, kde-format
-#| msgid "Add New…"
+#, kde-format
 msgctxt "@action:button in section header"
 msgid "Add New…"
-msgstr "Dodaj nowy…"
+msgstr "Dodaj nowe…"
 
 #: ui/permissions.qml:187
-#, fuzzy, kde-format
-#| msgid "Add Filesystem Path Permission"
+#, kde-format
 msgctxt "action:button accessible"
 msgid "Add New File System Permission"
-msgstr "Dodaj uprawnienia do ścieżki systemu plików"
+msgstr "Dodaj nowe uprawnienia do systemu plików"
 
 #: ui/TextPromptDialog.qml:21
 #, kde-format

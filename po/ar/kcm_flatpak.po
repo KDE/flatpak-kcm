@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-08-14 00:43+0000\n"
-"PO-Revision-Date: 2025-08-04 20:58+0400\n"
+"PO-Revision-Date: 2025-08-17 22:11+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -28,7 +28,7 @@ msgstr "لا شيء"
 #: autotests/flatpakpermissiontest.cpp:870 flatpakpermission.cpp:405
 #, kde-format
 msgid "see"
-msgstr "النظر"
+msgstr "انظر"
 
 #: autotests/flatpakpermissiontest.cpp:647
 #: autotests/flatpakpermissiontest.cpp:868 flatpakpermission.cpp:406
@@ -270,24 +270,19 @@ msgid "Value:"
 msgstr "القيمة:"
 
 #: ui/main.qml:19
-#, fuzzy, kde-format
-#| msgid "Flatpak Applications"
+#, kde-format
 msgctxt "@window:title"
 msgid "Flatpak Applications"
 msgstr "تطبيقات فلاتباك"
 
 #: ui/main.qml:97
-#, fuzzy, kde-format
-#| msgid "Apply Permissions"
+#, kde-format
 msgctxt "@title:window"
 msgid "Apply Permissions"
-msgstr "طبّق التّصاريح"
+msgstr "طبّق الأذونات"
 
 #: ui/main.qml:98
-#, fuzzy, kde-format
-#| msgid ""
-#| "The permissions of application %1 have been changed. Do you want to apply "
-#| "these changes or discard them?"
+#, kde-format
 msgctxt "@info dialog main text"
 msgid ""
 "The permissions of application %1 have been changed. Do you want to apply "
@@ -295,15 +290,13 @@ msgid ""
 msgstr "تغيرت أذونات تطبيق %1. هل تريد تطبيق هذه التغيرات أم لا؟"
 
 #: ui/permissions.qml:22
-#, fuzzy, kde-format
-#| msgid "Permissions"
+#, kde-format
 msgctxt "@title:window"
 msgid "Permissions"
 msgstr "الأذونات"
 
 #: ui/permissions.qml:29
-#, fuzzy, kde-format
-#| msgid "Select an application from the list to view its permissions here"
+#, kde-format
 msgctxt "@info:placeholder"
 msgid "Select an application from the list to view its permissions here"
 msgstr "اختر تطبيق من القائمة لعرض أذوناته هنا"
@@ -312,35 +305,31 @@ msgstr "اختر تطبيق من القائمة لعرض أذوناته هنا"
 #, kde-format
 msgctxt "@info accessible.description for list"
 msgid "Version %1"
-msgstr ""
+msgstr "الإصدار %1"
 
 #: ui/permissions.qml:174
-#, fuzzy, kde-format
-#| msgid "Hide advanced permissions"
+#, kde-format
 msgctxt "@action:button in section header"
 msgid "Hide advanced permissions"
 msgstr "أخف الأذونات المتقدمة"
 
 #: ui/permissions.qml:174
-#, fuzzy, kde-format
-#| msgid "Show advanced permissions"
+#, kde-format
 msgctxt "@action:button in section header"
 msgid "Show advanced permissions"
 msgstr "اعرض الأذونات المتقدمة"
 
 #: ui/permissions.qml:186
-#, fuzzy, kde-format
-#| msgid "Add New…"
+#, kde-format
 msgctxt "@action:button in section header"
 msgid "Add New…"
 msgstr "أضف جديد…"
 
 #: ui/permissions.qml:187
-#, fuzzy, kde-format
-#| msgid "Add Filesystem Path Permission"
+#, kde-format
 msgctxt "action:button accessible"
 msgid "Add New File System Permission"
-msgstr "أضف إذْن مسار نظام ملفات"
+msgstr "أضف إذْن جديد لنظام الملفات"
 
 #: ui/TextPromptDialog.qml:21
 #, kde-format

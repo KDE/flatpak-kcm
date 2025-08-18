@@ -304,7 +304,7 @@ msgstr "在列表中选择一个应用程序以查看其权限"
 #, kde-format
 msgctxt "@info accessible.description for list"
 msgid "Version %1"
-msgstr ""
+msgstr "版本 %1"
 
 #: ui/permissions.qml:174
 #, kde-format
@@ -322,13 +322,13 @@ msgstr "显示高级权限"
 #, kde-format
 msgctxt "@action:button in section header"
 msgid "Add New…"
-msgstr ""
+msgstr "添加…"
 
 #: ui/permissions.qml:187
 #, kde-format
 msgctxt "action:button accessible"
 msgid "Add New File System Permission"
-msgstr ""
+msgstr "添加新文件系统权限"
 
 #: ui/TextPromptDialog.qml:21
 #, kde-format
