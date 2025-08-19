@@ -49,8 +49,7 @@
         "FormFactors": [
             "desktop",
             "handset",
-            "tablet",
-            "mediacenter"
+            "tablet"
         ],
         "Icon": "flatpak-discover",
         "Name": "Flatpak Permissions",
