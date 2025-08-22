@@ -68,13 +68,13 @@ target_link_libraries(kcm_flatpak_static
     Qt::Core
 )
 
-kcmutils_add_qml_kcm(kcm_flatpak SOURCES kcm.cpp kcm.h)
+kcmutils_add_qml_kcm(kcm_app-permissions SOURCES kcm.cpp kcm.h)
 
-target_sources(kcm_flatpak PRIVATE appsmodel.cpp permissionitem.cpp permissionstore.cpp restoredatamodel.cpp)
+target_sources(kcm_app-permissions PRIVATE appsmodel.cpp permissionitem.cpp permissionstore.cpp restoredatamodel.cpp)
 qt_add_dbus_interfaces(DBusInterfaces ${CMAKE_CURRENT_SOURCE_DIR}/org.freedesktop.impl.portal.PermissionStore.xml)
-target_sources(kcm_flatpak PRIVATE ${DBusInterfaces})
+target_sources(kcm_app-permissions PRIVATE ${DBusInterfaces})
 
-target_link_libraries(kcm_flatpak PRIVATE kcm_flatpak_static Qt6::DBus Qt6::Gui KF6::Service)
+target_link_libraries(kcm_app-permissions PRIVATE kcm_flatpak_static Qt6::DBus Qt6::Gui KF6::Service)
 
 ki18n_install(po)
 

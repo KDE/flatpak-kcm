@@ -1,6 +1,7 @@
 /**
  * SPDX-FileCopyrightText: 2022 Suhaas Joshi <joshiesuhaas0@gmail.com>
  * SPDX-FileCopyrightText: 2023 ivan tkachenko <me@ratijas.tk>
+ * SPDX-FileCopyrightText: 2025 David Redondo <kde@david-redondo.de>
  * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
@@ -17,11 +18,11 @@
 
 #include <algorithm>
 
-K_PLUGIN_CLASS_WITH_JSON(KCMFlatpak, "kcm_flatpak.json")
+K_PLUGIN_CLASS_WITH_JSON(AppPermissionsKCM, "kcm_app-permissions.json")
 
 using namespace Qt::StringLiterals;
 
-KCMFlatpak::KCMFlatpak(QObject *parent, const KPluginMetaData &data, const QVariantList &args)
+AppPermissionsKCM::AppPermissionsKCM(QObject *parent, const KPluginMetaData &data, const QVariantList &args)
     : KQuickManagedConfigModule(parent, data)
     , m_references(FlatpakReference::allFlatpakReferences())
     , m_permissionStore(PermissionStore::instance())
@@ -29,7 +30,6 @@ KCMFlatpak::KCMFlatpak(QObject *parent, const KPluginMetaData &data, const QVari
 {
     constexpr const char *uri = "org.kde.plasma.kcm.flatpakpermissions";
 
-    qmlRegisterUncreatableType<KCMFlatpak>(uri, 1, 0, "KCMFlatpak", QString());
     qmlRegisterUncreatableType<FlatpakReference>(uri, 1, 0, "FlatpakReference", QStringLiteral("Should be obtained from the KCM"));
     qmlRegisterType<FlatpakPermissionModel>(uri, 1, 0, "FlatpakPermissionModel");
     qmlRegisterUncreatableType<FlatpakPermissionsSectionType>(uri, 1, 0, "FlatpakPermissionsSectionType", QStringLiteral("For enum access only"));
@@ -66,7 +66,7 @@ KCMFlatpak::KCMFlatpak(QObject *parent, const KPluginMetaData &data, const QVari
     });
 }
 
-FlatpakReference *KCMFlatpak::indexFromArgs(const QVariantList &args) const
+FlatpakReference *AppPermissionsKCM::indexFromArgs(const QVariantList &args) const
 {
     if (args.isEmpty()) {
         return nullptr;
@@ -91,27 +91,27 @@ FlatpakReference *KCMFlatpak::indexFromArgs(const QVariantList &args) const
     }
 }
 
-void KCMFlatpak::load()
+void AppPermissionsKCM::load()
 {
     std::ranges::for_each(m_references, &FlatpakReference::load);
 }
 
-void KCMFlatpak::save()
+void AppPermissionsKCM::save()
 {
     std::ranges::for_each(m_references, &FlatpakReference::save);
 }
 
-void KCMFlatpak::defaults()
+void AppPermissionsKCM::defaults()
 {
     std::ranges::for_each(m_references, &FlatpakReference::defaults);
 }
 
-const AppsModel *KCMFlatpak::appsModel() const
+const AppsModel *AppPermissionsKCM::appsModel() const
 {
     return &m_appsModel;
 }
 
-FlatpakReference *KCMFlatpak::flatpakRefForApp(const QString &appId)
+FlatpakReference *AppPermissionsKCM::flatpakRefForApp(const QString &appId)
 {
     auto it = std::ranges::find(m_references, appId, &FlatpakReference::flatpakName);
     if (it == std::ranges::end(m_references)) {
