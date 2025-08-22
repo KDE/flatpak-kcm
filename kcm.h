@@ -14,7 +14,7 @@
 
 class PermissionStore;
 
-class KCMFlatpak : public KQuickManagedConfigModule
+class AppPermissionsKCM : public KQuickManagedConfigModule
 {
     Q_OBJECT
     Q_PROPERTY(const AppsModel *appsModel READ appsModel CONSTANT)
@@ -24,7 +24,7 @@ public:
      * installed application page directly: use @param args in the form of
      * ["<ref>"], where <ref> is a FlatpakRef in formatted like "app/org.videolan.VLC/x86_64/stable".
      */
-    explicit KCMFlatpak(QObject *parent, const KPluginMetaData &data, const QVariantList &args);
+    explicit AppPermissionsKCM(QObject *parent, const KPluginMetaData &data, const QVariantList &args);
 
     const AppsModel *appsModel() const;
 

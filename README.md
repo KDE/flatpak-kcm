@@ -1,23 +1,42 @@
-<!---
-SPDX-FileCopyrightText: 2022 Suhaas Joshi <joshiesuhaas0@gmail.com>
-SPDX-License-Identifier: GPL-2.0-or-later
+<!--
+    SPDX-License-Identifier: CC-BY-SA-4.0
+    SPDX-FileCopyrightText: 2025 David Redondo <kde@david-redondo.de>
 -->
 
-# Flatpak Permissions Management KCM
+# What is this
 
-The KCM allows changing what permissions have been granted to installed Flatpak applications.
+A KCM to configure permissions for portal interactions. It also allows changing flatpak settings
+via the subsumed flatpak kcm
 
-![Basic Section](Resources/BasicPermissionsScreenshot.png)
-![Advanced Section](Resources/AdvancedPermissionsScreenshot.png)
+Note: Some permissions dont make sense to show for non
+sandboxed apps as they are only proxying dbus.
 
-## Building and Running:
+## `xdg-desktop-portal` frontend permissions:
 
-- cd wherever/you/like
-- git clone [ the link you copy from the clone option ]
-- cd flatpak_kcm
-- mkdir build
-- cd build
-- cmake .. -DCMAKE_INSTALL_PREFIX=~/.local/kde
-- make install
-- source prefix.sh
-- kcmshell6 kcm_flatpak
+These control mostly if the frontend will prompt via the access portal
+or will ask the backend to prompt.
+|                                                   | show for non-sandboxed |   |
+| ------------------------------------------------- | ---------------------- | -- |
+| location                                          | 🚫                     | ✔️ |
+| notification (to notification kcm?)               | 🚫                     | ✔  |
+| gamemode                                          | 🚫                     | ✔️ |
+| realtime                                          | 🚫                     | ✔️ |
+| screenshot                                        | ✔️                     | ✔️ |
+| wallpaper (once implemented)                      | ❔                     | ☐  |
+| camera                                            | 🚫                     | ✔️ |
+| inhibit (broken impl)                             | 🚫                     | ✔️ |
+| usb (we don't have the portal yet)                | 🚫                     | ☐  |
+| background - maybe, we allow always at the moment | 🚫                     | ☐  |
+
+
+OpenURI also uses the permissions store but saves app specific mime choices there, see
+https://bugs.kde.org/show_bug.cgi?id=499787
+
+## Our own permission system
+Everything that is not above but prompts for permission and doesn't requite the user to make a choice
+- Remote Desktop ✔️
+- ???
+## Restorable sessions
+User should be able to revoke granted sessions with "Allow remember".
+- Screencast  ✔️
+- Remote Desktop  ✔️
