@@ -1,15 +1,15 @@
 # Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the flatpak-kcm package.
 #
-# SPDX-FileCopyrightText: 2024 Toms Trasūns <toms.trasuns@posteo.net>
+# SPDX-FileCopyrightText: 2024, 2025 Toms Trasūns <toms.trasuns@posteo.net>
 # Māris Nartišs <maris.kde@gmail.com>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-08-14 00:43+0000\n"
-"PO-Revision-Date: 2024-09-11 11:26+0300\n"
-"Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
+"PO-Revision-Date: 2025-08-19 11:17+0300\n"
+"Last-Translator: Toms Trasūns <toms.trasuns@posteo.net>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
 "Language: lv\n"
 "MIME-Version: 1.0\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
 "2);\n"
-"X-Generator: Lokalize 24.08.0\n"
+"X-Generator: Lokalize 25.08.0\n"
 
 #: autotests/flatpakpermissiontest.cpp:645
 #: autotests/flatpakpermissiontest.cpp:867 flatpakpermission.cpp:404
@@ -271,24 +271,19 @@ msgid "Value:"
 msgstr "Mainīgais:"
 
 #: ui/main.qml:19
-#, fuzzy, kde-format
-#| msgid "Flatpak Applications"
+#, kde-format
 msgctxt "@window:title"
 msgid "Flatpak Applications"
 msgstr "„Flatpak“ programmas"
 
 #: ui/main.qml:97
-#, fuzzy, kde-format
-#| msgid "Apply Permissions"
+#, kde-format
 msgctxt "@title:window"
 msgid "Apply Permissions"
 msgstr "Pielietot atļaujas"
 
 #: ui/main.qml:98
-#, fuzzy, kde-format
-#| msgid ""
-#| "The permissions of application %1 have been changed. Do you want to apply "
-#| "these changes or discard them?"
+#, kde-format
 msgctxt "@info dialog main text"
 msgid ""
 "The permissions of application %1 have been changed. Do you want to apply "
@@ -298,52 +293,46 @@ msgstr ""
 "vai tās izmest?"
 
 #: ui/permissions.qml:22
-#, fuzzy, kde-format
-#| msgid "Permissions"
+#, kde-format
 msgctxt "@title:window"
 msgid "Permissions"
 msgstr "Atļaujas"
 
 #: ui/permissions.qml:29
-#, fuzzy, kde-format
-#| msgid "Select an application from the list to view its permissions here"
+#, kde-format
 msgctxt "@info:placeholder"
 msgid "Select an application from the list to view its permissions here"
-msgstr "Atlasiet programmu no saraksta, lai skatītu tās atļaujas"
+msgstr "Atlasiet sarakstā programmu, kuras atļaujas vēlaties redzēt"
 
 #: ui/permissions.qml:132
 #, kde-format
 msgctxt "@info accessible.description for list"
 msgid "Version %1"
-msgstr ""
+msgstr "Versija %1"
 
 #: ui/permissions.qml:174
-#, fuzzy, kde-format
-#| msgid "Hide advanced permissions"
+#, kde-format
 msgctxt "@action:button in section header"
 msgid "Hide advanced permissions"
 msgstr "Paslēpt papildu atļaujas"
 
 #: ui/permissions.qml:174
-#, fuzzy, kde-format
-#| msgid "Show advanced permissions"
+#, kde-format
 msgctxt "@action:button in section header"
 msgid "Show advanced permissions"
 msgstr "Rādīt papildu atļaujas"
 
 #: ui/permissions.qml:186
-#, fuzzy, kde-format
-#| msgid "Add New…"
+#, kde-format
 msgctxt "@action:button in section header"
 msgid "Add New…"
 msgstr "Pievienot jaunu…"
 
 #: ui/permissions.qml:187
-#, fuzzy, kde-format
-#| msgid "Add Filesystem Path Permission"
+#, kde-format
 msgctxt "action:button accessible"
 msgid "Add New File System Permission"
-msgstr "Pievienot datņu sistēmas ceļa atļauju"
+msgstr "Pievienot jaunu datņu sistēmas atļauju"
 
 #: ui/TextPromptDialog.qml:21
 #, kde-format
@@ -363,14 +352,14 @@ msgstr "Pievienot sistēmas kopnes atļauju"
 #: ui/TextPromptDialog.qml:38
 #, kde-format
 msgid "Enter filesystem path:"
-msgstr "Ievadiet datņu sistēmas ceļu:"
+msgstr "Norādiet datņu sistēmas ceļu:"
 
 #: ui/TextPromptDialog.qml:39
 #, kde-format
 msgid "Enter session bus name:"
-msgstr "Ievadiet sesijas kopnes nosaukumu:"
+msgstr "Norādiet sesijas kopnes nosaukumu:"
 
 #: ui/TextPromptDialog.qml:40
 #, kde-format
 msgid "Enter system bus name:"
-msgstr "Ievadiet sistēmas kopnes nosaukumu:"
+msgstr "Norādiet sistēmas kopnes nosaukumu:"
