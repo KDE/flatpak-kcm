@@ -292,8 +292,7 @@ msgstr "Permisos"
 #: package/contents/ui/permissions.qml:23
 #, kde-format
 msgid "Select an application from the list to view its permissions here"
-msgstr ""
-"Seleccioneu una aplicació de la llista per a veure ací els seus permisos"
+msgstr "Trieu una aplicació de la llista per a veure ací els seus permisos"
 
 #: package/contents/ui/permissions.qml:82
 #, kde-format
