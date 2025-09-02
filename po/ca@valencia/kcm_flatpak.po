@@ -304,8 +304,7 @@ msgstr "Permisos"
 #, kde-format
 msgctxt "@info:placeholder"
 msgid "Select an application from the list to view its permissions here"
-msgstr ""
-"Seleccioneu una aplicació de la llista per a veure ací els seus permisos"
+msgstr "Trieu una aplicació de la llista per a veure ací els seus permisos"
 
 #: ui/permissions.qml:132
 #, kde-format
