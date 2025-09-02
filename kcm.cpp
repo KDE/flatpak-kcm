@@ -14,6 +14,8 @@
 #include <KLocalizedString>
 #include <KPluginFactory>
 
+#include <QDBusConnection>
+#include <QDBusConnectionInterface>
 #include <QQmlEngine>
 
 #include <algorithm>
@@ -119,6 +121,12 @@ FlatpakReference *AppPermissionsKCM::flatpakRefForApp(const QString &appId)
     }
     QQmlEngine::setObjectOwnership(it->get(), QQmlEngine::CppOwnership);
     return it->get();
+}
+
+bool AppPermissionsKCM::gamemodeAvailable() const
+{
+    static bool available = QDBusConnection::sessionBus().interface()->activatableServiceNames().value().contains(u"com.feralinteractive.GameMode"_s);
+    return available;
 }
 
 #include "kcm.moc"

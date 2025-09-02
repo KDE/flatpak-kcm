@@ -18,6 +18,7 @@ class AppPermissionsKCM : public KQuickManagedConfigModule
 {
     Q_OBJECT
     Q_PROPERTY(const AppsModel *appsModel READ appsModel CONSTANT)
+    Q_PROPERTY(bool gamemodeAvailable READ gamemodeAvailable CONSTANT)
 public:
     /**
      * This KCM manages permissions for Flatpak application. It can open any
@@ -29,6 +30,7 @@ public:
     const AppsModel *appsModel() const;
 
     Q_INVOKABLE FlatpakReference *flatpakRefForApp(const QString &appId);
+    bool gamemodeAvailable() const;
 
 public Q_SLOTS:
     void load() override;

@@ -92,17 +92,23 @@ still able to control mouse and keyboard or record the contents of your screen t
             onToggled: inhibitPermission.permissions = checked ? [] : [""]
         }
 
-        QQC.Switch {
-            visible: !root.isHostApp
-            Layout.fillWidth: true
-            text: i18nc("@option:check", "Activate game mode")
-            PermissionItem {
-                id: gamemodePermission
-                table: "gamemode"
-                resource: "gamemode"
+        RowLayout {
+            visible: !root.isHostApp && kcm.gamemodeAvailable
+            QQC.Switch {
+                Layout.fillWidth: true
+                text: i18nc("@option:check", "Activate game mode")
+                PermissionItem {
+                    id: gamemodePermission
+                    table: "gamemode"
+                    resource: "gamemode"
+                }
+                checked: gamemodePermission.permissions[0] !== "no"
+                onToggled: gamemodePermission.permissions = checked ? ["yes"] : ["no"]
             }
-            checked: gamemodePermission.permissions[0] !== "no"
-            onToggled: gamemodePermission.permissions = checked ? ["yes"] : ["no"]
+            Kirigami.ContextualHelpButton {
+                id: helper
+                toolTipText: xi18nc("@info:tooltip", "Allows the application to activate game mode if you are using it on your system.")
+            }
         }
 
         QQC.Switch {
