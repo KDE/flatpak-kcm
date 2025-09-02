@@ -41,6 +41,7 @@ find_package(KF6 ${KF6_MIN_VERSION} REQUIRED COMPONENTS
     KCMUtils
     ItemModels
     Service
+    IconThemes
 )
 
 ecm_set_disabled_deprecation_versions(QT 6.9.0
@@ -64,6 +65,7 @@ target_link_libraries(kcm_flatpak_static
     KF6::CoreAddons
     KF6::I18n
     KF6::KCMUtilsQuick
+    KF6::IconThemes
     PkgConfig::Flatpak
     Qt::Core
 )

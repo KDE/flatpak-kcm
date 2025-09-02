@@ -22,7 +22,6 @@ class FlatpakReference : public QObject
     Q_OBJECT
     Q_PROPERTY(QString version READ version CONSTANT FINAL)
     Q_PROPERTY(QString displayName READ displayName CONSTANT FINAL)
-    Q_PROPERTY(QUrl iconSource READ iconSource CONSTANT FINAL)
 
 public:
     explicit FlatpakReference(const QString &flatpakName,
@@ -30,7 +29,6 @@ public:
                               const QString &branch,
                               const QString &version,
                               const QString &displayName,
-                              const QUrl &iconSource,
                               const QStringList &metadataAndOverridesFiles);
 
     static std::vector<std::unique_ptr<FlatpakReference>> allFlatpakReferences();
@@ -38,8 +36,6 @@ public:
     QString arch() const;
     QString branch() const;
     QString version() const;
-
-    QUrl iconSource() const;
 
     const QStringList &metadataAndOverridesFiles() const;
     QStringList defaultsFiles() const;
@@ -69,7 +65,6 @@ private:
     // Might be empty, in which case code should fallback to flatpakName.
     QString m_displayName;
 
-    QUrl m_iconSource;
     // List of metadata and overrides files, in the order they should be
     // loaded and merged, starting from base app metadata and ending with
     // per-app user-level override.

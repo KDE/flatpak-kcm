@@ -17,6 +17,7 @@ KCMUtils.SimpleKCM {
     id: root
     required property string appId
     required property bool isHostApp
+    required property var decoration
 
     actions: [
         Kirigami.Action {
@@ -25,7 +26,7 @@ KCMUtils.SimpleKCM {
             text: i18nc("@action:intoolbar", "Manage Flatpak Settings")
             icon.name: "flatpak-discover"
             onTriggered: {
-                kcm.push("FlatpakPermissions.qml", {"ref": ref})
+                kcm.push("FlatpakPermissions.qml", {"ref": ref, "decoration": root.decoration})
             }
         }
     ]

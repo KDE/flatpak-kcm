@@ -7,6 +7,7 @@
 #include "flatpakhelper.h"
 #include "config.h"
 
+#include <KIconLoader>
 #include <QDir>
 #include <QFileInfo>
 #include <QStandardPaths>
@@ -81,40 +82,6 @@ QString metadataPathForSystemInstallation(const QString &flatpakName)
 {
     const auto base = systemBaseDirectory();
     return metadataPathForInstallation(base, flatpakName);
-}
-
-QUrl iconSourceUrl(const QString &displayName, const QString &flatpakName, const QString &appBaseDirectory)
-{
-    QString dirPath = appBaseDirectory + QStringLiteral("/files/share/icons/hicolor/");
-    QDir dir(dirPath);
-    dir.setFilter(QDir::NoDotAndDotDot | QDir::AllDirs);
-
-    QString nextDir;
-    if (dir.exists(QStringLiteral("scalable"))) {
-        nextDir = QStringLiteral("scalable");
-    } else if (dir.exists(QStringLiteral("symbolic"))) {
-        nextDir = QStringLiteral("symbolic");
-    } else if (!dir.isEmpty()) {
-        nextDir = dir.entryList().at(0);
-    } else {
-        return QUrl();
-    }
-    dir.cd(nextDir + QStringLiteral("/apps"));
-
-    QString file = flatpakName + QStringLiteral(".png");
-    if (!dir.exists(file)) {
-        file = flatpakName + QStringLiteral(".svg");
-        if (!dir.exists(file)) {
-            file = displayName.toLower() + QStringLiteral(".png");
-            if (!dir.exists(file)) {
-                file = displayName.toLower() + QStringLiteral(".svg");
-                if (!dir.exists(file)) {
-                    return QUrl();
-                }
-            }
-        }
-    }
-    return QUrl::fromLocalFile(dir.absoluteFilePath(file));
 }
 
 bool verifyDBusName(QStringView name)
