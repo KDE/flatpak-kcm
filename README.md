@@ -22,7 +22,7 @@ or will ask the backend to prompt.
 | gamemode                                          | 🚫                     | ✔️ |
 | realtime                                          | 🚫                     | ✔️ |
 | screenshot                                        | ✔️                     | ✔️ |
-| wallpaper (once implemented)                      | ❔                     | ☐  |
+| wallpaper                                         | 🚫                     | ✔️ |
 | camera                                            | 🚫                     | ✔️ |
 | inhibit                                           | 🚫                     | ✔️ |
 | usb (we don't have the portal yet)                | 🚫                     | ☐  |

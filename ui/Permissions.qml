@@ -199,6 +199,28 @@ still able to control mouse and keyboard or record the contents of your screen t
             }
         }
 
+        PermissionCombobox {
+            id: wallpaperCombobox
+            visible: !root.isHostApp
+            Kirigami.FormData.label: i18nc("@label:listbox", "Set desktop and lock screen background:")
+            Layout.preferredWidth: parent.comboboxPreferredWidth
+            PermissionItem {
+                id: wallpaperPermission
+                table: "wallpaper"
+                resource: "wallpaper"
+            }
+            model: [
+                {value: "", text: i18nc("@item:inlistbox", "Ask Once")},
+                {value: "no", text: i18nc("@item:inlistbox", "Deny")},
+                {value: "yes", text: i18nc("@item:inlistbox", "Allow")},
+                {value: "ask", text: i18nc("@item:inlistbox", "Always Ask")},
+            ]
+            // Unset/empty makes the portal ask once
+            activeValue: wallpaperPermission.permissions[0] ?? ""
+            onValueSelected: (value) => wallpaperPermission.permissions = [value]
+        }
+
+
         Item {
             Kirigami.FormData.isSection: true
         }
