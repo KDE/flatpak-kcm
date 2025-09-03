@@ -24,7 +24,7 @@ or will ask the backend to prompt.
 | screenshot                                        | ✔️                     | ✔️ |
 | wallpaper (once implemented)                      | ❔                     | ☐  |
 | camera                                            | 🚫                     | ✔️ |
-| inhibit (broken impl)                             | 🚫                     | ✔️ |
+| inhibit                                           | 🚫                     | ✔️ |
 | usb (we don't have the portal yet)                | 🚫                     | ☐  |
 | background - maybe, we allow always at the moment | 🚫                     | ☐  |
 
