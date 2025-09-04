@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-08-14 00:43+0000\n"
+"POT-Creation-Date: 2025-09-04 00:43+0000\n"
 "PO-Revision-Date: 2024-01-28 15:17-0600\n"
 "Last-Translator: A S Alam <aalam@punlinux.org>\n"
 "Language-Team: Punjabi <kde-i18n-doc@kde.org>\n"
@@ -17,254 +17,317 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Lokalize 23.08.4\n"
 
-#: autotests/flatpakpermissiontest.cpp:645
-#: autotests/flatpakpermissiontest.cpp:867 flatpakpermission.cpp:404
+#: autotests/flatpakpermissiontest.cpp:618
+#: autotests/flatpakpermissiontest.cpp:824 flatpakpermission.cpp:404
 #, kde-format
 msgid "None"
 msgstr "ਕੋਈ ਨਹੀਂ"
 
-#: autotests/flatpakpermissiontest.cpp:646
-#: autotests/flatpakpermissiontest.cpp:870 flatpakpermission.cpp:405
+#: autotests/flatpakpermissiontest.cpp:619
+#: autotests/flatpakpermissiontest.cpp:827 flatpakpermission.cpp:405
 #, kde-format
 msgid "see"
 msgstr "ਵੇਖੋ"
 
-#: autotests/flatpakpermissiontest.cpp:647
-#: autotests/flatpakpermissiontest.cpp:868 flatpakpermission.cpp:406
+#: autotests/flatpakpermissiontest.cpp:620
+#: autotests/flatpakpermissiontest.cpp:825 flatpakpermission.cpp:406
 #, kde-format
 msgid "talk"
 msgstr "ਗੱਲਾਂ"
 
-#: autotests/flatpakpermissiontest.cpp:648
-#: autotests/flatpakpermissiontest.cpp:869 flatpakpermission.cpp:407
+#: autotests/flatpakpermissiontest.cpp:621
+#: autotests/flatpakpermissiontest.cpp:826 flatpakpermission.cpp:407
 #, kde-format
 msgid "own"
 msgstr "ਮਲਕੀਅਤ"
 
-#: autotests/flatpakpermissiontest.cpp:857 flatpakpermission.cpp:395
+#: autotests/flatpakpermissiontest.cpp:814 flatpakpermission.cpp:395
 #, kde-format
 msgid "OFF"
 msgstr "ਬੰਦ"
 
-#: autotests/flatpakpermissiontest.cpp:858 flatpakpermission.cpp:393
+#: autotests/flatpakpermissiontest.cpp:815 flatpakpermission.cpp:393
 #, kde-format
 msgid "read/write"
 msgstr "ਪੜ੍ਹਨ/ਲਿਖਣ"
 
-#: autotests/flatpakpermissiontest.cpp:859 flatpakpermission.cpp:392
+#: autotests/flatpakpermissiontest.cpp:816 flatpakpermission.cpp:392
 #, kde-format
 msgid "read-only"
 msgstr "ਸਿਰਫ਼ ਪੜ੍ਹਨ"
 
-#: autotests/flatpakpermissiontest.cpp:860 flatpakpermission.cpp:394
+#: autotests/flatpakpermissiontest.cpp:817 flatpakpermission.cpp:394
 #, kde-format
 msgid "create"
 msgstr "ਬਣਾਓ"
 
-#: flatpakpermission.cpp:819
+#: flatpakpermission.cpp:823
 #, fuzzy, kde-format
 #| msgid "Internet Connection"
 msgid "Internet connection"
 msgstr "ਇੰਟਰਨੈੱਟ ਕਨੈਕਸ਼ਨ"
 
-#: flatpakpermission.cpp:820
+#: flatpakpermission.cpp:824
 #, fuzzy, kde-format
 #| msgid "Inter-process Communication"
 msgid "Inter-process communication"
 msgstr "ਅੰਤਰ-ਪਰੋਸੈਸ ਸੰਚਾਰ"
 
-#: flatpakpermission.cpp:826
+#: flatpakpermission.cpp:830
 #, fuzzy, kde-format
 #| msgid "X11 Windowing System"
 msgid "X11 windowing system"
 msgstr "X11 ਵਿੰਡੋਇੰਗ ਸਿਸਟਮ"
 
-#: flatpakpermission.cpp:827
+#: flatpakpermission.cpp:831
 #, fuzzy, kde-format
 #| msgid "Wayland Windowing System"
 msgid "Wayland windowing system"
 msgstr "ਵੇਅਲੈਂਡ ਵਿੰਡੋਇੰਗ ਸਿਸਟਮ"
 
-#: flatpakpermission.cpp:828
+#: flatpakpermission.cpp:832
 #, fuzzy, kde-format
 #| msgid "X11 Windowing System"
 msgid "Fallback to X11 windowing system"
 msgstr "X11 ਵਿੰਡੋਇੰਗ ਸਿਸਟਮ"
 
-#: flatpakpermission.cpp:829
+#: flatpakpermission.cpp:833
 #, kde-format
 msgid "Pulseaudio sound server"
 msgstr ""
 
-#: flatpakpermission.cpp:830
+#: flatpakpermission.cpp:834
 #, fuzzy, kde-format
 #| msgid "Session Bus Access"
 msgid "Session bus access"
 msgstr "ਸ਼ੈਸ਼ਨ ਬੱਸ ਪਹੁੰਚ"
 
-#: flatpakpermission.cpp:831
+#: flatpakpermission.cpp:835
 #, fuzzy, kde-format
 #| msgid "System Bus Access"
 msgid "System bus access"
 msgstr "ਸਿਸਟਮ ਬੱਸ ਪਹੁੰਚ"
 
-#: flatpakpermission.cpp:832
+#: flatpakpermission.cpp:836
 #, fuzzy, kde-format
 #| msgid "Remote Login Access"
 msgid "Remote login access"
 msgstr "ਰਿਮੋਟ ਲਾਗਇਨ ਪਹੁੰਚ"
 
-#: flatpakpermission.cpp:833
+#: flatpakpermission.cpp:837
 #, fuzzy, kde-format
 #| msgid "Smart Card Access"
 msgid "Smart card access"
 msgstr "ਸਮਾਰਟ ਕਾਰਡ ਪਹੁੰਚ"
 
-#: flatpakpermission.cpp:834
+#: flatpakpermission.cpp:838
 #, fuzzy, kde-format
 #| msgid "Filesystem Access"
 msgid "Print system access"
 msgstr "ਫ਼ਾਇਲ-ਸਿਸਟਮ ਪਹੁੰਚ"
 
-#: flatpakpermission.cpp:840
+#: flatpakpermission.cpp:844
 #, fuzzy, kde-format
 #| msgid "Kernel-based Virtual Machine Access"
 msgid "Kernel-based Virtual Machine access"
 msgstr "ਕਰਨਲ ਅਧਾਰਿਤ ਵਰਚੁਅਲ ਮਸ਼ੀਨ ਪਹੁੰਚ"
 
-#: flatpakpermission.cpp:841
+#: flatpakpermission.cpp:845
 #, fuzzy, kde-format
 #| msgid "Direct Graphic Rendering"
 msgid "Direct graphic rendering"
 msgstr "ਸਿੱਧੀ ਗਰਾਫਿਕ ਰੈਂਡਰਿੰਗ"
 
-#: flatpakpermission.cpp:842
+#: flatpakpermission.cpp:846
 #, kde-format
 msgid "Host dev/shm"
 msgstr ""
 
-#: flatpakpermission.cpp:843
+#: flatpakpermission.cpp:847
 #, fuzzy, kde-format
 #| msgid "Device Access"
 msgid "Device access"
 msgstr "ਡਿਵਾਈਸ ਪਹੁੰਚ"
 
-#: flatpakpermission.cpp:849
+#: flatpakpermission.cpp:853
 #, kde-format
 msgid "System calls by development tools"
 msgstr ""
 
-#: flatpakpermission.cpp:850
+#: flatpakpermission.cpp:854
 #, kde-format
 msgid "Run multiarch/multilib binaries"
 msgstr ""
 
-#: flatpakpermission.cpp:851
+#: flatpakpermission.cpp:855
 #, kde-format
 msgid "Bluetooth"
 msgstr "ਬਲੂਟੁੱਥ"
 
-#: flatpakpermission.cpp:852
+#: flatpakpermission.cpp:856
 #, kde-format
 msgid "Canbus socket access"
 msgstr ""
 
-#: flatpakpermission.cpp:855
+#: flatpakpermission.cpp:859
 #, kde-format
 msgid "Share dev/shm across all instances of an app per user ID"
 msgstr ""
 
-#: flatpakpermission.cpp:913
+#: flatpakpermission.cpp:917
 #, fuzzy, kde-format
 #| msgid "All User Files"
 msgid "All user files"
 msgstr "ਸਭ ਵਰਤੋਂਕਾਰ ਫ਼ਾਇਲਾਂ"
 
-#: flatpakpermission.cpp:914
+#: flatpakpermission.cpp:918
 #, fuzzy, kde-format
 #| msgid "All System Files"
 msgid "All system files"
 msgstr "ਸਭ ਸਿਸਟਮ ਫ਼ਾਇਲਾਂ"
 
-#: flatpakpermission.cpp:915
+#: flatpakpermission.cpp:919
 #, kde-format
 msgid "All system libraries, executables and binaries"
 msgstr ""
 
-#: flatpakpermission.cpp:916
+#: flatpakpermission.cpp:920
 #, fuzzy, kde-format
 #| msgid "All System Configurations"
 msgid "All system configurations"
 msgstr "ਸਭ ਸਿਸਟਮ ਸੰਰਚਨਾਵਾਂ"
 
-#: flatpakpermission.cpp:1294
+#: flatpakpermission.cpp:1299
 #, kde-format
 msgid "Basic Permissions"
 msgstr "ਮੁੱਢਲੀਆਂ ਇਜਾਜ਼ਤਾਂ"
 
-#: flatpakpermission.cpp:1296
+#: flatpakpermission.cpp:1301
 #, kde-format
 msgid "Filesystem Access"
 msgstr "ਫ਼ਾਇਲ-ਸਿਸਟਮ ਪਹੁੰਚ"
 
-#: flatpakpermission.cpp:1298
+#: flatpakpermission.cpp:1303
 #, kde-format
 msgid "Advanced Permissions"
 msgstr "ਤਕਨੀਕੀ ਇਜਾਜ਼ਤਾਂ"
 
-#: flatpakpermission.cpp:1300
+#: flatpakpermission.cpp:1305
 #, kde-format
 msgid "Subsystems Shared"
 msgstr ""
 
-#: flatpakpermission.cpp:1302
+#: flatpakpermission.cpp:1307
 #, kde-format
 msgid "Sockets"
 msgstr "ਸਾਕਟ"
 
-#: flatpakpermission.cpp:1304
+#: flatpakpermission.cpp:1309
 #, kde-format
 msgid "Device Access"
 msgstr "ਡਿਵਾਈਸ ਪਹੁੰਚ"
 
-#: flatpakpermission.cpp:1306
+#: flatpakpermission.cpp:1311
 #, kde-format
 msgid "Features Allowed"
 msgstr "ਮਨਜ਼ੂਰ ਕੀਤੇ ਫ਼ੀਚਰ"
 
-#: flatpakpermission.cpp:1308
+#: flatpakpermission.cpp:1313
 #, kde-format
 msgid "Session Bus Policy"
 msgstr ""
 
-#: flatpakpermission.cpp:1310
+#: flatpakpermission.cpp:1315
 #, kde-format
 msgid "System Bus Policy"
 msgstr "ਸਿਸਟਮ ਬੱਸ ਪਾਲਸੀ"
 
-#: flatpakpermission.cpp:1312
+#: flatpakpermission.cpp:1317
 #, kde-format
 msgid "Environment"
 msgstr "ਇਨਵਾਇਰਮੈਂਟ"
 
-#: flatpakpermission.cpp:1329
+#: flatpakpermission.cpp:1334
 #, kde-format
 msgid "Add a new filesystem path"
 msgstr ""
 
-#: flatpakpermission.cpp:1331
+#: flatpakpermission.cpp:1336
 #, kde-format
 msgid "Add a new session bus"
 msgstr ""
 
-#: flatpakpermission.cpp:1333
+#: flatpakpermission.cpp:1338
 #, kde-format
 msgid "Add a new system bus"
 msgstr ""
 
-#: flatpakpermission.cpp:1335
+#: flatpakpermission.cpp:1340
 #, kde-format
 msgid "Add a new environment variable"
+msgstr ""
+
+#: restoredatamodel.cpp:146
+#, kde-format
+msgctxt "not an action but the ability to do so"
+msgid "Record the Screen"
+msgstr ""
+
+#: restoredatamodel.cpp:149
+#, kde-format
+msgctxt "not an action but the ability to do so"
+msgid "Control the Clipboard"
+msgstr ""
+
+#: restoredatamodel.cpp:155
+#, kde-format
+msgctxt "Part of a list of things"
+msgid "Keyboard"
+msgstr ""
+
+#: restoredatamodel.cpp:158
+#, kde-format
+msgctxt "Part of a list of things"
+msgid "Mouse"
+msgstr ""
+
+#: restoredatamodel.cpp:161
+#, kde-format
+msgctxt "Part of a list of things"
+msgid "Touchscreen"
+msgstr ""
+
+#: restoredatamodel.cpp:164
+#, kde-format
+msgctxt "%1 is a list of things formed from above"
+msgid "Control %1"
+msgstr ""
+
+#: restoredatamodel.cpp:203
+#, kde-format
+msgctxt "%1 is the title of a window, %2 the name of an application"
+msgid "Window \"%1\" of %2"
+msgstr ""
+
+#: restoredatamodel.cpp:207
+#, kde-format
+msgid "Region at (%1,%2) with size %3x%4"
+msgstr ""
+
+#: restoredatamodel.cpp:217
+#, kde-format
+msgid "Virtual Screen"
+msgstr ""
+
+#: restoredatamodel.cpp:221
+#, kde-format
+msgid "The entire Workspace"
+msgstr ""
+
+#: restoredatamodel.cpp:240
+#, kde-format
+msgctxt "%1 is the position of the screen"
+msgid "A disconnected Screen at %1"
 msgstr ""
 
 #: ui/AddEnvironmentVariableDialog.qml:18
@@ -284,21 +347,14 @@ msgctxt "@label:textbox value of environment variable"
 msgid "Value:"
 msgstr "ਮੁੱਲ:"
 
-#: ui/main.qml:19
-#, fuzzy, kde-format
-#| msgid "Flatpak Applications"
-msgctxt "@window:title"
-msgid "Flatpak Applications"
-msgstr "ਫ਼ਲੈਟਪੈਕ ਐਪਲੀਕੇਸ਼ਨਾਂ"
-
-#: ui/main.qml:97
+#: ui/ApplyOrDiscardDialog.qml:21
 #, fuzzy, kde-format
 #| msgid "Apply Permissions"
 msgctxt "@title:window"
 msgid "Apply Permissions"
 msgstr "ਇਜਾਜ਼ਤਾਂ ਲਾਗੂ ਕਰੋ"
 
-#: ui/main.qml:98
+#: ui/ApplyOrDiscardDialog.qml:22
 #, kde-format
 msgctxt "@info dialog main text"
 msgid ""
@@ -306,50 +362,235 @@ msgid ""
 "these changes or discard them?"
 msgstr ""
 
-#: ui/permissions.qml:22
-#, fuzzy, kde-format
-#| msgid "Permissions"
-msgctxt "@title:window"
-msgid "Permissions"
-msgstr "ਇਜਾਜ਼ਤਾਂ"
-
-#: ui/permissions.qml:29
+#: ui/FlatpakPermissions.qml:22
 #, kde-format
-msgctxt "@info:placeholder"
-msgid "Select an application from the list to view its permissions here"
+msgctxt "@title:window %1 is the name of the application"
+msgid "%1 – Flatpak Settings"
 msgstr ""
 
-#: ui/permissions.qml:132
+#: ui/FlatpakPermissions.qml:140
 #, kde-format
 msgctxt "@info accessible.description for list"
 msgid "Version %1"
 msgstr ""
 
-#: ui/permissions.qml:174
+#: ui/FlatpakPermissions.qml:182
 #, fuzzy, kde-format
 #| msgid "Hide advanced permissions"
 msgctxt "@action:button in section header"
 msgid "Hide advanced permissions"
 msgstr "ਤਕਨੀਕੀ ਇਜਾਜ਼ਤਾਂ ਓਹਲੇ ਕਰੋ"
 
-#: ui/permissions.qml:174
+#: ui/FlatpakPermissions.qml:182
 #, fuzzy, kde-format
 #| msgid "Show advanced permissions"
 msgctxt "@action:button in section header"
 msgid "Show advanced permissions"
 msgstr "ਤਕਨੀਕੀ ਇਜਾਜ਼ਤਾਂ ਵੇਖਾਓ"
 
-#: ui/permissions.qml:186
+#: ui/FlatpakPermissions.qml:194
 #, fuzzy, kde-format
 #| msgid "Add New"
 msgctxt "@action:button in section header"
 msgid "Add New…"
 msgstr "ਨਵੀ ਜੋੜੋ"
 
-#: ui/permissions.qml:187
+#: ui/FlatpakPermissions.qml:195
 #, kde-format
 msgctxt "action:button accessible"
 msgid "Add New File System Permission"
+msgstr ""
+
+#: ui/main.qml:79
+#, kde-format
+msgctxt "@info:placeholder"
+msgid "Select an application from the list to view its permissions here"
+msgstr ""
+
+#: ui/Permissions.qml:25
+#, kde-format
+msgctxt "@action:intoolbar"
+msgid "Manage Flatpak Settings"
+msgstr ""
+
+#: ui/Permissions.qml:49
+#, kde-format
+msgctxt "@info"
+msgid ""
+"Well-behaved applications might respect these settings but even if turned "
+"off here they are still able to control mouse and keyboard or record the "
+"contents of your screen through the windowing system"
+msgstr ""
+
+#: ui/Permissions.qml:60
+#, kde-format
+msgctxt "@label:group"
+msgid "General:"
+msgstr ""
+
+#: ui/Permissions.qml:62
+#, kde-format
+msgctxt "@option:check"
+msgid "Send notifications"
+msgstr ""
+
+#: ui/Permissions.qml:76
+#, kde-format
+msgctxt "@option:check"
+msgid "Block automatic sleep and screen locking"
+msgstr ""
+
+#: ui/Permissions.qml:99
+#, kde-format
+msgctxt "@option:check"
+msgid "Activate game mode"
+msgstr ""
+
+#: ui/Permissions.qml:110
+#, kde-kuit-format
+msgctxt "@info:tooltip"
+msgid ""
+"Allows the application to activate game mode if you are using it on your "
+"system."
+msgstr ""
+
+#: ui/Permissions.qml:117
+#, kde-format
+msgctxt "@option:check"
+msgid "Gain higher process priority"
+msgstr ""
+
+#: ui/Permissions.qml:133
+#, kde-format
+msgctxt "@label:listbox"
+msgid "Take screenshots:"
+msgstr ""
+
+#: ui/Permissions.qml:141 ui/Permissions.qml:162 ui/Permissions.qml:182
+#: ui/Permissions.qml:213
+#, kde-format
+msgctxt "@item:inlistbox"
+msgid "Ask Once"
+msgstr ""
+
+#: ui/Permissions.qml:142 ui/Permissions.qml:163 ui/Permissions.qml:214
+#, kde-format
+msgctxt "@item:inlistbox"
+msgid "Deny"
+msgstr ""
+
+#: ui/Permissions.qml:143 ui/Permissions.qml:164 ui/Permissions.qml:215
+#, kde-format
+msgctxt "@item:inlistbox"
+msgid "Allow"
+msgstr ""
+
+#: ui/Permissions.qml:144 ui/Permissions.qml:165 ui/Permissions.qml:216
+#, kde-format
+msgctxt "@item:inlistbox"
+msgid "Always Ask"
+msgstr ""
+
+#: ui/Permissions.qml:154
+#, fuzzy, kde-format
+#| msgid "Smart Card Access"
+msgctxt "@title:group"
+msgid "Camera access:"
+msgstr "ਸਮਾਰਟ ਕਾਰਡ ਪਹੁੰਚ"
+
+#: ui/Permissions.qml:175
+#, kde-format
+msgctxt "@label:listbox"
+msgid "Location accuracy:"
+msgstr ""
+
+#: ui/Permissions.qml:184
+#, kde-format
+msgctxt "@item:inlistbox location accuracy"
+msgid "Deny"
+msgstr ""
+
+#: ui/Permissions.qml:185
+#, kde-format
+msgctxt "@item:inlistbox location accuracy"
+msgid "Country"
+msgstr ""
+
+#: ui/Permissions.qml:186
+#, kde-format
+msgctxt "@item:inlistbox location accuracy"
+msgid "City"
+msgstr ""
+
+#: ui/Permissions.qml:187
+#, kde-format
+msgctxt "@item:inlistbox location accuracy"
+msgid "Neighborhood"
+msgstr ""
+
+#: ui/Permissions.qml:188
+#, kde-format
+msgctxt "@item:inlistbox location accuracy"
+msgid "Street"
+msgstr ""
+
+#: ui/Permissions.qml:189
+#, kde-format
+msgctxt "@item:inlistbox location accuracy"
+msgid "Exact"
+msgstr ""
+
+#: ui/Permissions.qml:205
+#, kde-format
+msgctxt "@label:listbox"
+msgid "Set desktop and lock screen background:"
+msgstr ""
+
+#: ui/Permissions.qml:229
+#, kde-format
+msgctxt "@label"
+msgid "Screen sharing:"
+msgstr ""
+
+#: ui/Permissions.qml:234 ui/Permissions.qml:259
+#, kde-format
+msgctxt "@action:button"
+msgid "Manage %1 Session"
+msgid_plural "Manage %1 Sessions"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ui/Permissions.qml:237
+#, kde-format
+msgctxt "@title:window %1 is the name of the application"
+msgid "%1 – Screencast Sessions"
+msgstr ""
+
+#: ui/Permissions.qml:241
+#, kde-format
+msgctxt ""
+"@label 'Remote control' like in xdg-desktop-portal-kde remotedesktopdialog."
+"cpp"
+msgid " Remote control:"
+msgstr ""
+
+#: ui/Permissions.qml:244
+#, kde-format
+msgctxt "@option:check"
+msgid ""
+"Control pointer & keyboard, and share screen with other apps without asking"
+msgstr ""
+
+#: ui/Permissions.qml:262
+#, kde-format
+msgctxt "@title:window %1 is the name of the application"
+msgid "%1 – Remote Desktop Sessions"
+msgstr ""
+
+#: ui/SessionList.qml:49
+#, kde-format
+msgctxt "@action:button"
+msgid "Revoke"
 msgstr ""
 
 #: ui/TextPromptDialog.qml:21
@@ -381,3 +622,15 @@ msgstr ""
 #, kde-format
 msgid "Enter system bus name:"
 msgstr ""
+
+#, fuzzy
+#~| msgid "Flatpak Applications"
+#~ msgctxt "@window:title"
+#~ msgid "Flatpak Applications"
+#~ msgstr "ਫ਼ਲੈਟਪੈਕ ਐਪਲੀਕੇਸ਼ਨਾਂ"
+
+#, fuzzy
+#~| msgid "Permissions"
+#~ msgctxt "@title:window"
+#~ msgid "Permissions"
+#~ msgstr "ਇਜਾਜ਼ਤਾਂ"
