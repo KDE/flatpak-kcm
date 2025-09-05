@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-09-04 00:43+0000\n"
-"PO-Revision-Date: 2025-08-14 09:58+0300\n"
+"PO-Revision-Date: 2025-09-04 08:30+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -258,64 +258,64 @@ msgstr "Додати нову змінну середовища"
 #, kde-format
 msgctxt "not an action but the ability to do so"
 msgid "Record the Screen"
-msgstr ""
+msgstr "Запис з екрана"
 
 #: restoredatamodel.cpp:149
 #, kde-format
 msgctxt "not an action but the ability to do so"
 msgid "Control the Clipboard"
-msgstr ""
+msgstr "Керування буфером обміну даними"
 
 #: restoredatamodel.cpp:155
 #, kde-format
 msgctxt "Part of a list of things"
 msgid "Keyboard"
-msgstr ""
+msgstr "Клавіатура"
 
 #: restoredatamodel.cpp:158
 #, kde-format
 msgctxt "Part of a list of things"
 msgid "Mouse"
-msgstr ""
+msgstr "Миша"
 
 #: restoredatamodel.cpp:161
 #, kde-format
 msgctxt "Part of a list of things"
 msgid "Touchscreen"
-msgstr ""
+msgstr "Сенсорний екран"
 
 #: restoredatamodel.cpp:164
 #, kde-format
 msgctxt "%1 is a list of things formed from above"
 msgid "Control %1"
-msgstr ""
+msgstr "Керування %1"
 
 #: restoredatamodel.cpp:203
 #, kde-format
 msgctxt "%1 is the title of a window, %2 the name of an application"
 msgid "Window \"%1\" of %2"
-msgstr ""
+msgstr "Вікно «%1» %2"
 
 #: restoredatamodel.cpp:207
 #, kde-format
 msgid "Region at (%1,%2) with size %3x%4"
-msgstr ""
+msgstr "Область у (%1,%2) з розміром %3x%4"
 
 #: restoredatamodel.cpp:217
 #, kde-format
 msgid "Virtual Screen"
-msgstr ""
+msgstr "Віртуальний екран"
 
 #: restoredatamodel.cpp:221
 #, kde-format
 msgid "The entire Workspace"
-msgstr ""
+msgstr "Уся робоча область"
 
 #: restoredatamodel.cpp:240
 #, kde-format
 msgctxt "%1 is the position of the screen"
 msgid "A disconnected Screen at %1"
-msgstr ""
+msgstr "Від'єднаний екран у %1"
 
 #: ui/AddEnvironmentVariableDialog.qml:18
 #, kde-format
@@ -354,7 +354,7 @@ msgstr ""
 #, kde-format
 msgctxt "@title:window %1 is the name of the application"
 msgid "%1 – Flatpak Settings"
-msgstr ""
+msgstr "%1 – параметри Flatpak"
 
 #: ui/FlatpakPermissions.qml:140
 #, kde-format
@@ -396,7 +396,7 @@ msgstr "Виберіть програму зі списку, щоб перегл
 #, kde-format
 msgctxt "@action:intoolbar"
 msgid "Manage Flatpak Settings"
-msgstr ""
+msgstr "Керування параметрами Flatpak"
 
 #: ui/Permissions.qml:49
 #, kde-format
@@ -406,30 +406,33 @@ msgid ""
 "off here they are still able to control mouse and keyboard or record the "
 "contents of your screen through the windowing system"
 msgstr ""
+"Належним чином написані програми можуть брати до уваги ці параметри, але "
+"навіть якщо можливості вимкнено тут, ці програми зможуть керувати мишею та "
+"клавіатурою і вести запис з екрана за допомогою системи керування вікнами"
 
 #: ui/Permissions.qml:60
 #, kde-format
 msgctxt "@label:group"
 msgid "General:"
-msgstr ""
+msgstr "Загальне:"
 
 #: ui/Permissions.qml:62
 #, kde-format
 msgctxt "@option:check"
 msgid "Send notifications"
-msgstr ""
+msgstr "Надіслати сповіщення"
 
 #: ui/Permissions.qml:76
 #, kde-format
 msgctxt "@option:check"
 msgid "Block automatic sleep and screen locking"
-msgstr ""
+msgstr "Блокувати автоматичне присипляння і блокування екрана"
 
 #: ui/Permissions.qml:99
 #, kde-format
 msgctxt "@option:check"
 msgid "Activate game mode"
-msgstr ""
+msgstr "Активувати ігровий режим"
 
 #: ui/Permissions.qml:110
 #, kde-kuit-format
@@ -438,120 +441,121 @@ msgid ""
 "Allows the application to activate game mode if you are using it on your "
 "system."
 msgstr ""
+"Дозволяє програмі активувати ігровий режим, якщо ви використовуєте такий у "
+"вашій системі."
 
 #: ui/Permissions.qml:117
 #, kde-format
 msgctxt "@option:check"
 msgid "Gain higher process priority"
-msgstr ""
+msgstr "Отримувати вищий пріоритет процесу"
 
 #: ui/Permissions.qml:133
 #, kde-format
 msgctxt "@label:listbox"
 msgid "Take screenshots:"
-msgstr ""
+msgstr "Робити знімки екрана:"
 
 #: ui/Permissions.qml:141 ui/Permissions.qml:162 ui/Permissions.qml:182
 #: ui/Permissions.qml:213
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Ask Once"
-msgstr ""
+msgstr "Запитати лише раз"
 
 #: ui/Permissions.qml:142 ui/Permissions.qml:163 ui/Permissions.qml:214
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Deny"
-msgstr ""
+msgstr "Заборонити"
 
 #: ui/Permissions.qml:143 ui/Permissions.qml:164 ui/Permissions.qml:215
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Allow"
-msgstr ""
+msgstr "Дозволити"
 
 #: ui/Permissions.qml:144 ui/Permissions.qml:165 ui/Permissions.qml:216
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Always Ask"
-msgstr ""
+msgstr "Завжди питати"
 
 #: ui/Permissions.qml:154
-#, fuzzy, kde-format
-#| msgid "Smart card access"
+#, kde-format
 msgctxt "@title:group"
 msgid "Camera access:"
-msgstr "Доступ до карток пам'яті"
+msgstr "Доступ до камери:"
 
 #: ui/Permissions.qml:175
 #, kde-format
 msgctxt "@label:listbox"
 msgid "Location accuracy:"
-msgstr ""
+msgstr "Точність розташування:"
 
 #: ui/Permissions.qml:184
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Deny"
-msgstr ""
+msgstr "Заборонити"
 
 #: ui/Permissions.qml:185
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Country"
-msgstr ""
+msgstr "Країна"
 
 #: ui/Permissions.qml:186
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "City"
-msgstr ""
+msgstr "Місто"
 
 #: ui/Permissions.qml:187
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Neighborhood"
-msgstr ""
+msgstr "Сусідство"
 
 #: ui/Permissions.qml:188
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Street"
-msgstr ""
+msgstr "Вулиця"
 
 #: ui/Permissions.qml:189
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Exact"
-msgstr ""
+msgstr "Точно"
 
 #: ui/Permissions.qml:205
 #, kde-format
 msgctxt "@label:listbox"
 msgid "Set desktop and lock screen background:"
-msgstr ""
+msgstr "Встановити фонове зображення стільниці та сторінки блокування екрана:"
 
 #: ui/Permissions.qml:229
 #, kde-format
 msgctxt "@label"
 msgid "Screen sharing:"
-msgstr ""
+msgstr "Оприлюднення екрана:"
 
 #: ui/Permissions.qml:234 ui/Permissions.qml:259
 #, kde-format
 msgctxt "@action:button"
 msgid "Manage %1 Session"
 msgid_plural "Manage %1 Sessions"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "Керувати %1 сеансом"
+msgstr[1] "Керувати %1 сеансами"
+msgstr[2] "Керувати %1 сеансами"
+msgstr[3] "Керувати %1 сеансом"
 
 #: ui/Permissions.qml:237
 #, kde-format
 msgctxt "@title:window %1 is the name of the application"
 msgid "%1 – Screencast Sessions"
-msgstr ""
+msgstr "%1 – відеозапис сеансів"
 
 #: ui/Permissions.qml:241
 #, kde-format
@@ -559,7 +563,7 @@ msgctxt ""
 "@label 'Remote control' like in xdg-desktop-portal-kde remotedesktopdialog."
 "cpp"
 msgid " Remote control:"
-msgstr ""
+msgstr " Дистанційне керування:"
 
 #: ui/Permissions.qml:244
 #, kde-format
@@ -567,18 +571,20 @@ msgctxt "@option:check"
 msgid ""
 "Control pointer & keyboard, and share screen with other apps without asking"
 msgstr ""
+"Керувати вказівником і клавіатурою та ділитися екраном з іншими програмами "
+"без підтвердження"
 
 #: ui/Permissions.qml:262
 #, kde-format
 msgctxt "@title:window %1 is the name of the application"
 msgid "%1 – Remote Desktop Sessions"
-msgstr ""
+msgstr "%1 — сеанси віддаленої стільниці"
 
 #: ui/SessionList.qml:49
 #, kde-format
 msgctxt "@action:button"
 msgid "Revoke"
-msgstr ""
+msgstr "Відкликати"
 
 #: ui/TextPromptDialog.qml:21
 #, kde-format

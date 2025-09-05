@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-09-04 00:43+0000\n"
-"PO-Revision-Date: 2025-08-14 03:58+0200\n"
+"PO-Revision-Date: 2025-09-04 06:57+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.6\n"
+"X-Generator: Poedit 3.7\n"
 
 #: autotests/flatpakpermissiontest.cpp:618
 #: autotests/flatpakpermissiontest.cpp:824 flatpakpermission.cpp:404
@@ -257,64 +257,64 @@ msgstr "ახალი გარემოს ცვლადის დამა
 #, kde-format
 msgctxt "not an action but the ability to do so"
 msgid "Record the Screen"
-msgstr ""
+msgstr "ეკრანის ჩაწერა"
 
 #: restoredatamodel.cpp:149
 #, kde-format
 msgctxt "not an action but the ability to do so"
 msgid "Control the Clipboard"
-msgstr ""
+msgstr "ბუფერის კონტროლი"
 
 #: restoredatamodel.cpp:155
 #, kde-format
 msgctxt "Part of a list of things"
 msgid "Keyboard"
-msgstr ""
+msgstr "კლავიატურა"
 
 #: restoredatamodel.cpp:158
 #, kde-format
 msgctxt "Part of a list of things"
 msgid "Mouse"
-msgstr ""
+msgstr "თაგუნა"
 
 #: restoredatamodel.cpp:161
 #, kde-format
 msgctxt "Part of a list of things"
 msgid "Touchscreen"
-msgstr ""
+msgstr "სენსორული ეკრანი"
 
 #: restoredatamodel.cpp:164
 #, kde-format
 msgctxt "%1 is a list of things formed from above"
 msgid "Control %1"
-msgstr ""
+msgstr "%1-ის კონტროლი"
 
 #: restoredatamodel.cpp:203
 #, kde-format
 msgctxt "%1 is the title of a window, %2 the name of an application"
 msgid "Window \"%1\" of %2"
-msgstr ""
+msgstr "ფანჯარა \"%1\" ეკუთვნის აპს %2"
 
 #: restoredatamodel.cpp:207
 #, kde-format
 msgid "Region at (%1,%2) with size %3x%4"
-msgstr ""
+msgstr "რეგიონი მისამართზე (%1,%2) ზომით %3x%4"
 
 #: restoredatamodel.cpp:217
 #, kde-format
 msgid "Virtual Screen"
-msgstr ""
+msgstr "ვირტუალური ეკრანი"
 
 #: restoredatamodel.cpp:221
 #, kde-format
 msgid "The entire Workspace"
-msgstr ""
+msgstr "მთელი სამუშაო სივრცე"
 
 #: restoredatamodel.cpp:240
 #, kde-format
 msgctxt "%1 is the position of the screen"
 msgid "A disconnected Screen at %1"
-msgstr ""
+msgstr "გათიშული ეკრანი მისამართზე %1"
 
 #: ui/AddEnvironmentVariableDialog.qml:18
 #, kde-format
@@ -353,7 +353,7 @@ msgstr ""
 #, kde-format
 msgctxt "@title:window %1 is the name of the application"
 msgid "%1 – Flatpak Settings"
-msgstr ""
+msgstr "%1 – Flatpak-ის მორგება"
 
 #: ui/FlatpakPermissions.qml:140
 #, kde-format
@@ -395,7 +395,7 @@ msgstr "აირჩიეთ აპლიკაცია სიიდან, �
 #, kde-format
 msgctxt "@action:intoolbar"
 msgid "Manage Flatpak Settings"
-msgstr ""
+msgstr "Flatpak-ის პარამეტრების მორგება"
 
 #: ui/Permissions.qml:49
 #, kde-format
@@ -405,30 +405,33 @@ msgid ""
 "off here they are still able to control mouse and keyboard or record the "
 "contents of your screen through the windowing system"
 msgstr ""
+"აპლიკაციებმა, რომლებიც კარგად იქცევიან, შეიძლება გაითვალისწინონ ეს "
+"პარამეტრები, მაგრამ მათ მაინც შეუძლიათ, აკონტროლონ თაგუნა და კლავიატურა, ან "
+"ჩაიწერონ თქვენი ეკრანის შემცველობა ფანჯრების მართვის სისტემით"
 
 #: ui/Permissions.qml:60
 #, kde-format
 msgctxt "@label:group"
 msgid "General:"
-msgstr ""
+msgstr "ზოგადი:"
 
 #: ui/Permissions.qml:62
 #, kde-format
 msgctxt "@option:check"
 msgid "Send notifications"
-msgstr ""
+msgstr "გაფრთხილების გაგზავნა"
 
 #: ui/Permissions.qml:76
 #, kde-format
 msgctxt "@option:check"
 msgid "Block automatic sleep and screen locking"
-msgstr ""
+msgstr "ავტომატური ძილისა და ეკრანის ჩაკეტვის დაბლოკვა"
 
 #: ui/Permissions.qml:99
 #, kde-format
 msgctxt "@option:check"
 msgid "Activate game mode"
-msgstr ""
+msgstr "თამაშის რეჟიმის გააქტიურება"
 
 #: ui/Permissions.qml:110
 #, kde-kuit-format
@@ -437,118 +440,119 @@ msgid ""
 "Allows the application to activate game mode if you are using it on your "
 "system."
 msgstr ""
+"აძლევს საშუალებას აპლიკაციას, გაააქტიუროს თამაშის რეჟიმი, თუ მას სისტემაზე "
+"იყენებთ."
 
 #: ui/Permissions.qml:117
 #, kde-format
 msgctxt "@option:check"
 msgid "Gain higher process priority"
-msgstr ""
+msgstr "უფრო მაღალი პროცესის პრიორიტეტის მიღება"
 
 #: ui/Permissions.qml:133
 #, kde-format
 msgctxt "@label:listbox"
 msgid "Take screenshots:"
-msgstr ""
+msgstr "ეკრანის ანაბეჭდების გადაღება:"
 
 #: ui/Permissions.qml:141 ui/Permissions.qml:162 ui/Permissions.qml:182
 #: ui/Permissions.qml:213
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Ask Once"
-msgstr ""
+msgstr "ერთხელ კითხვა"
 
 #: ui/Permissions.qml:142 ui/Permissions.qml:163 ui/Permissions.qml:214
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Deny"
-msgstr ""
+msgstr "უარყოფა"
 
 #: ui/Permissions.qml:143 ui/Permissions.qml:164 ui/Permissions.qml:215
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Allow"
-msgstr ""
+msgstr "დაშვება"
 
 #: ui/Permissions.qml:144 ui/Permissions.qml:165 ui/Permissions.qml:216
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Always Ask"
-msgstr ""
+msgstr "ყოველთვის კითხვა"
 
 #: ui/Permissions.qml:154
-#, fuzzy, kde-format
-#| msgid "Smart card access"
+#, kde-format
 msgctxt "@title:group"
 msgid "Camera access:"
-msgstr "ჭკვიანი ბარათით წვდომა"
+msgstr "კამერასთან წვდომა:"
 
 #: ui/Permissions.qml:175
 #, kde-format
 msgctxt "@label:listbox"
 msgid "Location accuracy:"
-msgstr ""
+msgstr "მდებარეობის სიზუსტე:"
 
 #: ui/Permissions.qml:184
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Deny"
-msgstr ""
+msgstr "უარყოფა"
 
 #: ui/Permissions.qml:185
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Country"
-msgstr ""
+msgstr "ქვეყანა"
 
 #: ui/Permissions.qml:186
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "City"
-msgstr ""
+msgstr "ქალაქი"
 
 #: ui/Permissions.qml:187
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Neighborhood"
-msgstr ""
+msgstr "სამეზობლო"
 
 #: ui/Permissions.qml:188
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Street"
-msgstr ""
+msgstr "ქუჩა"
 
 #: ui/Permissions.qml:189
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Exact"
-msgstr ""
+msgstr "ზუსტი"
 
 #: ui/Permissions.qml:205
 #, kde-format
 msgctxt "@label:listbox"
 msgid "Set desktop and lock screen background:"
-msgstr ""
+msgstr "სამუშაო მაგიდის და ჩაკეტილი ეკრანის ფონის დაყენება:"
 
 #: ui/Permissions.qml:229
 #, kde-format
 msgctxt "@label"
 msgid "Screen sharing:"
-msgstr ""
+msgstr "ეკრანის გაზიარება:"
 
 #: ui/Permissions.qml:234 ui/Permissions.qml:259
 #, kde-format
 msgctxt "@action:button"
 msgid "Manage %1 Session"
 msgid_plural "Manage %1 Sessions"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%1 სესიის მართვა"
+msgstr[1] "%1 სესიის მართვა"
 
 #: ui/Permissions.qml:237
 #, kde-format
 msgctxt "@title:window %1 is the name of the application"
 msgid "%1 – Screencast Sessions"
-msgstr ""
+msgstr "%1 – ეკრანის გადაცემის სესიები"
 
 #: ui/Permissions.qml:241
 #, kde-format
@@ -556,7 +560,7 @@ msgctxt ""
 "@label 'Remote control' like in xdg-desktop-portal-kde remotedesktopdialog."
 "cpp"
 msgid " Remote control:"
-msgstr ""
+msgstr " დაშორებული მართვა:"
 
 #: ui/Permissions.qml:244
 #, kde-format
@@ -564,18 +568,20 @@ msgctxt "@option:check"
 msgid ""
 "Control pointer & keyboard, and share screen with other apps without asking"
 msgstr ""
+"თაგუნას კურსორის & კლავიატურის კონტროლი და სხვა აპებთან ეკრანის გაზიარება "
+"კითხვის გარეშე"
 
 #: ui/Permissions.qml:262
 #, kde-format
 msgctxt "@title:window %1 is the name of the application"
 msgid "%1 – Remote Desktop Sessions"
-msgstr ""
+msgstr "%1 – დაშორებული სამუშაო მაგიდის სესიები"
 
 #: ui/SessionList.qml:49
 #, kde-format
 msgctxt "@action:button"
 msgid "Revoke"
-msgstr ""
+msgstr "გაუქმება"
 
 #: ui/TextPromptDialog.qml:21
 #, kde-format
