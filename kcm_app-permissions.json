@@ -2,13 +2,15 @@
     "KPlugin": {
         "BugReportUrl": "https://bugs.kde.org/enter_bug.cgi?product=systemsettings&component=kcm_flatpak",
         "Description": "Configure Application Permissions",
+        "Description[x-test]": "xxConfigure Application Permissionsxx",
         "FormFactors": [
             "desktop",
             "handset",
             "tablet"
         ],
         "Icon": "preferences-security",
-        "Name": "Application Permissions"
+        "Name": "Application Permissions",
+        "Name[x-test]": "xxApplication Permissionsxx"
     },
     "X-KDE-Keywords": "Flatpak,Flatseal,permission,permissions,access,sandbox,sandboxed,filesystem,file,files,folder,folders,network,networks,networking,bluetooth,print,printer,printing,audio,sound,login,remote login,ssh,smart card,kvm,device,session,session bus,system,system bus,environment,environment variable",
     "X-KDE-Keywords[ar]": "فلاتباك, إذن,أذونات,وصول,عازل,معزل,نظام ملفات,ملف,ملفات,مجلد,مجلدات,شبكة,شبكات,شبكات,بلوتوث,طباعة,طابعة,طباعة,صوت,تسجيل الدخول,تسجيل الدخول عن بعد,ssh,بطاقة ذكية,kvm,جهاز,جلسة,ناقل جلسة,نظام,ناقل النظام,بيئة,متغير بيئي",
