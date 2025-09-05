@@ -53,14 +53,17 @@ still able to control mouse and keyboard or record the contents of your screen t
     }
 
     Kirigami.FormLayout {
-
+        id: controlsLayout
         readonly property double comboboxPreferredWidth: Math.max(screenshotCombobox.implicitWidth, cameraCombobox.implicitWidth, locationCombobox.implicitWidth)
+        readonly property double switchMaxWidth: Math.max(notificationsSwitch.implicitWidth, powerManagementSwitch.implicitWidth, gameModeSwitch.implicitWidth, highProcessPrioritySwitch.implicitWidth)
 
         QQC.Switch {
+            id: notificationsSwitch
             Kirigami.FormData.label: i18nc("@label:group", "General:")
             visible: !root.isHostApp
             text: i18nc("@option:check", "Send notifications")
             Layout.fillWidth: true
+            Layout.maximumWidth: controlsLayout.switchMaxWidth
             PermissionItem {
                 id: notificationPermission
                 table: "notifications"
@@ -71,8 +74,10 @@ still able to control mouse and keyboard or record the contents of your screen t
         }
 
         QQC.Switch {
+            id: powerManagementSwitch
             visible: !root.isHostApp
             Layout.fillWidth: true
+            Layout.maximumWidth: controlsLayout.switchMaxWidth
             text: i18nc("@option:check", "Block automatic sleep and screen locking")
             PermissionItem {
                 id: inhibitPermission
@@ -95,7 +100,9 @@ still able to control mouse and keyboard or record the contents of your screen t
         RowLayout {
             visible: !root.isHostApp && kcm.gamemodeAvailable
             QQC.Switch {
+                id: gameModeSwitch
                 Layout.fillWidth: true
+                Layout.maximumWidth: controlsLayout.switchMaxWidth
                 text: i18nc("@option:check", "Activate game mode")
                 PermissionItem {
                     id: gamemodePermission
@@ -112,8 +119,10 @@ still able to control mouse and keyboard or record the contents of your screen t
         }
 
         QQC.Switch {
+            id: highProcessPrioritySwitch
             visible: !root.isHostApp
             Layout.fillWidth: true
+            Layout.maximumWidth: controlsLayout.switchMaxWidth
             text: i18nc("@option:check", "Gain higher process priority")
             PermissionItem {
                 id: realtimePermission
@@ -238,9 +247,10 @@ still able to control mouse and keyboard or record the contents of your screen t
         }
 
         QQC.Switch {
+            id: remoteControlSwitch
             Kirigami.FormData.label: i18nc("@label 'Remote control' like in xdg-desktop-portal-kde remotedesktopdialog.cpp", " Remote control:")
             Layout.fillWidth: true
-            id: remoteDesktopCheckbox
+            Layout.maximumWidth: controlsLayout.switchMaxWidth
             text: i18nc("@option:check", "Control pointer & keyboard, and share screen with other apps without asking")
             PermissionItem {
                 id: remoteDesktopKdeAuthorized
@@ -251,7 +261,7 @@ still able to control mouse and keyboard or record the contents of your screen t
             onToggled: remoteDesktopKdeAuthorized.permissions = checked ? ["yes"] : ["no"]
         }
         QQC.Button {
-            enabled: !remoteDesktopCheckbox.checked
+            enabled: !remoteControlSwitch.checked
             KCM.RemoteDesktopSessionsModel {
                 id: remoteDesktopSessions
                 appId: root.appId
