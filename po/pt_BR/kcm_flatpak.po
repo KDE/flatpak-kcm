@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-09-04 00:43+0000\n"
+"POT-Creation-Date: 2025-09-06 00:43+0000\n"
 "PO-Revision-Date: 2025-09-04 05:06-0300\n"
 "Last-Translator: Marcus Gama <marcus.gama@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
@@ -411,31 +411,31 @@ msgstr ""
 "se desativados aqui, eles ainda conseguem controlar o mouse e o teclado ou "
 "gravar o conteúdo da sua tela por meio do sistema de janelas."
 
-#: ui/Permissions.qml:60
+#: ui/Permissions.qml:62
 #, kde-format
 msgctxt "@label:group"
 msgid "General:"
 msgstr "Geral:"
 
-#: ui/Permissions.qml:62
+#: ui/Permissions.qml:64
 #, kde-format
 msgctxt "@option:check"
 msgid "Send notifications"
 msgstr "Enviar notificações"
 
-#: ui/Permissions.qml:76
+#: ui/Permissions.qml:81
 #, kde-format
 msgctxt "@option:check"
 msgid "Block automatic sleep and screen locking"
 msgstr "Bloquear o suspensão e bloqueio de tela automáticos"
 
-#: ui/Permissions.qml:99
+#: ui/Permissions.qml:106
 #, kde-format
 msgctxt "@option:check"
 msgid "Activate game mode"
 msgstr "Ativar modo jogo"
 
-#: ui/Permissions.qml:110
+#: ui/Permissions.qml:117
 #, kde-kuit-format
 msgctxt "@info:tooltip"
 msgid ""
@@ -445,104 +445,104 @@ msgstr ""
 "Permite que o aplicativo ative o modo de jogo se você o estiver usando no "
 "seu sistema."
 
-#: ui/Permissions.qml:117
+#: ui/Permissions.qml:126
 #, kde-format
 msgctxt "@option:check"
 msgid "Gain higher process priority"
 msgstr "Ganhar maior prioridade de processo"
 
-#: ui/Permissions.qml:133
+#: ui/Permissions.qml:142
 #, kde-format
 msgctxt "@label:listbox"
 msgid "Take screenshots:"
 msgstr "Obter capturas de tela:"
 
-#: ui/Permissions.qml:141 ui/Permissions.qml:162 ui/Permissions.qml:182
-#: ui/Permissions.qml:213
+#: ui/Permissions.qml:150 ui/Permissions.qml:171 ui/Permissions.qml:191
+#: ui/Permissions.qml:222
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Ask Once"
 msgstr "Perguntar uma vez"
 
-#: ui/Permissions.qml:142 ui/Permissions.qml:163 ui/Permissions.qml:214
+#: ui/Permissions.qml:151 ui/Permissions.qml:172 ui/Permissions.qml:223
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Deny"
 msgstr "Negar"
 
-#: ui/Permissions.qml:143 ui/Permissions.qml:164 ui/Permissions.qml:215
+#: ui/Permissions.qml:152 ui/Permissions.qml:173 ui/Permissions.qml:224
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Allow"
 msgstr "Permitir"
 
-#: ui/Permissions.qml:144 ui/Permissions.qml:165 ui/Permissions.qml:216
+#: ui/Permissions.qml:153 ui/Permissions.qml:174 ui/Permissions.qml:225
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Always Ask"
 msgstr "Sempre perguntar"
 
-#: ui/Permissions.qml:154
+#: ui/Permissions.qml:163
 #, kde-format
 msgctxt "@title:group"
 msgid "Camera access:"
 msgstr "Acesso da câmera:"
 
-#: ui/Permissions.qml:175
+#: ui/Permissions.qml:184
 #, kde-format
 msgctxt "@label:listbox"
 msgid "Location accuracy:"
 msgstr "Precisão da localização:"
 
-#: ui/Permissions.qml:184
+#: ui/Permissions.qml:193
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Deny"
 msgstr "Negar"
 
-#: ui/Permissions.qml:185
+#: ui/Permissions.qml:194
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Country"
 msgstr "País"
 
-#: ui/Permissions.qml:186
+#: ui/Permissions.qml:195
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "City"
 msgstr "Cidade"
 
-#: ui/Permissions.qml:187
+#: ui/Permissions.qml:196
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Neighborhood"
 msgstr "Vizinhança"
 
-#: ui/Permissions.qml:188
+#: ui/Permissions.qml:197
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Street"
 msgstr "Rua"
 
-#: ui/Permissions.qml:189
+#: ui/Permissions.qml:198
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Exact"
 msgstr "Exato"
 
-#: ui/Permissions.qml:205
+#: ui/Permissions.qml:214
 #, kde-format
 msgctxt "@label:listbox"
 msgid "Set desktop and lock screen background:"
 msgstr "Definir plano de fundo da área de trabalho e da tela de bloqueio:"
 
-#: ui/Permissions.qml:229
+#: ui/Permissions.qml:238
 #, kde-format
 msgctxt "@label"
 msgid "Screen sharing:"
 msgstr "Compartilhamento de tela:"
 
-#: ui/Permissions.qml:234 ui/Permissions.qml:259
+#: ui/Permissions.qml:243 ui/Permissions.qml:269
 #, kde-format
 msgctxt "@action:button"
 msgid "Manage %1 Session"
@@ -550,13 +550,13 @@ msgid_plural "Manage %1 Sessions"
 msgstr[0] "Gerenciar %1 sessão"
 msgstr[1] "Gerenciar %1 sessões"
 
-#: ui/Permissions.qml:237
+#: ui/Permissions.qml:246
 #, kde-format
 msgctxt "@title:window %1 is the name of the application"
 msgid "%1 – Screencast Sessions"
 msgstr "%1 – Sessões de screencast"
 
-#: ui/Permissions.qml:241
+#: ui/Permissions.qml:251
 #, kde-format
 msgctxt ""
 "@label 'Remote control' like in xdg-desktop-portal-kde remotedesktopdialog."
@@ -564,7 +564,7 @@ msgctxt ""
 msgid " Remote control:"
 msgstr " Controle remoto:"
 
-#: ui/Permissions.qml:244
+#: ui/Permissions.qml:254
 #, kde-format
 msgctxt "@option:check"
 msgid ""
@@ -573,7 +573,7 @@ msgstr ""
 "Controle o ponteiro e o teclado e compartilhe a tela com outros aplicativos "
 "sem perguntar"
 
-#: ui/Permissions.qml:262
+#: ui/Permissions.qml:272
 #, kde-format
 msgctxt "@title:window %1 is the name of the application"
 msgid "%1 – Remote Desktop Sessions"

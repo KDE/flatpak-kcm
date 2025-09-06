@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-09-04 00:43+0000\n"
-"PO-Revision-Date: 2025-08-19 05:02+0900\n"
+"POT-Creation-Date: 2025-09-06 00:43+0000\n"
+"PO-Revision-Date: 2025-09-05 17:51+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
@@ -255,64 +255,64 @@ msgstr "新增環境變數"
 #, kde-format
 msgctxt "not an action but the ability to do so"
 msgid "Record the Screen"
-msgstr ""
+msgstr "錄製螢幕"
 
 #: restoredatamodel.cpp:149
 #, kde-format
 msgctxt "not an action but the ability to do so"
 msgid "Control the Clipboard"
-msgstr ""
+msgstr "控制剪貼簿"
 
 #: restoredatamodel.cpp:155
 #, kde-format
 msgctxt "Part of a list of things"
 msgid "Keyboard"
-msgstr ""
+msgstr "鍵盤"
 
 #: restoredatamodel.cpp:158
 #, kde-format
 msgctxt "Part of a list of things"
 msgid "Mouse"
-msgstr ""
+msgstr "滑鼠"
 
 #: restoredatamodel.cpp:161
 #, kde-format
 msgctxt "Part of a list of things"
 msgid "Touchscreen"
-msgstr ""
+msgstr "觸控螢幕"
 
 #: restoredatamodel.cpp:164
 #, kde-format
 msgctxt "%1 is a list of things formed from above"
 msgid "Control %1"
-msgstr ""
+msgstr "控制%1"
 
 #: restoredatamodel.cpp:203
 #, kde-format
 msgctxt "%1 is the title of a window, %2 the name of an application"
 msgid "Window \"%1\" of %2"
-msgstr ""
+msgstr "%2 的視窗「%1」"
 
 #: restoredatamodel.cpp:207
 #, kde-format
 msgid "Region at (%1,%2) with size %3x%4"
-msgstr ""
+msgstr "在 (%1, %2) 大小為 %3x%4 的區域"
 
 #: restoredatamodel.cpp:217
 #, kde-format
 msgid "Virtual Screen"
-msgstr ""
+msgstr "虛擬螢幕"
 
 #: restoredatamodel.cpp:221
 #, kde-format
 msgid "The entire Workspace"
-msgstr ""
+msgstr "整個工作空間"
 
 #: restoredatamodel.cpp:240
 #, kde-format
 msgctxt "%1 is the position of the screen"
 msgid "A disconnected Screen at %1"
-msgstr ""
+msgstr "在 %1 的已中斷連線的螢幕"
 
 #: ui/AddEnvironmentVariableDialog.qml:18
 #, kde-format
@@ -349,7 +349,7 @@ msgstr "應用程式 %1 的權限已修改過。您要套用還是捨棄這些�
 #, kde-format
 msgctxt "@title:window %1 is the name of the application"
 msgid "%1 – Flatpak Settings"
-msgstr ""
+msgstr "%1 – Flatpak 設定"
 
 #: ui/FlatpakPermissions.qml:140
 #, kde-format
@@ -391,7 +391,7 @@ msgstr "從列表選取應用程式以在此檢視它的權限"
 #, kde-format
 msgctxt "@action:intoolbar"
 msgid "Manage Flatpak Settings"
-msgstr ""
+msgstr "管理 Flatpak 設定"
 
 #: ui/Permissions.qml:49
 #, kde-format
@@ -402,31 +402,31 @@ msgid ""
 "contents of your screen through the windowing system"
 msgstr ""
 
-#: ui/Permissions.qml:60
+#: ui/Permissions.qml:62
 #, kde-format
 msgctxt "@label:group"
 msgid "General:"
-msgstr ""
+msgstr "一般："
 
-#: ui/Permissions.qml:62
+#: ui/Permissions.qml:64
 #, kde-format
 msgctxt "@option:check"
 msgid "Send notifications"
-msgstr ""
+msgstr "傳送通知"
 
-#: ui/Permissions.qml:76
+#: ui/Permissions.qml:81
 #, kde-format
 msgctxt "@option:check"
 msgid "Block automatic sleep and screen locking"
-msgstr ""
+msgstr "阻擋自動睡眠與螢幕鎖定"
 
-#: ui/Permissions.qml:99
+#: ui/Permissions.qml:106
 #, kde-format
 msgctxt "@option:check"
 msgid "Activate game mode"
-msgstr ""
+msgstr "啟用遊戲模式"
 
-#: ui/Permissions.qml:110
+#: ui/Permissions.qml:117
 #, kde-kuit-format
 msgctxt "@info:tooltip"
 msgid ""
@@ -434,143 +434,142 @@ msgid ""
 "system."
 msgstr ""
 
-#: ui/Permissions.qml:117
+#: ui/Permissions.qml:126
 #, kde-format
 msgctxt "@option:check"
 msgid "Gain higher process priority"
-msgstr ""
+msgstr "取得更高的行程優先權"
 
-#: ui/Permissions.qml:133
+#: ui/Permissions.qml:142
 #, kde-format
 msgctxt "@label:listbox"
 msgid "Take screenshots:"
-msgstr ""
+msgstr "擷取螢幕截圖"
 
-#: ui/Permissions.qml:141 ui/Permissions.qml:162 ui/Permissions.qml:182
-#: ui/Permissions.qml:213
+#: ui/Permissions.qml:150 ui/Permissions.qml:171 ui/Permissions.qml:191
+#: ui/Permissions.qml:222
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Ask Once"
-msgstr ""
+msgstr "詢問一次"
 
-#: ui/Permissions.qml:142 ui/Permissions.qml:163 ui/Permissions.qml:214
+#: ui/Permissions.qml:151 ui/Permissions.qml:172 ui/Permissions.qml:223
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Deny"
-msgstr ""
+msgstr "拒絕"
 
-#: ui/Permissions.qml:143 ui/Permissions.qml:164 ui/Permissions.qml:215
+#: ui/Permissions.qml:152 ui/Permissions.qml:173 ui/Permissions.qml:224
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Allow"
-msgstr ""
+msgstr "允許"
 
-#: ui/Permissions.qml:144 ui/Permissions.qml:165 ui/Permissions.qml:216
+#: ui/Permissions.qml:153 ui/Permissions.qml:174 ui/Permissions.qml:225
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Always Ask"
-msgstr ""
+msgstr "總是詢問"
 
-#: ui/Permissions.qml:154
-#, fuzzy, kde-format
-#| msgid "Smart card access"
+#: ui/Permissions.qml:163
+#, kde-format
 msgctxt "@title:group"
 msgid "Camera access:"
-msgstr "智慧卡存取權"
-
-#: ui/Permissions.qml:175
-#, kde-format
-msgctxt "@label:listbox"
-msgid "Location accuracy:"
-msgstr ""
+msgstr "相機存取權："
 
 #: ui/Permissions.qml:184
 #, kde-format
+msgctxt "@label:listbox"
+msgid "Location accuracy:"
+msgstr "位置精確度："
+
+#: ui/Permissions.qml:193
+#, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Deny"
-msgstr ""
+msgstr "拒絕"
 
-#: ui/Permissions.qml:185
+#: ui/Permissions.qml:194
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Country"
-msgstr ""
+msgstr "國家"
 
-#: ui/Permissions.qml:186
+#: ui/Permissions.qml:195
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "City"
-msgstr ""
+msgstr "城市"
 
-#: ui/Permissions.qml:187
+#: ui/Permissions.qml:196
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Neighborhood"
 msgstr ""
 
-#: ui/Permissions.qml:188
+#: ui/Permissions.qml:197
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Street"
-msgstr ""
+msgstr "街道"
 
-#: ui/Permissions.qml:189
+#: ui/Permissions.qml:198
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Exact"
-msgstr ""
+msgstr "精準"
 
-#: ui/Permissions.qml:205
+#: ui/Permissions.qml:214
 #, kde-format
 msgctxt "@label:listbox"
 msgid "Set desktop and lock screen background:"
-msgstr ""
+msgstr "設定桌面與鎖定螢幕背景："
 
-#: ui/Permissions.qml:229
+#: ui/Permissions.qml:238
 #, kde-format
 msgctxt "@label"
 msgid "Screen sharing:"
-msgstr ""
+msgstr "螢幕分享："
 
-#: ui/Permissions.qml:234 ui/Permissions.qml:259
+#: ui/Permissions.qml:243 ui/Permissions.qml:269
 #, kde-format
 msgctxt "@action:button"
 msgid "Manage %1 Session"
 msgid_plural "Manage %1 Sessions"
-msgstr[0] ""
+msgstr[0] "管理 %1 個工作階段"
 
-#: ui/Permissions.qml:237
+#: ui/Permissions.qml:246
 #, kde-format
 msgctxt "@title:window %1 is the name of the application"
 msgid "%1 – Screencast Sessions"
-msgstr ""
+msgstr "%1 – 螢幕錄製工作階段"
 
-#: ui/Permissions.qml:241
+#: ui/Permissions.qml:251
 #, kde-format
 msgctxt ""
 "@label 'Remote control' like in xdg-desktop-portal-kde remotedesktopdialog."
 "cpp"
 msgid " Remote control:"
-msgstr ""
+msgstr " 遠端控制："
 
-#: ui/Permissions.qml:244
+#: ui/Permissions.qml:254
 #, kde-format
 msgctxt "@option:check"
 msgid ""
 "Control pointer & keyboard, and share screen with other apps without asking"
-msgstr ""
+msgstr "控制指標和鍵盤，並與其他應用程式分享螢幕而不需詢問"
 
-#: ui/Permissions.qml:262
+#: ui/Permissions.qml:272
 #, kde-format
 msgctxt "@title:window %1 is the name of the application"
 msgid "%1 – Remote Desktop Sessions"
-msgstr ""
+msgstr "%1 – 遠端桌面工作階段"
 
 #: ui/SessionList.qml:49
 #, kde-format
 msgctxt "@action:button"
 msgid "Revoke"
-msgstr ""
+msgstr "撤銷"
 
 #: ui/TextPromptDialog.qml:21
 #, kde-format
