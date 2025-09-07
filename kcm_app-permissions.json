@@ -14,6 +14,7 @@
         "Description[tr]": "Uygulama izinlerini yapılandırın",
         "Description[uk]": "Налаштовування прав доступу для програм",
         "Description[x-test]": "xxConfigure Application Permissionsxx",
+        "Description[zh_TW]": "設定應用程式權限",
         "FormFactors": [
             "desktop",
             "handset",
@@ -32,7 +33,8 @@
         "Name[sl]": "Dovoljenja aplikacije",
         "Name[tr]": "Uygulama İzinleri",
         "Name[uk]": "Права доступу програм",
-        "Name[x-test]": "xxApplication Permissionsxx"
+        "Name[x-test]": "xxApplication Permissionsxx",
+        "Name[zh_TW]": "應用程式權限"
     },
     "X-KDE-Keywords": "Flatpak,Flatseal,permission,permissions,access,sandbox,sandboxed,filesystem,file,files,folder,folders,network,networks,networking,bluetooth,print,printer,printing,audio,sound,login,remote login,ssh,smart card,kvm,device,session,session bus,system,system bus,environment,environment variable",
     "X-KDE-Keywords[ar]": "فلاتباك, إذن,أذونات,وصول,عازل,معزل,نظام ملفات,ملف,ملفات,مجلد,مجلدات,شبكة,شبكات,شبكات,بلوتوث,طباعة,طابعة,طباعة,صوت,تسجيل الدخول,تسجيل الدخول عن بعد,ssh,بطاقة ذكية,kvm,جهاز,جلسة,ناقل جلسة,نظام,ناقل النظام,بيئة,متغير بيئي",
