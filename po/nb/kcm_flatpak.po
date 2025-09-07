@@ -614,15 +614,3 @@ msgstr "Skriv inn navn på øktbuss:"
 #, kde-format
 msgid "Enter system bus name:"
 msgstr "Skriv inn navn på systembuss:"
-
-#, fuzzy
-#~| msgid "Flatpak Applications"
-#~ msgctxt "@window:title"
-#~ msgid "Flatpak Applications"
-#~ msgstr "Flatpak-programmer"
-
-#, fuzzy
-#~| msgid "Permissions"
-#~ msgctxt "@title:window"
-#~ msgid "Permissions"
-#~ msgstr "Tilgangstillatelser"
