@@ -34,7 +34,6 @@
         "Description[sv]": "Anpassa rättigheter för Flatpak",
         "Description[tr]": "Flatpak İzinlerini Yapılandır",
         "Description[uk]": "Налаштовування прав доступу Flatpak",
-        "Description[x-test]": "xxConfigure Flatpak Permissionsxx",
         "Description[zh_CN]": "配置 Flatpak 权限",
         "Description[zh_TW]": "設定 Flatpak 權限",
         "FormFactors": [
@@ -77,7 +76,6 @@
         "Name[sv]": "Rättighetsinställningar för Flatpak",
         "Name[tr]": "Flatpak İzin Ayarları",
         "Name[uk]": "Параметри доступу Flatpak",
-        "Name[x-test]": "xxFlatpak Permission Settingsxx",
         "Name[zh_CN]": "Flatpak 权限设置",
         "Name[zh_TW]": "Flatpak 權限設定"
     },
@@ -104,6 +102,5 @@
     "X-KDE-Keywords[sl]": "Flatpak,dovoljenje,dovoljenja,dostop,peskovnik,peskovniško,datotečni sistem,datoteka,datoteke,mapa,mape,omrežje,omrežja,mreženje,bluetooth,tisk,tiskalnik,tiskanje,avdio,zvok,prijava,oddaljena prijava,ssh,pametna kartica,kvm,naprava,seja,vodilo seje,sistem,sistemsko vodilo,okolje,okoljska spremenljivka",
     "X-KDE-Keywords[sv]": "Flatpak,rättighet,rättigheter,åtkomst,sandlåda,filsystem,fil,filer,katalog,kataloger,nätverk,blåtand,skriva ut,skrivare,utskrift,ljud,inloggning,fjärrinloggning,ssh,smartkort,kvm,enhet,session,sessionsbuss,system,systembuss,miljö,miljövariabel",
     "X-KDE-Keywords[uk]": "Flatpak,permission,permissions,access,sandbox,sandboxed,filesystem,file,files,folder,folders,network,networks,networking,bluetooth,print,printer,printing,audio,sound,login,remote login,ssh,smart card,kvm,device,session,session bus,system,system bus,environment,environment variable,флетпак,дозвіл,дозволи,доступ,пісочниця,файлова,система,файл,файли,тека,теки,мережа,мережі,блютуз,друк,принтер,друкарка,звук,аудіо,вхід,віддалений,картка,пам'яті,пристрій,сеанс,шина,канал,система,середовище,змінна,середовища",
-    "X-KDE-Keywords[x-test]": "xxFlatpakxx,xxpermissionxx,xxpermissionsxx,xxaccessxx,xxsandboxxx,xxsandboxedxx,xxfilesystemxx,xxfilexx,xxfilesxx,xxfolderxx,xxfoldersxx,xxnetworkxx,xxnetworksxx,xxnetworkingxx,xxbluetoothxx,xxprintxx,xxprinterxx,xxprintingxx,xxaudioxx,xxsoundxx,xxloginxx,xxremote loginxx,xxsshxx,xxsmart cardxx,xxkvmxx,xxdevicexx,xxsessionxx,xxsession busxx,xxsystemxx,xxsystem busxx,xxenvironmentxx,xxenvironment variablexx",
     "X-KDE-System-Settings-Parent-Category": "applications"
 }
