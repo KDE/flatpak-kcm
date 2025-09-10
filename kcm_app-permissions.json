@@ -13,6 +13,7 @@
         "Description[nl]": "Rechten van toepassingen configureren",
         "Description[pt_BR]": "Configurar permissões de aplicativos",
         "Description[sl]": "Konfiguriraj dovoljenja aplikacije",
+        "Description[sv]": "Anpassa programrättigheter",
         "Description[tr]": "Uygulama izinlerini yapılandırın",
         "Description[uk]": "Налаштовування прав доступу для програм",
         "Description[zh_TW]": "設定應用程式權限",
@@ -34,6 +35,7 @@
         "Name[nl]": "Rechten van toepassingen",
         "Name[pt_BR]": "Permissões de aplicativos",
         "Name[sl]": "Dovoljenja aplikacije",
+        "Name[sv]": "Programrättigheter",
         "Name[tr]": "Uygulama İzinleri",
         "Name[uk]": "Права доступу програм",
         "Name[zh_TW]": "應用程式權限"
