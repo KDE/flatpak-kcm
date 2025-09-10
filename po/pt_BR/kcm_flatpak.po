@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-09-06 00:43+0000\n"
-"PO-Revision-Date: 2025-09-04 05:06-0300\n"
-"Last-Translator: Marcus Gama <marcus.gama@gmail.com>\n"
+"PO-Revision-Date: 2025-09-09 20:33-0300\n"
+"Last-Translator: Guilherme Marçal Silva <guimarcalsilva@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
@@ -427,7 +427,7 @@ msgstr "Enviar notificações"
 #, kde-format
 msgctxt "@option:check"
 msgid "Block automatic sleep and screen locking"
-msgstr "Bloquear o suspensão e bloqueio de tela automáticos"
+msgstr "Bloquear a suspensão e bloqueio de tela automáticos"
 
 #: ui/Permissions.qml:106
 #, kde-format
@@ -486,7 +486,7 @@ msgstr "Sempre perguntar"
 #, kde-format
 msgctxt "@title:group"
 msgid "Camera access:"
-msgstr "Acesso da câmera:"
+msgstr "Acesso à câmera:"
 
 #: ui/Permissions.qml:184
 #, kde-format
@@ -570,8 +570,8 @@ msgctxt "@option:check"
 msgid ""
 "Control pointer & keyboard, and share screen with other apps without asking"
 msgstr ""
-"Controle o ponteiro e o teclado e compartilhe a tela com outros aplicativos "
-"sem perguntar"
+"Controlar o ponteiro e o teclado e compartilhar a tela com outros "
+"aplicativos sem perguntar"
 
 #: ui/Permissions.qml:272
 #, kde-format
