@@ -1,15 +1,15 @@
 # Spanish translations for kcm_flatpak.po package.
-# Copyright (C) 2022 This file is copyright:
+# Copyright (C) 2022-2025 This file is copyright:
 # This file is distributed under the same license as the flatpak-kcm package.
-#
 # Automatically generated, 2022.
-# SPDX-FileCopyrightText: 2022, 2023, 2024 Eloy Cuadra <ecuadra@eloihr.net>
+#
+# SPDX-FileCopyrightText: 2022, 2023, 2024, 2025 Eloy Cuadra <ecuadra@eloihr.net>
 msgid ""
 msgstr ""
 "Project-Id-Version: kcm_flatpak\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-05-22 02:41+0000\n"
-"PO-Revision-Date: 2024-08-31 01:59+0200\n"
+"PO-Revision-Date: 2025-09-11 12:23+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -314,7 +314,7 @@ msgstr "Mostrar permisos avanzados"
 #: ui/permissions.qml:182
 #, kde-format
 msgid "Add New…"
-msgstr "Añadir nuevo..."
+msgstr "Añadir nuevo…"
 
 #: ui/TextPromptDialog.qml:21
 #, kde-format
@@ -345,102 +345,3 @@ msgstr "Introduzca nombre del bus de sesión:"
 #, kde-format
 msgid "Enter system bus name:"
 msgstr "Introduzca nombre del bus del sistema:"
-
-#~ msgid "Enter variable…"
-#~ msgstr "Introduzca variable..."
-
-#~ msgid "Enter value…"
-#~ msgstr "Introduzca valor..."
-
-#~ msgid "read-write"
-#~ msgstr "lectura y escritura"
-
-#~ msgid "=\n"
-#~ msgstr "=\n"
-
-#~ msgid "per-app-dev-shm"
-#~ msgstr "dev-shm por aplicación"
-
-#~ msgid "shared"
-#~ msgstr "recursos compartidos"
-
-#~ msgid "network"
-#~ msgstr "red"
-
-#~ msgid "ipc"
-#~ msgstr "ipc"
-
-#~ msgid "sockets"
-#~ msgstr "conectores"
-
-#~ msgid "x11"
-#~ msgstr "x11"
-
-#~ msgid "wayland"
-#~ msgstr "wayland"
-
-#~ msgid "fallback-x11"
-#~ msgstr "fallback-x11"
-
-#~ msgid "pulseaudio"
-#~ msgstr "pulseaudio"
-
-#~ msgid "session-bus"
-#~ msgstr "bus de sesión"
-
-#~ msgid "system-bus"
-#~ msgstr "bus del sistema"
-
-#~ msgid "ssh-auth"
-#~ msgstr "autenticación ssh"
-
-#~ msgid "pcsc"
-#~ msgstr "pcsc"
-
-#~ msgid "cups"
-#~ msgstr "cups"
-
-#~ msgid "devices"
-#~ msgstr "dispositivos"
-
-#~ msgid "kvm"
-#~ msgstr "kvm"
-
-#~ msgid "dri"
-#~ msgstr "dri"
-
-#~ msgid "shm"
-#~ msgstr "shm"
-
-#~ msgid "all"
-#~ msgstr "todos"
-
-#~ msgid "features"
-#~ msgstr "funcionalidades"
-
-#~ msgid "devel"
-#~ msgstr "desarrollo"
-
-#~ msgid "multiarch"
-#~ msgstr "multiarquitectura"
-
-#~ msgid "bluetooth"
-#~ msgstr "bluetooth"
-
-#~ msgid "canbus"
-#~ msgstr "canbus"
-
-#~ msgid "filesystems"
-#~ msgstr "sistemas de archivos"
-
-#~ msgid "home"
-#~ msgstr "carpeta personal"
-
-#~ msgid "host"
-#~ msgstr "host"
-
-#~ msgid "host-os"
-#~ msgstr "host-os"
-
-#~ msgid "host-etc"
-#~ msgstr "host-etc"
