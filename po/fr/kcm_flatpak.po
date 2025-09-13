@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-09-06 00:43+0000\n"
-"PO-Revision-Date: 2025-08-15 09:58+0200\n"
+"PO-Revision-Date: 2025-09-05 20:58+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: French <French <kde-francophone@kde.org>>\n"
 "Language: fr\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 25.07.90\n"
+"X-Generator: Lokalize 25.08.0\n"
 
 #: autotests/flatpakpermissiontest.cpp:618
 #: autotests/flatpakpermissiontest.cpp:824 flatpakpermission.cpp:404
@@ -257,64 +257,64 @@ msgstr "Ajouter une nouvelle variable d'environnement"
 #, kde-format
 msgctxt "not an action but the ability to do so"
 msgid "Record the Screen"
-msgstr ""
+msgstr "Enregistrer l'écran"
 
 #: restoredatamodel.cpp:149
 #, kde-format
 msgctxt "not an action but the ability to do so"
 msgid "Control the Clipboard"
-msgstr ""
+msgstr "Contrôler le presse-papier"
 
 #: restoredatamodel.cpp:155
 #, kde-format
 msgctxt "Part of a list of things"
 msgid "Keyboard"
-msgstr ""
+msgstr "Clavier"
 
 #: restoredatamodel.cpp:158
 #, kde-format
 msgctxt "Part of a list of things"
 msgid "Mouse"
-msgstr ""
+msgstr "Souris"
 
 #: restoredatamodel.cpp:161
 #, kde-format
 msgctxt "Part of a list of things"
 msgid "Touchscreen"
-msgstr ""
+msgstr "Écran tactile"
 
 #: restoredatamodel.cpp:164
 #, kde-format
 msgctxt "%1 is a list of things formed from above"
 msgid "Control %1"
-msgstr ""
+msgstr "Contrôle %1"
 
 #: restoredatamodel.cpp:203
 #, kde-format
 msgctxt "%1 is the title of a window, %2 the name of an application"
 msgid "Window \"%1\" of %2"
-msgstr ""
+msgstr "Fenêtre « %1 » de %2"
 
 #: restoredatamodel.cpp:207
 #, kde-format
 msgid "Region at (%1,%2) with size %3x%4"
-msgstr ""
+msgstr "Région à (%1,%2) avec une taille de %3 x %4"
 
 #: restoredatamodel.cpp:217
 #, kde-format
 msgid "Virtual Screen"
-msgstr ""
+msgstr "Écran virtuel"
 
 #: restoredatamodel.cpp:221
 #, kde-format
 msgid "The entire Workspace"
-msgstr ""
+msgstr "La totalité de l'espace de travail"
 
 #: restoredatamodel.cpp:240
 #, kde-format
 msgctxt "%1 is the position of the screen"
 msgid "A disconnected Screen at %1"
-msgstr ""
+msgstr "Un écran déconnecté à %1"
 
 #: ui/AddEnvironmentVariableDialog.qml:18
 #, kde-format
@@ -353,7 +353,7 @@ msgstr ""
 #, kde-format
 msgctxt "@title:window %1 is the name of the application"
 msgid "%1 – Flatpak Settings"
-msgstr ""
+msgstr "%1 – Configuration de Flatpak"
 
 #: ui/FlatpakPermissions.qml:140
 #, kde-format
@@ -397,7 +397,7 @@ msgstr ""
 #, kde-format
 msgctxt "@action:intoolbar"
 msgid "Manage Flatpak Settings"
-msgstr ""
+msgstr "Gérer la configuration de Flatpak"
 
 #: ui/Permissions.qml:49
 #, kde-format
@@ -407,30 +407,34 @@ msgid ""
 "off here they are still able to control mouse and keyboard or record the "
 "contents of your screen through the windowing system"
 msgstr ""
+"Les applications se comportant bien peuvent respecter ces paramètres, mais "
+"même si elles sont désactivées ici, elles peuvent toujours contrôler la "
+"souris et le clavier ou enregistrer le contenu de votre écran grâce au "
+"système de fenêtrage"
 
 #: ui/Permissions.qml:62
 #, kde-format
 msgctxt "@label:group"
 msgid "General:"
-msgstr ""
+msgstr "Général :"
 
 #: ui/Permissions.qml:64
 #, kde-format
 msgctxt "@option:check"
 msgid "Send notifications"
-msgstr ""
+msgstr "Envoyer des notifications"
 
 #: ui/Permissions.qml:81
 #, kde-format
 msgctxt "@option:check"
 msgid "Block automatic sleep and screen locking"
-msgstr ""
+msgstr "Bloquer la mise en veille automatique et le verrouillage de l'écran"
 
 #: ui/Permissions.qml:106
 #, kde-format
 msgctxt "@option:check"
 msgid "Activate game mode"
-msgstr ""
+msgstr "Activer le mode de jeu"
 
 #: ui/Permissions.qml:117
 #, kde-kuit-format
@@ -439,118 +443,119 @@ msgid ""
 "Allows the application to activate game mode if you are using it on your "
 "system."
 msgstr ""
+"Permet à l'application d'activer le mode de jeu si vous l'utilisez sur votre "
+"système."
 
 #: ui/Permissions.qml:126
 #, kde-format
 msgctxt "@option:check"
 msgid "Gain higher process priority"
-msgstr ""
+msgstr "Accroître la priorité du processus"
 
 #: ui/Permissions.qml:142
 #, kde-format
 msgctxt "@label:listbox"
 msgid "Take screenshots:"
-msgstr ""
+msgstr "Prendre des copies d’écran"
 
 #: ui/Permissions.qml:150 ui/Permissions.qml:171 ui/Permissions.qml:191
 #: ui/Permissions.qml:222
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Ask Once"
-msgstr ""
+msgstr "Demander une fois"
 
 #: ui/Permissions.qml:151 ui/Permissions.qml:172 ui/Permissions.qml:223
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Deny"
-msgstr ""
+msgstr "Refuser"
 
 #: ui/Permissions.qml:152 ui/Permissions.qml:173 ui/Permissions.qml:224
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Allow"
-msgstr ""
+msgstr "Autoriser"
 
 #: ui/Permissions.qml:153 ui/Permissions.qml:174 ui/Permissions.qml:225
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Always Ask"
-msgstr ""
+msgstr "Toujours demander"
 
 #: ui/Permissions.qml:163
-#, fuzzy, kde-format
-#| msgid "Smart card access"
+#, kde-format
 msgctxt "@title:group"
 msgid "Camera access:"
-msgstr "Accès aux cartes mémoires"
+msgstr "Accès à l'appareil photo :"
 
 #: ui/Permissions.qml:184
 #, kde-format
 msgctxt "@label:listbox"
 msgid "Location accuracy:"
-msgstr ""
+msgstr "Précision de la localisation :"
 
 #: ui/Permissions.qml:193
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Deny"
-msgstr ""
+msgstr "Refuser"
 
 #: ui/Permissions.qml:194
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Country"
-msgstr ""
+msgstr "Pays"
 
 #: ui/Permissions.qml:195
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "City"
-msgstr ""
+msgstr "Ville"
 
 #: ui/Permissions.qml:196
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Neighborhood"
-msgstr ""
+msgstr "Voisinage"
 
 #: ui/Permissions.qml:197
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Street"
-msgstr ""
+msgstr "Rue"
 
 #: ui/Permissions.qml:198
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Exact"
-msgstr ""
+msgstr "Exact"
 
 #: ui/Permissions.qml:214
 #, kde-format
 msgctxt "@label:listbox"
 msgid "Set desktop and lock screen background:"
-msgstr ""
+msgstr "Définir l'arrière-plan de l'écran du bureau et de verrouillage :"
 
 #: ui/Permissions.qml:238
 #, kde-format
 msgctxt "@label"
 msgid "Screen sharing:"
-msgstr ""
+msgstr "Partage d'écrans :"
 
 #: ui/Permissions.qml:243 ui/Permissions.qml:269
 #, kde-format
 msgctxt "@action:button"
 msgid "Manage %1 Session"
 msgid_plural "Manage %1 Sessions"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Gérer la session %1"
+msgstr[1] "Gérer les %1 sessions"
 
 #: ui/Permissions.qml:246
 #, kde-format
 msgctxt "@title:window %1 is the name of the application"
 msgid "%1 – Screencast Sessions"
-msgstr ""
+msgstr "%1 – Sessions d'enregistrement d'écran"
 
 #: ui/Permissions.qml:251
 #, kde-format
@@ -558,7 +563,7 @@ msgctxt ""
 "@label 'Remote control' like in xdg-desktop-portal-kde remotedesktopdialog."
 "cpp"
 msgid " Remote control:"
-msgstr ""
+msgstr "Contrôle à distance :"
 
 #: ui/Permissions.qml:254
 #, kde-format
@@ -566,18 +571,20 @@ msgctxt "@option:check"
 msgid ""
 "Control pointer & keyboard, and share screen with other apps without asking"
 msgstr ""
+"Contrôlez le pointeur et le clavier et partagez l'écran avec d'autres "
+"applications sans demande de confirmation"
 
 #: ui/Permissions.qml:272
 #, kde-format
 msgctxt "@title:window %1 is the name of the application"
 msgid "%1 – Remote Desktop Sessions"
-msgstr ""
+msgstr "%1 – Sessions de bureau à distance"
 
 #: ui/SessionList.qml:49
 #, kde-format
 msgctxt "@action:button"
 msgid "Revoke"
-msgstr ""
+msgstr "Révoquer"
 
 #: ui/TextPromptDialog.qml:21
 #, kde-format
