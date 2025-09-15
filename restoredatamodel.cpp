@@ -60,7 +60,7 @@ void RestoreDataModel::componentComplete()
     }
 }
 
-int RestoreDataModel::rowCount(const QModelIndex &parent) const
+int RestoreDataModel::rowCount([[maybe_unused]] const QModelIndex &parent) const
 {
     return m_entries.size();
 }
