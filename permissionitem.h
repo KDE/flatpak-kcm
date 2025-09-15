@@ -20,16 +20,16 @@ class PermissionItem : public QObject, public QQmlParserStatus
     Q_PROPERTY(QStringList permissions READ permissions WRITE setPermissions NOTIFY permissionsChanged)
 public:
     PermissionItem();
-    QString table;
-    QString resource;
-    QString appId;
-    QStringList permissions() const;
     [[nodiscard]] QStringList permissions() const;
     void setPermissions(const QStringList &permissions);
 Q_SIGNALS:
     void permissionsChanged();
 
 private:
+    QString table;
+    QString resource;
+    QString appId;
+
     std::shared_ptr<PermissionStore> permissionStore = PermissionStore::instance();
     void classBegin() override
     {
