@@ -46,9 +46,9 @@ public:
         QVariant data;
         QHash<QString, QStringList> permissions;
     };
-    QStringList lookupPermission(const QString &table, const QString &resource, const QString &appId) const;
+    [[nodiscard]] QStringList lookupPermission(const QString &table, const QString &resource, const QString &appId) const;
     void setPermission(const QString &table, const QString &resource, const QString &appId, const QStringList &permission) const;
-    QList<std::pair<QString, QVariant>> allDataForApp(const QString &table, const QString &appId) const;
+    [[nodiscard]] QList<std::pair<QString, QVariant>> allDataForApp(const QString &table, const QString &appId) const;
     void deleteResource(const QString &table, const QString &resource) const;
 Q_SIGNALS:
     void resourceDeleted(const QString &table, const QString &resource);

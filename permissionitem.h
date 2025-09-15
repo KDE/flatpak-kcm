@@ -24,6 +24,7 @@ public:
     QString resource;
     QString appId;
     QStringList permissions() const;
+    [[nodiscard]] QStringList permissions() const;
     void setPermissions(const QStringList &permissions);
 Q_SIGNALS:
     void permissionsChanged();
