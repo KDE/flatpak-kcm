@@ -88,9 +88,8 @@ FlatpakReference *AppPermissionsKCM::indexFromArgs(const QVariantList &args) con
     });
     if (it != m_references.cend()) {
         return it->get();
-    } else {
-        return nullptr;
     }
+    return nullptr;
 }
 
 void AppPermissionsKCM::load()
