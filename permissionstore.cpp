@@ -48,7 +48,8 @@ void PermissionStore::loadTable(const QString &table)
                         }
                         const auto reply = decltype(lookupCall)(*watcher);
                         const auto permissions = reply.argumentAt<0>();
-                        m_tables[table].insert(resource, Entry{reply.argumentAt<1>().variant(), {permissions.cbegin(), permissions.cend()}});
+                        m_tables[table].insert(resource,
+                                               Entry{.data = reply.argumentAt<1>().variant(), .permissions = {permissions.cbegin(), permissions.cend()}});
                         Q_EMIT dataChanged(table, resource, reply.argumentAt<1>().variant());
                         Q_EMIT permissionChanged(table, resource);
                     });
