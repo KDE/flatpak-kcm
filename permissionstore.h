@@ -26,6 +26,8 @@ class PermissionStore : public QObject
 public:
     PermissionStore(Key);
     ~PermissionStore() override;
+    Q_DISABLE_COPY_MOVE(PermissionStore)
+
     static std::shared_ptr<PermissionStore> instance()
     {
         // A pseudo singleton, so it is alive as long as the kcm is open but not keep on living while
