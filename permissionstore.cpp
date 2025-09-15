@@ -49,6 +49,8 @@ void PermissionStore::loadTable(const QString &table)
                         const auto reply = decltype(lookupCall)(*watcher);
                         const auto permissions = reply.argumentAt<0>();
                         m_tables[table].insert(resource, Entry{reply.argumentAt<1>().variant(), {permissions.cbegin(), permissions.cend()}});
+                        Q_EMIT dataChanged(table, resource, reply.argumentAt<1>().variant());
+                        Q_EMIT permissionChanged(table, resource);
                     });
         }
     });
@@ -61,6 +63,8 @@ void PermissionStore::permissionsChanged(const QString &table,
                                          const QMap<QString, QStringList> &permissions)
 {
     if (!m_tables.contains(table)) {
+        qDebug() << "Got permission change on unknown table" << table << ". Trying to load it.";
+        loadTable(table);
         return;
     }
     if (deleted) {
