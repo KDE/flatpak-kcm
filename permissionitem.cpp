@@ -9,9 +9,7 @@
 
 using namespace Qt::StringLiterals;
 
-PermissionItem::PermissionItem()
-{
-}
+PermissionItem::PermissionItem() = default;
 
 void PermissionItem::componentComplete()
 {
