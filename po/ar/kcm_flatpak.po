@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-09-06 00:43+0000\n"
-"PO-Revision-Date: 2025-08-17 22:11+0400\n"
+"PO-Revision-Date: 2025-09-15 13:13+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -268,19 +268,19 @@ msgstr ""
 #, kde-format
 msgctxt "Part of a list of things"
 msgid "Keyboard"
-msgstr ""
+msgstr "لوحة المفاتيح"
 
 #: restoredatamodel.cpp:158
 #, kde-format
 msgctxt "Part of a list of things"
 msgid "Mouse"
-msgstr ""
+msgstr "الفأرة"
 
 #: restoredatamodel.cpp:161
 #, kde-format
 msgctxt "Part of a list of things"
 msgid "Touchscreen"
-msgstr ""
+msgstr "شاشة لمس"
 
 #: restoredatamodel.cpp:164
 #, kde-format
@@ -407,13 +407,13 @@ msgstr ""
 #, kde-format
 msgctxt "@label:group"
 msgid "General:"
-msgstr ""
+msgstr "عام:"
 
 #: ui/Permissions.qml:64
 #, kde-format
 msgctxt "@option:check"
 msgid "Send notifications"
-msgstr ""
+msgstr "أرسل إشعارات"
 
 #: ui/Permissions.qml:81
 #, kde-format
@@ -458,19 +458,19 @@ msgstr ""
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Deny"
-msgstr ""
+msgstr "امنع"
 
 #: ui/Permissions.qml:152 ui/Permissions.qml:173 ui/Permissions.qml:224
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Allow"
-msgstr ""
+msgstr "اسمح"
 
 #: ui/Permissions.qml:153 ui/Permissions.qml:174 ui/Permissions.qml:225
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Always Ask"
-msgstr ""
+msgstr "اسأل دائمًا"
 
 #: ui/Permissions.qml:163
 #, fuzzy, kde-format
@@ -489,37 +489,37 @@ msgstr ""
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Deny"
-msgstr ""
+msgstr "امنع"
 
 #: ui/Permissions.qml:194
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Country"
-msgstr ""
+msgstr "البلد"
 
 #: ui/Permissions.qml:195
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "City"
-msgstr ""
+msgstr "المدينة"
 
 #: ui/Permissions.qml:196
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Neighborhood"
-msgstr ""
+msgstr "الحي"
 
 #: ui/Permissions.qml:197
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Street"
-msgstr ""
+msgstr "الشارع"
 
 #: ui/Permissions.qml:198
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Exact"
-msgstr ""
+msgstr "بالضبط"
 
 #: ui/Permissions.qml:214
 #, kde-format
@@ -531,7 +531,7 @@ msgstr ""
 #, kde-format
 msgctxt "@label"
 msgid "Screen sharing:"
-msgstr ""
+msgstr "مشاركة الشاشة:"
 
 #: ui/Permissions.qml:243 ui/Permissions.qml:269
 #, kde-format
@@ -557,7 +557,7 @@ msgctxt ""
 "@label 'Remote control' like in xdg-desktop-portal-kde remotedesktopdialog."
 "cpp"
 msgid " Remote control:"
-msgstr ""
+msgstr " جهاز التحكم عن بعد:"
 
 #: ui/Permissions.qml:254
 #, kde-format
