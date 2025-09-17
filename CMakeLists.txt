@@ -13,7 +13,7 @@ set(KF6_MIN_VERSION "6.14.0")
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-add_definitions(-DTRANSLATION_DOMAIN="kcm_flatpak")
+add_definitions(-DTRANSLATION_DOMAIN="kcm_app-permissions")
 
 find_package(ECM ${KF6_MIN_VERSION} REQUIRED NO_MODULE)
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules)
