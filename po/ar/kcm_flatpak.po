@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-09-06 00:43+0000\n"
-"PO-Revision-Date: 2025-09-15 13:13+0400\n"
+"PO-Revision-Date: 2025-09-16 20:52+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -256,13 +256,13 @@ msgstr "أضف متغير بيئة جديداً"
 #, kde-format
 msgctxt "not an action but the ability to do so"
 msgid "Record the Screen"
-msgstr ""
+msgstr "تسجيل الشاشة"
 
 #: restoredatamodel.cpp:149
 #, kde-format
 msgctxt "not an action but the ability to do so"
 msgid "Control the Clipboard"
-msgstr ""
+msgstr "التحكم بالحافظة"
 
 #: restoredatamodel.cpp:155
 #, kde-format
@@ -286,34 +286,34 @@ msgstr "شاشة لمس"
 #, kde-format
 msgctxt "%1 is a list of things formed from above"
 msgid "Control %1"
-msgstr ""
+msgstr "التحكم بـ%1"
 
 #: restoredatamodel.cpp:203
 #, kde-format
 msgctxt "%1 is the title of a window, %2 the name of an application"
 msgid "Window \"%1\" of %2"
-msgstr ""
+msgstr "النافذة \"%1\" من %2"
 
 #: restoredatamodel.cpp:207
 #, kde-format
 msgid "Region at (%1,%2) with size %3x%4"
-msgstr ""
+msgstr "المنطقة عند (%1،%2) بحجم %3×%4"
 
 #: restoredatamodel.cpp:217
 #, kde-format
 msgid "Virtual Screen"
-msgstr ""
+msgstr "الشاشة الافتراضية"
 
 #: restoredatamodel.cpp:221
 #, kde-format
 msgid "The entire Workspace"
-msgstr ""
+msgstr "كامل مساحة العمل"
 
 #: restoredatamodel.cpp:240
 #, kde-format
 msgctxt "%1 is the position of the screen"
 msgid "A disconnected Screen at %1"
-msgstr ""
+msgstr "الشاشة المفصولة عند %1"
 
 #: ui/AddEnvironmentVariableDialog.qml:18
 #, kde-format
@@ -350,7 +350,7 @@ msgstr "تغيرت أذونات تطبيق %1. هل تريد تطبيق هذه �
 #, kde-format
 msgctxt "@title:window %1 is the name of the application"
 msgid "%1 – Flatpak Settings"
-msgstr ""
+msgstr "%1 – إعدادات فلاتباك"
 
 #: ui/FlatpakPermissions.qml:140
 #, kde-format
@@ -392,7 +392,7 @@ msgstr "اختر تطبيق من القائمة لعرض أذوناته هنا"
 #, kde-format
 msgctxt "@action:intoolbar"
 msgid "Manage Flatpak Settings"
-msgstr ""
+msgstr "أدر إعدادات فلاتباك"
 
 #: ui/Permissions.qml:49
 #, kde-format
@@ -402,6 +402,9 @@ msgid ""
 "off here they are still able to control mouse and keyboard or record the "
 "contents of your screen through the windowing system"
 msgstr ""
+"قد تحترم التطبيقات الجيدة السلوك هذه الإعدادات، ولكن حتى إذا أوقفت تشغيلها "
+"هنا، فإنها لا تزال قادرة على التحكم في الفأرة ولوحة المفاتيح أو تسجيل "
+"محتويات شاشتك من خلال نظام النوافذ."
 
 #: ui/Permissions.qml:62
 #, kde-format
@@ -419,13 +422,13 @@ msgstr "أرسل إشعارات"
 #, kde-format
 msgctxt "@option:check"
 msgid "Block automatic sleep and screen locking"
-msgstr ""
+msgstr "امنع وضع التعليق الآلي وقفل الشاشة"
 
 #: ui/Permissions.qml:106
 #, kde-format
 msgctxt "@option:check"
 msgid "Activate game mode"
-msgstr ""
+msgstr "نشّط وضع الألعاب"
 
 #: ui/Permissions.qml:117
 #, kde-kuit-format
@@ -433,26 +436,26 @@ msgctxt "@info:tooltip"
 msgid ""
 "Allows the application to activate game mode if you are using it on your "
 "system."
-msgstr ""
+msgstr "يسمح للتطبيق بتنشيط وضع الألعاب إذا كنت تستخدمه على نظامك."
 
 #: ui/Permissions.qml:126
 #, kde-format
 msgctxt "@option:check"
 msgid "Gain higher process priority"
-msgstr ""
+msgstr "الحصول على أولوية أعلى في العملية"
 
 #: ui/Permissions.qml:142
 #, kde-format
 msgctxt "@label:listbox"
 msgid "Take screenshots:"
-msgstr ""
+msgstr "أخذ لقطات الشاشة:"
 
 #: ui/Permissions.qml:150 ui/Permissions.qml:171 ui/Permissions.qml:191
 #: ui/Permissions.qml:222
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Ask Once"
-msgstr ""
+msgstr "اسأل مرة واحدة"
 
 #: ui/Permissions.qml:151 ui/Permissions.qml:172 ui/Permissions.qml:223
 #, kde-format
@@ -473,17 +476,16 @@ msgid "Always Ask"
 msgstr "اسأل دائمًا"
 
 #: ui/Permissions.qml:163
-#, fuzzy, kde-format
-#| msgid "Smart card access"
+#, kde-format
 msgctxt "@title:group"
 msgid "Camera access:"
-msgstr "الوصول للبطاقة الذكية"
+msgstr "الوصول للكاميرا:"
 
 #: ui/Permissions.qml:184
 #, kde-format
 msgctxt "@label:listbox"
 msgid "Location accuracy:"
-msgstr ""
+msgstr "دقة الموقع:"
 
 #: ui/Permissions.qml:193
 #, kde-format
@@ -525,7 +527,7 @@ msgstr "بالضبط"
 #, kde-format
 msgctxt "@label:listbox"
 msgid "Set desktop and lock screen background:"
-msgstr ""
+msgstr "تعيين خلفية سطح المكتب وشاشة القفل:"
 
 #: ui/Permissions.qml:238
 #, kde-format
@@ -538,18 +540,18 @@ msgstr "مشاركة الشاشة:"
 msgctxt "@action:button"
 msgid "Manage %1 Session"
 msgid_plural "Manage %1 Sessions"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
-msgstr[5] ""
+msgstr[0] "لا تدر أي جلسة"
+msgstr[1] "أدر جلسة واحدة"
+msgstr[2] "أدر جلستين"
+msgstr[3] "أدر %1 جلسات"
+msgstr[4] "أدر %1 جلسة"
+msgstr[5] "أدر %1 جلسة"
 
 #: ui/Permissions.qml:246
 #, kde-format
 msgctxt "@title:window %1 is the name of the application"
 msgid "%1 – Screencast Sessions"
-msgstr ""
+msgstr "%1 – جلسات بث الشاشة"
 
 #: ui/Permissions.qml:251
 #, kde-format
@@ -565,18 +567,19 @@ msgctxt "@option:check"
 msgid ""
 "Control pointer & keyboard, and share screen with other apps without asking"
 msgstr ""
+"تحكم في المؤشر واللوحة المفاتيح، وشارك الشاشة مع تطبيقات أخرى دون طلب الإذن"
 
 #: ui/Permissions.qml:272
 #, kde-format
 msgctxt "@title:window %1 is the name of the application"
 msgid "%1 – Remote Desktop Sessions"
-msgstr ""
+msgstr "%1 – جلسات سطح المكتب البعيد"
 
 #: ui/SessionList.qml:49
 #, kde-format
 msgctxt "@action:button"
 msgid "Revoke"
-msgstr ""
+msgstr "اسحب"
 
 #: ui/TextPromptDialog.qml:21
 #, kde-format
