@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-05-22 02:41+0000\n"
-"PO-Revision-Date: 2025-09-16 20:52+0400\n"
+"PO-Revision-Date: 2025-09-17 19:18+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -277,14 +277,14 @@ msgstr "تطبيقات فلاتباك"
 #: ui/main.qml:97
 #, kde-format
 msgid "Apply Permissions"
-msgstr "طبّق الأذونات"
+msgstr "طبّق التّصاريح"
 
 #: ui/main.qml:98
 #, kde-format
 msgid ""
 "The permissions of application %1 have been changed. Do you want to apply "
 "these changes or discard them?"
-msgstr "ؤي تغيرت أذونات تطبيق %1. هل تريد تطبيق هذه التغيرات أم لا؟"
+msgstr "تغيرت أذونات تطبيق %1. هل تريد تطبيق هذه التغيرات أم لا؟"
 
 #: ui/permissions.qml:22
 #, kde-format
