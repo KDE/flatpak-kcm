@@ -8,7 +8,7 @@ cmake_minimum_required(VERSION 3.16)
 project(flatpakkcm)
 
 set(QT_MIN_VERSION "6.8.0")
-set(KF6_MIN_VERSION "6.14.0")
+set(KF6_MIN_VERSION "6.18.0")
 
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
