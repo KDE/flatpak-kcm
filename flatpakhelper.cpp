@@ -7,7 +7,6 @@
 #include "flatpakhelper.h"
 #include "config.h"
 
-#include <KIconLoader>
 #include <QDir>
 #include <QFileInfo>
 #include <QStandardPaths>
