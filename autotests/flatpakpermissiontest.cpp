@@ -379,7 +379,7 @@ private Q_SLOTS:
             QFINDTESTDATA(QStringLiteral("fixtures/overrides.in/com.example.cascade.user-app")),
         };
         FlatpakPermissionModel model;
-        FlatpakReference reference("com.example.cascade.metadata", "x86_64", "stable", "1.0.0", "com.example.cascade.metadata", QUrl(), overrideFiles);
+        FlatpakReference reference("com.example.cascade.metadata", "x86_64", "stable", "1.0.0", "com.example.cascade.metadata", overrideFiles);
         model.setReference(&reference);
         model.setShowAdvanced(true);
         model.load();
@@ -432,8 +432,7 @@ private Q_SLOTS:
     {
         // The primary motivation behind this test is to make sure that translations aren't being pulled in for the raw names.
         FlatpakPermissionModel model;
-        FlatpakReference
-            reference("com.discordapp.Discord", "x86_64", "stable", "0.0.24", "Discord", QUrl(), mockMetadataAndOverridesFiles("com.discordapp.Discord"));
+        FlatpakReference reference("com.discordapp.Discord", "x86_64", "stable", "0.0.24", "Discord", mockMetadataAndOverridesFiles("com.discordapp.Discord"));
         model.setReference(&reference);
         model.load();
         bool containsNetwork = false;
@@ -469,7 +468,6 @@ private Q_SLOTS:
                                    "stable",
                                    "0.0.24",
                                    "Test Same Simple Override",
-                                   QUrl(),
                                    mockMetadataAndOverridesFiles("com.example.same.override"));
         model.setReference(&reference);
         model.setShowAdvanced(true);
@@ -519,7 +517,7 @@ private Q_SLOTS:
         // the well-known "host-etc" filesystem would not be the last one. But we want to test for the last
         // default index too.
         FlatpakPermissionModel model;
-        FlatpakReference reference("org.gnome.dfeet", "x86_64", "stable", "0.3.16", "D-Feet", QUrl(), mockMetadataAndOverridesFiles("org.gnome.dfeet"));
+        FlatpakReference reference("org.gnome.dfeet", "x86_64", "stable", "0.3.16", "D-Feet", mockMetadataAndOverridesFiles("org.gnome.dfeet"));
         model.setReference(&reference);
         model.load();
         QStringList filesystems;
@@ -550,7 +548,7 @@ private Q_SLOTS:
         // from, and saved.
         const auto metadataAndOverridesFiles = mockMetadataAndOverridesFiles("org.gnome.dfeet");
         FlatpakPermissionModel model;
-        FlatpakReference reference("org.gnome.dfeet", "x86_64", "stable", "0.3.16", "D-Feet", QUrl(), metadataAndOverridesFiles);
+        FlatpakReference reference("org.gnome.dfeet", "x86_64", "stable", "0.3.16", "D-Feet", metadataAndOverridesFiles);
         model.setReference(&reference);
         model.load();
         model.setShowAdvanced(true);
@@ -660,7 +658,7 @@ private Q_SLOTS:
     void testDBusBrokenPolicies()
     {
         FlatpakPermissionModel model;
-        FlatpakReference reference("org.gnome.Boxes", "x86_64", "stable", "43.1", "Boxes", QUrl(), mockMetadataAndOverridesFiles("org.gnome.Boxes"));
+        FlatpakReference reference("org.gnome.Boxes", "x86_64", "stable", "43.1", "Boxes", mockMetadataAndOverridesFiles("org.gnome.Boxes"));
         model.setReference(&reference);
         model.load();
         model.setShowAdvanced(true);
@@ -716,7 +714,7 @@ private Q_SLOTS:
         // Ensure override files mutate properly
         const auto metadataAndOverridesFiles = mockMetadataAndOverridesFiles("com.discordapp.Discord");
         FlatpakPermissionModel model;
-        FlatpakReference reference("com.discordapp.Discord", "x86_64", "stable", "0.0.24", "Discord", QUrl(), metadataAndOverridesFiles);
+        FlatpakReference reference("com.discordapp.Discord", "x86_64", "stable", "0.0.24", "Discord", metadataAndOverridesFiles);
         model.setReference(&reference);
         model.load();
         model.setShowAdvanced(true);
@@ -845,8 +843,7 @@ private Q_SLOTS:
     {
         const auto metadataAndOverridesFiles = mockMetadataAndOverridesFiles("com.example.unparsable.filesystems");
         FlatpakPermissionModel model;
-        FlatpakReference
-            reference("com.example.unparsable.filesystems", "x86_64", "stable", "0.0.24", "Unparsable Filesystems", QUrl(), metadataAndOverridesFiles);
+        FlatpakReference reference("com.example.unparsable.filesystems", "x86_64", "stable", "0.0.24", "Unparsable Filesystems", metadataAndOverridesFiles);
         model.setReference(&reference);
         model.load();
         model.setShowAdvanced(true);
@@ -869,7 +866,6 @@ private Q_SLOTS:
                                    "stable",
                                    "0.0.24",
                                    "Default Home Filesystems",
-                                   QUrl(),
                                    mockMetadataAndOverridesFiles("com.example.home.filesystems"));
         FlatpakPermissionModel model;
         model.setReference(&reference);
@@ -902,8 +898,12 @@ private Q_SLOTS:
     void testValidNames()
     {
         FlatpakPermissionModel model;
-        FlatpakReference
-            reference("com.example.valid.names", "x86_64", "stable", "1.0", "Valid Names", QUrl(), mockMetadataAndOverridesFiles("com.example.valid.names"));
+        FlatpakReference reference("com.example.valid.names",
+                                   "x86_64",
+                                   "stable",
+                                   "1.0",
+                                   "Valid Names",
+                                   mockMetadataAndOverridesFiles("com.example.valid.names"));
         model.setReference(&reference);
         model.load();
         model.setShowAdvanced(true);

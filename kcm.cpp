@@ -56,14 +56,16 @@ AppPermissionsKCM::AppPermissionsKCM(QObject *parent, const KPluginMetaData &dat
             &KQuickConfigModule::mainUiReady,
             this,
             [this, reference] {
-                push("FlatpakPermissions.qml"_L1, {{u"ref"_s, QVariant::fromValue(reference)}});
+                const auto iconName = QVariant::fromValue(appsModel()->findIconNameById(reference->flatpakName()));
+                push("FlatpakPermissions.qml"_L1, {{u"ref"_s, QVariant::fromValue(reference)}, {u"decoration"_s, iconName}});
             },
             Qt::SingleShotConnection);
     }
     connect(this, &KQuickConfigModule::activationRequested, this, [this](const QVariantList &args) {
         auto reference = indexFromArgs(args);
         if (reference) {
-            push("FlatpakPermissions.qml"_L1, {{u"ref"_s, QVariant::fromValue(reference)}});
+            const auto iconName = QVariant::fromValue(appsModel()->findIconNameById(reference->flatpakName()));
+            push("FlatpakPermissions.qml"_L1, {{u"ref"_s, QVariant::fromValue(reference)}, {u"decoration"_s, iconName}});
         }
     });
 }

@@ -24,6 +24,8 @@ public:
     int rowCount(const QModelIndex &parent) const override;
     QVariant data(const QModelIndex &index, int role) const override;
 
+    QString findIconNameById(const QString &id) const;
+
 private:
     void loadApps();
     QList<KService::Ptr> m_apps;

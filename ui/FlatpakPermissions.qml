@@ -18,6 +18,7 @@ KCM.ScrollViewKCM {
     id: root
 
     required property var ref
+    required property var decoration
 
     title: i18nc("@title:window %1 is the name of the application" ,"%1 – Flatpak Settings", ref.displayName)
     implicitWidth: Kirigami.Units.gridUnit * 15
@@ -82,7 +83,6 @@ KCM.ScrollViewKCM {
         RowLayout {
             id: header
 
-            readonly property url icon: root.ref.iconSource
             readonly property string title: root.ref.displayName
             readonly property string subtitle: root.ref.version
 
@@ -92,7 +92,7 @@ KCM.ScrollViewKCM {
 
             Kirigami.Icon {
                 // Fallback doesn't kick in when source is an empty string/url
-                source: header.icon.toString() !== "" ? header.icon : "application-vnd.flatpak.ref"
+                source: root.decoration
 
                 Layout.alignment: Qt.AlignCenter
                 Layout.preferredWidth: Kirigami.Units.iconSizes.large

@@ -38,21 +38,22 @@ QHash<int, QByteArray> AppsModel::roleNames() const
     };
 }
 
+QString sandBoxId(const KService::Ptr &app)
+{
+    if (const auto flatpak = app->property<QString>("X-Flatpak"_L1); !flatpak.isEmpty()) {
+        return flatpak;
+    }
+    if (const auto snap = app->property<QString>("X-SnapInstanceName"_L1); !snap.isEmpty()) {
+        return snap;
+    }
+    return QString();
+}
+
 QVariant AppsModel::data(const QModelIndex &index, int role) const
 {
     if (!checkIndex(index, CheckIndexOption::IndexIsValid | CheckIndexOption::ParentIsInvalid)) {
         return {};
     }
-
-    auto sandboxId = [](const KService::Ptr &app) {
-        if (const auto flatpak = app->property<QString>("X-Flatpak"_L1); !flatpak.isEmpty()) {
-            return flatpak;
-        }
-        if (const auto snap = app->property<QString>("X-SnapInstanceName"_L1); !snap.isEmpty()) {
-            return snap;
-        }
-        return QString();
-    };
 
     const auto &app = m_apps.at(index.row());
     switch (role) {
@@ -61,13 +62,23 @@ QVariant AppsModel::data(const QModelIndex &index, int role) const
     case Qt::DecorationRole:
         return app->icon();
     case AppIdRole: {
-        const auto id = sandboxId(app);
+        const auto id = sandBoxId(app);
         return id.isEmpty() ? app->desktopEntryName() : id;
     }
     case IsHostRole:
-        return sandboxId(app).isEmpty();
+        return sandBoxId(app).isEmpty();
     }
     return {};
+}
+
+QString AppsModel::findIconNameById(const QString &id) const
+{
+    for (const auto &app : m_apps) {
+        if (sandBoxId(app) == id || app->desktopEntryName() == id) {
+            return app->icon();
+        }
+    }
+    return QString();
 }
 
 #include "moc_appsmodel.cpp"

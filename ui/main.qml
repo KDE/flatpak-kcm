@@ -65,7 +65,7 @@ KCMUtils.ScrollViewKCM
                     return;
                 }
                 KCMUtils.ConfigModule.currentIndex = 0
-                KCMUtils.ConfigModule.push("Permissions.qml", {"appId": model.appId, "title": model.display, "isHostApp": model.isHost});
+                KCMUtils.ConfigModule.push("Permissions.qml", {"appId": model.appId, "title": model.display, "isHostApp": model.isHost, "decoration": icon.source });
                 view.currentIndex = index;
             }
             Keys.onEnterPressed: click()
