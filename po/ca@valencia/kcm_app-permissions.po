@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-09-06 00:43+0000\n"
+"POT-Creation-Date: 2025-09-19 02:38+0000\n"
 "PO-Revision-Date: 2025-09-04 10:55+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -19,46 +19,46 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Lokalize 25.04.0\n"
 
-#: autotests/flatpakpermissiontest.cpp:618
-#: autotests/flatpakpermissiontest.cpp:824 flatpakpermission.cpp:404
+#: autotests/flatpakpermissiontest.cpp:616
+#: autotests/flatpakpermissiontest.cpp:822 flatpakpermission.cpp:404
 #, kde-format
 msgid "None"
 msgstr "Cap"
 
-#: autotests/flatpakpermissiontest.cpp:619
-#: autotests/flatpakpermissiontest.cpp:827 flatpakpermission.cpp:405
+#: autotests/flatpakpermissiontest.cpp:617
+#: autotests/flatpakpermissiontest.cpp:825 flatpakpermission.cpp:405
 #, kde-format
 msgid "see"
 msgstr "veure"
 
-#: autotests/flatpakpermissiontest.cpp:620
-#: autotests/flatpakpermissiontest.cpp:825 flatpakpermission.cpp:406
+#: autotests/flatpakpermissiontest.cpp:618
+#: autotests/flatpakpermissiontest.cpp:823 flatpakpermission.cpp:406
 #, kde-format
 msgid "talk"
 msgstr "parlar"
 
-#: autotests/flatpakpermissiontest.cpp:621
-#: autotests/flatpakpermissiontest.cpp:826 flatpakpermission.cpp:407
+#: autotests/flatpakpermissiontest.cpp:619
+#: autotests/flatpakpermissiontest.cpp:824 flatpakpermission.cpp:407
 #, kde-format
 msgid "own"
 msgstr "propietat"
 
-#: autotests/flatpakpermissiontest.cpp:814 flatpakpermission.cpp:395
+#: autotests/flatpakpermissiontest.cpp:812 flatpakpermission.cpp:395
 #, kde-format
 msgid "OFF"
 msgstr "Inactiu"
 
-#: autotests/flatpakpermissiontest.cpp:815 flatpakpermission.cpp:393
+#: autotests/flatpakpermissiontest.cpp:813 flatpakpermission.cpp:393
 #, kde-format
 msgid "read/write"
 msgstr "lectura/escriptura"
 
-#: autotests/flatpakpermissiontest.cpp:816 flatpakpermission.cpp:392
+#: autotests/flatpakpermissiontest.cpp:814 flatpakpermission.cpp:392
 #, kde-format
 msgid "read-only"
 msgstr "només-de-lectura"
 
-#: autotests/flatpakpermissiontest.cpp:817 flatpakpermission.cpp:394
+#: autotests/flatpakpermissiontest.cpp:815 flatpakpermission.cpp:394
 #, kde-format
 msgid "create"
 msgstr "creació"
@@ -351,7 +351,7 @@ msgstr ""
 "S'han canviat els permisos de l'aplicació %1. Voleu aplicar estos canvis o "
 "descartar-los?"
 
-#: ui/FlatpakPermissions.qml:22
+#: ui/FlatpakPermissions.qml:23
 #, kde-format
 msgctxt "@title:window %1 is the name of the application"
 msgid "%1 – Flatpak Settings"
@@ -393,13 +393,13 @@ msgctxt "@info:placeholder"
 msgid "Select an application from the list to view its permissions here"
 msgstr "Trieu una aplicació de la llista per a veure ací els seus permisos"
 
-#: ui/Permissions.qml:25
+#: ui/Permissions.qml:26
 #, kde-format
 msgctxt "@action:intoolbar"
 msgid "Manage Flatpak Settings"
 msgstr "Gestiona la configuració de Flatpak"
 
-#: ui/Permissions.qml:49
+#: ui/Permissions.qml:50
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -411,31 +411,31 @@ msgstr ""
 "fins i tot si estan desactivades ací encara poden controlar el ratolí i el "
 "teclat o gravar el contingut de la pantalla a través del sistema de finestres"
 
-#: ui/Permissions.qml:62
+#: ui/Permissions.qml:63
 #, kde-format
 msgctxt "@label:group"
 msgid "General:"
 msgstr "General:"
 
-#: ui/Permissions.qml:64
+#: ui/Permissions.qml:65
 #, kde-format
 msgctxt "@option:check"
 msgid "Send notifications"
 msgstr "Enviament de notificacions"
 
-#: ui/Permissions.qml:81
+#: ui/Permissions.qml:82
 #, kde-format
 msgctxt "@option:check"
 msgid "Block automatic sleep and screen locking"
 msgstr "Bloqueig de la suspensió automàtica i el bloqueig de la pantalla"
 
-#: ui/Permissions.qml:106
+#: ui/Permissions.qml:107
 #, kde-format
 msgctxt "@option:check"
 msgid "Activate game mode"
 msgstr "Activació del mode joc"
 
-#: ui/Permissions.qml:117
+#: ui/Permissions.qml:118
 #, kde-kuit-format
 msgctxt "@info:tooltip"
 msgid ""
@@ -445,104 +445,104 @@ msgstr ""
 "Permet a l'aplicació activar el mode de joc si l'esteu utilitzant en el "
 "vostre sistema."
 
-#: ui/Permissions.qml:126
+#: ui/Permissions.qml:127
 #, kde-format
 msgctxt "@option:check"
 msgid "Gain higher process priority"
 msgstr "Guanyar una prioritat de procés més alta"
 
-#: ui/Permissions.qml:142
+#: ui/Permissions.qml:143
 #, kde-format
 msgctxt "@label:listbox"
 msgid "Take screenshots:"
 msgstr "Prendre captures de pantalla:"
 
-#: ui/Permissions.qml:150 ui/Permissions.qml:171 ui/Permissions.qml:191
-#: ui/Permissions.qml:222
+#: ui/Permissions.qml:151 ui/Permissions.qml:172 ui/Permissions.qml:192
+#: ui/Permissions.qml:223
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Ask Once"
 msgstr "Pregunta una vegada"
 
-#: ui/Permissions.qml:151 ui/Permissions.qml:172 ui/Permissions.qml:223
+#: ui/Permissions.qml:152 ui/Permissions.qml:173 ui/Permissions.qml:224
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Deny"
 msgstr "Denega"
 
-#: ui/Permissions.qml:152 ui/Permissions.qml:173 ui/Permissions.qml:224
+#: ui/Permissions.qml:153 ui/Permissions.qml:174 ui/Permissions.qml:225
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Allow"
 msgstr "Permet"
 
-#: ui/Permissions.qml:153 ui/Permissions.qml:174 ui/Permissions.qml:225
+#: ui/Permissions.qml:154 ui/Permissions.qml:175 ui/Permissions.qml:226
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Always Ask"
 msgstr "Pregunta sempre"
 
-#: ui/Permissions.qml:163
+#: ui/Permissions.qml:164
 #, kde-format
 msgctxt "@title:group"
 msgid "Camera access:"
 msgstr "Accés a la càmera:"
 
-#: ui/Permissions.qml:184
+#: ui/Permissions.qml:185
 #, kde-format
 msgctxt "@label:listbox"
 msgid "Location accuracy:"
 msgstr "Precisió de l'emplaçament:"
 
-#: ui/Permissions.qml:193
+#: ui/Permissions.qml:194
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Deny"
 msgstr "Denega"
 
-#: ui/Permissions.qml:194
+#: ui/Permissions.qml:195
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Country"
 msgstr "País"
 
-#: ui/Permissions.qml:195
+#: ui/Permissions.qml:196
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "City"
 msgstr "Ciutat"
 
-#: ui/Permissions.qml:196
+#: ui/Permissions.qml:197
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Neighborhood"
 msgstr "Barri"
 
-#: ui/Permissions.qml:197
+#: ui/Permissions.qml:198
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Street"
 msgstr "Carrer"
 
-#: ui/Permissions.qml:198
+#: ui/Permissions.qml:199
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Exact"
 msgstr "Exacte"
 
-#: ui/Permissions.qml:214
+#: ui/Permissions.qml:215
 #, kde-format
 msgctxt "@label:listbox"
 msgid "Set desktop and lock screen background:"
 msgstr "Establiment del fons de pantalla de l'escriptori i de bloqueig:"
 
-#: ui/Permissions.qml:238
+#: ui/Permissions.qml:239
 #, kde-format
 msgctxt "@label"
 msgid "Screen sharing:"
 msgstr "Compartiu la pantalla:"
 
-#: ui/Permissions.qml:243 ui/Permissions.qml:269
+#: ui/Permissions.qml:244 ui/Permissions.qml:270
 #, kde-format
 msgctxt "@action:button"
 msgid "Manage %1 Session"
@@ -550,13 +550,13 @@ msgid_plural "Manage %1 Sessions"
 msgstr[0] "Gestiona %1 sessió"
 msgstr[1] "Gestiona %1 sessions"
 
-#: ui/Permissions.qml:246
+#: ui/Permissions.qml:247
 #, kde-format
 msgctxt "@title:window %1 is the name of the application"
 msgid "%1 – Screencast Sessions"
 msgstr "%1 – Sessions de vídeo de captura de pantalla"
 
-#: ui/Permissions.qml:251
+#: ui/Permissions.qml:252
 #, kde-format
 msgctxt ""
 "@label 'Remote control' like in xdg-desktop-portal-kde remotedesktopdialog."
@@ -564,7 +564,7 @@ msgctxt ""
 msgid " Remote control:"
 msgstr " Control remot:"
 
-#: ui/Permissions.qml:254
+#: ui/Permissions.qml:255
 #, kde-format
 msgctxt "@option:check"
 msgid ""
@@ -573,7 +573,7 @@ msgstr ""
 "Control del punter i el teclat, i compartix la pantalla amb altres "
 "aplicacions sense preguntar"
 
-#: ui/Permissions.qml:272
+#: ui/Permissions.qml:273
 #, kde-format
 msgctxt "@title:window %1 is the name of the application"
 msgid "%1 – Remote Desktop Sessions"

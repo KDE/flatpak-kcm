@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-09-06 00:43+0000\n"
+"POT-Creation-Date: 2025-09-19 02:38+0000\n"
 "PO-Revision-Date: 2025-09-04 09:54+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -18,46 +18,46 @@ msgstr ""
 "n % 10 == 0) ? 2 : 3));\n"
 "X-Generator: Lokalize 25.08.0\n"
 
-#: autotests/flatpakpermissiontest.cpp:618
-#: autotests/flatpakpermissiontest.cpp:824 flatpakpermission.cpp:404
+#: autotests/flatpakpermissiontest.cpp:616
+#: autotests/flatpakpermissiontest.cpp:822 flatpakpermission.cpp:404
 #, kde-format
 msgid "None"
 msgstr "ללא"
 
-#: autotests/flatpakpermissiontest.cpp:619
-#: autotests/flatpakpermissiontest.cpp:827 flatpakpermission.cpp:405
+#: autotests/flatpakpermissiontest.cpp:617
+#: autotests/flatpakpermissiontest.cpp:825 flatpakpermission.cpp:405
 #, kde-format
 msgid "see"
 msgstr "צפייה"
 
-#: autotests/flatpakpermissiontest.cpp:620
-#: autotests/flatpakpermissiontest.cpp:825 flatpakpermission.cpp:406
+#: autotests/flatpakpermissiontest.cpp:618
+#: autotests/flatpakpermissiontest.cpp:823 flatpakpermission.cpp:406
 #, kde-format
 msgid "talk"
 msgstr "שיחה"
 
-#: autotests/flatpakpermissiontest.cpp:621
-#: autotests/flatpakpermissiontest.cpp:826 flatpakpermission.cpp:407
+#: autotests/flatpakpermissiontest.cpp:619
+#: autotests/flatpakpermissiontest.cpp:824 flatpakpermission.cpp:407
 #, kde-format
 msgid "own"
 msgstr "עצמי"
 
-#: autotests/flatpakpermissiontest.cpp:814 flatpakpermission.cpp:395
+#: autotests/flatpakpermissiontest.cpp:812 flatpakpermission.cpp:395
 #, kde-format
 msgid "OFF"
 msgstr "כבוי"
 
-#: autotests/flatpakpermissiontest.cpp:815 flatpakpermission.cpp:393
+#: autotests/flatpakpermissiontest.cpp:813 flatpakpermission.cpp:393
 #, kde-format
 msgid "read/write"
 msgstr "קריאה/כתיבה"
 
-#: autotests/flatpakpermissiontest.cpp:816 flatpakpermission.cpp:392
+#: autotests/flatpakpermissiontest.cpp:814 flatpakpermission.cpp:392
 #, kde-format
 msgid "read-only"
 msgstr "לקריאה בלבד"
 
-#: autotests/flatpakpermissiontest.cpp:817 flatpakpermission.cpp:394
+#: autotests/flatpakpermissiontest.cpp:815 flatpakpermission.cpp:394
 #, kde-format
 msgid "create"
 msgstr "יצירה"
@@ -346,7 +346,7 @@ msgid ""
 "these changes or discard them?"
 msgstr "הרשאות היישום %1 נערכו. להחיל את השינויים האלה או להתעלם מהם?"
 
-#: ui/FlatpakPermissions.qml:22
+#: ui/FlatpakPermissions.qml:23
 #, kde-format
 msgctxt "@title:window %1 is the name of the application"
 msgid "%1 – Flatpak Settings"
@@ -388,13 +388,13 @@ msgctxt "@info:placeholder"
 msgid "Select an application from the list to view its permissions here"
 msgstr "נא לבחור יישום מהרשימה כדי לצפות בהרשאות שלו כאן"
 
-#: ui/Permissions.qml:25
+#: ui/Permissions.qml:26
 #, kde-format
 msgctxt "@action:intoolbar"
 msgid "Manage Flatpak Settings"
 msgstr "ניהול הגדרות Flatpak"
 
-#: ui/Permissions.qml:49
+#: ui/Permissions.qml:50
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -406,31 +406,31 @@ msgstr ""
 "כאן עדיין אפשר לשלוט בעכבר ובמקלדת או להקליט את תוכן המסך שלך דרך מערכת "
 "החלונות"
 
-#: ui/Permissions.qml:62
+#: ui/Permissions.qml:63
 #, kde-format
 msgctxt "@label:group"
 msgid "General:"
 msgstr "כללי:"
 
-#: ui/Permissions.qml:64
+#: ui/Permissions.qml:65
 #, kde-format
 msgctxt "@option:check"
 msgid "Send notifications"
 msgstr "שליחת התראות"
 
-#: ui/Permissions.qml:81
+#: ui/Permissions.qml:82
 #, kde-format
 msgctxt "@option:check"
 msgid "Block automatic sleep and screen locking"
 msgstr "חסימת שינה ונעילת מסך אוטומטיים"
 
-#: ui/Permissions.qml:106
+#: ui/Permissions.qml:107
 #, kde-format
 msgctxt "@option:check"
 msgid "Activate game mode"
 msgstr "הפעלת מצב משחק"
 
-#: ui/Permissions.qml:117
+#: ui/Permissions.qml:118
 #, kde-kuit-format
 msgctxt "@info:tooltip"
 msgid ""
@@ -438,104 +438,104 @@ msgid ""
 "system."
 msgstr "אפשרות של היישום להפעיל מצב משחק כאשר הוא מופעל במערכת שלך."
 
-#: ui/Permissions.qml:126
+#: ui/Permissions.qml:127
 #, kde-format
 msgctxt "@option:check"
 msgid "Gain higher process priority"
 msgstr "הגברת עדיפות התהליך"
 
-#: ui/Permissions.qml:142
+#: ui/Permissions.qml:143
 #, kde-format
 msgctxt "@label:listbox"
 msgid "Take screenshots:"
 msgstr "צילום המסך:"
 
-#: ui/Permissions.qml:150 ui/Permissions.qml:171 ui/Permissions.qml:191
-#: ui/Permissions.qml:222
+#: ui/Permissions.qml:151 ui/Permissions.qml:172 ui/Permissions.qml:192
+#: ui/Permissions.qml:223
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Ask Once"
 msgstr "לשאול פעם אחת"
 
-#: ui/Permissions.qml:151 ui/Permissions.qml:172 ui/Permissions.qml:223
+#: ui/Permissions.qml:152 ui/Permissions.qml:173 ui/Permissions.qml:224
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Deny"
 msgstr "לדחות"
 
-#: ui/Permissions.qml:152 ui/Permissions.qml:173 ui/Permissions.qml:224
+#: ui/Permissions.qml:153 ui/Permissions.qml:174 ui/Permissions.qml:225
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Allow"
 msgstr "לאפשר"
 
-#: ui/Permissions.qml:153 ui/Permissions.qml:174 ui/Permissions.qml:225
+#: ui/Permissions.qml:154 ui/Permissions.qml:175 ui/Permissions.qml:226
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Always Ask"
 msgstr "לשאול תמיד"
 
-#: ui/Permissions.qml:163
+#: ui/Permissions.qml:164
 #, kde-format
 msgctxt "@title:group"
 msgid "Camera access:"
 msgstr "גישה למצלמה:"
 
-#: ui/Permissions.qml:184
+#: ui/Permissions.qml:185
 #, kde-format
 msgctxt "@label:listbox"
 msgid "Location accuracy:"
 msgstr "דיוק מיקום:"
 
-#: ui/Permissions.qml:193
+#: ui/Permissions.qml:194
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Deny"
 msgstr "לדחות"
 
-#: ui/Permissions.qml:194
+#: ui/Permissions.qml:195
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Country"
 msgstr "מדינה"
 
-#: ui/Permissions.qml:195
+#: ui/Permissions.qml:196
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "City"
 msgstr "עיר"
 
-#: ui/Permissions.qml:196
+#: ui/Permissions.qml:197
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Neighborhood"
 msgstr "שכונה"
 
-#: ui/Permissions.qml:197
+#: ui/Permissions.qml:198
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Street"
 msgstr "רחוב"
 
-#: ui/Permissions.qml:198
+#: ui/Permissions.qml:199
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Exact"
 msgstr "מדויק"
 
-#: ui/Permissions.qml:214
+#: ui/Permissions.qml:215
 #, kde-format
 msgctxt "@label:listbox"
 msgid "Set desktop and lock screen background:"
 msgstr "הגדרת תמונת הרקע של שולחן העבודה ושל מסך הנעילה:"
 
-#: ui/Permissions.qml:238
+#: ui/Permissions.qml:239
 #, kde-format
 msgctxt "@label"
 msgid "Screen sharing:"
 msgstr "שיתוף מסך:"
 
-#: ui/Permissions.qml:243 ui/Permissions.qml:269
+#: ui/Permissions.qml:244 ui/Permissions.qml:270
 #, kde-format
 msgctxt "@action:button"
 msgid "Manage %1 Session"
@@ -545,13 +545,13 @@ msgstr[1] "ניהול שתי הפעלות"
 msgstr[2] "ניהול %1 הפעלות"
 msgstr[3] "ניהול %1 הפעלות"
 
-#: ui/Permissions.qml:246
+#: ui/Permissions.qml:247
 #, kde-format
 msgctxt "@title:window %1 is the name of the application"
 msgid "%1 – Screencast Sessions"
 msgstr "%1 – הפעלות הסרטת מסך"
 
-#: ui/Permissions.qml:251
+#: ui/Permissions.qml:252
 #, kde-format
 msgctxt ""
 "@label 'Remote control' like in xdg-desktop-portal-kde remotedesktopdialog."
@@ -559,14 +559,14 @@ msgctxt ""
 msgid " Remote control:"
 msgstr " שליטה מרחוק:"
 
-#: ui/Permissions.qml:254
+#: ui/Permissions.qml:255
 #, kde-format
 msgctxt "@option:check"
 msgid ""
 "Control pointer & keyboard, and share screen with other apps without asking"
 msgstr "לשלוט בסמן ומקלדת ושיתוף המסך עם יישומים אחרים מבלי לשאול"
 
-#: ui/Permissions.qml:272
+#: ui/Permissions.qml:273
 #, kde-format
 msgctxt "@title:window %1 is the name of the application"
 msgid "%1 – Remote Desktop Sessions"
