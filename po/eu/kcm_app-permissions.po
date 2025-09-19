@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-09-06 00:43+0000\n"
+"POT-Creation-Date: 2025-09-19 00:43+0000\n"
 "PO-Revision-Date: 2025-09-04 22:12+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -20,46 +20,46 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 25.08.0\n"
 
-#: autotests/flatpakpermissiontest.cpp:618
-#: autotests/flatpakpermissiontest.cpp:824 flatpakpermission.cpp:404
+#: autotests/flatpakpermissiontest.cpp:616
+#: autotests/flatpakpermissiontest.cpp:822 flatpakpermission.cpp:404
 #, kde-format
 msgid "None"
 msgstr "Bat ere ez"
 
-#: autotests/flatpakpermissiontest.cpp:619
-#: autotests/flatpakpermissiontest.cpp:827 flatpakpermission.cpp:405
+#: autotests/flatpakpermissiontest.cpp:617
+#: autotests/flatpakpermissiontest.cpp:825 flatpakpermission.cpp:405
 #, kde-format
 msgid "see"
 msgstr "ikusi"
 
-#: autotests/flatpakpermissiontest.cpp:620
-#: autotests/flatpakpermissiontest.cpp:825 flatpakpermission.cpp:406
+#: autotests/flatpakpermissiontest.cpp:618
+#: autotests/flatpakpermissiontest.cpp:823 flatpakpermission.cpp:406
 #, kde-format
 msgid "talk"
 msgstr "mintzatu"
 
-#: autotests/flatpakpermissiontest.cpp:621
-#: autotests/flatpakpermissiontest.cpp:826 flatpakpermission.cpp:407
+#: autotests/flatpakpermissiontest.cpp:619
+#: autotests/flatpakpermissiontest.cpp:824 flatpakpermission.cpp:407
 #, kde-format
 msgid "own"
 msgstr "jabe"
 
-#: autotests/flatpakpermissiontest.cpp:814 flatpakpermission.cpp:395
+#: autotests/flatpakpermissiontest.cpp:812 flatpakpermission.cpp:395
 #, kde-format
 msgid "OFF"
 msgstr "ITZALITA"
 
-#: autotests/flatpakpermissiontest.cpp:815 flatpakpermission.cpp:393
+#: autotests/flatpakpermissiontest.cpp:813 flatpakpermission.cpp:393
 #, kde-format
 msgid "read/write"
 msgstr "irakurri/idatzi"
 
-#: autotests/flatpakpermissiontest.cpp:816 flatpakpermission.cpp:392
+#: autotests/flatpakpermissiontest.cpp:814 flatpakpermission.cpp:392
 #, kde-format
 msgid "read-only"
 msgstr "irakurtzeko soilik"
 
-#: autotests/flatpakpermissiontest.cpp:817 flatpakpermission.cpp:394
+#: autotests/flatpakpermissiontest.cpp:815 flatpakpermission.cpp:394
 #, kde-format
 msgid "create"
 msgstr "sortu"
@@ -352,7 +352,7 @@ msgstr ""
 "%1 aplikazioaren baimenak aldatu egin dira. Aldaketa hauek aplikatu edo "
 "baztertu nahi dituzu?"
 
-#: ui/FlatpakPermissions.qml:22
+#: ui/FlatpakPermissions.qml:23
 #, kde-format
 msgctxt "@title:window %1 is the name of the application"
 msgid "%1 – Flatpak Settings"
@@ -394,13 +394,13 @@ msgctxt "@info:placeholder"
 msgid "Select an application from the list to view its permissions here"
 msgstr "Hautatu zerrendako aplikazio bat haren baimenak hemen ikusteko"
 
-#: ui/Permissions.qml:25
+#: ui/Permissions.qml:26
 #, kde-format
 msgctxt "@action:intoolbar"
 msgid "Manage Flatpak Settings"
 msgstr "Kudeatu Flatpak ezarpenak"
 
-#: ui/Permissions.qml:49
+#: ui/Permissions.qml:50
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -412,31 +412,31 @@ msgstr ""
 "itzalita ere, oraindik sagua eta teklatua kontrolatzeko edo leiho-sistemaren "
 "bidez zure pantailaren edukia grabatzeko gai izango dira."
 
-#: ui/Permissions.qml:62
+#: ui/Permissions.qml:63
 #, kde-format
 msgctxt "@label:group"
 msgid "General:"
 msgstr "Orokorra:"
 
-#: ui/Permissions.qml:64
+#: ui/Permissions.qml:65
 #, kde-format
 msgctxt "@option:check"
 msgid "Send notifications"
 msgstr "Bidali jakinarazpenak"
 
-#: ui/Permissions.qml:81
+#: ui/Permissions.qml:82
 #, kde-format
 msgctxt "@option:check"
 msgid "Block automatic sleep and screen locking"
 msgstr "Oztopatu lokartze eta pantaila-giltzatze automatikoa"
 
-#: ui/Permissions.qml:106
+#: ui/Permissions.qml:107
 #, kde-format
 msgctxt "@option:check"
 msgid "Activate game mode"
 msgstr "Aktibatu joko-modua"
 
-#: ui/Permissions.qml:117
+#: ui/Permissions.qml:118
 #, kde-kuit-format
 msgctxt "@info:tooltip"
 msgid ""
@@ -446,104 +446,104 @@ msgstr ""
 "Aplikazioari joko-modua aktibatzeko aukera ematen dio, zure sisteman "
 "erabiltzen ari bazara."
 
-#: ui/Permissions.qml:126
+#: ui/Permissions.qml:127
 #, kde-format
 msgctxt "@option:check"
 msgid "Gain higher process priority"
 msgstr "Lortu prozesu-lehentasun handiagoa"
 
-#: ui/Permissions.qml:142
+#: ui/Permissions.qml:143
 #, kde-format
 msgctxt "@label:listbox"
 msgid "Take screenshots:"
 msgstr "Atera pantaila-argazkiak:"
 
-#: ui/Permissions.qml:150 ui/Permissions.qml:171 ui/Permissions.qml:191
-#: ui/Permissions.qml:222
+#: ui/Permissions.qml:151 ui/Permissions.qml:172 ui/Permissions.qml:192
+#: ui/Permissions.qml:223
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Ask Once"
 msgstr "Galdetu behin"
 
-#: ui/Permissions.qml:151 ui/Permissions.qml:172 ui/Permissions.qml:223
+#: ui/Permissions.qml:152 ui/Permissions.qml:173 ui/Permissions.qml:224
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Deny"
 msgstr "Ukatu"
 
-#: ui/Permissions.qml:152 ui/Permissions.qml:173 ui/Permissions.qml:224
+#: ui/Permissions.qml:153 ui/Permissions.qml:174 ui/Permissions.qml:225
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Allow"
 msgstr "Baimendu"
 
-#: ui/Permissions.qml:153 ui/Permissions.qml:174 ui/Permissions.qml:225
+#: ui/Permissions.qml:154 ui/Permissions.qml:175 ui/Permissions.qml:226
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Always Ask"
 msgstr "Beti galdetu"
 
-#: ui/Permissions.qml:163
+#: ui/Permissions.qml:164
 #, kde-format
 msgctxt "@title:group"
 msgid "Camera access:"
 msgstr "Kamera sarbidea:"
 
-#: ui/Permissions.qml:184
+#: ui/Permissions.qml:185
 #, kde-format
 msgctxt "@label:listbox"
 msgid "Location accuracy:"
 msgstr "Kokapenaren doitasuna:"
 
-#: ui/Permissions.qml:193
+#: ui/Permissions.qml:194
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Deny"
 msgstr "Ukatu"
 
-#: ui/Permissions.qml:194
+#: ui/Permissions.qml:195
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Country"
 msgstr "Herrialdea"
 
-#: ui/Permissions.qml:195
+#: ui/Permissions.qml:196
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "City"
 msgstr "Hiria"
 
-#: ui/Permissions.qml:196
+#: ui/Permissions.qml:197
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Neighborhood"
 msgstr "Auzoa"
 
-#: ui/Permissions.qml:197
+#: ui/Permissions.qml:198
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Street"
 msgstr "Kalea"
 
-#: ui/Permissions.qml:198
+#: ui/Permissions.qml:199
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Exact"
 msgstr "Doi-doi"
 
-#: ui/Permissions.qml:214
+#: ui/Permissions.qml:215
 #, kde-format
 msgctxt "@label:listbox"
 msgid "Set desktop and lock screen background:"
 msgstr "Ezarri mahaigainaren eta giltzatze-pantailaren atzeko-planoa:"
 
-#: ui/Permissions.qml:238
+#: ui/Permissions.qml:239
 #, kde-format
 msgctxt "@label"
 msgid "Screen sharing:"
 msgstr "Pantaila partekatzea:"
 
-#: ui/Permissions.qml:243 ui/Permissions.qml:269
+#: ui/Permissions.qml:244 ui/Permissions.qml:270
 #, kde-format
 msgctxt "@action:button"
 msgid "Manage %1 Session"
@@ -551,13 +551,13 @@ msgid_plural "Manage %1 Sessions"
 msgstr[0] "Kudeatu saio %1"
 msgstr[1] "Kudeatu %1 saio"
 
-#: ui/Permissions.qml:246
+#: ui/Permissions.qml:247
 #, kde-format
 msgctxt "@title:window %1 is the name of the application"
 msgid "%1 – Screencast Sessions"
 msgstr "%1 – pantaila-grabazio saioak"
 
-#: ui/Permissions.qml:251
+#: ui/Permissions.qml:252
 #, kde-format
 msgctxt ""
 "@label 'Remote control' like in xdg-desktop-portal-kde remotedesktopdialog."
@@ -565,7 +565,7 @@ msgctxt ""
 msgid " Remote control:"
 msgstr " Urruneko agintea:"
 
-#: ui/Permissions.qml:254
+#: ui/Permissions.qml:255
 #, kde-format
 msgctxt "@option:check"
 msgid ""
@@ -574,7 +574,7 @@ msgstr ""
 "Kontrolatu erakuslea eta teklatua, eta partekatu pantaila beste aplikazio "
 "batzuekin galdetu gabe"
 
-#: ui/Permissions.qml:272
+#: ui/Permissions.qml:273
 #, kde-format
 msgctxt "@title:window %1 is the name of the application"
 msgid "%1 – Remote Desktop Sessions"
