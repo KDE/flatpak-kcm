@@ -1,4 +1,4 @@
-# Translation of kcm_flatpak to Norwegian Nynorsk
+# Translation of kcm_app-permissions to Norwegian Nynorsk
 #
 msgid ""
 msgstr ""
