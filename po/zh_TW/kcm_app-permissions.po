@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-09-19 00:43+0000\n"
-"PO-Revision-Date: 2025-09-05 17:51+0900\n"
+"PO-Revision-Date: 2025-09-22 03:43+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 25.11.70\n"
+"X-Generator: Lokalize 25.07.70\n"
 
 #: autotests/flatpakpermissiontest.cpp:616
 #: autotests/flatpakpermissiontest.cpp:822 flatpakpermission.cpp:404
@@ -401,6 +401,8 @@ msgid ""
 "off here they are still able to control mouse and keyboard or record the "
 "contents of your screen through the windowing system"
 msgstr ""
+"行為恰當的應用程式可能會遵從這些設定，但即使在此關閉，應用程式仍然可以透過視"
+"窗系統來控制滑鼠與鍵盤或是錄製螢幕內容。"
 
 #: ui/Permissions.qml:63
 #, kde-format
@@ -432,7 +434,7 @@ msgctxt "@info:tooltip"
 msgid ""
 "Allows the application to activate game mode if you are using it on your "
 "system."
-msgstr ""
+msgstr "允許應用程式啟用遊戲模式（如果您的系統有使用的話）。"
 
 #: ui/Permissions.qml:127
 #, kde-format
@@ -505,7 +507,7 @@ msgstr "城市"
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Neighborhood"
-msgstr ""
+msgstr "街區"
 
 #: ui/Permissions.qml:198
 #, kde-format
