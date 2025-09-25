@@ -20,14 +20,13 @@ class FlatpakPermissionModel;
 class FlatpakReference : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(QString version READ version CONSTANT FINAL)
     Q_PROPERTY(QString displayName READ displayName CONSTANT FINAL)
+    Q_PROPERTY(QString flatpakName READ flatpakName CONSTANT FINAL)
 
 public:
     explicit FlatpakReference(const QString &flatpakName,
                               const QString &arch,
                               const QString &branch,
-                              const QString &version,
                               const QString &displayName,
                               const QStringList &metadataAndOverridesFiles);
 
@@ -35,7 +34,6 @@ public:
 
     QString arch() const;
     QString branch() const;
-    QString version() const;
 
     const QStringList &metadataAndOverridesFiles() const;
     QStringList defaultsFiles() const;
@@ -59,8 +57,6 @@ private:
     QString m_flatpakName;
     QString m_arch;
     QString m_branch;
-    // Human-readable version string.
-    QString m_version;
     // Human-readable app name, only exists for installed apps.
     // Might be empty, in which case code should fallback to flatpakName.
     QString m_displayName;

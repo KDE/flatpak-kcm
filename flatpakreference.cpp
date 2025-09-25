@@ -21,13 +21,11 @@ extern "C" {
 FlatpakReference::FlatpakReference(const QString &flatpakName,
                                    const QString &arch,
                                    const QString &branch,
-                                   const QString &version,
                                    const QString &displayName,
                                    const QStringList &metadataAndOverridesFiles)
     : m_flatpakName(flatpakName)
     , m_arch(arch)
     , m_branch(branch)
-    , m_version(version)
     , m_displayName(displayName)
     , m_metadataAndOverridesFiles(metadataAndOverridesFiles)
     , m_permissionsModel(nullptr)
@@ -42,11 +40,6 @@ QString FlatpakReference::arch() const
 QString FlatpakReference::branch() const
 {
     return m_branch;
-}
-
-QString FlatpakReference::version() const
-{
-    return m_version;
 }
 
 const QStringList &FlatpakReference::metadataAndOverridesFiles() const
@@ -180,7 +173,6 @@ std::vector<std::unique_ptr<FlatpakReference>> FlatpakReference::allFlatpakRefer
 
             const auto arch = QString::fromUtf8(flatpak_ref_get_arch(ref));
             const auto branch = QString::fromUtf8(flatpak_ref_get_branch(ref));
-            const auto version = QString::fromUtf8(flatpak_installed_ref_get_appdata_version(iRef));
             const auto displayName = QString::fromUtf8(flatpak_installed_ref_get_appdata_name(iRef));
             const auto appBaseDirectory = QString::fromUtf8(flatpak_installed_ref_get_deploy_dir(iRef));
 
@@ -201,7 +193,7 @@ std::vector<std::unique_ptr<FlatpakReference>> FlatpakReference::allFlatpakRefer
                 userAppOverrides,
             });
 
-            references.push_back(std::make_unique<FlatpakReference>(flatpakName, arch, branch, version, displayName, metadataAndOverridesFiles));
+            references.push_back(std::make_unique<FlatpakReference>(flatpakName, arch, branch, displayName, metadataAndOverridesFiles));
         }
     }
     return references;

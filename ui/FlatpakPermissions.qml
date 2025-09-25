@@ -84,7 +84,7 @@ KCM.ScrollViewKCM {
             id: header
 
             readonly property string title: root.ref.displayName
-            readonly property string subtitle: root.ref.flatpakName
+            readonly property string subtitle: root.ref.version
 
             spacing: 0
 
@@ -102,23 +102,21 @@ KCM.ScrollViewKCM {
                 Layout.margins: Kirigami.Units.largeSpacing
             }
             ColumnLayout {
-                spacing: 0
+                spacing: Kirigami.Units.smallSpacing
                 Layout.fillWidth: true
 
                 Layout.margins: Kirigami.Units.largeSpacing
                 Layout.leftMargin: 0
 
                 Kirigami.Heading {
-                    id: appName
                     text: header.title
                     wrapMode: Text.Wrap
                     Layout.fillWidth: true
                 }
-                Kirigami.SelectableLabel {
-                    id: appSubtitle
-                    visible: text != appName.text
+                Kirigami.Heading {
                     text: header.subtitle
-                    opacity: 0.75
+                    type: Kirigami.Heading.Secondary
+                    level: 3
                     wrapMode: Text.Wrap
                     Layout.fillWidth: true
                 }
@@ -139,7 +137,7 @@ KCM.ScrollViewKCM {
         cacheBuffer: 10000
 
         Accessible.name: root.ref.displayName
-        Accessible.description: appSubtitle.visible ? i18nc("@info accessible.description for list", "ID %1", root.ref.flatpakName): ""
+        Accessible.description: i18nc("@info accessible.description for list", "Version %1", root.ref.version)
         Accessible.role: Accessible.List
 
         activeFocusOnTab: true
