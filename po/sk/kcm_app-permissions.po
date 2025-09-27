@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcm_flatpak\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-09-19 00:43+0000\n"
+"POT-Creation-Date: 2025-09-27 00:44+0000\n"
 "PO-Revision-Date: 2023-12-12 19:26+0100\n"
 "Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
@@ -16,46 +16,46 @@ msgstr ""
 "X-Generator: Lokalize 23.08.3\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
-#: autotests/flatpakpermissiontest.cpp:616
-#: autotests/flatpakpermissiontest.cpp:822 flatpakpermission.cpp:404
+#: autotests/flatpakpermissiontest.cpp:615
+#: autotests/flatpakpermissiontest.cpp:821 flatpakpermission.cpp:404
 #, kde-format
 msgid "None"
 msgstr "Žiadne"
 
-#: autotests/flatpakpermissiontest.cpp:617
-#: autotests/flatpakpermissiontest.cpp:825 flatpakpermission.cpp:405
+#: autotests/flatpakpermissiontest.cpp:616
+#: autotests/flatpakpermissiontest.cpp:824 flatpakpermission.cpp:405
 #, kde-format
 msgid "see"
 msgstr "pozri"
 
-#: autotests/flatpakpermissiontest.cpp:618
-#: autotests/flatpakpermissiontest.cpp:823 flatpakpermission.cpp:406
+#: autotests/flatpakpermissiontest.cpp:617
+#: autotests/flatpakpermissiontest.cpp:822 flatpakpermission.cpp:406
 #, kde-format
 msgid "talk"
 msgstr "rozhovor"
 
-#: autotests/flatpakpermissiontest.cpp:619
-#: autotests/flatpakpermissiontest.cpp:824 flatpakpermission.cpp:407
+#: autotests/flatpakpermissiontest.cpp:618
+#: autotests/flatpakpermissiontest.cpp:823 flatpakpermission.cpp:407
 #, kde-format
 msgid "own"
 msgstr "vlastné"
 
-#: autotests/flatpakpermissiontest.cpp:812 flatpakpermission.cpp:395
+#: autotests/flatpakpermissiontest.cpp:811 flatpakpermission.cpp:395
 #, kde-format
 msgid "OFF"
 msgstr "Vypnuté"
 
-#: autotests/flatpakpermissiontest.cpp:813 flatpakpermission.cpp:393
+#: autotests/flatpakpermissiontest.cpp:812 flatpakpermission.cpp:393
 #, kde-format
 msgid "read/write"
 msgstr "čítanie aj zápis"
 
-#: autotests/flatpakpermissiontest.cpp:814 flatpakpermission.cpp:392
+#: autotests/flatpakpermissiontest.cpp:813 flatpakpermission.cpp:392
 #, kde-format
 msgid "read-only"
 msgstr "iba čítanie"
 
-#: autotests/flatpakpermissiontest.cpp:815 flatpakpermission.cpp:394
+#: autotests/flatpakpermissiontest.cpp:814 flatpakpermission.cpp:394
 #, kde-format
 msgid "create"
 msgstr "vytvoriť"
@@ -378,34 +378,34 @@ msgctxt "@title:window %1 is the name of the application"
 msgid "%1 – Flatpak Settings"
 msgstr ""
 
-#: ui/FlatpakPermissions.qml:140
+#: ui/FlatpakPermissions.qml:142
 #, kde-format
 msgctxt "@info accessible.description for list"
-msgid "Version %1"
+msgid "ID %1"
 msgstr ""
 
-#: ui/FlatpakPermissions.qml:182
+#: ui/FlatpakPermissions.qml:184
 #, fuzzy, kde-format
 #| msgid "Hide advanced permissions"
 msgctxt "@action:button in section header"
 msgid "Hide advanced permissions"
 msgstr "Skryť pokročilé oprávnenia"
 
-#: ui/FlatpakPermissions.qml:182
+#: ui/FlatpakPermissions.qml:184
 #, fuzzy, kde-format
 #| msgid "Show advanced permissions"
 msgctxt "@action:button in section header"
 msgid "Show advanced permissions"
 msgstr "Zobraziť pokročilé oprávnenia"
 
-#: ui/FlatpakPermissions.qml:194
+#: ui/FlatpakPermissions.qml:196
 #, fuzzy, kde-format
 #| msgid "Add New"
 msgctxt "@action:button in section header"
 msgid "Add New…"
 msgstr "Pridať nový"
 
-#: ui/FlatpakPermissions.qml:195
+#: ui/FlatpakPermissions.qml:197
 #, fuzzy, kde-format
 #| msgid "Add Filesystem Path Permission"
 msgctxt "action:button accessible"

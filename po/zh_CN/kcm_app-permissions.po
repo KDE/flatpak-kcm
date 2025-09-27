@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-09-19 00:43+0000\n"
+"POT-Creation-Date: 2025-09-27 00:44+0000\n"
 "PO-Revision-Date: 2024-04-22 15:58\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -17,46 +17,46 @@ msgstr ""
 "X-Crowdin-File: /kf6-trunk/messages/flatpak-kcm/kcm_flatpak.pot\n"
 "X-Crowdin-File-ID: 42445\n"
 
-#: autotests/flatpakpermissiontest.cpp:616
-#: autotests/flatpakpermissiontest.cpp:822 flatpakpermission.cpp:404
+#: autotests/flatpakpermissiontest.cpp:615
+#: autotests/flatpakpermissiontest.cpp:821 flatpakpermission.cpp:404
 #, kde-format
 msgid "None"
 msgstr "无"
 
-#: autotests/flatpakpermissiontest.cpp:617
-#: autotests/flatpakpermissiontest.cpp:825 flatpakpermission.cpp:405
+#: autotests/flatpakpermissiontest.cpp:616
+#: autotests/flatpakpermissiontest.cpp:824 flatpakpermission.cpp:405
 #, kde-format
 msgid "see"
 msgstr "see"
 
-#: autotests/flatpakpermissiontest.cpp:618
-#: autotests/flatpakpermissiontest.cpp:823 flatpakpermission.cpp:406
+#: autotests/flatpakpermissiontest.cpp:617
+#: autotests/flatpakpermissiontest.cpp:822 flatpakpermission.cpp:406
 #, kde-format
 msgid "talk"
 msgstr "talk"
 
-#: autotests/flatpakpermissiontest.cpp:619
-#: autotests/flatpakpermissiontest.cpp:824 flatpakpermission.cpp:407
+#: autotests/flatpakpermissiontest.cpp:618
+#: autotests/flatpakpermissiontest.cpp:823 flatpakpermission.cpp:407
 #, kde-format
 msgid "own"
 msgstr "own"
 
-#: autotests/flatpakpermissiontest.cpp:812 flatpakpermission.cpp:395
+#: autotests/flatpakpermissiontest.cpp:811 flatpakpermission.cpp:395
 #, kde-format
 msgid "OFF"
 msgstr "关"
 
-#: autotests/flatpakpermissiontest.cpp:813 flatpakpermission.cpp:393
+#: autotests/flatpakpermissiontest.cpp:812 flatpakpermission.cpp:393
 #, kde-format
 msgid "read/write"
 msgstr "read/write"
 
-#: autotests/flatpakpermissiontest.cpp:814 flatpakpermission.cpp:392
+#: autotests/flatpakpermissiontest.cpp:813 flatpakpermission.cpp:392
 #, kde-format
 msgid "read-only"
 msgstr "read-only"
 
-#: autotests/flatpakpermissiontest.cpp:815 flatpakpermission.cpp:394
+#: autotests/flatpakpermissiontest.cpp:814 flatpakpermission.cpp:394
 #, kde-format
 msgid "create"
 msgstr "create"
@@ -351,31 +351,31 @@ msgctxt "@title:window %1 is the name of the application"
 msgid "%1 – Flatpak Settings"
 msgstr ""
 
-#: ui/FlatpakPermissions.qml:140
+#: ui/FlatpakPermissions.qml:142
 #, kde-format
 msgctxt "@info accessible.description for list"
-msgid "Version %1"
-msgstr "版本 %1"
+msgid "ID %1"
+msgstr ""
 
-#: ui/FlatpakPermissions.qml:182
+#: ui/FlatpakPermissions.qml:184
 #, kde-format
 msgctxt "@action:button in section header"
 msgid "Hide advanced permissions"
 msgstr "隐藏高级权限"
 
-#: ui/FlatpakPermissions.qml:182
+#: ui/FlatpakPermissions.qml:184
 #, kde-format
 msgctxt "@action:button in section header"
 msgid "Show advanced permissions"
 msgstr "显示高级权限"
 
-#: ui/FlatpakPermissions.qml:194
+#: ui/FlatpakPermissions.qml:196
 #, kde-format
 msgctxt "@action:button in section header"
 msgid "Add New…"
 msgstr "添加…"
 
-#: ui/FlatpakPermissions.qml:195
+#: ui/FlatpakPermissions.qml:197
 #, kde-format
 msgctxt "action:button accessible"
 msgid "Add New File System Permission"
@@ -601,6 +601,10 @@ msgstr "输入会话总线名称："
 #, kde-format
 msgid "Enter system bus name:"
 msgstr "输入系统总线名称："
+
+#~ msgctxt "@info accessible.description for list"
+#~ msgid "Version %1"
+#~ msgstr "版本 %1"
 
 #~ msgctxt "@window:title"
 #~ msgid "Flatpak Applications"

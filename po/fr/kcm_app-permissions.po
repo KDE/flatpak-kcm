@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-09-19 00:43+0000\n"
+"POT-Creation-Date: 2025-09-27 00:44+0000\n"
 "PO-Revision-Date: 2025-09-05 20:58+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: French <French <kde-francophone@kde.org>>\n"
@@ -15,46 +15,46 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Lokalize 25.08.0\n"
 
-#: autotests/flatpakpermissiontest.cpp:616
-#: autotests/flatpakpermissiontest.cpp:822 flatpakpermission.cpp:404
+#: autotests/flatpakpermissiontest.cpp:615
+#: autotests/flatpakpermissiontest.cpp:821 flatpakpermission.cpp:404
 #, kde-format
 msgid "None"
 msgstr "Aucun"
 
-#: autotests/flatpakpermissiontest.cpp:617
-#: autotests/flatpakpermissiontest.cpp:825 flatpakpermission.cpp:405
+#: autotests/flatpakpermissiontest.cpp:616
+#: autotests/flatpakpermissiontest.cpp:824 flatpakpermission.cpp:405
 #, kde-format
 msgid "see"
 msgstr "voir"
 
-#: autotests/flatpakpermissiontest.cpp:618
-#: autotests/flatpakpermissiontest.cpp:823 flatpakpermission.cpp:406
+#: autotests/flatpakpermissiontest.cpp:617
+#: autotests/flatpakpermissiontest.cpp:822 flatpakpermission.cpp:406
 #, kde-format
 msgid "talk"
 msgstr "parler"
 
-#: autotests/flatpakpermissiontest.cpp:619
-#: autotests/flatpakpermissiontest.cpp:824 flatpakpermission.cpp:407
+#: autotests/flatpakpermissiontest.cpp:618
+#: autotests/flatpakpermissiontest.cpp:823 flatpakpermission.cpp:407
 #, kde-format
 msgid "own"
 msgstr "personnel"
 
-#: autotests/flatpakpermissiontest.cpp:812 flatpakpermission.cpp:395
+#: autotests/flatpakpermissiontest.cpp:811 flatpakpermission.cpp:395
 #, kde-format
 msgid "OFF"
 msgstr "Éteint"
 
-#: autotests/flatpakpermissiontest.cpp:813 flatpakpermission.cpp:393
+#: autotests/flatpakpermissiontest.cpp:812 flatpakpermission.cpp:393
 #, kde-format
 msgid "read/write"
 msgstr "lecture / écriture"
 
-#: autotests/flatpakpermissiontest.cpp:814 flatpakpermission.cpp:392
+#: autotests/flatpakpermissiontest.cpp:813 flatpakpermission.cpp:392
 #, kde-format
 msgid "read-only"
 msgstr "lecture-seule"
 
-#: autotests/flatpakpermissiontest.cpp:815 flatpakpermission.cpp:394
+#: autotests/flatpakpermissiontest.cpp:814 flatpakpermission.cpp:394
 #, kde-format
 msgid "create"
 msgstr "créer"
@@ -355,31 +355,31 @@ msgctxt "@title:window %1 is the name of the application"
 msgid "%1 – Flatpak Settings"
 msgstr "%1 – Configuration de Flatpak"
 
-#: ui/FlatpakPermissions.qml:140
+#: ui/FlatpakPermissions.qml:142
 #, kde-format
 msgctxt "@info accessible.description for list"
-msgid "Version %1"
-msgstr "Version %1"
+msgid "ID %1"
+msgstr ""
 
-#: ui/FlatpakPermissions.qml:182
+#: ui/FlatpakPermissions.qml:184
 #, kde-format
 msgctxt "@action:button in section header"
 msgid "Hide advanced permissions"
 msgstr "Masquer les droits d'accès avancés"
 
-#: ui/FlatpakPermissions.qml:182
+#: ui/FlatpakPermissions.qml:184
 #, kde-format
 msgctxt "@action:button in section header"
 msgid "Show advanced permissions"
 msgstr "Afficher les droits d'accès avancés"
 
-#: ui/FlatpakPermissions.qml:194
+#: ui/FlatpakPermissions.qml:196
 #, kde-format
 msgctxt "@action:button in section header"
 msgid "Add New…"
 msgstr "Ajouter un nouveau..."
 
-#: ui/FlatpakPermissions.qml:195
+#: ui/FlatpakPermissions.qml:197
 #, kde-format
 msgctxt "action:button accessible"
 msgid "Add New File System Permission"
@@ -615,6 +615,10 @@ msgstr "Saisir un nom de bus de sessions :"
 #, kde-format
 msgid "Enter system bus name:"
 msgstr "Saisir un nom de bus système :"
+
+#~ msgctxt "@info accessible.description for list"
+#~ msgid "Version %1"
+#~ msgstr "Version %1"
 
 #~ msgctxt "@window:title"
 #~ msgid "Flatpak Applications"

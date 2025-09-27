@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-09-19 00:43+0000\n"
-"PO-Revision-Date: 2025-08-19 11:17+0300\n"
-"Last-Translator: Toms Trasūns <toms.trasuns@posteo.net>\n"
+"POT-Creation-Date: 2025-09-27 00:44+0000\n"
+"PO-Revision-Date: 2025-09-25 13:00+0300\n"
+"Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
 "Language: lv\n"
 "MIME-Version: 1.0\n"
@@ -19,46 +19,46 @@ msgstr ""
 "2);\n"
 "X-Generator: Lokalize 25.08.0\n"
 
-#: autotests/flatpakpermissiontest.cpp:616
-#: autotests/flatpakpermissiontest.cpp:822 flatpakpermission.cpp:404
+#: autotests/flatpakpermissiontest.cpp:615
+#: autotests/flatpakpermissiontest.cpp:821 flatpakpermission.cpp:404
 #, kde-format
 msgid "None"
 msgstr "Nav"
 
-#: autotests/flatpakpermissiontest.cpp:617
-#: autotests/flatpakpermissiontest.cpp:825 flatpakpermission.cpp:405
+#: autotests/flatpakpermissiontest.cpp:616
+#: autotests/flatpakpermissiontest.cpp:824 flatpakpermission.cpp:405
 #, kde-format
 msgid "see"
 msgstr "redzēt"
 
-#: autotests/flatpakpermissiontest.cpp:618
-#: autotests/flatpakpermissiontest.cpp:823 flatpakpermission.cpp:406
+#: autotests/flatpakpermissiontest.cpp:617
+#: autotests/flatpakpermissiontest.cpp:822 flatpakpermission.cpp:406
 #, kde-format
 msgid "talk"
 msgstr "runāt"
 
-#: autotests/flatpakpermissiontest.cpp:619
-#: autotests/flatpakpermissiontest.cpp:824 flatpakpermission.cpp:407
+#: autotests/flatpakpermissiontest.cpp:618
+#: autotests/flatpakpermissiontest.cpp:823 flatpakpermission.cpp:407
 #, kde-format
 msgid "own"
 msgstr "pašas"
 
-#: autotests/flatpakpermissiontest.cpp:812 flatpakpermission.cpp:395
+#: autotests/flatpakpermissiontest.cpp:811 flatpakpermission.cpp:395
 #, kde-format
 msgid "OFF"
 msgstr "NEĻAUT"
 
-#: autotests/flatpakpermissiontest.cpp:813 flatpakpermission.cpp:393
+#: autotests/flatpakpermissiontest.cpp:812 flatpakpermission.cpp:393
 #, kde-format
 msgid "read/write"
 msgstr "lasīt/rakstīt"
 
-#: autotests/flatpakpermissiontest.cpp:814 flatpakpermission.cpp:392
+#: autotests/flatpakpermissiontest.cpp:813 flatpakpermission.cpp:392
 #, kde-format
 msgid "read-only"
 msgstr "tikai lasīt"
 
-#: autotests/flatpakpermissiontest.cpp:815 flatpakpermission.cpp:394
+#: autotests/flatpakpermissiontest.cpp:814 flatpakpermission.cpp:394
 #, kde-format
 msgid "create"
 msgstr "izveidot"
@@ -257,64 +257,64 @@ msgstr "Pievienot jaunu vides mainīgo"
 #, kde-format
 msgctxt "not an action but the ability to do so"
 msgid "Record the Screen"
-msgstr ""
+msgstr "Ierakstīt ekrānu"
 
 #: restoredatamodel.cpp:149
 #, kde-format
 msgctxt "not an action but the ability to do so"
 msgid "Control the Clipboard"
-msgstr ""
+msgstr "Kontrolēt starpliktuvi"
 
 #: restoredatamodel.cpp:155
 #, kde-format
 msgctxt "Part of a list of things"
 msgid "Keyboard"
-msgstr ""
+msgstr "Tastatūra"
 
 #: restoredatamodel.cpp:158
 #, kde-format
 msgctxt "Part of a list of things"
 msgid "Mouse"
-msgstr ""
+msgstr "Pele"
 
 #: restoredatamodel.cpp:161
 #, kde-format
 msgctxt "Part of a list of things"
 msgid "Touchscreen"
-msgstr ""
+msgstr "Skārienekrāns"
 
 #: restoredatamodel.cpp:164
 #, kde-format
 msgctxt "%1 is a list of things formed from above"
 msgid "Control %1"
-msgstr ""
+msgstr "Kontrolēt %1"
 
 #: restoredatamodel.cpp:203
 #, kde-format
 msgctxt "%1 is the title of a window, %2 the name of an application"
 msgid "Window \"%1\" of %2"
-msgstr ""
+msgstr "„%2“ programmas „%1“ logs"
 
 #: restoredatamodel.cpp:207
 #, kde-format
 msgid "Region at (%1,%2) with size %3x%4"
-msgstr ""
+msgstr "Reģions (%1,%2), kura izmērs ir %3×%4"
 
 #: restoredatamodel.cpp:217
 #, kde-format
 msgid "Virtual Screen"
-msgstr ""
+msgstr "Virtuālais ekrāns"
 
 #: restoredatamodel.cpp:221
 #, kde-format
 msgid "The entire Workspace"
-msgstr ""
+msgstr "Visa darbvirsma"
 
 #: restoredatamodel.cpp:240
 #, kde-format
 msgctxt "%1 is the position of the screen"
 msgid "A disconnected Screen at %1"
-msgstr ""
+msgstr "Atvienots ekrāns pozīcijā %1"
 
 #: ui/AddEnvironmentVariableDialog.qml:18
 #, kde-format
@@ -353,33 +353,33 @@ msgstr ""
 #, kde-format
 msgctxt "@title:window %1 is the name of the application"
 msgid "%1 – Flatpak Settings"
-msgstr ""
+msgstr "%1 — „Flatpak“ iestatījumi"
 
-#: ui/FlatpakPermissions.qml:140
+#: ui/FlatpakPermissions.qml:142
 #, kde-format
 msgctxt "@info accessible.description for list"
-msgid "Version %1"
-msgstr "Versija %1"
+msgid "ID %1"
+msgstr ""
 
-#: ui/FlatpakPermissions.qml:182
+#: ui/FlatpakPermissions.qml:184
 #, kde-format
 msgctxt "@action:button in section header"
 msgid "Hide advanced permissions"
 msgstr "Paslēpt papildu atļaujas"
 
-#: ui/FlatpakPermissions.qml:182
+#: ui/FlatpakPermissions.qml:184
 #, kde-format
 msgctxt "@action:button in section header"
 msgid "Show advanced permissions"
 msgstr "Rādīt papildu atļaujas"
 
-#: ui/FlatpakPermissions.qml:194
+#: ui/FlatpakPermissions.qml:196
 #, kde-format
 msgctxt "@action:button in section header"
 msgid "Add New…"
 msgstr "Pievienot jaunu…"
 
-#: ui/FlatpakPermissions.qml:195
+#: ui/FlatpakPermissions.qml:197
 #, kde-format
 msgctxt "action:button accessible"
 msgid "Add New File System Permission"
@@ -395,7 +395,7 @@ msgstr "Atlasiet sarakstā programmu, kuras atļaujas vēlaties redzēt"
 #, kde-format
 msgctxt "@action:intoolbar"
 msgid "Manage Flatpak Settings"
-msgstr ""
+msgstr "Pārvaldīt „Flatpak“ iestatījumus"
 
 #: ui/Permissions.qml:50
 #, kde-format
@@ -405,30 +405,33 @@ msgid ""
 "off here they are still able to control mouse and keyboard or record the "
 "contents of your screen through the windowing system"
 msgstr ""
+"Ja programma ir pareizi izstrādāta, tā ievēros šos iestatījumus, tomēr ir "
+"gadījumi, kad pat pēc šādu iespēju izslēgšanas tā joprojām var kontrolēt "
+"peli un tastatūru vai ierakstīt ekrāna saturu caur logu sistēmu."
 
 #: ui/Permissions.qml:63
 #, kde-format
 msgctxt "@label:group"
 msgid "General:"
-msgstr ""
+msgstr "Pamata:"
 
 #: ui/Permissions.qml:65
 #, kde-format
 msgctxt "@option:check"
 msgid "Send notifications"
-msgstr ""
+msgstr "Sūtīt paziņojumus"
 
 #: ui/Permissions.qml:82
 #, kde-format
 msgctxt "@option:check"
 msgid "Block automatic sleep and screen locking"
-msgstr ""
+msgstr "Bloķēt automātisko iesnaudināšanu un ekrāna bloķēšanu"
 
 #: ui/Permissions.qml:107
 #, kde-format
 msgctxt "@option:check"
 msgid "Activate game mode"
-msgstr ""
+msgstr "Ieslēgt spēļu režīmu"
 
 #: ui/Permissions.qml:118
 #, kde-kuit-format
@@ -436,120 +439,119 @@ msgctxt "@info:tooltip"
 msgid ""
 "Allows the application to activate game mode if you are using it on your "
 "system."
-msgstr ""
+msgstr "Ļauj programmai ieslēgt spēļu režīmu, ja sistēmā tādu izmantojat"
 
 #: ui/Permissions.qml:127
 #, kde-format
 msgctxt "@option:check"
 msgid "Gain higher process priority"
-msgstr ""
+msgstr "Iegūt augstāku procesa prioritāti"
 
 #: ui/Permissions.qml:143
 #, kde-format
 msgctxt "@label:listbox"
 msgid "Take screenshots:"
-msgstr ""
+msgstr "Uzņemt ekrānattēlus:"
 
 #: ui/Permissions.qml:151 ui/Permissions.qml:172 ui/Permissions.qml:192
 #: ui/Permissions.qml:223
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Ask Once"
-msgstr ""
+msgstr "Jautāt vienreiz"
 
 #: ui/Permissions.qml:152 ui/Permissions.qml:173 ui/Permissions.qml:224
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Deny"
-msgstr ""
+msgstr "Liegt"
 
 #: ui/Permissions.qml:153 ui/Permissions.qml:174 ui/Permissions.qml:225
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Allow"
-msgstr ""
+msgstr "Atļaut"
 
 #: ui/Permissions.qml:154 ui/Permissions.qml:175 ui/Permissions.qml:226
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Always Ask"
-msgstr ""
+msgstr "Jautāt vienmēr"
 
 #: ui/Permissions.qml:164
-#, fuzzy, kde-format
-#| msgid "Smart card access"
+#, kde-format
 msgctxt "@title:group"
 msgid "Camera access:"
-msgstr "Piekļuve viedkartei"
+msgstr "Piekļuve kamerai:"
 
 #: ui/Permissions.qml:185
 #, kde-format
 msgctxt "@label:listbox"
 msgid "Location accuracy:"
-msgstr ""
+msgstr "Atrašanās vietas precizitāte:"
 
 #: ui/Permissions.qml:194
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Deny"
-msgstr ""
+msgstr "Liegt"
 
 #: ui/Permissions.qml:195
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Country"
-msgstr ""
+msgstr "Valsts"
 
 #: ui/Permissions.qml:196
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "City"
-msgstr ""
+msgstr "Pilsēta"
 
 #: ui/Permissions.qml:197
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Neighborhood"
-msgstr ""
+msgstr "Apkaime"
 
 #: ui/Permissions.qml:198
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Street"
-msgstr ""
+msgstr "Iela"
 
 #: ui/Permissions.qml:199
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Exact"
-msgstr ""
+msgstr "Precīza"
 
 #: ui/Permissions.qml:215
 #, kde-format
 msgctxt "@label:listbox"
 msgid "Set desktop and lock screen background:"
-msgstr ""
+msgstr "Iestatīt darbvirsmas un bloķēšanas ekrāna tapeti:"
 
 #: ui/Permissions.qml:239
 #, kde-format
 msgctxt "@label"
 msgid "Screen sharing:"
-msgstr ""
+msgstr "Ekrāna kopīgošana:"
 
 #: ui/Permissions.qml:244 ui/Permissions.qml:270
 #, kde-format
 msgctxt "@action:button"
 msgid "Manage %1 Session"
 msgid_plural "Manage %1 Sessions"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Pārvaldīt %1 sesiju"
+msgstr[1] "Pārvaldīt %1 sesijas"
+msgstr[2] "Pārvaldīt %1 sesiju"
 
 #: ui/Permissions.qml:247
 #, kde-format
 msgctxt "@title:window %1 is the name of the application"
 msgid "%1 – Screencast Sessions"
-msgstr ""
+msgstr "%1 — ekrānieraksta sesijas"
 
 #: ui/Permissions.qml:252
 #, kde-format
@@ -557,7 +559,7 @@ msgctxt ""
 "@label 'Remote control' like in xdg-desktop-portal-kde remotedesktopdialog."
 "cpp"
 msgid " Remote control:"
-msgstr ""
+msgstr " Attālā pārvaldība:"
 
 #: ui/Permissions.qml:255
 #, kde-format
@@ -565,18 +567,20 @@ msgctxt "@option:check"
 msgid ""
 "Control pointer & keyboard, and share screen with other apps without asking"
 msgstr ""
+"Pārvaldīt peles rādītāju un tastatūru un kopīgot ekrānu ar citām programmām "
+"bez vaicāšanas"
 
 #: ui/Permissions.qml:273
 #, kde-format
 msgctxt "@title:window %1 is the name of the application"
 msgid "%1 – Remote Desktop Sessions"
-msgstr ""
+msgstr "%1 — attālas darbvirsmas sesijas"
 
 #: ui/SessionList.qml:49
 #, kde-format
 msgctxt "@action:button"
 msgid "Revoke"
-msgstr ""
+msgstr "Atsaukt"
 
 #: ui/TextPromptDialog.qml:21
 #, kde-format
@@ -607,6 +611,10 @@ msgstr "Norādiet sesijas kopnes nosaukumu:"
 #, kde-format
 msgid "Enter system bus name:"
 msgstr "Norādiet sistēmas kopnes nosaukumu:"
+
+#~ msgctxt "@info accessible.description for list"
+#~ msgid "Version %1"
+#~ msgstr "Versija %1"
 
 #~ msgctxt "@window:title"
 #~ msgid "Flatpak Applications"
