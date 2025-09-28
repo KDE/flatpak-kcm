@@ -1,4 +1,4 @@
-# Spanish translations for kcm_flatpak.po package.
+# Spanish translations for kcm_app-permissions.po package.
 # Copyright (C) 2022-2025 This file is copyright:
 # This file is distributed under the same license as the flatpak-kcm package.
 # Automatically generated, 2022.
@@ -6,10 +6,10 @@
 # SPDX-FileCopyrightText: 2022, 2023, 2024, 2025 Eloy Cuadra <ecuadra@eloihr.net>
 msgid ""
 msgstr ""
-"Project-Id-Version: kcm_flatpak\n"
+"Project-Id-Version: kcm_app-permissions\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-09-27 00:44+0000\n"
-"PO-Revision-Date: 2025-09-11 12:23+0100\n"
+"PO-Revision-Date: 2025-09-27 13:53+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 25.08.0\n"
+"X-Generator: Lokalize 25.08.1\n"
 
 #: autotests/flatpakpermissiontest.cpp:615
 #: autotests/flatpakpermissiontest.cpp:821 flatpakpermission.cpp:404
@@ -361,7 +361,7 @@ msgstr "%1 – Preferencias de Flatpak"
 #, kde-format
 msgctxt "@info accessible.description for list"
 msgid "ID %1"
-msgstr ""
+msgstr "ID %1"
 
 #: ui/FlatpakPermissions.qml:184
 #, kde-format
@@ -615,7 +615,3 @@ msgstr "Introduzca nombre del bus de sesión:"
 #, kde-format
 msgid "Enter system bus name:"
 msgstr "Introduzca nombre del bus del sistema:"
-
-#~ msgctxt "@info accessible.description for list"
-#~ msgid "Version %1"
-#~ msgstr "Versión %1"

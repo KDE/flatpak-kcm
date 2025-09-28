@@ -9,15 +9,15 @@ msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-09-27 00:44+0000\n"
-"PO-Revision-Date: 2025-09-09 20:33-0300\n"
-"Last-Translator: Guilherme Marçal Silva <guimarcalsilva@gmail.com>\n"
+"PO-Revision-Date: 2025-09-27 06:09-0300\n"
+"Last-Translator: Marcus Gama <marcus.gama@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 25.08.0\n"
+"X-Generator: Lokalize 25.08.1\n"
 
 #: autotests/flatpakpermissiontest.cpp:615
 #: autotests/flatpakpermissiontest.cpp:821 flatpakpermission.cpp:404
@@ -361,7 +361,7 @@ msgstr "%1 – Configurações do Flatpak"
 #, kde-format
 msgctxt "@info accessible.description for list"
 msgid "ID %1"
-msgstr ""
+msgstr "ID %1"
 
 #: ui/FlatpakPermissions.qml:184
 #, kde-format
