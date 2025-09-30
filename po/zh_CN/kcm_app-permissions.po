@@ -14,8 +14,8 @@ msgstr ""
 "X-Crowdin-Project: kdeorg\n"
 "X-Crowdin-Project-ID: 269464\n"
 "X-Crowdin-Language: zh-CN\n"
-"X-Crowdin-File: /kf6-trunk/messages/flatpak-kcm/kcm_flatpak.pot\n"
-"X-Crowdin-File-ID: 42445\n"
+"X-Crowdin-File: /kf6-trunk/messages/flatpak-kcm/kcm_app-permissions.pot\n"
+"X-Crowdin-File-ID: 58496\n"
 
 #: autotests/flatpakpermissiontest.cpp:615
 #: autotests/flatpakpermissiontest.cpp:821 flatpakpermission.cpp:404
@@ -255,64 +255,64 @@ msgstr "添加新的环境变量"
 #, kde-format
 msgctxt "not an action but the ability to do so"
 msgid "Record the Screen"
-msgstr ""
+msgstr "录制屏幕"
 
 #: restoredatamodel.cpp:149
 #, kde-format
 msgctxt "not an action but the ability to do so"
 msgid "Control the Clipboard"
-msgstr ""
+msgstr "控制剪贴板"
 
 #: restoredatamodel.cpp:155
 #, kde-format
 msgctxt "Part of a list of things"
 msgid "Keyboard"
-msgstr ""
+msgstr "键盘"
 
 #: restoredatamodel.cpp:158
 #, kde-format
 msgctxt "Part of a list of things"
 msgid "Mouse"
-msgstr ""
+msgstr "鼠标"
 
 #: restoredatamodel.cpp:161
 #, kde-format
 msgctxt "Part of a list of things"
 msgid "Touchscreen"
-msgstr ""
+msgstr "触摸屏"
 
 #: restoredatamodel.cpp:164
 #, kde-format
 msgctxt "%1 is a list of things formed from above"
 msgid "Control %1"
-msgstr ""
+msgstr "控制 %1"
 
 #: restoredatamodel.cpp:203
 #, kde-format
 msgctxt "%1 is the title of a window, %2 the name of an application"
 msgid "Window \"%1\" of %2"
-msgstr ""
+msgstr "窗口“%1”，来自 %2"
 
 #: restoredatamodel.cpp:207
 #, kde-format
 msgid "Region at (%1,%2) with size %3x%4"
-msgstr ""
+msgstr "区域位置 (%1,%2)，大小 %3x%4"
 
 #: restoredatamodel.cpp:217
 #, kde-format
 msgid "Virtual Screen"
-msgstr ""
+msgstr "虚拟屏幕"
 
 #: restoredatamodel.cpp:221
 #, kde-format
 msgid "The entire Workspace"
-msgstr ""
+msgstr "整个工作区"
 
 #: restoredatamodel.cpp:240
 #, kde-format
 msgctxt "%1 is the position of the screen"
 msgid "A disconnected Screen at %1"
-msgstr ""
+msgstr "已断开连接的屏幕，位于 %1"
 
 #: ui/AddEnvironmentVariableDialog.qml:18
 #, kde-format
@@ -349,13 +349,13 @@ msgstr "应用程序 %1 的权限已被修改。您想要应用这些更改，�
 #, kde-format
 msgctxt "@title:window %1 is the name of the application"
 msgid "%1 – Flatpak Settings"
-msgstr ""
+msgstr "%1 – Flatpak 设置"
 
 #: ui/FlatpakPermissions.qml:142
 #, kde-format
 msgctxt "@info accessible.description for list"
 msgid "ID %1"
-msgstr ""
+msgstr "ID %1"
 
 #: ui/FlatpakPermissions.qml:184
 #, kde-format
@@ -391,7 +391,7 @@ msgstr "在列表中选择一个应用程序以查看其权限"
 #, kde-format
 msgctxt "@action:intoolbar"
 msgid "Manage Flatpak Settings"
-msgstr ""
+msgstr "管理 Flatpak 设置"
 
 #: ui/Permissions.qml:50
 #, kde-format
@@ -401,30 +401,32 @@ msgid ""
 "off here they are still able to control mouse and keyboard or record the "
 "contents of your screen through the windowing system"
 msgstr ""
+"行为良好的应用程序或许会遵守这些设置，但即便在此处关闭了权限，应用程序仍可通"
+"过窗口系统控制鼠标和键盘或录制屏幕的内容。"
 
 #: ui/Permissions.qml:63
 #, kde-format
 msgctxt "@label:group"
 msgid "General:"
-msgstr ""
+msgstr "常规："
 
 #: ui/Permissions.qml:65
 #, kde-format
 msgctxt "@option:check"
 msgid "Send notifications"
-msgstr ""
+msgstr "发送通知"
 
 #: ui/Permissions.qml:82
 #, kde-format
 msgctxt "@option:check"
 msgid "Block automatic sleep and screen locking"
-msgstr ""
+msgstr "阻止自动睡眠和锁屏"
 
 #: ui/Permissions.qml:107
 #, kde-format
 msgctxt "@option:check"
 msgid "Activate game mode"
-msgstr ""
+msgstr "激活游戏模式"
 
 #: ui/Permissions.qml:118
 #, kde-kuit-format
@@ -432,118 +434,117 @@ msgctxt "@info:tooltip"
 msgid ""
 "Allows the application to activate game mode if you are using it on your "
 "system."
-msgstr ""
+msgstr "允许该应用在您的系统上运行时激活游戏模式。"
 
 #: ui/Permissions.qml:127
 #, kde-format
 msgctxt "@option:check"
 msgid "Gain higher process priority"
-msgstr ""
+msgstr "获得更高的进程优先级"
 
 #: ui/Permissions.qml:143
 #, kde-format
 msgctxt "@label:listbox"
 msgid "Take screenshots:"
-msgstr ""
+msgstr "屏幕截图："
 
 #: ui/Permissions.qml:151 ui/Permissions.qml:172 ui/Permissions.qml:192
 #: ui/Permissions.qml:223
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Ask Once"
-msgstr ""
+msgstr "只询问一次"
 
 #: ui/Permissions.qml:152 ui/Permissions.qml:173 ui/Permissions.qml:224
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Deny"
-msgstr ""
+msgstr "拒绝"
 
 #: ui/Permissions.qml:153 ui/Permissions.qml:174 ui/Permissions.qml:225
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Allow"
-msgstr ""
+msgstr "允许"
 
 #: ui/Permissions.qml:154 ui/Permissions.qml:175 ui/Permissions.qml:226
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Always Ask"
-msgstr ""
+msgstr "总是询问"
 
 #: ui/Permissions.qml:164
-#, fuzzy, kde-format
-#| msgid "Smart card access"
+#, kde-format
 msgctxt "@title:group"
 msgid "Camera access:"
-msgstr "智能卡访问"
+msgstr "摄像头权限："
 
 #: ui/Permissions.qml:185
 #, kde-format
 msgctxt "@label:listbox"
 msgid "Location accuracy:"
-msgstr ""
+msgstr "定位精确度："
 
 #: ui/Permissions.qml:194
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Deny"
-msgstr ""
+msgstr "拒绝"
 
 #: ui/Permissions.qml:195
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Country"
-msgstr ""
+msgstr "国家/地区"
 
 #: ui/Permissions.qml:196
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "City"
-msgstr ""
+msgstr "城市"
 
 #: ui/Permissions.qml:197
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Neighborhood"
-msgstr ""
+msgstr "街区"
 
 #: ui/Permissions.qml:198
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Street"
-msgstr ""
+msgstr "街道"
 
 #: ui/Permissions.qml:199
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Exact"
-msgstr ""
+msgstr "精确"
 
 #: ui/Permissions.qml:215
 #, kde-format
 msgctxt "@label:listbox"
 msgid "Set desktop and lock screen background:"
-msgstr ""
+msgstr "设置桌面和锁屏背景："
 
 #: ui/Permissions.qml:239
 #, kde-format
 msgctxt "@label"
 msgid "Screen sharing:"
-msgstr ""
+msgstr "屏幕共享："
 
 #: ui/Permissions.qml:244 ui/Permissions.qml:270
 #, kde-format
 msgctxt "@action:button"
 msgid "Manage %1 Session"
 msgid_plural "Manage %1 Sessions"
-msgstr[0] ""
+msgstr[0] "管理 %1 个会话"
 
 #: ui/Permissions.qml:247
 #, kde-format
 msgctxt "@title:window %1 is the name of the application"
 msgid "%1 – Screencast Sessions"
-msgstr ""
+msgstr "%1 – 录屏会话"
 
 #: ui/Permissions.qml:252
 #, kde-format
@@ -551,26 +552,26 @@ msgctxt ""
 "@label 'Remote control' like in xdg-desktop-portal-kde remotedesktopdialog."
 "cpp"
 msgid " Remote control:"
-msgstr ""
+msgstr "远程控制："
 
 #: ui/Permissions.qml:255
 #, kde-format
 msgctxt "@option:check"
 msgid ""
 "Control pointer & keyboard, and share screen with other apps without asking"
-msgstr ""
+msgstr "控制光标和键盘，与其他应用共享屏幕而不询问。"
 
 #: ui/Permissions.qml:273
 #, kde-format
 msgctxt "@title:window %1 is the name of the application"
 msgid "%1 – Remote Desktop Sessions"
-msgstr ""
+msgstr "%1 – 远程桌面会话"
 
 #: ui/SessionList.qml:49
 #, kde-format
 msgctxt "@action:button"
 msgid "Revoke"
-msgstr ""
+msgstr "撤销"
 
 #: ui/TextPromptDialog.qml:21
 #, kde-format
@@ -601,15 +602,3 @@ msgstr "输入会话总线名称："
 #, kde-format
 msgid "Enter system bus name:"
 msgstr "输入系统总线名称："
-
-#~ msgctxt "@info accessible.description for list"
-#~ msgid "Version %1"
-#~ msgstr "版本 %1"
-
-#~ msgctxt "@window:title"
-#~ msgid "Flatpak Applications"
-#~ msgstr "Flatpak 应用程序"
-
-#~ msgctxt "@title:window"
-#~ msgid "Permissions"
-#~ msgstr "权限"
