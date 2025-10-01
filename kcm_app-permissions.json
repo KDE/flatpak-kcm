@@ -19,6 +19,7 @@
         "Description[sv]": "Anpassa programrättigheter",
         "Description[tr]": "Uygulama izinlerini yapılandırın",
         "Description[uk]": "Налаштовування прав доступу для програм",
+        "Description[zh_CN]": "配置应用程序权限",
         "Description[zh_TW]": "設定應用程式權限",
         "FormFactors": [
             "desktop",
@@ -44,6 +45,7 @@
         "Name[sv]": "Programrättigheter",
         "Name[tr]": "Uygulama İzinleri",
         "Name[uk]": "Права доступу програм",
+        "Name[zh_CN]": "应用程序权限",
         "Name[zh_TW]": "應用程式權限"
     },
     "X-KDE-Keywords": "Flatpak,Flatseal,permission,permissions,access,sandbox,sandboxed,filesystem,file,files,folder,folders,network,networks,networking,bluetooth,print,printer,printing,audio,sound,login,remote login,ssh,smart card,kvm,device,session,session bus,system,system bus,environment,environment variable",
