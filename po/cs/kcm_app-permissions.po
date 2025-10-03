@@ -470,14 +470,13 @@ msgstr ""
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Always Ask"
-msgstr ""
+msgstr "Vždy se dotázat"
 
 #: ui/Permissions.qml:164
-#, fuzzy, kde-format
-#| msgid "Smart card access"
+#, kde-format
 msgctxt "@title:group"
 msgid "Camera access:"
-msgstr "Přístup k čipové kartě"
+msgstr ""
 
 #: ui/Permissions.qml:185
 #, kde-format
@@ -604,7 +603,3 @@ msgstr "Zadejte název sběrnice sezení:"
 #, kde-format
 msgid "Enter system bus name:"
 msgstr "Zadejte název systémové sběrnice:"
-
-#~ msgctxt "@title:window"
-#~ msgid "Permissions"
-#~ msgstr "Oprávnění"
