@@ -470,7 +470,7 @@ msgstr ""
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Always Ask"
-msgstr ""
+msgstr "Vždy se dotázat"
 
 #: ui/Permissions.qml:164
 #, fuzzy, kde-format
