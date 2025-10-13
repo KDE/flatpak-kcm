@@ -1,13 +1,13 @@
 # Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the flatpak-kcm package.
-# SPDX-FileCopyrightText: 2023, 2024 Shinjo Park <kde@peremen.name>
+# SPDX-FileCopyrightText: 2023, 2024, 2025 Shinjo Park <kde@peremen.name>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-09-27 00:44+0000\n"
-"PO-Revision-Date: 2024-12-09 23:30+0100\n"
+"PO-Revision-Date: 2025-10-12 14:35+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 23.08.5\n"
+"X-Generator: Lokalize 24.12.3\n"
 
 #: autotests/flatpakpermissiontest.cpp:615
 #: autotests/flatpakpermissiontest.cpp:821 flatpakpermission.cpp:404
@@ -255,64 +255,64 @@ msgstr "새 환경 변수 추가"
 #, kde-format
 msgctxt "not an action but the ability to do so"
 msgid "Record the Screen"
-msgstr ""
+msgstr "화면 녹화"
 
 #: restoredatamodel.cpp:149
 #, kde-format
 msgctxt "not an action but the ability to do so"
 msgid "Control the Clipboard"
-msgstr ""
+msgstr "클립보드 제어"
 
 #: restoredatamodel.cpp:155
 #, kde-format
 msgctxt "Part of a list of things"
 msgid "Keyboard"
-msgstr ""
+msgstr "키보드"
 
 #: restoredatamodel.cpp:158
 #, kde-format
 msgctxt "Part of a list of things"
 msgid "Mouse"
-msgstr ""
+msgstr "마우스"
 
 #: restoredatamodel.cpp:161
 #, kde-format
 msgctxt "Part of a list of things"
 msgid "Touchscreen"
-msgstr ""
+msgstr "터치스크린"
 
 #: restoredatamodel.cpp:164
 #, kde-format
 msgctxt "%1 is a list of things formed from above"
 msgid "Control %1"
-msgstr ""
+msgstr "%1 제어"
 
 #: restoredatamodel.cpp:203
 #, kde-format
 msgctxt "%1 is the title of a window, %2 the name of an application"
 msgid "Window \"%1\" of %2"
-msgstr ""
+msgstr "%2의 \"%1\" 창"
 
 #: restoredatamodel.cpp:207
 #, kde-format
 msgid "Region at (%1,%2) with size %3x%4"
-msgstr ""
+msgstr "(%1,%2)의 영역, 크기: %3x%4"
 
 #: restoredatamodel.cpp:217
 #, kde-format
 msgid "Virtual Screen"
-msgstr ""
+msgstr "가상 화면"
 
 #: restoredatamodel.cpp:221
 #, kde-format
 msgid "The entire Workspace"
-msgstr ""
+msgstr "전체 작업 공간"
 
 #: restoredatamodel.cpp:240
 #, kde-format
 msgctxt "%1 is the position of the screen"
 msgid "A disconnected Screen at %1"
-msgstr ""
+msgstr "%1에 있는 연결 해제된 화면"
 
 #: ui/AddEnvironmentVariableDialog.qml:18
 #, kde-format
@@ -332,17 +332,13 @@ msgid "Value:"
 msgstr "값:"
 
 #: ui/ApplyOrDiscardDialog.qml:21
-#, fuzzy, kde-format
-#| msgid "Apply Permissions"
+#, kde-format
 msgctxt "@title:window"
 msgid "Apply Permissions"
 msgstr "권한 적용"
 
 #: ui/ApplyOrDiscardDialog.qml:22
-#, fuzzy, kde-format
-#| msgid ""
-#| "The permissions of application %1 have been changed. Do you want to apply "
-#| "these changes or discard them?"
+#, kde-format
 msgctxt "@info dialog main text"
 msgid ""
 "The permissions of application %1 have been changed. Do you want to apply "
@@ -354,45 +350,40 @@ msgstr ""
 #, kde-format
 msgctxt "@title:window %1 is the name of the application"
 msgid "%1 – Flatpak Settings"
-msgstr ""
+msgstr "%1 – Flatpak 설정"
 
 #: ui/FlatpakPermissions.qml:142
 #, kde-format
 msgctxt "@info accessible.description for list"
 msgid "ID %1"
-msgstr ""
+msgstr "ID %1"
 
 #: ui/FlatpakPermissions.qml:184
-#, fuzzy, kde-format
-#| msgid "Hide advanced permissions"
+#, kde-format
 msgctxt "@action:button in section header"
 msgid "Hide advanced permissions"
 msgstr "고급 권한 숨기기"
 
 #: ui/FlatpakPermissions.qml:184
-#, fuzzy, kde-format
-#| msgid "Show advanced permissions"
+#, kde-format
 msgctxt "@action:button in section header"
 msgid "Show advanced permissions"
 msgstr "고급 권한 표시"
 
 #: ui/FlatpakPermissions.qml:196
-#, fuzzy, kde-format
-#| msgid "Add New…"
+#, kde-format
 msgctxt "@action:button in section header"
 msgid "Add New…"
 msgstr "새로 추가…"
 
 #: ui/FlatpakPermissions.qml:197
-#, fuzzy, kde-format
-#| msgid "Add Filesystem Path Permission"
+#, kde-format
 msgctxt "action:button accessible"
 msgid "Add New File System Permission"
-msgstr "파일 시스템 경로 권한 추가"
+msgstr "새 파일 시스템 권한 추가"
 
 #: ui/main.qml:79
-#, fuzzy, kde-format
-#| msgid "Select an application from the list to view its permissions here"
+#, kde-format
 msgctxt "@info:placeholder"
 msgid "Select an application from the list to view its permissions here"
 msgstr "권한을 볼 앱 선택"
@@ -401,7 +392,7 @@ msgstr "권한을 볼 앱 선택"
 #, kde-format
 msgctxt "@action:intoolbar"
 msgid "Manage Flatpak Settings"
-msgstr ""
+msgstr "Flatpak 설정 관리"
 
 #: ui/Permissions.qml:50
 #, kde-format
@@ -411,30 +402,33 @@ msgid ""
 "off here they are still able to control mouse and keyboard or record the "
 "contents of your screen through the windowing system"
 msgstr ""
+"올바르게 작성된 앱에서는 이 설정을 존중하지만, 여기에서 비활성화하더라도 앱에"
+"서는 창 관리 시스템을 통하여 마우스나 키보드를 제어하거나, 화면에 표시된 내용"
+"을 녹화할 수 있습니다"
 
 #: ui/Permissions.qml:63
 #, kde-format
 msgctxt "@label:group"
 msgid "General:"
-msgstr ""
+msgstr "일반:"
 
 #: ui/Permissions.qml:65
 #, kde-format
 msgctxt "@option:check"
 msgid "Send notifications"
-msgstr ""
+msgstr "알림 보내기"
 
 #: ui/Permissions.qml:82
 #, kde-format
 msgctxt "@option:check"
 msgid "Block automatic sleep and screen locking"
-msgstr ""
+msgstr "자동 절전 모드 진입과 화면 잠금 차단"
 
 #: ui/Permissions.qml:107
 #, kde-format
 msgctxt "@option:check"
 msgid "Activate game mode"
-msgstr ""
+msgstr "게임 모드 활성화"
 
 #: ui/Permissions.qml:118
 #, kde-kuit-format
@@ -442,118 +436,117 @@ msgctxt "@info:tooltip"
 msgid ""
 "Allows the application to activate game mode if you are using it on your "
 "system."
-msgstr ""
+msgstr "시스템에서 앱을 사용할 때 게임 모드 활성화를 허용합니다."
 
 #: ui/Permissions.qml:127
 #, kde-format
 msgctxt "@option:check"
 msgid "Gain higher process priority"
-msgstr ""
+msgstr "높은 프로세스 우선 순위 획득"
 
 #: ui/Permissions.qml:143
 #, kde-format
 msgctxt "@label:listbox"
 msgid "Take screenshots:"
-msgstr ""
+msgstr "스크린샷 찍기:"
 
 #: ui/Permissions.qml:151 ui/Permissions.qml:172 ui/Permissions.qml:192
 #: ui/Permissions.qml:223
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Ask Once"
-msgstr ""
+msgstr "한 번 묻기"
 
 #: ui/Permissions.qml:152 ui/Permissions.qml:173 ui/Permissions.qml:224
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Deny"
-msgstr ""
+msgstr "거부"
 
 #: ui/Permissions.qml:153 ui/Permissions.qml:174 ui/Permissions.qml:225
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Allow"
-msgstr ""
+msgstr "허용"
 
 #: ui/Permissions.qml:154 ui/Permissions.qml:175 ui/Permissions.qml:226
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Always Ask"
-msgstr ""
+msgstr "항상 묻기"
 
 #: ui/Permissions.qml:164
-#, fuzzy, kde-format
-#| msgid "Smart card access"
+#, kde-format
 msgctxt "@title:group"
 msgid "Camera access:"
-msgstr "스마트카드 접근"
+msgstr "카메라 접근:"
 
 #: ui/Permissions.qml:185
 #, kde-format
 msgctxt "@label:listbox"
 msgid "Location accuracy:"
-msgstr ""
+msgstr "위치 정확도:"
 
 #: ui/Permissions.qml:194
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Deny"
-msgstr ""
+msgstr "거부"
 
 #: ui/Permissions.qml:195
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Country"
-msgstr ""
+msgstr "국가"
 
 #: ui/Permissions.qml:196
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "City"
-msgstr ""
+msgstr "도시"
 
 #: ui/Permissions.qml:197
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Neighborhood"
-msgstr ""
+msgstr "세부 지역"
 
 #: ui/Permissions.qml:198
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Street"
-msgstr ""
+msgstr "도로명"
 
 #: ui/Permissions.qml:199
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Exact"
-msgstr ""
+msgstr "정확함"
 
 #: ui/Permissions.qml:215
 #, kde-format
 msgctxt "@label:listbox"
 msgid "Set desktop and lock screen background:"
-msgstr ""
+msgstr "바탕 화면과 잠금 화면 배경 그림 설정:"
 
 #: ui/Permissions.qml:239
 #, kde-format
 msgctxt "@label"
 msgid "Screen sharing:"
-msgstr ""
+msgstr "화면 공유:"
 
 #: ui/Permissions.qml:244 ui/Permissions.qml:270
 #, kde-format
 msgctxt "@action:button"
 msgid "Manage %1 Session"
 msgid_plural "Manage %1 Sessions"
-msgstr[0] ""
+msgstr[0] "%1 세션 관리"
 
 #: ui/Permissions.qml:247
 #, kde-format
 msgctxt "@title:window %1 is the name of the application"
 msgid "%1 – Screencast Sessions"
-msgstr ""
+msgstr "%1 – 스크린캐스트 세션"
 
 #: ui/Permissions.qml:252
 #, kde-format
@@ -561,26 +554,26 @@ msgctxt ""
 "@label 'Remote control' like in xdg-desktop-portal-kde remotedesktopdialog."
 "cpp"
 msgid " Remote control:"
-msgstr ""
+msgstr " 원격 제어:"
 
 #: ui/Permissions.qml:255
 #, kde-format
 msgctxt "@option:check"
 msgid ""
 "Control pointer & keyboard, and share screen with other apps without asking"
-msgstr ""
+msgstr "묻지 않고 포인터와 키보드 제어 및 다른 앱과 화면 공유"
 
 #: ui/Permissions.qml:273
 #, kde-format
 msgctxt "@title:window %1 is the name of the application"
 msgid "%1 – Remote Desktop Sessions"
-msgstr ""
+msgstr "%1 – 원격 데스크톱 세션"
 
 #: ui/SessionList.qml:49
 #, kde-format
 msgctxt "@action:button"
 msgid "Revoke"
-msgstr ""
+msgstr "철회"
 
 #: ui/TextPromptDialog.qml:21
 #, kde-format
