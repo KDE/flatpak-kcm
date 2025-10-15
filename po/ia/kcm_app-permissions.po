@@ -1,13 +1,13 @@
 # Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the flatpak-kcm package.
 #
-# SPDX-FileCopyrightText: 2023, 2024 giovanni <g.sora@tiscali.it>
+# SPDX-FileCopyrightText: 2023, 2024, 2025 giovanni <g.sora@tiscali.it>
 msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-09-27 00:44+0000\n"
-"PO-Revision-Date: 2024-08-30 17:16+0200\n"
+"PO-Revision-Date: 2025-10-14 12:45+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -267,25 +267,25 @@ msgstr ""
 #, kde-format
 msgctxt "Part of a list of things"
 msgid "Keyboard"
-msgstr ""
+msgstr "Claviero"
 
 #: restoredatamodel.cpp:158
 #, kde-format
 msgctxt "Part of a list of things"
 msgid "Mouse"
-msgstr ""
+msgstr "Mus"
 
 #: restoredatamodel.cpp:161
 #, kde-format
 msgctxt "Part of a list of things"
 msgid "Touchscreen"
-msgstr ""
+msgstr "Schermo tactile"
 
 #: restoredatamodel.cpp:164
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "%1 is a list of things formed from above"
 msgid "Control %1"
-msgstr ""
+msgstr "Controlo"
 
 #: restoredatamodel.cpp:203
 #, kde-format
@@ -332,17 +332,13 @@ msgid "Value:"
 msgstr "Valor:"
 
 #: ui/ApplyOrDiscardDialog.qml:21
-#, fuzzy, kde-format
-#| msgid "Apply Permissions"
+#, kde-format
 msgctxt "@title:window"
 msgid "Apply Permissions"
 msgstr "Applica Permissiones"
 
 #: ui/ApplyOrDiscardDialog.qml:22
-#, fuzzy, kde-format
-#| msgid ""
-#| "The permissions of application %1 have been changed. Do you want to apply "
-#| "these changes or discard them?"
+#, kde-format
 msgctxt "@info dialog main text"
 msgid ""
 "The permissions of application %1 have been changed. Do you want to apply "
@@ -361,25 +357,22 @@ msgstr ""
 #, kde-format
 msgctxt "@info accessible.description for list"
 msgid "ID %1"
-msgstr ""
+msgstr "ID %1"
 
 #: ui/FlatpakPermissions.qml:184
-#, fuzzy, kde-format
-#| msgid "Hide advanced permissions"
+#, kde-format
 msgctxt "@action:button in section header"
 msgid "Hide advanced permissions"
 msgstr "Cela permissiones avantiate"
 
 #: ui/FlatpakPermissions.qml:184
-#, fuzzy, kde-format
-#| msgid "Show advanced permissions"
+#, kde-format
 msgctxt "@action:button in section header"
 msgid "Show advanced permissions"
 msgstr "Monstra permissiones avantiate"
 
 #: ui/FlatpakPermissions.qml:196
-#, fuzzy, kde-format
-#| msgid "Add New…"
+#, kde-format
 msgctxt "@action:button in section header"
 msgid "Add New…"
 msgstr "Adde Nove …"
@@ -392,8 +385,7 @@ msgid "Add New File System Permission"
 msgstr "Adde Permission de Percurso de Systema de File"
 
 #: ui/main.qml:79
-#, fuzzy, kde-format
-#| msgid "Select an application from the list to view its permissions here"
+#, kde-format
 msgctxt "@info:placeholder"
 msgid "Select an application from the list to view its permissions here"
 msgstr "Selige un application ex le lista per vider su permissiones hic"
@@ -417,13 +409,13 @@ msgstr ""
 #, kde-format
 msgctxt "@label:group"
 msgid "General:"
-msgstr ""
+msgstr "General:"
 
 #: ui/Permissions.qml:65
 #, kde-format
 msgctxt "@option:check"
 msgid "Send notifications"
-msgstr ""
+msgstr "Invia notificationes"
 
 #: ui/Permissions.qml:82
 #, kde-format
@@ -465,22 +457,22 @@ msgid "Ask Once"
 msgstr ""
 
 #: ui/Permissions.qml:152 ui/Permissions.qml:173 ui/Permissions.qml:224
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@item:inlistbox"
 msgid "Deny"
-msgstr ""
+msgstr "Nega"
 
 #: ui/Permissions.qml:153 ui/Permissions.qml:174 ui/Permissions.qml:225
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@item:inlistbox"
 msgid "Allow"
-msgstr ""
+msgstr "Permitte"
 
 #: ui/Permissions.qml:154 ui/Permissions.qml:175 ui/Permissions.qml:226
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Always Ask"
-msgstr ""
+msgstr "Demanda sempre"
 
 #: ui/Permissions.qml:164
 #, fuzzy, kde-format
@@ -496,22 +488,22 @@ msgid "Location accuracy:"
 msgstr ""
 
 #: ui/Permissions.qml:194
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Deny"
-msgstr ""
+msgstr "Nega"
 
 #: ui/Permissions.qml:195
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Country"
-msgstr ""
+msgstr "Pais"
 
 #: ui/Permissions.qml:196
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "City"
-msgstr ""
+msgstr "Citate"
 
 #: ui/Permissions.qml:197
 #, kde-format
@@ -523,13 +515,13 @@ msgstr ""
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Street"
-msgstr ""
+msgstr "Strata"
 
 #: ui/Permissions.qml:199
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Exact"
-msgstr ""
+msgstr "Exacte"
 
 #: ui/Permissions.qml:215
 #, kde-format
@@ -538,18 +530,18 @@ msgid "Set desktop and lock screen background:"
 msgstr ""
 
 #: ui/Permissions.qml:239
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@label"
 msgid "Screen sharing:"
-msgstr ""
+msgstr "Compartir de schermo"
 
 #: ui/Permissions.qml:244 ui/Permissions.qml:270
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@action:button"
 msgid "Manage %1 Session"
 msgid_plural "Manage %1 Sessions"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Gere session"
+msgstr[1] "Administra sessiones"
 
 #: ui/Permissions.qml:247
 #, kde-format
@@ -558,12 +550,12 @@ msgid "%1 – Screencast Sessions"
 msgstr ""
 
 #: ui/Permissions.qml:252
-#, kde-format
+#, fuzzy, kde-format
 msgctxt ""
 "@label 'Remote control' like in xdg-desktop-portal-kde remotedesktopdialog."
 "cpp"
 msgid " Remote control:"
-msgstr ""
+msgstr "Controlo remote o teleguidage"
 
 #: ui/Permissions.qml:255
 #, kde-format
@@ -582,7 +574,7 @@ msgstr ""
 #, kde-format
 msgctxt "@action:button"
 msgid "Revoke"
-msgstr ""
+msgstr "Revoca"
 
 #: ui/TextPromptDialog.qml:21
 #, kde-format
