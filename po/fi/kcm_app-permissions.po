@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-09-19 02:38+0000\n"
-"PO-Revision-Date: 2025-10-02 18:08+0300\n"
+"PO-Revision-Date: 2025-10-13 20:43+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -551,7 +551,7 @@ msgstr[1] "Hallinnoi %1 istuntoa"
 #, kde-format
 msgctxt "@title:window %1 is the name of the application"
 msgid "%1 – Screencast Sessions"
-msgstr ""
+msgstr "%1 – näyttölähetysistunnot"
 
 #: ui/Permissions.qml:252
 #, kde-format
