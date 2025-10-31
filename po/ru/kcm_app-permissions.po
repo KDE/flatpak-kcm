@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-09-19 02:38+0000\n"
-"PO-Revision-Date: 2025-10-28 19:51+0300\n"
+"PO-Revision-Date: 2025-10-30 18:38+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
 "Language: ru\n"
@@ -387,8 +387,7 @@ msgid "Add New File System Permission"
 msgstr "Назначение прав доступа к папке"
 
 #: ui/main.qml:79
-#, fuzzy, kde-format
-#| msgid "Select an application from the list to view its permissions here"
+#, kde-format
 msgctxt "@info:placeholder"
 msgid "Select an application from the list to view its permissions here"
 msgstr ""
@@ -398,7 +397,7 @@ msgstr ""
 #, kde-format
 msgctxt "@action:intoolbar"
 msgid "Manage Flatpak Settings"
-msgstr ""
+msgstr "Управление параметрами Flatpak"
 
 #: ui/Permissions.qml:50
 #, kde-format
@@ -408,30 +407,33 @@ msgid ""
 "off here they are still able to control mouse and keyboard or record the "
 "contents of your screen through the windowing system"
 msgstr ""
+"Корректно работающие приложения могут учитывать эти параметры, однако даже "
+"при их отключении они всё равно могут управлять клавиатурой и мышью или "
+"записывать содержимое экрана через оконную систему."
 
 #: ui/Permissions.qml:63
 #, kde-format
 msgctxt "@label:group"
 msgid "General:"
-msgstr ""
+msgstr "Основное:"
 
 #: ui/Permissions.qml:65
 #, kde-format
 msgctxt "@option:check"
 msgid "Send notifications"
-msgstr ""
+msgstr "Отправка уведомлений"
 
 #: ui/Permissions.qml:82
 #, kde-format
 msgctxt "@option:check"
 msgid "Block automatic sleep and screen locking"
-msgstr ""
+msgstr "Запрет блокировки экрана и переход в спящий режим"
 
 #: ui/Permissions.qml:107
 #, kde-format
 msgctxt "@option:check"
 msgid "Activate game mode"
-msgstr ""
+msgstr "Активация игрового режима"
 
 #: ui/Permissions.qml:118
 #, kde-kuit-format
@@ -440,12 +442,14 @@ msgid ""
 "Allows the application to activate game mode if you are using it on your "
 "system."
 msgstr ""
+"Разрешить приложению активировать игровой режим, если он используется в "
+"системе."
 
 #: ui/Permissions.qml:127
 #, kde-format
 msgctxt "@option:check"
 msgid "Gain higher process priority"
-msgstr ""
+msgstr "Предоставить процессу более высокий приоритет"
 
 #: ui/Permissions.qml:143
 #, kde-format
@@ -530,7 +534,7 @@ msgstr "Точно"
 #, kde-format
 msgctxt "@label:listbox"
 msgid "Set desktop and lock screen background:"
-msgstr ""
+msgstr "Установка обоев рабочего стола и фон экрана блокировки:"
 
 #: ui/Permissions.qml:239
 #, kde-format
@@ -568,6 +572,8 @@ msgctxt "@option:check"
 msgid ""
 "Control pointer & keyboard, and share screen with other apps without asking"
 msgstr ""
+"Управление указателем и клавиатурой, а также передача экрана другим "
+"приложениям без запроса разрешения"
 
 #: ui/Permissions.qml:273
 #, kde-format
