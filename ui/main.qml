@@ -19,6 +19,7 @@ KCMUtils.ScrollViewKCM
     Kirigami.ColumnView.pinned: true
 
     property int currentIndex: 0;
+    property string currentAppId: undefined
     KCMUtils.ConfigModule.onCurrentIndexChanged: (index) => {
         // Clicking on the back arrow while there are still unsaved changes
         if (KCMUtils.ConfigModule.needsSave && index != currentIndex) {
@@ -34,6 +35,10 @@ KCMUtils.ScrollViewKCM
         id: search
         KeyNavigation.tab: view
         KeyNavigation.down: view
+        Keys.onDownPressed: event => {
+            appsView.currentIndex = 0
+            event.accepted = false
+        }
     }
 
     view: ListView {
@@ -42,6 +47,12 @@ KCMUtils.ScrollViewKCM
         Accessible.role: Accessible.List
 
         currentIndex: -1
+        Keys.onUpPressed: event => {
+            if (currentIndex == 0) {
+                currentIndex = -1
+            }
+            event.accepted = false
+        }
         model: KItemModels.KSortFilterProxyModel {
             sourceModel: kcm.appsModel
             sortRole: Qt.DisplayRole
@@ -57,7 +68,7 @@ KCMUtils.ScrollViewKCM
             width: view.width
             text: model.display
             icon.source: model.decoration
-            highlighted: view.currentIndex == index
+            highlighted: model.appId === root.currentAppId
             onClicked: {
                 if (KCMUtils.ConfigModule.needsSave) {
                     conflictDialogLoader.active = true
@@ -66,6 +77,7 @@ KCMUtils.ScrollViewKCM
                 }
                 KCMUtils.ConfigModule.currentIndex = 0
                 KCMUtils.ConfigModule.push("Permissions.qml", {"appId": model.appId, "title": model.display, "isHostApp": model.isHost, "decoration": icon.source });
+                root.currentAppId = model.appId;
                 view.currentIndex = index;
             }
             Keys.onEnterPressed: click()
