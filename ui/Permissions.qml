@@ -19,6 +19,8 @@ KCMUtils.SimpleKCM {
     required property bool isHostApp
     required property var decoration
 
+    activeFocusOnTab: true
+
     actions: [
         Kirigami.Action {
             readonly property var ref: kcm.flatpakRefForApp(root.appId)
