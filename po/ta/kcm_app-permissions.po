@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-09-27 00:44+0000\n"
+"POT-Creation-Date: 2025-11-17 00:43+0000\n"
 "PO-Revision-Date: 2025-09-28 15:13+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-l10n-ta@kde.org>\n"
@@ -386,19 +386,19 @@ msgctxt "action:button accessible"
 msgid "Add New File System Permission"
 msgstr "புதிய கோப்பு அனுமதியை சேர்"
 
-#: ui/main.qml:79
+#: ui/main.qml:91
 #, kde-format
 msgctxt "@info:placeholder"
 msgid "Select an application from the list to view its permissions here"
 msgstr "ஓர் செயலியின் அனுமதிகளை பார்க்க அதை பட்டியலிலிருந்து தேர்ந்தெடுக்கவும்"
 
-#: ui/Permissions.qml:26
+#: ui/Permissions.qml:28
 #, kde-format
 msgctxt "@action:intoolbar"
 msgid "Manage Flatpak Settings"
 msgstr "ஃபலாட்பாக் அமைப்புகளை நிர்வகி"
 
-#: ui/Permissions.qml:50
+#: ui/Permissions.qml:52
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -409,31 +409,31 @@ msgstr ""
 "அனுமதி வழங்காவிட்டாலும் இச்செயலியால் உங்கள் சுட்டியையோ விசைப்பலகையையோ கட்டுப்படுத்த "
 "முடியும், மேலும் திரையை பதிவுசெய்ய முடியும்"
 
-#: ui/Permissions.qml:63
+#: ui/Permissions.qml:65
 #, kde-format
 msgctxt "@label:group"
 msgid "General:"
 msgstr "பொதுவானவை:"
 
-#: ui/Permissions.qml:65
+#: ui/Permissions.qml:67
 #, kde-format
 msgctxt "@option:check"
 msgid "Send notifications"
 msgstr "அறிவிப்புகளை அனுப்புவது"
 
-#: ui/Permissions.qml:82
+#: ui/Permissions.qml:84
 #, kde-format
 msgctxt "@option:check"
 msgid "Block automatic sleep and screen locking"
 msgstr "தானியக்க தூக்கத்தையும் திரையை பூட்டுவதையும் தடுப்பது"
 
-#: ui/Permissions.qml:107
+#: ui/Permissions.qml:109
 #, kde-format
 msgctxt "@option:check"
 msgid "Activate game mode"
 msgstr "விளையாட்டு பயன்முறையை செயல்படுத்துவது"
 
-#: ui/Permissions.qml:118
+#: ui/Permissions.qml:120
 #, kde-kuit-format
 msgctxt "@info:tooltip"
 msgid ""
@@ -441,104 +441,104 @@ msgid ""
 "system."
 msgstr "விளையாட்டுப் பயன்முறையை இச்செயலி செயல்படுத்த இந்த விருப்பம் அனுமதிக்கும்."
 
-#: ui/Permissions.qml:127
+#: ui/Permissions.qml:129
 #, kde-format
 msgctxt "@option:check"
 msgid "Gain higher process priority"
 msgstr "பணி முக்கியத்துவத்தை கூட்டலாம்"
 
-#: ui/Permissions.qml:143
+#: ui/Permissions.qml:145
 #, kde-format
 msgctxt "@label:listbox"
 msgid "Take screenshots:"
 msgstr "திரைப்பிடிப்புகள் எடுப்பது:"
 
-#: ui/Permissions.qml:151 ui/Permissions.qml:172 ui/Permissions.qml:192
-#: ui/Permissions.qml:223
+#: ui/Permissions.qml:153 ui/Permissions.qml:174 ui/Permissions.qml:194
+#: ui/Permissions.qml:225
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Ask Once"
 msgstr "ஒருமுறை கேள்"
 
-#: ui/Permissions.qml:152 ui/Permissions.qml:173 ui/Permissions.qml:224
+#: ui/Permissions.qml:154 ui/Permissions.qml:175 ui/Permissions.qml:226
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Deny"
 msgstr "மறு"
 
-#: ui/Permissions.qml:153 ui/Permissions.qml:174 ui/Permissions.qml:225
+#: ui/Permissions.qml:155 ui/Permissions.qml:176 ui/Permissions.qml:227
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Allow"
 msgstr "அனுமதி"
 
-#: ui/Permissions.qml:154 ui/Permissions.qml:175 ui/Permissions.qml:226
+#: ui/Permissions.qml:156 ui/Permissions.qml:177 ui/Permissions.qml:228
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Always Ask"
 msgstr "எப்போதும் கேள்"
 
-#: ui/Permissions.qml:164
+#: ui/Permissions.qml:166
 #, kde-format
 msgctxt "@title:group"
 msgid "Camera access:"
 msgstr "படக்கருவி அணுகல்:"
 
-#: ui/Permissions.qml:185
+#: ui/Permissions.qml:187
 #, kde-format
 msgctxt "@label:listbox"
 msgid "Location accuracy:"
 msgstr "இருப்பிட துல்லியம்:"
 
-#: ui/Permissions.qml:194
+#: ui/Permissions.qml:196
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Deny"
 msgstr "மறு"
 
-#: ui/Permissions.qml:195
+#: ui/Permissions.qml:197
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Country"
 msgstr "நாடு"
 
-#: ui/Permissions.qml:196
+#: ui/Permissions.qml:198
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "City"
 msgstr "ஊர்"
 
-#: ui/Permissions.qml:197
+#: ui/Permissions.qml:199
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Neighborhood"
 msgstr "வட்டாரம்"
 
-#: ui/Permissions.qml:198
+#: ui/Permissions.qml:200
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Street"
 msgstr "தெரு"
 
-#: ui/Permissions.qml:199
+#: ui/Permissions.qml:201
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Exact"
 msgstr "துல்லியமானது"
 
-#: ui/Permissions.qml:215
+#: ui/Permissions.qml:217
 #, kde-format
 msgctxt "@label:listbox"
 msgid "Set desktop and lock screen background:"
 msgstr "பின்புலப் படத்தையும் திரைப்பூட்டின் படத்தையும் அமைப்பது:"
 
-#: ui/Permissions.qml:239
+#: ui/Permissions.qml:241
 #, kde-format
 msgctxt "@label"
 msgid "Screen sharing:"
 msgstr "திரையை பகிர்வது:"
 
-#: ui/Permissions.qml:244 ui/Permissions.qml:270
+#: ui/Permissions.qml:246 ui/Permissions.qml:272
 #, kde-format
 msgctxt "@action:button"
 msgid "Manage %1 Session"
@@ -546,13 +546,13 @@ msgid_plural "Manage %1 Sessions"
 msgstr[0] "%1 அமர்வை நிர்வகி"
 msgstr[1] "%1 அமர்வுகளை நிர்வகி"
 
-#: ui/Permissions.qml:247
+#: ui/Permissions.qml:249
 #, kde-format
 msgctxt "@title:window %1 is the name of the application"
 msgid "%1 – Screencast Sessions"
 msgstr "%1 — திரைப்பகிர்வு அமர்வுகள்"
 
-#: ui/Permissions.qml:252
+#: ui/Permissions.qml:254
 #, kde-format
 msgctxt ""
 "@label 'Remote control' like in xdg-desktop-portal-kde remotedesktopdialog."
@@ -560,7 +560,7 @@ msgctxt ""
 msgid " Remote control:"
 msgstr " தொலையியக்கி:"
 
-#: ui/Permissions.qml:255
+#: ui/Permissions.qml:257
 #, kde-format
 msgctxt "@option:check"
 msgid ""
@@ -569,7 +569,7 @@ msgstr ""
 "கேட்காமலேயே சுட்டிக்குறியையும் விசைப்பலகையையும் கட்டுப்படுத்தலாம், மேலும் திரையை மற்ற "
 "செயலிகளுடன் பகிரலாம்"
 
-#: ui/Permissions.qml:273
+#: ui/Permissions.qml:275
 #, kde-format
 msgctxt "@title:window %1 is the name of the application"
 msgid "%1 – Remote Desktop Sessions"
