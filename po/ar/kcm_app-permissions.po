@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-09-19 02:38+0000\n"
+"POT-Creation-Date: 2025-11-17 02:35+0000\n"
 "PO-Revision-Date: 2025-09-17 19:18+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -382,19 +382,19 @@ msgctxt "action:button accessible"
 msgid "Add New File System Permission"
 msgstr "أضف إذْن جديد لنظام الملفات"
 
-#: ui/main.qml:79
+#: ui/main.qml:91
 #, kde-format
 msgctxt "@info:placeholder"
 msgid "Select an application from the list to view its permissions here"
 msgstr "اختر تطبيق من القائمة لعرض أذوناته هنا"
 
-#: ui/Permissions.qml:26
+#: ui/Permissions.qml:28
 #, kde-format
 msgctxt "@action:intoolbar"
 msgid "Manage Flatpak Settings"
 msgstr "أدر إعدادات فلاتباك"
 
-#: ui/Permissions.qml:50
+#: ui/Permissions.qml:52
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -406,31 +406,31 @@ msgstr ""
 "هنا، فإنها لا تزال قادرة على التحكم في الفأرة ولوحة المفاتيح أو تسجيل "
 "محتويات شاشتك من خلال نظام النوافذ."
 
-#: ui/Permissions.qml:63
+#: ui/Permissions.qml:65
 #, kde-format
 msgctxt "@label:group"
 msgid "General:"
 msgstr "عام:"
 
-#: ui/Permissions.qml:65
+#: ui/Permissions.qml:67
 #, kde-format
 msgctxt "@option:check"
 msgid "Send notifications"
 msgstr "أرسل إشعارات"
 
-#: ui/Permissions.qml:82
+#: ui/Permissions.qml:84
 #, kde-format
 msgctxt "@option:check"
 msgid "Block automatic sleep and screen locking"
 msgstr "امنع وضع التعليق الآلي وقفل الشاشة"
 
-#: ui/Permissions.qml:107
+#: ui/Permissions.qml:109
 #, kde-format
 msgctxt "@option:check"
 msgid "Activate game mode"
 msgstr "نشّط وضع الألعاب"
 
-#: ui/Permissions.qml:118
+#: ui/Permissions.qml:120
 #, kde-kuit-format
 msgctxt "@info:tooltip"
 msgid ""
@@ -438,104 +438,104 @@ msgid ""
 "system."
 msgstr "يسمح للتطبيق بتنشيط وضع الألعاب إذا كنت تستخدمه على نظامك."
 
-#: ui/Permissions.qml:127
+#: ui/Permissions.qml:129
 #, kde-format
 msgctxt "@option:check"
 msgid "Gain higher process priority"
 msgstr "الحصول على أولوية أعلى في العملية"
 
-#: ui/Permissions.qml:143
+#: ui/Permissions.qml:145
 #, kde-format
 msgctxt "@label:listbox"
 msgid "Take screenshots:"
 msgstr "أخذ لقطات الشاشة:"
 
-#: ui/Permissions.qml:151 ui/Permissions.qml:172 ui/Permissions.qml:192
-#: ui/Permissions.qml:223
+#: ui/Permissions.qml:153 ui/Permissions.qml:174 ui/Permissions.qml:194
+#: ui/Permissions.qml:225
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Ask Once"
 msgstr "اسأل مرة واحدة"
 
-#: ui/Permissions.qml:152 ui/Permissions.qml:173 ui/Permissions.qml:224
+#: ui/Permissions.qml:154 ui/Permissions.qml:175 ui/Permissions.qml:226
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Deny"
 msgstr "امنع"
 
-#: ui/Permissions.qml:153 ui/Permissions.qml:174 ui/Permissions.qml:225
+#: ui/Permissions.qml:155 ui/Permissions.qml:176 ui/Permissions.qml:227
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Allow"
 msgstr "اسمح"
 
-#: ui/Permissions.qml:154 ui/Permissions.qml:175 ui/Permissions.qml:226
+#: ui/Permissions.qml:156 ui/Permissions.qml:177 ui/Permissions.qml:228
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Always Ask"
 msgstr "اسأل دائمًا"
 
-#: ui/Permissions.qml:164
+#: ui/Permissions.qml:166
 #, kde-format
 msgctxt "@title:group"
 msgid "Camera access:"
 msgstr "الوصول للكاميرا:"
 
-#: ui/Permissions.qml:185
+#: ui/Permissions.qml:187
 #, kde-format
 msgctxt "@label:listbox"
 msgid "Location accuracy:"
 msgstr "دقة الموقع:"
 
-#: ui/Permissions.qml:194
+#: ui/Permissions.qml:196
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Deny"
 msgstr "امنع"
 
-#: ui/Permissions.qml:195
+#: ui/Permissions.qml:197
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Country"
 msgstr "البلد"
 
-#: ui/Permissions.qml:196
+#: ui/Permissions.qml:198
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "City"
 msgstr "المدينة"
 
-#: ui/Permissions.qml:197
+#: ui/Permissions.qml:199
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Neighborhood"
 msgstr "الحي"
 
-#: ui/Permissions.qml:198
+#: ui/Permissions.qml:200
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Street"
 msgstr "الشارع"
 
-#: ui/Permissions.qml:199
+#: ui/Permissions.qml:201
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Exact"
 msgstr "بالضبط"
 
-#: ui/Permissions.qml:215
+#: ui/Permissions.qml:217
 #, kde-format
 msgctxt "@label:listbox"
 msgid "Set desktop and lock screen background:"
 msgstr "تعيين خلفية سطح المكتب وشاشة القفل:"
 
-#: ui/Permissions.qml:239
+#: ui/Permissions.qml:241
 #, kde-format
 msgctxt "@label"
 msgid "Screen sharing:"
 msgstr "مشاركة الشاشة:"
 
-#: ui/Permissions.qml:244 ui/Permissions.qml:270
+#: ui/Permissions.qml:246 ui/Permissions.qml:272
 #, kde-format
 msgctxt "@action:button"
 msgid "Manage %1 Session"
@@ -547,13 +547,13 @@ msgstr[3] "أدر %1 جلسة"
 msgstr[4] "أدر %1 جلسة"
 msgstr[5] "أدر %1 جلسة"
 
-#: ui/Permissions.qml:247
+#: ui/Permissions.qml:249
 #, kde-format
 msgctxt "@title:window %1 is the name of the application"
 msgid "%1 – Screencast Sessions"
 msgstr "%1 – جلسات بث الشاشة"
 
-#: ui/Permissions.qml:252
+#: ui/Permissions.qml:254
 #, kde-format
 msgctxt ""
 "@label 'Remote control' like in xdg-desktop-portal-kde remotedesktopdialog."
@@ -561,7 +561,7 @@ msgctxt ""
 msgid " Remote control:"
 msgstr " جهاز التحكم عن بعد:"
 
-#: ui/Permissions.qml:255
+#: ui/Permissions.qml:257
 #, kde-format
 msgctxt "@option:check"
 msgid ""
@@ -569,7 +569,7 @@ msgid ""
 msgstr ""
 "تحكم في المؤشر واللوحة المفاتيح، وشارك الشاشة مع تطبيقات أخرى دون طلب الإذن"
 
-#: ui/Permissions.qml:273
+#: ui/Permissions.qml:275
 #, kde-format
 msgctxt "@title:window %1 is the name of the application"
 msgid "%1 – Remote Desktop Sessions"
