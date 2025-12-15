@@ -48,6 +48,7 @@ AppPermissionsKCM::AppPermissionsKCM(QObject *parent, const KPluginMetaData &dat
     m_permissionStore->loadTable("remote-desktop"_L1);
     m_permissionStore->loadTable("screencast"_L1);
     m_permissionStore->loadTable("kde-authorized"_L1);
+    m_permissionStore->loadTable("wallpaper"_L1);
 
     auto reference = indexFromArgs(args);
     if (reference) {
