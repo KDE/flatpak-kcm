@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-13 02:42+0000\n"
+"POT-Creation-Date: 2025-11-17 16:18+0000\n"
 "PO-Revision-Date: 2025-05-31 19:53+0200\n"
 "Last-Translator: Martin Hansen <mh306602@gmail.com>\n"
 "Language-Team: Norwegian Bokmål <l10n-no@lister.huftis.org>\n"
@@ -19,53 +19,45 @@ msgstr ""
 "X-Text-Markup: kde4\n"
 
 #: autotests/flatpakpermissiontest.cpp:642
-#: autotests/flatpakpermissiontest.cpp:864
-#: flatpakpermission.cpp:404
+#: autotests/flatpakpermissiontest.cpp:864 flatpakpermission.cpp:404
 #, kde-format
 msgid "None"
 msgstr "Ingen"
 
 #: autotests/flatpakpermissiontest.cpp:643
-#: autotests/flatpakpermissiontest.cpp:867
-#: flatpakpermission.cpp:405
+#: autotests/flatpakpermissiontest.cpp:867 flatpakpermission.cpp:405
 #, kde-format
 msgid "see"
 msgstr "se"
 
 #: autotests/flatpakpermissiontest.cpp:644
-#: autotests/flatpakpermissiontest.cpp:865
-#: flatpakpermission.cpp:406
+#: autotests/flatpakpermissiontest.cpp:865 flatpakpermission.cpp:406
 #, kde-format
 msgid "talk"
 msgstr "snakke"
 
 #: autotests/flatpakpermissiontest.cpp:645
-#: autotests/flatpakpermissiontest.cpp:866
-#: flatpakpermission.cpp:407
+#: autotests/flatpakpermissiontest.cpp:866 flatpakpermission.cpp:407
 #, kde-format
 msgid "own"
 msgstr "eie"
 
-#: autotests/flatpakpermissiontest.cpp:854
-#: flatpakpermission.cpp:395
+#: autotests/flatpakpermissiontest.cpp:854 flatpakpermission.cpp:395
 #, kde-format
 msgid "OFF"
 msgstr "AV"
 
-#: autotests/flatpakpermissiontest.cpp:855
-#: flatpakpermission.cpp:393
+#: autotests/flatpakpermissiontest.cpp:855 flatpakpermission.cpp:393
 #, kde-format
 msgid "read/write"
 msgstr "lese/skrive"
 
-#: autotests/flatpakpermissiontest.cpp:856
-#: flatpakpermission.cpp:392
+#: autotests/flatpakpermissiontest.cpp:856 flatpakpermission.cpp:392
 #, kde-format
 msgid "read-only"
 msgstr "bare lese"
 
-#: autotests/flatpakpermissiontest.cpp:857
-#: flatpakpermission.cpp:394
+#: autotests/flatpakpermissiontest.cpp:857 flatpakpermission.cpp:394
 #, kde-format
 msgid "create"
 msgstr "opprette"
