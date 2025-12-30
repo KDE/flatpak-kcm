@@ -244,7 +244,7 @@ still able to control mouse and keyboard or record the contents of your screen t
                 appId: root.appId
             }
             text: i18ncp("@action:button", "Manage %1 Session", "Manage %1 Sessions", screencastSessions.rowCount)
-            icon.source: "video-display"
+            icon.name: "video-display"
             visible: screencastSessions.rowCount > 0
             onClicked: kcm.push("SessionList.qml", {"model": screencastSessions, "title": i18nc("@title:window %1 is the name of the application","%1 – Screencast Sessions", root.title)})
         }
@@ -270,7 +270,7 @@ still able to control mouse and keyboard or record the contents of your screen t
                 appId: root.appId
             }
             text: i18ncp("@action:button", "Manage %1 Session", "Manage %1 Sessions", remoteDesktopSessions.rowCount)
-            icon.source: "krfb"
+            icon.name: "krfb"
             visible: remoteDesktopSessions.rowCount > 0
             onClicked: kcm.push("SessionList.qml", {"model": remoteDesktopSessions, "title": i18nc("@title:window %1 is the name of the application", "%1 – Remote Desktop Sessions", root.title)})
         }

@@ -19,7 +19,7 @@ KCMUtils.ScrollViewKCM
     Kirigami.ColumnView.pinned: true
 
     property int currentIndex: 0;
-    property string currentAppId: undefined
+    property string currentAppId: ""
     KCMUtils.ConfigModule.onCurrentIndexChanged: (index) => {
         // Clicking on the back arrow while there are still unsaved changes
         if (KCMUtils.ConfigModule.needsSave && index != currentIndex) {
@@ -67,7 +67,7 @@ KCMUtils.ScrollViewKCM
             required property int index
             width: view.width
             text: model.display
-            icon.source: model.decoration
+            icon.name: model.decoration
             highlighted: model.appId === root.currentAppId
             onClicked: {
                 if (KCMUtils.ConfigModule.needsSave) {
