@@ -1,13 +1,13 @@
-# Copyright (C) YEAR This file is copyright:
+# Copyright (C) 2025 This file is copyright:
 # This file is distributed under the same license as the flatpak-kcm package.
-# Sergiu Bivol <sergiu@cip.md>, 2024.
+# SPDX-FileCopyrightText: 2024, 2025 Sergiu Bivol <sergiu@cip.md>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 14:41+0000\n"
-"PO-Revision-Date: 2024-01-07 18:07+0000\n"
+"PO-Revision-Date: 2025-12-12 11:13+0000\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
 "Language: ro\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
 "20)) ? 1 : 2;\n"
-"X-Generator: Lokalize 21.12.3\n"
+"X-Generator: Lokalize 25.08.1\n"
 
 #: autotests/flatpakpermissiontest.cpp:616
 #: autotests/flatpakpermissiontest.cpp:822 flatpakpermission.cpp:404
@@ -63,80 +63,67 @@ msgid "create"
 msgstr "creează"
 
 #: flatpakpermission.cpp:823
-#, fuzzy, kde-format
-#| msgid "Internet Connection"
+#, kde-format
 msgid "Internet connection"
 msgstr "Conexiune la internet"
 
 #: flatpakpermission.cpp:824
-#, fuzzy, kde-format
-#| msgid "Inter-process Communication"
+#, kde-format
 msgid "Inter-process communication"
 msgstr "Comunicare între procese"
 
 #: flatpakpermission.cpp:830
-#, fuzzy, kde-format
-#| msgid "X11 Windowing System"
+#, kde-format
 msgid "X11 windowing system"
 msgstr "Sistem de ferestre X11"
 
 #: flatpakpermission.cpp:831
-#, fuzzy, kde-format
-#| msgid "Wayland Windowing System"
+#, kde-format
 msgid "Wayland windowing system"
 msgstr "Sistem de ferestre Wayland"
 
 #: flatpakpermission.cpp:832
-#, fuzzy, kde-format
-#| msgid "Fallback to X11 Windowing System"
+#, kde-format
 msgid "Fallback to X11 windowing system"
 msgstr "Trecere de rezervă la sistemul de ferestre X11"
 
 #: flatpakpermission.cpp:833
-#, fuzzy, kde-format
-#| msgid "Pulseaudio Sound Server"
+#, kde-format
 msgid "Pulseaudio sound server"
 msgstr "Server de sunet PulseAudio"
 
 #: flatpakpermission.cpp:834
-#, fuzzy, kde-format
-#| msgid "Session Bus Access"
+#, kde-format
 msgid "Session bus access"
 msgstr "Acces la magistrala sesiunii"
 
 #: flatpakpermission.cpp:835
-#, fuzzy, kde-format
-#| msgid "System Bus Access"
+#, kde-format
 msgid "System bus access"
 msgstr "Acces la magistrala sistemului"
 
 #: flatpakpermission.cpp:836
-#, fuzzy, kde-format
-#| msgid "Remote Login Access"
+#, kde-format
 msgid "Remote login access"
 msgstr "Acces la autentificare distantă"
 
 #: flatpakpermission.cpp:837
-#, fuzzy, kde-format
-#| msgid "Smart Card Access"
+#, kde-format
 msgid "Smart card access"
 msgstr "Acces la Smart Card"
 
 #: flatpakpermission.cpp:838
-#, fuzzy, kde-format
-#| msgid "Print System Access"
+#, kde-format
 msgid "Print system access"
 msgstr "Acces la sistemul de tipărire"
 
 #: flatpakpermission.cpp:844
-#, fuzzy, kde-format
-#| msgid "Kernel-based Virtual Machine Access"
+#, kde-format
 msgid "Kernel-based Virtual Machine access"
 msgstr "Acces la mașina virtuală bazată în nucleu"
 
 #: flatpakpermission.cpp:845
-#, fuzzy, kde-format
-#| msgid "Direct Graphic Rendering"
+#, kde-format
 msgid "Direct graphic rendering"
 msgstr "Randare grafică directă"
 
@@ -146,20 +133,17 @@ msgid "Host dev/shm"
 msgstr "dev/shm pe gazdă"
 
 #: flatpakpermission.cpp:847
-#, fuzzy, kde-format
-#| msgid "Device Access"
+#, kde-format
 msgid "Device access"
 msgstr "Acces la dispozitive"
 
 #: flatpakpermission.cpp:853
-#, fuzzy, kde-format
-#| msgid "System Calls by Development Tools"
+#, kde-format
 msgid "System calls by development tools"
-msgstr "Apeluri de sistem de la instrumente de dezvoltare"
+msgstr "Apeluri de sistem de la unelte de dezvoltare"
 
 #: flatpakpermission.cpp:854
-#, fuzzy, kde-format
-#| msgid "Run Multiarch/Multilib Binaries"
+#, kde-format
 msgid "Run multiarch/multilib binaries"
 msgstr "Rulează binare Multiarch/Multilib"
 
@@ -169,8 +153,7 @@ msgid "Bluetooth"
 msgstr "Bluetooth"
 
 #: flatpakpermission.cpp:856
-#, fuzzy, kde-format
-#| msgid "Canbus Socket Access"
+#, kde-format
 msgid "Canbus socket access"
 msgstr "Acces la soclu Canbus"
 
@@ -182,26 +165,22 @@ msgstr ""
 "identificatorul utilizatorului"
 
 #: flatpakpermission.cpp:917
-#, fuzzy, kde-format
-#| msgid "All User Files"
+#, kde-format
 msgid "All user files"
 msgstr "Toate fișierele utilizatorului"
 
 #: flatpakpermission.cpp:918
-#, fuzzy, kde-format
-#| msgid "All System Files"
+#, kde-format
 msgid "All system files"
 msgstr "Toate fișierele sistemului"
 
 #: flatpakpermission.cpp:919
-#, fuzzy, kde-format
-#| msgid "All System Libraries, Executables and Binaries"
+#, kde-format
 msgid "All system libraries, executables and binaries"
 msgstr "Toate bibliotecile, executabilele și binarele sistemului"
 
 #: flatpakpermission.cpp:920
-#, fuzzy, kde-format
-#| msgid "All System Configurations"
+#, kde-format
 msgid "All system configurations"
 msgstr "Toate configurările sistemului"
 
@@ -279,64 +258,64 @@ msgstr "Adaugă o nouă variabilă de mediu"
 #, kde-format
 msgctxt "not an action but the ability to do so"
 msgid "Record the Screen"
-msgstr ""
+msgstr "Înregistrează ecranul"
 
 #: restoredatamodel.cpp:149
 #, kde-format
 msgctxt "not an action but the ability to do so"
 msgid "Control the Clipboard"
-msgstr ""
+msgstr "Controlează clipboard-ul"
 
 #: restoredatamodel.cpp:155
 #, kde-format
 msgctxt "Part of a list of things"
 msgid "Keyboard"
-msgstr ""
+msgstr "tastatură"
 
 #: restoredatamodel.cpp:158
 #, kde-format
 msgctxt "Part of a list of things"
 msgid "Mouse"
-msgstr ""
+msgstr "maus"
 
 #: restoredatamodel.cpp:161
 #, kde-format
 msgctxt "Part of a list of things"
 msgid "Touchscreen"
-msgstr ""
+msgstr "ecran tactil"
 
 #: restoredatamodel.cpp:164
 #, kde-format
 msgctxt "%1 is a list of things formed from above"
 msgid "Control %1"
-msgstr ""
+msgstr "Controlează %1"
 
 #: restoredatamodel.cpp:203
 #, kde-format
 msgctxt "%1 is the title of a window, %2 the name of an application"
 msgid "Window \"%1\" of %2"
-msgstr ""
+msgstr "Fereastra „%1” a %2"
 
 #: restoredatamodel.cpp:207
 #, kde-format
 msgid "Region at (%1,%2) with size %3x%4"
-msgstr ""
+msgstr "Regiune la (%1,%2) cu dimensiuni %3x%4"
 
 #: restoredatamodel.cpp:217
 #, kde-format
 msgid "Virtual Screen"
-msgstr ""
+msgstr "Ecran virtual"
 
 #: restoredatamodel.cpp:221
 #, kde-format
 msgid "The entire Workspace"
-msgstr ""
+msgstr "Tot spațiul de lucru"
 
 #: restoredatamodel.cpp:240
 #, kde-format
 msgctxt "%1 is the position of the screen"
 msgid "A disconnected Screen at %1"
-msgstr ""
+msgstr "Ecran deconectat la %1"
 
 #: ui/AddEnvironmentVariableDialog.qml:18
 #, kde-format
@@ -356,17 +335,13 @@ msgid "Value:"
 msgstr "Valoare:"
 
 #: ui/ApplyOrDiscardDialog.qml:21
-#, fuzzy, kde-format
-#| msgid "Apply Permissions"
+#, kde-format
 msgctxt "@title:window"
 msgid "Apply Permissions"
 msgstr "Aplică permisiunile"
 
 #: ui/ApplyOrDiscardDialog.qml:22
-#, fuzzy, kde-format
-#| msgid ""
-#| "The permissions of application %1 have been changed. Do you want to apply "
-#| "these changes or discard them?"
+#, kde-format
 msgctxt "@info dialog main text"
 msgid ""
 "The permissions of application %1 have been changed. Do you want to apply "
@@ -379,45 +354,40 @@ msgstr ""
 #, kde-format
 msgctxt "@title:window %1 is the name of the application"
 msgid "%1 – Flatpak Settings"
-msgstr ""
+msgstr "%1 – Configurări Flatpak"
 
 #: ui/FlatpakPermissions.qml:140
 #, kde-format
 msgctxt "@info accessible.description for list"
 msgid "Version %1"
-msgstr ""
+msgstr "Versiunea %1"
 
 #: ui/FlatpakPermissions.qml:182
-#, fuzzy, kde-format
-#| msgid "Hide advanced permissions"
+#, kde-format
 msgctxt "@action:button in section header"
 msgid "Hide advanced permissions"
 msgstr "Ascunde permisiunile avansate"
 
 #: ui/FlatpakPermissions.qml:182
-#, fuzzy, kde-format
-#| msgid "Show advanced permissions"
+#, kde-format
 msgctxt "@action:button in section header"
 msgid "Show advanced permissions"
 msgstr "Arată permisiunile avansate"
 
 #: ui/FlatpakPermissions.qml:194
-#, fuzzy, kde-format
-#| msgid "Add New"
+#, kde-format
 msgctxt "@action:button in section header"
 msgid "Add New…"
-msgstr "Adaugă nouă"
+msgstr "Adaugă nouă…"
 
 #: ui/FlatpakPermissions.qml:195
-#, fuzzy, kde-format
-#| msgid "Add Filesystem Path Permission"
+#, kde-format
 msgctxt "action:button accessible"
 msgid "Add New File System Permission"
-msgstr "Adaugă permisiune pentru cale din sistemul de fișiere"
+msgstr "Adaugă permisiune nouă pentru sistemul de fișiere"
 
 #: ui/main.qml:91
-#, fuzzy, kde-format
-#| msgid "Select an application from the list to view its permissions here"
+#, kde-format
 msgctxt "@info:placeholder"
 msgid "Select an application from the list to view its permissions here"
 msgstr "Alegeți o aplicație din listă pentru a-i vedea permisiunile aici"
@@ -426,7 +396,7 @@ msgstr "Alegeți o aplicație din listă pentru a-i vedea permisiunile aici"
 #, kde-format
 msgctxt "@action:intoolbar"
 msgid "Manage Flatpak Settings"
-msgstr ""
+msgstr "Gestionează configurările Flatpak"
 
 #: ui/Permissions.qml:52
 #, kde-format
@@ -436,30 +406,34 @@ msgid ""
 "off here they are still able to control mouse and keyboard or record the "
 "contents of your screen through the windowing system"
 msgstr ""
+"Aplicațiile cu bună purtare pot să respecte aceste configurări dar, chiar "
+"dacă le dezactivați aici, acestea pot oricum să controleze mausul și "
+"tastatura sau să înregistreze conținutul ecranului prin intermediul "
+"sistemului de ferestre"
 
 #: ui/Permissions.qml:65
 #, kde-format
 msgctxt "@label:group"
 msgid "General:"
-msgstr ""
+msgstr "Generale:"
 
 #: ui/Permissions.qml:67
 #, kde-format
 msgctxt "@option:check"
 msgid "Send notifications"
-msgstr ""
+msgstr "Trimite notificări"
 
 #: ui/Permissions.qml:84
 #, kde-format
 msgctxt "@option:check"
 msgid "Block automatic sleep and screen locking"
-msgstr ""
+msgstr "Blochează adormirea și blocarea automată a ecranului"
 
 #: ui/Permissions.qml:109
 #, kde-format
 msgctxt "@option:check"
 msgid "Activate game mode"
-msgstr ""
+msgstr "Activează regimul de joc"
 
 #: ui/Permissions.qml:120
 #, kde-kuit-format
@@ -468,119 +442,119 @@ msgid ""
 "Allows the application to activate game mode if you are using it on your "
 "system."
 msgstr ""
+"Permite aplicației să activeze regimul de joc dacă e folosit în sistem."
 
 #: ui/Permissions.qml:129
 #, kde-format
 msgctxt "@option:check"
 msgid "Gain higher process priority"
-msgstr ""
+msgstr "Obține o prioritate mai mare a procesului"
 
 #: ui/Permissions.qml:145
 #, kde-format
 msgctxt "@label:listbox"
 msgid "Take screenshots:"
-msgstr ""
+msgstr "Realizează capturi de ecran:"
 
 #: ui/Permissions.qml:153 ui/Permissions.qml:174 ui/Permissions.qml:194
 #: ui/Permissions.qml:225
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Ask Once"
-msgstr ""
+msgstr "Întreabă o dată"
 
 #: ui/Permissions.qml:154 ui/Permissions.qml:175 ui/Permissions.qml:226
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Deny"
-msgstr ""
+msgstr "Refuză"
 
 #: ui/Permissions.qml:155 ui/Permissions.qml:176 ui/Permissions.qml:227
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Allow"
-msgstr ""
+msgstr "Permite"
 
 #: ui/Permissions.qml:156 ui/Permissions.qml:177 ui/Permissions.qml:228
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Always Ask"
-msgstr ""
+msgstr "Întreabă întotdeauna"
 
 #: ui/Permissions.qml:166
-#, fuzzy, kde-format
-#| msgid "Smart Card Access"
+#, kde-format
 msgctxt "@title:group"
 msgid "Camera access:"
-msgstr "Acces la Smart Card"
+msgstr "Acces la cameră:"
 
 #: ui/Permissions.qml:187
 #, kde-format
 msgctxt "@label:listbox"
 msgid "Location accuracy:"
-msgstr ""
+msgstr "Precizia localizării:"
 
 #: ui/Permissions.qml:196
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Deny"
-msgstr ""
+msgstr "Refuză"
 
 #: ui/Permissions.qml:197
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Country"
-msgstr ""
+msgstr "Țară"
 
 #: ui/Permissions.qml:198
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "City"
-msgstr ""
+msgstr "Oraș"
 
 #: ui/Permissions.qml:199
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Neighborhood"
-msgstr ""
+msgstr "Vecinătate"
 
 #: ui/Permissions.qml:200
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Street"
-msgstr ""
+msgstr "Stradă"
 
 #: ui/Permissions.qml:201
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Exact"
-msgstr ""
+msgstr "Exactă"
 
 #: ui/Permissions.qml:217
 #, kde-format
 msgctxt "@label:listbox"
 msgid "Set desktop and lock screen background:"
-msgstr ""
+msgstr "Stabilește fundalul biroului și ecranului de blocare:"
 
 #: ui/Permissions.qml:241
 #, kde-format
 msgctxt "@label"
 msgid "Screen sharing:"
-msgstr ""
+msgstr "Partajarea ecranului:"
 
 #: ui/Permissions.qml:246 ui/Permissions.qml:272
 #, kde-format
 msgctxt "@action:button"
 msgid "Manage %1 Session"
 msgid_plural "Manage %1 Sessions"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Gestionează %1 sesiune"
+msgstr[1] "Gestionează %1 sesiuni"
+msgstr[2] "Gestionează %1 de sesiuni"
 
 #: ui/Permissions.qml:249
 #, kde-format
 msgctxt "@title:window %1 is the name of the application"
 msgid "%1 – Screencast Sessions"
-msgstr ""
+msgstr "%1 – Sesiuni de difuzare a ecranului"
 
 #: ui/Permissions.qml:254
 #, kde-format
@@ -588,7 +562,7 @@ msgctxt ""
 "@label 'Remote control' like in xdg-desktop-portal-kde remotedesktopdialog."
 "cpp"
 msgid " Remote control:"
-msgstr ""
+msgstr " Control de la distanță:"
 
 #: ui/Permissions.qml:257
 #, kde-format
@@ -596,18 +570,20 @@ msgctxt "@option:check"
 msgid ""
 "Control pointer & keyboard, and share screen with other apps without asking"
 msgstr ""
+"Controlează indicatorul și tastatura, partajează ecranul cu alte aplicații "
+"fără a întreba"
 
 #: ui/Permissions.qml:275
 #, kde-format
 msgctxt "@title:window %1 is the name of the application"
 msgid "%1 – Remote Desktop Sessions"
-msgstr ""
+msgstr "%1 – Sesiuni de birou la distanță"
 
 #: ui/SessionList.qml:49
 #, kde-format
 msgctxt "@action:button"
 msgid "Revoke"
-msgstr ""
+msgstr "Revocă"
 
 #: ui/TextPromptDialog.qml:21
 #, kde-format
@@ -625,22 +601,19 @@ msgid "Add System Bus Permission"
 msgstr "Adaugă permisiune pentru magistrala de sistem"
 
 #: ui/TextPromptDialog.qml:38
-#, fuzzy, kde-format
-#| msgid "Enter filesystem path…"
+#, kde-format
 msgid "Enter filesystem path:"
-msgstr "Introduceți calea din sistemul de fișiere…"
+msgstr "Introduceți calea din sistemul de fișiere:"
 
 #: ui/TextPromptDialog.qml:39
-#, fuzzy, kde-format
-#| msgid "Enter session bus name…"
+#, kde-format
 msgid "Enter session bus name:"
-msgstr "Introduceți denumirea magistralei de sesiune…"
+msgstr "Introduceți denumirea magistralei de sesiune:"
 
 #: ui/TextPromptDialog.qml:40
-#, fuzzy, kde-format
-#| msgid "Enter system bus name…"
+#, kde-format
 msgid "Enter system bus name:"
-msgstr "Introduceți denumirea magistralei de sistem…"
+msgstr "Introduceți denumirea magistralei de sistem:"
 
 #, fuzzy
 #~| msgid "Flatpak Applications"
