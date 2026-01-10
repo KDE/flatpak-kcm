@@ -1,13 +1,13 @@
 # Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the flatpak-kcm package.
 #
-# SPDX-FileCopyrightText: 2023, 2024, 2025 giovanni <g.sora@tiscali.it>
+# SPDX-FileCopyrightText: 2023, 2024, 2025, 2026 giovanni <g.sora@tiscali.it>
 msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 11:53+0000\n"
-"PO-Revision-Date: 2025-10-14 12:45+0200\n"
+"PO-Revision-Date: 2026-01-09 15:26+0100\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -255,13 +255,13 @@ msgstr "Adde un nove variabile de ambiente"
 #, kde-format
 msgctxt "not an action but the ability to do so"
 msgid "Record the Screen"
-msgstr ""
+msgstr "Registra le schermo"
 
 #: restoredatamodel.cpp:149
 #, kde-format
 msgctxt "not an action but the ability to do so"
 msgid "Control the Clipboard"
-msgstr ""
+msgstr "Controla le Area de Transferentia"
 
 #: restoredatamodel.cpp:155
 #, kde-format
@@ -282,37 +282,37 @@ msgid "Touchscreen"
 msgstr "Schermo tactile"
 
 #: restoredatamodel.cpp:164
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "%1 is a list of things formed from above"
 msgid "Control %1"
-msgstr "Controlo"
+msgstr "Controlo %1"
 
 #: restoredatamodel.cpp:203
 #, kde-format
 msgctxt "%1 is the title of a window, %2 the name of an application"
 msgid "Window \"%1\" of %2"
-msgstr ""
+msgstr "Fenestra \"%1\" de  %2"
 
 #: restoredatamodel.cpp:207
 #, kde-format
 msgid "Region at (%1,%2) with size %3x%4"
-msgstr ""
+msgstr "Region a (%1,%2) con grandor %3x%4"
 
 #: restoredatamodel.cpp:217
 #, kde-format
 msgid "Virtual Screen"
-msgstr ""
+msgstr "Schermo Virtual"
 
 #: restoredatamodel.cpp:221
 #, kde-format
 msgid "The entire Workspace"
-msgstr ""
+msgstr "Le integre Spatio de Labor"
 
 #: restoredatamodel.cpp:240
 #, kde-format
 msgctxt "%1 is the position of the screen"
 msgid "A disconnected Screen at %1"
-msgstr ""
+msgstr "Un schermo disconnecteva a %1"
 
 #: ui/AddEnvironmentVariableDialog.qml:18
 #, kde-format
@@ -351,7 +351,7 @@ msgstr ""
 #, kde-format
 msgctxt "@title:window %1 is the name of the application"
 msgid "%1 – Flatpak Settings"
-msgstr ""
+msgstr "%1 – Preferentias de Flatpak"
 
 #: ui/FlatpakPermissions.qml:142
 #, kde-format
@@ -378,11 +378,10 @@ msgid "Add New…"
 msgstr "Adde Nove …"
 
 #: ui/FlatpakPermissions.qml:197
-#, fuzzy, kde-format
-#| msgid "Add Filesystem Path Permission"
+#, kde-format
 msgctxt "action:button accessible"
 msgid "Add New File System Permission"
-msgstr "Adde Permission de Percurso de Systema de File"
+msgstr "Adde Nove Permission de Systema de File"
 
 #: ui/main.qml:91
 #, kde-format
@@ -394,7 +393,7 @@ msgstr "Selige un application ex le lista per vider su permissiones hic"
 #, kde-format
 msgctxt "@action:intoolbar"
 msgid "Manage Flatpak Settings"
-msgstr ""
+msgstr "Gere Preferentias de Flatpack"
 
 #: ui/Permissions.qml:52
 #, kde-format
@@ -457,13 +456,13 @@ msgid "Ask Once"
 msgstr ""
 
 #: ui/Permissions.qml:154 ui/Permissions.qml:175 ui/Permissions.qml:226
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@item:inlistbox"
 msgid "Deny"
 msgstr "Nega"
 
 #: ui/Permissions.qml:155 ui/Permissions.qml:176 ui/Permissions.qml:227
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@item:inlistbox"
 msgid "Allow"
 msgstr "Permitte"
@@ -475,11 +474,10 @@ msgid "Always Ask"
 msgstr "Demanda sempre"
 
 #: ui/Permissions.qml:166
-#, fuzzy, kde-format
-#| msgid "Smart card access"
+#, kde-format
 msgctxt "@title:group"
 msgid "Camera access:"
-msgstr "Accesso de Carta Intelligente (Smart Card)"
+msgstr "Accesso de Camera:"
 
 #: ui/Permissions.qml:187
 #, kde-format
@@ -488,13 +486,13 @@ msgid "Location accuracy:"
 msgstr ""
 
 #: ui/Permissions.qml:196
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Deny"
 msgstr "Nega"
 
 #: ui/Permissions.qml:197
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Country"
 msgstr "Pais"
@@ -530,18 +528,18 @@ msgid "Set desktop and lock screen background:"
 msgstr ""
 
 #: ui/Permissions.qml:241
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@label"
 msgid "Screen sharing:"
-msgstr "Compartir de schermo"
+msgstr "Compartir de schermo:"
 
 #: ui/Permissions.qml:246 ui/Permissions.qml:272
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@action:button"
 msgid "Manage %1 Session"
 msgid_plural "Manage %1 Sessions"
-msgstr[0] "Gere session"
-msgstr[1] "Administra sessiones"
+msgstr[0] "Gere %1 Session"
+msgstr[1] "Gere %1 sessiones"
 
 #: ui/Permissions.qml:249
 #, kde-format
@@ -550,12 +548,12 @@ msgid "%1 – Screencast Sessions"
 msgstr ""
 
 #: ui/Permissions.qml:254
-#, fuzzy, kde-format
+#, kde-format
 msgctxt ""
 "@label 'Remote control' like in xdg-desktop-portal-kde remotedesktopdialog."
 "cpp"
 msgid " Remote control:"
-msgstr "Controlo remote o teleguidage"
+msgstr "Controlo remote :"
 
 #: ui/Permissions.qml:257
 #, kde-format

@@ -559,7 +559,7 @@ msgstr "远程控制："
 msgctxt "@option:check"
 msgid ""
 "Control pointer & keyboard, and share screen with other apps without asking"
-msgstr "控制光标和键盘，与其他应用共享屏幕而不询问。"
+msgstr "控制指针和键盘，与其他应用共享屏幕而不询问。"
 
 #: ui/Permissions.qml:275
 #, kde-format
