@@ -616,15 +616,3 @@ msgstr "Introduïu el nom de bus de sessió:"
 #, kde-format
 msgid "Enter system bus name:"
 msgstr "Introduïu el nom de bus de sistema:"
-
-#~ msgctxt "@info accessible.description for list"
-#~ msgid "Version %1"
-#~ msgstr "Versió %1"
-
-#~ msgctxt "@window:title"
-#~ msgid "Flatpak Applications"
-#~ msgstr "Aplicacions Flatpak"
-
-#~ msgctxt "@title:window"
-#~ msgid "Permissions"
-#~ msgstr "Permisos"
