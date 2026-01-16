@@ -14,8 +14,8 @@ msgstr ""
 "X-Crowdin-Project: kdeorg\n"
 "X-Crowdin-Project-ID: 269464\n"
 "X-Crowdin-Language: zh-CN\n"
-"X-Crowdin-File: /kf6-trunk/messages/flatpak-kcm/kcm_app-permissions.pot\n"
-"X-Crowdin-File-ID: 58496\n"
+"X-Crowdin-File: /kf6-stable/messages/flatpak-kcm/kcm_app-permissions.pot\n"
+"X-Crowdin-File-ID: 58498\n"
 
 #: autotests/flatpakpermissiontest.cpp:615
 #: autotests/flatpakpermissiontest.cpp:821 flatpakpermission.cpp:404
