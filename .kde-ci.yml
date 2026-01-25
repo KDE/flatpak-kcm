@@ -13,3 +13,4 @@ Dependencies:
     'frameworks/kitemmodels': '@latest-kf6'
 Options:
  require-passing-tests-on: ['Linux']
+ enable-lsan: True
