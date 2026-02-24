@@ -44,6 +44,7 @@ public:
         return QAbstractItemModel::hasChildren(index);
     }
     Q_INVOKABLE void revoke(const QString &id) const;
+    Q_INVOKABLE void revokeAll() const;
 Q_SIGNALS:
     void rowCountChanged();
 

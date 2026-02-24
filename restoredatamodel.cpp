@@ -134,6 +134,13 @@ void RestoreDataModel::revoke(const QString &id) const
     }
 }
 
+void RestoreDataModel::revokeAll() const
+{
+    for (const Data &data : m_entries) {
+        permissionStore->deleteResource(table, data.id);
+    }
+}
+
 RemoteDesktopSessionsModel::RemoteDesktopSessionsModel()
 {
     table = "remote-desktop"_L1;

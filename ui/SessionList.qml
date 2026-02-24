@@ -52,5 +52,13 @@ KCMUtils.ScrollViewKCM {
             }
         }
     }
-}
 
+    actions: [
+        Kirigami.Action {
+            id: revokeAll
+            icon.name: "list-remove-symbolic"
+            text: i18nc("@action:button revoke all screencasting/screen sharing sessions", "Revoke All")
+            onTriggered: model.revokeAll()
+        }
+    ]
+}
