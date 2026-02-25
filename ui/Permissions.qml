@@ -63,6 +63,7 @@ still able to control mouse and keyboard or record the contents of your screen t
         QQC.Switch {
             id: notificationsSwitch
             Kirigami.FormData.label: i18nc("@label:group", "General:")
+            Kirigami.FormData.labelAlignment: Qt.AlignTop
             visible: !root.isHostApp
             text: i18nc("@option:check", "Send notifications")
             Layout.fillWidth: true
@@ -252,6 +253,7 @@ still able to control mouse and keyboard or record the contents of your screen t
         QQC.Switch {
             id: remoteControlSwitch
             Kirigami.FormData.label: i18nc("@label 'Remote control' like in xdg-desktop-portal-kde remotedesktopdialog.cpp", " Remote control:")
+            Kirigami.FormData.labelAlignment: Qt.AlignTop
             Layout.fillWidth: true
             Layout.maximumWidth: controlsLayout.switchMaxWidth
             text: i18nc("@option:check", "Control pointer & keyboard, and share screen with other apps without asking")
