@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:53+0000\n"
+"POT-Creation-Date: 2026-02-25 00:48+0000\n"
 "PO-Revision-Date: 2024-04-22 15:58\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -251,64 +251,64 @@ msgstr "添加新的系统总线"
 msgid "Add a new environment variable"
 msgstr "添加新的环境变量"
 
-#: restoredatamodel.cpp:146
+#: restoredatamodel.cpp:153
 #, kde-format
 msgctxt "not an action but the ability to do so"
 msgid "Record the Screen"
 msgstr "录制屏幕"
 
-#: restoredatamodel.cpp:149
+#: restoredatamodel.cpp:156
 #, kde-format
 msgctxt "not an action but the ability to do so"
 msgid "Control the Clipboard"
 msgstr "控制剪贴板"
 
-#: restoredatamodel.cpp:155
+#: restoredatamodel.cpp:162
 #, kde-format
 msgctxt "Part of a list of things"
 msgid "Keyboard"
 msgstr "键盘"
 
-#: restoredatamodel.cpp:158
+#: restoredatamodel.cpp:165
 #, kde-format
 msgctxt "Part of a list of things"
 msgid "Mouse"
 msgstr "鼠标"
 
-#: restoredatamodel.cpp:161
+#: restoredatamodel.cpp:168
 #, kde-format
 msgctxt "Part of a list of things"
 msgid "Touchscreen"
 msgstr "触摸屏"
 
-#: restoredatamodel.cpp:164
+#: restoredatamodel.cpp:171
 #, kde-format
 msgctxt "%1 is a list of things formed from above"
 msgid "Control %1"
 msgstr "控制 %1"
 
-#: restoredatamodel.cpp:203
+#: restoredatamodel.cpp:210
 #, kde-format
 msgctxt "%1 is the title of a window, %2 the name of an application"
 msgid "Window \"%1\" of %2"
 msgstr "窗口“%1”，来自 %2"
 
-#: restoredatamodel.cpp:207
+#: restoredatamodel.cpp:214
 #, kde-format
 msgid "Region at (%1,%2) with size %3x%4"
 msgstr "区域位置 (%1,%2)，大小 %3x%4"
 
-#: restoredatamodel.cpp:217
+#: restoredatamodel.cpp:224
 #, kde-format
 msgid "Virtual Screen"
 msgstr "虚拟屏幕"
 
-#: restoredatamodel.cpp:221
+#: restoredatamodel.cpp:228
 #, kde-format
 msgid "The entire Workspace"
 msgstr "整个工作区"
 
-#: restoredatamodel.cpp:240
+#: restoredatamodel.cpp:247
 #, kde-format
 msgctxt "%1 is the position of the screen"
 msgid "A disconnected Screen at %1"
@@ -571,6 +571,14 @@ msgstr "%1 – 远程桌面会话"
 #, kde-format
 msgctxt "@action:button"
 msgid "Revoke"
+msgstr "撤销"
+
+#: ui/SessionList.qml:60
+#, fuzzy, kde-format
+#| msgctxt "@action:button"
+#| msgid "Revoke"
+msgctxt "@action:button revoke all screencasting/screen sharing sessions"
+msgid "Revoke All"
 msgstr "撤销"
 
 #: ui/TextPromptDialog.qml:21

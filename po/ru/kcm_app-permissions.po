@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:53+0000\n"
+"POT-Creation-Date: 2026-02-25 00:48+0000\n"
 "PO-Revision-Date: 2025-12-23 19:53+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -253,64 +253,64 @@ msgstr "Создать правило доступа к системной ши�
 msgid "Add a new environment variable"
 msgstr "Создать переменную окружения"
 
-#: restoredatamodel.cpp:146
+#: restoredatamodel.cpp:153
 #, kde-format
 msgctxt "not an action but the ability to do so"
 msgid "Record the Screen"
 msgstr "Запись экрана"
 
-#: restoredatamodel.cpp:149
+#: restoredatamodel.cpp:156
 #, kde-format
 msgctxt "not an action but the ability to do so"
 msgid "Control the Clipboard"
 msgstr "Управление буфером обмена"
 
-#: restoredatamodel.cpp:155
+#: restoredatamodel.cpp:162
 #, kde-format
 msgctxt "Part of a list of things"
 msgid "Keyboard"
 msgstr "Клавиатура"
 
-#: restoredatamodel.cpp:158
+#: restoredatamodel.cpp:165
 #, kde-format
 msgctxt "Part of a list of things"
 msgid "Mouse"
 msgstr "Мышь"
 
-#: restoredatamodel.cpp:161
+#: restoredatamodel.cpp:168
 #, kde-format
 msgctxt "Part of a list of things"
 msgid "Touchscreen"
 msgstr "Сенсорный экран"
 
-#: restoredatamodel.cpp:164
+#: restoredatamodel.cpp:171
 #, kde-format
 msgctxt "%1 is a list of things formed from above"
 msgid "Control %1"
 msgstr "Управление %1"
 
-#: restoredatamodel.cpp:203
+#: restoredatamodel.cpp:210
 #, kde-format
 msgctxt "%1 is the title of a window, %2 the name of an application"
 msgid "Window \"%1\" of %2"
 msgstr "Окно «%1» приложения «%2»"
 
-#: restoredatamodel.cpp:207
+#: restoredatamodel.cpp:214
 #, kde-format
 msgid "Region at (%1,%2) with size %3x%4"
 msgstr "Область с координатами %1,%2 размером %3x%4"
 
-#: restoredatamodel.cpp:217
+#: restoredatamodel.cpp:224
 #, kde-format
 msgid "Virtual Screen"
 msgstr "Виртуальный экран"
 
-#: restoredatamodel.cpp:221
+#: restoredatamodel.cpp:228
 #, kde-format
 msgid "The entire Workspace"
 msgstr "Весь рабочий стол"
 
-#: restoredatamodel.cpp:240
+#: restoredatamodel.cpp:247
 #, kde-format
 msgctxt "%1 is the position of the screen"
 msgid "A disconnected Screen at %1"
@@ -584,6 +584,14 @@ msgstr "%1 — сеансы удалённого рабочего стола"
 #, kde-format
 msgctxt "@action:button"
 msgid "Revoke"
+msgstr "Отозвать"
+
+#: ui/SessionList.qml:60
+#, fuzzy, kde-format
+#| msgctxt "@action:button"
+#| msgid "Revoke"
+msgctxt "@action:button revoke all screencasting/screen sharing sessions"
+msgid "Revoke All"
 msgstr "Отозвать"
 
 #: ui/TextPromptDialog.qml:21
