@@ -57,7 +57,7 @@ still able to control mouse and keyboard or record the contents of your screen t
 
     Kirigami.FormLayout {
         id: controlsLayout
-        readonly property double comboboxPreferredWidth: Math.max(screenshotCombobox.implicitWidth, cameraCombobox.implicitWidth, locationCombobox.implicitWidth)
+        readonly property double buttonLikePreferredWidth: Math.max(screenshotCombobox.implicitWidth, cameraCombobox.implicitWidth, locationCombobox.implicitWidth, remoteDesktopButton.implicitWidth, screencastButton.implicitWidth)
         readonly property double switchMaxWidth: Math.max(notificationsSwitch.implicitWidth, powerManagementSwitch.implicitWidth, gameModeSwitch.implicitWidth, highProcessPrioritySwitch.implicitWidth)
 
         QQC.Switch {
@@ -144,7 +144,7 @@ still able to control mouse and keyboard or record the contents of your screen t
         PermissionCombobox {
             id: screenshotCombobox
             Kirigami.FormData.label: i18nc("@label:listbox", "Take screenshots:")
-            Layout.preferredWidth: parent.comboboxPreferredWidth
+            Layout.preferredWidth: parent.buttonLikePreferredWidth
             PermissionItem {
                 id: screenshotPermission
                 table: "screenshot"
@@ -165,7 +165,7 @@ still able to control mouse and keyboard or record the contents of your screen t
             id: cameraCombobox
             visible: !root.isHostApp
             Kirigami.FormData.label: i18nc("@title:group", "Camera access:")
-            Layout.preferredWidth: parent.comboboxPreferredWidth
+            Layout.preferredWidth: parent.buttonLikePreferredWidth
             PermissionItem {
                 id: cameraPermission
                 table: "devices"
@@ -186,7 +186,7 @@ still able to control mouse and keyboard or record the contents of your screen t
             id: locationCombobox
             visible: !root.isHostApp
             Kirigami.FormData.label: i18nc("@label:listbox", "Location accuracy:")
-            Layout.preferredWidth: parent.comboboxPreferredWidth
+            Layout.preferredWidth: parent.buttonLikePreferredWidth
             PermissionItem {
                 id: locationPermission
                 table: "location"
@@ -216,7 +216,7 @@ still able to control mouse and keyboard or record the contents of your screen t
             id: wallpaperCombobox
             visible: !root.isHostApp
             Kirigami.FormData.label: i18nc("@label:listbox", "Set desktop and lock screen background:")
-            Layout.preferredWidth: parent.comboboxPreferredWidth
+            Layout.preferredWidth: parent.buttonLikePreferredWidth
             PermissionItem {
                 id: wallpaperPermission
                 table: "wallpaper"
@@ -239,7 +239,9 @@ still able to control mouse and keyboard or record the contents of your screen t
         }
 
         QQC.Button {
+            id: screencastButton
             Kirigami.FormData.label: i18nc("@label", "Screen sharing:")
+            Layout.preferredWidth: parent.buttonLikePreferredWidth
             KCM.ScreencastSessionsModel {
                 id: screencastSessions
                 appId: root.appId
@@ -266,7 +268,9 @@ still able to control mouse and keyboard or record the contents of your screen t
             onToggled: remoteDesktopKdeAuthorized.permissions = checked ? ["yes"] : ["no"]
         }
         QQC.Button {
+            id: remoteDesktopButton
             enabled: !remoteControlSwitch.checked
+            Layout.preferredWidth: parent.buttonLikePreferredWidth
             KCM.RemoteDesktopSessionsModel {
                 id: remoteDesktopSessions
                 appId: root.appId
