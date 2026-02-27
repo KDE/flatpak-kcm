@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-02-26 00:45+0000\n"
+"POT-Creation-Date: 2026-02-27 00:45+0000\n"
 "PO-Revision-Date: 2026-02-25 06:20+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -534,13 +534,13 @@ msgctxt "@label:listbox"
 msgid "Set desktop and lock screen background:"
 msgstr "Nastavitev ozadja namizja in zaklenjenega zaslona:"
 
-#: ui/Permissions.qml:242
+#: ui/Permissions.qml:243
 #, kde-format
 msgctxt "@label"
 msgid "Screen sharing:"
 msgstr "Deljenje zaslona:"
 
-#: ui/Permissions.qml:247 ui/Permissions.qml:274
+#: ui/Permissions.qml:249 ui/Permissions.qml:278
 #, kde-format
 msgctxt "@action:button"
 msgid "Manage %1 Session"
@@ -550,13 +550,13 @@ msgstr[1] "Upravljaj %1 sejo"
 msgstr[2] "Upravljaj %1 seji"
 msgstr[3] "Upravljaj %1 seje"
 
-#: ui/Permissions.qml:250
+#: ui/Permissions.qml:252
 #, kde-format
 msgctxt "@title:window %1 is the name of the application"
 msgid "%1 – Screencast Sessions"
 msgstr "%1 – Seje video posnetkov zaslona"
 
-#: ui/Permissions.qml:255
+#: ui/Permissions.qml:257
 #, kde-format
 msgctxt ""
 "@label 'Remote control' like in xdg-desktop-portal-kde remotedesktopdialog."
@@ -564,7 +564,7 @@ msgctxt ""
 msgid " Remote control:"
 msgstr " Oddaljeno upravljanje:"
 
-#: ui/Permissions.qml:259
+#: ui/Permissions.qml:261
 #, kde-format
 msgctxt "@option:check"
 msgid ""
@@ -573,7 +573,7 @@ msgstr ""
 "Upravljajte kazalec in tipkovnico ter delite zaslon z drugimi aplikacijami "
 "brez vprašanj"
 
-#: ui/Permissions.qml:277
+#: ui/Permissions.qml:281
 #, kde-format
 msgctxt "@title:window %1 is the name of the application"
 msgid "%1 – Remote Desktop Sessions"

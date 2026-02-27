@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-02-26 00:45+0000\n"
+"POT-Creation-Date: 2026-02-27 00:45+0000\n"
 "PO-Revision-Date: 2025-09-25 13:00+0300\n"
 "Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
@@ -532,13 +532,13 @@ msgctxt "@label:listbox"
 msgid "Set desktop and lock screen background:"
 msgstr "Iestatīt darbvirsmas un bloķēšanas ekrāna tapeti:"
 
-#: ui/Permissions.qml:242
+#: ui/Permissions.qml:243
 #, kde-format
 msgctxt "@label"
 msgid "Screen sharing:"
 msgstr "Ekrāna kopīgošana:"
 
-#: ui/Permissions.qml:247 ui/Permissions.qml:274
+#: ui/Permissions.qml:249 ui/Permissions.qml:278
 #, kde-format
 msgctxt "@action:button"
 msgid "Manage %1 Session"
@@ -547,13 +547,13 @@ msgstr[0] "Pārvaldīt %1 sesiju"
 msgstr[1] "Pārvaldīt %1 sesijas"
 msgstr[2] "Pārvaldīt %1 sesiju"
 
-#: ui/Permissions.qml:250
+#: ui/Permissions.qml:252
 #, kde-format
 msgctxt "@title:window %1 is the name of the application"
 msgid "%1 – Screencast Sessions"
 msgstr "%1 — ekrānieraksta sesijas"
 
-#: ui/Permissions.qml:255
+#: ui/Permissions.qml:257
 #, kde-format
 msgctxt ""
 "@label 'Remote control' like in xdg-desktop-portal-kde remotedesktopdialog."
@@ -561,7 +561,7 @@ msgctxt ""
 msgid " Remote control:"
 msgstr " Attālā pārvaldība:"
 
-#: ui/Permissions.qml:259
+#: ui/Permissions.qml:261
 #, kde-format
 msgctxt "@option:check"
 msgid ""
@@ -570,7 +570,7 @@ msgstr ""
 "Pārvaldīt peles rādītāju un tastatūru un kopīgot ekrānu ar citām programmām "
 "bez vaicāšanas"
 
-#: ui/Permissions.qml:277
+#: ui/Permissions.qml:281
 #, kde-format
 msgctxt "@title:window %1 is the name of the application"
 msgid "%1 – Remote Desktop Sessions"

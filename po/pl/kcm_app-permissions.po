@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-02-26 00:45+0000\n"
+"POT-Creation-Date: 2026-02-27 00:45+0000\n"
 "PO-Revision-Date: 2025-12-06 15:12+0100\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: pl\n"
@@ -534,13 +534,13 @@ msgctxt "@label:listbox"
 msgid "Set desktop and lock screen background:"
 msgstr "Ustaw tło pulpitu i ekranu blokady:"
 
-#: ui/Permissions.qml:242
+#: ui/Permissions.qml:243
 #, kde-format
 msgctxt "@label"
 msgid "Screen sharing:"
 msgstr "Udostępnianie ekranu:"
 
-#: ui/Permissions.qml:247 ui/Permissions.qml:274
+#: ui/Permissions.qml:249 ui/Permissions.qml:278
 #, kde-format
 msgctxt "@action:button"
 msgid "Manage %1 Session"
@@ -549,13 +549,13 @@ msgstr[0] "Zarządzanie %1 posiedzeniem"
 msgstr[1] "Zarządzanie %1 posiedzeniami"
 msgstr[2] "Zarządzanie %1 posiedzeniami"
 
-#: ui/Permissions.qml:250
+#: ui/Permissions.qml:252
 #, kde-format
 msgctxt "@title:window %1 is the name of the application"
 msgid "%1 – Screencast Sessions"
 msgstr "%1 – Posiedzenia udostępniania ekranu"
 
-#: ui/Permissions.qml:255
+#: ui/Permissions.qml:257
 #, kde-format
 msgctxt ""
 "@label 'Remote control' like in xdg-desktop-portal-kde remotedesktopdialog."
@@ -563,7 +563,7 @@ msgctxt ""
 msgid " Remote control:"
 msgstr " Zdalne sterowanie:"
 
-#: ui/Permissions.qml:259
+#: ui/Permissions.qml:261
 #, kde-format
 msgctxt "@option:check"
 msgid ""
@@ -572,7 +572,7 @@ msgstr ""
 "Sterowanie myszą, klawiaturą i udostępnianiem ekranu innym aplikacjom bez "
 "pytania"
 
-#: ui/Permissions.qml:277
+#: ui/Permissions.qml:281
 #, kde-format
 msgctxt "@title:window %1 is the name of the application"
 msgid "%1 – Remote Desktop Sessions"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-02-26 00:45+0000\n"
+"POT-Creation-Date: 2026-02-27 00:45+0000\n"
 "PO-Revision-Date: 2025-12-20 20:40+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -535,13 +535,13 @@ msgctxt "@label:listbox"
 msgid "Set desktop and lock screen background:"
 msgstr "Nustatyti darbalaukio ir ekrano užrakto foną:"
 
-#: ui/Permissions.qml:242
+#: ui/Permissions.qml:243
 #, kde-format
 msgctxt "@label"
 msgid "Screen sharing:"
 msgstr "Ekrano bendrinimas:"
 
-#: ui/Permissions.qml:247 ui/Permissions.qml:274
+#: ui/Permissions.qml:249 ui/Permissions.qml:278
 #, kde-format
 msgctxt "@action:button"
 msgid "Manage %1 Session"
@@ -551,13 +551,13 @@ msgstr[1] "Tvarkyti %1 seansus"
 msgstr[2] "Tvarkyti %1 seansų"
 msgstr[3] "Tvarkyti %1 seansą"
 
-#: ui/Permissions.qml:250
+#: ui/Permissions.qml:252
 #, kde-format
 msgctxt "@title:window %1 is the name of the application"
 msgid "%1 – Screencast Sessions"
 msgstr "%1 – Ekrano įrašinėjimo seansai"
 
-#: ui/Permissions.qml:255
+#: ui/Permissions.qml:257
 #, kde-format
 msgctxt ""
 "@label 'Remote control' like in xdg-desktop-portal-kde remotedesktopdialog."
@@ -565,7 +565,7 @@ msgctxt ""
 msgid " Remote control:"
 msgstr " Nuotolinis valdymas:"
 
-#: ui/Permissions.qml:259
+#: ui/Permissions.qml:261
 #, kde-format
 msgctxt "@option:check"
 msgid ""
@@ -574,7 +574,7 @@ msgstr ""
 "Valdyti pelės rodyklę ir klaviatūrą bei bendrinti ekraną su kitomis "
 "programomis neatsiklausus"
 
-#: ui/Permissions.qml:277
+#: ui/Permissions.qml:281
 #, kde-format
 msgctxt "@title:window %1 is the name of the application"
 msgid "%1 – Remote Desktop Sessions"
