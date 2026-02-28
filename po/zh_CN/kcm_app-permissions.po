@@ -577,7 +577,7 @@ msgstr "撤销"
 #, kde-format
 msgctxt "@action:button revoke all screencasting/screen sharing sessions"
 msgid "Revoke All"
-msgstr ""
+msgstr "撤销所有"
 
 #: ui/TextPromptDialog.qml:21
 #, kde-format

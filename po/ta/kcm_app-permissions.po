@@ -1,13 +1,13 @@
 # Copyright (C) 2025 This file is copyright:
 # This file is distributed under the same license as the flatpak-kcm package.
 #
-# SPDX-FileCopyrightText: 2023, 2025 Kishore G <kishore96@gmail.com>
+# SPDX-FileCopyrightText: 2023, 2025, 2026 Kishore G <kishore96@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-02-27 00:45+0000\n"
-"PO-Revision-Date: 2025-09-28 15:13+0530\n"
+"PO-Revision-Date: 2026-02-27 21:12+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-l10n-ta@kde.org>\n"
 "Language: ta\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 25.08.1\n"
+"X-Generator: Lokalize 25.12.2\n"
 
 #: autotests/flatpakpermissiontest.cpp:615
 #: autotests/flatpakpermissiontest.cpp:821 flatpakpermission.cpp:404
@@ -144,10 +144,9 @@ msgid "System calls by development tools"
 msgstr "உருவாக்க நிரல்கள் பயன்படுத்தும் கருனி அம்சங்கள்"
 
 #: flatpakpermission.cpp:854
-#, fuzzy, kde-format
-#| msgid "Run Multiarch/Multilib Binaries"
+#, kde-format
 msgid "Run multiarch/multilib binaries"
-msgstr "மற்ற கட்டமைப்புகளுக்கான நிரல்களை இயக்குவது"
+msgstr "மற்ற கணிப்பிகளுக்கான நிரல்களை இயக்குவது"
 
 #: flatpakpermission.cpp:855
 #, kde-format
@@ -582,12 +581,10 @@ msgid "Revoke"
 msgstr "திரும்பப்பெறு"
 
 #: ui/SessionList.qml:60
-#, fuzzy, kde-format
-#| msgctxt "@action:button"
-#| msgid "Revoke"
+#, kde-format
 msgctxt "@action:button revoke all screencasting/screen sharing sessions"
 msgid "Revoke All"
-msgstr "திரும்பப்பெறு"
+msgstr "அனைத்தையும் திரும்பப்பெறு"
 
 #: ui/TextPromptDialog.qml:21
 #, kde-format
