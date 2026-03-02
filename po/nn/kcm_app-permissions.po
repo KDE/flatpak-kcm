@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-02-27 02:48+0000\n"
-"PO-Revision-Date: 2024-09-01 15:18+0200\n"
+"PO-Revision-Date: 2026-03-01 20:14+0100\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
 "Language: nn\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.08.0\n"
+"X-Generator: Lokalize 26.03.70\n"
 "X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
@@ -260,64 +260,64 @@ msgstr "Legg til ny miljøvariabel"
 #, kde-format
 msgctxt "not an action but the ability to do so"
 msgid "Record the Screen"
-msgstr ""
+msgstr "Ta skjermopptak"
 
 #: restoredatamodel.cpp:149
 #, kde-format
 msgctxt "not an action but the ability to do so"
 msgid "Control the Clipboard"
-msgstr ""
+msgstr "Kontrollera utklippstavla"
 
 #: restoredatamodel.cpp:155
 #, kde-format
 msgctxt "Part of a list of things"
 msgid "Keyboard"
-msgstr ""
+msgstr "Tastatur"
 
 #: restoredatamodel.cpp:158
 #, kde-format
 msgctxt "Part of a list of things"
 msgid "Mouse"
-msgstr ""
+msgstr "Mus"
 
 #: restoredatamodel.cpp:161
 #, kde-format
 msgctxt "Part of a list of things"
 msgid "Touchscreen"
-msgstr ""
+msgstr "Trykkskjerm"
 
 #: restoredatamodel.cpp:164
 #, kde-format
 msgctxt "%1 is a list of things formed from above"
 msgid "Control %1"
-msgstr ""
+msgstr "Kontroller %1"
 
 #: restoredatamodel.cpp:203
 #, kde-format
 msgctxt "%1 is the title of a window, %2 the name of an application"
 msgid "Window \"%1\" of %2"
-msgstr ""
+msgstr "Vindauge «%1» av %2"
 
 #: restoredatamodel.cpp:207
 #, kde-format
 msgid "Region at (%1,%2) with size %3x%4"
-msgstr ""
+msgstr "Område ved (%1, %2) med storleik %3 × %4"
 
 #: restoredatamodel.cpp:217
 #, kde-format
 msgid "Virtual Screen"
-msgstr ""
+msgstr "Virtuell skjerm"
 
 #: restoredatamodel.cpp:221
 #, kde-format
 msgid "The entire Workspace"
-msgstr ""
+msgstr "Heile arbeidsområdet"
 
 #: restoredatamodel.cpp:240
 #, kde-format
 msgctxt "%1 is the position of the screen"
 msgid "A disconnected Screen at %1"
-msgstr ""
+msgstr "Ein fråkopla skjerm på %1"
 
 #: ui/AddEnvironmentVariableDialog.qml:18
 #, kde-format
@@ -337,17 +337,13 @@ msgid "Value:"
 msgstr "Verdi:"
 
 #: ui/ApplyOrDiscardDialog.qml:21
-#, fuzzy, kde-format
-#| msgid "Apply Permissions"
+#, kde-format
 msgctxt "@title:window"
 msgid "Apply Permissions"
 msgstr "Ta i bruk løyve"
 
 #: ui/ApplyOrDiscardDialog.qml:22
-#, fuzzy, kde-format
-#| msgid ""
-#| "The permissions of application %1 have been changed. Do you want to apply "
-#| "these changes or discard them?"
+#, kde-format
 msgctxt "@info dialog main text"
 msgid ""
 "The permissions of application %1 have been changed. Do you want to apply "
@@ -360,45 +356,40 @@ msgstr ""
 #, kde-format
 msgctxt "@title:window %1 is the name of the application"
 msgid "%1 – Flatpak Settings"
-msgstr ""
+msgstr "%1 – Flatpak-innstillingar"
 
 #: ui/FlatpakPermissions.qml:142
 #, kde-format
 msgctxt "@info accessible.description for list"
 msgid "ID %1"
-msgstr ""
+msgstr "ID %1"
 
 #: ui/FlatpakPermissions.qml:184
-#, fuzzy, kde-format
-#| msgid "Hide advanced permissions"
+#, kde-format
 msgctxt "@action:button in section header"
 msgid "Hide advanced permissions"
 msgstr "Gøym avanserte tilgangsløyve"
 
 #: ui/FlatpakPermissions.qml:184
-#, fuzzy, kde-format
-#| msgid "Show advanced permissions"
+#, kde-format
 msgctxt "@action:button in section header"
 msgid "Show advanced permissions"
 msgstr "Vis avanserte tilgangsløyve"
 
 #: ui/FlatpakPermissions.qml:196
-#, fuzzy, kde-format
-#| msgid "Add New…"
+#, kde-format
 msgctxt "@action:button in section header"
 msgid "Add New…"
-msgstr "Legg til ny …"
+msgstr "Legg til nytt …"
 
 #: ui/FlatpakPermissions.qml:197
-#, fuzzy, kde-format
-#| msgid "Add Filesystem Path Permission"
+#, kde-format
 msgctxt "action:button accessible"
 msgid "Add New File System Permission"
-msgstr "Legg til løyve for adresse på filsystemet"
+msgstr "Legg til nytt filsystemløyve"
 
 #: ui/main.qml:91
-#, fuzzy, kde-format
-#| msgid "Select an application from the list to view its permissions here"
+#, kde-format
 msgctxt "@info:placeholder"
 msgid "Select an application from the list to view its permissions here"
 msgstr "Vel eit program i lista som du vil sjå tilgangsløyve for"
@@ -407,7 +398,7 @@ msgstr "Vel eit program i lista som du vil sjå tilgangsløyve for"
 #, kde-format
 msgctxt "@action:intoolbar"
 msgid "Manage Flatpak Settings"
-msgstr ""
+msgstr "Handsam Flatpak-innstillingar"
 
 #: ui/Permissions.qml:52
 #, kde-format
@@ -417,30 +408,33 @@ msgid ""
 "off here they are still able to control mouse and keyboard or record the "
 "contents of your screen through the windowing system"
 msgstr ""
+"Velfungerande program vil respektera desse innstillingane, men sjølv med "
+"innstillingane av, er det mogleg for programma å styra musa og tastaturet "
+"eller ta opptak av skjerm­innhaldet gjennom vindaugssystemet."
 
 #: ui/Permissions.qml:65
 #, kde-format
 msgctxt "@label:group"
 msgid "General:"
-msgstr ""
+msgstr "Generelt:"
 
 #: ui/Permissions.qml:68
 #, kde-format
 msgctxt "@option:check"
 msgid "Send notifications"
-msgstr ""
+msgstr "Send varslingar:"
 
 #: ui/Permissions.qml:85
 #, kde-format
 msgctxt "@option:check"
 msgid "Block automatic sleep and screen locking"
-msgstr ""
+msgstr "Hindra automatisk skjermlåsing og kvilemodus"
 
 #: ui/Permissions.qml:110
 #, kde-format
 msgctxt "@option:check"
 msgid "Activate game mode"
-msgstr ""
+msgstr "Ta i bruk spelmodus"
 
 #: ui/Permissions.qml:121
 #, kde-kuit-format
@@ -448,119 +442,118 @@ msgctxt "@info:tooltip"
 msgid ""
 "Allows the application to activate game mode if you are using it on your "
 "system."
-msgstr ""
+msgstr "Lèt programmet ta i bruk spelmodus viss du brukar dette på systemet."
 
 #: ui/Permissions.qml:130
 #, kde-format
 msgctxt "@option:check"
 msgid "Gain higher process priority"
-msgstr ""
+msgstr "Få høgare prosessprioritet"
 
 #: ui/Permissions.qml:146
 #, kde-format
 msgctxt "@label:listbox"
 msgid "Take screenshots:"
-msgstr ""
+msgstr "Ta skjermbilete:"
 
 #: ui/Permissions.qml:154 ui/Permissions.qml:175 ui/Permissions.qml:195
 #: ui/Permissions.qml:226
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Ask Once"
-msgstr ""
+msgstr "Spør éin gong"
 
 #: ui/Permissions.qml:155 ui/Permissions.qml:176 ui/Permissions.qml:227
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Deny"
-msgstr ""
+msgstr "Nekt"
 
 #: ui/Permissions.qml:156 ui/Permissions.qml:177 ui/Permissions.qml:228
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Allow"
-msgstr ""
+msgstr "Tillat"
 
 #: ui/Permissions.qml:157 ui/Permissions.qml:178 ui/Permissions.qml:229
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Always Ask"
-msgstr ""
+msgstr "Spør alltid"
 
 #: ui/Permissions.qml:167
-#, fuzzy, kde-format
-#| msgid "Smart card access"
+#, kde-format
 msgctxt "@title:group"
 msgid "Camera access:"
-msgstr "Smartkort"
+msgstr "Kameratilgang:"
 
 #: ui/Permissions.qml:188
 #, kde-format
 msgctxt "@label:listbox"
 msgid "Location accuracy:"
-msgstr ""
+msgstr "Posisjonsnøyaktigheit:"
 
 #: ui/Permissions.qml:197
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Deny"
-msgstr ""
+msgstr "Nekt"
 
 #: ui/Permissions.qml:198
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Country"
-msgstr ""
+msgstr "Land"
 
 #: ui/Permissions.qml:199
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "City"
-msgstr ""
+msgstr "By"
 
 #: ui/Permissions.qml:200
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Neighborhood"
-msgstr ""
+msgstr "Nabolag"
 
 #: ui/Permissions.qml:201
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Street"
-msgstr ""
+msgstr "Gate"
 
 #: ui/Permissions.qml:202
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Exact"
-msgstr ""
+msgstr "Nøyaktig"
 
 #: ui/Permissions.qml:218
 #, kde-format
 msgctxt "@label:listbox"
 msgid "Set desktop and lock screen background:"
-msgstr ""
+msgstr "Vel bakgrunnsbilete for skrivebordet og låseskjermen:"
 
 #: ui/Permissions.qml:243
 #, kde-format
 msgctxt "@label"
 msgid "Screen sharing:"
-msgstr ""
+msgstr "Skjermdeling:"
 
 #: ui/Permissions.qml:249 ui/Permissions.qml:278
 #, kde-format
 msgctxt "@action:button"
 msgid "Manage %1 Session"
 msgid_plural "Manage %1 Sessions"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Handsam %1 økt"
+msgstr[1] "Handsam %1 økter"
 
 #: ui/Permissions.qml:252
 #, kde-format
 msgctxt "@title:window %1 is the name of the application"
 msgid "%1 – Screencast Sessions"
-msgstr ""
+msgstr "%1 – skjermdelingsøkter"
 
 #: ui/Permissions.qml:257
 #, kde-format
@@ -568,7 +561,7 @@ msgctxt ""
 "@label 'Remote control' like in xdg-desktop-portal-kde remotedesktopdialog."
 "cpp"
 msgid " Remote control:"
-msgstr ""
+msgstr " Fjernkontroll:"
 
 #: ui/Permissions.qml:261
 #, kde-format
@@ -576,18 +569,19 @@ msgctxt "@option:check"
 msgid ""
 "Control pointer & keyboard, and share screen with other apps without asking"
 msgstr ""
+"Styra mus og tastatur, og del skjermen med andre program utan å spørja først"
 
 #: ui/Permissions.qml:281
 #, kde-format
 msgctxt "@title:window %1 is the name of the application"
 msgid "%1 – Remote Desktop Sessions"
-msgstr ""
+msgstr "%1 – fjernskrivebordsøkt"
 
 #: ui/SessionList.qml:49
 #, kde-format
 msgctxt "@action:button"
 msgid "Revoke"
-msgstr ""
+msgstr "Tilbakekall"
 
 #: ui/TextPromptDialog.qml:21
 #, kde-format
