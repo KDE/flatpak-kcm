@@ -1,14 +1,14 @@
 # Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the flatpak-kcm package.
 #
-# SPDX-FileCopyrightText: 2024, 2025 Toms Trasūns <toms.trasuns@posteo.net>
+# SPDX-FileCopyrightText: 2024, 2025, 2026 Toms Trasūns <toms.trasuns@posteo.net>
 # Māris Nartišs <maris.kde@gmail.com>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-02-27 00:45+0000\n"
-"PO-Revision-Date: 2025-09-25 13:00+0300\n"
+"PO-Revision-Date: 2026-03-04 17:27+0200\n"
 "Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
 "Language: lv\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
 "2);\n"
-"X-Generator: Lokalize 25.08.0\n"
+"X-Generator: Lokalize 25.12.2\n"
 
 #: autotests/flatpakpermissiontest.cpp:615
 #: autotests/flatpakpermissiontest.cpp:821 flatpakpermission.cpp:404
@@ -359,7 +359,7 @@ msgstr "%1 — „Flatpak“ iestatījumi"
 #, kde-format
 msgctxt "@info accessible.description for list"
 msgid "ID %1"
-msgstr ""
+msgstr "ID %1"
 
 #: ui/FlatpakPermissions.qml:184
 #, kde-format
@@ -583,12 +583,10 @@ msgid "Revoke"
 msgstr "Atsaukt"
 
 #: ui/SessionList.qml:60
-#, fuzzy, kde-format
-#| msgctxt "@action:button"
-#| msgid "Revoke"
+#, kde-format
 msgctxt "@action:button revoke all screencasting/screen sharing sessions"
 msgid "Revoke All"
-msgstr "Atsaukt"
+msgstr "Atsaukt visu"
 
 #: ui/TextPromptDialog.qml:21
 #, kde-format
