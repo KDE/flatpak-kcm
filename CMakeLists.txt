@@ -43,8 +43,8 @@ find_package(KF6 ${KF6_MIN_VERSION} REQUIRED COMPONENTS
     Service
 )
 
-ecm_set_disabled_deprecation_versions(QT 6.9.0
-    KF 6.18.0
+ecm_set_disabled_deprecation_versions(QT 6.11.0
+    KF 6.23.0
 )
 
 # Can't use regular KDE_INSTALL_FULL_LOCALSTATEDIR because it is wrong in developer setup.
