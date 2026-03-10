@@ -57,7 +57,7 @@ still able to control mouse and keyboard or record the contents of your screen t
 
     Kirigami.FormLayout {
         id: controlsLayout
-        readonly property double buttonLikePreferredWidth: Math.max(screenshotCombobox.implicitWidth, cameraCombobox.implicitWidth, locationCombobox.implicitWidth, remoteDesktopButton.implicitWidth, screencastButton.implicitWidth)
+        readonly property double buttonLikePreferredWidth: Math.max(screenshotCombobox.implicitWidth, cameraCombobox.implicitWidth, locationCombobox.implicitWidth, remoteDesktopButton.implicitWidth, screencastButton.implicitWidth, inputcaptureButton.implicitWidth)
         readonly property double switchMaxWidth: Math.max(notificationsSwitch.implicitWidth, powerManagementSwitch.implicitWidth, gameModeSwitch.implicitWidth, highProcessPrioritySwitch.implicitWidth)
 
         QQC.Switch {
@@ -250,6 +250,20 @@ still able to control mouse and keyboard or record the contents of your screen t
             icon.name: "video-display"
             visible: screencastSessions.rowCount > 0
             onClicked: kcm.push("SessionList.qml", {"model": screencastSessions, "title": i18nc("@title:window %1 is the name of the application","%1 – Screencast Sessions", root.title)})
+        }
+
+         QQC.Button {
+            id: inputcaptureButton
+            Kirigami.FormData.label: i18nc("@label", "Capture pointer & keyboard input:")
+            Layout.preferredWidth: parent.buttonLikePreferredWidth
+            KCM.InputCaptureSessionsModel {
+                id: inputCaptureSessions
+                appId: root.appId
+            }
+            text: i18ncp("@action:button", "Manage %1 Session", "Manage %1 Sessions", inputCaptureSessions.rowCount)
+            icon.name: "dialog-input-devices"
+            visible: inputCaptureSessions.rowCount > 0
+            onClicked: kcm.push("SessionList.qml", {"model": inputCaptureSessions, "title": i18nc("@title:window %1 is the name of the application","%1 – Input Capture Sessions", root.title)})
         }
 
         QQC.Switch {

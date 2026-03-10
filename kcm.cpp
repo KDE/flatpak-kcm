@@ -39,6 +39,7 @@ AppPermissionsKCM::AppPermissionsKCM(QObject *parent, const KPluginMetaData &dat
     qmlRegisterType<PermissionItem>(uri, 1, 0, "PermissionItem");
     qmlRegisterType<RemoteDesktopSessionsModel>(uri, 1, 0, "RemoteDesktopSessionsModel");
     qmlRegisterType<ScreencastSessionsModel>(uri, 1, 0, "ScreencastSessionsModel");
+    qmlRegisterType<InputCaptureSessionsModel>(uri, 1, 0, "InputCaptureSessionsModel");
     m_permissionStore->loadTable("screenshot"_L1);
     m_permissionStore->loadTable("location"_L1);
     m_permissionStore->loadTable("notifications"_L1);
@@ -49,6 +50,7 @@ AppPermissionsKCM::AppPermissionsKCM(QObject *parent, const KPluginMetaData &dat
     m_permissionStore->loadTable("screencast"_L1);
     m_permissionStore->loadTable("kde-authorized"_L1);
     m_permissionStore->loadTable("wallpaper"_L1);
+    m_permissionStore->loadTable("input-capture"_L1);
 
     auto reference = indexFromArgs(args);
     if (reference) {

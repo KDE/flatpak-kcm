@@ -78,3 +78,10 @@ public:
     ScreencastSessionsModel();
     QList<DisplayedPermission> dataToDisplay(const QVariantMap &data) const override;
 };
+
+class InputCaptureSessionsModel : public RestoreDataModel
+{
+public:
+    InputCaptureSessionsModel();
+    QList<DisplayedPermission> dataToDisplay(const QVariantMap &data) const override;
+};
