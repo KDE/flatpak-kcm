@@ -250,4 +250,33 @@ QList<DisplayedPermission> ScreencastSessionsModel::dataToDisplay(const QVariant
     return sources;
 }
 
+InputCaptureSessionsModel::InputCaptureSessionsModel()
+{
+    table = u"input-capture"_s;
+}
+
+QList<DisplayedPermission> InputCaptureSessionsModel::dataToDisplay(const QVariantMap &data) const
+{
+    QList<DisplayedPermission> powers;
+    if (data.value("clipboardEnabled"_L1).toBool()) {
+        powers.emplace_back(QIcon::fromTheme(u"edit_copy"_s), i18nc("not an action but the ability to do so", "Control the Clipboard"));
+    }
+    const int devices = data.value("devices"_L1).toInt();
+    if (devices != 0) {
+        QStringList deviceStrings;
+        if (devices & 1) {
+            deviceStrings += i18nc("Part of a list of things", "Keyboard");
+        }
+        if (devices & 2) {
+            deviceStrings += i18nc("Part of a list of things", "Mouse");
+        }
+        if (devices & 4) {
+            deviceStrings += i18nc("Part of a list of things", "Touchscreen");
+        }
+        powers.emplace_back(QIcon::fromTheme(u"dialog-input-devices"_s),
+                            i18nc("%1 is a list of things formed from above", "Capture input from: %1", QLocale::system().createSeparatedList(deviceStrings)));
+    }
+    return powers;
+}
+
 #include "moc_restoredatamodel.cpp"
