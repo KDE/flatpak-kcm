@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 16:18+0000\n"
-"PO-Revision-Date: 2024-08-28 10:33+0200\n"
-"Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
+"PO-Revision-Date: 2026-03-30 11:14+0200\n"
+"Last-Translator:  Vít Pelčák <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
@@ -160,7 +160,7 @@ msgstr "Přístup k socketu Canbus"
 #: flatpakpermission.cpp:855
 #, kde-format
 msgid "Share dev/shm across all instances of an app per user ID"
-msgstr ""
+msgstr "Sdílet dev/shm mezi všemi instancemi aplikace pro dané uživatelské ID"
 
 #: flatpakpermission.cpp:913
 #, kde-format
@@ -289,7 +289,7 @@ msgstr "Oprávnění"
 #: package/contents/ui/permissions.qml:23
 #, kde-format
 msgid "Select an application from the list to view its permissions here"
-msgstr ""
+msgstr "Vyberte aplikaci ze seznamu a zde se zobrazí její oprávnění"
 
 #: package/contents/ui/permissions.qml:82
 #, kde-format
