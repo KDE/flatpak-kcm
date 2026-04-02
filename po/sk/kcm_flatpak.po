@@ -233,12 +233,12 @@ msgstr "Pridať novú cestu súborového systému"
 #: flatpakpermission.cpp:1331
 #, kde-format
 msgid "Add a new session bus"
-msgstr ""
+msgstr "Pridať novú reláciu zbernice"
 
 #: flatpakpermission.cpp:1333
 #, kde-format
 msgid "Add a new system bus"
-msgstr ""
+msgstr "Pridať novú systémovú zbernicu"
 
 #: flatpakpermission.cpp:1335
 #, kde-format
@@ -253,7 +253,7 @@ msgstr "Nastaviť premennú prostredia"
 #: package/contents/ui/AddEnvironmentVariableDialog.qml:35
 #, kde-format
 msgid "Enter variable..."
-msgstr ""
+msgstr "Zadajte premennú..."
 
 #: package/contents/ui/AddEnvironmentVariableDialog.qml:46
 #, kde-format
@@ -276,6 +276,8 @@ msgid ""
 "The permissions of this application have been changed. Do you want to apply "
 "these changes or discard them?"
 msgstr ""
+"Oprávnenia tejto aplikácie sa zmenili. Chcete tieto zmeny použiť alebo "
+"zahodiť?"
 
 #: package/contents/ui/permissions.qml:17
 #, kde-format
@@ -318,21 +320,21 @@ msgid "Add System Bus Permission"
 msgstr "Pridať oprávnenie systémovej zbernice"
 
 #: package/contents/ui/TextPromptDialog.qml:38
-#, fuzzy, kde-format
+#, kde-format
 msgid "Enter filesystem path..."
 msgstr "Zadať cestu súborového systému…"
 
 #: package/contents/ui/TextPromptDialog.qml:39
-#, fuzzy, kde-format
+#, kde-format
 msgid "Enter session bus name..."
 msgstr "Zadať názov zbernice sedení…"
 
 #: package/contents/ui/TextPromptDialog.qml:40
-#, fuzzy, kde-format
+#, kde-format
 msgid "Enter system bus name..."
 msgstr "Zadať názov systémovej zbernice…"
 
-#, fuzzy
+#
 #~| msgid "read/write"
 #~ msgid "read-write"
 #~ msgstr "čítanie aj zápis"
