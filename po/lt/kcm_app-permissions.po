@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-02-27 00:45+0000\n"
-"PO-Revision-Date: 2025-12-20 20:40+0200\n"
+"PO-Revision-Date: 2026-04-11 13:19+0300\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: lt\n"
@@ -587,12 +587,10 @@ msgid "Revoke"
 msgstr "Panaikinti"
 
 #: ui/SessionList.qml:60
-#, fuzzy, kde-format
-#| msgctxt "@action:button"
-#| msgid "Revoke"
+#, kde-format
 msgctxt "@action:button revoke all screencasting/screen sharing sessions"
 msgid "Revoke All"
-msgstr "Panaikinti"
+msgstr "Panaikinti visus"
 
 #: ui/TextPromptDialog.qml:21
 #, kde-format
