@@ -30,3 +30,8 @@ ecm_add_test(FlatpakSimpleEntryTest.cpp
 ecm_add_test(flatpakfilesystemstest.cpp
     TEST_NAME flatpakfilesystemstest
     LINK_LIBRARIES Qt6::Test kcm_flatpak_static)
+
+add_test(NAME kcm_smoketest COMMAND kcmshell6 --smoke-test kcm_app-permissions)
+set_tests_properties(kcm_smoketest PROPERTIES
+    ENVIRONMENT_MODIFICATION QT_PLUGIN_PATH=path_list_prepend:${CMAKE_BINARY_DIR}/bin
+)
