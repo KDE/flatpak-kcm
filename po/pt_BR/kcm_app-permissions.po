@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-02-27 00:45+0000\n"
+"POT-Creation-Date: 2026-05-14 00:45+0000\n"
 "PO-Revision-Date: 2026-02-25 08:35-0300\n"
 "Last-Translator: Marcus Gama <marcus.gama@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
@@ -261,25 +261,25 @@ msgctxt "not an action but the ability to do so"
 msgid "Record the Screen"
 msgstr "Gravar tela"
 
-#: restoredatamodel.cpp:156
+#: restoredatamodel.cpp:156 restoredatamodel.cpp:262
 #, kde-format
 msgctxt "not an action but the ability to do so"
 msgid "Control the Clipboard"
 msgstr "Controlar a área de transferência"
 
-#: restoredatamodel.cpp:162
+#: restoredatamodel.cpp:162 restoredatamodel.cpp:268
 #, kde-format
 msgctxt "Part of a list of things"
 msgid "Keyboard"
 msgstr "Teclado"
 
-#: restoredatamodel.cpp:165
+#: restoredatamodel.cpp:165 restoredatamodel.cpp:271
 #, kde-format
 msgctxt "Part of a list of things"
 msgid "Mouse"
 msgstr "Mouse"
 
-#: restoredatamodel.cpp:168
+#: restoredatamodel.cpp:168 restoredatamodel.cpp:274
 #, kde-format
 msgctxt "Part of a list of things"
 msgid "Touchscreen"
@@ -317,6 +317,12 @@ msgstr "Todo o espaço de trabalho"
 msgctxt "%1 is the position of the screen"
 msgid "A disconnected Screen at %1"
 msgstr "Uma tela desconectada em %1"
+
+#: restoredatamodel.cpp:277
+#, kde-format
+msgctxt "%1 is a list of things formed from above"
+msgid "Capture input from: %1"
+msgstr ""
 
 #: ui/AddEnvironmentVariableDialog.qml:18
 #, kde-format
@@ -542,7 +548,7 @@ msgctxt "@label"
 msgid "Screen sharing:"
 msgstr "Compartilhamento de tela:"
 
-#: ui/Permissions.qml:249 ui/Permissions.qml:278
+#: ui/Permissions.qml:249 ui/Permissions.qml:263 ui/Permissions.qml:292
 #, kde-format
 msgctxt "@action:button"
 msgid "Manage %1 Session"
@@ -558,13 +564,27 @@ msgstr "%1 – Sessões de screencast"
 
 #: ui/Permissions.qml:257
 #, kde-format
+msgctxt "@label"
+msgid "Capture pointer & keyboard input:"
+msgstr ""
+
+#: ui/Permissions.qml:266
+#, fuzzy, kde-format
+#| msgctxt "@title:window %1 is the name of the application"
+#| msgid "%1 – Screencast Sessions"
+msgctxt "@title:window %1 is the name of the application"
+msgid "%1 – Input Capture Sessions"
+msgstr "%1 – Sessões de screencast"
+
+#: ui/Permissions.qml:271
+#, kde-format
 msgctxt ""
 "@label 'Remote control' like in xdg-desktop-portal-kde remotedesktopdialog."
 "cpp"
 msgid " Remote control:"
 msgstr " Controle remoto:"
 
-#: ui/Permissions.qml:261
+#: ui/Permissions.qml:275
 #, kde-format
 msgctxt "@option:check"
 msgid ""
@@ -573,7 +593,7 @@ msgstr ""
 "Controlar o ponteiro e o teclado e compartilhar a tela com outros "
 "aplicativos sem perguntar"
 
-#: ui/Permissions.qml:281
+#: ui/Permissions.qml:295
 #, kde-format
 msgctxt "@title:window %1 is the name of the application"
 msgid "%1 – Remote Desktop Sessions"
