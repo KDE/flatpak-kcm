@@ -1,13 +1,13 @@
 # Copyright (C) 2023 This file is copyright:
 # This file is distributed under the same license as the flatpak-kcm package.
 #
-# SPDX-FileCopyrightText: 2022, 2023, 2024, 2025, 2026 Freek de Kruijf <freekdekruijf@kde.nl>
+# SPDX-FileCopyrightText: 2022-2026 Freek de Kruijf <freekdekruijf@kde.nl>
 msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-14 00:45+0000\n"
-"PO-Revision-Date: 2026-02-25 12:14+0100\n"
+"PO-Revision-Date: 2026-05-15 18:47+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 25.12.2\n"
+"X-Generator: Lokalize 26.04.1\n"
 
 #: autotests/flatpakpermissiontest.cpp:615
 #: autotests/flatpakpermissiontest.cpp:821 flatpakpermission.cpp:404
@@ -318,7 +318,7 @@ msgstr "Een afgekoppeld scherm op %1"
 #, kde-format
 msgctxt "%1 is a list of things formed from above"
 msgid "Capture input from: %1"
-msgstr ""
+msgstr "Neem invoer op van: %1"
 
 #: ui/AddEnvironmentVariableDialog.qml:18
 #, kde-format
@@ -565,15 +565,13 @@ msgstr "%1 – Schermvideosessies"
 #, kde-format
 msgctxt "@label"
 msgid "Capture pointer & keyboard input:"
-msgstr ""
+msgstr "Neem aanwijzer & toetsenbord op:"
 
 #: ui/Permissions.qml:266
-#, fuzzy, kde-format
-#| msgctxt "@title:window %1 is the name of the application"
-#| msgid "%1 – Screencast Sessions"
+#, kde-format
 msgctxt "@title:window %1 is the name of the application"
 msgid "%1 – Input Capture Sessions"
-msgstr "%1 – Schermvideosessies"
+msgstr "%1 – Invoer van opnamesessies"
 
 #: ui/Permissions.qml:271
 #, kde-format
