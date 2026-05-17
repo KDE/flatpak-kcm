@@ -1,19 +1,19 @@
-# SPDX-FileCopyrightText: 2022, 2023, 2024, 2025, 2026 Xavier Besnard <xavier.besnard@kde.org>
+# SPDX-FileCopyrightText: 2022-2026 Xavier Besnard <xavier.besnard@kde.org>
 # Xavier Besnard <xavier.besnard@kde.org>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-14 00:45+0000\n"
-"PO-Revision-Date: 2026-02-26 07:28+0100\n"
+"PO-Revision-Date: 2026-05-15 10:26+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
-"Language-Team: \n"
+"Language-Team: fr\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 25.12.2\n"
+"X-Generator: Lokalize 26.04.1\n"
 
 #: autotests/flatpakpermissiontest.cpp:615
 #: autotests/flatpakpermissiontest.cpp:821 flatpakpermission.cpp:404
@@ -320,7 +320,7 @@ msgstr "Un écran déconnecté à %1"
 #, kde-format
 msgctxt "%1 is a list of things formed from above"
 msgid "Capture input from: %1"
-msgstr ""
+msgstr "Capturer l'entrée à partir : %1"
 
 #: ui/AddEnvironmentVariableDialog.qml:18
 #, kde-format
@@ -567,15 +567,13 @@ msgstr "%1 – Sessions d'enregistrement d'écran"
 #, kde-format
 msgctxt "@label"
 msgid "Capture pointer & keyboard input:"
-msgstr ""
+msgstr "Capturer le périphérique de pointeur et de clavier :"
 
 #: ui/Permissions.qml:266
-#, fuzzy, kde-format
-#| msgctxt "@title:window %1 is the name of the application"
-#| msgid "%1 – Screencast Sessions"
+#, kde-format
 msgctxt "@title:window %1 is the name of the application"
 msgid "%1 – Input Capture Sessions"
-msgstr "%1 – Sessions d'enregistrement d'écran"
+msgstr "%1 – Sessions de capture d'écran"
 
 #: ui/Permissions.qml:271
 #, kde-format
