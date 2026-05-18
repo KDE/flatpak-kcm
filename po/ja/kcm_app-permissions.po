@@ -1,12 +1,13 @@
 # SPDX-FileCopyrightText: 2024 Tarot Osuji <tarot@sdf.org>
+# SPDX-FileCopyrightText: 2026 Mint <5602mint@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-14 00:45+0000\n"
-"PO-Revision-Date: 2024-02-12 23:03+0900\n"
-"Last-Translator: Tarot Osuji <tarot@sdf.org>\n"
-"Language-Team: Japanese <kde-jp@kde.org>\n"
+"PO-Revision-Date: 2026-05-10 15:29+0900\n"
+"Last-Translator: Mint <5602mint@gmail.com>\n"
+"Language-Team: Japanese <kde-i18n-doc@kde.org>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -14,7 +15,7 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
-"X-Generator: Lokalize 23.08.4\n"
+"X-Generator: Lokalize 26.04.1\n"
 
 #: autotests/flatpakpermissiontest.cpp:615
 #: autotests/flatpakpermissiontest.cpp:821 flatpakpermission.cpp:404
@@ -418,11 +419,12 @@ msgid "Add New File System Permission"
 msgstr "ファイルシステムのパスの権限を追加"
 
 #: ui/main.qml:91
-#, fuzzy, kde-format
-#| msgid "Select an application from the list to view its permissions here"
+#, kde-format
 msgctxt "@info:placeholder"
 msgid "Select an application from the list to view its permissions here"
-msgstr "リストからアプリケーションを選択すると、その権限をここに表示します"
+msgstr ""
+"アプリケーションの権限を表示するには、一覧からアプリケーションを選択してくだ"
+"さい"
 
 #: ui/Permissions.qml:28
 #, kde-format
@@ -481,32 +483,32 @@ msgstr ""
 #, kde-format
 msgctxt "@label:listbox"
 msgid "Take screenshots:"
-msgstr ""
+msgstr "スクリーンショットを撮る:"
 
 #: ui/Permissions.qml:154 ui/Permissions.qml:175 ui/Permissions.qml:195
 #: ui/Permissions.qml:226
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Ask Once"
-msgstr ""
+msgstr "初回は確認する"
 
 #: ui/Permissions.qml:155 ui/Permissions.qml:176 ui/Permissions.qml:227
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Deny"
-msgstr ""
+msgstr "拒否"
 
 #: ui/Permissions.qml:156 ui/Permissions.qml:177 ui/Permissions.qml:228
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Allow"
-msgstr ""
+msgstr "許可"
 
 #: ui/Permissions.qml:157 ui/Permissions.qml:178 ui/Permissions.qml:229
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Always Ask"
-msgstr ""
+msgstr "常に確認"
 
 #: ui/Permissions.qml:167
 #, fuzzy, kde-format
@@ -600,7 +602,7 @@ msgctxt ""
 "@label 'Remote control' like in xdg-desktop-portal-kde remotedesktopdialog."
 "cpp"
 msgid " Remote control:"
-msgstr ""
+msgstr "リモート操作:"
 
 #: ui/Permissions.qml:275
 #, kde-format
@@ -608,6 +610,8 @@ msgctxt "@option:check"
 msgid ""
 "Control pointer & keyboard, and share screen with other apps without asking"
 msgstr ""
+"ポインタとキーボードをコントロールしたり、ほかのアプリを含めて画面共有を確認"
+"なしで行う"
 
 #: ui/Permissions.qml:295
 #, kde-format
@@ -659,15 +663,3 @@ msgstr "セッションバス名を入力…"
 #| msgid "Enter system bus name…"
 msgid "Enter system bus name:"
 msgstr "システムバス名を入力…"
-
-#, fuzzy
-#~| msgid "Flatpak Applications"
-#~ msgctxt "@window:title"
-#~ msgid "Flatpak Applications"
-#~ msgstr "Flatpak アプリケーション"
-
-#, fuzzy
-#~| msgid "Permissions"
-#~ msgctxt "@title:window"
-#~ msgid "Permissions"
-#~ msgstr "権限"
