@@ -318,7 +318,7 @@ msgstr "已断开连接的屏幕，位于 %1"
 #, kde-format
 msgctxt "%1 is a list of things formed from above"
 msgid "Capture input from: %1"
-msgstr ""
+msgstr "捕获输入：%1"
 
 #: ui/AddEnvironmentVariableDialog.qml:18
 #, kde-format
@@ -556,13 +556,13 @@ msgstr "%1 – 录屏会话"
 #, kde-format
 msgctxt "@label"
 msgid "Capture pointer & keyboard input:"
-msgstr ""
+msgstr "捕获指针和键盘输入："
 
 #: ui/Permissions.qml:266
 #, kde-format
 msgctxt "@title:window %1 is the name of the application"
 msgid "%1 – Input Capture Sessions"
-msgstr ""
+msgstr "%1 – 输入捕获会话"
 
 #: ui/Permissions.qml:271
 #, kde-format
