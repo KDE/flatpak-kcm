@@ -5,13 +5,14 @@
 # SPDX-FileCopyrightText: 2023-2024 Johannes Obermayr <johannesobermayr@gmx.de>
 # SPDX-FileCopyrightText: 2025 Alois Spitzbart <spitz234@hotmail.com>
 # SPDX-FileCopyrightText: 2026 Alexander Becker <alex-at-kde-l10n-de@freenet.de>
+# SPDX-FileCopyrightText: 2026 Philipp Kiemle <l10n.daphipz@fastmail.de>
 msgid ""
 msgstr ""
 "Project-Id-Version: kcm_flatpak\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-14 00:45+0000\n"
-"PO-Revision-Date: 2026-04-13 20:25+0200\n"
-"Last-Translator: Alexander Becker <alex-at-kde-l10n-de@freenet.de>\n"
+"PO-Revision-Date: 2026-05-18 10:54+0200\n"
+"Last-Translator: Philipp Kiemle <l10n.daphipz@fastmail.de>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -323,7 +324,7 @@ msgstr "Ein getrennter Bildschirm auf %1"
 #, kde-format
 msgctxt "%1 is a list of things formed from above"
 msgid "Capture input from: %1"
-msgstr ""
+msgstr "Eingaben erfassen von: %1"
 
 #: ui/AddEnvironmentVariableDialog.qml:18
 #, kde-format
@@ -570,15 +571,13 @@ msgstr "%1 – Bildschirmübertragung-Sitzungen"
 #, kde-format
 msgctxt "@label"
 msgid "Capture pointer & keyboard input:"
-msgstr ""
+msgstr "Maus- und Tastatureingaben erfassen:"
 
 #: ui/Permissions.qml:266
-#, fuzzy, kde-format
-#| msgctxt "@title:window %1 is the name of the application"
-#| msgid "%1 – Screencast Sessions"
+#, kde-format
 msgctxt "@title:window %1 is the name of the application"
 msgid "%1 – Input Capture Sessions"
-msgstr "%1 – Bildschirmübertragung-Sitzungen"
+msgstr "%1 – Eingabeerfassungs-Sitzungen"
 
 #: ui/Permissions.qml:271
 #, kde-format
