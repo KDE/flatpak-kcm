@@ -1,348 +1,348 @@
-# Copyright (C) 2023 This file is copyright:
+# Uyghur translation for kcm_app-permissions.
+# Copyright (C) YEAR This file is copyright:
 # This file is distributed under the same license as the flatpak-kcm package.
+# Abduqadir Abliz <sahranbay@gmail.com>, 2026., YEAR.
 #
-# SPDX-FileCopyrightText: 2023, 2024 Guðmundur Erlingsson <gudmundure@gmail.com>
-# SPDX-FileCopyrightText: 2025, 2026 Sveinn í Felli <sv1@fellsnet.is>
 msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-14 00:45+0000\n"
-"PO-Revision-Date: 2026-06-01 12:43+0000\n"
-"Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
-"Language-Team: Icelandic\n"
-"Language: is\n"
+"PO-Revision-Date: 2026-05-30 16:26-0400\n"
+"Last-Translator: Abduqadir Abliz <sahranbay@gmail.com>\n"
+"Language-Team: Uyghur <kde-i18n-doc@kde.org>\n"
+"Language: ug\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.08.5\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.9\n"
 
 #: autotests/flatpakpermissiontest.cpp:615
 #: autotests/flatpakpermissiontest.cpp:821 flatpakpermission.cpp:404
 #, kde-format
 msgid "None"
-msgstr "Ekkert"
+msgstr "يوق"
 
 #: autotests/flatpakpermissiontest.cpp:616
 #: autotests/flatpakpermissiontest.cpp:824 flatpakpermission.cpp:405
 #, kde-format
 msgid "see"
-msgstr "sjá"
+msgstr ""
 
 #: autotests/flatpakpermissiontest.cpp:617
 #: autotests/flatpakpermissiontest.cpp:822 flatpakpermission.cpp:406
 #, kde-format
 msgid "talk"
-msgstr "spjall"
+msgstr ""
 
 #: autotests/flatpakpermissiontest.cpp:618
 #: autotests/flatpakpermissiontest.cpp:823 flatpakpermission.cpp:407
 #, kde-format
 msgid "own"
-msgstr "eign"
+msgstr ""
 
 #: autotests/flatpakpermissiontest.cpp:811 flatpakpermission.cpp:395
 #, kde-format
 msgid "OFF"
-msgstr "SLÖKKT"
+msgstr ""
 
 #: autotests/flatpakpermissiontest.cpp:812 flatpakpermission.cpp:393
 #, kde-format
 msgid "read/write"
-msgstr "lesa/skrifa"
+msgstr ""
 
 #: autotests/flatpakpermissiontest.cpp:813 flatpakpermission.cpp:392
 #, kde-format
 msgid "read-only"
-msgstr "skrifvarið"
+msgstr "ئوقۇشقىلا بولىدۇ"
 
 #: autotests/flatpakpermissiontest.cpp:814 flatpakpermission.cpp:394
 #, kde-format
 msgid "create"
-msgstr "búa til"
+msgstr ""
 
 #: flatpakpermission.cpp:823
 #, kde-format
 msgid "Internet connection"
-msgstr "Internettenging"
+msgstr ""
 
 #: flatpakpermission.cpp:824
 #, kde-format
 msgid "Inter-process communication"
-msgstr "Samskipti á milli vinnsla (inter-process communication)"
+msgstr ""
 
 #: flatpakpermission.cpp:830
 #, kde-format
 msgid "X11 windowing system"
-msgstr "X11-gluggakerfi"
+msgstr ""
 
 #: flatpakpermission.cpp:831
 #, kde-format
 msgid "Wayland windowing system"
-msgstr "Wayland-gluggakerfi"
+msgstr ""
 
 #: flatpakpermission.cpp:832
 #, kde-format
 msgid "Fallback to X11 windowing system"
-msgstr "Varaleið í X11-gluggakerfið"
+msgstr ""
 
 #: flatpakpermission.cpp:833
 #, kde-format
 msgid "Pulseaudio sound server"
-msgstr "Pulseaudio hljóðmiðlari"
+msgstr ""
 
 #: flatpakpermission.cpp:834
 #, kde-format
 msgid "Session bus access"
-msgstr "Aðgangur að tengibraut setu"
+msgstr ""
 
 #: flatpakpermission.cpp:835
 #, kde-format
 msgid "System bus access"
-msgstr "Aðgangur að tengibraut kerfis"
+msgstr ""
 
 #: flatpakpermission.cpp:836
 #, kde-format
 msgid "Remote login access"
-msgstr "Aðgangur að fjartengdri innskráningu"
+msgstr ""
 
 #: flatpakpermission.cpp:837
 #, kde-format
 msgid "Smart card access"
-msgstr "Aðgangur að snjallkorti"
+msgstr ""
 
 #: flatpakpermission.cpp:838
 #, kde-format
 msgid "Print system access"
-msgstr "Aðgangur að prentkerfi"
+msgstr ""
 
 #: flatpakpermission.cpp:844
 #, kde-format
 msgid "Kernel-based Virtual Machine access"
-msgstr "Aðgangur að virkni í kjarna fyrir sýndarvél"
+msgstr ""
 
 #: flatpakpermission.cpp:845
 #, kde-format
 msgid "Direct graphic rendering"
-msgstr "Bein myndgerð (direct graphic rendering)"
+msgstr ""
 
 #: flatpakpermission.cpp:846
 #, kde-format
 msgid "Host dev/shm"
-msgstr "Vél dev/shm"
+msgstr ""
 
 #: flatpakpermission.cpp:847
 #, kde-format
 msgid "Device access"
-msgstr "Aðgangur að tæki"
+msgstr ""
 
 #: flatpakpermission.cpp:853
 #, kde-format
 msgid "System calls by development tools"
-msgstr "Kerfisköll frá forritunarverkfærum"
+msgstr ""
 
 #: flatpakpermission.cpp:854
 #, kde-format
 msgid "Run multiarch/multilib binaries"
-msgstr "Keyra multiarch/multilib tvíundarskrár"
+msgstr ""
 
 #: flatpakpermission.cpp:855
 #, kde-format
 msgid "Bluetooth"
-msgstr "Bluetooth"
+msgstr "كۆكچىش"
 
 #: flatpakpermission.cpp:856
 #, kde-format
 msgid "Canbus socket access"
-msgstr "Aðgangur að Canbus-sökkli"
+msgstr ""
 
 #: flatpakpermission.cpp:859
 #, kde-format
 msgid "Share dev/shm across all instances of an app per user ID"
-msgstr "Samnýta dev/shm í öllum tilvikum af forriti á hvert notandakenni"
+msgstr ""
 
 #: flatpakpermission.cpp:917
 #, kde-format
 msgid "All user files"
-msgstr "Allar skrár notanda"
+msgstr ""
 
 #: flatpakpermission.cpp:918
 #, kde-format
 msgid "All system files"
-msgstr "Allar kerfisskrár"
+msgstr ""
 
 #: flatpakpermission.cpp:919
 #, kde-format
 msgid "All system libraries, executables and binaries"
-msgstr "Öll kerfissöfn, keyrsluskrár og tvíundarskrár"
+msgstr ""
 
 #: flatpakpermission.cpp:920
 #, kde-format
 msgid "All system configurations"
-msgstr "Allar grunnstillingar kerfis"
+msgstr ""
 
 #: flatpakpermission.cpp:1299
 #, kde-format
 msgid "Basic Permissions"
-msgstr "Grunnheimildir"
+msgstr ""
 
 #: flatpakpermission.cpp:1301
 #, kde-format
 msgid "Filesystem Access"
-msgstr "Aðgangur að skráakerfi"
+msgstr ""
 
 #: flatpakpermission.cpp:1303
 #, kde-format
 msgid "Advanced Permissions"
-msgstr "Ítarlegar heimildir"
+msgstr "ئالاھىدە ھوقۇقلار"
 
 #: flatpakpermission.cpp:1305
 #, kde-format
 msgid "Subsystems Shared"
-msgstr "Samnýtt undirkerfi"
+msgstr ""
 
 #: flatpakpermission.cpp:1307
 #, kde-format
 msgid "Sockets"
-msgstr "Sökklar"
+msgstr ""
 
 #: flatpakpermission.cpp:1309
 #, kde-format
 msgid "Device Access"
-msgstr "Aðgangur að tæki"
+msgstr "ئۈسكۈنە زىيارىتى"
 
 #: flatpakpermission.cpp:1311
 #, kde-format
 msgid "Features Allowed"
-msgstr "Leyfilegir eiginleikar"
+msgstr ""
 
 #: flatpakpermission.cpp:1313
 #, kde-format
 msgid "Session Bus Policy"
-msgstr "Regla tengibrautar setu"
+msgstr ""
 
 #: flatpakpermission.cpp:1315
 #, kde-format
 msgid "System Bus Policy"
-msgstr "Regla tengibrautar kerfis"
+msgstr ""
 
 #: flatpakpermission.cpp:1317
 #, kde-format
 msgid "Environment"
-msgstr "Umhverfi"
+msgstr "مۇھىت"
 
 #: flatpakpermission.cpp:1334
 #, kde-format
 msgid "Add a new filesystem path"
-msgstr "Bæta við nýrri skráakerfisslóð"
+msgstr ""
 
 #: flatpakpermission.cpp:1336
 #, kde-format
 msgid "Add a new session bus"
-msgstr "Bæta við nýrri tengibraut setu"
+msgstr ""
 
 #: flatpakpermission.cpp:1338
 #, kde-format
 msgid "Add a new system bus"
-msgstr "Bæta við nýrri tengibraut kerfis"
+msgstr ""
 
 #: flatpakpermission.cpp:1340
 #, kde-format
 msgid "Add a new environment variable"
-msgstr "Bæta við nýrri umhverfisbreytu"
+msgstr ""
 
 #: restoredatamodel.cpp:153
 #, kde-format
 msgctxt "not an action but the ability to do so"
 msgid "Record the Screen"
-msgstr "Taktu upp af skjánum"
+msgstr ""
 
 #: restoredatamodel.cpp:156 restoredatamodel.cpp:262
 #, kde-format
 msgctxt "not an action but the ability to do so"
 msgid "Control the Clipboard"
-msgstr "Stýrðu klippispjaldinu"
+msgstr ""
 
 #: restoredatamodel.cpp:162 restoredatamodel.cpp:268
 #, kde-format
 msgctxt "Part of a list of things"
 msgid "Keyboard"
-msgstr "Lyklaborði"
+msgstr "ھەرپتاختا"
 
 #: restoredatamodel.cpp:165 restoredatamodel.cpp:271
 #, kde-format
 msgctxt "Part of a list of things"
 msgid "Mouse"
-msgstr "Mús"
+msgstr "چاشقىنەك"
 
 #: restoredatamodel.cpp:168 restoredatamodel.cpp:274
 #, kde-format
 msgctxt "Part of a list of things"
 msgid "Touchscreen"
-msgstr "Snertiskjá"
+msgstr "سەزگۈر ئېكران"
 
 #: restoredatamodel.cpp:171
 #, kde-format
 msgctxt "%1 is a list of things formed from above"
 msgid "Control %1"
-msgstr "Stýrðu %1"
+msgstr ""
 
 #: restoredatamodel.cpp:210
 #, kde-format
 msgctxt "%1 is the title of a window, %2 the name of an application"
 msgid "Window \"%1\" of %2"
-msgstr "Gluggi \"%1\" af %2"
+msgstr ""
 
 #: restoredatamodel.cpp:214
 #, kde-format
 msgid "Region at (%1,%2) with size %3x%4"
-msgstr "Svæði á (%1,%2) með stærðina %3x%4"
+msgstr ""
 
 #: restoredatamodel.cpp:224
 #, kde-format
 msgid "Virtual Screen"
-msgstr "Sýndarskjár"
+msgstr ""
 
 #: restoredatamodel.cpp:228
 #, kde-format
 msgid "The entire Workspace"
-msgstr "Allt vinnusvæðið"
+msgstr ""
 
 #: restoredatamodel.cpp:247
 #, kde-format
 msgctxt "%1 is the position of the screen"
 msgid "A disconnected Screen at %1"
-msgstr "Aftengdur skjár á %1"
+msgstr ""
 
 #: restoredatamodel.cpp:277
 #, kde-format
 msgctxt "%1 is a list of things formed from above"
 msgid "Capture input from: %1"
-msgstr "Ná í inntak frá: %1"
+msgstr ""
 
 #: ui/AddEnvironmentVariableDialog.qml:18
 #, kde-format
 msgid "Set Environment Variable"
-msgstr "Stilla umhverfisbreytu"
+msgstr ""
 
 #: ui/AddEnvironmentVariableDialog.qml:34
 #, kde-format
 msgctxt "@label:textbox name of environment variable"
 msgid "Name:"
-msgstr "Heiti:"
+msgstr "ئاتى:"
 
 #: ui/AddEnvironmentVariableDialog.qml:45
 #, kde-format
 msgctxt "@label:textbox value of environment variable"
 msgid "Value:"
-msgstr "Gildi:"
+msgstr "قىممىتى:"
 
 #: ui/ApplyOrDiscardDialog.qml:21
 #, kde-format
 msgctxt "@title:window"
 msgid "Apply Permissions"
-msgstr "Virkja heimildir"
+msgstr "ئىجازەتنى قوللان"
 
 #: ui/ApplyOrDiscardDialog.qml:22
 #, kde-format
@@ -351,56 +351,54 @@ msgid ""
 "The permissions of application %1 have been changed. Do you want to apply "
 "these changes or discard them?"
 msgstr ""
-"Heimildirnar fyrir forritið %1 hafa breyst. Viltu virkja þessar breytingar "
-"eða henda þeim?"
 
 #: ui/FlatpakPermissions.qml:23
 #, kde-format
 msgctxt "@title:window %1 is the name of the application"
 msgid "%1 – Flatpak Settings"
-msgstr "%1 – Flatpak stillingar"
+msgstr ""
 
 #: ui/FlatpakPermissions.qml:142
 #, kde-format
 msgctxt "@info accessible.description for list"
 msgid "ID %1"
-msgstr "ID %1"
+msgstr ""
 
 #: ui/FlatpakPermissions.qml:184
 #, kde-format
 msgctxt "@action:button in section header"
 msgid "Hide advanced permissions"
-msgstr "Fela ítarlegar heimildir"
+msgstr ""
 
 #: ui/FlatpakPermissions.qml:184
 #, kde-format
 msgctxt "@action:button in section header"
 msgid "Show advanced permissions"
-msgstr "Sýna ítarlegar heimildir"
+msgstr ""
 
 #: ui/FlatpakPermissions.qml:196
 #, kde-format
 msgctxt "@action:button in section header"
 msgid "Add New…"
-msgstr "Bæta við nýju…"
+msgstr "يېڭىدىن قوش…"
 
 #: ui/FlatpakPermissions.qml:197
 #, kde-format
 msgctxt "action:button accessible"
 msgid "Add New File System Permission"
-msgstr "Bæta við heimild fyrir skráakerfi"
+msgstr ""
 
 #: ui/main.qml:91
 #, kde-format
 msgctxt "@info:placeholder"
 msgid "Select an application from the list to view its permissions here"
-msgstr "Veldu forrit af listanum til að skoða heimildir þess hér"
+msgstr ""
 
 #: ui/Permissions.qml:28
 #, kde-format
 msgctxt "@action:intoolbar"
 msgid "Manage Flatpak Settings"
-msgstr "Sýsla með stillingar Flatpak"
+msgstr ""
 
 #: ui/Permissions.qml:52
 #, kde-format
@@ -410,33 +408,30 @@ msgid ""
 "off here they are still able to control mouse and keyboard or record the "
 "contents of your screen through the windowing system"
 msgstr ""
-"Forrit sem hegða sér vel munu líklega virða þessar stillingar, en jafnvel "
-"þótt slökkt sé á þessu geta þau samt stýrt mús og lyklaborði eða tekið upp "
-"efni af skjánum þínum í gegnum gluggakerfið"
 
 #: ui/Permissions.qml:65
 #, kde-format
 msgctxt "@label:group"
 msgid "General:"
-msgstr "Almennt:"
+msgstr "ئادەتتىكى:"
 
 #: ui/Permissions.qml:68
 #, kde-format
 msgctxt "@option:check"
 msgid "Send notifications"
-msgstr "Senda tilkynningar"
+msgstr ""
 
 #: ui/Permissions.qml:85
 #, kde-format
 msgctxt "@option:check"
 msgid "Block automatic sleep and screen locking"
-msgstr "Hindra sjálfvirka svæfingu og skjálæsingu"
+msgstr ""
 
 #: ui/Permissions.qml:110
 #, kde-format
 msgctxt "@option:check"
 msgid "Activate game mode"
-msgstr "Virkja leikjaham"
+msgstr ""
 
 #: ui/Permissions.qml:121
 #, kde-kuit-format
@@ -445,130 +440,128 @@ msgid ""
 "Allows the application to activate game mode if you are using it on your "
 "system."
 msgstr ""
-"Leyfir forritinu að virkja leikjaham ef þú ert að nota hann á kerfinu þínu."
 
 #: ui/Permissions.qml:130
 #, kde-format
 msgctxt "@option:check"
 msgid "Gain higher process priority"
-msgstr "Fá meiri forgang í ferli"
+msgstr ""
 
 #: ui/Permissions.qml:146
 #, kde-format
 msgctxt "@label:listbox"
 msgid "Take screenshots:"
-msgstr "Taka skjámyndir:"
+msgstr ""
 
 #: ui/Permissions.qml:154 ui/Permissions.qml:175 ui/Permissions.qml:195
 #: ui/Permissions.qml:226
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Ask Once"
-msgstr "Spyrja einu sinni"
+msgstr ""
 
 #: ui/Permissions.qml:155 ui/Permissions.qml:176 ui/Permissions.qml:227
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Deny"
-msgstr "Hafna"
+msgstr "رەت قىل"
 
 #: ui/Permissions.qml:156 ui/Permissions.qml:177 ui/Permissions.qml:228
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Allow"
-msgstr "Leyfa"
+msgstr "يول قوي"
 
 #: ui/Permissions.qml:157 ui/Permissions.qml:178 ui/Permissions.qml:229
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Always Ask"
-msgstr "Alltaf spyrja"
+msgstr "دائىم سورا"
 
 #: ui/Permissions.qml:167
 #, kde-format
 msgctxt "@title:group"
 msgid "Camera access:"
-msgstr "Aðgangur að myndavél:"
+msgstr ""
 
 #: ui/Permissions.qml:188
 #, kde-format
 msgctxt "@label:listbox"
 msgid "Location accuracy:"
-msgstr "Nákvæmni staðsetningar:"
+msgstr ""
 
 #: ui/Permissions.qml:197
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Deny"
-msgstr "Hafna"
+msgstr "رەت قىل"
 
 #: ui/Permissions.qml:198
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Country"
-msgstr "Land"
+msgstr "دۆلەت"
 
 #: ui/Permissions.qml:199
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "City"
-msgstr "Borg/Sveitarfélag"
+msgstr "شەھەر"
 
 #: ui/Permissions.qml:200
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Neighborhood"
-msgstr "Hverfi"
+msgstr ""
 
 #: ui/Permissions.qml:201
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Street"
-msgstr "Gata"
+msgstr "كوچا"
 
 #: ui/Permissions.qml:202
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Exact"
-msgstr "Nákvæmt"
+msgstr "دەل"
 
 #: ui/Permissions.qml:218
 #, kde-format
 msgctxt "@label:listbox"
 msgid "Set desktop and lock screen background:"
-msgstr "Setja bakgrunnsmynd skjáborðs og læsiskjás:"
+msgstr ""
 
 #: ui/Permissions.qml:243
 #, kde-format
 msgctxt "@label"
 msgid "Screen sharing:"
-msgstr "Skjádeiling:"
+msgstr ""
 
 #: ui/Permissions.qml:249 ui/Permissions.qml:263 ui/Permissions.qml:292
 #, kde-format
 msgctxt "@action:button"
 msgid "Manage %1 Session"
 msgid_plural "Manage %1 Sessions"
-msgstr[0] "Sýsla með %1 setu"
-msgstr[1] "Sýsla með %1 setur"
+msgstr[0] ""
 
 #: ui/Permissions.qml:252
 #, kde-format
 msgctxt "@title:window %1 is the name of the application"
 msgid "%1 – Screencast Sessions"
-msgstr "%1 – Skjávörpunarsetur"
+msgstr ""
 
 #: ui/Permissions.qml:257
 #, kde-format
 msgctxt "@label"
 msgid "Capture pointer & keyboard input:"
-msgstr "Ná í inntak frá bendli og lyklaborði:"
+msgstr ""
 
 #: ui/Permissions.qml:266
 #, kde-format
 msgctxt "@title:window %1 is the name of the application"
 msgid "%1 – Input Capture Sessions"
-msgstr "%1 – Inntaksgripsetur"
+msgstr ""
 
 #: ui/Permissions.qml:271
 #, kde-format
@@ -576,7 +569,7 @@ msgctxt ""
 "@label 'Remote control' like in xdg-desktop-portal-kde remotedesktopdialog."
 "cpp"
 msgid " Remote control:"
-msgstr " Fjarstýring:"
+msgstr ""
 
 #: ui/Permissions.qml:275
 #, kde-format
@@ -584,65 +577,51 @@ msgctxt "@option:check"
 msgid ""
 "Control pointer & keyboard, and share screen with other apps without asking"
 msgstr ""
-"Stýrðu bendli og lyklaborði og deildu skjá með öðrum forritum án þess að "
-"spyrja"
 
 #: ui/Permissions.qml:295
 #, kde-format
 msgctxt "@title:window %1 is the name of the application"
 msgid "%1 – Remote Desktop Sessions"
-msgstr "%1 – Fjartengdar skjáborðssetur"
+msgstr ""
 
 #: ui/SessionList.qml:49
 #, kde-format
 msgctxt "@action:button"
 msgid "Revoke"
-msgstr "Afturkalla"
+msgstr ""
 
 #: ui/SessionList.qml:60
 #, kde-format
 msgctxt "@action:button revoke all screencasting/screen sharing sessions"
 msgid "Revoke All"
-msgstr "Afturkalla allt"
+msgstr ""
 
 #: ui/TextPromptDialog.qml:21
 #, kde-format
 msgid "Add Filesystem Path Permission"
-msgstr "Bæta við heimild fyrir skráakerfisslóð"
+msgstr ""
 
 #: ui/TextPromptDialog.qml:22
 #, kde-format
 msgid "Add Session Bus Permission"
-msgstr "Bæta við heimild fyrir tengibraut setu"
+msgstr ""
 
 #: ui/TextPromptDialog.qml:23
 #, kde-format
 msgid "Add System Bus Permission"
-msgstr "Bæta við heimild fyrir tengibraut kerfis"
+msgstr ""
 
 #: ui/TextPromptDialog.qml:38
 #, kde-format
 msgid "Enter filesystem path:"
-msgstr "Settu inn skráakerfisslóð:"
+msgstr ""
 
 #: ui/TextPromptDialog.qml:39
 #, kde-format
 msgid "Enter session bus name:"
-msgstr "Settu inn heiti á tengibraut setu:"
+msgstr ""
 
 #: ui/TextPromptDialog.qml:40
 #, kde-format
 msgid "Enter system bus name:"
-msgstr "Settu inn heiti á tengibraut kerfis:"
-
-#, fuzzy
-#~| msgid "Flatpak Applications"
-#~ msgctxt "@window:title"
-#~ msgid "Flatpak Applications"
-#~ msgstr "Flatpak forrit"
-
-#, fuzzy
-#~| msgid "Permissions"
-#~ msgctxt "@title:window"
-#~ msgid "Permissions"
-#~ msgstr "Heimildir"
+msgstr ""
