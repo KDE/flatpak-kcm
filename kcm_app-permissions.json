@@ -1,6 +1,6 @@
 {
     "KPlugin": {
-        "BugReportUrl": "https://bugs.kde.org/enter_bug.cgi?product=systemsettings&component=kcm_flatpak",
+        "BugReportUrl": "https://bugs.kde.org/enter_bug.cgi?product=systemsettings&component=kcm_app-permissions",
         "Description": "Configure Application Permissions",
         "Description[ar]": "اضبط أذونات التطبيق",
         "Description[ca@valencia]": "Configura els permisos de les aplicacions",
