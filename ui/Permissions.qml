@@ -48,13 +48,6 @@ KCMUtils.SimpleKCM {
         }
     }
 
-    header: Kirigami.InlineMessage {
-        text: i18nc("@info", "Well-behaved applications might respect these settings but even if turned off here they are \
-still able to control mouse and keyboard or record the contents of your screen through the windowing system")
-        visible: Qt.platform.pluginName === "xcb"
-        position: Kirigami.InlineMessage.Header
-    }
-
     Kirigami.FormLayout {
         id: controlsLayout
         readonly property double buttonLikePreferredWidth: Math.max(screenshotCombobox.implicitWidth, cameraCombobox.implicitWidth, locationCombobox.implicitWidth, remoteDesktopButton.implicitWidth, screencastButton.implicitWidth, inputcaptureButton.implicitWidth)
