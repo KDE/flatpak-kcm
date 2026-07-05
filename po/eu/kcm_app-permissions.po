@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-14 00:45+0000\n"
-"PO-Revision-Date: 2026-07-01 22:43+0200\n"
+"PO-Revision-Date: 2026-07-04 10:37+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -323,7 +323,7 @@ msgstr "Deskonektatutako pantaila bat %1(e)an"
 #, kde-format
 msgctxt "%1 is a list of things formed from above"
 msgid "Capture input from: %1"
-msgstr "Hemengo sarrera harrapatu: %1"
+msgstr "Hemengo sarrera atzeman: %1"
 
 #: ui/AddEnvironmentVariableDialog.qml:18
 #, kde-format
@@ -567,13 +567,13 @@ msgstr "%1 – pantaila-grabazio saioak"
 #, kde-format
 msgctxt "@label"
 msgid "Capture pointer & keyboard input:"
-msgstr "Erakuslearen eta teklatuaren sarrera harrapatu:"
+msgstr "Erakuslearen eta teklatuaren sarrera atzeman:"
 
 #: ui/Permissions.qml:266
 #, kde-format
 msgctxt "@title:window %1 is the name of the application"
 msgid "%1 – Input Capture Sessions"
-msgstr "%1 – Sarrera harrapaketa saioak"
+msgstr "%1 – Sarrera atzemateko saioak"
 
 #: ui/Permissions.qml:271
 #, kde-format
