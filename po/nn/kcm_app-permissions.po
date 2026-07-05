@@ -624,13 +624,3 @@ msgstr "Skriv inn namn på øktbuss:"
 #, kde-format
 msgid "Enter system bus name:"
 msgstr "Skriv inn namn på systembuss:"
-
-#~ msgctxt "@info"
-#~ msgid ""
-#~ "Well-behaved applications might respect these settings but even if turned "
-#~ "off here they are still able to control mouse and keyboard or record the "
-#~ "contents of your screen through the windowing system"
-#~ msgstr ""
-#~ "Velfungerande program vil respektera desse innstillingane, men sjølv med "
-#~ "innstillingane av, er det mogleg for programma å styra musa og tastaturet "
-#~ "eller ta opptak av skjerm­innhaldet gjennom vindaugssystemet."

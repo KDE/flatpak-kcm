@@ -615,12 +615,3 @@ msgstr "输入会话总线名称："
 #, kde-format
 msgid "Enter system bus name:"
 msgstr "输入系统总线名称："
-
-#~ msgctxt "@info"
-#~ msgid ""
-#~ "Well-behaved applications might respect these settings but even if turned "
-#~ "off here they are still able to control mouse and keyboard or record the "
-#~ "contents of your screen through the windowing system"
-#~ msgstr ""
-#~ "行为良好的应用程序或许会遵守这些设置，但即便在此处关闭了权限，应用程序仍可"
-#~ "通过窗口系统控制鼠标和键盘或录制屏幕的内容。"
