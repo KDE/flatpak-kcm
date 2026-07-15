@@ -50,8 +50,8 @@ KCMUtils.SimpleKCM {
 
     Kirigami.FormLayout {
         id: controlsLayout
-        readonly property double buttonLikePreferredWidth: Math.max(screenshotCombobox.implicitWidth, cameraCombobox.implicitWidth, locationCombobox.implicitWidth, remoteDesktopButton.implicitWidth, screencastButton.implicitWidth, inputcaptureButton.implicitWidth)
-        readonly property double switchMaxWidth: Math.max(notificationsSwitch.implicitWidth, powerManagementSwitch.implicitWidth, gameModeSwitch.implicitWidth, highProcessPrioritySwitch.implicitWidth)
+        readonly property double buttonLikePreferredWidth: Math.max(screenshotCombobox.implicitWidth, cameraCombobox.implicitWidth, locationCombobox.implicitWidth, remoteDesktopButton.implicitWidth, wallpaperCombobox.implicitWidth, screencastButton.implicitWidth, inputcaptureButton.implicitWidth)
+        readonly property double switchMaxWidth: Math.max(notificationsSwitch.implicitWidth, powerManagementSwitch.implicitWidth, gameModeSwitch.implicitWidth, highProcessPrioritySwitch.implicitWidth, remoteControlSwitch.implicitWidth)
 
         QQC.Switch {
             id: notificationsSwitch
