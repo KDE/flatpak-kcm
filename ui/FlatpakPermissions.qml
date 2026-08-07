@@ -284,10 +284,18 @@ KCM.ScrollViewKCM {
                     }
                 }
 
-                QQC2.Label {
+                Item {
+                    id: labelWrapper
                     Layout.fillWidth: true
-                    text: model.description
-                    elide: Text.ElideRight
+                    implicitHeight: permLabel.implicitHeight
+                    implicitWidth: permTextField.implicitWidth // make them equal width
+
+                    QQC2.Label {
+                        id: permLabel
+                        anchors.fill: parent
+                        text: permItem.model.description
+                        elide: Text.ElideRight
+                    }
                 }
 
                 QQC2.ComboBox {
@@ -328,6 +336,7 @@ KCM.ScrollViewKCM {
 
                 QQC2.TextField {
                     id: permTextField
+                    Layout.fillWidth: true
                     visible: permItem.model.isNotDummy && permItem.model.section === FlatpakPermissionsSectionType.Environment
                     text: (permItem.model.isNotDummy && permItem.model.section === FlatpakPermissionsSectionType.Environment)
                         ? permItem.model.effectiveValue : ""
