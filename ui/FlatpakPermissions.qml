@@ -77,53 +77,55 @@ KCM.ScrollViewKCM {
     }
 
     // Having it inside a component helps to separate layouts and workarounds for nullable property accesses.
+    component HeaderComponent: RowLayout {
+        id: header
+
+        readonly property string title: root.ref.displayName
+        readonly property string subtitle: root.ref.flatpakName
+        property alias subtitleVisible: appSubtitle.visible
+
+        spacing: 0
+
+        width: ListView.view.width - ListView.view.leftMargin - ListView.view.rightMargin
+
+        Kirigami.Icon {
+            // Fallback doesn't kick in when source is an empty string/url
+            source: root.decoration
+
+            Layout.alignment: Qt.AlignCenter
+            Layout.preferredWidth: Kirigami.Units.iconSizes.large
+            Layout.preferredHeight: Kirigami.Units.iconSizes.large
+
+            // RowLayout is incapable of paddings, so use margins on both child items instead.
+            Layout.margins: Kirigami.Units.largeSpacing
+        }
+        ColumnLayout {
+            spacing: 0
+            Layout.fillWidth: true
+
+            Layout.margins: Kirigami.Units.largeSpacing
+            Layout.leftMargin: 0
+
+            Kirigami.Heading {
+                id: appName
+                text: header.title
+                wrapMode: Text.Wrap
+                Layout.fillWidth: true
+            }
+            Kirigami.SelectableLabel {
+                id: appSubtitle
+                visible: text != appName.text
+                text: header.subtitle
+                opacity: 0.75
+                wrapMode: Text.Wrap
+                Layout.fillWidth: true
+            }
+        }
+    }
     Component {
         id: headerComponent
 
-        RowLayout {
-            id: header
-
-            readonly property string title: root.ref.displayName
-            readonly property string subtitle: root.ref.flatpakName
-
-            spacing: 0
-
-            width: ListView.view.width - ListView.view.leftMargin - ListView.view.rightMargin
-
-            Kirigami.Icon {
-                // Fallback doesn't kick in when source is an empty string/url
-                source: root.decoration
-
-                Layout.alignment: Qt.AlignCenter
-                Layout.preferredWidth: Kirigami.Units.iconSizes.large
-                Layout.preferredHeight: Kirigami.Units.iconSizes.large
-
-                // RowLayout is incapable of paddings, so use margins on both child items instead.
-                Layout.margins: Kirigami.Units.largeSpacing
-            }
-            ColumnLayout {
-                spacing: 0
-                Layout.fillWidth: true
-
-                Layout.margins: Kirigami.Units.largeSpacing
-                Layout.leftMargin: 0
-
-                Kirigami.Heading {
-                    id: appName
-                    text: header.title
-                    wrapMode: Text.Wrap
-                    Layout.fillWidth: true
-                }
-                Kirigami.SelectableLabel {
-                    id: appSubtitle
-                    visible: text != appName.text
-                    text: header.subtitle
-                    opacity: 0.75
-                    wrapMode: Text.Wrap
-                    Layout.fillWidth: true
-                }
-            }
-        }
+        HeaderComponent { }
     }
 
     view: ListView {
@@ -139,7 +141,7 @@ KCM.ScrollViewKCM {
         cacheBuffer: 10000
 
         Accessible.name: root.ref.displayName
-        Accessible.description: appSubtitle.visible ? i18nc("@info accessible.description for list", "ID %1", root.ref.flatpakName): ""
+        Accessible.description: (headerItem as HeaderComponent).subtitleVisible ? i18nc("@info accessible.description for list", "ID %1", root.ref.flatpakName): ""
         Accessible.role: Accessible.List
 
         activeFocusOnTab: true
