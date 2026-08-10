@@ -42,7 +42,7 @@
             "handset",
             "tablet"
         ],
-        "Icon": "preferences-security",
+        "Icon": "preferences-applications-permissions",
         "Name": "Application Permissions",
         "Name[ar]": "أذونات التطبيق",
         "Name[ca@valencia]": "Permisos de les aplicacions",
