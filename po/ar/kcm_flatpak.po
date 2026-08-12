@@ -240,12 +240,12 @@ msgstr "أضف جلسة ناقل جديدة"
 #: flatpakpermission.cpp:1333
 #, kde-format
 msgid "Add a new system bus"
-msgstr "أضف ناقل نظام جديداً"
+msgstr "أضف ناقل نظام جديدًا"
 
 #: flatpakpermission.cpp:1335
 #, kde-format
 msgid "Add a new environment variable"
-msgstr "أضف متغير بيئة جديداً"
+msgstr "أضف متغير بيئة جديدًا"
 
 #: package/contents/ui/AddEnvironmentVariableDialog.qml:18
 #, kde-format
@@ -302,7 +302,7 @@ msgstr "اعرض الأذون المتقدمة"
 #: package/contents/ui/permissions.qml:94
 #, kde-format
 msgid "Add New"
-msgstr "أضف أيضاً"
+msgstr "أضف أيضًا"
 
 #: package/contents/ui/TextPromptDialog.qml:21
 #, kde-format
