@@ -48,244 +48,251 @@ KCMUtils.SimpleKCM {
         }
     }
 
-    Kirigami.FormLayout {
+    Kirigami.Form {
         id: controlsLayout
-        readonly property double buttonLikePreferredWidth: Math.max(screenshotCombobox.implicitWidth, cameraCombobox.implicitWidth, locationCombobox.implicitWidth, remoteDesktopButton.implicitWidth, screencastButton.implicitWidth, inputcaptureButton.implicitWidth)
-        readonly property double switchMaxWidth: Math.max(notificationsSwitch.implicitWidth, powerManagementSwitch.implicitWidth, gameModeSwitch.implicitWidth, highProcessPrioritySwitch.implicitWidth)
 
-        QQC.Switch {
-            id: notificationsSwitch
-            Kirigami.FormData.label: i18nc("@label:group", "General:")
-            Kirigami.FormData.labelAlignment: Qt.AlignTop
-            visible: !root.isHostApp
-            text: i18nc("@option:check", "Send notifications")
-            Layout.fillWidth: true
-            Layout.maximumWidth: controlsLayout.switchMaxWidth
-            PermissionItem {
-                id: notificationPermission
-                table: "notifications"
-                resource: "notification"
-            }
-            checked: notificationPermission.permissions[0] !== "no"
-            onToggled: notificationPermission.permissions = checked ? ["yes"] : ["no"]
+        Kirigami.SizeGroup {
+            mode: Kirigami.SizeGroup.Width
+            items: [screenshotCombobox, cameraCombobox, locationCombobox, wallpaperCombobox]
         }
 
-        QQC.Switch {
-            id: powerManagementSwitch
-            visible: !root.isHostApp
-            Layout.fillWidth: true
-            Layout.maximumWidth: controlsLayout.switchMaxWidth
-            text: i18nc("@option:check", "Block automatic sleep and screen locking")
-            PermissionItem {
-                id: inhibitPermission
-                table: "inhibit"
-                resource: "inhibit"
-            }
-            checked: {
-                // If the permission is *unset* the portal allows everything by default
-                // Otherwise it's a list of allowed actions "logout", "switch", "suspend" or "idle"
-                // Simplified here to a switch
-                const perms = inhibitPermission.permissions
-                if (perms.length === 0) {
-                    return true
-                }
-                return perms.includes("logout") || perms.includes("switch") || perms.includes("suspend") || perms.includes("idle")
-            }
-            onToggled: inhibitPermission.permissions = checked ? [] : [""]
-        }
-
-        RowLayout {
-            visible: !root.isHostApp && kcm.gamemodeAvailable
-            QQC.Switch {
-                id: gameModeSwitch
-                Layout.fillWidth: true
-                Layout.maximumWidth: controlsLayout.switchMaxWidth
-                text: i18nc("@option:check", "Activate game mode")
-                PermissionItem {
-                    id: gamemodePermission
-                    table: "gamemode"
-                    resource: "gamemode"
-                }
-                checked: gamemodePermission.permissions[0] !== "no"
-                onToggled: gamemodePermission.permissions = checked ? ["yes"] : ["no"]
-            }
-            Kirigami.ContextualHelpButton {
-                id: helper
-                toolTipText: xi18nc("@info:tooltip", "Allows the application to activate game mode if you are using it on your system.")
-            }
-        }
-
-        QQC.Switch {
-            id: highProcessPrioritySwitch
-            visible: !root.isHostApp
-            Layout.fillWidth: true
-            Layout.maximumWidth: controlsLayout.switchMaxWidth
-            text: i18nc("@option:check", "Gain higher process priority")
-            PermissionItem {
-                id: realtimePermission
-                table: "realtime"
-                resource: "realtime"
-            }
-            checked: realtimePermission.permissions[0] !== "no"
-            onToggled: realtimePermission.permissions = checked ? ["yes"] : ["no"]
-        }
-
-        Item {
-            Kirigami.FormData.isSection: true
-        }
-
-        PermissionCombobox {
-            id: screenshotCombobox
-            Kirigami.FormData.label: i18nc("@label:listbox", "Take screenshots:")
-            Layout.preferredWidth: parent.buttonLikePreferredWidth
-            PermissionItem {
-                id: screenshotPermission
-                table: "screenshot"
-                resource: "screenshot"
-            }
-            model: [
-                {value: "", text: i18nc("@item:inlistbox", "Ask Once")},
-                {value: "no", text: i18nc("@item:inlistbox", "Deny")},
-                {value: "yes", text: i18nc("@item:inlistbox", "Allow")},
-                {value: "ask", text: i18nc("@item:inlistbox", "Always Ask")},
-            ]
-            // Unset/empty makes the portal ask once
-            activeValue: screenshotPermission.permissions[0] ?? ""
-            onValueSelected: (value) => screenshotPermission.permissions = [value]
-        }
-
-        PermissionCombobox {
-            id: cameraCombobox
-            visible: !root.isHostApp
-            Kirigami.FormData.label: i18nc("@title:group", "Camera access:")
-            Layout.preferredWidth: parent.buttonLikePreferredWidth
-            PermissionItem {
-                id: cameraPermission
-                table: "devices"
-                resource: "camera"
-            }
-            model: [
-                {value: "", text: i18nc("@item:inlistbox", "Ask Once")},
-                {value: "no", text: i18nc("@item:inlistbox", "Deny")},
-                {value: "yes", text: i18nc("@item:inlistbox", "Allow")},
-                {value: "ask", text: i18nc("@item:inlistbox", "Always Ask")},
-            ]
-            // Unset/empty makes the portal ask once
-            activeValue: cameraPermission.permissions[0] ?? ""
-            onValueSelected: (value) => cameraPermission.permissions = [value]
-        }
-
-        PermissionCombobox {
-            id: locationCombobox
-            visible: !root.isHostApp
-            Kirigami.FormData.label: i18nc("@label:listbox", "Location accuracy:")
-            Layout.preferredWidth: parent.buttonLikePreferredWidth
-            PermissionItem {
-                id: locationPermission
-                table: "location"
-                resource: "location"
-            }
-            displayText: currentIndex === -1 ? i18nc("@item:inlistbox", "Ask Once") : currentText
-            model: [
-                {value: "NONE", text: i18nc("@item:inlistbox location accuracy", "Deny")},
-                {value: "COUNTRY", text: i18nc("@item:inlistbox location accuracy", "Country")},
-                {value: "CITY", text: i18nc("@item:inlistbox location accuracy", "City")},
-                {value: "NEIGHBORHOOD", text: i18nc("@item:inlistbox location accuracy", "Neighborhood")},
-                {value: "STREET", text: i18nc("@item:inlistbox location accuracy", "Street")},
-                {value: "EXACT", text: i18nc("@item:inlistbox location accuracy", "Exact")},
-            ]
-            activeValue: locationPermission.permissions[0] ?? ""
-            // The format of the permission is [permission, lastUsageTimestamp], everything else will be rejected
-            onValueSelected: {
-                if (locationPermission.permissions.length >= 2) {
-                    locationPermission.permissions = [value, locationPermission.permissions[1]]
-                } else {
-                    locationPermission.permissions = [value, 0]
+        Kirigami.FormGroup {
+            Kirigami.FormEntry {
+                title: i18nc("@label:group", "General:")
+                visible: !root.isHostApp
+                contentItem: QQC.Switch {
+                    id: notificationsSwitch
+                    text: i18nc("@option:check", "Send notifications")
+                    Layout.fillWidth: true
+                    PermissionItem {
+                        id: notificationPermission
+                        table: "notifications"
+                        resource: "notification"
+                    }
+                    checked: notificationPermission.permissions[0] !== "no"
+                    onToggled: notificationPermission.permissions = checked ? ["yes"] : ["no"]
                 }
             }
-        }
 
-        PermissionCombobox {
-            id: wallpaperCombobox
-            visible: !root.isHostApp
-            Kirigami.FormData.label: i18nc("@label:listbox", "Set desktop and lock screen background:")
-            Layout.preferredWidth: parent.buttonLikePreferredWidth
-            PermissionItem {
-                id: wallpaperPermission
-                table: "wallpaper"
-                resource: "wallpaper"
+            Kirigami.FormEntry {
+                visible: !root.isHostApp
+                contentItem: QQC.Switch {
+                    id: powerManagementSwitch
+                    Layout.fillWidth: true
+                    text: i18nc("@option:check", "Block automatic sleep and screen locking")
+                    PermissionItem {
+                        id: inhibitPermission
+                        table: "inhibit"
+                        resource: "inhibit"
+                    }
+                    checked: {
+                        // If the permission is *unset* the portal allows everything by default
+                        // Otherwise it's a list of allowed actions "logout", "switch", "suspend" or "idle"
+                        // Simplified here to a switch
+                        const perms = inhibitPermission.permissions
+                        if (perms.length === 0) {
+                            return true
+                        }
+                        return perms.includes("logout") || perms.includes("switch") || perms.includes("suspend") || perms.includes("idle")
+                    }
+                    onToggled: inhibitPermission.permissions = checked ? [] : [""]
+                }
             }
-            model: [
-                {value: "", text: i18nc("@item:inlistbox", "Ask Once")},
-                {value: "no", text: i18nc("@item:inlistbox", "Deny")},
-                {value: "yes", text: i18nc("@item:inlistbox", "Allow")},
-                {value: "ask", text: i18nc("@item:inlistbox", "Always Ask")},
-            ]
-            // Unset/empty makes the portal ask once
-            activeValue: wallpaperPermission.permissions[0] ?? ""
-            onValueSelected: (value) => wallpaperPermission.permissions = [value]
-        }
 
-
-        Item {
-            Kirigami.FormData.isSection: true
-        }
-
-        QQC.Button {
-            id: screencastButton
-            Kirigami.FormData.label: i18nc("@label", "Screen sharing:")
-            Layout.preferredWidth: parent.buttonLikePreferredWidth
-            KCM.ScreencastSessionsModel {
-                id: screencastSessions
-                appId: root.appId
+            Kirigami.FormEntry {
+                visible: !root.isHostApp && kcm.gamemodeAvailable
+                contentItem: QQC.Switch {
+                    id: gameModeSwitch
+                    Layout.fillWidth: true
+                    text: i18nc("@option:check", "Activate game mode")
+                    PermissionItem {
+                        id: gamemodePermission
+                        table: "gamemode"
+                        resource: "gamemode"
+                    }
+                    checked: gamemodePermission.permissions[0] !== "no"
+                    onToggled: gamemodePermission.permissions = checked ? ["yes"] : ["no"]
+                }
+                trailingItems: Kirigami.ContextualHelpButton {
+                    id: helper
+                    toolTipText: xi18nc("@info:tooltip", "Allows the application to activate game mode if you are using it on your system.")
+                }
             }
-            text: i18ncp("@action:button", "Manage %1 Session", "Manage %1 Sessions", screencastSessions.rowCount)
-            icon.name: "video-display"
-            visible: screencastSessions.rowCount > 0
-            onClicked: kcm.push("SessionList.qml", {"model": screencastSessions, "title": i18nc("@title:window %1 is the name of the application","%1 – Screencast Sessions", root.title)})
-        }
 
-         QQC.Button {
-            id: inputcaptureButton
-            Kirigami.FormData.label: i18nc("@label", "Capture pointer & keyboard input:")
-            Layout.preferredWidth: parent.buttonLikePreferredWidth
-            KCM.InputCaptureSessionsModel {
-                id: inputCaptureSessions
-                appId: root.appId
+            Kirigami.FormEntry {
+                visible: !root.isHostApp
+                contentItem: QQC.Switch {
+                    id: highProcessPrioritySwitch
+                    Layout.fillWidth: true
+                    text: i18nc("@option:check", "Gain higher process priority")
+                    PermissionItem {
+                        id: realtimePermission
+                        table: "realtime"
+                        resource: "realtime"
+                    }
+                    checked: realtimePermission.permissions[0] !== "no"
+                    onToggled: realtimePermission.permissions = checked ? ["yes"] : ["no"]
+                }
             }
-            text: i18ncp("@action:button", "Manage %1 Session", "Manage %1 Sessions", inputCaptureSessions.rowCount)
-            icon.name: "dialog-input-devices"
-            visible: inputCaptureSessions.rowCount > 0
-            onClicked: kcm.push("SessionList.qml", {"model": inputCaptureSessions, "title": i18nc("@title:window %1 is the name of the application","%1 – Input Capture Sessions", root.title)})
-        }
 
-        QQC.Switch {
-            id: remoteControlSwitch
-            Kirigami.FormData.label: i18nc("@label 'Remote control' like in xdg-desktop-portal-kde remotedesktopdialog.cpp", " Remote control:")
-            Kirigami.FormData.labelAlignment: Qt.AlignTop
-            Layout.fillWidth: true
-            Layout.maximumWidth: controlsLayout.switchMaxWidth
-            text: i18nc("@option:check", "Control pointer & keyboard, and share screen with other apps without asking")
-            PermissionItem {
-                id: remoteDesktopKdeAuthorized
-                table: "kde-authorized"
-                resource: "remote-desktop"
+            Kirigami.FormSeparator {}
+
+            Kirigami.FormEntry {
+                title: i18nc("@label:listbox", "Take screenshots:")
+                contentItem: PermissionCombobox {
+                    id: screenshotCombobox
+                    PermissionItem {
+                        id: screenshotPermission
+                        table: "screenshot"
+                        resource: "screenshot"
+                    }
+                    model: [
+                        {value: "", text: i18nc("@item:inlistbox", "Ask Once")},
+                        {value: "no", text: i18nc("@item:inlistbox", "Deny")},
+                        {value: "yes", text: i18nc("@item:inlistbox", "Allow")},
+                        {value: "ask", text: i18nc("@item:inlistbox", "Always Ask")},
+                    ]
+                    // Unset/empty makes the portal ask once
+                    activeValue: screenshotPermission.permissions[0] ?? ""
+                    onValueSelected: (value) => screenshotPermission.permissions = [value]
+                }
             }
-            checked: remoteDesktopKdeAuthorized.permissions[0] === "yes"
-            onToggled: remoteDesktopKdeAuthorized.permissions = checked ? ["yes"] : ["no"]
-        }
-        QQC.Button {
-            id: remoteDesktopButton
-            enabled: !remoteControlSwitch.checked
-            Layout.preferredWidth: parent.buttonLikePreferredWidth
-            KCM.RemoteDesktopSessionsModel {
-                id: remoteDesktopSessions
-                appId: root.appId
+
+            Kirigami.FormEntry {
+                title: i18nc("@title:group", "Camera access:")
+                visible: !root.isHostApp
+                contentItem: PermissionCombobox {
+                    id: cameraCombobox
+                    PermissionItem {
+                        id: cameraPermission
+                        table: "devices"
+                        resource: "camera"
+                    }
+                    model: [
+                        {value: "", text: i18nc("@item:inlistbox", "Ask Once")},
+                        {value: "no", text: i18nc("@item:inlistbox", "Deny")},
+                        {value: "yes", text: i18nc("@item:inlistbox", "Allow")},
+                        {value: "ask", text: i18nc("@item:inlistbox", "Always Ask")},
+                    ]
+                    // Unset/empty makes the portal ask once
+                    activeValue: cameraPermission.permissions[0] ?? ""
+                    onValueSelected: (value) => cameraPermission.permissions = [value]
+                }
             }
-            text: i18ncp("@action:button", "Manage %1 Session", "Manage %1 Sessions", remoteDesktopSessions.rowCount)
-            icon.name: "krfb"
-            visible: remoteDesktopSessions.rowCount > 0
-            onClicked: kcm.push("SessionList.qml", {"model": remoteDesktopSessions, "title": i18nc("@title:window %1 is the name of the application", "%1 – Remote Desktop Sessions", root.title)})
+
+            Kirigami.FormEntry {
+                title: i18nc("@label:listbox", "Location accuracy:")
+                visible: !root.isHostApp
+                contentItem: PermissionCombobox {
+                    id: locationCombobox
+                    PermissionItem {
+                        id: locationPermission
+                        table: "location"
+                        resource: "location"
+                    }
+                    displayText: currentIndex === -1 ? i18nc("@item:inlistbox", "Ask Once") : currentText
+                    model: [
+                        {value: "NONE", text: i18nc("@item:inlistbox location accuracy", "Deny")},
+                        {value: "COUNTRY", text: i18nc("@item:inlistbox location accuracy", "Country")},
+                        {value: "CITY", text: i18nc("@item:inlistbox location accuracy", "City")},
+                        {value: "NEIGHBORHOOD", text: i18nc("@item:inlistbox location accuracy", "Neighborhood")},
+                        {value: "STREET", text: i18nc("@item:inlistbox location accuracy", "Street")},
+                        {value: "EXACT", text: i18nc("@item:inlistbox location accuracy", "Exact")},
+                    ]
+                    activeValue: locationPermission.permissions[0] ?? ""
+                    // The format of the permission is [permission, lastUsageTimestamp], everything else will be rejected
+                    onValueSelected: {
+                        if (locationPermission.permissions.length >= 2) {
+                            locationPermission.permissions = [value, locationPermission.permissions[1]]
+                        } else {
+                            locationPermission.permissions = [value, 0]
+                        }
+                    }
+                }
+            }
+
+            Kirigami.FormEntry {
+                title: i18nc("@label:listbox", "Set desktop and lock screen background:")
+                visible: !root.isHostApp
+                contentItem: PermissionCombobox {
+                    id: wallpaperCombobox
+                    PermissionItem {
+                        id: wallpaperPermission
+                        table: "wallpaper"
+                        resource: "wallpaper"
+                    }
+                    model: [
+                        {value: "", text: i18nc("@item:inlistbox", "Ask Once")},
+                        {value: "no", text: i18nc("@item:inlistbox", "Deny")},
+                        {value: "yes", text: i18nc("@item:inlistbox", "Allow")},
+                        {value: "ask", text: i18nc("@item:inlistbox", "Always Ask")},
+                    ]
+                    // Unset/empty makes the portal ask once
+                    activeValue: wallpaperPermission.permissions[0] ?? ""
+                    onValueSelected: (value) => wallpaperPermission.permissions = [value]
+                }
+            }
+
+
+            Kirigami.FormSeparator {}
+
+            Kirigami.FormAction {
+                title: i18nc("@label", "Screen sharing:")
+                visible: screencastSessions.rowCount > 0
+                action: Kirigami.Action {
+                    icon.name: "video-display"
+                    text: i18ncp("@action:button", "Manage %1 Session", "Manage %1 Sessions", screencastSessions.rowCount)
+                    onTriggered: kcm.push("SessionList.qml", {"model": screencastSessions, "title": i18nc("@title:window %1 is the name of the application","%1 – Screencast Sessions", root.title)})
+                }
+                KCM.ScreencastSessionsModel {
+                    id: screencastSessions
+                    appId: root.appId
+                }
+            }
+
+            Kirigami.FormAction {
+                title: i18nc("@label", "Capture pointer & keyboard input:")
+                visible: inputCaptureSessions.rowCount > 0
+                action: Kirigami.Action {
+                    icon.name: "dialog-input-devices"
+                    text: i18ncp("@action:button", "Manage %1 Session", "Manage %1 Sessions", inputCaptureSessions.rowCount)
+                    onTriggered: kcm.push("SessionList.qml", {"model": inputCaptureSessions, "title": i18nc("@title:window %1 is the name of the application","%1 – Input Capture Sessions", root.title)})
+                }
+                KCM.InputCaptureSessionsModel {
+                    id: inputCaptureSessions
+                    appId: root.appId
+                }
+            }
+
+            Kirigami.FormEntry {
+                implicitWidth: Kirigami.Units.gridUnit * 20
+                title: i18nc("@label 'Remote control' like in xdg-desktop-portal-kde remotedesktopdialog.cpp", " Remote control:")
+                contentItem: QQC.Switch {
+                    id: remoteControlSwitch
+                    Layout.fillWidth: true
+                    text: i18nc("@option:check", "Control pointer & keyboard, and share screen with other apps without asking")
+                    PermissionItem {
+                        id: remoteDesktopKdeAuthorized
+                        table: "kde-authorized"
+                        resource: "remote-desktop"
+                    }
+                    checked: remoteDesktopKdeAuthorized.permissions[0] === "yes"
+                    onToggled: remoteDesktopKdeAuthorized.permissions = checked ? ["yes"] : ["no"]
+                }
+            }
+
+            Kirigami.FormAction {
+                visible: remoteDesktopSessions.rowCount > 0
+                action: Kirigami.Action {
+                    icon.name: "krfb"
+                    text: i18ncp("@action:button", "Manage %1 Session", "Manage %1 Sessions", remoteDesktopSessions.rowCount)
+                    onTriggered: kcm.push("SessionList.qml", {"model": remoteDesktopSessions, "title": i18nc("@title:window %1 is the name of the application", "%1 – Remote Desktop Sessions", root.title)})
+                }
+                KCM.RemoteDesktopSessionsModel {
+                    id: remoteDesktopSessions
+                    appId: root.appId
+                }
+            }
         }
     }
 }
