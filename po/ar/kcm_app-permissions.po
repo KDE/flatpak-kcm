@@ -245,12 +245,12 @@ msgstr "أضف جلسة ناقل جديدة"
 #: flatpakpermission.cpp:1338
 #, kde-format
 msgid "Add a new system bus"
-msgstr "أضف ناقل نظام جديداً"
+msgstr "أضف ناقل نظام جديدًا"
 
 #: flatpakpermission.cpp:1340
 #, kde-format
 msgid "Add a new environment variable"
-msgstr "أضف متغير بيئة جديداً"
+msgstr "أضف متغير بيئة جديدًا"
 
 #: restoredatamodel.cpp:153
 #, kde-format
