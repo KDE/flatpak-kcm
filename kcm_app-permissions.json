@@ -2,7 +2,7 @@
     "KPlugin": {
         "BugReportUrl": "https://bugs.kde.org/enter_bug.cgi?product=systemsettings&component=kcm_app-permissions",
         "Description": "Configure Application Permissions",
-        "Description[ar]": "اضبط أذونات التطبيق",
+        "Description[ar]": "اضبط أذون التطبيق",
         "Description[ca@valencia]": "Configura els permisos de les aplicacions",
         "Description[ca]": "Configura els permisos de les aplicacions",
         "Description[cs]": "Nastavit oprávnění aplikace",
@@ -42,7 +42,7 @@
         ],
         "Icon": "preferences-security",
         "Name": "Application Permissions",
-        "Name[ar]": "أذونات التطبيق",
+        "Name[ar]": "أذون التطبيق",
         "Name[ca@valencia]": "Permisos de les aplicacions",
         "Name[ca]": "Permisos de les aplicacions",
         "Name[cs]": "Oprávnění aplikace",
@@ -77,7 +77,7 @@
         "Name[zh_TW]": "應用程式權限"
     },
     "X-KDE-Keywords": "Flatpak,Flatseal,permission,permissions,access,sandbox,sandboxed,filesystem,file,files,folder,folders,network,networks,networking,bluetooth,print,printer,printing,audio,sound,login,remote login,ssh,smart card,kvm,device,session,session bus,system,system bus,environment,environment variable",
-    "X-KDE-Keywords[ar]": "فلاتباك, إذن,أذونات,وصول,عازل,معزل,نظام ملفات,ملف,ملفات,مجلد,مجلدات,شبكة,شبكات,شبكات,بلوتوث,طباعة,طابعة,طباعة,صوت,تسجيل الدخول,تسجيل الدخول عن بعد,ssh,بطاقة ذكية,kvm,جهاز,جلسة,ناقل جلسة,نظام,ناقل النظام,بيئة,متغير بيئي",
+    "X-KDE-Keywords[ar]": "فلاتباك, إذن,أذون,وصول,عازل,معزل,نظام ملفات,ملف,ملفات,مجلد,مجلدات,شبكة,شبكات,شبكات,بلوتوث,طباعة,طابعة,طباعة,صوت,تسجيل الدخول,تسجيل الدخول عن بعد,ssh,بطاقة ذكية,kvm,جهاز,جلسة,ناقل جلسة,نظام,ناقل النظام,بيئة,متغير بيئي",
     "X-KDE-Keywords[ca@valencia]": "Flatpak,Flatseal,permís,permisos,accés,espai aïllat,entorn controlat,sistema de fitxers,fitxer,fitxers,carpeta,carpetes,xarxa,xarxes,bluetooth,imprimix,impressora,impressió,àudio,so,inici de sessió,inici de sessió remot,ssh,targeta intel·ligent,kvm,dispositiu,sessió,bus de sessió,sistema,bus de sistema,entorn,variable d'entorn",
     "X-KDE-Keywords[ca]": "Flatpak,Flatseal,permís,permisos,accés,espai aïllat,entorn controlat,sistema de fitxers,fitxer,fitxers,carpeta,carpetes,xarxa,xarxes,bluetooth,imprimeix,impressora,impressió,àudio,so,inici de sessió,inici de sessió remot,ssh,targeta intel·ligent,kvm,dispositiu,sessió,bus de sessió,sistema,bus de sistema,entorn,variable d'entorn",
     "X-KDE-Keywords[cs]": "Flatpak,Flatseal,oprávnění,oprávnění,přístup,sandbox,v sandboxu,souborový systém,soubor,soubory,složka,složky,síť,sítě,sítě,bluetooth,tisk,tiskárna,tisk,zvuk,přihlášení,vzdálené přihlášení,ssh,čipová karta,kvm,zařízení,relace,sběrnice relace,systém,systémová sběrnice,prostředí,proměnná prostředí",
