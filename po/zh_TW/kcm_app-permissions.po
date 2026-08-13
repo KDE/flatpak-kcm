@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-04 00:45+0000\n"
+"POT-Creation-Date: 2026-08-13 00:51+0000\n"
 "PO-Revision-Date: 2026-05-21 00:25+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -357,31 +357,31 @@ msgctxt "@title:window %1 is the name of the application"
 msgid "%1 – Flatpak Settings"
 msgstr "%1 – Flatpak 設定"
 
-#: ui/FlatpakPermissions.qml:142
+#: ui/FlatpakPermissions.qml:144
 #, kde-format
 msgctxt "@info accessible.description for list"
 msgid "ID %1"
 msgstr "ID %1"
 
-#: ui/FlatpakPermissions.qml:184
+#: ui/FlatpakPermissions.qml:186
 #, kde-format
 msgctxt "@action:button in section header"
 msgid "Hide advanced permissions"
 msgstr "隱藏進階權限"
 
-#: ui/FlatpakPermissions.qml:184
+#: ui/FlatpakPermissions.qml:186
 #, kde-format
 msgctxt "@action:button in section header"
 msgid "Show advanced permissions"
 msgstr "顯示進階權限"
 
-#: ui/FlatpakPermissions.qml:196
+#: ui/FlatpakPermissions.qml:198
 #, kde-format
 msgctxt "@action:button in section header"
 msgid "Add New…"
 msgstr "新增…"
 
-#: ui/FlatpakPermissions.qml:197
+#: ui/FlatpakPermissions.qml:199
 #, kde-format
 msgctxt "action:button accessible"
 msgid "Add New File System Permission"

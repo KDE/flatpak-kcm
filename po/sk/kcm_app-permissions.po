@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcm_flatpak\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-04 00:45+0000\n"
+"POT-Creation-Date: 2026-08-13 00:51+0000\n"
 "PO-Revision-Date: 2023-12-12 19:26+0100\n"
 "Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
@@ -359,31 +359,31 @@ msgctxt "@title:window %1 is the name of the application"
 msgid "%1 – Flatpak Settings"
 msgstr "%1 – Nastavenia Flatpak"
 
-#: ui/FlatpakPermissions.qml:142
+#: ui/FlatpakPermissions.qml:144
 #, kde-format
 msgctxt "@info accessible.description for list"
 msgid "ID %1"
 msgstr "ID %1"
 
-#: ui/FlatpakPermissions.qml:184
+#: ui/FlatpakPermissions.qml:186
 #, kde-format
 msgctxt "@action:button in section header"
 msgid "Hide advanced permissions"
 msgstr "Skryť pokročilé oprávnenia"
 
-#: ui/FlatpakPermissions.qml:184
+#: ui/FlatpakPermissions.qml:186
 #, kde-format
 msgctxt "@action:button in section header"
 msgid "Show advanced permissions"
 msgstr "Zobraziť pokročilé oprávnenia"
 
-#: ui/FlatpakPermissions.qml:196
+#: ui/FlatpakPermissions.qml:198
 #, kde-format
 msgctxt "@action:button in section header"
 msgid "Add New…"
 msgstr "Pridať nové…"
 
-#: ui/FlatpakPermissions.qml:197
+#: ui/FlatpakPermissions.qml:199
 #, kde-format
 msgctxt "action:button accessible"
 msgid "Add New File System Permission"

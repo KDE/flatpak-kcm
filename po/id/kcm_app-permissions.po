@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-04 00:45+0000\n"
+"POT-Creation-Date: 2026-08-13 00:51+0000\n"
 "PO-Revision-Date: 2023-12-03 13:16+0700\n"
 "Last-Translator: Linerly <linerly@linerly.xyz>\n"
 "Language-Team: Indonesian <kde-i18n-doc@kde.org>\n"
@@ -385,34 +385,34 @@ msgctxt "@title:window %1 is the name of the application"
 msgid "%1 – Flatpak Settings"
 msgstr ""
 
-#: ui/FlatpakPermissions.qml:142
+#: ui/FlatpakPermissions.qml:144
 #, kde-format
 msgctxt "@info accessible.description for list"
 msgid "ID %1"
 msgstr ""
 
-#: ui/FlatpakPermissions.qml:184
+#: ui/FlatpakPermissions.qml:186
 #, fuzzy, kde-format
 #| msgid "Hide advanced permissions"
 msgctxt "@action:button in section header"
 msgid "Hide advanced permissions"
 msgstr "Sembunyikan perizinan tingkat lanjut"
 
-#: ui/FlatpakPermissions.qml:184
+#: ui/FlatpakPermissions.qml:186
 #, fuzzy, kde-format
 #| msgid "Show advanced permissions"
 msgctxt "@action:button in section header"
 msgid "Show advanced permissions"
 msgstr "Tampilkan perizinan tingkat lanjut"
 
-#: ui/FlatpakPermissions.qml:196
+#: ui/FlatpakPermissions.qml:198
 #, fuzzy, kde-format
 #| msgid "Add New"
 msgctxt "@action:button in section header"
 msgid "Add New…"
 msgstr "Tambahkan Baru"
 
-#: ui/FlatpakPermissions.qml:197
+#: ui/FlatpakPermissions.qml:199
 #, fuzzy, kde-format
 #| msgid "Add Filesystem Path Permission"
 msgctxt "action:button accessible"
