@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-13 00:51+0000\n"
+"POT-Creation-Date: 2026-08-25 00:47+0000\n"
 "PO-Revision-Date: 2026-03-04 17:27+0200\n"
 "Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
@@ -403,31 +403,31 @@ msgctxt "@action:intoolbar"
 msgid "Manage Flatpak Settings"
 msgstr "Pārvaldīt „Flatpak“ iestatījumus"
 
-#: ui/Permissions.qml:58
+#: ui/Permissions.qml:61
 #, kde-format
 msgctxt "@label:group"
 msgid "General:"
 msgstr "Pamata:"
 
-#: ui/Permissions.qml:61
+#: ui/Permissions.qml:65
 #, kde-format
 msgctxt "@option:check"
 msgid "Send notifications"
 msgstr "Sūtīt paziņojumus"
 
-#: ui/Permissions.qml:78
+#: ui/Permissions.qml:82
 #, kde-format
 msgctxt "@option:check"
 msgid "Block automatic sleep and screen locking"
 msgstr "Bloķēt automātisko iesnaudināšanu un ekrāna bloķēšanu"
 
-#: ui/Permissions.qml:103
+#: ui/Permissions.qml:107
 #, kde-format
 msgctxt "@option:check"
 msgid "Activate game mode"
 msgstr "Ieslēgt spēļu režīmu"
 
-#: ui/Permissions.qml:114
+#: ui/Permissions.qml:118
 #, kde-kuit-format
 msgctxt "@info:tooltip"
 msgid ""
@@ -435,104 +435,104 @@ msgid ""
 "system."
 msgstr "Ļauj programmai ieslēgt spēļu režīmu, ja sistēmā tādu izmantojat"
 
-#: ui/Permissions.qml:123
+#: ui/Permissions.qml:127
 #, kde-format
 msgctxt "@option:check"
 msgid "Gain higher process priority"
 msgstr "Iegūt augstāku procesa prioritāti"
 
-#: ui/Permissions.qml:139
+#: ui/Permissions.qml:141
 #, kde-format
 msgctxt "@label:listbox"
 msgid "Take screenshots:"
 msgstr "Uzņemt ekrānattēlus:"
 
-#: ui/Permissions.qml:147 ui/Permissions.qml:168 ui/Permissions.qml:188
-#: ui/Permissions.qml:219
+#: ui/Permissions.qml:150 ui/Permissions.qml:172 ui/Permissions.qml:193
+#: ui/Permissions.qml:225
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Ask Once"
 msgstr "Jautāt vienreiz"
 
-#: ui/Permissions.qml:148 ui/Permissions.qml:169 ui/Permissions.qml:220
+#: ui/Permissions.qml:151 ui/Permissions.qml:173 ui/Permissions.qml:226
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Deny"
 msgstr "Liegt"
 
-#: ui/Permissions.qml:149 ui/Permissions.qml:170 ui/Permissions.qml:221
+#: ui/Permissions.qml:152 ui/Permissions.qml:174 ui/Permissions.qml:227
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Allow"
 msgstr "Atļaut"
 
-#: ui/Permissions.qml:150 ui/Permissions.qml:171 ui/Permissions.qml:222
+#: ui/Permissions.qml:153 ui/Permissions.qml:175 ui/Permissions.qml:228
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Always Ask"
 msgstr "Jautāt vienmēr"
 
-#: ui/Permissions.qml:160
+#: ui/Permissions.qml:162
 #, kde-format
 msgctxt "@title:group"
 msgid "Camera access:"
 msgstr "Piekļuve kamerai:"
 
-#: ui/Permissions.qml:181
+#: ui/Permissions.qml:184
 #, kde-format
 msgctxt "@label:listbox"
 msgid "Location accuracy:"
 msgstr "Atrašanās vietas precizitāte:"
 
-#: ui/Permissions.qml:190
+#: ui/Permissions.qml:195
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Deny"
 msgstr "Liegt"
 
-#: ui/Permissions.qml:191
+#: ui/Permissions.qml:196
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Country"
 msgstr "Valsts"
 
-#: ui/Permissions.qml:192
+#: ui/Permissions.qml:197
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "City"
 msgstr "Pilsēta"
 
-#: ui/Permissions.qml:193
+#: ui/Permissions.qml:198
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Neighborhood"
 msgstr "Apkaime"
 
-#: ui/Permissions.qml:194
+#: ui/Permissions.qml:199
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Street"
 msgstr "Iela"
 
-#: ui/Permissions.qml:195
+#: ui/Permissions.qml:200
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Exact"
 msgstr "Precīza"
 
-#: ui/Permissions.qml:211
+#: ui/Permissions.qml:215
 #, kde-format
 msgctxt "@label:listbox"
 msgid "Set desktop and lock screen background:"
 msgstr "Iestatīt darbvirsmas un bloķēšanas ekrāna tapeti:"
 
-#: ui/Permissions.qml:236
+#: ui/Permissions.qml:240
 #, kde-format
 msgctxt "@label"
 msgid "Screen sharing:"
 msgstr "Ekrāna kopīgošana:"
 
-#: ui/Permissions.qml:242 ui/Permissions.qml:256 ui/Permissions.qml:285
+#: ui/Permissions.qml:244 ui/Permissions.qml:258 ui/Permissions.qml:288
 #, kde-format
 msgctxt "@action:button"
 msgid "Manage %1 Session"
@@ -547,7 +547,7 @@ msgctxt "@title:window %1 is the name of the application"
 msgid "%1 – Screencast Sessions"
 msgstr "%1 — ekrānieraksta sesijas"
 
-#: ui/Permissions.qml:250
+#: ui/Permissions.qml:254
 #, kde-format
 msgctxt "@label"
 msgid "Capture pointer & keyboard input:"
@@ -561,7 +561,7 @@ msgctxt "@title:window %1 is the name of the application"
 msgid "%1 – Input Capture Sessions"
 msgstr "%1 — ekrānieraksta sesijas"
 
-#: ui/Permissions.qml:264
+#: ui/Permissions.qml:269
 #, kde-format
 msgctxt ""
 "@label 'Remote control' like in xdg-desktop-portal-kde remotedesktopdialog."
@@ -569,7 +569,7 @@ msgctxt ""
 msgid " Remote control:"
 msgstr " Attālā pārvaldība:"
 
-#: ui/Permissions.qml:268
+#: ui/Permissions.qml:273
 #, kde-format
 msgctxt "@option:check"
 msgid ""
@@ -578,7 +578,7 @@ msgstr ""
 "Pārvaldīt peles rādītāju un tastatūru un kopīgot ekrānu ar citām programmām "
 "bez vaicāšanas"
 
-#: ui/Permissions.qml:288
+#: ui/Permissions.qml:289
 #, kde-format
 msgctxt "@title:window %1 is the name of the application"
 msgid "%1 – Remote Desktop Sessions"
