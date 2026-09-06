@@ -3,7 +3,7 @@
 # This file is distributed under the license LGPL version 2.1 or
 # version 3 or later versions approved by the membership of KDE e.V.
 #
-# SPDX-FileCopyrightText: 2022, 2023, 2024, 2025, 2026 Josep M. Ferrer <txemaq@gmail.com>
+# SPDX-FileCopyrightText: 2022-2026 Josep M. Ferrer <txemaq@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
@@ -626,14 +626,3 @@ msgstr "Introduïu el nom de bus de sessió:"
 #, kde-format
 msgid "Enter system bus name:"
 msgstr "Introduïu el nom de bus de sistema:"
-
-#~ msgctxt "@info"
-#~ msgid ""
-#~ "Well-behaved applications might respect these settings but even if turned "
-#~ "off here they are still able to control mouse and keyboard or record the "
-#~ "contents of your screen through the windowing system"
-#~ msgstr ""
-#~ "Les aplicacions amb bon comportament poden respectar estos paràmetres, "
-#~ "però fins i tot si estan desactivades ací encara poden controlar el "
-#~ "ratolí i el teclat o gravar el contingut de la pantalla a través del "
-#~ "sistema de finestres"
