@@ -66,6 +66,7 @@ target_link_libraries(kcm_flatpak_static
     KF6::KCMUtilsQuick
     PkgConfig::Flatpak
     Qt::Core
+    Qt::Qml
 )
 
 kcmutils_add_qml_kcm(kcm_app-permissions SOURCES kcm.cpp kcm.h)
