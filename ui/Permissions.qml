@@ -175,7 +175,10 @@ still able to control mouse and keyboard or record the contents of your screen t
                 {value: "", text: i18nc("@item:inlistbox", "Ask Once")},
                 {value: "no", text: i18nc("@item:inlistbox", "Deny")},
                 {value: "yes", text: i18nc("@item:inlistbox", "Allow")},
-                {value: "ask", text: i18nc("@item:inlistbox", "Always Ask")},
+                // Disabled because of https://github.com/flatpak/xdg-desktop-portal/issues/2144
+                // Enable once it is resolved
+                // {value: "ask", text: i18nc("@item:inlistbox", "Always Ask")},
+
             ]
             // Unset/empty makes the portal ask once
             activeValue: cameraPermission.permissions[0] ?? ""
