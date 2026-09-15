@@ -64,7 +64,7 @@ still able to control mouse and keyboard or record the contents of your screen t
             id: notificationsSwitch
             Kirigami.FormData.label: i18nc("@label:group", "General:")
             Kirigami.FormData.labelAlignment: Qt.AlignTop
-            visible: !root.isHostApp
+            visible: !root.isHostApp || notificationPermission.permissions.length > 0
             text: i18nc("@option:check", "Send notifications")
             Layout.fillWidth: true
             Layout.maximumWidth: controlsLayout.switchMaxWidth
@@ -102,7 +102,7 @@ still able to control mouse and keyboard or record the contents of your screen t
         }
 
         RowLayout {
-            visible: !root.isHostApp && kcm.gamemodeAvailable
+            visible: (!root.isHostApp || gamemodePermission.permissions.length > 0) && kcm.gamemodeAvailable
             QQC.Switch {
                 id: gameModeSwitch
                 Layout.fillWidth: true
@@ -124,7 +124,7 @@ still able to control mouse and keyboard or record the contents of your screen t
 
         QQC.Switch {
             id: highProcessPrioritySwitch
-            visible: !root.isHostApp
+            visible: !root.isHostApp || realtimePermission.permissions.length > 0
             Layout.fillWidth: true
             Layout.maximumWidth: controlsLayout.switchMaxWidth
             text: i18nc("@option:check", "Gain higher process priority")
@@ -163,7 +163,7 @@ still able to control mouse and keyboard or record the contents of your screen t
 
         PermissionCombobox {
             id: cameraCombobox
-            visible: !root.isHostApp
+            visible: !root.isHostApp || cameraPermission.permissions.length != 0
             Kirigami.FormData.label: i18nc("@title:group", "Camera access:")
             Layout.preferredWidth: parent.buttonLikePreferredWidth
             PermissionItem {
@@ -184,7 +184,7 @@ still able to control mouse and keyboard or record the contents of your screen t
 
         PermissionCombobox {
             id: locationCombobox
-            visible: !root.isHostApp
+            visible: !root.isHostApp || locationPermission.permissions.length > 0
             Kirigami.FormData.label: i18nc("@label:listbox", "Location accuracy:")
             Layout.preferredWidth: parent.buttonLikePreferredWidth
             PermissionItem {
@@ -214,7 +214,7 @@ still able to control mouse and keyboard or record the contents of your screen t
 
         PermissionCombobox {
             id: wallpaperCombobox
-            visible: !root.isHostApp
+            visible: !root.isHostApp || wallpaperPermission.permissions.length > 0
             Kirigami.FormData.label: i18nc("@label:listbox", "Set desktop and lock screen background:")
             Layout.preferredWidth: parent.buttonLikePreferredWidth
             PermissionItem {
