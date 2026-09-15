@@ -59,7 +59,7 @@ KCMUtils.SimpleKCM {
         Kirigami.FormGroup {
             Kirigami.FormEntry {
                 title: i18nc("@label:group", "General:")
-                visible: !root.isHostApp
+                visible: !root.isHostApp || notificationPermission.permissions.length > 0
                 contentItem: QQC.Switch {
                     id: notificationsSwitch
                     text: i18nc("@option:check", "Send notifications")
@@ -100,7 +100,7 @@ KCMUtils.SimpleKCM {
             }
 
             Kirigami.FormEntry {
-                visible: !root.isHostApp && kcm.gamemodeAvailable
+                visible: (!root.isHostApp || gamemodePermission.permissions.length > 0) && kcm.gamemodeAvailable
                 contentItem: QQC.Switch {
                     id: gameModeSwitch
                     Layout.fillWidth: true
@@ -120,7 +120,7 @@ KCMUtils.SimpleKCM {
             }
 
             Kirigami.FormEntry {
-                visible: !root.isHostApp
+                visible: !root.isHostApp || realtimePermission.permissions.length > 0
                 contentItem: QQC.Switch {
                     id: highProcessPrioritySwitch
                     Layout.fillWidth: true
@@ -160,7 +160,7 @@ KCMUtils.SimpleKCM {
 
             Kirigami.FormEntry {
                 title: i18nc("@title:group", "Camera access:")
-                visible: !root.isHostApp
+                visible: !root.isHostApp || cameraPermission.permissions.length != 0
                 contentItem: PermissionCombobox {
                     id: cameraCombobox
                     PermissionItem {
@@ -182,7 +182,7 @@ KCMUtils.SimpleKCM {
 
             Kirigami.FormEntry {
                 title: i18nc("@label:listbox", "Location accuracy:")
-                visible: !root.isHostApp
+                visible: !root.isHostApp || locationPermission.permissions.length > 0
                 contentItem: PermissionCombobox {
                     id: locationCombobox
                     PermissionItem {
@@ -213,7 +213,7 @@ KCMUtils.SimpleKCM {
 
             Kirigami.FormEntry {
                 title: i18nc("@label:listbox", "Set desktop and lock screen background:")
-                visible: !root.isHostApp
+                visible: !root.isHostApp || wallpaperPermission.permissions.length > 0
                 contentItem: PermissionCombobox {
                     id: wallpaperCombobox
                     PermissionItem {
