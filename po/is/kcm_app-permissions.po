@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-25 00:47+0000\n"
+"POT-Creation-Date: 2026-10-03 00:46+0000\n"
 "PO-Revision-Date: 2026-06-01 12:43+0000\n"
 "Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
 "Language-Team: Icelandic\n"
@@ -447,26 +447,26 @@ msgctxt "@label:listbox"
 msgid "Take screenshots:"
 msgstr "Taka skjámyndir:"
 
-#: ui/Permissions.qml:150 ui/Permissions.qml:172 ui/Permissions.qml:193
-#: ui/Permissions.qml:225
+#: ui/Permissions.qml:150 ui/Permissions.qml:172 ui/Permissions.qml:195
+#: ui/Permissions.qml:227
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Ask Once"
 msgstr "Spyrja einu sinni"
 
-#: ui/Permissions.qml:151 ui/Permissions.qml:173 ui/Permissions.qml:226
+#: ui/Permissions.qml:151 ui/Permissions.qml:173 ui/Permissions.qml:228
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Deny"
 msgstr "Hafna"
 
-#: ui/Permissions.qml:152 ui/Permissions.qml:174 ui/Permissions.qml:227
+#: ui/Permissions.qml:152 ui/Permissions.qml:174 ui/Permissions.qml:229
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Allow"
 msgstr "Leyfa"
 
-#: ui/Permissions.qml:153 ui/Permissions.qml:175 ui/Permissions.qml:228
+#: ui/Permissions.qml:153 ui/Permissions.qml:230
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Always Ask"
@@ -478,61 +478,61 @@ msgctxt "@title:group"
 msgid "Camera access:"
 msgstr "Aðgangur að myndavél:"
 
-#: ui/Permissions.qml:184
+#: ui/Permissions.qml:186
 #, kde-format
 msgctxt "@label:listbox"
 msgid "Location accuracy:"
 msgstr "Nákvæmni staðsetningar:"
 
-#: ui/Permissions.qml:195
+#: ui/Permissions.qml:197
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Deny"
 msgstr "Hafna"
 
-#: ui/Permissions.qml:196
+#: ui/Permissions.qml:198
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Country"
 msgstr "Land"
 
-#: ui/Permissions.qml:197
+#: ui/Permissions.qml:199
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "City"
 msgstr "Borg/Sveitarfélag"
 
-#: ui/Permissions.qml:198
+#: ui/Permissions.qml:200
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Neighborhood"
 msgstr "Hverfi"
 
-#: ui/Permissions.qml:199
+#: ui/Permissions.qml:201
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Street"
 msgstr "Gata"
 
-#: ui/Permissions.qml:200
+#: ui/Permissions.qml:202
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Exact"
 msgstr "Nákvæmt"
 
-#: ui/Permissions.qml:215
+#: ui/Permissions.qml:217
 #, kde-format
 msgctxt "@label:listbox"
 msgid "Set desktop and lock screen background:"
 msgstr "Setja bakgrunnsmynd skjáborðs og læsiskjás:"
 
-#: ui/Permissions.qml:240
+#: ui/Permissions.qml:242
 #, kde-format
 msgctxt "@label"
 msgid "Screen sharing:"
 msgstr "Skjádeiling:"
 
-#: ui/Permissions.qml:244 ui/Permissions.qml:258 ui/Permissions.qml:288
+#: ui/Permissions.qml:246 ui/Permissions.qml:260 ui/Permissions.qml:290
 #, kde-format
 msgctxt "@action:button"
 msgid "Manage %1 Session"
@@ -540,25 +540,25 @@ msgid_plural "Manage %1 Sessions"
 msgstr[0] "Sýsla með %1 setu"
 msgstr[1] "Sýsla með %1 setur"
 
-#: ui/Permissions.qml:245
+#: ui/Permissions.qml:247
 #, kde-format
 msgctxt "@title:window %1 is the name of the application"
 msgid "%1 – Screencast Sessions"
 msgstr "%1 – Skjávörpunarsetur"
 
-#: ui/Permissions.qml:254
+#: ui/Permissions.qml:256
 #, kde-format
 msgctxt "@label"
 msgid "Capture pointer & keyboard input:"
 msgstr "Ná í inntak frá bendli og lyklaborði:"
 
-#: ui/Permissions.qml:259
+#: ui/Permissions.qml:261
 #, kde-format
 msgctxt "@title:window %1 is the name of the application"
 msgid "%1 – Input Capture Sessions"
 msgstr "%1 – Inntaksgripsetur"
 
-#: ui/Permissions.qml:269
+#: ui/Permissions.qml:271
 #, kde-format
 msgctxt ""
 "@label 'Remote control' like in xdg-desktop-portal-kde remotedesktopdialog."
@@ -566,7 +566,7 @@ msgctxt ""
 msgid " Remote control:"
 msgstr " Fjarstýring:"
 
-#: ui/Permissions.qml:273
+#: ui/Permissions.qml:275
 #, kde-format
 msgctxt "@option:check"
 msgid ""
@@ -575,7 +575,7 @@ msgstr ""
 "Stýrðu bendli og lyklaborði og deildu skjá með öðrum forritum án þess að "
 "spyrja"
 
-#: ui/Permissions.qml:289
+#: ui/Permissions.qml:291
 #, kde-format
 msgctxt "@title:window %1 is the name of the application"
 msgid "%1 – Remote Desktop Sessions"

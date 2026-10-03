@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcm_flatpak\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-25 00:47+0000\n"
+"POT-Creation-Date: 2026-10-03 00:46+0000\n"
 "PO-Revision-Date: 2026-05-18 10:54+0200\n"
 "Last-Translator: Philipp Kiemle <l10n.daphipz@fastmail.de>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -455,26 +455,26 @@ msgctxt "@label:listbox"
 msgid "Take screenshots:"
 msgstr "Bildschirmfotos erstellen:"
 
-#: ui/Permissions.qml:150 ui/Permissions.qml:172 ui/Permissions.qml:193
-#: ui/Permissions.qml:225
+#: ui/Permissions.qml:150 ui/Permissions.qml:172 ui/Permissions.qml:195
+#: ui/Permissions.qml:227
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Ask Once"
 msgstr "Einmalig nachfragen"
 
-#: ui/Permissions.qml:151 ui/Permissions.qml:173 ui/Permissions.qml:226
+#: ui/Permissions.qml:151 ui/Permissions.qml:173 ui/Permissions.qml:228
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Deny"
 msgstr "Ablehnen"
 
-#: ui/Permissions.qml:152 ui/Permissions.qml:174 ui/Permissions.qml:227
+#: ui/Permissions.qml:152 ui/Permissions.qml:174 ui/Permissions.qml:229
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Allow"
 msgstr "Zulassen"
 
-#: ui/Permissions.qml:153 ui/Permissions.qml:175 ui/Permissions.qml:228
+#: ui/Permissions.qml:153 ui/Permissions.qml:230
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Always Ask"
@@ -486,61 +486,61 @@ msgctxt "@title:group"
 msgid "Camera access:"
 msgstr "Kamera-Zugriff:"
 
-#: ui/Permissions.qml:184
+#: ui/Permissions.qml:186
 #, kde-format
 msgctxt "@label:listbox"
 msgid "Location accuracy:"
 msgstr "Standortgenauigkeit:"
 
-#: ui/Permissions.qml:195
+#: ui/Permissions.qml:197
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Deny"
 msgstr "Ablehnen"
 
-#: ui/Permissions.qml:196
+#: ui/Permissions.qml:198
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Country"
 msgstr "Land"
 
-#: ui/Permissions.qml:197
+#: ui/Permissions.qml:199
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "City"
 msgstr "Stadt"
 
-#: ui/Permissions.qml:198
+#: ui/Permissions.qml:200
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Neighborhood"
 msgstr "Umgebung"
 
-#: ui/Permissions.qml:199
+#: ui/Permissions.qml:201
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Street"
 msgstr "Straße"
 
-#: ui/Permissions.qml:200
+#: ui/Permissions.qml:202
 #, kde-format
 msgctxt "@item:inlistbox location accuracy"
 msgid "Exact"
 msgstr "Genau"
 
-#: ui/Permissions.qml:215
+#: ui/Permissions.qml:217
 #, kde-format
 msgctxt "@label:listbox"
 msgid "Set desktop and lock screen background:"
 msgstr "Arbeitsflächen- und Sperrbildschirmhintergrund festlegen:"
 
-#: ui/Permissions.qml:240
+#: ui/Permissions.qml:242
 #, kde-format
 msgctxt "@label"
 msgid "Screen sharing:"
 msgstr "Bildschirmübertragung:"
 
-#: ui/Permissions.qml:244 ui/Permissions.qml:258 ui/Permissions.qml:288
+#: ui/Permissions.qml:246 ui/Permissions.qml:260 ui/Permissions.qml:290
 #, kde-format
 msgctxt "@action:button"
 msgid "Manage %1 Session"
@@ -548,25 +548,25 @@ msgid_plural "Manage %1 Sessions"
 msgstr[0] "%1 Sitzung verwalten"
 msgstr[1] "%1 Sitzungen verwalten"
 
-#: ui/Permissions.qml:245
+#: ui/Permissions.qml:247
 #, kde-format
 msgctxt "@title:window %1 is the name of the application"
 msgid "%1 – Screencast Sessions"
 msgstr "%1 – Bildschirmübertragung-Sitzungen"
 
-#: ui/Permissions.qml:254
+#: ui/Permissions.qml:256
 #, kde-format
 msgctxt "@label"
 msgid "Capture pointer & keyboard input:"
 msgstr "Maus- und Tastatureingaben erfassen:"
 
-#: ui/Permissions.qml:259
+#: ui/Permissions.qml:261
 #, kde-format
 msgctxt "@title:window %1 is the name of the application"
 msgid "%1 – Input Capture Sessions"
 msgstr "%1 – Eingabeerfassungs-Sitzungen"
 
-#: ui/Permissions.qml:269
+#: ui/Permissions.qml:271
 #, kde-format
 msgctxt ""
 "@label 'Remote control' like in xdg-desktop-portal-kde remotedesktopdialog."
@@ -574,7 +574,7 @@ msgctxt ""
 msgid " Remote control:"
 msgstr " Fernsteuerung:"
 
-#: ui/Permissions.qml:273
+#: ui/Permissions.qml:275
 #, kde-format
 msgctxt "@option:check"
 msgid ""
@@ -583,7 +583,7 @@ msgstr ""
 "Zeiger und Tastatur steuern und den Bildschirm mit anderen Anwendungen "
 "teilen, ohne zu fragen"
 
-#: ui/Permissions.qml:289
+#: ui/Permissions.qml:291
 #, kde-format
 msgctxt "@title:window %1 is the name of the application"
 msgid "%1 – Remote Desktop Sessions"
