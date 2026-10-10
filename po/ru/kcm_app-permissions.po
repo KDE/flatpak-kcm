@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: flatpak-kcm\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-10-03 00:46+0000\n"
-"PO-Revision-Date: 2026-06-18 19:08+0200\n"
+"PO-Revision-Date: 2026-10-09 15:24+0200\n"
 "Last-Translator: Alexander Yavorskiy <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
 "Language: ru\n"
@@ -156,12 +156,14 @@ msgstr "Bluetooth"
 #: flatpakpermission.cpp:856
 #, kde-format
 msgid "Canbus socket access"
-msgstr "Доступ к сокету CAN шины"
+msgstr "Доступ к сокету CAN-шины"
 
 #: flatpakpermission.cpp:859
 #, kde-format
 msgid "Share dev/shm across all instances of an app per user ID"
-msgstr "Совместное использование памяти экземплярами приложения"
+msgstr ""
+"Совместное использование /dev/shm всеми экземплярами приложения одного "
+"пользователя"
 
 #: flatpakpermission.cpp:917
 #, kde-format
@@ -241,7 +243,7 @@ msgstr "Добавить новый путь"
 #: flatpakpermission.cpp:1336
 #, kde-format
 msgid "Add a new session bus"
-msgstr "Создать правило доступа к шине сеанса "
+msgstr "Создать правило доступа к шине сеанса"
 
 #: flatpakpermission.cpp:1338
 #, kde-format
@@ -298,7 +300,7 @@ msgstr "Окно «%1» приложения «%2»"
 #: restoredatamodel.cpp:214
 #, kde-format
 msgid "Region at (%1,%2) with size %3x%4"
-msgstr "Область с координатами %1,%2 размером %3x%4"
+msgstr "Область с координатами %1,%2 размером %3×%4"
 
 #: restoredatamodel.cpp:224
 #, kde-format
