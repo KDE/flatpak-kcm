@@ -627,26 +627,3 @@ msgstr "Introduïu el nom de bus de sessió:"
 #, kde-format
 msgid "Enter system bus name:"
 msgstr "Introduïu el nom de bus de sistema:"
-
-#~ msgctxt "@info"
-#~ msgid ""
-#~ "Well-behaved applications might respect these settings but even if turned "
-#~ "off here they are still able to control mouse and keyboard or record the "
-#~ "contents of your screen through the windowing system"
-#~ msgstr ""
-#~ "Les aplicacions amb bon comportament poden respectar aquests paràmetres, "
-#~ "però fins i tot si estan desactivades aquí encara poden controlar el "
-#~ "ratolí i el teclat o gravar el contingut de la pantalla a través del "
-#~ "sistema de finestres"
-
-#~ msgctxt "@info accessible.description for list"
-#~ msgid "Version %1"
-#~ msgstr "Versió %1"
-
-#~ msgctxt "@window:title"
-#~ msgid "Flatpak Applications"
-#~ msgstr "Aplicacions Flatpak"
-
-#~ msgctxt "@title:window"
-#~ msgid "Permissions"
-#~ msgstr "Permisos"
