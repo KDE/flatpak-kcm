@@ -348,10 +348,7 @@ msgid "Apply Permissions"
 msgstr "Aplicar os permisos"
 
 #: ui/ApplyOrDiscardDialog.qml:22
-#, fuzzy, kde-format
-#| msgid ""
-#| "The permissions of application %1 have been changed. Do you want to apply "
-#| "these changes or discard them?"
+#, kde-format
 msgctxt "@info dialog main text"
 msgid ""
 "The permissions of application %1 have been changed. Do you want to apply "
@@ -387,8 +384,7 @@ msgid "Show advanced permissions"
 msgstr "Amosar os permisos avanzados"
 
 #: ui/FlatpakPermissions.qml:198
-#, fuzzy, kde-format
-#| msgid "Add New…"
+#, kde-format
 msgctxt "@action:button in section header"
 msgid "Add New…"
 msgstr "Engadir un novo…"
